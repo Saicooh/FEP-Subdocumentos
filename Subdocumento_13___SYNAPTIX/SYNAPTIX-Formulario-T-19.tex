@@ -1,0 +1,136 @@
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+
+\newcommand{\CampoFicha}[2]{#1 & #2 \\}
+\newcommand{\FichaInnovacion}[3]{%
+  \section*{Ficha #1: #2}
+  Esta ficha presenta el alcance, la verificación y las condiciones de incorporación de la innovación #1.
+  \begin{longtable}{@{}L{.29\textwidth}L{.64\textwidth}@{}}
+    \toprule
+    \EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\
+    \midrule
+    \endfirsthead
+    \toprule
+    \EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\
+    \midrule
+    \endhead
+    #3
+    \bottomrule
+  \end{longtable}
+}
+
+\begin{document}
+\begin{center}
+  {\Large\bfseries SYNAPTIX INGENIERÍA DE SOFTWARE\par}
+  \vspace{4mm}
+  {\large\bfseries Formulario T-19: cartera de innovaciones\par}
+  \vspace{2mm}
+  Licitación N\textsuperscript{o} TFEP-01/2026 \quad Puerto Deportivo Bahía Panitao
+\end{center}
+
+\vspace{5mm}
+Synaptix presenta cinco fichas, una por cada tipo del artículo 28 de las Bases Administrativas. Los campos siguen el Formulario T-19 y los siete elementos exigidos por el artículo 29 \parencite[pp.~19--20 y 64]{bases-admin}. La escala TRL se aplica a la integración tecnológica específica propuesta para Bahía Panitao \parencite{nasa-trl}.
+
+\FichaInnovacion{1}{Custodia Náutica Preventiva}{%
+  \CampoFicha{Tipo de innovación}{Producto o servicio.}
+  \CampoFicha{Nombre}{Custodia Náutica Preventiva.}
+  \CampoFicha{Problema u oportunidad}{Aproximadamente 4.800 zarpes al año; el 34\,\% requiere corregir al menos un dato a mano \parencite[cap.~7]{caso07}.}
+  \CampoFicha{Tecnología o práctica}{Formularios guiados, reglas temporales, consentimiento y avisos multicanal. El servicio preventivo se añade al registro obligatorio de salidas y regresos.}
+  \CampoFicha{Madurez y escala}{TRL 2 preliminar: integración formulada, sin piloto validado en el puerto \parencite{nasa-trl}.}
+  \CampoFicha{Fuentes APA 7}{Bases Técnicas del Caso 07; escala TRL de NASA.}
+  \CampoFicha{Inserción en arquitectura}{Portal, reglas de navegación, gestión de consentimiento, mensajería y registro de eventos.}
+  \CampoFicha{Paquetes de la EDT}{[PENDIENTE: identificadores de paquetes de trabajo.]}
+  \CampoFicha{Mes de materialización}{[PENDIENTE: mes del piloto y mes de aceptación.]}
+  \CampoFicha{Inversión requerida}{[PENDIENTE: desarrollo, pruebas y capacitación en UF.]}
+  \CampoFicha{Costo operacional}{[PENDIENTE: mensajería y atención de excepciones en UF/mes.]}
+  \CampoFicha{Beneficio y cuantificación}{Menos correcciones y cierre oportuno de planes. [PENDIENTE: beneficio en UF y método de cálculo.]}
+  \CampoFicha{Indicador, línea base y meta}{Zarpes con corrección manual / zarpes tramitados. Línea base del caso: 34\,\%. [PENDIENTE: meta y regla de comparación del piloto.]}
+  \CampoFicha{Momento de medición}{[PENDIENTE: fecha de medición; se prioriza la marcha blanca de Etapa 1.]}
+  \CampoFicha{Riesgo, probabilidad e impacto}{Avisos mal interpretados. [PENDIENTE: probabilidad e impacto según matriz de riesgos.]}
+  \CampoFicha{Mitigación}{Consentimiento, mensajes aprobados y validación humana de alertas.}
+  \CampoFicha{Contingencia}{Mantener el registro obligatorio sin activar el servicio preventivo.}
+}
+
+\FichaInnovacion{2}{Reprogramación Operacional Resiliente}{%
+  \CampoFicha{Tipo de innovación}{Proceso.}
+  \CampoFicha{Nombre}{Reprogramación Operacional Resiliente.}
+  \CampoFicha{Problema u oportunidad}{1.150 movimientos de travelift al año; 62\,\% concentrado en dos campañas de seis semanas \parencite[caps.~2 y 7]{caso07}.}
+  \CampoFicha{Tecnología o práctica}{Planificación por restricciones y comparación de escenarios con aprobación del operador \parencite{google-cp}.}
+  \CampoFicha{Madurez y escala}{TRL 2 preliminar para la integración local; los métodos de programación por restricciones tienen aplicaciones documentadas \parencite{nasa-trl,google-cp}.}
+  \CampoFicha{Fuentes APA 7}{Bases Técnicas del Caso 07; Google OR-Tools; escala TRL de NASA.}
+  \CampoFicha{Inserción en arquitectura}{Agenda operativa, motor de restricciones y vista de alternativas; sin control físico del travelift.}
+  \CampoFicha{Paquetes de la EDT}{[PENDIENTE: identificadores de paquetes de trabajo.]}
+  \CampoFicha{Mes de materialización}{[PENDIENTE: mes del piloto y mes de aceptación.]}
+  \CampoFicha{Inversión requerida}{[PENDIENTE: modelado, integración y pruebas en UF.]}
+  \CampoFicha{Costo operacional}{[PENDIENTE: mantenimiento del motor y reglas en UF/mes.]}
+  \CampoFicha{Beneficio y cuantificación}{Menor tiempo de coordinación y menos conflictos. [PENDIENTE: beneficio en UF y método.]}
+  \CampoFicha{Indicador, línea base y meta}{Minutos desde cancelación registrada hasta agenda factible aprobada. [PENDIENTE: línea base y meta.]}
+  \CampoFicha{Momento de medición}{[PENDIENTE: mes; medir primero en operación de sombra.]}
+  \CampoFicha{Riesgo, probabilidad e impacto}{Recomendaciones inviables por reglas incompletas. [PENDIENTE: probabilidad e impacto.]}
+  \CampoFicha{Mitigación}{Validación de reglas con operadores, restricciones de seguridad y aprobación humana.}
+  \CampoFicha{Contingencia}{Reprogramación manual en la agenda digital obligatoria.}
+}
+
+\FichaInnovacion{3}{Gemelo Operacional Explicable de Amarras}{%
+  \CampoFicha{Tipo de innovación}{Tecnología o arquitectura.}
+  \CampoFicha{Nombre}{Gemelo Operacional Explicable de Amarras.}
+  \CampoFicha{Problema u oportunidad}{El 22\,\% de las amarras presenta una eslora distinta del tramo contratado; la presencia física requiere verificación en terreno \parencite[caps.~4 y 7]{caso07}.}
+  \CampoFicha{Tecnología o práctica}{Fusión de eventos con origen, vigencia y confianza visibles; consola de discrepancias y revisión humana \parencite{nist-twin}.}
+  \CampoFicha{Madurez y escala}{TRL 2 preliminar para la integración local, pendiente de validación de sensores y modelo en terreno \parencite{nasa-trl}.}
+  \CampoFicha{Fuentes APA 7}{Bases Técnicas del Caso 07; NIST sobre credibilidad de gemelos digitales; escala TRL de NASA.}
+  \CampoFicha{Inserción en arquitectura}{Nodo de borde, adaptadores de señales, motor de reglas, eventos y consola de excepciones.}
+  \CampoFicha{Paquetes de la EDT}{[PENDIENTE: identificadores de paquetes de trabajo.]}
+  \CampoFicha{Mes de materialización}{[PENDIENTE: mes del piloto y mes de aceptación.]}
+  \CampoFicha{Inversión requerida}{[PENDIENTE: sensores, comunicaciones e integración en UF.]}
+  \CampoFicha{Costo operacional}{[PENDIENTE: calibración, mantenimiento y reposición en UF/mes.]}
+  \CampoFicha{Beneficio y cuantificación}{Menos verificaciones sin valor y resolución temprana de discrepancias. [PENDIENTE: beneficio en UF.]}
+  \CampoFicha{Indicador, línea base y meta}{Estados digitales coincidentes con inspección / estados inspeccionados. [PENDIENTE: línea base, muestra y meta.]}
+  \CampoFicha{Momento de medición}{[PENDIENTE: mes y condiciones de prueba en los pantalanes.]}
+  \CampoFicha{Riesgo, probabilidad e impacto}{Señales degradadas por salinidad, movimiento o enlace. [PENDIENTE: probabilidad e impacto.]}
+  \CampoFicha{Mitigación}{Adaptadores reemplazables, procedencia y caducidad de lecturas, estado indeterminado ante conflictos.}
+  \CampoFicha{Contingencia}{Mantener registro obligatorio e inspección presencial.}
+}
+
+\FichaInnovacion{4}{Servicio Gestionado por Resultados}{%
+  \CampoFicha{Tipo de innovación}{Modelo de negocio o contratación.}
+  \CampoFicha{Nombre}{Servicio Gestionado por Resultados.}
+  \CampoFicha{Problema u oportunidad}{Operación de la plataforma durante 36 meses sin área interna de informática \parencite[caps.~2 y 9]{caso07}.}
+  \CampoFicha{Tecnología o práctica}{Tarifa base para obligaciones; componente variable sólo por beneficios adicionales medidos, atribuibles y permitidos por el contrato \parencite{uk-outcomes}.}
+  \CampoFicha{Madurez y escala}{Diseño conceptual, sin validación contractual. Escala de adopción: concepto, piloto sin pago variable, acuerdo y operación.}
+  \CampoFicha{Fuentes APA 7}{Bases Técnicas del Caso 07; guía de contratación por resultados del Cabinet Office.}
+  \CampoFicha{Inserción en arquitectura}{Tablero de métricas operacionales y registro de conciliaciones; la regla económica reside en el contrato.}
+  \CampoFicha{Paquetes de la EDT}{[PENDIENTE: paquetes de medición, servicio y gestión contractual.]}
+  \CampoFicha{Mes de materialización}{[PENDIENTE: inicio de observación y posible activación contractual.]}
+  \CampoFicha{Inversión requerida}{[PENDIENTE: instrumentación y auditoría de métricas en UF.]}
+  \CampoFicha{Costo operacional}{[PENDIENTE: seguimiento y conciliación en UF/mes.]}
+  \CampoFicha{Beneficio y cuantificación}{Beneficios adicionales verificados sin degradar obligaciones. [PENDIENTE: fórmula y monto en UF.]}
+  \CampoFicha{Indicador, línea base y meta}{Mejora observada menos efectos externos y costo incremental. [PENDIENTE: indicador específico, línea base, meta y atribución.]}
+  \CampoFicha{Momento de medición}{[PENDIENTE: período de observación y primer cierre conjunto.]}
+  \CampoFicha{Riesgo, probabilidad e impacto}{Incentivo contrario a seguridad o calidad. [PENDIENTE: probabilidad e impacto.]}
+  \CampoFicha{Mitigación}{Condiciones mínimas de servicio, topes, datos auditables y revisión conjunta.}
+  \CampoFicha{Contingencia}{Conservar tarifa y SLA obligatorios; usar tablero de beneficios sin pago variable.}
+}
+
+\FichaInnovacion{5}{Pasaporte Ambiental Náutico}{%
+  \CampoFicha{Tipo de innovación}{Experiencia de usuario y sostenibilidad.}
+  \CampoFicha{Nombre}{Pasaporte Ambiental Náutico.}
+  \CampoFicha{Problema u oportunidad}{Tres no conformidades: residuos sin trazabilidad completa, consumo sin medición por amarra y capacitación no acreditada para unas 140 personas contratistas \parencite[caps.~4 y 7]{caso07}.}
+  \CampoFicha{Tecnología o práctica}{Historial por embarcación y faena, comparación de consumo propio por días de permanencia y acciones documentadas, con acceso autorizado \parencite{iso14031}.}
+  \CampoFicha{Madurez y escala}{TRL 2 preliminar para la integración local; requiere piloto con evidencia real \parencite{nasa-trl}.}
+  \CampoFicha{Fuentes APA 7}{Bases Técnicas del Caso 07; ISO 14031:2021; escala TRL de NASA.}
+  \CampoFicha{Inserción en arquitectura}{Capa de datos, registros de residuos y medición, acreditación de contratistas y portal autorizado.}
+  \CampoFicha{Paquetes de la EDT}{[PENDIENTE: identificadores de paquetes de trabajo.]}
+  \CampoFicha{Mes de materialización}{[PENDIENTE: mes de piloto y serie histórica anterior a 2029.]}
+  \CampoFicha{Inversión requerida}{[PENDIENTE: integración, historial y vistas en UF.]}
+  \CampoFicha{Costo operacional}{[PENDIENTE: conciliación, almacenamiento y rectificaciones en UF/mes.]}
+  \CampoFicha{Beneficio y cuantificación}{Acciones de reducción ambiental basadas en información propia; menor esfuerzo de recopilación. [PENDIENTE: beneficio en UF.]}
+  \CampoFicha{Indicador, línea base y meta}{Embarcaciones participantes con acción de reducción documentada / embarcaciones participantes. [PENDIENTE: línea base y meta; la integridad de datos es condición de calidad.]}
+  \CampoFicha{Momento de medición}{[PENDIENTE: medición de piloto y cierre antes de auditoría 2029.]}
+  \CampoFicha{Riesgo, probabilidad e impacto}{Historial engañoso por lecturas incompletas o documentos vencidos. [PENDIENTE: probabilidad e impacto.]}
+  \CampoFicha{Mitigación}{Mostrar procedencia, fecha y validación de datos; conciliación manual de discrepancias.}
+  \CampoFicha{Contingencia}{Mantener los registros obligatorios de residuos, medición y capacitación sin la vista integrada.}
+}
+
+\printbibliography[title={Referencias}]
+\end{document}

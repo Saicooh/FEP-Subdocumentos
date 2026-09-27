@@ -1,0 +1,25 @@
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
+\input{componentes/cierre.tex}
+\graphicspath{{figuras/}}
+\renewcommand{\DeclaracionesIA}{%
+  \FilaDeclaracionIA{13.1}{OpenAI Codex}{Redacción y contraste con las Bases}{Alto}{Alto}{[PENDIENTE: responsable; validar problema, piloto y figura]}
+  \FilaDeclaracionIA{13.2}{OpenAI Codex}{Redacción y contraste con las Bases}{Alto}{Ninguno}{[PENDIENTE: responsable; validar reglas y métricas]}
+  \FilaDeclaracionIA{13.3}{OpenAI Codex}{Redacción y revisión técnica}{Alto}{Ninguno}{[PENDIENTE: responsable; validar arquitectura y piloto]}
+  \FilaDeclaracionIA{13.4}{OpenAI Codex}{Redacción y revisión contractual}{Alto}{Ninguno}{[PENDIENTE: responsable; validar compatibilidad contractual]}
+  \FilaDeclaracionIA{13.5}{OpenAI Codex}{Redacción y contraste ambiental}{Alto}{Ninguno}{[PENDIENTE: responsable; validar evidencia e indicadores]}
+  \FilaDeclaracionIA{T-19}{OpenAI Codex}{Preparación de fichas independientes}{Alto}{Ninguno}{[PENDIENTE: responsable; verificar cinco fichas]}
+}
+
+\begin{document}
+\PortadaPropuesta{13}{Cartera de innovaciones}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\tableofcontents
+\clearpage
+\setcounter{chapter}{12}
+\input{capitulo13.tex}
+\CierreSubdocumento
+\end{document}

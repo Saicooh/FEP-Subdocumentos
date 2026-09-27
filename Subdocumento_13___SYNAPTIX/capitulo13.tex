@@ -1,0 +1,98 @@
+\chapter{Cartera de innovaciones}
+
+Synaptix propone cinco innovaciones para Bahía Panitao, una por cada tipo exigido en las Bases Administrativas \parencite[arts.~28--30, pp.~19--20]{bases-admin}. Cada una parte de un problema del puerto, identifica el aporte que excede las funciones obligatorias y define cómo se medirá el beneficio. Las fichas de cada innovación se presentan en el Formulario T-19 independiente.
+
+La madurez de las cuatro integraciones tecnológicas se expresa con la escala TRL de la NASA. TRL 2 corresponde a una aplicación formulada cuya eficacia todavía no ha sido demostrada en el entorno previsto \parencite{nasa-trl}. La clasificación se refiere a la integración específica para este puerto; las técnicas subyacentes tienen usos documentados. El modelo contractual se describe por su estado de diseño y validación, pues TRL no mide la madurez de un acuerdo comercial.
+
+La Figura~\ref{fig:incorporacion-innovaciones} ubica cada innovación en la solución propuesta. Los componentes de la derecha son los puntos de incorporación; sus interfaces, paquetes de trabajo y fechas de entrega se precisan en cada ficha T-19.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+    >=Latex,
+    innovacion/.style={draw=SynNavyLight,rounded corners=1.5mm,fill=SynSurface,text=SynInk,align=center,font=\footnotesize,text width=48mm,minimum height=10mm},
+    insercion/.style={draw=SynCyan,rounded corners=1.5mm,fill=SynCyan!8,text=SynInk,align=center,font=\footnotesize,text width=62mm,minimum height=10mm},
+    enlace/.style={draw=SynNavyLight,thick,-Latex}
+  ]
+    \node[innovacion] (i1) at (-37mm,0mm) {Custodia Náutica Preventiva};
+    \node[insercion] (a1) at (37mm,0mm) {Portal, reglas, consentimiento y avisos};
+    \node[innovacion] (i2) at (-37mm,-18mm) {Reprogramación Operacional Resiliente};
+    \node[insercion] (a2) at (37mm,-18mm) {Agenda y motor de restricciones};
+    \node[innovacion] (i3) at (-37mm,-36mm) {Gemelo Operacional de Amarras};
+    \node[insercion] (a3) at (37mm,-36mm) {Nodo de borde, eventos y excepciones};
+    \node[innovacion] (i4) at (-37mm,-54mm) {Servicio Gestionado por Resultados};
+    \node[insercion] (a4) at (37mm,-54mm) {Métricas y revisión contractual};
+    \node[innovacion] (i5) at (-37mm,-72mm) {Pasaporte Ambiental Náutico};
+    \node[insercion] (a5) at (37mm,-72mm) {Medición, residuos y capacitación};
+    \draw[enlace] (i1.east) -- (a1.west);
+    \draw[enlace] (i2.east) -- (a2.west);
+    \draw[enlace] (i3.east) -- (a3.west);
+    \draw[enlace] (i4.east) -- (a4.west);
+    \draw[enlace] (i5.east) -- (a5.west);
+  \end{tikzpicture}
+  \caption{Puntos de incorporación de las cinco innovaciones}
+  \label{fig:incorporacion-innovaciones}
+  \FuenteFigura{Elaboración de Synaptix a partir de la arquitectura propuesta.}
+\end{figure}
+
+Las cinco incorporaciones comparten los registros operacionales de la plataforma, pero cumplen funciones distintas: acompañamiento preventivo, comparación de agendas, interpretación de ocupación, verificación contractual de beneficios e historial ambiental por embarcación. Ninguna sustituye un control obligatorio del puerto. La inversión, el costo recurrente y el beneficio monetario de cada una se incorporarán al flujo de caja de la oferta económica con datos conciliados.
+
+\section{Innovación 1: Custodia Náutica Preventiva}
+
+Custodia Náutica Preventiva es una innovación de producto o servicio. En el caso se tramitan aproximadamente 4.800 zarpes anuales y el 34\,\% exige corregir al menos un dato a mano \parencite[cap.~7]{caso07}. Synaptix propone un servicio voluntario que advierte antecedentes incompletos antes del trámite y ordena las comunicaciones cuando un regreso permanece sin informar. El registro de zarpes y regresos es obligatorio; el aporte adicional consiste en anticipar errores y ejecutar una secuencia de contacto consentida, configurable y auditable. La torre de control conserva la decisión operativa y la radio marítima sigue siendo el canal de seguridad.
+
+\paragraph{Tecnología, madurez e incorporación.} Formularios guiados, reglas temporales, preferencias de contacto, consentimiento y avisos multicanal se integrarán con el portal, el registro de navegación y la bitácora de eventos. La integración para Bahía Panitao se clasifica preliminarmente en TRL 2; un piloto con armadores voluntarios deberá demostrar su utilidad y sus límites \parencite{nasa-trl}. \textbf{[PENDIENTE: paquete EDT, mes de incorporación, interfaces autorizadas y protocolo acordado con la autoridad marítima.]}
+
+\paragraph{Impacto económico.} La inversión comprende reglas, mensajería, pruebas y capacitación; la operación añade consumo de canales y atención de excepciones. El beneficio potencial es menor reproceso de atención. \textbf{[PENDIENTE: inversión, costo operacional y beneficio cuantificado en el flujo de caja.]}
+
+\paragraph{Indicador y verificación.} La tasa de correcciones se calcula como zarpes con al menos una corrección manual divididos por zarpes tramitados. La línea base del caso es 34\,\%; el piloto comparará participantes y no participantes durante la misma ventana operativa. \textbf{[PENDIENTE: meta, tamaño del piloto y momento de medición; se prioriza una lectura durante la marcha blanca de Etapa 1.]}
+
+\paragraph{Riesgo y contingencia.} Un aviso mal interpretado puede producir falsa tranquilidad o una escalada innecesaria. Synaptix mitigará el riesgo con consentimiento explícito, mensajes aprobados y validación humana de alertas. Si el piloto no resulta aceptable, mantendrá el registro obligatorio de salidas y regresos sin activar el servicio preventivo. \textbf{[PENDIENTE: probabilidad e impacto evaluados con la matriz de riesgos.]}
+
+\section{Innovación 2: Reprogramación Operacional Resiliente}
+
+Reprogramación Operacional Resiliente es una innovación de proceso. El varadero realiza 1.150 movimientos de travelift al año; el 62\,\% se concentra en dos campañas de seis semanas \parencite[caps.~2 y 7]{caso07}. Ante marejadas, atrasos o indisponibilidad, Synaptix propondrá alternativas de agenda que respeten recursos, precedencias y restricciones de seguridad. La agenda y la modificación manual de reservas pertenecen al alcance obligatorio; el aporte adicional es comparar escenarios y explicar sus consecuencias antes de aplicar un cambio. El operador conserva la aprobación final.
+
+\paragraph{Tecnología, madurez e incorporación.} La planificación por restricciones permite encontrar agendas factibles bajo reglas simultáneas \parencite{google-cp}. El motor consultará reservas, puestos, personal habilitado y duración estimada de las faenas; devolverá alternativas a la agenda sin controlar físicamente el travelift. La integración local se clasifica preliminarmente en TRL 2 \parencite{nasa-trl}. \textbf{[PENDIENTE: reglas verificadas en terreno, paquete EDT, interfaces y mes de habilitación.]}
+
+\paragraph{Impacto económico.} El costo incluye modelar reglas, probar escenarios y mantener el motor; el beneficio esperado es menor tiempo de coordinación y menos conflictos de agenda. \textbf{[PENDIENTE: inversión, costo operacional y beneficio cuantificado.]}
+
+\paragraph{Indicador y verificación.} El tiempo de reprogramación se mide desde la cancelación registrada hasta la aprobación de una agenda factible. Se medirá primero en cancelaciones históricas y después en operación de sombra, sin alterar la agenda vigente. \textbf{[PENDIENTE: línea base en minutos, meta y mes de medición.]}
+
+\paragraph{Riesgo y contingencia.} Un modelo incompleto puede sugerir una secuencia inviable. La mitigación consiste en validar reglas con operadores, bloquear restricciones de seguridad y exigir aprobación humana. Si las recomendaciones fallan, se usará la agenda digital obligatoria con reprogramación manual. \textbf{[PENDIENTE: probabilidad e impacto.]}
+
+\section{Innovación 3: Gemelo Operacional Explicable de Amarras}
+
+Gemelo Operacional Explicable de Amarras es una innovación tecnológica y de arquitectura. El caso informa que el 22\,\% de las amarras está ocupado por embarcaciones cuya eslora no corresponde al tramo contratado; además, la presencia física requiere comprobación en terreno \parencite[caps.~4 y 7]{caso07}. La solución obligatoria registra asignación, salidas, regresos y ocupación. Synaptix añade una interpretación multifuente que muestra el origen, vigencia y confianza de cada estado y dirige las inspecciones hacia los casos dudosos. Un estado indeterminado permanece visible como tal.
+
+\paragraph{Tecnología, madurez e incorporación.} El nodo de borde reunirá eventos de asignación, movimientos, medición y observaciones autorizadas; un motor de reglas expondrá el estado y sus discrepancias a una consola de excepciones. NIST subraya la necesidad de validar datos, modelos e incertidumbre en los gemelos digitales \parencite{nist-twin}. La integración local se clasifica preliminarmente en TRL 2 \parencite{nasa-trl}. \textbf{[PENDIENTE: tecnología sensórica seleccionada, modelo de amenazas, paquete EDT, interfaces y mes del piloto.]}
+
+\paragraph{Impacto económico.} La inversión depende del piloto de sensores, comunicaciones y desarrollo en el borde; la operación exige mantenimiento, calibración y reposición. El beneficio potencial es reducir verificaciones sin valor y corregir discrepancias antes de reasignar puestos. \textbf{[PENDIENTE: inversión, costo operacional y beneficio cuantificado.]}
+
+\paragraph{Indicador y verificación.} La concordancia se calcula como estados digitales coincidentes con inspecciones presenciales divididos por estados inspeccionados. El piloto establecerá la línea base con muestras en distintos pantalanes y condiciones de marea. \textbf{[PENDIENTE: tamaño de muestra, línea base, meta y momento de medición.]}
+
+\paragraph{Riesgo y contingencia.} Salinidad, movimiento o pérdida de enlace pueden degradar señales. Synaptix mitigará el riesgo con adaptadores reemplazables, registro de procedencia, caducidad de lecturas y estado indeterminado ante conflicto. Si el piloto no alcanza la concordancia aprobada, continuará el registro obligatorio con inspección humana. \textbf{[PENDIENTE: probabilidad e impacto.]}
+
+\section{Innovación 4: Servicio Gestionado por Resultados}
+
+Servicio Gestionado por Resultados es una innovación de modelo de negocio o contratación. Bahía Panitao debe operar la plataforma durante 36 meses sin un área interna de informática \parencite[caps.~2 y 9]{caso07}. La operación, mesa de ayuda y niveles de servicio son obligaciones de la oferta. El aporte adicional propuesto es una fracción variable de remuneración asociada a beneficios adicionales, medidos y conciliados con el cliente. La disponibilidad contractual mantiene su régimen propio; no se redefine como innovación ni se cobra dos veces por el mismo resultado.
+
+\paragraph{Modelo, madurez e incorporación.} Synaptix propone una tarifa base para las obligaciones del servicio y, sólo si las Bases y el contrato lo admiten, un componente variable sujeto a indicadores, reglas de atribución, topes y revisión conjunta. Las guías públicas de contratación por resultados vinculan pagos a indicadores controlables por el proveedor \parencite{uk-outcomes}. El modelo para este contrato está en diseño conceptual, sin aprobación contractual. \textbf{[PENDIENTE: cláusula habilitante, paquete EDT, mes de inicio, porcentaje y topes.]}
+
+\paragraph{Impacto económico.} El componente variable, su límite y los costos de medición se reflejarán en el flujo de caja sin alterar garantías, multas ni tarifa base. \textbf{[PENDIENTE: inversión de medición, costo operacional, beneficio esperado y tratamiento contable.]}
+
+\paragraph{Indicador y verificación.} El beneficio conciliado se calcula como mejora observada menos efectos externos y costo incremental, según una regla acordada para cada indicador. Se propone comenzar con correcciones manuales o tiempo de coordinación, usando los registros operacionales y un período de observación sin efecto económico. \textbf{[PENDIENTE: línea base, meta, fuente, regla de atribución y momento de medición.]}
+
+\paragraph{Riesgo y contingencia.} Un incentivo mal diseñado podría premiar ahorro aparente a costa de seguridad o calidad. La mitigación exige condiciones de servicio mínimas, auditoría conjunta y exclusión de resultados no atribuibles. Si el mecanismo variable no es compatible con el contrato, Synaptix mantendrá la tarifa y los niveles de servicio obligatorios y usará el tablero de beneficios sólo para gestión. \textbf{[PENDIENTE: probabilidad e impacto.]}
+
+\section{Innovación 5: Pasaporte Ambiental Náutico}
+
+Pasaporte Ambiental Náutico es una innovación de experiencia de usuario y sostenibilidad. El caso registra tres no conformidades ambientales: residuos peligrosos sin trazabilidad completa, consumos no medidos por amarra y capacitación no acreditada para unas 140 personas contratistas \parencite[caps.~4 y 7]{caso07}. Esos tres controles son obligatorios. Synaptix añade una vista longitudinal por embarcación y faena, compara la evolución propia del consumo según días de permanencia y permite registrar acciones de reducción para usuarios autorizados. El pasaporte no emite certificaciones ambientales ni reemplaza la auditoría.
+
+\paragraph{Tecnología, madurez e incorporación.} El historial relacionará eventos de residuos, lecturas validadas, embarcaciones, contratistas y vigencias de capacitación. Se insertará en la capa de datos y el portal autorizado, con registros de origen y permisos por actor. ISO 14031 orienta la evaluación del desempeño ambiental mediante indicadores, sin fijar por sí misma niveles de cumplimiento \parencite{iso14031}. La integración local se clasifica preliminarmente en TRL 2 \parencite{nasa-trl}. \textbf{[PENDIENTE: formato exigido por la auditoría, modelo de amenazas, paquete EDT, interfaces y mes del piloto.]}
+
+\paragraph{Impacto económico.} La inversión comprende integración de fuentes, historial y vistas; la operación añade almacenamiento, conciliación y atención de rectificaciones. El beneficio esperado es menor esfuerzo para reunir evidencia y mejor información para reducir consumos. \textbf{[PENDIENTE: inversión, costo operacional y beneficio cuantificado.]}
+
+\paragraph{Indicador y verificación.} El beneficio adicional se mide como embarcaciones participantes con una acción de reducción ambiental documentada a partir del pasaporte divididas por embarcaciones participantes. La integridad de residuos, consumos y acreditaciones es condición previa de calidad de datos, no el beneficio innovador. El piloto establecerá la línea base con armadores voluntarios. \textbf{[PENDIENTE: línea base, meta, tamaño de muestra y momento de medición anterior a la auditoría de 2029.]}
+
+\paragraph{Riesgo y contingencia.} Lecturas incompletas o documentos desactualizados pueden producir un historial engañoso. Synaptix mitigará el riesgo mostrando procedencia, fecha y estado de validación de cada dato, además de conciliación manual de discrepancias. Si la vista integrada no supera el piloto, permanecerán disponibles los registros obligatorios de residuos, medición y capacitación. \textbf{[PENDIENTE: probabilidad e impacto.]}
