@@ -1,0 +1,25 @@
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
+\input{componentes/cierre.tex}
+\graphicspath{{figuras/}}
+\renewcommand{\DeclaracionesIA}{%
+  \FilaDeclaracionIA{1.1}{OpenAI Codex}{Redacción y revisión de la presentación}{Alto}{Ninguno}{[PENDIENTE: responsable; contrastar identidad y oferta de servicios]}
+  \FilaDeclaracionIA{1.2}{OpenAI Codex}{Redacción y diagrama organizacional}{Alto}{Alto}{[PENDIENTE: responsable; confirmar funciones y figura]}
+  \FilaDeclaracionIA{1.3}{OpenAI Codex}{Redacción del gobierno propuesto}{Alto}{Ninguno}{[PENDIENTE: responsable; aprobar controles y evidencias]}
+  \FilaDeclaracionIA{1.4}{OpenAI Codex}{Redacción y contraste con Bases}{Alto}{Ninguno}{[PENDIENTE: responsable; verificar T-6 y certificados]}
+  \FilaDeclaracionIA{1.5}{OpenAI Codex}{Redacción de roles del proyecto}{Alto}{Ninguno}{[PENDIENTE: responsable; conciliar con T-8]}
+  \FilaDeclaracionIA{1.6}{OpenAI Codex}{Redacción de alianzas propuestas}{Alto}{Ninguno}{[PENDIENTE: responsable; validar acuerdos]}
+  \FilaDeclaracionIA{T-6}{OpenAI Codex}{Preparación de plantilla independiente}{Medio}{Ninguno}{[PENDIENTE: responsable; completar y comprobar fichas]}
+}
+
+\begin{document}
+\PortadaPropuesta{1}{Presentación de la Empresa}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\tableofcontents
+\clearpage
+\input{capitulo1.tex}
+\CierreSubdocumento
+\end{document}
