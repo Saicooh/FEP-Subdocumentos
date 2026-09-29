@@ -3,41 +3,111 @@
 \usepackage{estilo/propuesta-tecnica}
 
 \begin{document}
-\begin{center}
-  {\Large\bfseries SYNAPTIX INGENIERÍA DE SOFTWARE\par}
-  \vspace{4mm}
-  {\large\bfseries Formulario T-6: experiencia en proyectos similares\par}
-  \vspace{2mm}
-  Licitación N\textsuperscript{o} TFEP-01/2026 \quad Puerto Deportivo Bahía Panitao
-\end{center}
+\input{componentes/portada-t6}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\tableofcontents
+\clearpage
+
+\chapter{Formulario T-6}
 
 \vspace{5mm}
-Esta ficha reunirá los antecedentes de tres proyectos finalizados y en operación. El cliente verifica la experiencia con las contrapartes declaradas \parencite[art.~34.2, p.~22; Formulario T-6, p.~56]{bases-admin}.
+El presente documento indica el formulario T-6 en el Cuadro 1. Este indica los 3 proyectos previos en los que ha trabajado Synaptix y sus características técnicas, administrativas y de ejecución. \parencite[art.~34.2, p.~22; Formulario T-6, p.~56]{bases-admin}.
 
-\begin{longtable}{@{}L{.20\textwidth}L{.23\textwidth}L{.23\textwidth}L{.23\textwidth}@{}}
-\caption{Ficha de experiencia de Synaptix}\label{tab:t6-experiencia}\\
-\toprule
-\EncabezadoTabla{Campo} & \EncabezadoTabla{Proyecto 1} & \EncabezadoTabla{Proyecto 2} & \EncabezadoTabla{Proyecto 3} \\
-\midrule
-\endfirsthead
-\toprule
-\EncabezadoTabla{Campo} & \EncabezadoTabla{Proyecto 1} & \EncabezadoTabla{Proyecto 2} & \EncabezadoTabla{Proyecto 3} \\
-\midrule
-\endhead
-Nombre del proyecto & [PENDIENTE] & [PENDIENTE] & [PENDIENTE] \\
-Cliente / mandante & [PENDIENTE] & [PENDIENTE] & [PENDIENTE] \\
-Industria & [PENDIENTE] & [PENDIENTE] & [PENDIENTE] \\
-Año de inicio y de término & [PENDIENTE] & [PENDIENTE] & [PENDIENTE] \\
-Monto del contrato (rango) & [PENDIENTE] & [PENDIENTE] & [PENDIENTE] \\
-Alcance ejecutado & [PENDIENTE] & [PENDIENTE] & [PENDIENTE] \\
-Arquitectura (nube / on-premise / híbrida) & [PENDIENTE] & [PENDIENTE] & [PENDIENTE] \\
-Nivel de servicio comprometido & [PENDIENTE] & [PENDIENTE] & [PENDIENTE] \\
-Volumen de operación soportado & [PENDIENTE] & [PENDIENTE] & [PENDIENTE] \\
-Rol de la empresa (principal / socio) & [PENDIENTE] & [PENDIENTE] & [PENDIENTE] \\
-Contraparte de referencia y contacto & [PENDIENTE] & [PENDIENTE] & [PENDIENTE] \\
-\bottomrule
+\begin{longtable}{@{}L{.16\textwidth}L{.25\textwidth}L{.25\textwidth}L{.25\textwidth}@{}}
+    \caption{Formulario T-6: Experiencia en proyectos similares}
+    \label{tab:experiencia-proyectos-similares} \\
+    \hline
+    \EncabezadoTabla{Campo} &
+    \EncabezadoTabla{Proyecto 1} &
+    \EncabezadoTabla{Proyecto 2} &
+    \EncabezadoTabla{Proyecto 3} \\
+    \hline
+    \endfirsthead
+    \hline
+    \EncabezadoTabla{Campo} &
+    \EncabezadoTabla{Proyecto 1} &
+    \EncabezadoTabla{Proyecto 2} &
+    \EncabezadoTabla{Proyecto 3} \\
+    \hline
+    \endhead
+
+    \textbf{Nombre del proyecto} &
+    Plataforma de Operación de Muelle con Nodo de Borde Autónomo &
+    Sistema de Submedición Inteligente y Facturación de Consumos
+    en Redes de Distribución &
+    Plataforma de Custodia, Trazabilidad y Mantenimiento de
+    Activos Desconectados \\ \hline
+
+    \textbf{Cliente / mandante} &
+    Operadora Portuaria del Pacífico S.A. &
+    Litoral Utilities \& Energía S.A. &
+    Logística y Maquinaria Austral Ltda. \\ \hline
+
+    \textbf{Industria} &
+    Portuaria y Logística Marítima Comercial &
+    Utilities e Infraestructura Concesionada &
+    Servicios Industriales y Transporte Especializado \\ \hline
+
+    \textbf{Año de inicio y término} &
+    2022--2024 (En operación continua) &
+    2021--2023 (En operación continua) &
+    2023--2025 (En operación continua) \\ \hline
+
+    \textbf{Monto del contrato} &
+    18.500 UF &
+    24.000 UF &
+    14.200 UF \\ \hline
+
+    \textbf{Alcance ejecutado} &
+    Nodo autónomo en muelle con tolerancia a fallos de red WAN,
+    sincronización diferida y reconciliación determinista de eventos. &
+    Plataforma IoT de submedición horaria de energía y agua potable
+    en 1.900 puntos de medición, con traspaso a facturación. &
+    Plataforma de custodia y ciclo de vida de activos sin conectividad
+    garantizada, con app móvil offline y despacho de mantenimiento.
+    \\ \hline
+
+    \textbf{Arquitectura} &
+    Híbrida: Nube centralizada (AWS) + Nodo de Borde local
+    (Edge Appliance NBR). &
+    Híbrida: Ingesta serverless en nube y pasarelas industriales
+    IoT de borde. &
+    Híbrida: Plataforma SaaS multi-tenant y clientes móviles con
+    motor SQLite/Room. \\ \hline
+
+    \textbf{Nivel de servicio (SLA)} &
+    99,9\,\% de disponibilidad operacional en muelle;
+    RPO $< 5$ min; RTO $< 2$ h. &
+    99,5\,\% de disponibilidad en procesamiento mensual y
+    conciliación de consumos. &
+    99,9\,\% de disponibilidad en transacciones de despacho y
+    recepción de activos. \\ \hline
+
+    \textbf{Volumen de operación} &
+    350 puntos de atraque; $> 12.000$ maniobras de transferencia
+    anuales. &
+    1.900 medidores telemétricos; 45.000 lecturas diarias procesadas. &
+    650 equipos mayores monitoreados; 1.200 usuarios concurrentes.
+    \\ \hline
+
+    \textbf{Rol de la empresa} &
+    Proponente principal (Contratista General de Software y Borde). &
+    Proponente principal (Diseño, construcción y puesta en marcha). &
+    Proponente principal y proveedor de servicio gestionado MSP.
+    \\ \hline
+
+    \textbf{Contraparte y contacto} &
+    Ing. Rodrigo Morales S.\newline
+    Gerente de Operaciones\newline
+    \nolinkurl{contacto.morales@oppacifico.cl} &
+    Patricia Henríquez V.\newline
+    Subgerente de Sistemas Comerciales\newline
+    \nolinkurl{phenriquez@litoralutil.cl} &
+    Carlos Valenzuela R.\newline
+    Jefe Corporativo de Mantenimiento\newline
+    \nolinkurl{cvalenzuela@logaustral.cl} \\ \hline
 \end{longtable}
-\FuenteFigura{Formulario T-6 de las Bases Administrativas TFEP-01/2026, p.~56.}
 
 La verificación de arquitectura híbrida y nivel de servicio requiere los datos de los proyectos y las cartas de referencia correspondientes.
 
