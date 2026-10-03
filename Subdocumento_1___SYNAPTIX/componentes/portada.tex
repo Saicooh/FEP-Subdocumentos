@@ -1,6 +1,8 @@
 % Portada vectorial reutilizable. No requiere una imagen de fondo.
 \NewDocumentCommand{\PortadaPropuesta}{m m}{%
-  \begin{titlepage}
+  % La portada consume un folio sin reiniciar el contador de páginas.
+  \clearpage
+  \begingroup
     \thispagestyle{empty}
     \begin{tikzpicture}[remember picture,overlay]
       \fill[SynNavy] (current page.south west) rectangle (current page.north east);
@@ -62,11 +64,23 @@
           \fontsize{9}{12}\selectfont
           \textbf{Versión} \VersionDocumento\quad
           \textbf{Fecha} \FechaDocumento\quad
-          \textbf{Clasificación} \ClasificacionDocumento\\[2mm]
-          \textbf{Firmante autorizado:} \FirmanteDocumento
+          \textbf{Clasificación} \ClasificacionDocumento
+        };
+
+      \node[anchor=south east,text=SynWhite!84]
+        at ($(current page.south east)+(-1.45cm,2.65cm)$) {%
+          \FirmaCompletaRepresentante
+        };
+
+      % Media firma y folio propios de la portada sobre el fondo oscuro.
+      \node[anchor=south east,text=SynWhite!78]
+        at ($(current page.south east)+(-1.45cm,0.72cm)$) {%
+          \fontsize{8}{10}\selectfont
+          \MediaFirmaRepresentante\hspace{5mm}%
+          Página\enspace\textbf{\textcolor{SynCyan}{\thepage}}
         };
     \end{tikzpicture}
     \null
-  \end{titlepage}
   \clearpage
+  \endgroup
 }

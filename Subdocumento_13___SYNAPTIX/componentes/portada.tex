@@ -62,8 +62,14 @@
           \fontsize{9}{12}\selectfont
           \textbf{Versión} \VersionDocumento\quad
           \textbf{Fecha} \FechaDocumento\quad
-          \textbf{Clasificación} \ClasificacionDocumento\\[2mm]
-          \textbf{Firmante autorizado:} \FirmanteDocumento
+          \textbf{Clasificación} \ClasificacionDocumento
+        };
+
+      % Folio propio de portada: evita superponer el pie interior sobre la gráfica.
+      \node[anchor=south east,text=SynWhite!78]
+        at ($(current page.south east)+(-1.45cm,0.72cm)$) {%
+          \fontsize{8}{10}\selectfont
+          Página\enspace\textbf{\textcolor{SynCyan}{\thepage}}
         };
     \end{tikzpicture}
     \null

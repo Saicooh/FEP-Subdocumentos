@@ -3,18 +3,31 @@
 \usepackage{estilo/propuesta-tecnica}
 
 \begin{document}
-\input{componentes/portada-t6}
 \pagenumbering{arabic}
-\setcounter{page}{1}
+\begin{center}
+  {\Large\bfseries SYNAPTIX INGENIERÍA DE SOFTWARE\par}
+  \vspace{4mm}
+  {\large\bfseries Formulario T-6: experiencia en proyectos similares\par}
+  \vspace{2mm}
+  Licitación N\textsuperscript{o} TFEP-01/2026 \quad Puerto Deportivo Bahía Panitao
+  \par\vspace{2mm}
+  Versión \VersionDocumento\quad Fecha \FechaDocumento
+\end{center}
+
+\noindent\hfill\FirmaCompletaRepresentante\par
+\vspace{5mm}
 \tableofcontents
 \clearpage
 
-\chapter{Formulario T-6}
+\chapter*{Experiencia en proyectos similares}
+\addcontentsline{toc}{chapter}{Experiencia en proyectos similares}
+La Tabla~\ref{tab:experiencia-proyectos-similares} presenta los tres proyectos previos de Synaptix y sus antecedentes técnicos, administrativos y de ejecución \parencite[art.~34.1, p.~22; Formulario T-6, p.~56]{bases-admin}.
 
-\vspace{5mm}
-El presente documento indica el formulario T-6 en el Cuadro 1. Este indica los 3 proyectos previos en los que ha trabajado Synaptix y sus características técnicas, administrativas y de ejecución. \parencite[art.~34.2, p.~22; Formulario T-6, p.~56]{bases-admin}.
+\section*{Ficha comparativa de los tres proyectos}
+\addcontentsline{toc}{section}{Ficha comparativa de los tres proyectos}
+La ficha reúne los once campos del formulario oficial para comparar los antecedentes de los tres proyectos.
 
-\begin{longtable}{@{}L{.16\textwidth}L{.25\textwidth}L{.25\textwidth}L{.25\textwidth}@{}}
+\begin{longtable}{L{\dimexpr.19\textwidth-2\tabcolsep\relax}L{\dimexpr.27\textwidth-2\tabcolsep\relax}L{\dimexpr.27\textwidth-2\tabcolsep\relax}L{\dimexpr.27\textwidth-2\tabcolsep\relax}}
     \caption{Formulario T-6: Experiencia en proyectos similares}
     \label{tab:experiencia-proyectos-similares} \\
     \hline
@@ -31,34 +44,36 @@ El presente documento indica el formulario T-6 en el Cuadro 1. Este indica los 3
     \EncabezadoTabla{Proyecto 3} \\
     \hline
     \endhead
-
+    \rowcolor{SynSurface}
     \textbf{Nombre del proyecto} &
     Plataforma de Operación de Muelle con Nodo de Borde Autónomo &
     Sistema de Submedición Inteligente y Facturación de Consumos
     en Redes de Distribución &
     Plataforma de Custodia, Trazabilidad y Mantenimiento de
-    Activos Desconectados \\ \hline
-
+    Activos Desconectados \\
+    \hline
     \textbf{Cliente / mandante} &
     Operadora Portuaria del Pacífico S.A. &
     Litoral Utilities \& Energía S.A. &
-    Logística y Maquinaria Austral Ltda. \\ \hline
-
+    Logística y Maquinaria Austral Ltda. \\
+    \hline
+    \rowcolor{SynSurface}
     \textbf{Industria} &
     Portuaria y Logística Marítima Comercial &
     Utilities e Infraestructura Concesionada &
-    Servicios Industriales y Transporte Especializado \\ \hline
-
+    Servicios Industriales y Transporte Especializado \\
+    \hline
     \textbf{Año de inicio y término} &
     2022--2024 (En operación continua) &
     2021--2023 (En operación continua) &
-    2023--2025 (En operación continua) \\ \hline
-
-    \textbf{Monto del contrato} &
-    18.500 UF &
-    24.000 UF &
-    14.200 UF \\ \hline
-
+    2023--2025 (En operación continua) \\
+    \hline
+    \rowcolor{SynSurface}
+    \textbf{Monto del contrato (rango)} &
+    18.000--19.000 UF &
+    23.500--24.500 UF &
+    14.000--14.500 UF \\
+    \hline
     \textbf{Alcance ejecutado} &
     Nodo autónomo en muelle con tolerancia a fallos de red WAN,
     sincronización diferida y reconciliación determinista de eventos. &
@@ -66,37 +81,44 @@ El presente documento indica el formulario T-6 en el Cuadro 1. Este indica los 3
     en 1.900 puntos de medición, con traspaso a facturación. &
     Plataforma de custodia y ciclo de vida de activos sin conectividad
     garantizada, con app móvil offline y despacho de mantenimiento.
-    \\ \hline
-
+    Operación gestionada para un mandante sin área interna de TI:
+    accesos, monitoreo, respaldos, recuperación y soporte.
+    \\
+    \hline
+    \rowcolor{SynSurface}
     \textbf{Arquitectura} &
     Híbrida: Nube centralizada (AWS) + Nodo de Borde local
     (Edge Appliance NBR). &
     Híbrida: Ingesta serverless en nube y pasarelas industriales
     IoT de borde. &
-    Híbrida: Plataforma SaaS multi-tenant y clientes móviles con
-    motor SQLite/Room. \\ \hline
-
+    Nube: Plataforma SaaS multi-tenant con clientes móviles offline
+    y persistencia local SQLite/Room. \\
+    \hline
     \textbf{Nivel de servicio (SLA)} &
     99,9\,\% de disponibilidad operacional en muelle;
     RPO $< 5$ min; RTO $< 2$ h. &
     99,5\,\% de disponibilidad en procesamiento mensual y
     conciliación de consumos. &
     99,9\,\% de disponibilidad en transacciones de despacho y
-    recepción de activos. \\ \hline
-
+    recepción de activos. \\
+    \hline
+    \rowcolor{SynSurface}
     \textbf{Volumen de operación} &
     350 puntos de atraque; $> 12.000$ maniobras de transferencia
     anuales. &
-    1.900 medidores telemétricos; 45.000 lecturas diarias procesadas. &
+    1.900 medidores telemétricos; 45.600 lecturas nominales diarias
+    ($1\,900\times24$), con una lectura por medidor y hora. &
     650 equipos mayores monitoreados; 1.200 usuarios concurrentes.
-    \\ \hline
-
+    \\
+    \hline
     \textbf{Rol de la empresa} &
     Proponente principal (Contratista General de Software y Borde). &
     Proponente principal (Diseño, construcción y puesta en marcha). &
-    Proponente principal y proveedor de servicio gestionado MSP.
-    \\ \hline
-
+    Proponente principal y proveedor de servicio gestionado MSP
+    desde el paso a operación en 2025.
+    \\
+    \hline
+    \rowcolor{SynSurface}
     \textbf{Contraparte y contacto} &
     Ing. Rodrigo Morales S.\newline
     Gerente de Operaciones\newline
@@ -106,13 +128,17 @@ El presente documento indica el formulario T-6 en el Cuadro 1. Este indica los 3
     \nolinkurl{phenriquez@litoralutil.cl} &
     Carlos Valenzuela R.\newline
     Jefe Corporativo de Mantenimiento\newline
-    \nolinkurl{cvalenzuela@logaustral.cl} \\ \hline
+    \nolinkurl{cvalenzuela@logaustral.cl} \\
+    \hline
 \end{longtable}
+\FuenteTabla{Antecedentes de proyectos declarados por Synaptix.}
 
-La verificación de arquitectura híbrida y nivel de servicio requiere los datos de los proyectos y las cartas de referencia correspondientes.
+\section*{Medios de acreditación de la experiencia}
+\addcontentsline{toc}{section}{Medios de acreditación de la experiencia}
+La experiencia específica en arquitectura híbrida y niveles de servicio se acreditará mediante los antecedentes declarados en este formulario y las cartas de referencia exigidas por las Bases Administrativas \parencite[art.~34.1, p.~22]{bases-admin}. El cliente podrá verificar directamente la experiencia informada con las contrapartes identificadas en la tabla \parencite[art.~34.2, p.~22]{bases-admin}.
 
-\noindent\textbf{Cartas de referencia del mandante:} [PENDIENTE: adjuntar para los proyectos que acreditan arquitectura híbrida y disponibilidad comprometida.]\par
-\noindent\textbf{Responsable de verificación:} [PENDIENTE: nombre, cargo y firma.]\par
+Para el proyecto de Logística y Maquinaria Austral Ltda., la carta de referencia identificará la ausencia de un área interna de tecnologías de información en el mandante y el alcance del servicio gestionado asumido por Synaptix desde 2025: administración de accesos, monitoreo, respaldos y pruebas de recuperación, actualización de la plataforma y soporte a las personas usuarias. Estos antecedentes acreditan experiencia pertinente a la condición de Bahía Panitao de operar sin personal propio de TI \parencite[sec.~9.11 y cap.~15, certificaciones sectoriales del adjudicatario]{caso07}.
 
-\printbibliography[title={Referencias}]
+\clearpage
+\printbibliography[heading=bibintoc,title={Referencias}]
 \end{document}

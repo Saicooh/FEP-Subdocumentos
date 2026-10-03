@@ -2,22 +2,22 @@
 \input{config/metadatos.tex}
 \usepackage{estilo/propuesta-tecnica}
 
-\newcommand{\CampoFicha}[2]{#1 & #2 \\}
+\newcommand{\CampoFicha}[2]{#1 & #2 \\ \hline}
 \newcommand{\FichaInnovacion}[3]{%
   \section*{Ficha #1: #2}
   Esta ficha presenta el alcance, la verificación y las condiciones de incorporación de la innovación #1.
-  \begin{longtable}{@{}L{.29\textwidth}L{.64\textwidth}@{}}
-    \toprule
+  \begin{longtable}{L{\dimexpr.30\textwidth-2\tabcolsep\relax}L{\dimexpr.70\textwidth-2\tabcolsep\relax}}
+    \hline
     \EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\
-    \midrule
+    \hline
     \endfirsthead
-    \toprule
+    \hline
     \EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\
-    \midrule
+    \hline
     \endhead
     #3
-    \bottomrule
   \end{longtable}
+  \FuenteTabla{Formulario T-19 elaborado por Synaptix para la innovación #1.}
 }
 
 \begin{document}
@@ -28,28 +28,29 @@
   \vspace{2mm}
   Licitación N\textsuperscript{o} TFEP-01/2026 \quad Puerto Deportivo Bahía Panitao
 \end{center}
+\chapter*{Fichas de innovación}
 
 \vspace{5mm}
 Synaptix presenta cinco fichas, una por cada tipo del artículo 28 de las Bases Administrativas. Los campos siguen el Formulario T-19 y los siete elementos exigidos por el artículo 29 \parencite[pp.~19--20 y 64]{bases-admin}. La escala TRL se aplica a la integración tecnológica específica propuesta para Bahía Panitao \parencite{nasa-trl}.
 
-\FichaInnovacion{1}{Custodia Náutica Preventiva}{%
-  \CampoFicha{Tipo de innovación}{Producto o servicio.}
-  \CampoFicha{Nombre}{Custodia Náutica Preventiva.}
-  \CampoFicha{Problema u oportunidad}{Aproximadamente 4.800 zarpes al año; el 34\,\% requiere corregir al menos un dato a mano \parencite[cap.~7]{caso07}.}
-  \CampoFicha{Tecnología o práctica}{Formularios guiados, reglas temporales, consentimiento y avisos multicanal. El servicio preventivo se añade al registro obligatorio de salidas y regresos.}
-  \CampoFicha{Madurez y escala}{TRL 2 preliminar: integración formulada, sin piloto validado en el puerto \parencite{nasa-trl}.}
-  \CampoFicha{Fuentes APA 7}{Bases Técnicas del Caso 07; escala TRL de NASA.}
-  \CampoFicha{Inserción en arquitectura}{Portal, reglas de navegación, gestión de consentimiento, mensajería y registro de eventos.}
-  \CampoFicha{Paquetes de la EDT}{[PENDIENTE: identificadores de paquetes de trabajo.]}
-  \CampoFicha{Mes de materialización}{[PENDIENTE: mes del piloto y mes de aceptación.]}
-  \CampoFicha{Inversión requerida}{[PENDIENTE: desarrollo, pruebas y capacitación en UF.]}
-  \CampoFicha{Costo operacional}{[PENDIENTE: mensajería y atención de excepciones en UF/mes.]}
-  \CampoFicha{Beneficio y cuantificación}{Menos correcciones y cierre oportuno de planes. [PENDIENTE: beneficio en UF y método de cálculo.]}
-  \CampoFicha{Indicador, línea base y meta}{Zarpes con corrección manual / zarpes tramitados. Línea base del caso: 34\,\%. [PENDIENTE: meta y regla de comparación del piloto.]}
-  \CampoFicha{Momento de medición}{[PENDIENTE: fecha de medición; se prioriza la marcha blanca de Etapa 1.]}
-  \CampoFicha{Riesgo, probabilidad e impacto}{Avisos mal interpretados. [PENDIENTE: probabilidad e impacto según matriz de riesgos.]}
-  \CampoFicha{Mitigación}{Consentimiento, mensajes aprobados y validación humana de alertas.}
-  \CampoFicha{Contingencia}{Mantener el registro obligatorio sin activar el servicio preventivo.}
+\FichaInnovacion{1}{Servicio de Solicitud y Seguimiento de Mantenimiento de Embarcaciones}{%
+  \CampoFicha{Tipo de innovación}{Producto o servicio de base tecnológica.}
+  \CampoFicha{Nombre}{Servicio de Solicitud y Seguimiento de Mantenimiento de Embarcaciones.}
+  \CampoFicha{Problema u oportunidad}{Las bases describen la participación de contratistas independientes y contabilizan 62 contratistas y cerca de 140 personas vinculadas a la operación \parencite{caso07}. Esta cantidad de actores plantea una oportunidad para dar seguimiento a las solicitudes entre armador, marina y contratista. Las bases no cuantifican solicitudes sin respuesta ni tiempos actuales de coordinación.}
+  \CampoFicha{Tecnología o práctica}{Flujo digital asociado a una embarcación: el armador solicita trabajos; la marina revisa y deriva la solicitud; el contratista acepta o rechaza, programa y actualiza su avance. Se registran estados, responsables, fechas, observaciones y notificaciones \parencite{ibm-work-orders,ibm-work-order-statuses}.}
+  \CampoFicha{Madurez y escala}{TRL 2 preliminar para la integración específica en la marina: el concepto está formulado, pero aún no se ha demostrado en el entorno previsto. Debe revisarse tras construir y probar un prototipo \parencite{nasa-trl}.}
+  \CampoFicha{Fuentes APA 7}{Club Náutico Bahía Panitao S.~A. (2026), \textit{Bases técnicas del Caso 07: Puerto Deportivo}; IBM (s.~f.), \textit{Creating work orders} y \textit{Work order statuses}; Manning (2023), \textit{Technology readiness levels}, NASA.}
+  \CampoFicha{Inserción en arquitectura}{Extensión relacionada con VAR, CTR, AUT, ALE y ADM. Validar su alcance e interfaces con la arquitectura y el T-12 para evitar duplicar funciones comprometidas.}
+  \CampoFicha{Paquetes de la EDT}{[PENDIENTE: códigos para diseño, desarrollo, integración, pruebas, capacitación y piloto.]}
+  \CampoFicha{Mes de materialización}{[PENDIENTE: definir con el cronograma base.]}
+  \CampoFicha{Inversión requerida}{[PENDIENTE: estimar diseño, desarrollo, integración, pruebas y puesta en marcha en UF.]}
+  \CampoFicha{Costo operacional}{[PENDIENTE: estimar soporte y operación incremental en UF/mes.]}
+  \CampoFicha{Beneficio y cuantificación}{Reducir horas de coordinación y facilitar la detección de solicitudes pendientes o detenidas. Estimar el beneficio con las horas ahorradas y el costo horario. Incorporar inversión y costos operacionales incrementales al flujo de caja; los montos quedan pendientes de evaluación.}
+  \CampoFicha{Indicador, línea base y meta}{Mediana de horas entre envío y primera respuesta del contratista. Línea base: medir antes del piloto. Meta preliminar: reducirla en 20\,\% respecto de la línea base, sujeta a validación.}
+  \CampoFicha{Momento de medición}{Levantar línea base antes del piloto y medir durante el piloto y al cierre. Meses por definir según cronograma.}
+  \CampoFicha{Riesgo, probabilidad e impacto}{Armadores o contratistas podrían no actualizar las solicitudes. Probabilidad e impacto: [PENDIENTE: evaluar en la matriz de riesgos.]}
+  \CampoFicha{Mitigación}{Acordar responsables y plazos de actualización; capacitar a los participantes y notificar cambios de estado.}
+  \CampoFicha{Contingencia}{Si el contratista no usa el sistema, la marina registrará la respuesta recibida, con autor, fecha y canal de origen.}
 }
 
 \FichaInnovacion{2}{Reprogramación Operacional Resiliente}{%
@@ -72,24 +73,75 @@ Synaptix presenta cinco fichas, una por cada tipo del artículo 28 de las Bases 
   \CampoFicha{Contingencia}{Reprogramación manual en la agenda digital obligatoria.}
 }
 
-\FichaInnovacion{3}{Gemelo Operacional Explicable de Amarras}{%
-  \CampoFicha{Tipo de innovación}{Tecnología o arquitectura.}
-  \CampoFicha{Nombre}{Gemelo Operacional Explicable de Amarras.}
-  \CampoFicha{Problema u oportunidad}{El 22\,\% de las amarras presenta una eslora distinta del tramo contratado; la presencia física requiere verificación en terreno \parencite[caps.~4 y 7]{caso07}.}
-  \CampoFicha{Tecnología o práctica}{Fusión de eventos con origen, vigencia y confianza visibles; consola de discrepancias y revisión humana \parencite{nist-twin}.}
-  \CampoFicha{Madurez y escala}{TRL 2 preliminar para la integración local, pendiente de validación de sensores y modelo en terreno \parencite{nasa-trl}.}
-  \CampoFicha{Fuentes APA 7}{Bases Técnicas del Caso 07; NIST sobre credibilidad de gemelos digitales; escala TRL de NASA.}
-  \CampoFicha{Inserción en arquitectura}{Nodo de borde, adaptadores de señales, motor de reglas, eventos y consola de excepciones.}
-  \CampoFicha{Paquetes de la EDT}{[PENDIENTE: identificadores de paquetes de trabajo.]}
-  \CampoFicha{Mes de materialización}{[PENDIENTE: mes del piloto y mes de aceptación.]}
-  \CampoFicha{Inversión requerida}{[PENDIENTE: sensores, comunicaciones e integración en UF.]}
-  \CampoFicha{Costo operacional}{[PENDIENTE: calibración, mantenimiento y reposición en UF/mes.]}
-  \CampoFicha{Beneficio y cuantificación}{Menos verificaciones sin valor y resolución temprana de discrepancias. [PENDIENTE: beneficio en UF.]}
-  \CampoFicha{Indicador, línea base y meta}{Estados digitales coincidentes con inspección / estados inspeccionados. [PENDIENTE: línea base, muestra y meta.]}
-  \CampoFicha{Momento de medición}{[PENDIENTE: mes y condiciones de prueba en los pantalanes.]}
-  \CampoFicha{Riesgo, probabilidad e impacto}{Señales degradadas por salinidad, movimiento o enlace. [PENDIENTE: probabilidad e impacto.]}
-  \CampoFicha{Mitigación}{Adaptadores reemplazables, procedencia y caducidad de lecturas, estado indeterminado ante conflictos.}
-  \CampoFicha{Contingencia}{Mantener registro obligatorio e inspección presencial.}
+\FichaInnovacion{3}{Lectura inteligente de documentos para el ingreso asistido de antecedentes}{%
+
+\CampoFicha{Tipo de innovación}{%
+Tecnológica: OCR y extracción asistida de datos documentales.
+}
+
+\CampoFicha{Nombre}{%
+Lectura inteligente de documentos para el ingreso asistido de antecedentes.
+}
+
+\CampoFicha{Problema u oportunidad}{%
+Reducir la transcripción de pólizas de embarcaciones mediante campos precompletados y revisión humana, complementando RF-ADM-01 y RF-NAV-11.
+}
+
+\CampoFicha{Tecnología o práctica}{%
+Amazon Textract y reglas para extraer póliza, asegurado, aseguradora, nave y vigencias. Revisión obligatoria antes de aprobar; no acredita autenticidad ni cobertura.
+}
+
+\CampoFicha{Madurez y escala}{%
+TRL 2 preliminar para la integración local: concepto definido, pendiente de implementación y validación con pólizas reales.
+}
+
+\CampoFicha{Fuentes APA 7}{%
+AWS: extracción documental \parencite{in3-aws-analisis,in3-aws-practicas,in3-aws-limites}; ISO: riesgos de IA \parencite{in3-iso23894}; NASA: escala TRL \parencite{in3-nasa-trl}.
+}
+
+\CampoFicha{Inserción en arquitectura}{%
+AUT recibe documentos; ADM revisa y aprueba; NAV utiliza los datos aprobados. Adaptador asíncrono conectado al repositorio y la auditoría existentes.
+}
+
+\CampoFicha{Paquetes de la EDT}{%
+Levantamiento, integración, interfaz de revisión, pruebas, capacitación y piloto. Códigos pendientes de conciliación con la EDT.
+}
+
+\CampoFicha{Mes de materialización}{%
+Por definir en el cronograma, una vez disponibles la recepción documental, los expedientes y la revisión.
+}
+
+\CampoFicha{Inversión requerida}{%
+Integración, interfaz, pruebas y capacitación. Monto en UF pendiente de estimación.
+}
+
+\CampoFicha{Costo operacional}{%
+Procesamiento, almacenamiento y soporte técnico. Monto periódico en UF por estimar según volumen documental.
+}
+
+\CampoFicha{Beneficio y cuantificación}{%
+Horas recuperadas frente al ingreso manual de la solución base, por costo horario, menos costo operacional incremental. Solo constituye ahorro de caja si reduce gastos efectivos.
+}
+
+\CampoFicha{Indicador, línea base y meta}{%
+Reducción de la mediana del tiempo total de ingreso y revisión, incluidas correcciones. Base: ingreso manual comparable. Meta preliminar: 30\,\%, sin aumentar errores; trazabilidad del 100\,\% de aprobaciones.
+}
+
+\CampoFicha{Momento de medición}{%
+Línea base antes del piloto; seguimiento durante su ejecución y evaluación al cierre. Muestra y duración por definir.
+}
+
+\CampoFicha{Riesgo, probabilidad e impacto}{%
+Riesgo global preliminar: medio. Extracción errónea, revisión insuficiente, fallos externos o bajo volumen. Probabilidad e impacto por evento pendientes de evaluación.
+}
+
+\CampoFicha{Mitigación}{%
+Mostrar documento de origen, contrastar identificadores y exigir aprobación humana. Aplicar permisos, cifrado, auditoría y capacitación; ampliar solo tras validar el piloto.
+}
+
+\CampoFicha{Contingencia}{%
+Mantener ingreso manual ante fallos o resultados insuficientes; ajustar el extractor y reevaluar su continuidad si no demuestra beneficio.
+}
 }
 
 \FichaInnovacion{4}{Servicio Gestionado por Resultados}{%
