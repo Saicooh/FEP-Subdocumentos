@@ -1,0 +1,1636 @@
+\section*{A2.1. Catálogo de requerimientos funcionales}
+\textbf{Proponente:} Synaptix. \quad
+\textbf{Licitación:} TFEP-01/2026 — Caso 07: Puerto Deportivo.
+
+\subsection*{Objeto y alcance}
+Este anexo especifica las funciones de la solución para el Caso 07: Puerto
+Deportivo, organizadas en doce módulos. Cada fila identifica una función,
+su actor, la condición de inicio, el resultado verificable, su prioridad y
+la fuente que la sustenta. Los identificadores permiten vincular el catálogo
+con las reglas de negocio, el diseño y las pruebas de aceptación.
+
+\subsection*{Criterios de lectura y aceptación}
+\textbf{Fuentes.} C07 corresponde a FEP03.07.26, Bases Técnicas del Caso 07;
+BT corresponde a FEP02.26, Bases Técnicas Transversales. Cada código RT se
+interpreta junto con su documento de origen. Las decisiones DEC remiten al
+registro de supuestos y decisiones de formulación.
+
+\textbf{Prioridad.} Alta identifica funciones de seguridad, continuidad,
+integridad, control o atención operacional; Media, funciones de consulta y
+gestión; Baja condicionada, una mejora cuya inclusión requiere decisión expresa.
+Esta clasificación propuesta no excluye requisitos obligatorios ni asigna
+por sí sola una etapa contractual de implementación.
+
+\textbf{Condiciones comunes.} Toda actuación sobre datos privados exige
+identidad y permisos adecuados; los cambios deben conservar su trazabilidad.
+El actor identifica al ejecutor, solicitante o destinatario funcional; cuando
+la acción es automática, su ejecución corresponde al sistema bajo las reglas configuradas.
+Ninguna interacción podrá exigirse durante una maniobra de amarre o con carga
+suspendida. La radio se mantiene como medio operacional. Las precondiciones
+de registro no justifican impedir una recepción segura; las excepciones deben
+quedar identificadas y ser conciliadas por el responsable correspondiente.
+Las cifras del caso son una línea base de dimensionamiento, no límites de registros.
+
+\textbf{Verificación.} Cada función se comprobará mediante un escenario
+normal y las excepciones pertinentes: rechazo de permisos, datos incompletos,
+duplicación, desconexión o indisponibilidad de terceros. La prueba deberá
+demostrar el resultado de la fila, su trazabilidad y los umbrales de A2.2 que
+correspondan. La preparación de un legajo no sustituye el otorgamiento del
+zarpe; la generación de cargos no sustituye la emisión tributaria contable.
+
+\textbf{Trazabilidad.} La matriz identificará para cada ID la sección y
+página de diseño, el componente, el paquete EDT, la prueba y el criterio de
+aceptación. Esta condición documental es común a todo el catálogo. Los pendientes específicos al final del catálogo requieren
+resolución documental o técnica antes de cerrar la oferta; no se consideran
+aprobados por su sola inclusión en el anexo.
+\clearpage\section*{A2.1.1 Dominio náutico y zarpes (NAV)}
+
+
+La Tabla~\ref{tab:a2-1-01} detalla las funciones, los actores y los resultados verificables.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-14\tabcolsep-8\arrayrulewidth\relax}
+\begin{longtable}{|L{0.080645\AnchoTablaAnexo}|L{0.262097\AnchoTablaAnexo}|L{0.100806\AnchoTablaAnexo}|L{0.145161\AnchoTablaAnexo}|L{0.173387\AnchoTablaAnexo}|L{0.060484\AnchoTablaAnexo}|L{0.177420\AnchoTablaAnexo}|}
+\caption{A2.1.1 Dominio náutico y zarpes (NAV)}\label{tab:a2-1-01}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{7}{l}{\small\textit{1. Dominio náutico y zarpes (NAV) — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{7}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}NAV-\allowbreak{}01 &
+Mantener por embarcación el estado operacional y su evidencia, identificando discrepancias pendientes. Se propone reflejar el registro aceptado por el sistema en la vista operacional en un máximo de 3 segundos desde su aceptación. Este objetivo es independiente de las exigencias de registro de salida o regreso en un máximo de 10 segundos y de actualización analítica de la ocupación de una amarra en un máximo de 60 segundos desde el evento físico. &
+Guardia de torre &
+Evento asociado a una embarcación identificada. &
+Estado de la embarcación actualizado; discrepancia visible. &
+Alta &
+C07, cap. 4, sec. 4.3–4.4; cap. 10; cap. 15, RT-09.01. \\ \hline
+
+RF-\allowbreak{}NAV-\allowbreak{}02 &
+Registrar la salida de una embarcación con su identificación, fecha y hora, patrón y personas a bordo, en un máximo de 10 segundos y dos interacciones, conservando la referencia de zona horaria. &
+Marinero de pantalán &
+Embarcación y patrón identificados; momento seguro. &
+Salida asentada con hora y personas a bordo. &
+Alta &
+C07, cap. 4, sec. 4.3–4.4; cap. 10; cap. 15, RT-09.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}NAV-\allowbreak{}03 &
+Asociar a la salida las personas a bordo y verificar electrónicamente el consentimiento de datos de los acompañantes. &
+Personal de zarpes &
+Salida abierta y personas identificadas. &
+Nómina vinculada a la salida con evidencia de consentimiento. &
+Alta &
+C07, cap. 4, sec. 4.3–4.4; cap. 10; cap. 15, RT-09.01. \\ \hline
+
+RF-\allowbreak{}NAV-\allowbreak{}04 &
+Registrar el regreso en un máximo de 10 segundos y dos interacciones por el personal de pantalán, o registrar la confirmación comunicada por radio a la guardia, identificando al informante y al registrador y actuando en un momento seguro. &
+Marinero o guardia de torre &
+Reporte de regreso identificable; momento seguro. &
+Regreso registrado con informante, autor y hora. &
+Alta &
+C07, cap. 4, sec. 4.3–4.4; cap. 10; cap. 15, RT-09.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}NAV-\allowbreak{}05 &
+Confirmar el regreso al recinto a partir de una observación identificada
+de la embarcación amarrada en condición segura. Registrar la fuente,
+la fecha y la hora de la observación y actualizar el estado operacional.
+El cierre del plan voluntario constituye un antecedente independiente
+y no confirma por sí solo el regreso.. &
+Marinero de pantalán &
+Embarcación amarrada y comprobación de seguridad. &
+Regreso confirmado con evidencia identificable y discrepancias entre
+la observación y la declaración del armador registradas para su revisión. &
+Alta &
+C07, cap. 4, sec. 4.3–4.4; cap. 10; cap. 15, RT-09.01. \\ \hline
+
+RF-\allowbreak{}NAV-\allowbreak{}06 &
+Generar una alerta visible para la guardia por plan vencido sin cierre, dentro de 15 minutos desde el vencimiento. &
+Guardia de torre &
+Plan vencido sin cierre registrado. &
+Alerta generada dentro del plazo exigido. &
+Alta &
+C07, cap. 4, sec. 4.3–4.4; cap. 10; cap. 15, RT-09.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}NAV-\allowbreak{}07 &
+Registrar la trazabilidad completa de contactos radiales, llamadas y escalamiento a DIRECTEMAR de alertas de regreso pendiente. &
+Guardia de torre &
+Alerta de regreso pendiente en gestión. &
+Contactos y escalamiento reconstruibles por fecha y responsable. &
+Alta &
+C07, cap. 4, sec. 4.3–4.4; cap. 10; cap. 15, RT-09.01. \\ \hline
+
+RF-\allowbreak{}NAV-\allowbreak{}08 &
+Permitir a los armadores crear, modificar y cerrar un plan de navegación desde el portal web o móvil. El cierre declara el término del plan; no confirma por sí solo la ubicación física de la embarcación ni resuelve automáticamente una discrepancia operacional o una alerta pendiente. &
+Armador &
+Identidad verificada y embarcación vinculada. &
+Plan creado, actualizado o cerrado con autoría identificada. &
+Alta &
+C07, cap. 4, sec. 4.3–4.4; cap. 10; cap. 15, RT-09.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}NAV-\allowbreak{}09 &
+Gestionar el consentimiento informado para la geolocalización y datos del plan voluntario, con revocación en línea. &
+Armador &
+Solicitud de compartir posición o datos del plan. &
+Consentimiento y revocación registrados con alcance y vigencia. &
+Alta &
+C07, cap. 4, sec. 4.3–4.4; cap. 10, RT-11-10; cap. 15, RT-09.01; DEC-04. \\ \hline
+
+RF-\allowbreak{}NAV-\allowbreak{}10 &
+Consolidar automáticamente el legajo de zarpe exigido por la autoridad marítima sin requerir doble digitación. &
+Personal de zarpes &
+Salida y antecedentes de la embarcación disponibles. &
+Legajo consolidado sin volver a digitar datos existentes. &
+Alta &
+C07, cap. 4, sec. 4.3–4.4; cap. 10; cap. 15, RT-09.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}NAV-\allowbreak{}11 &
+Validar la vigencia y completitud de los antecedentes exigibles para preparar el legajo de zarpe y registrar observaciones. El otorgamiento del zarpe corresponde exclusivamente a la autoridad marítima. &
+Personal de zarpes &
+Documentación incorporada al legajo. &
+Antecedentes vigentes validados; faltantes u observaciones identificados. &
+Alta &
+C07, cap. 4, sec. 4.3–4.4; cap. 10; cap. 15, RT-09.01. \\ \hline
+
+RF-\allowbreak{}NAV-\allowbreak{}12 &
+Conservar durante cinco años los antecedentes de zarpe entregados a la autoridad, identificados y protegidos contra alteración, con evidencia de entrega cuando esté disponible. &
+Personal de zarpes &
+Antecedentes presentados a la autoridad. &
+Copia identificada, íntegra y recuperable durante cinco años. &
+Alta &
+C07, cap. 4, sec. 4.3–4.4; cap. 10; cap. 15, RT-09.01 y RT-05.10. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}NAV-\allowbreak{}13 &
+Mantener disponibles los registros de salida y regreso durante al menos 24 horas sin enlace exterior, con persistencia, auditoría y posterior sincronización conforme a RNF-CONT-01 a RNF-CONT-06. &
+Marinero y guardia de torre &
+Interrupción del enlace exterior. &
+Salidas y regresos persistidos localmente y sincronizables. &
+Alta &
+C07, cap. 4, sec. 4.3–4.4; cap. 10; cap. 15, RT-09.01, RT-03.10 y RT-03.13. \\ \hline
+
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los resultados y las fuentes de cada fila delimitan lo que deberá comprobarse en la aceptación.
+
+\clearpage\section*{A2.1.2 Alertas y emergencias (ALE)}
+
+
+La Tabla~\ref{tab:a2-1-02} detalla las funciones, los actores y los resultados verificables.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-14\tabcolsep-8\arrayrulewidth\relax}
+\begin{longtable}{|L{0.080645\AnchoTablaAnexo}|L{0.262097\AnchoTablaAnexo}|L{0.100806\AnchoTablaAnexo}|L{0.145161\AnchoTablaAnexo}|L{0.173387\AnchoTablaAnexo}|L{0.060484\AnchoTablaAnexo}|L{0.177420\AnchoTablaAnexo}|}
+\caption{A2.1.2 Alertas y emergencias (ALE)}\label{tab:a2-1-02}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{7}{l}{\small\textit{2. Alertas y emergencias (ALE) — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{7}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ALE-\allowbreak{}01 &
+Registrar avisos oficiales de marejada emitidos por DIRECTEMAR con vigencia, nivel de alerta y responsable de turno. &
+Guardia de torre &
+Boletín oficial recibido e identificado. &
+Aviso vigente registrado con fuente y responsable. &
+Alta &
+C07, sec. 4.5; cap. 15, RT-16.21 y RT-09.01. \\ \hline
+
+RF-\allowbreak{}ALE-\allowbreak{}02 &
+Determinar la población objetivo del aviso a partir del estado y ubicación registrados de las embarcaciones, mostrando la antigüedad o discrepancias de la información. Se propone un objetivo de hasta 30 segundos para generar la lista de destinatarios. &
+Responsable de turno &
+Aviso registrado y estados de embarcaciones disponibles. &
+Lista de destinatarios generada con criterio de selección. &
+Alta &
+C07, sec. 4.5; cap. 15, RT-16.21 y RT-09.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ALE-\allowbreak{}03 &
+Enviar el aviso de emergencia a los 296 armadores por SMS, mensajería instantánea y correo de forma simultánea, en un máximo de 10 minutos hasta el último envío, con seguimiento individual de cada canal. &
+Responsable de emergencia &
+Mensaje autorizado y padrón de contactos disponible. &
+Envíos por tres canales completados dentro de diez minutos. &
+Alta &
+C07, sec. 4.5; cap. 15, RT-16.21 y RT-09.01. \\ \hline
+
+RF-\allowbreak{}ALE-\allowbreak{}04 &
+Registrar por destinatario y canal los estados de envío, entrega, error y acuse de recibo, diferenciando el acuse efectivo de una mera confirmación técnica de entrega. &
+Guardia de torre &
+Campaña de notificación iniciada. &
+Estado y acuse distinguibles por destinatario y canal. &
+Alta &
+C07, sec. 4.5; cap. 15, RT-16.21 y RT-09.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ALE-\allowbreak{}05 &
+Generar y seguir la lista de llamadas a destinatarios sin acuse, registrando responsable, intentos, resultado y escalamiento conforme al protocolo aprobado. &
+Guardia de torre &
+Destinatarios pendientes de acuse. &
+Llamadas asignadas y resultados registrados. &
+Alta &
+C07, sec. 4.5; cap. 15, RT-16.21 y RT-09.01. \\ \hline
+
+RF-\allowbreak{}ALE-\allowbreak{}06 &
+Detectar números o correos erróneos tras cada campaña y generar tareas automáticas de saneamiento en el padrón maestro. &
+Administrador del padrón &
+Error de contacto detectado durante un envío. &
+Contacto observado y tarea de corrección identificada. &
+Alta &
+C07, sec. 4.5; cap. 15, RT-16.21 y RT-09.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ALE-\allowbreak{}07 &
+Conservar el mensaje, destinatarios, envíos, resultados y acuses de cada campaña con protección de integridad y acceso autorizado. Se propone una retención de seis años para esta evidencia, sujeta a fundamentación en la política de conservación. &
+Responsable de comunicaciones &
+Campaña ejecutada con sus registros de envío. &
+Mensaje, destinatarios y resultados archivados con integridad. &
+Alta &
+C07, sec. 4.5; cap. 15, RT-16.21 y RT-09.01. \\ \hline
+
+RF-\allowbreak{}ALE-\allowbreak{}08 &
+La solución enviará notificaciones por al menos tres canales: correo electrónico, notificación en la aplicación y mensajería instantánea o SMS, según lo que el caso requiera. &
+Responsable de comunicaciones &
+Evento notificable y destinatario identificado. &
+Notificación despachada por los canales configurados. &
+Alta &
+BT, RT-16.20. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ALE-\allowbreak{}09 &
+Las plantillas de notificación serán administrables por el CLIENTE, con variables de la transacción, y versionadas. &
+Administrador funcional &
+Plantilla autorizada para edición. &
+Plantilla versionada y disponible para nuevos mensajes. &
+Alta &
+BT, RT-16.21. \\ \hline
+
+RF-\allowbreak{}ALE-\allowbreak{}10 &
+Cada persona usuaria podrá configurar sus preferencias de canal y de frecuencia, respetando las notificaciones que el CLIENTE defina como obligatorias. &
+Usuario destinatario &
+Identidad verificada y canales habilitados. &
+Preferencias guardadas sin desactivar avisos obligatorios. &
+Alta &
+BT, RT-16.22. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ALE-\allowbreak{}11 &
+El envío será asíncrono, con reintento ante falla, control de duplicados y registro de entrega, apertura y error por cada mensaje. &
+Responsable de comunicaciones &
+Mensaje pendiente de despacho. &
+Entrega o error registrado; reintentos sin efectos duplicados. &
+Alta &
+BT, RT-16.23. \\ \hline
+
+RF-\allowbreak{}ALE-\allowbreak{}12 &
+Las notificaciones respetarán la normativa de comunicaciones comerciales y permitirán la baja cuando corresponda. &
+Destinatario de comunicaciones &
+Suscripción comercial identificada. &
+Baja aplicada cuando corresponda y evidencia conservada. &
+Alta &
+BT, RT-16.25. \\ \hline
+
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los resultados y las fuentes de cada fila delimitan lo que deberá comprobarse en la aceptación.
+
+\clearpage\section*{A2.1.3 Escuela de vela y menores (ESC)}
+
+
+La Tabla~\ref{tab:a2-1-03} detalla las funciones, los actores y los resultados verificables.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-14\tabcolsep-8\arrayrulewidth\relax}
+\begin{longtable}{|L{0.080645\AnchoTablaAnexo}|L{0.262097\AnchoTablaAnexo}|L{0.100806\AnchoTablaAnexo}|L{0.145161\AnchoTablaAnexo}|L{0.173387\AnchoTablaAnexo}|L{0.060484\AnchoTablaAnexo}|L{0.177420\AnchoTablaAnexo}|}
+\caption{A2.1.3 Escuela de vela y menores (ESC)}\label{tab:a2-1-03}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{7}{l}{\small\textit{3. Escuela de vela y menores (ESC) — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{7}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ESC-\allowbreak{}01 &
+Mantener expediente individual del alumno con contactos, autorizaciones y datos de salud protegidos. &
+Coordinación de escuela &
+Alumno identificado y antecedentes autorizados disponibles. &
+Expediente individual actualizado con acceso restringido. &
+Alta &
+C07, sec. 4.9; cap. 10; cap. 15, RT-05.29 y RT-17.01. \\ \hline
+
+RF-\allowbreak{}ESC-\allowbreak{}02 &
+Registrar la autorización del apoderado con identidad, alcance, vigencia y firma electrónica en la modalidad admitida para el acto. &
+Apoderado &
+Vínculo con alumno y acto a autorizar verificados. &
+Autorización firmada, con alcance y vigencia comprobables. &
+Alta &
+C07, sec. 4.9; cap. 10; cap. 15, RT-05.29 y RT-17.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ESC-\allowbreak{}03 &
+Generar nóminas de clase según cupo, compatibilidad pedagógica, bote asignado y monitor certificado. &
+Coordinación de escuela &
+Clase planificada y recursos disponibles. &
+Nómina con bote y monitor asignados. &
+Alta &
+C07, sec. 4.9; cap. 10; cap. 15, RT-05.29 y RT-17.01. \\ \hline
+
+RF-\allowbreak{}ESC-\allowbreak{}04 &
+Vincular atómicamente en agua cada alumno a un casco (bote escuela) y a un monitor responsable en lancha de apoyo. &
+Monitor &
+Nómina preparada y asignación comprobada. &
+Cada alumno en agua vinculado a bote y monitor. &
+Alta &
+C07, sec. 4.9; cap. 10; cap. 15, RT-05.29 y RT-17.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ESC-\allowbreak{}05 &
+Registrar la salida al agua de una clase de hasta 18 botes de vela en \(\leq\) 60 segundos desde la tablet del monitor. &
+Monitor &
+Clase preparada para salir; registro en momento seguro. &
+Salida completa registrada dentro del plazo exigido. &
+Alta &
+C07, sec. 4.9; cap. 10; cap. 15, RT-05.29, RT-17.01 y RT-09.01. \\ \hline
+
+RF-\allowbreak{}ESC-\allowbreak{}06 &
+Registrar ausencias, atrasos y relevos de monitor en terreno manteniendo trazabilidad auditable. &
+Monitor &
+Clase identificada y cambio observado. &
+Asistencia y relevo actualizados con autor y hora. &
+Alta &
+C07, sec. 4.9; cap. 10; cap. 15, RT-05.29 y RT-17.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ESC-\allowbreak{}07 &
+Conciliar el retiro anticipado registrado en portería con la asistencia y situación de la escuela en tiempo real y notificar al monitor responsable. Una notificación pendiente no podrá representarse como un retiro ya conciliado; aplicar DEC-07 ante interrupción del canal. &
+Portería y monitor &
+Retiro anticipado solicitado e identificado. &
+Retiro conciliado y comunicado al responsable de la clase. &
+Alta &
+C07, sec. 4.9; cap. 10; cap. 15, RT-05.29 y RT-17.01. \\ \hline
+
+RF-\allowbreak{}ESC-\allowbreak{}08 &
+Impedir la confirmación de salida de un alumno cuyo retiro esté confirmado. Comprobar que la asignación y el estado de retiro correspondan al registro vigente. Si no es posible verificar ese estado por una falla de comunicación, señalarlo y aplicar el procedimiento de contingencia definido para la escuela, sin presentar una copia no conciliada como información vigente. &
+Monitor &
+Solicitud de salida con alumno registrado como retirado. &
+Salida impedida y causa visible para el monitor. &
+Alta &
+C07, sec. 4.9; cap. 10; cap. 15, RT-05.29 y RT-17.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ESC-\allowbreak{}09 &
+Registrar confirmación individual de retorno y permitir cierre de la clase sólo cuando todos los alumnos estén verificados en tierra. Si al verificar el retorno existe un alumno sin confirmación, identificar al alumno y al monitor responsable y generar un aviso a la  escuela para revisión y seguimiento.. &
+Monitor &
+Clase con salida registrada, retorno observado o inicio de la verificación de cierre. &
+Clase cerrada con confirmación completa, o abierta con alumnos pendientes de identificación y seguimiento. &
+Alta &
+C07, sec. 4.9; cap. 10; cap. 15, RT-05.29 y RT-17.01. \\ \hline
+
+RF-\allowbreak{}ESC-\allowbreak{}10 &
+Notificar al apoderado el inicio y término seguro de la clase sin exponer geolocalización continua ni cámaras públicas. &
+Apoderado, destinatario &
+Salida o regreso de clase confirmado. &
+Aviso enviado sin exponer seguimiento continuo de alumnos. &
+Alta &
+C07, sec. 4.9; cap. 10; cap. 15, RT-05.29 y RT-17.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ESC-\allowbreak{}11 &
+Mostrar al monitor únicamente la información de emergencia autorizada para los alumnos a su cargo, con control de acceso y registro de consulta. El conjunto mínimo y su autorización se especifican en DEC-08. &
+Monitor &
+Alumno asignado y permiso de consulta vigente. &
+Datos mínimos de emergencia visibles y acceso registrado. &
+Alta &
+C07, sec. 4.9; cap. 10; cap. 15, RT-05.29 y RT-17.01. \\ \hline
+
+RF-\allowbreak{}ESC-\allowbreak{}12 &
+Registrar de forma inalterable toda consulta y modificación de los expedientes de menores, con actor, momento, objeto y acción; no incluir el contenido médico en los registros técnicos de observabilidad. &
+Sistema; responsable autorizado de control &
+Consulta o modificación de expediente de menor. &
+Acceso reconstruible sin divulgar datos médicos en logs técnicos. &
+Alta &
+C07, sec. 4.9; cap. 10; cap. 15, RT-05.29 y RT-17.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ESC-\allowbreak{}13 &
+Mantener las funciones exigidas de asistencia y salida de escuela durante la pérdida del enlace exterior y conservar los registros capturados por los dispositivos durante su autonomía. Diferenciar la indisponibilidad de internet del aislamiento del dispositivo y coordinar el registro vigente con portería conforme a DEC-07 y DEC-21, manteniendo RNF-DES-11 y RNF-CONT-01 a 06. &
+Monitor &
+Falta de enlace exterior y nómina disponible localmente. &
+Asistencia y salidas registradas sin pérdida de información. &
+Alta &
+C07, sec. 4.9; cap. 10; cap. 15, RT-05.29 y RT-17.01. \\ \hline
+
+RF-\allowbreak{}ESC-\allowbreak{}14 &
+Gestionar la entrega del alumno a la persona autorizada y su conciliación con portería, diferenciando retiro solicitado, verificado y confirmado; impedir que un retiro no conciliado se confunda con la confirmación de regreso de toda la clase. &
+Portería y coordinación &
+Identidad y autorización de quien retira verificadas. &
+Entrega del alumno confirmada en un único estado conciliado. &
+Alta &
+C07, sec. 16.1, decisiones 6–8; RT-05.29 \\ \hline
+
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los resultados y las fuentes de cada fila delimitan lo que deberá comprobarse en la aceptación.
+
+\clearpage\section*{A2.1.4 Amarras y ocupación (AMA)}
+
+
+La Tabla~\ref{tab:a2-1-04} detalla las funciones, los actores y los resultados verificables.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-14\tabcolsep-8\arrayrulewidth\relax}
+\begin{longtable}{|L{0.080645\AnchoTablaAnexo}|L{0.262097\AnchoTablaAnexo}|L{0.100806\AnchoTablaAnexo}|L{0.145161\AnchoTablaAnexo}|L{0.173387\AnchoTablaAnexo}|L{0.060484\AnchoTablaAnexo}|L{0.177420\AnchoTablaAnexo}|}
+\caption{A2.1.4 Amarras y ocupación (AMA)}\label{tab:a2-1-04}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{7}{l}{\small\textit{4. Amarras y ocupación (AMA) — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{7}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}AMA-\allowbreak{}01 &
+Mantener inventario técnico georreferenciado de 320 amarras: eslora máx, manga máx, calado, calado de marea y torreta. &
+Administrador de amarras &
+Puesto identificado y características verificadas. &
+Inventario de amarras actualizado y consultable. &
+Alta &
+C07, sec. 4.1–4.2; cap. 15, RT-09.01. \\ \hline
+
+RF-\allowbreak{}AMA-\allowbreak{}02 &
+Registrar dimensiones de embarcaciones permanentes y visitantes, su fuente y las discrepancias detectadas. &
+Administración o torre &
+Embarcación identificada y dimensiones disponibles. &
+Ficha dimensional con fuente y discrepancias registradas. &
+Alta &
+C07, sec. 4.1–4.2; cap. 15, RT-09.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}AMA-\allowbreak{}03 &
+Evaluar compatibilidad tridimensional y de maniobra entre embarcación y puesto antes de autorizar la asignación. &
+Operador de torre &
+Solicitud de asignación y datos de nave y puesto. &
+Compatibilidad evaluada y causa de rechazo visible. &
+Alta &
+C07, sec. 4.1–4.2; cap. 15, RT-09.01. \\ \hline
+
+RF-\allowbreak{}AMA-\allowbreak{}04 &
+Recomendar amarras compatibles y explicar los criterios de ordenamiento de las alternativas. &
+Operador de torre &
+Conjunto de puestos compatibles disponible. &
+Alternativas ordenadas con criterios explicables. &
+Alta &
+C07, sec. 4.1–4.2; cap. 15, RT-09.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}AMA-\allowbreak{}05 &
+Someter las excepciones admisibles de asignación a doble autorización, con fundamento y trazabilidad, sin vulnerar límites de seguridad. &
+Operaciones y aprobador habilitado &
+Excepción admisible solicitada y fundamentada. &
+Excepción aprobada o rechazada con doble control y traza. &
+Alta &
+C07, sec. 4.1–4.2; cap. 15, RT-09.01. \\ \hline
+
+RF-\allowbreak{}AMA-\allowbreak{}06 &
+Gestionar lista de espera de amarras permanente ordenada de forma transparente y determinista por antigüedad y compatibilidad. &
+Administración comercial &
+Solicitud de puesto permanente registrada. &
+Posición de espera calculada según regla aprobada. &
+Alta &
+C07, sec. 4.1–4.2; cap. 15, RT-09.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}AMA-\allowbreak{}07 &
+Notificar automáticamente al candidato compatible ante la liberación definitiva de un puesto permanente. &
+Administración comercial &
+Vacante definitiva y candidato compatible. &
+Oferta de puesto notificada y registrada. &
+Alta &
+C07, sec. 4.1–4.2; cap. 15, RT-09.01. \\ \hline
+
+RF-\allowbreak{}AMA-\allowbreak{}08 &
+Consolidar solicitudes de amarras de cortesía y visitas desde web, correo y radio en una bandeja única de torre. &
+Operador de torre &
+Solicitud de visita recibida por un canal habilitado. &
+Solicitud consolidada en la bandeja de atención. &
+Alta &
+C07, sec. 4.1–4.2; cap. 15, RT-09.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}AMA-\allowbreak{}09 &
+Soportar la asignación de amarra a una nave visitante que consulta por radio VHF en \(\leq\) 45 segundos por el operador. &
+Operador de torre &
+Consulta radial con datos suficientes para asignación. &
+Amarra asignada y confirmada dentro de 45 segundos. &
+Alta &
+C07, sec. 4.1–4.2; cap. 15, RT-09.01. \\ \hline
+
+RF-\allowbreak{}AMA-\allowbreak{}10 &
+Gestionar la reserva, el pago anticipado cuando corresponda y la aceptación de condiciones de visita, manteniendo un flujo de recepción y cobro para embarcaciones que llegan sin reserva ni prepago. &
+Visitante y administración &
+Solicitud de estadía o llegada sin reserva. &
+Reserva y cobro gestionados según modalidad de llegada. &
+Alta &
+C07, sec. 4.1–4.2; cap. 15, RT-09.01. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}AMA-\allowbreak{}11 &
+Registrar la estadía efectiva, atraque en muelle de espera y consumos asociados a cada recalada de visitante. &
+Guardia de torre &
+Recalada identificada y movimientos observados. &
+Estadía real y consumos vinculados a la visita. &
+Alta &
+C07, sec. 4.1–4.2; cap. 15, RT-09.01. \\ \hline
+
+RF-\allowbreak{}AMA-\allowbreak{}12 &
+Detectar y alertar al administrador de puerto ante recaladas de visitantes cerradas sin hecho facturable generado. &
+Administración comercial &
+Recalada cerrada para revisión de cargos. &
+Alerta emitida si falta el hecho facturable correspondiente. &
+Alta &
+C07, sec. 4.1–4.2; cap. 15, RT-09.01. \\ \hline
+
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los resultados y las fuentes de cada fila delimitan lo que deberá comprobarse en la aceptación.
+
+\clearpage\section*{A2.1.5 Varadero y travelift (VAR)}
+
+
+La Tabla~\ref{tab:a2-1-05} detalla las funciones, los actores y los resultados verificables.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-14\tabcolsep-8\arrayrulewidth\relax}
+\begin{longtable}{|L{0.080645\AnchoTablaAnexo}|L{0.262097\AnchoTablaAnexo}|L{0.100806\AnchoTablaAnexo}|L{0.145161\AnchoTablaAnexo}|L{0.173387\AnchoTablaAnexo}|L{0.060484\AnchoTablaAnexo}|L{0.177420\AnchoTablaAnexo}|}
+\caption{A2.1.5 Varadero y travelift (VAR)}\label{tab:a2-1-05}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{7}{l}{\small\textit{5. Varadero y travelift (VAR) — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{7}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}VAR-\allowbreak{}01 &
+Gestionar agenda de 1.150 movimientos de travelift, estadía en cunas de explanada e invernada de 180 puestos. &
+Encargado de varadero &
+Servicio solicitado y recursos identificados. &
+Movimiento y ubicación de estadía incorporados a la agenda. &
+Alta &
+C07, sec. 4.6–4.7; cap. 10. \\ \hline
+
+RF-\allowbreak{}VAR-\allowbreak{}02 &
+Reprogramar en bloque faenas de varada y botadura afectadas por alertas meteorológicas o marejadas. &
+Encargado de varadero &
+Cancelación meteorológica y agenda afectada. &
+Agenda reprogramada con dependencias revisadas. &
+Alta &
+C07, sec. 4.6–4.7; cap. 10. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}VAR-\allowbreak{}03 &
+Notificar la reprogramación confirmada a los armadores afectados por SMS y portal, registrando los envíos fallidos. Se propone completar el despacho de estos avisos en un máximo de 15 minutos desde la confirmación de la nueva agenda. &
+Encargado de varadero &
+Reprogramación confirmada. &
+Armadores afectados notificados y pendientes identificados. &
+Alta &
+C07, sec. 4.6–4.7; cap. 10. \\ \hline
+
+RF-\allowbreak{}VAR-\allowbreak{}04 &
+Mantener por embarcación una ficha de izaje versionada con peso, puntos de eslingado, apoyos, restricciones, origen y validación. &
+Responsable de ficha de izaje &
+Antecedentes técnicos de la nave disponibles. &
+Plan versionado con origen, restricciones y validación. &
+Alta &
+C07, sec. 4.6–4.7; cap. 10. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}VAR-\allowbreak{}05 &
+Exigir la validación documentada del plan por el operador calificado antes de iniciar la maniobra. El control es de autorización y registro; no se presume una integración de enclavamiento físico con el travelift. &
+Operador calificado &
+Plan vigente disponible antes de la maniobra. &
+Validación registrada antes de autorizar el inicio. &
+Alta &
+C07, sec. 4.6–4.7; cap. 10. \\ \hline
+
+RF-\allowbreak{}VAR-\allowbreak{}06 &
+Presentar el plan de izaje en modo pasivo en la tablet del operador, con cero interacción exigida durante carga suspendida. &
+Operador de travelift &
+Plan validado y maniobra activa. &
+Plan visible sin exigir interacción con carga suspendida. &
+Alta &
+C07, sec. 4.6–4.7; cap. 10. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}VAR-\allowbreak{}07 &
+Capturar registro fotográfico y observaciones técnicas del casco únicamente tras apoyar la nave en su cuna en tierra. &
+Personal de varadero &
+Nave apoyada de forma segura en tierra. &
+Fotografías y observaciones vinculadas al acta de varada. &
+Alta &
+C07, sec. 4.6–4.7; cap. 10. \\ \hline
+
+RF-\allowbreak{}VAR-\allowbreak{}08 &
+Mantener mapa visual interactivo de la explanada con ubicación precisa de naves en cuna y secuencia de despeje. &
+Encargado de varadero &
+Inventario y posiciones de cunas actualizados. &
+Plano de ocupación y secuencia de despeje consultables. &
+Alta &
+C07, sec. 4.6–4.7; cap. 10. \\ \hline
+
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los resultados y las fuentes de cada fila delimitan lo que deberá comprobarse en la aceptación.
+
+\clearpage\section*{A2.1.6 Contratistas y portería (CTR)}
+
+
+La Tabla~\ref{tab:a2-1-06} detalla las funciones, los actores y los resultados verificables.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-14\tabcolsep-8\arrayrulewidth\relax}
+\begin{longtable}{|L{0.080645\AnchoTablaAnexo}|L{0.262097\AnchoTablaAnexo}|L{0.100806\AnchoTablaAnexo}|L{0.145161\AnchoTablaAnexo}|L{0.173387\AnchoTablaAnexo}|L{0.060484\AnchoTablaAnexo}|L{0.177420\AnchoTablaAnexo}|}
+\caption{A2.1.6 Contratistas y portería (CTR)}\label{tab:a2-1-06}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{7}{l}{\small\textit{6. Contratistas y portería (CTR) — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{7}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}CTR-\allowbreak{}01 &
+Mantener el padrón de empresas y trabajadores externos con identidad, seguros, acreditaciones y vigencias. &
+Responsable de acreditación &
+Empresa y trabajador identificados. &
+Padrón con documentación y vigencias consultables. &
+Alta &
+C07, sec. 4.7; cap. 15, RT-17.06. \\ \hline
+
+RF-\allowbreak{}CTR-\allowbreak{}02 &
+Generar avisos preventivos por vencimiento de pólizas y acreditaciones. Se propone una anticipación inicial de 15 días, con registro de la fecha de vencimiento y del responsable de gestionar la renovación. &
+Responsable de acreditación &
+Documento con fecha de vencimiento registrada. &
+Aviso preventivo y gestión de renovación identificados. &
+Alta &
+C07, sec. 4.7; cap. 15, RT-17.06. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}CTR-\allowbreak{}03 &
+Registrar la realización de la inducción de seguridad y ambiental de cada trabajador externo previa a su habilitación. &
+Responsable de inducción &
+Trabajador identificado y actividad realizada. &
+Inducción acreditada antes de habilitar al trabajador. &
+Alta &
+C07, sec. 4.7; cap. 15, RT-17.06. \\ \hline
+
+RF-\allowbreak{}CTR-\allowbreak{}04 &
+Vincular cada solicitud de acceso a una orden de trabajo formal autorizada por el armador de la nave intervenida. &
+Portería &
+Solicitud de ingreso y trabajo autorizado disponibles. &
+Acceso vinculado a una faena y embarcación autorizadas. &
+Alta &
+C07, sec. 4.7; cap. 15, RT-17.06. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}CTR-\allowbreak{}05 &
+Verificar mediante credencial la identidad, inducción y faena autorizada antes del acceso; objetivo propuesto de validación: cinco segundos. &
+Guardia de portería &
+Trabajador presentado para ingreso. &
+Habilitación o rechazo fundamentado antes del acceso. &
+Alta &
+C07, sec. 4.7; cap. 15, RT-17.06. \\ \hline
+
+RF-\allowbreak{}CTR-\allowbreak{}06 &
+Registrar en bitácora inalterable cualquier ingreso excepcional autorizado manualmente por la jefatura de puerto. &
+Jefatura de puerto &
+Excepción de ingreso sometida a autorización. &
+Ingreso excepcional registrado con motivo y responsable. &
+Alta &
+C07, sec. 4.7; cap. 15, RT-17.06. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}CTR-\allowbreak{}07 &
+Intercambiar estados de habilitación con el control de acceso existente mediante una interfaz disponible, documentada y probada. &
+Operador de acceso &
+Interfaz habilitada y cambio de acreditación aprobado. &
+Estado de acceso transmitido y resultado registrado. &
+Alta &
+C07, sec. 4.7; cap. 15, RT-17.06. \\ \hline
+
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los resultados y las fuentes de cada fila delimitan lo que deberá comprobarse en la aceptación.
+
+\clearpage\section*{A2.1.7 Gestión ambiental (AMB)}
+
+
+La Tabla~\ref{tab:a2-1-07} detalla las funciones, los actores y los resultados verificables.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-14\tabcolsep-8\arrayrulewidth\relax}
+\begin{longtable}{|L{0.080645\AnchoTablaAnexo}|L{0.262097\AnchoTablaAnexo}|L{0.100806\AnchoTablaAnexo}|L{0.145161\AnchoTablaAnexo}|L{0.173387\AnchoTablaAnexo}|L{0.060484\AnchoTablaAnexo}|L{0.177420\AnchoTablaAnexo}|}
+\caption{A2.1.7 Gestión ambiental (AMB)}\label{tab:a2-1-07}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{7}{l}{\small\textit{7. Gestión ambiental (AMB) — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{7}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}AMB-\allowbreak{}01 &
+Registrar el origen de cada residuo y vincularlo con la embarcación y el generador identificados. Cuando el origen no esté acreditado, admitir un registro provisional de recepción física, señalar la discrepancia y asignar su aclaración al responsable ambiental. &
+Encargado de acopio &
+Residuo recibido o entrega informada, con los antecedentes disponibles. &
+Recepción registrada con origen identificado o discrepancia abierta y responsable asignado. &
+Alta &
+C07, sec. 4.7 y 4.12; cap. 15, RT-05.23. \\ \hline
+
+RF-\allowbreak{}AMB-\allowbreak{}02 &
+Asignar etiqueta con código QR único a cada tambor o bulto acopiado en el patio de residuos peligrosos (RESPEL). &
+Encargado de acopio &
+Recipiente o bulto identificado. &
+Etiqueta única vinculada al registro de residuos. &
+Alta &
+C07, sec. 4.7 y 4.12; cap. 15, RT-05.23. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}AMB-\allowbreak{}03 &
+Registrar cantidad, unidad, clasificación aplicable, fecha, responsable y procedencia de cada residuo ingresado al acopio. La falta de identificación de origen no impide conservar cantidad, unidad, clasificación, fecha y responsable de recepción; se trata conforme a RF-AMB-01 &
+Encargado de acopio &
+Ingreso de residuo y medición disponibles. &
+Existencia registrada con cantidad, unidad, tipo y origen. &
+Alta &
+C07, sec. 4.7 y 4.12; cap. 15, RT-05.23. \\ \hline
+
+RF-\allowbreak{}AMB-\allowbreak{}04 &
+Preparar y conservar antecedentes de entrega y transporte de residuos mediante los formatos y canales admitidos por la autoridad sanitaria. &
+Responsable ambiental &
+Entrega o transporte de residuos preparado. &
+Antecedentes generados en formato admitido y conservados. &
+Alta &
+C07, sec. 4.7 y 4.12; cap. 15, RT-05.23. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}AMB-\allowbreak{}05 &
+Almacenar el certificado final de disposición o tratamiento emitido por el gestor ambiental autorizado con retención de 6 años. &
+Responsable ambiental &
+Certificado del gestor autorizado recibido. &
+Certificado asociado al retiro y recuperable durante seis años. &
+Alta &
+C07, sec. 4.7 y 4.12; cap. 15, RT-05.23. \\ \hline
+
+RF-\allowbreak{}AMB-\allowbreak{}06 &
+Consolidar diariamente los indicadores ambientales y permitir informes por período, incluido el balance mensual propuesto para la solución, manteniendo trazabilidad hasta la lectura, residuo o transacción de origen. &
+Responsable ambiental &
+Registros de consumo y residuos disponibles. &
+Indicadores diarios e informes trazables por período. &
+Alta &
+C07, sec. 4.7 y 4.12; cap. 15, RT-05.23. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}AMB-\allowbreak{}07 &
+Registrar incidentes de derrame de hidrocarburos, plan de contingencia activado y evidencia de contención y remediación. &
+Responsable de contingencia &
+Derrame reportado e identificado. &
+Actuaciones y evidencia vinculadas al incidente. &
+Alta &
+C07, sec. 4.7 y 4.12; cap. 15, RT-05.23. \\ \hline
+
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los resultados y las fuentes de cada fila delimitan lo que deberá comprobarse en la aceptación.
+
+\clearpage\section*{A2.1.8 Consumos y combustible (CON)}
+
+
+La Tabla~\ref{tab:a2-1-08} detalla las funciones, los actores y los resultados verificables.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-14\tabcolsep-8\arrayrulewidth\relax}
+\begin{longtable}{|L{0.080645\AnchoTablaAnexo}|L{0.262097\AnchoTablaAnexo}|L{0.100806\AnchoTablaAnexo}|L{0.145161\AnchoTablaAnexo}|L{0.173387\AnchoTablaAnexo}|L{0.060484\AnchoTablaAnexo}|L{0.177420\AnchoTablaAnexo}|}
+\caption{A2.1.8 Consumos y combustible (CON)}\label{tab:a2-1-08}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{7}{l}{\small\textit{8. Consumos y combustible (CON) — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{7}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}CON-\allowbreak{}01 &
+Asociar unívocamente cada medidor de agua y electricidad de torretas al puesto de amarra y contrato activo. &
+Administrador de consumos &
+Medidor, puesto y contrato identificados. &
+Asociación temporal de medición registrada por amarra. &
+Alta &
+C07, sec. 4.8 y 4.12; cap. 15, RT-05.29 y RT-17.06. \\ \hline
+
+RF-\allowbreak{}CON-\allowbreak{}02 &
+Ingerir las lecturas de agua y energía con la frecuencia de adquisición definida y justificada para cada servicio, conservando su origen, marca temporal y estado de calidad. La información acumulada por amarra debe actualizarse al menos cada hora, conforme a RNF-DES-08. &
+Responsable de consumos &
+Lectura recibida de un medidor identificado. &
+Lectura almacenada con hora y estado de calidad. &
+Alta &
+C07, sec. 4.8 y 4.12; cap. 15, RT-05.29 y RT-17.06. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}CON-\allowbreak{}03 &
+Detectar duplicados y lecturas anómalas, conservar el dato de origen y su estado de calidad, y separar los valores no validados del cálculo de cobro. Toda corrección quedará justificada y auditable. &
+Responsable de consumos &
+Lectura recibida para validación. &
+Anomalía señalada y dato original conservado. &
+Alta &
+C07, sec. 4.8 y 4.12; cap. 15, RT-05.29 y RT-17.06. \\ \hline
+
+RF-\allowbreak{}CON-\allowbreak{}04 &
+Calcular consumo y cargo por amarra mediante lecturas atribuibles, método de imputación documentado y tarifa aprobada. &
+Administración comercial &
+Lecturas validadas y tarifa aprobada. &
+Consumo y cargo calculados con atribución verificable. &
+Alta &
+C07, sec. 4.8 y 4.12; cap. 15, RT-05.29 y RT-17.06. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}CON-\allowbreak{}05 &
+Emitir eventos de hecho facturable por consumo validado hacia la capa financiera sin generar facturas tributarias directas. &
+Administración comercial &
+Consumo y cargo validados. &
+Hecho facturable disponible para contabilidad. &
+Alta &
+C07, sec. 4.8 y 4.12; cap. 15, RT-05.29 y RT-17.06. \\ \hline
+
+RF-\allowbreak{}CON-\allowbreak{}06 &
+Garantizar una única serie de datos de submedición compartida para el cobro financiero y la huella ambiental. &
+Responsables comercial y ambiental &
+Mediciones validadas y vinculadas al período. &
+Cobros e indicadores utilizan la misma serie de origen. &
+Alta &
+C07, sec. 4.8 y 4.12; cap. 15, RT-05.29 y RT-17.06. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}CON-\allowbreak{}07 &
+Registrar embarcación, fecha, hora, tipo, volumen y evidencia de recepción de cada despacho; conciliarlo con la instrumentación del surtidor. &
+Encargado de combustible &
+Despacho identificado y registro en condición segura. &
+Despacho asentado y conciliable con el surtidor. &
+Alta &
+C07, sec. 4.8 y 4.12; cap. 15, RT-05.29 y RT-17.06. \\ \hline
+
+RF-\allowbreak{}CON-\allowbreak{}08 &
+Permitir la captura y autorización de despachos de combustible en modo offline en el muelle de combustible mediante el NBR. &
+Encargado de combustible &
+Interrupción del enlace exterior. &
+Despacho autorizado y persistido para conciliación posterior. &
+Alta &
+C07, sec. 4.8 y 4.12; cap. 15, RT-05.29 y RT-17.06. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}CON-\allowbreak{}09 &
+Registrar los consumos de servicios y la relación contractual del restaurante concesionado, sin administrar su punto de venta ni su operación comercial. &
+Administración &
+Contrato y puntos de suministro del concesionario. &
+Consumos del restaurante registrados sin gestionar su punto de venta. &
+Media &
+C07, cap. 11, exclusión del restaurante \\ \hline
+
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los resultados y las fuentes de cada fila delimitan lo que deberá comprobarse en la aceptación.
+
+\clearpage\section*{A2.1.9 Boyas y trenes de fondeo (BOY)}
+
+
+La Tabla~\ref{tab:a2-1-09} detalla las funciones, los actores y los resultados verificables.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-14\tabcolsep-8\arrayrulewidth\relax}
+\begin{longtable}{|L{0.080645\AnchoTablaAnexo}|L{0.262097\AnchoTablaAnexo}|L{0.100806\AnchoTablaAnexo}|L{0.145161\AnchoTablaAnexo}|L{0.173387\AnchoTablaAnexo}|L{0.060484\AnchoTablaAnexo}|L{0.177420\AnchoTablaAnexo}|}
+\caption{A2.1.9 Boyas y trenes de fondeo (BOY)}\label{tab:a2-1-09}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{7}{l}{\small\textit{9. Boyas y trenes de fondeo (BOY) — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{7}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}BOY-\allowbreak{}01 &
+Mantener inventario técnico de las 40 boyas de Bahía Ilque: grillete, cadena, cabo, muerto de hormigón y profundidad. &
+Encargado de fondeos &
+Boya y componentes identificados. &
+Ficha de activo y tren de fondeo actualizada. &
+Alta &
+C07, sec. 4.10; cap. 15, RT-03.10 y RT-21.16. \\ \hline
+
+RF-\allowbreak{}BOY-\allowbreak{}02 &
+Registrar observaciones visuales de ocupación de boyas capturando patrón, nave amarrada y hora de verificación. &
+Inspector de boyas &
+Observación realizada en una boya identificada. &
+Ocupante y hora de observación registrados. &
+Alta &
+C07, sec. 4.10; cap. 15, RT-03.10 y RT-21.16. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}BOY-\allowbreak{}03 &
+Conciliar observaciones de ocupación de boyas con las reservas y declaraciones disponibles, mostrando fuente y hora de cada antecedente. Identificar casos sin confirmación vigente y las discrepancias, y generar un reporte diario. &
+Encargado de fondeos &
+Observaciones y reservas disponibles para comparación. &
+Discrepancias identificadas con antigüedad de la evidencia. &
+Alta &
+C07, sec. 4.10; cap. 15, RT-03.10 y RT-21.16. \\ \hline
+
+RF-\allowbreak{}BOY-\allowbreak{}04 &
+Integrar, de aprobarse su inclusión, la telemetría de un piloto de boyas con alimentación y comunicaciones acreditadas. La inspección desconectada seguirá siendo independiente. &
+Responsable de integración &
+Piloto aprobado y factibilidad acreditada. &
+Telemetría del piloto registrada sin sustituir la inspección. &
+Baja, condicionada &
+C07, sec. 4.10; cap. 15, RT-03.10 y RT-21.16. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}BOY-\allowbreak{}05 &
+Capturar bitácoras de inspección submarina y fondeo en terreno desconectado desde la embarcación de trabajo. &
+Inspector de boyas &
+Inspección autorizada y datos cargados localmente. &
+Hallazgos almacenados durante el recorrido sin cobertura. &
+Alta &
+C07, sec. 4.10; cap. 15, RT-03.10 y RT-21.16. \\ \hline
+
+RF-\allowbreak{}BOY-\allowbreak{}06 &
+Registrar por componente del tren de fondeo las inspecciones, desgaste, evidencia fotográfica y sustituciones efectivamente realizadas por el responsable de mantenimiento. El sistema no asume la ejecución del mantenimiento físico excluido. &
+Encargado de fondeos &
+Informe de inspección o mantenimiento recibido. &
+Historial actualizado por componente y actuación realizada. &
+Alta &
+C07, sec. 4.10; cap. 15, RT-03.10 y RT-21.16. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}BOY-\allowbreak{}07 &
+Programar y alertar inspecciones periódicas y extraordinarias conforme al programa técnico aprobado del tren de fondeo. &
+Encargado de fondeos &
+Programa técnico de inspección aprobado. &
+Inspecciones programadas y vencimientos alertados. &
+Alta &
+C07, sec. 4.10; cap. 15, RT-03.10 y RT-21.16. \\ \hline
+
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los resultados y las fuentes de cada fila delimitan lo que deberá comprobarse en la aceptación.
+
+\clearpage\section*{A2.1.10 Cuenta corriente, cobros y custodia (FAC)}
+
+
+La Tabla~\ref{tab:a2-1-10} detalla las funciones, los actores y los resultados verificables.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-14\tabcolsep-8\arrayrulewidth\relax}
+\begin{longtable}{|L{0.080645\AnchoTablaAnexo}|L{0.262097\AnchoTablaAnexo}|L{0.100806\AnchoTablaAnexo}|L{0.145161\AnchoTablaAnexo}|L{0.173387\AnchoTablaAnexo}|L{0.060484\AnchoTablaAnexo}|L{0.177420\AnchoTablaAnexo}|}
+\caption{A2.1.10 Cuenta corriente, cobros y custodia (FAC)}\label{tab:a2-1-10}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{7}{l}{\small\textit{10. Cuenta corriente, cobros y custodia (FAC) — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{7}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}FAC-\allowbreak{}01 &
+Consolidar en cuenta corriente del armador todos los hechos facturables originados en amarras, varadero, consumos y servicios. &
+Administración comercial &
+Hechos facturables identificados y validados. &
+Cuenta del armador consolidada por servicio y período. &
+Alta &
+C07, sec. 4.11; caps. 10–11; cap. 15, RT-05.15. \\ \hline
+
+RF-\allowbreak{}FAC-\allowbreak{}02 &
+Validar reglas de tarificación, vigencia contractual y deduplicación con clave de idempotencia antes de exportar a contabilidad. &
+Administración comercial &
+Cargo candidato y reglas vigentes disponibles. &
+Cargo validado sin duplicación antes de su exportación. &
+Alta &
+C07, sec. 4.11; caps. 10–11; cap. 15, RT-05.15. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}FAC-\allowbreak{}03 &
+Exportar hechos facturables validados al sistema contable y registrar recepción o error mediante una interfaz verificada. &
+Operador de integración contable &
+Lote validado e interfaz habilitada. &
+Lote enviado y recepción o error registrados. &
+Alta &
+C07, sec. 4.11; caps. 10–11; cap. 15, RT-05.15. \\ \hline
+
+RF-\allowbreak{}FAC-\allowbreak{}04 &
+Procesar y asentar la respuesta de conciliación devuelta por el sistema contable (documentos emitidos, pagos y rechazos). &
+Administración contable &
+Respuesta del sistema contable recibida. &
+Documentos, pagos y rechazos conciliados con su origen. &
+Alta &
+C07, sec. 4.11; caps. 10–11; cap. 15, RT-05.15. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}FAC-\allowbreak{}05 &
+Presentar al armador su estado de cuenta en tiempo real, con el origen y estado de conciliación de cada cargo o pago, sin sustituir la emisión tributaria del sistema contable. &
+Armador &
+Identidad y titularidad de cuenta verificadas. &
+Cuenta consultable con saldo y estado de conciliación. &
+Alta &
+C07, sec. 4.11; caps. 10–11; cap. 15, RT-05.15. \\ \hline
+
+RF-\allowbreak{}FAC-\allowbreak{}06 &
+Clasificar deudas y registrar gestiones de cobranza según reglas aprobadas, sin activar restricciones automáticas de acceso. &
+Administración de cobranza &
+Deuda registrada y reglas aprobadas. &
+Deuda clasificada y gestiones de seguimiento registradas. &
+Alta &
+C07, sec. 4.11; caps. 10–11; cap. 15, RT-05.15. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}FAC-\allowbreak{}07 &
+Registrar decisión formal, fundamento y autorización competente antes de aplicar una medida de cobranza que afecte el acceso a la embarcación. &
+Autoridad competente del cliente &
+Medida de cobranza propuesta y fundamentada. &
+Decisión formal registrada antes de ejecutar una restricción. &
+Alta &
+C07, sec. 4.11; caps. 10–11; cap. 15, RT-05.15. \\ \hline
+
+RF-\allowbreak{}FAC-\allowbreak{}08 &
+Conformar expediente probatorio digital inalterable para las 14 naves en abandono (contratos, mora, cartas y fotos de custodia). &
+Administración y asesor autorizado &
+Embarcación en custodia y antecedentes disponibles. &
+Expediente individual completo o faltantes expresamente identificados. &
+Alta &
+C07, sec. 4.11; caps. 10–11; cap. 15, RT-05.15. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}FAC-\allowbreak{}09 &
+Exportar el expediente de custodia con índice, documentos, fechas y control de integridad para el asesor autorizado, sin ejecutar actuaciones judiciales. &
+Asesor autorizado &
+Expediente seleccionado y permiso de exportación. &
+Expediente exportado con índice y comprobación de integridad. &
+Alta &
+C07, sec. 4.11; caps. 10–11; cap. 15, RT-05.15. \\ \hline
+
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los resultados y las fuentes de cada fila delimitan lo que deberá comprobarse en la aceptación.
+
+\clearpage\section*{A2.1.11 Administración y capacidades comunes (ADM)}
+
+
+La Tabla~\ref{tab:a2-1-11} detalla las funciones, los actores y los resultados verificables.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-14\tabcolsep-8\arrayrulewidth\relax}
+\begin{longtable}{|L{0.080645\AnchoTablaAnexo}|L{0.262097\AnchoTablaAnexo}|L{0.100806\AnchoTablaAnexo}|L{0.145161\AnchoTablaAnexo}|L{0.173387\AnchoTablaAnexo}|L{0.060484\AnchoTablaAnexo}|L{0.177420\AnchoTablaAnexo}|}
+\caption{A2.1.11 Administración y capacidades comunes (ADM)}\label{tab:a2-1-11}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{7}{l}{\small\textit{11. Administración y capacidades comunes (ADM) — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{7}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}01 &
+Administrar padrones maestros centrales de armadores, tripulantes, embarcaciones, contratos de amarra y tarifas. &
+Administrador funcional &
+Entidad identificada y cambio autorizado. &
+Maestro actualizado sin duplicar entidades compartidas. &
+Alta &
+BT, RT-05.09; C07, RT-05.15. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}02 &
+Modificar parámetros de operación (tiempos de cortesía, recargos de temporada) desde interfaz web sin recompilar código. &
+Administrador funcional &
+Parámetro editable y aprobación requerida disponible. &
+Regla operativa actualizada sin recompilar código. &
+Alta &
+BT, RT-16.02 a RT-16.04; C07, sec. 16.1, decisión 22. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}03 &
+Aplicar políticas de control de acceso RBAC/ABAC basadas en mínimo privilegio y separación de funciones operacionales. &
+Administrador de accesos &
+Identidad y función laboral verificadas. &
+Permisos aplicados según rol y atributos autorizados. &
+Alta &
+BT, RT-12.05; C07, RT-12.11 y RT-12.12. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}04 &
+Gestionar contratos de amarra, renovaciones y sus firmas electrónicas en la modalidad admitida para el acto, con versión, vigencia y evidencia de aceptación verificable. &
+Administración contractual &
+Contrato o renovación preparado para aceptación. &
+Contrato versionado con firma, vigencia y aceptación. &
+Alta &
+C07, sec. 4.1 y RT-16.14; BT, RT-16.15 a RT-16.18. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}05 &
+Registrar en bitácora append-only todas las creaciones, modificaciones, accesos a datos sensibles y autorizaciones forzadas. &
+Sistema; responsable autorizado de control &
+Operación de negocio o consulta sensible realizada. &
+Evento registrado con autoría y contenido auditable. &
+Alta &
+BT, RT-16.06 a RT-16.10; C07, RT-16.09. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}06 &
+Ejecutar la migración del sistema de 2014 con perfilado, saneamiento trazable y conciliación, incluyendo íntegramente los conjuntos exigidos por C07 RT-05.15. Ningún descarte técnico podrá eliminar silenciosamente antecedentes obligatorios. &
+Responsable de migración &
+Fuentes autorizadas y reglas de migración aprobadas. &
+Conjuntos obligatorios migrados con conciliación de diferencias. &
+Alta &
+C07, RT-05.15; BT, RT-05.11 a RT-05.14. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}07 &
+Proveer consulta de los antecedentes históricos no migrados durante su retención aplicable, con integridad y acceso restringido. No exigir la continuidad del software sin soporte si un repositorio verificable satisface la consulta. &
+Usuario autorizado de archivo &
+Antecedente histórico sujeto a conservación. &
+Información histórica consultable sin modificación del origen. &
+Alta &
+BT, RT-05.15; C07, RT-05.10. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}08 &
+Resolver discrepancias entre registros locales y centrales mediante reglas deterministas, conservando los antecedentes y la bitácora de conflictos. &
+Responsable de conciliación &
+Reconexión con cambios locales y remotos pendientes. &
+Conflictos resueltos con reglas y evidencia conservada. &
+Alta &
+BT, RT-03.12; C07, RT-03.13. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}09 &
+Gestionar las firmas de recepción y entrega en custodia, actas de izaje y entrega de residuos, además de contratos y autorizaciones de menores, conservando identidad, documento, versión y evidencia de validez. &
+Firmante autorizado del acto &
+Documento y modalidad de firma definidos. &
+Acto firmado y evidencia de validez conservada. &
+Alta &
+C07, RT-16.14; BT, RT-16.17 y RT-16.18 \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}10 &
+Integrar la estación meteorológica, avisos de la autoridad y sistemas existentes de acceso y 38 cámaras únicamente para los usos autorizados del recinto, con registro de indisponibilidad. No incorporar cámaras dirigidas a alumnos. &
+Operador autorizado &
+Interfaces y usos permitidos configurados. &
+Datos de sistemas existentes integrados con aviso de indisponibilidad. &
+Alta &
+C07, RT-17.06; cap. 10 \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}11 &
+La solución dispondrá de un módulo de administración que permita al CLIENTE, sin intervención del ADJUDICATARIO, gestionar personas usuarias, roles, permisos, unidades organizacionales y sus jerarquías. &
+Administrador funcional &
+Solicitud aprobada de alta o cambio de organización. &
+Usuarios, roles y jerarquías actualizados desde administración. &
+Alta &
+BT, RT-16.01. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}12 &
+Las reglas de negocio parametrizables —umbrales, plazos, montos, tolerancias, catálogos, listas de valores, textos de notificación — serán configurables desde la interfaz de administración, con control de versiones y registro de quién cambió qué y cuándo. &
+Administrador funcional &
+Parámetro autorizado para modificación. &
+Parámetro versionado con autor y fecha del cambio. &
+Alta &
+BT, RT-16.02. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}13 &
+Todo cambio de parámetro con impacto operacional requerirá aprobación de un segundo perfil y quedará registrado con su justificación. &
+Segundo aprobador habilitado &
+Cambio con impacto operacional propuesto. &
+Cambio aprobado o rechazado con justificación registrada. &
+Alta &
+BT, RT-16.03. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}14 &
+Publicar el inventario de elementos parametrizables y de cambios que requieren desarrollo, diferenciando ambos alcances. &
+Responsable funcional de la solución &
+Inventario de configuración y funciones definido. &
+Catálogo distingue parametrización de desarrollo adicional. &
+Alta &
+BT, RT-16.04. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}15 &
+Toda operación que cree, modifique o elimine información quedará registrada con identificación de la persona o del sistema que la ejecutó, fecha y hora con zona horaria, origen, valores anteriores y valores posteriores. &
+Sistema; responsable autorizado de control &
+Creación, modificación o eliminación realizada. &
+Operación reconstruible con origen y valores antes y después. &
+Alta &
+BT, RT-16.06. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}16 &
+El registro de auditoría será inalterable y no podrá ser modificado ni eliminado por ningún perfil, incluido el administrador de la plataforma. &
+Sistema; responsable autorizado de control &
+Evento de auditoría incorporado. &
+Registro protegido contra modificación por cualquier perfil. &
+Alta &
+BT, RT-16.07. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}17 &
+El CLIENTE podrá consultar y exportar la auditoría desde la interfaz, con filtros por persona, período, entidad y tipo de operación, sin requerir acceso a la base de datos. &
+Auditor del cliente &
+Período y filtros de consulta seleccionados. &
+Auditoría consultada o exportada desde la interfaz. &
+Alta &
+BT, RT-16.08. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}18 &
+Las consultas a información sensible quedarán registradas, no sólo las modificaciones. &
+Sistema; responsable autorizado de control &
+Consulta a información sensible realizada. &
+Acceso registrado aunque no exista modificación. &
+Alta &
+BT, RT-16.09. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}19 &
+Conservar la auditoría según el plazo del caso y, en ausencia de uno específico, durante al menos cinco años. &
+Sistema; responsable autorizado de control &
+Evento sujeto a política de conservación. &
+Auditoría disponible durante el plazo exigible. &
+Alta &
+BT, RT-16.10. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}20 &
+La solución soportará flujos de trabajo con estados, transiciones, responsables, plazos, escalamiento automático por vencimiento y delegación por ausencia. &
+Responsable de proceso &
+Solicitud ingresada a un flujo definido. &
+Estado, responsable, plazos y escalamiento controlados. &
+Alta &
+BT, RT-16.11. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}21 &
+Los flujos serán configurables por el CLIENTE sin desarrollo, al menos en lo relativo a responsables, plazos y niveles de aprobación. &
+Administrador funcional &
+Cambio de responsables o niveles aprobado. &
+Flujo actualizado por configuración sin desarrollo. &
+Alta &
+BT, RT-16.12. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}22 &
+Toda solicitud pendiente será visible para su responsable en una bandeja de tareas unificada, con priorización y alerta de vencimiento. &
+Responsable de tarea &
+Solicitud pendiente asignada. &
+Tarea visible con prioridad y alerta de vencimiento. &
+Alta &
+BT, RT-16.13. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}23 &
+La solución gestionará documentos con versionado, metadatos, control de acceso, búsqueda por contenido y por metadato, y previsualización sin descarga. &
+Gestor documental &
+Documento incorporado y permisos definidos. &
+Documento versionado, localizable y previsualizable. &
+Alta &
+BT, RT-16.15. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}24 &
+Los documentos se almacenarán cifrados, con verificación de integridad y retención conforme a la política del caso. &
+Sistema; responsable autorizado de control &
+Documento sujeto a conservación. &
+Documento cifrado y verificable durante su retención. &
+Alta &
+BT, RT-16.16. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}25 &
+La solución soportará firma electrónica conforme a la Ley N° 19.799, con firma avanzada para los actos que el caso lo requiera, y verificación de validez del certificado al momento de la firma. &
+Firmante autorizado &
+Documento y certificado de firma disponibles. &
+Firma aplicada con comprobación de validez al momento del acto. &
+Alta &
+BT, RT-16.17. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}26 &
+Se generará el sello de tiempo y se conservará la evidencia de firma que permita verificar el documento con posterioridad al vencimiento del certificado. &
+Sistema; responsable autorizado de control &
+Documento firmado e identificado. &
+Evidencia temporal permite verificar la firma posteriormente. &
+Alta &
+BT, RT-16.18. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}27 &
+La solución generará documentos a partir de plantillas administrables por el CLIENTE, con datos de la transacción y salida en formato abierto. &
+Administrador de plantillas &
+Plantilla aprobada y datos de transacción disponibles. &
+Documento generado en formato abierto con datos de origen. &
+Media &
+BT, RT-16.19. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}28 &
+La solución dispondrá de búsqueda global con indexación de texto completo, tolerancia a errores de escritura, filtros facetados y respeto del control de acceso de la persona que busca. &
+Usuario autorizado &
+Consulta formulada sobre información accesible. &
+Resultados filtrados por permisos y criterios de búsqueda. &
+Media &
+BT, RT-16.27. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}29 &
+Los listados serán ordenables, filtrables, paginados y exportables en formatos abiertos, con el filtro aplicado reflejado en la exportación. &
+Usuario autorizado &
+Listado y filtros seleccionados. &
+Listado ordenable y exportable con los filtros aplicados. &
+Media &
+BT, RT-16.28. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}30 &
+Las exportaciones de gran volumen se procesarán de forma asíncrona, con notificación al completarse y sin bloquear la sesión. &
+Usuario solicitante &
+Exportación de gran volumen autorizada. &
+Archivo generado en segundo plano y finalización notificada. &
+Media &
+BT, RT-16.29. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}31 &
+Toda exportación de información sensible quedará registrada en la auditoría, con identificación de quién exportó qué y cuándo. &
+Sistema; responsable autorizado de control &
+Exportación de datos sensibles ejecutada. &
+Contenido exportado, autor y fecha registrados. &
+Alta &
+BT, RT-16.30. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}32 &
+La solución permitirá exportar la totalidad de la información del CLIENTE en formatos abiertos y documentados, en cualquier momento del Contrato, sin costo adicional y sin intervención del ADJUDICATARIO. &
+Representante autorizado del cliente &
+Solicitud de exportación integral autorizada. &
+Datos exportables en formato abierto sin costo adicional. &
+Alta &
+BT, RT-05.06. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}33 &
+La solución soportará la carga y descarga masiva de información en formatos abiertos, con validación previa, informe de errores por registro y procesamiento parcial. &
+Operador de intercambio de datos &
+Archivo masivo o conjunto de exportación disponible. &
+Registros válidos procesados y errores individualizados. &
+Alta &
+BT, RT-05.22. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}34 &
+La solución proveerá una capa analítica con tableros operacionales y de gestión, construidos sobre los indicadores que las Bases Técnicas del caso definan. &
+Responsable de gestión &
+Indicadores y fuentes de negocio definidos. &
+Tableros operacionales y de gestión disponibles. &
+Media &
+BT, RT-05.25. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}35 &
+Los tableros permitirán filtrar por período, unidad organizacional y dimensiones propias del caso, y profundizar desde el indicador agregado hasta la transacción de origen. &
+Usuario de gestión &
+Indicador consultado y permisos suficientes. &
+Desglose desde agregado hasta transacción de origen. &
+Media &
+BT, RT-05.26. \\ \hline
+
+RF-\allowbreak{}ADM-\allowbreak{}36 &
+El CLIENTE podrá construir sus propios informes sin intervención del ADJUDICATARIO, mediante una herramienta de autoservicio con modelo semántico documentado. &
+Analista del cliente &
+Modelo semántico y datos autorizados disponibles. &
+Informe creado sin intervención del proveedor. &
+Media &
+BT, RT-05.27. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}ADM-\allowbreak{}37 &
+Todo informe será exportable en formatos abiertos y programable para envío automático por calendario. &
+Usuario de reportería &
+Informe definido y calendario autorizado. &
+Informe exportado o enviado automáticamente según calendario. &
+Media &
+BT, RT-05.28. \\ \hline
+
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los resultados y las fuentes de cada fila delimitan lo que deberá comprobarse en la aceptación.
+
+\clearpage\section*{A2.1.12 Portal y autoatención (AUT)}
+
+
+La Tabla~\ref{tab:a2-1-12} detalla las funciones, los actores y los resultados verificables.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-14\tabcolsep-8\arrayrulewidth\relax}
+\begin{longtable}{|L{0.080645\AnchoTablaAnexo}|L{0.262097\AnchoTablaAnexo}|L{0.100806\AnchoTablaAnexo}|L{0.145161\AnchoTablaAnexo}|L{0.173387\AnchoTablaAnexo}|L{0.060484\AnchoTablaAnexo}|L{0.177420\AnchoTablaAnexo}|}
+\caption{A2.1.12 Portal y autoatención (AUT)}\label{tab:a2-1-12}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{7}{l}{\small\textit{12. Portal y autoatención (AUT) — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Descripción} & \EncabezadoTabla{Actor} & \EncabezadoTabla{Precondición} & \EncabezadoTabla{Resultado esperado} & \EncabezadoTabla{Prioridad} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{7}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}AUT-\allowbreak{}01 &
+Publicar sin autenticación la disponibilidad y tarifas de amarras de visita, condiciones de acceso, estado del recinto y avisos vigentes, en español e inglés; identificar actualización y fuente de los avisos. &
+Visitante &
+Información pública validada para publicación. &
+Disponibilidad, tarifas, acceso y avisos consultables sin autenticación. &
+Media &
+C07, cap. 15, RT-16.30 y RT-13.12. \\ \hline
+
+RF-\allowbreak{}AUT-\allowbreak{}02 &
+Proveer autoservicio para solicitud de recalada, reserva de amarra de visitas y pago electrónico con confirmación inmediata. &
+Visitante &
+Solicitud de visita y puesto disponible. &
+Reserva y pago confirmados o rechazo informado. &
+Media &
+C07, cap. 15, RT-16.30. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}AUT-\allowbreak{}03 &
+Proveer al armador acceso autenticado a su contrato, consumos por amarra, cuenta corriente, documentación de la embarcación y plan de navegación, con separación respecto de otros titulares. &
+Armador &
+Identidad y vínculo con embarcación verificados. &
+Contrato, cuenta, consumos, documentos y plan consultables. &
+Media &
+C07, cap. 15, RT-16.30 y RT-05.29. \\ \hline
+
+RF-\allowbreak{}AUT-\allowbreak{}04 &
+Permitir la declaración y cierre voluntario del plan de navegación desde el móvil, con identificación y confirmación del acto, incluido el modo de baja capacidad. &
+Armador &
+Identidad verificada y plan identificado. &
+Declaración o cierre del plan confirmado con autoría. &
+Media &
+C07, cap. 15, RT-17.01 y RT-16.21; DEC-04. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}AUT-\allowbreak{}05 &
+Permitir al apoderado gestionar autorizaciones y consultar la confirmación de salida y regreso de la clase de su hijo, sin acceso a datos de otros alumnos ni seguimiento audiovisual. &
+Apoderado &
+Vínculo autorizado con el alumno. &
+Autorizaciones y salida o regreso de su hijo consultables. &
+Media &
+C07, cap. 15, RT-16.30 y RT-16.21. \\ \hline
+
+RF-\allowbreak{}AUT-\allowbreak{}06 &
+Permitir al contratista presentar su acreditación documental y declaración de residuos, además de solicitudes de trabajo, ofreciendo registro asistido para quien no utilice una aplicación. &
+Representante del contratista &
+Empresa y representante identificados. &
+Acreditación y declaración de residuos presentadas o asistidas. &
+Media &
+C07, cap. 15, RT-16.30; DEC-14. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}AUT-\allowbreak{}07 &
+Proveer mecanismo seguro de autorregistro, verificación de correo/teléfono y recuperación de clave para usuarios externos. &
+Usuario externo &
+Contacto verificable y solicitud de acceso. &
+Cuenta activada o acceso recuperado de forma segura. &
+Media &
+C07, cap. 15, RT-12.12; BT, RT-12.12. \\ \hline
+
+RF-\allowbreak{}AUT-\allowbreak{}08 &
+Permitir al armador enviar declaraciones y cierres de plan mediante un modo de baja capacidad, con identificador, hora de origen y estado de confirmación; tolerar latencia de horas, reintentos y entrega desordenada sin reabrir un plan por un mensaje antiguo. &
+Armador y guardia de torre &
+Plan identificado y canal de baja capacidad habilitado. &
+Mensajes conciliados sin reabrir planes por entregas tardías. &
+Alta &
+C07, cap. 15, RT-05.23, RT-16.21 y RT-17.01 \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}AUT-\allowbreak{}09 &
+La solución dispondrá de un portal público con la información que el caso determine, accesible sin autenticación, con los mismos estándares de accesibilidad y desempeño que el resto de la plataforma. &
+Visitante &
+Contenido público aprobado. &
+Portal público accesible con los estándares de la plataforma. &
+Media &
+BT, RT-16.31. \\ \hline
+
+RF-\allowbreak{}AUT-\allowbreak{}10 &
+Las personas usuarias externas dispondrán de autoatención para las consultas de mayor frecuencia, evitando el contacto telefónico para operaciones simples. &
+Usuario externo &
+Identidad verificada cuando se consultan datos privados. &
+Consulta frecuente resuelta por autoatención. &
+Media &
+BT, RT-16.32. \\ \hline
+
+\rowcolor{RFclaro}
+RF-\allowbreak{}AUT-\allowbreak{}11 &
+El portal público resistirá picos de tráfico sin degradar los servicios transaccionales internos, mediante aislamiento de recursos y caché. &
+Responsable del servicio &
+Tráfico externo simultáneo a la operación interna. &
+Portal atiende el peak sin degradar transacciones internas. &
+Alta &
+BT, RT-16.34. \\ \hline
+
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los resultados y las fuentes de cada fila delimitan lo que deberá comprobarse en la aceptación.
+
+\clearpage\section*{A2.1.13 Condiciones específicas de formulación y cierre}
+
+Las condiciones siguientes concentran las decisiones y evidencias que requieren tratamiento individual. No sustituyen los requerimientos del catálogo ni acreditan su cumplimiento.
+
+
+La Tabla~\ref{tab:a2-1-13} detalla las funciones, los actores y los resultados verificables.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.057471\AnchoTablaAnexo}|L{0.199234\AnchoTablaAnexo}|L{0.743295\AnchoTablaAnexo}|}
+\caption{A2.1.13 Condiciones específicas de formulación y cierre}\label{tab:a2-1-13}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Requerimientos y decisiones} & \EncabezadoTabla{Condición o evidencia pendiente} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Condiciones de cierre — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Requerimientos y decisiones} & \EncabezadoTabla{Condición o evidencia pendiente} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+
+\rowcolor{RFclaro}
+P-01 & RF-NAV-01; RF-ALE-02, 05 y 07; RF-VAR-03; RF-CTR-02 y 05 & Los objetivos de tres segundos para estado operacional, 30 segundos para seleccionar destinatarios, retención de campañas de seis años, aviso de reprogramación en 15 minutos y anticipación documental de 15 días son criterios propuestos. El objetivo de acceso de cinco segundos también requiere validación. Evidencia por incorporar: fundamento y pruebas. Definir el tiempo de escalamiento telefónico sin retrasar los plazos de alerta exigidos. \\ \hline
+
+P-02 & RF-NAV-01, 04, 05; RF-AMA-03, 05; DEC-01, 05 y 09 & Evidencia por incorporar: mecanismo de detección de ocupación, evidencia de confirmación de regreso, matriz de compatibilidad y atribuciones de excepción. Una aprobación no permite vulnerar límites de seguridad. \\ \hline
+
+\rowcolor{RFclaro}
+P-03 & RF-NAV-08, 09; RF-AUT-04, 08; DEC-04 y 21 & Evidencia por incorporar: campos y estados del plan, consentimiento, destinatarios de escalamiento y canal de baja capacidad efectivamente disponible. La alerta por vencimiento no admite una gracia adicional al máximo de 15 minutos. La marina no asume búsqueda y salvamento. \\ \hline
+
+P-04 & RF-ESC-03 a 14; DEC-06 a 08 & Evidencia por incorporar: reglas de asignación y cambios de bote/monitor, conciliación de retiro entre portería y escuela incluso ante falla de comunicación, vista mínima de salud y autoridad de autorización. La información de quién está en el agua debe mantenerse en tiempo real. No incorporar cámaras de alumnos ni dispositivos en embarcaciones menores. \\ \hline
+
+\rowcolor{RFclaro}
+P-05 & RF-AMA-06, 07, 10 a 12; DEC-10 y 11 & Antigüedad y compatibilidad constituyen la regla propuesta de espera. Evidencia por incorporar: desempate, plazo de aceptación y aprobación competente; procedimiento de llegada nocturna sin reserva ni prepago y generación del cargo por estadía efectiva. \\ \hline
+
+P-06 & RF-VAR-04 a 08; DEC-12 y 13 & Evidencia por incorporar: fuente técnica, autor y validador del plan de izaje; criterios de reprogramación por clima y dependencias de patio. La validación informática previa no acredita enclavamiento físico del travelift. \\ \hline
+
+\rowcolor{RFclaro}
+P-07 & RF-CTR-03 a 07; RF-AMB-01 a 05; DEC-14 a 16 & Evidencia por incorporar: formación ambiental, impartidor y renovación, formatos sanitarios y control de acceso disponible. La identificación QR es una propuesta sujeta a compatibilidad. Mantener registro asistido del origen del residuo para contratistas que no utilicen una aplicación. \\ \hline
+
+P-08 & RF-CON-01 a 09; DEC-03 & Evidencia por incorporar: esquema de medición por amarra, método de imputación y fundamento del traspaso de costos, especificación de instrumentación del surtidor. Conservar las lecturas originales y la misma serie para cobro e indicadores ambientales. No presumir reparto válido por torreta sin su justificación. \\ \hline
+
+\rowcolor{RFclaro}
+P-09 & RF-BOY-04 a 07; DEC-19 y 20 & El piloto de telemetría es una mejora condicionada, no una dependencia de la operación mínima. Evidencia por incorporar: factibilidad, costo y decisión de inclusión; programa de inspección, periodicidad, umbrales de desgaste y eventos extraordinarios. La última observación no equivale a ocupación actual confirmada. No se incluye ejecutar mantenimiento físico del fondeo. \\ \hline
+
+P-10 & RF-FAC-03 a 09; DEC-17 y 18 & Evidencia por incorporar: interfaz contable, conciliación en tiempo real y catálogo de medidas de cobranza con autoridad y fundamento. No bloquear acceso por deuda automáticamente. Verificar integridad de los 14 expedientes; la exportación no acredita por sí sola suficiencia probatoria. \\ \hline
+
+\rowcolor{RFclaro}
+P-11 & RF-ADM-06 a 10, 19, 24 a 26; DEC-02 y 21 & Evidencia por incorporar: migración y reversión, reglas de conflicto, retención por dominio y modalidad de firma por acto. Mantener íntegro el alcance de C07 RT-05.15, auditar diferencias y realizar dos ensayos completos conforme a BT. No presumir continuidad del software legado sin soporte como única forma de consulta. \\ \hline
+
+P-12 & RF-ADM-01 a 04, 11 a 14, 20 a 22; DEC-22 & Evidencia por incorporar: atribuciones, dedicaciones, suplencias y costo del servicio de administración funcional por 36 meses. La aprobación de negocio corresponde al cliente y las tareas especializadas deben tener cobertura sin requerir un área TI interna. \\ \hline
+
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los resultados y las fuentes de cada fila delimitan lo que deberá comprobarse en la aceptación.
+
+\subsection*{Relación entre funciones de negocio y servicios comunes}
+Las funciones de negocio utilizan las capacidades comunes indicadas a continuación.
+Se verifican en conjunto, evitando contar dos veces la misma obligación:
+\begin{itemize}
+\item RF-ADM-01--04 se apoyan en RF-ADM-11--14: datos maestros, identidades y configuración tienen objetos distintos, pero comparten administración.
+\item RF-ADM-05 se detalla en RF-ADM-15--19; RF-ESC-12 aplica esos controles a expedientes de menores.
+\item RF-ADM-04 y RF-ADM-09 utilizan los servicios documentales y de firma de RF-ADM-23--27.
+\item RF-ALE-01--07 describen campañas y avisos operacionales; RF-ALE-08--12 definen canales, plantillas, preferencias y entrega comunes.
+\item RF-AUT-01 concreta el contenido del portal; RF-AUT-09 establece su acceso público. RF-AUT-10 y 11 regulan autoatención y aislamiento frente al peak.
+\end{itemize}

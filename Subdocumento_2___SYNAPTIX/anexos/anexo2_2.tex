@@ -1,0 +1,2212 @@
+\newpage
+\section*{A2.2. Catálogo de requerimientos no funcionales}
+\textbf{Proponente:} Synaptix. \quad \textbf{Licitación:} TFEP-01/2026 — Caso 07: Puerto Deportivo.
+
+\subsection*{Objeto y criterios de aceptación}
+Este catálogo establece las condiciones de calidad, continuidad, protección de
+información y operación de la solución. Cada requisito identifica su umbral,
+escenario de aplicación, método de verificación, carácter y fuente.
+Las funciones de negocio se desarrollan en A2.1; una condición compartida se
+prueba sobre esas funciones sin contabilizar dos veces la misma obligación.
+
+\textbf{Fuentes.} C07 corresponde a FEP03.07.26, Bases Técnicas del Caso 07;
+BT, a FEP02.26, Bases Técnicas Transversales; BA, a FEP01.26, Bases Administrativas.
+Cada código RT se interpreta con su documento: los códigos coincidentes pueden
+referirse a materias distintas y conservar obligaciones complementarias.
+
+\textbf{Medición.} Los tiempos de respuesta se verifican en P95 de experiencia
+real de usuario bajo carga de peak, conforme a BT, numerales 1.7 y 9.1,
+salvo condición específica de la fuente. Los plazos desde un evento y hasta
+el último envío mantienen expresamente sus puntos de inicio y término.
+No sustituir un máximo por un promedio ni disponibilidad transaccional por
+disponibilidad de componentes. El ensayo previo y la medición en producción
+deberán quedar diferenciados en el protocolo.
+
+\textbf{Medición de plazos.} Cada requisito temporal se verifica identificando el evento inicial y el resultado final de la medición. El plazo de actualización analítica de la ocupación comienza con el evento físico, mientras que el objetivo propuesto de actualización de la vista operacional comienza con la aceptación del registro por el sistema. Cuando un plazo comprende el proceso completo, la medición incluye las demoras de captura, transmisión
+y procesamiento. Estos plazos no se suman automáticamente ni se sustituyen entre sí.
+
+\textbf{Carácter.} Obligatorio indica una exigencia de base; Propuesto,
+un criterio de diseño sujeto a fundamentación; Deseable conserva ese carácter.
+Las obligaciones ``Según caso'' requieren verificar la condición aplicable.
+Las restricciones de instalación, soporte y capacitación se incluyen por su
+impacto en la aceptación, aunque no sean atributos exclusivos del software.
+
+\textbf{Exigibilidad.} La oferta debe formular y justificar la solución;
+la evidencia de pruebas se exige en el hito de recepción correspondiente y
+los indicadores recurrentes, durante operación. Este catálogo no acredita
+ejecución ni declara cumplimiento probado.
+
+\textbf{Trazabilidad.} La matriz identificará para cada requisito la sección y
+página de diseño, el componente, el hito, el protocolo y la evidencia de
+aceptación de SD4, SD5, SD7, SD9 o del plan correspondiente. Los pendientes
+específicos se concentran al final; deben resolverse antes de cerrar la oferta.
+\clearpage\section*{A2.2.1 Desempeño y oportunidad de información}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-01} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.1 Desempeño y oportunidad de información}\label{tab:a2-2-01}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Desempeño y oportunidad de información — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-DES-01 &
+Asignación y confirmación de amarra de visita en \(\leq\)45 segundos desde la consulta por radio. &
+Consulta radial de visitante en temporada alta. &
+Cronometrar desde la consulta hasta confirmar la asignación de amarra. &
+Obligatorio &
+C07, cap. 15, RT-09.01; BT, sec. 1.7 y sec. 9.1. \\ \hline
+RNF-DES-02 &
+Registro de salida o regreso en \(\leq\)10 segundos y un máximo de dos interacciones. &
+Registro en pantalán con equipo de terreno. &
+Medir duración y contar interacciones en salida y regreso, con condiciones de uso reales. &
+Obligatorio &
+C07, cap. 15, RT-09.01; BT, sec. 1.7 y sec. 9.1. \\ \hline
+\rowcolor{RFclaro}
+RNF-DES-03 &
+Conformación de nómina de personas a bordo y legajo de zarpe en \(\leq\)90 segundos. &
+Preparación de zarpe con nómina disponible. &
+Medir el flujo completo hasta obtener la nómina y el legajo validado. &
+Obligatorio &
+C07, cap. 15, RT-09.01; BT, sec. 1.7 y sec. 9.1. \\ \hline
+RNF-DES-04 &
+Registro de salida de una clase de hasta 18 embarcaciones en \(\leq\)60 segundos. &
+Clase completa con hasta 18 embarcaciones. &
+Registrar salida grupal, medir tiempo y comprobar asignación de todos los alumnos. &
+Obligatorio &
+C07, cap. 15, RT-09.01; BT, sec. 1.7 y sec. 9.1. \\ \hline
+\rowcolor{RFclaro}
+RNF-DES-05 &
+Notificación de emergencia a los 296 armadores en \(\leq\)10 minutos hasta el último envío, por los tres canales simultáneos exigidos. &
+Emergencia dirigida a los 296 armadores. &
+Comparar inicio del proceso con último envío; verificar SMS, mensajería y correo por destinatario. &
+Obligatorio &
+C07, cap. 15, RT-09.01; BT, sec. 1.7 y sec. 9.1. \\ \hline
+RNF-DES-06 &
+Alerta por plan vencido y sin cierre en \(\leq\)15 minutos desde el vencimiento, sin sumar 30 minutos de gracia. &
+Plan que vence sin cierre registrado. &
+Comparar hora de vencimiento con generación efectiva de alerta para la guardia. &
+Obligatorio &
+C07, cap. 15, RT-09.01; BT, sec. 1.7 y sec. 9.1. \\ \hline
+\rowcolor{RFclaro}
+RNF-DES-07 &
+Estado de ocupación de amarra disponible en la capa analítica en \(\leq\)60 segundos desde la ocurrencia del evento, no desde su digitación. &
+Cambio efectivo de ocupación de un puesto. &
+Correlacionar evento y visualización analítica; incluir captura y transporte del dato. &
+Obligatorio &
+C07, cap. 15, RT-05.29; BT, sec. 1.7 y sec. 9.1. \\ \hline
+RNF-DES-08 &
+Consumo acumulado por amarra actualizado al menos cada hora; no basta el total por torreta sin atribución al puesto. &
+Medición de agua y energía con cambios de ocupante. &
+Verificar actualizaciones por amarra y su atribución al contrato durante cada intervalo horario. &
+Obligatorio &
+C07, cap. 15, RT-05.29; BT, sec. 1.7 y sec. 9.1. \\ \hline
+\rowcolor{RFclaro}
+RNF-DES-09 &
+Cuenta del armador en tiempo real, con identificación del origen y del estado de conciliación de cargos y pagos. &
+Cargo o pago recibido y consulta de cuenta. &
+Seguir el evento hasta su visualización; distinguir información confirmada y pendiente de conciliación. &
+Obligatorio &
+C07, cap. 15, RT-05.29; BT, sec. 1.7 y sec. 9.1. \\ \hline
+RNF-DES-10 &
+Consolidación diaria de indicadores de residuos y huella ambiental ejecutada de forma automática al cierre del día. &
+Cierre de jornada con registros ambientales. &
+Comparar datos fuente y fecha de consolidación; comprobar continuidad de la serie diaria. &
+Obligatorio &
+C07, cap. 15, RT-05.29; BT, sec. 1.7 y sec. 9.1. \\ \hline
+\rowcolor{RFclaro}
+RNF-DES-11 &
+Situación de escuela —quién está en el agua— en tiempo real, sin excepción. Ante una desconexión, no presentar como vigente una copia que no ha conciliado portería, escuela y monitor. &
+Salida, regreso, cambio de bote y retiro anticipado. &
+Contrastar el estado entre escuela, monitor y portería; repetir con falla de WAN y de comunicación local. &
+Obligatorio &
+C07, RT-05.29; sec. 16.1, decisión 7 \\ \hline
+RNF-DES-12 &
+Umbrales P95 de BT sec. 9.1: portal 2 s; navegación entre vistas 1 s; consulta simple API 500 ms; escritura API 800 ms; búsqueda compuesta 3 s; informe estándar 30 s; carga de 100 MB 60 s; arranque en frío 60 s. Capacidad por lotes de al menos 10.000 registros/minuto. Los procesos críticos usan los umbrales propios del caso. &
+Carga de peak declarada y operaciones representativas. &
+Medir P95 por operación y capacidad efectiva de lotes; guardar tamaño de muestra, errores y carga aplicada. &
+Obligatorio &
+BT, sec. 9.1 y sec. 1.7 \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+
+\clearpage\section*{A2.2.2 Operación desconectada y conciliación}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-02} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.2 Operación desconectada y conciliación}\label{tab:a2-2-02}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Operación desconectada y conciliación — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-CONT-01 &
+Al menos 24 horas continuas sin enlace exterior para recepción, asignación de amarra, salida y regreso, preparación de zarpes, combustible y escuela de vela. &
+Caída del enlace exterior durante la operación del recinto. &
+Aislar WAN durante 24 horas y ejecutar todos los procesos mínimos; verificar registros y permisos locales. &
+Obligatorio &
+C07, RT-03.10 y RT-03.13; BT, RT-03.10 a RT-03.13. \\ \hline
+RNF-CONT-02 &
+Al menos 12 horas continuas fuera de cobertura para los dispositivos de pantalán, varadero y escuela, sin pérdida de registros. Verificar autonomía funcional y energética; la batería por sí sola no demuestra operación desconectada. &
+Turno fuera de cobertura en pantalán, varadero y escuela. &
+Ejecutar tareas durante 12 horas y verificar batería, consulta local y persistencia de registros. &
+Obligatorio &
+C07, RT-03.10 y RT-03.13; BT, RT-03.10 a RT-03.13. \\ \hline
+\rowcolor{RFclaro}
+RNF-CONT-03 &
+Al menos ocho horas de operación de inspección de boyas sin cobertura, con almacenamiento y consulta de los antecedentes necesarios y sin pérdida de registros. &
+Recorrido de inspección sin conexión en boyas. &
+Completar ocho horas de consulta y captura; comprobar integridad al retornar. &
+Obligatorio &
+C07, RT-03.10 y RT-03.13; BT, RT-03.10 a RT-03.13. \\ \hline
+RNF-CONT-04 &
+Sincronización automática completa en \(\leq\)30 minutos después de 24 horas de desconexión, contados desde el restablecimiento del enlace, sin intervención manual. &
+Reconexión después de 24 horas de actividad local. &
+Cronometrar desde recuperación del enlace hasta conciliación completa, sin acciones manuales. &
+Obligatorio &
+C07, RT-03.10 y RT-03.13; BT, RT-03.10 a RT-03.13. \\ \hline
+\rowcolor{RFclaro}
+RNF-CONT-05 &
+Cero pérdida de registros de salida, regreso, combustible y asistencia de escuela durante desconexión y reconexión; reintentos sin duplicación de efectos de negocio. &
+Reintentos, reinicios y cortes durante captura y envío. &
+Comparar IDs, recuentos y valores de salida, regreso, combustible y asistencia; comprobar ausencia de efectos duplicados. &
+Obligatorio &
+C07, RT-03.10 y RT-03.13; BT, RT-03.10 a RT-03.13. \\ \hline
+RNF-CONT-06 &
+Conciliación determinista y auditable, preservando antecedentes y aplicando reglas de resolución por entidad. &
+Cambios concurrentes y mensajes fuera de orden. &
+Aplicar reglas por entidad, repetir la misma secuencia y verificar resultado determinista y conservación de evidencia. &
+Obligatorio &
+C07, RT-03.10 y RT-03.13; BT, RT-03.10 a RT-03.13. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+
+\clearpage\section*{A2.2.3 Seguridad, identidad y privacidad}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-03} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.3 Seguridad, identidad y privacidad}\label{tab:a2-2-03}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Seguridad, identidad y privacidad — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-SEG-01 &
+Gestión centralizada de identidad y SSO para la totalidad de módulos mediante OpenID Connect y OAuth 2.1. &
+Ingreso, cambio de módulo y cierre de sesión. &
+Verificar federación, SSO y cierre de sesión en todos los módulos y perfiles previstos. &
+Obligatorio &
+C07, RT-11.10 y RT-16.09; BT, caps. 11–12 y RT-14.07. \\ \hline
+RNF-SEG-02 &
+MFA para administradores, todo acceso privilegiado y accesos desde fuera de la red del cliente, con un mecanismo de terreno que preserve identidad individual. &
+Acceso administrativo, privilegiado o desde red externa. &
+Intentar acceso con y sin segundo factor y comprobar identidad individual en terreno. &
+Obligatorio &
+C07, RT-11.10 y RT-16.09; BT, caps. 11–12 y RT-14.07. \\ \hline
+\rowcolor{RFclaro}
+RNF-SEG-03 &
+Control de acceso basado en roles (RBAC) y atributos (ABAC) con matriz de segregación de funciones auditable. &
+Usuarios con roles y atributos diferentes. &
+Ejecutar matriz de permisos positivos y negativos y comprobar segregación de funciones. &
+Obligatorio &
+C07, RT-11.10 y RT-16.09; BT, caps. 11–12 y RT-14.07. \\ \hline
+RNF-SEG-04 &
+Cifrado a nivel de campo de salud, datos personales de menores, armadores, tripulantes y trabajadores externos, y posición compartida con consentimiento. &
+Almacenamiento y recuperación de datos sensibles. &
+Inspeccionar cifrado de campos y gestión de claves; probar acceso permitido y denegado sin revelar datos reales. &
+Obligatorio &
+C07, RT-11.10 y RT-16.09; BT, caps. 11–12 y RT-14.07. \\ \hline
+\rowcolor{RFclaro}
+RNF-SEG-05 &
+Auditoría inalterable de las consultas a salud, datos personales de menores, posición consentida y antecedentes de deuda, además de las modificaciones, con identidad individual y origen. &
+Lecturas y cambios de salud, menores, posición y deuda. &
+Recuperar evidencia de cada acceso y probar resistencia a alteración por perfiles administrativos. &
+Obligatorio &
+C07, RT-11.10 y RT-16.09; BT, caps. 11–12 y RT-14.07. \\ \hline
+RNF-SEG-06 &
+Registros técnicos sin claves, tokens ni datos personales expuestos; aplicar supresión o enmascaramiento antes de su almacenamiento. &
+Errores y trazas en operación e integración. &
+Examinar una muestra dirigida de logs; comprobar eliminación o enmascaramiento de datos personales y secretos. &
+Obligatorio &
+C07, RT-11.10 y RT-16.09; BT, caps. 11–12 y RT-14.07. \\ \hline
+\rowcolor{RFclaro}
+RNF-SEG-07 &
+Registro verificable del consentimiento y su alcance y revocación cuando corresponda, con controles reforzados para menores. La revocación no se interpreta como eliminación automática de antecedentes sujetos a retención exigible. &
+Otorgamiento, cambio de alcance y revocación. &
+Verificar evidencia y aplicación del consentimiento; comprobar que la retención exigible no se elimina indebidamente. &
+Obligatorio &
+C07, RT-11.10 y RT-16.09; BT, caps. 11–12 y RT-14.07. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+
+\clearpage\section*{A2.2.4 Usabilidad, accesibilidad y seguridad de interacción}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-04} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.4 Usabilidad, accesibilidad y seguridad de interacción}\label{tab:a2-2-04}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Usabilidad, accesibilidad y seguridad de interacción — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-USA-01 &
+Interfaces de muelle operables con guantes de agua, pantalla húmeda por lluvia y alto contraste bajo luz solar directa. &
+Guantes, pantalla húmeda y sol directo. &
+Realizar tareas con usuarios de terreno y registrar legibilidad, errores y posibilidad efectiva de operación. &
+Obligatorio &
+C07, cap. 10, RT-13.08 y RT-17.01; BT, cap. 13. \\ \hline
+RNF-USA-02 &
+Cero interacción obligatoria con pantallas durante la ejecución activa de maniobras de travelift o amarre en muelle. &
+Amarre y maniobra de travelift con carga suspendida. &
+Recorrer el flujo real y comprobar que ningún paso obliga a tocar una pantalla durante la maniobra. &
+Obligatorio &
+C07, cap. 10, RT-13.08 y RT-17.01; BT, cap. 13. \\ \hline
+\rowcolor{RFclaro}
+RNF-USA-03 &
+Indicador visible de conectividad y sincronización que distinga datos sincronizados, operación local y registros pendientes. &
+Pérdida de red, captura local y reconexión. &
+Cambiar la conectividad y verificar que el indicador distingue sincronizado, local y pendiente. &
+Propuesto &
+C07, cap. 10, RT-13.08 y RT-17.01; BT, cap. 13. \\ \hline
+RNF-USA-04 &
+Todas las interfaces destinadas a usuarios cumplirán WCAG 2.2 nivel AA, con evaluación automática y manual; el alcance no se limita a los portales públicos. &
+Interfaces públicas, privadas y de operación. &
+Combinar evaluación automática con navegación por teclado y comprobaciones manuales de WCAG 2.2 AA. &
+Obligatorio &
+C07, cap. 10, RT-13.08 y RT-17.01; BT, cap. 13. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+
+\clearpage\section*{A2.2.5 Idiomas y atención bilingüe}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-05} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.5 Idiomas y atención bilingüe}\label{tab:a2-2-05}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Idiomas y atención bilingüe — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-IDM-01 &
+Portales web, avisos y comunicaciones dirigidos a visitantes, charters y extranjeros provistos en español e inglés. &
+Visitantes, tripulaciones extranjeras y charter. &
+Recorrer tareas, ayuda, errores y avisos en español e inglés; comprobar equivalencia del contenido. &
+Obligatorio &
+C07, RT-13.12 y RT-21.06. \\ \hline
+RNF-IDM-02 &
+Atención en español e inglés en los horarios de C07 RT-21.06; incluye la cobertura de inglés en temporada exigida por RT-13.12. &
+Llamadas y solicitudes dentro de los horarios exigidos. &
+Comprobar dotación y efectuar atención de prueba en ambos idiomas, incluidos fines de semana. &
+Obligatorio &
+C07, RT-13.12 y RT-21.06. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+
+\clearpage\section*{A2.2.6 Capacidad y crecimiento}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-06} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.6 Capacidad y crecimiento}\label{tab:a2-2-06}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Capacidad y crecimiento — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-ESCAL-01 &
+Crecimiento dimensional soportado hasta 380 amarras y 70 boyas mediante parametrización funcional sin rediseño. &
+Incorporación de nuevos puestos e instalaciones. &
+Parametrizar 380 amarras y 70 boyas con perfil funcional; repetir operaciones sin modificar código. &
+Obligatorio &
+C07, RT-02.12 y sec. 16.1, decisión 3; BT, RT-09.03. \\ \hline
+RNF-ESCAL-02 &
+Capacidad de ingesta de submedición escalable hasta 760 puntos de agua y electricidad sin degradar latencia. &
+Hasta 760 puntos si el esquema considera agua y energía por amarra. &
+Aplicar la frecuencia declarada a todos los puntos y medir ingesta, acumulación y actualización horaria. &
+Propuesto &
+C07, RT-02.12 y sec. 16.1, decisión 3; BT, RT-09.03. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+
+\textbf{Escenarios de capacidad.}
+La ampliación física a 380 amarras y 70 boyas se distingue del crecimiento tecnológico exigido. La solución debe soportar, sin rediseño, al menos tres veces la volumetría inicial del caso en un horizonte de tres años. Las pruebas de carga deben considerar un volumen equivalente a 1,5 veces el peak declarado. El factor de prueba no sustituye la exigencia de crecimiento ni implica multiplicar la capacidad física del recinto. El dimensionamiento identifica las variables y los supuestos aplicados en cada escenario.
+
+\clearpage\section*{A2.2.7 Interoperabilidad y aislamiento de fallas}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-07} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.7 Interoperabilidad y aislamiento de fallas}\label{tab:a2-2-07}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Interoperabilidad y aislamiento de fallas — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-INT-01 &
+Integraciones autenticadas con OAuth 2.1 con credenciales de cliente o mTLS según contrato, validación de esquemas, correlación y reintentos idempotentes. No prometer entrega única de transporte como sustituto de la deduplicación de efectos. &
+Integración autenticada con errores y reintentos. &
+Probar credenciales, validación, correlación, duplicados y orden; conciliar un único efecto de negocio. &
+Obligatorio &
+BT, RT-02.07 a RT-02.10 y RT-05.16 a RT-05.23. \\ \hline
+RNF-INT-02 &
+Diseño para degradación elegante: ante caída de pasarelas de pago o servicios externos, el núcleo náutico sigue activo. &
+Caída o lentitud de pago y otros servicios externos. &
+Inyectar falla y comprobar continuidad de procesos críticos, comunicación de degradación y recuperación. &
+Obligatorio &
+BT, RT-02.07 a RT-02.10 y RT-05.16 a RT-05.23. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+
+\clearpage\section*{A2.2.8 Operabilidad y administración funcional}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-08} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.8 Operabilidad y administración funcional}\label{tab:a2-2-08}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Operabilidad y administración funcional — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-OPE-01 &
+Operación continua sin requerir personal de ingeniería informática en la nómina propia del club deportivo. &
+Operación ordinaria y ausencia de personal clave. &
+Ejecutar tareas con roles funcionales y servicio especializado; contrastar responsables y suplencias. &
+Obligatorio &
+C07, cap. 10, RT-06.01 y sec. 16.1, decisión 22; BT, RT-16.01 a RT-16.04. \\ \hline
+RNF-OPE-02 &
+Modificación ordinaria de calendarios, tarifas y listas de verificación realizada por personal de administración vía web. &
+Actualización de calendario, tarifa o lista operativa. &
+Modificar por interfaz con permisos y aprobación; verificar vigencia, auditoría y ausencia de recompilación. &
+Obligatorio &
+C07, cap. 10, RT-06.01 y sec. 16.1, decisión 22; BT, RT-16.01 a RT-16.04. \\ \hline
+\rowcolor{RFclaro}
+RNF-OPE-03 &
+Recuperación automática del componente local tras retorno de energía, con integridad de registros y supervisión de su estado. &
+Interrupción y retorno de energía en componente local. &
+Provocar corte controlado y comprobar arranque, integridad y recuperación sin intervención ordinaria. &
+Obligatorio &
+C07, cap. 10, RT-06.01 y sec. 16.1, decisión 22; BT, RT-16.01 a RT-16.04. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+
+\clearpage\section*{A2.2.9 Conservación y eliminación de información}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-09} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.9 Conservación y eliminación de información}\label{tab:a2-2-09}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Conservación y eliminación de información — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-RET-01 &
+Conservar antecedentes de escuela relativos a menores hasta cumplir 18 años y cinco más, con un mínimo de diez años de retención. &
+Expedientes de alumnos de edades y fechas de ingreso distintas. &
+Calcular fecha de término con ambos límites; impedir eliminación antes del mayor plazo aplicable. &
+Obligatorio &
+C07, cap. 15, RT-05.10; BT, RT-05.07. \\ \hline
+RNF-RET-02 &
+Registros de salida, regreso y antecedentes de zarpe: cinco años según la exigencia del caso. &
+Archivo de movimientos y legajos. &
+Simular vencimientos y comprobar recuperación íntegra de los registros durante cinco años. &
+Obligatorio &
+C07, cap. 15, RT-05.10; BT, RT-05.07. \\ \hline
+\rowcolor{RFclaro}
+RNF-RET-03 &
+Contratos de amarra, custodia y estado de cuenta: seis años según la exigencia del caso. &
+Contratos, custodia y cuentas por período. &
+Comprobar conservación y acceso autorizado durante seis años, con fechas de cómputo documentadas. &
+Obligatorio &
+C07, cap. 15, RT-05.10; BT, RT-05.07. \\ \hline
+RNF-RET-04 &
+Trazabilidad de residuos peligrosos y actas de derrame: seis años según la exigencia del caso. &
+Residuos y actas de derrame. &
+Recuperar origen, entrega y acta durante seis años; verificar integridad documental. &
+Obligatorio &
+C07, cap. 15, RT-05.10; BT, RT-05.07. \\ \hline
+\rowcolor{RFclaro}
+RNF-RET-05 &
+Series temporales continuas de consumo de agua y energía eléctrica conservadas por al menos 5 años para auditoría. &
+Series por amarra usadas para cobro y ambiente. &
+Consultar cinco años de medición y verificar continuidad, atribución y trazabilidad de correcciones. &
+Obligatorio &
+C07, cap. 15, RT-05.10; BT, RT-05.07. \\ \hline
+RNF-RET-06 &
+Conservar inspecciones de cada elemento del tren de fondeo durante su vida útil y cinco años adicionales. &
+Componente de fondeo en uso y retirado. &
+Vincular inspecciones a vida útil y comprobar conservación cinco años después de su término. &
+Obligatorio &
+C07, cap. 15, RT-05.10; BT, RT-05.07. \\ \hline
+\rowcolor{RFclaro}
+RNF-RET-07 &
+Registros de despacho en surtidor de combustible y firmas de recepción retenidos por un mínimo de 5 años. &
+Despachos y recepciones de combustible. &
+Recuperar registros y evidencia asociada durante cinco años. &
+Obligatorio &
+C07, cap. 15, RT-05.10; BT, RT-05.07. \\ \hline
+RNF-RET-08 &
+Conservar videovigilancia durante seis meses y aplicar eliminación segura verificable conforme a la política de retención. &
+Grabaciones del acceso al recinto. &
+Comprobar retención de seis meses y procedimiento verificable de eliminación posterior. &
+Obligatorio &
+C07, cap. 15, RT-05.10; BT, RT-05.07. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+
+\clearpage\section*{A2.2.10 Soporte y servicio gestionado}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-10} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.10 Soporte y servicio gestionado}\label{tab:a2-2-10}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Soporte y servicio gestionado — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-SOP-01 &
+Atención todos los días de 06:00 a 24:00 en temporada alta y de 08:00 a 20:00 el resto del año, en español e inglés. &
+Temporada alta y resto del año, todos los días. &
+Contrastar turnos y llamadas de prueba con cobertura de 06:00–24:00 y 08:00–20:00, respectivamente. &
+Obligatorio &
+C07, cap. 9, RT-21.06 y sec. 16.1, decisión 22; BT, cap. 21. \\ \hline
+RNF-SOP-02 &
+Canal de notificación de emergencia y recepción de alertas de planes vencidos disponibles 24\(\times\)7\(\times\)365. Esta cobertura técnica no constituye un servicio propio de búsqueda y salvamento. &
+Emergencia o plan vencido fuera del horario general. &
+Probar recepción y escalamiento de alertas en horario nocturno, festivo y fin de semana. &
+Obligatorio &
+C07, cap. 9, RT-21.06 y sec. 16.1, decisión 22; BT, cap. 21. \\ \hline
+\rowcolor{RFclaro}
+RNF-SOP-03 &
+Prestación del servicio de operación gestionada, monitoreo y mantenimiento evolutivo durante los 36 meses contractuales. &
+Período completo de operación contractual. &
+Revisar cobertura, recursos, mantenimiento y costo durante 36 meses; verificar reportes mensuales. &
+Obligatorio &
+C07, cap. 9, RT-21.06 y sec. 16.1, decisión 22; BT, cap. 21. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+
+\clearpage\section*{A2.2.11 Disponibilidad}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-11} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.11 Disponibilidad}\label{tab:a2-2-11}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Disponibilidad — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-DISP-01 &
+Disponibilidad mensual de transacción crítica de extremo a extremo \(\geq\)99,9\%; componentes de energía, climatización, red, cómputo, base de datos y portal \(\geq\)99,95\%, con la aplicabilidad física justificada. &
+Mes operacional con ventanas y eventos registrados. &
+Medir transacciones válidas de extremo a extremo; comparar indisponibilidad con el período y las exclusiones permitidas. &
+Obligatorio &
+BT, sec. 7.2 y RT-10.01; BA, art. 78 \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+
+\clearpage\section*{A2.2.12 Migración y calidad de datos}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-12} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.12 Migración y calidad de datos}\label{tab:a2-2-12}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Migración y calidad de datos — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-MIG-01 &
+Migrar todo el padrón de socios/armadores, contratos vigentes con documentos, seis años de pagos y saldos, los expedientes completos de las 14 embarcaciones abandonadas, todo el registro de embarcaciones e invernadas y los últimos tres años de matrícula de escuela. &
+Corte desde el sistema de 2014 y recuperación del histórico. &
+Ejecutar dos ensayos completos en preproducción, conciliar recuentos, saldos y controles, explicar diferencias y probar reversión. &
+Obligatorio &
+C07, RT-05.15; BT, RT-05.11 a RT-05.15 \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+
+\clearpage\section*{A2.2.13 Redes y cobertura operacional}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-13} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.13 Redes y cobertura operacional}\label{tab:a2-2-13}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Redes y cobertura operacional — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-RED-01 &
+Cobertura de datos en cinco pantalanes y varadero verificada en estructura flotante y rango completo de marea; segregación de socios, administración, cámaras y operación; respaldo del enlace principal. &
+Cinco pantalanes y varadero, con marea y flexión reales. &
+Medir cobertura y continuidad, verificar segregación de redes e inducir falla del enlace principal para probar el respaldo. &
+Obligatorio &
+C07, RT-03.24; BT, sec. 3.4 \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+
+\clearpage\section*{A2.2.14 Equipamiento y entorno físico}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-14} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.14 Equipamiento y entorno físico}\label{tab:a2-2-14}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Equipamiento y entorno físico — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-TER-01 &
+Equipos de pantalán y borde acreditados para atmósfera marina y movimiento; equipos en surtidor acreditados para el recinto clasificado. Cliente adquiere hardware y ejecuta obras; proponente especifica, dimensiona, integra y considera costos y reposición. &
+Instalación marina, estructura flotante y zona de combustible. &
+Contrastar fichas y acreditaciones con clasificación del lugar; verificar montaje, protección, compatibilidad y reposición. &
+Obligatorio &
+C07, caps. 10–11, RT-06.01 y RT-17.06; BT, caps. 6 y 8 \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+
+\clearpage\section*{A2.2.15 Ventanas operacionales}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-15} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.15 Ventanas operacionales}\label{tab:a2-2-15}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Ventanas operacionales — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-VEN-01 &
+Respetar congelamiento total 15 de diciembre–15 de marzo, campañas de varadero abril–mayo y septiembre–noviembre, 14 fechas de eventos y suspensión por marejadas; absorber cancelaciones sin desplazar hitos contractuales. &
+Despliegue, mantenimiento, regatas y marejadas. &
+Cruzar calendario y ventanas protegidas; simular cancelación con 24–48 horas de aviso y comprobar capacidad de absorberla. &
+Obligatorio &
+C07, RT-10.05 y sec. 13.3 \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+
+\clearpage\section*{A2.2.16 Capacitación y transferencia}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-16} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.16 Capacitación y transferencia}\label{tab:a2-2-16}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Capacitación y transferencia — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-CAP-01 &
+Formación por perfiles, incorporación recurrente de personal nuevo y monitores, sin depender de un formador interno ni capacitar en el peak congelado. &
+Ingreso de personal estacional y monitores nuevos. &
+Revisar programa por perfil, fechas, impartidor, evaluación y reemplazos; comprobar independencia de un formador interno. &
+Obligatorio &
+C07, RT-22.04; BT, cap. 22 \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+
+\clearpage\section*{A2.2.17 Cumplimiento y evidencia sectorial}
+Las condiciones de esta categoría se verifican con los escenarios y métodos indicados en cada fila.
+La Tabla~\ref{tab:a2-2-17} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-12\tabcolsep-7\arrayrulewidth\relax}
+\begin{longtable}{|L{0.096774\AnchoTablaAnexo}|L{0.298387\AnchoTablaAnexo}|L{0.133065\AnchoTablaAnexo}|L{0.233871\AnchoTablaAnexo}|L{0.076613\AnchoTablaAnexo}|L{0.161290\AnchoTablaAnexo}|}
+\caption{A2.2.17 Cumplimiento y evidencia sectorial}\label{tab:a2-2-17}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Cumplimiento y evidencia sectorial — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición y umbral} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Método de verificación} & \EncabezadoTabla{Carácter} & \EncabezadoTabla{Fuente} \\ \hline
+\endhead
+\multicolumn{6}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RNF-CUMP-01 &
+Identificar los controles aplicables a los ámbitos de C07 cap. 12 y sec. 16.2, con fuente oficial, vigencia, acto o dato afectado y evidencia. La mención de una ley o producto no acredita cumplimiento. &
+Tratamiento de datos, firmas, custodia e interfaces con autoridades. &
+Relacionar cada obligación aplicable con fuente vigente, control, responsable y prueba; verificar el respaldo específico por acto. &
+Obligatorio &
+C07, cap. 12 y sec. 16.2; BT, RT-05.08 y RT-16.17 \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\clearpage\section*{A2.2.18 Condiciones técnicas transversales complementarias}
+Las tablas siguientes preservan las condiciones codificadas de arquitectura,
+datos, infraestructura, seguridad e implementación que sustentan los RNF.
+El identificador mostrado es el RT oficial de BT, no un nuevo requisito del catálogo.
+Cuando se relaciona con una ficha RNF, ambas referencias describen una misma
+obligación o su especialización y no deben sumarse como cumplimiento independiente.
+Las capacidades funcionales comunes se encuentran en A2.1.
+
+El método indicado al inicio de cada categoría se aplica a sus condiciones
+y debe concretarse en pruebas que demuestren cada umbral del enunciado.
+Los requisitos de acreditación o de prestación del servicio deben verificarse
+documentalmente con sus responsables; su inclusión aquí no los convierte en
+funciones del software. No se presume aplicabilidad íntegra de instalaciones
+físicas sin considerar el emplazamiento mínimo y el cliente sin personal TI.
+\subsection*{Arquitectura}
+Método de verificación: Inspeccionar vistas, contratos, decisiones y límites de despliegue; demostrar aislamiento de una falla y verificar idempotencia y reintentos.
+La Tabla~\ref{tab:a2-2-18} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Arquitectura}\label{tab:a2-2-18}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Arquitectura — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-02.01 &
+La solución se organizará en las ocho capas del numeral 2.1. El PROPONENTE presentará el diagrama de la arquitectura lógica identificando cada capa, sus componentes y las interfaces entre ellas. &
+Obligatorio \\ \hline
+BT, RT-02.02 &
+La arquitectura será modular, con límites de contexto explícitos y acoplamiento débil. Se rechazará toda arquitectura monolítica que no permita desplegar de forma independiente sus componentes críticos. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-02.03 &
+La descripción de la arquitectura se ajustará a ISO/IEC/IEEE 42010, con vistas lógica, de procesos, de despliegue, de datos y de seguridad. &
+Obligatorio \\ \hline
+BT, RT-02.04 &
+El PROPONENTE mantendrá un registro de decisiones de arquitectura (ADR) fechado, con la alternativa escogida, las alternativas descartadas y el criterio de decisión. El registro es entregable contractual y se actualizará durante toda la ejecución. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-02.05 &
+La capa de servicios de negocio será sin estado. El estado de sesión y el estado de proceso residirán en almacenes externos con alta disponibilidad. &
+Obligatorio \\ \hline
+BT, RT-02.06 &
+Toda operación de escritura expuesta a reintentos será idempotente, con clave de idempotencia declarada por el cliente y ventana de deduplicación documentada. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-02.07 &
+Los flujos de eventos garantizarán entrega al menos una vez, con deduplicación en el consumidor y orden garantizado dentro de la partición o del agregado cuando el proceso lo exija. &
+Obligatorio \\ \hline
+BT, RT-02.08 &
+La solución implementará patrones de resiliencia demostrables: reintento con retroceso exponencial y variación aleatoria, cortacircuitos, mamparos de aislamiento, límites de tasa y tiempo de espera explícito en toda llamada remota. No se admiten llamadas remotas sin tiempo de espera. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-02.09 &
+La solución degradará de forma elegante: ante la indisponibilidad de un componente no crítico deberá continuar operando en modo reducido, informando la degradación a la persona usuaria, y nunca fallar de forma total. &
+Obligatorio \\ \hline
+BT, RT-02.10 &
+Las capas de aplicación e integración escalarán horizontalmente de forma automática, con umbrales, límites superiores y costo asociado declarados en la oferta. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-02.11 &
+El PROPONENTE declarará explícitamente los puntos únicos de falla que subsistan en su arquitectura y justificará por qué son aceptables. Omitir esta declaración cuando existan puntos únicos de falla se evaluará como observación grave. &
+Obligatorio \\ \hline
+BT, RT-02.12 &
+La solución admitirá su replicación a nuevas unidades, sitios, sucursales o filiales del CLIENTE sin rediseño arquitectónico, mediante parametrización o multi-tenencia. &
+Según caso \\ \hline
+\rowcolor{RFclaro}
+BT, RT-02.13 &
+El PROPONENTE presentará un modelo de dominio del negocio del caso, con las entidades principales, sus relaciones y los eventos de negocio que las modifican. &
+Obligatorio \\ \hline
+BT, RT-02.14 &
+Se valorará la aplicación documentada de patrones de arquitectura evolutiva que permitan sustituir un componente sin reescribir la solución: capa anticorrupción frente a sistemas heredados, estrangulamiento progresivo y abstracción de proveedores. &
+Deseable \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Nube, borde y conectividad}
+Método de verificación: Contrastar topología e inventario con la configuración; probar aislamiento, caída del enlace y recuperación en sitio. Verificar las condiciones del caso para 24/12/8 horas.
+La Tabla~\ref{tab:a2-2-19} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Nube, borde y conectividad}\label{tab:a2-2-19}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Nube, borde y conectividad — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-03.01 &
+El PROPONENTE declarará el proveedor de nube pública, la región primaria y la región secundaria utilizadas. El proveedor deberá contar con presencia de región o zona en Chile o en Sudamérica. &
+Obligatorio \\ \hline
+BT, RT-03.02 &
+Todos los componentes con requisito de alta disponibilidad se desplegarán en al menos dos zonas de disponibilidad. No se aceptará un diseño en una sola zona. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-03.03 &
+La totalidad de la infraestructura se definirá como código, versionada en el repositorio del CLIENTE, revisable y reproducible. No se admite infraestructura creada manualmente por consola, salvo la cuenta raíz inicial, cuya creación deberá documentarse. &
+Obligatorio \\ \hline
+BT, RT-03.04 &
+La red se segmentará por capas, con subredes privadas para aplicación y datos, y exposición pública restringida a la capa de borde. Ningún componente de datos será alcanzable desde Internet. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-03.05 &
+El PROPONENTE privilegiará servicios administrados por sobre servicios autoadministrados cuando ello reduzca el riesgo operacional, y justificará cada excepción. &
+Obligatorio \\ \hline
+BT, RT-03.06 &
+Se aplicarán prácticas FinOps: etiquetado obligatorio de todos los recursos por ambiente, módulo y centro de costo; presupuestos con alertas de desviación; y reporte mensual de consumo desglosado entregado al CLIENTE. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-03.07 &
+El PROPONENTE declarará su estrategia de reversibilidad y de mitigación del bloqueo por proveedor, identificando qué componentes son portables, cuáles no lo son y cuál sería el esfuerzo estimado de una migración. &
+Obligatorio \\ \hline
+BT, RT-03.08 &
+La solución empleará instancias reservadas, planes de ahorro o capacidad comprometida cuando el perfil de carga lo justifique, y lo reflejará en la estructura de costos. &
+Deseable \\ \hline
+\rowcolor{RFclaro}
+BT, RT-03.09 &
+Se valorará el uso de cómputo sin servidor o de contenedores administrados para las cargas de perfil variable, con el análisis comparativo de costo frente a instancias permanentes. &
+Deseable \\ \hline
+BT, RT-03.10 &
+El componente on-premise operará de forma autónoma y degradada ante la pérdida total del enlace con la nube, durante un período mínimo de 24 horas continuas o el mayor que fije el caso. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-03.11 &
+Durante la operación desconectada, la solución continuará registrando las transacciones operacionales críticas de forma local, con integridad garantizada y sin pérdida de datos. &
+Obligatorio \\ \hline
+BT, RT-03.12 &
+Restablecido el enlace, la sincronización será automática, con reconciliación determinista de conflictos, regla de resolución documentada y bitácora auditable de las decisiones aplicadas. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-03.13 &
+El PROPONENTE declarará qué funciones NO estarán disponibles en modo desconectado y qué procedimiento manual las suple. La ausencia de esta declaración se evaluará como observación grave. &
+Obligatorio \\ \hline
+BT, RT-03.14 &
+Los equipos on-premise críticos serán redundantes. El almacenamiento local tolerará la falla de al menos un disco; el PROPONENTE declarará el nivel RAID escogido y lo justificará frente alas alternativas. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-03.15 &
+Los sistemas on-premise se endurecerán conforme a los CIS Benchmarks aplicables, con gestión centralizada de parches y ventana de aplicación acordada con el CLIENTE. &
+Obligatorio \\ \hline
+BT, RT-03.16 &
+El monitoreo del componente on-premise se integrará a la misma plataforma de observabilidad que la nube, con alertamiento unificado. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-03.17 &
+El enlace entre el sitio on-premise y la nube será redundante, con caminos físicos y proveedores distintos, y conmutación automática con tiempo de conmutación declarado. &
+Obligatorio \\ \hline
+BT, RT-03.18 &
+Los dispositivos de borde y de terreno se administrarán de forma remota y centralizada: inventario, configuración, actualización de firmware y de aplicación, bloqueo y borrado remoto. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-03.19 &
+Se valorará el procesamiento en el borde de las cargas que lo admitan —filtrado, agregación previa, inferencia local— reduciendo el volumen transferido y la dependencia del enlace. &
+Deseable \\ \hline
+BT, RT-03.20 &
+El PROPONENTE dimensionará el ancho de banda requerido por sitio, en régimen normal y en peak, y lo justificará con el cálculo de volumen de transacciones y de datos. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-03.21 &
+La conexión entre la red del CLIENTE y la nube se establecerá mediante enlace privado dedicado o red privada virtual con cifrado, según lo que el volumen y la criticidad justifiquen. &
+Obligatorio \\ \hline
+BT, RT-03.22 &
+El acceso remoto de las personas trabajadoras del CLIENTE, incluido el trabajo desde el hogar, se resolverá con acceso a la red de confianza cero, con verificación de postura del dispositivo. No se admite exponer servicios internos directamente a Internet. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-03.23 &
+La red inalámbrica de los sitios operacionales, cuando el caso la requiera, contará con segmentación por tipo de dispositivo, autenticación por certificado o credencial de empresa y cobertura verificada mediante estudio de sitio. &
+Según caso \\ \hline
+BT, RT-03.24 &
+El PROPONENTE declarará la calidad de servicio y la priorización de tráfico aplicada a las transacciones operacionales críticas frente al tráfico administrativo. &
+Deseable \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Ambientes y entrega}
+Método de verificación: Inspeccionar ambientes y ejecutar el pipeline con una falla deliberada de calidad, seguridad y despliegue; comprobar bloqueo y reversión.
+La Tabla~\ref{tab:a2-2-20} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Ambientes y entrega}\label{tab:a2-2-20}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Ambientes y entrega — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-04.01 &
+Los cinco ambientes del numeral 4.1 estarán habilitados y operativos como condición del hito H3 del Formulario E-25. &
+Obligatorio \\ \hline
+BT, RT-04.02 &
+Preproducción será equivalente a producción en topología, versiones de componentes y configuración. Las diferencias que subsistan por costo se declararán expresamente y se justificarán. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-04.03 &
+El código residirá en un sistema de control de versiones con ramas protegidas, revisión obligatoria por pares y prohibición de escritura directa sobre la rama principal. &
+Obligatorio \\ \hline
+BT, RT-04.04 &
+Existirá trazabilidad completa entre requerimiento, incidencia, cambio de código, prueba ejecutada y despliegue realizado. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-04.05 &
+El flujo de integración continua ejecutará, como mínimo: compilación, pruebas unitarias, análisis estático de código, análisis de composición de software, escaneo de secretos y escaneo de imágenes de contenedor, con criterios de bloqueo automático del despliegue. &
+Obligatorio \\ \hline
+BT, RT-04.06 &
+Los despliegues serán automatizados y reproducibles, con reversión automatizada y sin intervención manual en el paso a producción. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-04.07 &
+La estrategia de despliegue permitirá liberar sin interrupción del servicio: azul-verde, canario o despliegue progresivo. Se declarará cuál se emplea y se demostrará en Preproducción antes de cada paso a producción. &
+Obligatorio \\ \hline
+BT, RT-04.08 &
+Toda configuración estará externalizada del artefacto y gestionada por ambiente. Un mismo artefacto deberá poder promoverse de QA a Preproducción y a Producción sin recompilación. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-04.09 &
+Los secretos residirán en un gestor de secretos con rotación automática y auditoría de acceso. Queda prohibida toda credencial embebida en código, imágenes o archivos de configuración. &
+Obligatorio \\ \hline
+BT, RT-04.10 &
+Las migraciones de esquema de base de datos serán versionadas, reversibles y ejecutadas de forma automatizada, con estrategia de compatibilidad que permita convivir dos versiones de la aplicación durante el despliegue. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-04.11 &
+La cobertura de pruebas automatizadas del código de lógica de negocio será de al menos 70 \%, con umbral bloqueante en el flujo de integración continua. &
+Obligatorio \\ \hline
+BT, RT-04.12 &
+El PROPONENTE declarará su frecuencia de despliegue objetivo, su tiempo desde el compromiso de código hasta producción, su tasa de cambios fallidos y su tiempo de restauración, y los medirá durante la Operación. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-04.13 &
+Los ambientes no productivos se apagarán o reducirán fuera del horario de uso, con el ahorro reflejado en la estructura de costos. &
+Deseable \\ \hline
+BT, RT-04.14 &
+Se valorará la existencia de ambientes efímeros por rama o por incidencia, creados y destruidos automáticamente. &
+Deseable \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Datos e interoperabilidad}
+Método de verificación: Revisar modelo y contratos; ejecutar validación de datos, exportación y conciliación con errores, reintentos y terceros indisponibles.
+La Tabla~\ref{tab:a2-2-21} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Datos e interoperabilidad}\label{tab:a2-2-21}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Datos e interoperabilidad — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-05.01 &
+El PROPONENTE entregará el modelo de datos documentado y un diccionario de datos con el nombre, el tipo, el dominio de valores, la obligatoriedad, el propietario y la sensibilidad de cada atributo. &
+Obligatorio \\ \hline
+BT, RT-05.02 &
+El PROPONENTE justificará la selección del paradigma y del motor de persistencia: relacional o no relacional, garantías transaccionales, y la posición escogida entre consistencia y disponibilidad conforme al teorema CAP, para cada dominio de datos. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-05.03 &
+Toda operación de negocio será trazable: la solución permitirá reconstruir quién, qué, cuándo, desde qué dispositivo y con qué valores anteriores y posteriores, para cualquier registro y en cualquier momento del período de retención. &
+Obligatorio \\ \hline
+BT, RT-05.04 &
+La calidad de datos se gestionará conforme a ISO/IEC 25012, con validación en el punto de captura, indicadores de completitud, exactitud y consistencia, y tablero de calidad disponible para el CLIENTE. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-05.05 &
+El almacenamiento transaccional y el analítico estarán separados. Ninguna consulta analítica podrá degradar el desempeño de la operación. &
+Obligatorio \\ \hline
+BT, RT-05.07 &
+El PROPONENTE declarará la política de retención, archivado y eliminación por cada dominio de datos, coherente con la normativa aplicable al caso, e implementará un procedimiento verificable de eliminación segura. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-05.08 &
+Los datos personales se tratarán conforme al Artículo 85° de las Bases Administrativas, con seudonimización o cifrado a nivel de campo para las categorías sensibles que el caso identifique. &
+Obligatorio \\ \hline
+BT, RT-05.09 &
+El PROPONENTE presentará una estrategia de gestión de datos maestros que evite la duplicación de entidades compartidas entre módulos y con sistemas externos. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-05.10 &
+Se valorará la implementación de un catálogo de datos con linaje automatizado, que permita rastrear el origen de cada indicador de negocio hasta su fuente. &
+Deseable \\ \hline
+BT, RT-05.11 &
+El PROPONENTE presentará un plan de migración con alcance, origen, volumen, reglas de transformación, criterios de calidad, estrategia de ejecución y plan de reversión. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-05.12 &
+La migración incluirá una etapa de perfilado y saneamiento previo, con informe de los defectos detectados en los datos de origen y la decisión adoptada sobre cada uno. &
+Obligatorio \\ \hline
+BT, RT-05.13 &
+Se ejecutarán al menos dos ensayos completos de migración sobre Preproducción antes de la migración definitiva, con medición del tiempo total y del resultado de la conciliación. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-05.14 &
+La conciliación posterior a la migración será cuantitativa y verificable: recuentos, sumas de control y muestreo dirigido. Toda diferencia deberá quedar explicada. &
+Obligatorio \\ \hline
+BT, RT-05.15 &
+Los datos históricos que no se migren quedarán accesibles en un repositorio de consulta durante el período de retención que fije el caso. &
+Según caso \\ \hline
+\rowcolor{RFclaro}
+BT, RT-05.16 &
+Los servicios síncronos se documentarán en OpenAPI 3.1 y los flujos dirigidos por eventos en AsyncAPI 2.6 o superior. La documentación se generará desde el código y se mantendrá actualizada automáticamente. &
+Obligatorio \\ \hline
+BT, RT-05.17 &
+Los contratos de interfaz se versionarán semánticamente, con compatibilidad hacia atrás y política de obsolescencia con preaviso mínimo de seis meses. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-05.18 &
+La autenticación entre sistemas empleará OAuth 2.1 con credenciales de cliente o autenticación mutua TLS. Queda prohibida la autenticación por clave estática en la ruta de la dirección web. &
+Obligatorio \\ \hline
+BT, RT-05.19 &
+Toda integración registrará la transacción de entrada y de salida, con identificador de correlación común que permita seguir una operación de negocio a través de todos los sistemas involucrados. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-05.20 &
+Las integraciones con sistemas heredados o de terceros se aislarán mediante una capa anticorrupción, de modo que un cambio en el sistema externo no propague su modelo al núcleo de la solución. &
+Obligatorio \\ \hline
+BT, RT-05.21 &
+El PROPONENTE declarará, por cada integración, el modo (síncrono o asíncrono), el volumen esperado, la ventana de disponibilidad del sistema contraparte y el comportamiento de la solución cuando ese sistema no responde. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-05.23 &
+Se emplearán los estándares sectoriales de intercambio que las Bases Técnicas del caso identifiquen. &
+Según caso \\ \hline
+BT, RT-05.24 &
+Se valorará la publicación de un portal de servicios para desarrolladores con documentación navegable, ambiente de pruebas y credenciales de prueba autoservidas. &
+Deseable \\ \hline
+\rowcolor{RFclaro}
+BT, RT-05.29 &
+La latencia máxima entre la ocurrencia de una transacción y su disponibilidad en la capa analítica será la que fije el caso y, en su defecto, no superará las 4 horas. &
+Según caso \\ \hline
+BT, RT-05.30 &
+Se valorará la incorporación de analítica predictiva pertinente al proceso del caso, con el modelo, sus variables, su métrica de desempeño y su plan de reentrenamiento documentados. &
+Deseable \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Emplazamiento físico}
+Método de verificación: Contrastar cada condición con el diseño proporcional, inspección y acreditaciones del gabinete/local. Justificar adaptación por ausencia de sala TI; no marcar todo el capítulo no aplica.
+La Tabla~\ref{tab:a2-2-22} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Emplazamiento físico}\label{tab:a2-2-22}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Emplazamiento físico — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-06.01 &
+El espacio asignado será de uso exclusivo de la solución y estará aislado de otras dependencias del CLIENTE, con acceso independiente. &
+Obligatorio \\ \hline
+BT, RT-06.02 &
+Los muros no estructurales del recinto contarán con blindaje perimetral; el PROPONENTE especificará el material y la resistencia. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-06.03 &
+El PROPONENTE entregará el plano de distribución interna del recinto, con la separación de las zonas de generadores, baterías, climatización, servidores, comunicaciones, trabajo y respaldo. &
+Obligatorio \\ \hline
+BT, RT-06.04 &
+El piso técnico, la canalización, el cableado estructurado y el etiquetado se ejecutarán conforme a norma, con documentación de la certificación de cada enlace. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-06.05 &
+Los racks de servidores serán independientes de los racks de equipos de comunicación. Se declarará la ocupación proyectada de cada rack y su margen de crecimiento. &
+Obligatorio \\ \hline
+BT, RT-06.06 &
+La obra civil de separación de las instalaciones es de cargo del CLIENTE; su especificación técnica y su coordinación son de cargo del PROPONENTE. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-06.07 &
+El suministro eléctrico de los equipos será ininterrumpido, con sistema de alimentación ininterrumpida dimensionado para una autonomía mínima de 30 minutos a plena carga. &
+Obligatorio \\ \hline
+BT, RT-06.08 &
+La capacidad de generación autónoma asegurará un rango mínimo de 24 horas continuas de operación, con estanque de combustible dimensionado y contrato de reabastecimiento declarado. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-06.09 &
+La instalación eléctrica del recinto será independiente de la del resto del edificio y cumplirá la normativa eléctrica chilena vigente, incluida la NCh Elec. 2777 sobre sistemas de puesta a tierra. &
+Obligatorio \\ \hline
+BT, RT-06.10 &
+Se efectuará revisión y medición semestral de las instalaciones eléctricas del recinto, con informe entregable al CLIENTE. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-06.11 &
+El PROPONENTE declarará la carga eléctrica proyectada en kW, el factor de potencia y la eficiencia en el uso de la energía (PUE) estimada del recinto. &
+Obligatorio \\ \hline
+BT, RT-06.12 &
+Se valorará la redundancia de alimentación en configuración 2N o N+1 con doble acometida y transferencia automática. &
+Deseable \\ \hline
+\rowcolor{RFclaro}
+BT, RT-06.13 &
+El recinto contará con climatización de precisión para operación continua, redundante en configuración N+1, con control de temperatura y de humedad relativa dentro de los rangos que recomienda el fabricante del equipamiento. &
+Obligatorio \\ \hline
+BT, RT-06.14 &
+Se monitorearán en línea la temperatura, la humedad y la presencia de agua, con alertamiento integrado a la plataforma de observabilidad. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-06.15 &
+El PROPONENTE declarará la estrategia de contención de pasillo frío o caliente y su efecto en la eficiencia energética. &
+Deseable \\ \hline
+BT, RT-06.16 &
+El recinto contará con detección temprana por aspiración de aire con tecnología láser, tipo AnaLASER o equivalente de prestaciones iguales o superiores. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-06.17 &
+La extinción será automática mediante agente limpio tipo FM-200 o equivalente, con aprobación UL e instalación conforme a norma NFPA. &
+Obligatorio \\ \hline
+BT, RT-06.18 &
+Se proveerá un sistema secundario de extintores portátiles habilitados, con mantención y certificación vigentes. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-06.19 &
+El sistema de detección y extinción se integrará al monitoreo en línea y notificará al NOC y a la contraparte del CLIENTE. &
+Obligatorio \\ \hline
+BT, RT-06.20 &
+El ingreso al recinto se controlará mediante seguridad física y control de acceso biométrico basado principalmente en biometría facial, con AFIS como respaldo. Se admite proponer sistemas de mayor seguridad. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-06.21 &
+Todo ingreso y egreso quedará registrado en una bitácora auditable, con identificación de la persona, fecha, hora y motivo, conservada por el período de retención declarado. &
+Obligatorio \\ \hline
+BT, RT-06.22 &
+Entre el acceso principal y el término del pasillo de la zona de control se dispondrá un espacio para la atención de personas en proceso de enrolamiento. Se evaluará mejor la existencia de una estación de enrolamiento fuera de las instalaciones del recinto técnico. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-06.23 &
+Al término del pasillo se instalará un acceso que impida el paso de más de una persona a la vez, con nueva verificación de identidad previa al ingreso. &
+Obligatorio \\ \hline
+BT, RT-06.24 &
+El recinto contará con videovigilancia y monitoreo IP, con imágenes en línea y disponibles para visualización de al menos los últimos 30 días. Las grabaciones anteriores se respaldarán en un medio secundario recuperable y auditable. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-06.25 &
+El PROPONENTE declarará el procedimiento de acceso de terceros —fabricantes, mantenedores, auditores — con acompañamiento obligatorio y registro. &
+Obligatorio \\ \hline
+BT, RT-06.26 &
+Se habilitará un servicio de custodia de medios de respaldo para el sitio primario, en un medio físico transportable a otro lugar cuando el CLIENTE lo determine. Se admite proponer una solución más segura y eficiente, debidamente justificada. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-06.27 &
+El recinto de custodia cumplirá exigencias de luminosidad, humedad, ventilación y cualquier otro factor que pueda afectar la calidad y la disponibilidad de los medios. &
+Obligatorio \\ \hline
+BT, RT-06.28 &
+Se llevará un inventario de medios con rotación, verificación periódica de legibilidad Y registro de todo movimiento de entrada y de salida. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-06.29 &
+El PROPONENTE habilitará el espacio físico necesario para el personal encargado de la operación y administración de la plataforma, con estaciones de trabajo, telefonía, conexión a Internet y todo elemento que permita realizar la labor en condiciones adecuadas. &
+Obligatorio \\ \hline
+BT, RT-06.30 &
+El espacio de operación estará separado de la sala de equipos y no requerirá el ingreso al recinto técnico para las labores habituales de operación. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-06.31 &
+Las instalaciones sanitarias, las zonas de seguridad ante emergencia y las áreas exteriores existentes en el edificio del CLIENTE podrán utilizarse y no deben implementarse nuevamente. El PROPONENTE declarará de cuáles hará uso. &
+Obligatorio \\ \hline
+BT, RT-06.32 &
+El acceso a las redes de comunicaciones estará provisto a través de rutas físicas distintas, con ingreso al edificio por puntos separados. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-06.33 &
+El PROPONENTE proveerá toda la conectividad, la seguridad y las canalizaciones, cañerías o ductos requeridos para cumplir los niveles de servicio comprometidos. &
+Obligatorio \\ \hline
+BT, RT-06.34 &
+Se privilegiará al PROPONENTE que ofrezca o provea especificaciones nuevas o mejores que las aquí establecidas, debidamente fundamentadas. &
+Deseable \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Recuperación y respaldo}
+Método de verificación: Realizar conmutación y retorno y restaurar una muestra; medir RTO/RPO, integridad, retención y protección de copias frente a credenciales comprometidas.
+La Tabla~\ref{tab:a2-2-23} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Recuperación y respaldo}\label{tab:a2-2-23}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Recuperación y respaldo — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-07.01 &
+El PROPONENTE declarará la modalidad escogida —activo-activo o activo-pasivo— y la justificará frente al costo, al RTO comprometido y a la complejidad operacional que introduce. &
+Obligatorio \\ \hline
+BT, RT-07.02 &
+El sitio secundario estará emplazado a una distancia suficiente del principal para no verse afectado por el mismo evento de fuerza mayor. El PROPONENTE declarará la distancia y el análisis de amenazas comunes considerado. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-07.03 &
+La replicación de datos será continua, con medición y alertamiento del retraso de replicación. &
+Obligatorio \\ \hline
+BT, RT-07.04 &
+El objetivo de tiempo de recuperación (RTO) no superará 4 horas y el objetivo de punto de recuperación (RPO) no superará 15 minutos para los servicios críticos, salvo exigencia superior del caso. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-07.05 &
+El procedimiento de conmutación estará documentado, automatizado en la mayor medida posible y ejecutable por el personal del CLIENTE tras la transferencia de conocimiento. &
+Obligatorio \\ \hline
+BT, RT-07.06 &
+Existirá un procedimiento de retorno al sitio principal igualmente documentado y probado, con reconciliación de los datos generados durante la contingencia. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-07.07 &
+El plan de recuperación ante desastres se probará al menos dos veces al año mediante conmutación real, con informe de resultados, medición del RTO y del RPO efectivamente alcanzados y plan de corrección de las brechas detectadas. &
+Obligatorio \\ \hline
+BT, RT-07.08 &
+Se valorará que la conmutación sea automática ante la detección de indisponibilidad, con criterio de disparo declarado y protección contra conmutación innecesaria. &
+Deseable \\ \hline
+\rowcolor{RFclaro}
+BT, RT-07.09 &
+La política de respaldo seguirá el esquema 3-2-1-1-0: tres copias, en dos medios distintos, una fuera de sitio, una inmutable o fuera de línea y cero errores de verificación de restauración. &
+Obligatorio \\ \hline
+BT, RT-07.10 &
+Los respaldos estarán cifrados en reposo y en tránsito, con clave gestionada de forma independiente de la infraestructura respaldada. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-07.11 &
+Las copias inmutables estarán protegidas contra borrado y contra modificación durante su período de retención, incluso frente a credenciales administrativas comprometidas. &
+Obligatorio \\ \hline
+BT, RT-07.12 &
+Se ejecutará y documentará una prueba de restauración al menos mensual, sobre una muestra representativa, con medición del tiempo efectivo de restauración. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-07.13 &
+El PROPONENTE declarará, por cada dominio de datos, la frecuencia de respaldo, el período de retención y el tiempo estimado de restauración completa. &
+Obligatorio \\ \hline
+BT, RT-07.14 &
+Los respaldos permitirán la restauración granular: un registro, una tabla, un módulo o el sistema completo. &
+Deseable \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Equipamiento}
+Método de verificación: Revisar especificaciones, certificados, garantías, stock y tiempos de reemplazo; probar un dispositivo en cada entorno. La compra corresponde al cliente conforme a C07.
+La Tabla~\ref{tab:a2-2-24} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Equipamiento}\label{tab:a2-2-24}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Equipamiento — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-08.01 &
+El PROPONENTE especificará el equipamiento de cómputo con su marca, modelo de referencia, procesador, memoria, almacenamiento local, interfaces y consumo, junto con el cálculo de dimensionamiento que lo sustenta. &
+Obligatorio \\ \hline
+BT, RT-08.02 &
+El almacenamiento será redundante, con tolerancia declarada a la falla de discos, control de errores y monitoreo predictivo de salud de los medios. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-08.03 &
+Los conmutadores de núcleo, los cortafuegos y los balanceadores de carga estarán en configuración de alta disponibilidad, sin punto único de falla. &
+Obligatorio \\ \hline
+BT, RT-08.04 &
+Todo el equipamiento contará con fuentes de poder redundantes y conexión a circuitos eléctricos distintos. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-08.05 &
+El PROPONENTE declarará el margen de crecimiento del dimensionamiento propuesto, expresado como porcentaje sobre la carga proyectada del caso, y el procedimiento de ampliación. &
+Obligatorio \\ \hline
+BT, RT-08.06 &
+El equipamiento será nuevo, sin uso previo, con garantía de fábrica vigente desde la recepción conforme. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-08.07 &
+El PROPONENTE especificará las estaciones de trabajo requeridas para la operación y la administración de la plataforma, en la cantidad que determine el dimensionamiento del caso, con monitores duales. &
+Obligatorio \\ \hline
+BT, RT-08.08 &
+Los puestos de trabajo cumplirán las condiciones ergonómicas de la NCh 2527 y los equipos contarán con certificación de eficiencia energética. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-08.09 &
+Las estaciones estarán gestionadas de forma centralizada, con cifrado de disco, control de dispositivos extraíbles, antivirus con detección y respuesta y actualización automatizada. &
+Obligatorio \\ \hline
+BT, RT-08.10 &
+El PROPONENTE especificará cada dispositivo de terreno con marca, modelo de referencia, cantidad, características mínimas, accesorios, consumibles y costo unitario estimado, aun cuando su compra sea de cargo del CLIENTE. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-08.11 &
+La especificación considerará las condiciones reales de uso del caso: intemperie, humedad, polvo, vibración, temperatura, uso con guantes, luminosidad y autonomía de batería requerida por turno. &
+Obligatorio \\ \hline
+BT, RT-08.12 &
+Los dispositivos declararán su grado de protección contra polvo y agua y su resistencia a caídas, coherentes con el entorno de operación. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-08.13 &
+El PROPONENTE indicará el ciclo de vida esperado de cada dispositivo, la disponibilidad de repuestos y el plan de reposición durante los 56 meses del Contrato. &
+Obligatorio \\ \hline
+BT, RT-08.14 &
+Los dispositivos se integrarán a la gestión centralizada de flota exigida en RT-03.18. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-08.15 &
+El PROPONENTE proveerá una unidad de cada tipo de dispositivo especificado para pruebas de aceptación por parte del CLIENTE, antes de la compra masiva. &
+Deseable \\ \hline
+BT, RT-08.16 &
+El PROPONENTE presentará el plan de ciclo de vida del equipamiento: recepción, puesta en servicio, mantención, actualización, retiro y disposición final. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-08.17 &
+Todo medio de almacenamiento que salga de servicio será borrado de forma segura y verificable, con certificado de destrucción o de sanitización entregado al CLIENTE. &
+Obligatorio \\ \hline
+BT, RT-08.18 &
+La disposición final de equipamiento electrónico se realizará con gestor autorizado, conforme a la normativa de residuos aplicable, con certificado de disposición. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-08.19 &
+Se valorará una estrategia de reacondicionamiento o de extensión de vida útil que reduzca el impacto ambiental, cuantificada en la propuesta. &
+Deseable \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Desempeño y capacidad}
+Método de verificación: Ejecutar carga, estrés y recuperación sobre la volumetría declarada; conservar curvas, P95 y punto de saturación, con escenario del caso.
+La Tabla~\ref{tab:a2-2-25} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Desempeño y capacidad}\label{tab:a2-2-25}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Desempeño y capacidad — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-09.01 &
+El PROPONENTE presentará el cálculo de capacidad que sustenta su dimensionamiento, con los supuestos de usuarios concurrentes, transacciones por segundo, volumen de datos y crecimiento anual, tomados de la volumetría del caso. &
+Obligatorio \\ \hline
+BT, RT-09.02 &
+La solución soportará la concurrencia y el volumen de transacciones que fije el caso, y mantendrá los umbrales del numeral 9.1 bajo esa carga. &
+Según caso \\ \hline
+\rowcolor{RFclaro}
+BT, RT-09.03 &
+La solución soportará, sin rediseño, un crecimiento de al menos tres veces la volumetría inicial del caso en un horizonte de tres años. &
+Obligatorio \\ \hline
+BT, RT-09.04 &
+El escalamiento de las capas de aplicación e integración será horizontal y automático, con tiempo de reacción declarado y sin pérdida de transacciones en curso. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-09.05 &
+El PROPONENTE identificará el componente que primero se convertirá en cuello de botella al crecer la carga y explicará cómo lo detectará y cómo lo resolverá. &
+Obligatorio \\ \hline
+BT, RT-09.06 &
+Se ejecutarán pruebas de carga sobre Preproducción con un volumen equivalente a 1,5 veces el peak declarado, y pruebas de estrés hasta identificar el punto de quiebre de la solución. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-09.07 &
+El informe de pruebas de carga incluirá la curva de tiempo de respuesta frente a carga, el punto de saturación, el consumo de recursos y el comportamiento durante y después del peak. &
+Obligatorio \\ \hline
+BT, RT-09.08 &
+La solución degradará de forma controlada al superarse la capacidad: encolamiento, limitación de tasa y mensaje explícito a la persona usuaria, nunca error genérico ni pérdida silenciosa de transacciones. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-09.09 &
+Se gestionará la capacidad durante la Operación con proyección trimestral de crecimiento, alertas anticipadas de agotamiento y propuesta de ajuste de dimensionamiento y de costo. &
+Obligatorio \\ \hline
+BT, RT-09.10 &
+Se valorará la existencia de pruebas de carga automatizadas ejecutadas de forma periódica en el flujo de integración continua, con detección de regresiones de desempeño. &
+Deseable \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Disponibilidad y continuidad}
+Método de verificación: Medir la transacción extremo a extremo e inyectar fallas; contrastar planes, mantenimiento y pruebas periódicas con ventanas del caso.
+La Tabla~\ref{tab:a2-2-26} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Disponibilidad y continuidad}\label{tab:a2-2-26}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Disponibilidad y continuidad — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-10.01 &
+La solución alcanzará una disponibilidad mensual mínima de 99,9 \% para los servicios clasificados como críticos, medida sobre la transacción de negocio de extremo a extremo. &
+Obligatorio \\ \hline
+BT, RT-10.02 &
+El PROPONENTE clasificará cada servicio de la solución en crítico, alto, medio o bajo, justificando la clasificación con el impacto operacional de su indisponibilidad, y aplicará a cada uno el nivel de servicio correspondiente del Artículo 78° de las Bases Administrativas. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-10.03 &
+El plan de continuidad del negocio se elaborará conforme a ISO 22301, con análisis de impacto en el negocio, escenarios de contingencia, procedimientos manuales de respaldo y criterios de activación. &
+Obligatorio \\ \hline
+BT, RT-10.04 &
+La continuidad TIC se estructurará conforme a ISO/IEC 27031, articulada con el plan de recuperación ante desastres del Capítulo 7. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-10.05 &
+Los mantenimientos programados se ejecutarán fuera de la ventana operacional crítica que defina el caso, con aviso previo mínimo de diez días hábiles. &
+Según caso \\ \hline
+BT, RT-10.06 &
+La solución permitirá desplegar cambios sin interrupción del servicio. Las ventanas de indisponibilidad programada serán excepcionales y deberán justificarse caso a caso. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-10.07 &
+Se ejecutarán pruebas de resiliencia mediante inyección controlada de fallas —caída de instancia, de zona, de dependencia externa, latencia elevada, saturación de disco— antes de cada paso a producción y al menos una vez por semestre durante la Operación. &
+Obligatorio \\ \hline
+BT, RT-10.08 &
+El PROPONENTE documentará, por cada dependencia externa, el comportamiento de la solución cuando esa dependencia no responde, responde con error o responde con lentitud. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-10.09 &
+Se declarará un presupuesto de error por servicio crítico y su vinculación con el ritmo de despliegue de cambios. &
+Deseable \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Seguridad}
+Método de verificación: Inspeccionar controles y evidencias de configuración; ejecutar pruebas negativas, análisis de vulnerabilidades y respuesta a incidentes; comprobar plazos y documentos exigidos.
+La Tabla~\ref{tab:a2-2-27} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Seguridad}\label{tab:a2-2-27}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Seguridad — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-11.01 &
+La arquitectura de seguridad se basará en el modelo Zero Trust conforme a NIST SP 800-207: verificación explícita de cada solicitud, privilegio mínimo y presunción de compromiso. &
+Obligatorio \\ \hline
+BT, RT-11.02 &
+El PROPONENTE entregará un modelado de amenazas documentado por cada componente y por cada integración externa, con metodología declarada (STRIDE U otra), y lo actualizará ante cada cambio arquitectónico relevante. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-11.03 &
+La información del CLIENTE se clasificará por nivel de sensibilidad, con controles diferenciados por nivel documentados en una matriz. &
+Obligatorio \\ \hline
+BT, RT-11.04 &
+Existirá un programa de gestión de vulnerabilidades con escaneo continuo y plazos máximos de remediación de 7 días corridos para vulnerabilidades críticas, 15 días para altas y 30 días para medias, contados desde su publicación o detección. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-11.05 &
+El PROPONENTE mantendrá una matriz de controles de seguridad trazable a ISO/IEC 27001 e ISO/IEC 27002, indicando el control, su implementación concreta en la solución y la evidencia que lo acredita. &
+Obligatorio \\ \hline
+BT, RT-11.06 &
+Se aplicarán los controles de ISO/IEC 27017 para los servicios en nube y de ISO/IEC 27018 para el tratamiento de datos personales en nube. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-11.07 &
+La publicación de servicios se realizará exclusivamente a través de la capa de borde, con red de distribución de contenidos, cortafuegos de aplicaciones web con reglas gestionadas y personalizadas, y protección contra denegación de servicio distribuida en capas 3, 4 y 7. &
+Obligatorio \\ \hline
+BT, RT-11.08 &
+El cifrado en tránsito empleará TLS 1.3, con prohibición expresa de TLS 1.0 y 1.1, conjuntos de cifrado modernos, HSTS con precarga y gestión automatizada de certificados con rotación y alerta anticipada de vencimiento. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-11.09 &
+La totalidad de los datos en reposo estará cifrada, con claves gestionadas en un servicio de gestión de claves o en un módulo de seguridad de hardware, política de rotación declarada y separación de funciones en la custodia de claves. &
+Obligatorio \\ \hline
+BT, RT-11.10 &
+Los datos de categoría sensible que el caso identifique se cifrarán adicionalmente a nivel de campo, de modo que el acceso a la base de datos no revele su contenido. &
+Según caso \\ \hline
+\rowcolor{RFclaro}
+BT, RT-11.11 &
+La puerta de enlace de servicios aplicará autenticación, autorización, cuotas, límites de tasa, validación de esquema e inspección de carga Útil. &
+Obligatorio \\ \hline
+BT, RT-11.12 &
+Los puntos de entrada públicos contarán con protección contra bots y abuso automatizado, con reto progresivo que no degrade la accesibilidad ni bloquee a personas usuarias legítimas. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-11.13 &
+El PROPONENTE declarará la superficie de exposición completa de la solución: cada nombre de dominio, puerto y servicio alcanzable desde fuera de la red del CLIENTE. &
+Obligatorio \\ \hline
+BT, RT-11.14 &
+Los eventos de seguridad se registrarán de forma centralizada e inalterable, con retención mínima de doce meses en línea y veinticuatro meses adicionales en archivo recuperable. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-11.15 &
+Los eventos se correlacionarán en una plataforma SIEM, con casos de uso de detección definidos específicamente para el proceso de negocio del caso, y no sólo genéricos de infraestructura. &
+Obligatorio \\ \hline
+BT, RT-11.16 &
+Se implementará detección y respuesta en puntos finales y en cargas de trabajo, tanto en nube como on-premise. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-11.17 &
+El PROPONENTE dispondrá de un centro de operaciones de seguridad con cobertura 24x7, propio o subcontratado, y declarará su ubicación, dotación y procedimientos. &
+Obligatorio \\ \hline
+BT, RT-11.18 &
+El plan de respuesta a incidentes de seguridad definirá clasificación, cadena de escalamiento, plazos, responsables y protocolo de comunicación al CLIENTE dentro de las dos horas de detectado un incidente de severidad crítica. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-11.19 &
+Toda brecha de seguridad o de datos personales se notificará al CLIENTE dentro de las 24 horas de su detección, con informe preliminar, y el análisis de causa raíz se entregará dentro de los cinco días hábiles siguientes. &
+Obligatorio \\ \hline
+BT, RT-11.20 &
+Se ejecutarán pruebas de intrusión por un tercero independiente del ADJUDICATARIO, anualmente y antes de cada paso a producción, con entrega íntegra del informe al CLIENTE y plan de remediación con plazos. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-11.21 &
+Se realizarán ejercicios de simulación de incidente con participación del CLIENTE al menos una vez al año durante la Operación. &
+Deseable \\ \hline
+BT, RT-11.22 &
+El flujo de integración continua incorporará análisis estático de código, análisis de composición de software, análisis dinámico y escaneo de imágenes de contenedor, con criterios de bloqueo automático del despliegue ante hallazgos críticos. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-11.23 &
+Cada versión liberada se acompañará de su inventario de componentes de software en formato CycloneDX o SPDX, entregado al CLIENTE. &
+Obligatorio \\ \hline
+BT, RT-11.24 &
+Los artefactos se firmarán y su procedencia se verificará conforme a SLSA nivel 3 0 superior. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-11.25 &
+Queda prohibido el uso de datos productivos reales en ambientes no productivos sin anonimización o seudonimización verificable. &
+Obligatorio \\ \hline
+BT, RT-11.26 &
+El PROPONENTE declarará el proceso de aprobación de nuevas dependencias de terceros, incluyendo criterios de licencia, mantención activa y ausencia de vulnerabilidades conocidas. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-11.27 &
+Las personas desarrolladoras no tendrán acceso interactivo directo al ambiente de producción. Todo acceso excepcional será temporal, aprobado, registrado y con sesión grabada. &
+Obligatorio \\ \hline
+BT, RT-11.28 &
+Se aplicará el marco OWASP SAMM o equivalente para medir y mejorar la madurez del proceso de desarrollo seguro, con evaluación inicial y reevaluación anual. &
+Deseable \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Identidad y acceso}
+Método de verificación: Probar autenticación, elevación, revocación y expiración con perfiles distintos, incluido terreno sin correo personal; comprobar identidad individual y trazas.
+La Tabla~\ref{tab:a2-2-28} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Identidad y acceso}\label{tab:a2-2-28}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Identidad y acceso — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-12.01 &
+La gestión de identidad será centralizada, con federación mediante OpenID Connect y OAuth 2.1, o SAML 2.0 cuando la integración con el CLIENTE lo requiera, e integración con el directorio corporativo del CLIENTE por LDAP o su equivalente en la nube. &
+Obligatorio \\ \hline
+BT, RT-12.02 &
+Existirá inicio de sesión único para todos los módulos de la solución, con cierre de sesión propagado a todos ellos. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-12.03 &
+La autenticación multifactor será obligatoria para personas usuarias administradoras, para todo acceso privilegiado y para todo acceso originado fuera de la red corporativa. &
+Obligatorio \\ \hline
+BT, RT-12.04 &
+Se soportarán factores resistentes a la suplantación de identidad, tipo FIDO2 o claves de acceso, al menos para los perfiles administradores. &
+Deseable \\ \hline
+\rowcolor{RFclaro}
+BT, RT-12.05 &
+El control de acceso será basado en roles, complementado con control basado en atributos donde el proceso lo exija, con matriz de segregación de funciones documentada y verificable. &
+Obligatorio \\ \hline
+BT, RT-12.06 &
+Los accesos privilegiados se gestionarán con elevación temporal a demanda, aprobación previa y grabación de sesión para las operaciones de mayor riesgo. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-12.07 &
+La política de sesión declarará duración máxima, caducidad por inactividad, renovación de la credencial de sesión tras la autenticación, revocación inmediata y control de sesiones concurrentes. &
+Obligatorio \\ \hline
+BT, RT-12.08 &
+Las credenciales de sesión serán firmadas y de vida breve, con credencial de refresco rotatoria. Queda prohibido transportar identificadores de sesión en la ruta de la dirección web. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-12.09 &
+Se registrará auditoría completa del ciclo de vida de la identidad: creación, modificación, elevación, bloqueo y baja de cuentas, con no repudio y retención declarada. &
+Obligatorio \\ \hline
+BT, RT-12.10 &
+El aprovisionamiento y el desaprovisionamiento estarán automatizados y ligados al ciclo de vida laboral, con baja efectiva en un plazo no superior a 24 horas desde la desvinculación. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-12.11 &
+El mecanismo de autenticación se adecuará al perfil operacional real descrito en el caso: entornos de terreno, uso con guantes, baja alfabetización digital, dispositivos compartidos por turno y ausencia de correo electrónico personal. &
+Según caso \\ \hline
+BT, RT-12.12 &
+Las personas usuarias externas del CLIENTE —clientes, proveedores, pacientes, productores, según el caso— dispondrán de un mecanismo de registro, verificación de identidad y recuperación de acceso autoservido y seguro. &
+Según caso \\ \hline
+\rowcolor{RFclaro}
+BT, RT-12.13 &
+El PROPONENTE declarará el procedimiento de acceso de emergencia (cuenta de último recurso), su custodia, su control y su auditoría. &
+Obligatorio \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Usabilidad}
+Método de verificación: Evaluar tareas reales y accesibilidad con usuarios representativos, teclado y condiciones de terreno, conservando evidencia y métricas de error.
+La Tabla~\ref{tab:a2-2-29} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Usabilidad}\label{tab:a2-2-29}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Usabilidad — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-13.01 &
+Todas las interfaces destinadas a personas usuarias cumplirán WCAG 2.2 nivel AA, verificado con herramientas automatizadas y con pruebas manuales, con informe de conformidad entregable. &
+Obligatorio \\ \hline
+BT, RT-13.02 &
+El diseño será responsivo y funcionará correctamente en escritorio, tableta y teléfono, con puntos de quiebre coherentes y adaptación inteligente del contenido, no simple reducción. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-13.03 &
+El PROPONENTE ejecutará investigación con personas usuarias reales del CLIENTE, prototipado y pruebas de usabilidad antes de la construcción definitiva, y documentará los hallazgos y los cambios de diseño que produjeron. &
+Obligatorio \\ \hline
+BT, RT-13.04 &
+Se comprometerán indicadores de usabilidad medibles: tiempo máximo de la transacción operacional crítica, número máximo de pasos, tasa de error tolerada y tiempo de aprendizaje esperado por perfil. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-13.05 &
+Ninguna funcionalidad principal requerirá más de tres interacciones desde la pantalla de inicio del perfil correspondiente. &
+Obligatorio \\ \hline
+BT, RT-13.06 &
+La solución entregará retroalimentación visual clara ante cada acción, manejará los errores de forma comprensible —indicando qué ocurrió y qué hacer— y evitará mensajes técnicos dirigidos a la persona usuaria final. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-13.07 &
+La solución soportará a personas usuarias con baja alfabetización digital: alto contraste, objetivos táctiles de al menos 44 x 44 píxeles, iconografía acompañada de texto, y flujos guiados paso a paso. &
+Obligatorio \\ \hline
+BT, RT-13.08 &
+Cuando el caso lo requiera, las interfaces de terreno operarán con guantes, a la intemperie, con luminosidad variable y sin conexión. &
+Según caso \\ \hline
+\rowcolor{RFclaro}
+BT, RT-13.09 &
+Existirá un sistema de diseño documentado con paleta de colores acotada, jerarquía tipográfica de a lo más dos familias, iconografía coherente, retícula y componentes reutilizables. &
+Obligatorio \\ \hline
+BT, RT-13.10 &
+El PROPONENTE declarará la matriz de navegadores y de versiones soportadas y su política de actualización. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-13.11 &
+La solución será navegable íntegramente por teclado, con orden de foco lógico y atajos para las operaciones frecuentes. &
+Obligatorio \\ \hline
+BT, RT-13.12 &
+Se valorará el soporte de modo oscuro, de personalización de la interfaz por persona usuaria y de múltiples idiomas cuando el caso lo justifique. &
+Deseable \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Observabilidad}
+Método de verificación: Inyectar incidente y seguir la correlación desde el usuario; comprobar alertas, tableros, exportación, protección de datos y análisis de causa.
+La Tabla~\ref{tab:a2-2-30} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Observabilidad}\label{tab:a2-2-30}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Observabilidad — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-14.01 &
+La observabilidad será unificada para nube y on-premise, con métricas, registros y trazas distribuidas correlacionadas por un identificador único de transacción, instrumentadas conforme a OpenTelemetry. &
+Obligatorio \\ \hline
+BT, RT-14.02 &
+El CLIENTE dispondrá de acceso propio y permanente a los tableros operacionales y de negocio, con datos en tiempo real y capacidad de exportación. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-14.03 &
+Los indicadores de nivel de servicio se medirán sobre la experiencia real de la persona usuaria y no sobre pruebas sintéticas, sin perjuicio de que estas se empleen como complemento. &
+Obligatorio \\ \hline
+BT, RT-14.04 &
+El alertamiento se basará en síntomas de negocio y no sólo en umbrales de infraestructura, con supresión de ruido, agrupación, escalamiento automático y turnos de disponibilidad declarados. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-14.05 &
+Existirá un libro de operación y una guía de resolución documentados para cada escenario de falla previsible, con automatización progresiva de las tareas repetitivas. &
+Obligatorio \\ \hline
+BT, RT-14.06 &
+Todo incidente crítico dará lugar a un análisis de causa raíz obligatorio, con informe entregable dentro de cinco días hábiles y seguimiento de las acciones correctivas hasta su cierre. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-14.07 &
+Los registros de la solución no contendrán datos personales sensibles ni credenciales, y su acceso estará controlado y auditado. &
+Obligatorio \\ \hline
+BT, RT-14.08 &
+El PROPONENTE declarará la retención de métricas, registros y trazas, y su costo asociado, distinguiendo el almacenamiento en línea del archivado. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-14.09 &
+Se valorará la detección proactiva de anomalías mediante análisis del comportamiento histórico, con alerta antes de que el incidente afecte a la operación. &
+Deseable \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Sostenibilidad y acreditaciones}
+Método de verificación: Revisar medidas de utilización y consumo y sus reportes; para experiencia o certificaciones, revisar la evidencia institucional vigente.
+La Tabla~\ref{tab:a2-2-31} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Sostenibilidad y acreditaciones}\label{tab:a2-2-31}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Sostenibilidad y acreditaciones — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-15.01 &
+El PROPONENTE dimensionará la infraestructura ajustada a la demanda real, evitando capacidad ociosa permanente, y declarará el factor de utilización proyectado. &
+Obligatorio \\ \hline
+BT, RT-15.02 &
+Los ambientes no productivos se apagarán o reducirán fuera del horario de uso. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-15.03 &
+El PROPONENTE estimará la huella de carbono anual de la operación de la solución y declarará la metodología empleada. &
+Obligatorio \\ \hline
+BT, RT-15.04 &
+Se declarará la eficiencia en el uso de la energía (PUE) del recinto on-premise y la intensidad de carbono de la región de nube escogida. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-15.05 &
+Se valorará la elección de regiones de nube con menor intensidad de carbono cuando la latencia y la regulación lo permitan, con el análisis comparativo correspondiente. &
+Deseable \\ \hline
+BT, RT-15.06 &
+Se valorará la definición de metas de reducción del consumo durante la Operación, con medición y reporte anual. &
+Deseable \\ \hline
+\rowcolor{RFclaro}
+BT, RT-15.07 &
+Las certificaciones se acreditarán con copia del certificado vigente y con el código de verificación del organismo emisor cuando exista. &
+Obligatorio \\ \hline
+BT, RT-15.08 &
+Las personas certificadas formarán parte del equipo efectivamente asignado al PROYECTO, con dedicación declarada. No se aceptará acreditar personal que no participe. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-15.09 &
+El ADJUDICATARIO mantendrá vigentes estas certificaciones durante todo el período contractual y las repondrá ante la salida de una persona certificada, conforme al Artículo 76° de las Bases Administrativas. &
+Obligatorio \\ \hline
+BT, RT-16.05 &
+Existirá un ambiente de simulación que permita probar el efecto de un cambio de parámetro antes de aplicarlo a producción. &
+Deseable \\ \hline
+\rowcolor{RFclaro}
+BT, RT-16.14 &
+El motor de reglas permitirá definir condiciones de negocio evaluables sin recompilación, con trazabilidad de qué regla se aplicó a cada transacción. &
+Deseable \\ \hline
+BT, RT-16.24 &
+El PROPONENTE declarará el proveedor de cada canal, su costo unitario, su volumen proyectado y el tratamiento del costo variable en la Oferta Económica. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-16.26 &
+Se valorará la integración con canales conversacionales que permitan a la persona usuaria responder y ejecutar acciones desde el propio canal. &
+Deseable \\ \hline
+BT, RT-16.33 &
+El PROPONENTE estimará la reducción esperada del volumen de atención asistida por efecto de la autoatención y comprometerá el indicador. &
+Obligatorio \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Movilidad}
+Método de verificación: Ejecutar los cinco perfiles en dispositivos y versiones declaradas, con pérdida de cobertura y periféricos reales, y medir batería y datos por turno.
+La Tabla~\ref{tab:a2-2-32} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Movilidad}\label{tab:a2-2-32}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Movilidad — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-17.01 &
+La solución proveerá una aplicación móvil para los perfiles operacionales que el caso identifique, con funcionamiento sin conexión y sincronización diferida cuando la operación en terreno lo requiera. &
+Según caso \\ \hline
+BT, RT-17.02 &
+El PROPONENTE declarará si la aplicación es nativa, híbrida o web progresiva, y justificará la decisión frente al requisito de operación desconectada, al acceso a periféricos y al costo de mantención. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-17.03 &
+La aplicación soportará las versiones de sistema operativo móvil vigentes y las dos anteriores, con política de actualización declarada. &
+Obligatorio \\ \hline
+BT, RT-17.04 &
+La aplicación se distribuirá por las tiendas oficiales o mediante gestión de flota corporativa, con firma de la aplicación y verificación de integridad. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-17.05 &
+La información almacenada en el dispositivo estará cifrada, con borrado remoto y bloqueo ante pérdida o desvinculación de la persona usuaria. &
+Obligatorio \\ \hline
+BT, RT-17.06 &
+La aplicación integrará los periféricos que el caso requiera: cámara, lector de códigos, NFC, GPS, impresora de etiquetas, balanza o báscula. &
+Según caso \\ \hline
+\rowcolor{RFclaro}
+BT, RT-17.07 &
+El consumo de datos móviles y de batería se optimizará y se declarará el consumo estimado por turno de trabajo. &
+Obligatorio \\ \hline
+BT, RT-17.08 &
+Se valorará la disponibilidad de una versión de la interfaz para dispositivos de bajo costo o de generaciones anteriores, ampliando la cobertura de personas usuarias. &
+Deseable \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Pruebas y puesta en servicio}
+Método de verificación: Revisar criterios de entrada/salida y ensayar migración, marcha blanca y reversión con conciliación y evidencias de aceptación.
+La Tabla~\ref{tab:a2-2-33} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Pruebas y puesta en servicio}\label{tab:a2-2-33}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Pruebas y puesta en servicio — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-20.01 &
+El PROPONENTE presentará un plan de implantación por sitio y por perfil, coherente con el cronograma obligatorio del Artículo 17° de las Bases Administrativas. &
+Obligatorio \\ \hline
+BT, RT-20.02 &
+La estrategia de paso a producción será gradual y reversible. Se declarará el criterio de avance entre olas y el procedimiento de reversión, con su tiempo de ejecución. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-20.03 &
+Durante la marcha blanca, la solución convivirá con la operación vigente del CLIENTE, con conciliación diaria y sin doble digitación no declarada. &
+Obligatorio \\ \hline
+BT, RT-20.04 &
+El PROPONENTE definirá los indicadores diarios que se medirán durante la marcha blanca y sus umbrales de avance, conforme al Artículo 17.3 de las Bases Administrativas. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-20.05 &
+Se dispondrá de acompañamiento en terreno durante las primeras semanas de cada ola, con dotación declarada y decreciente según la curva de adopción. &
+Obligatorio \\ \hline
+BT, RT-20.06 &
+Se establecerá un período de estabilización con atención reforzada tras cada paso a producción, con dotación y duración declaradas y sin costo adicional. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-20.07 &
+Existirá una definición de terminado acordada con el CLIENTE, aplicable a cada entregable, que incluya código, pruebas, documentación, seguridad y despliegue. &
+Obligatorio \\ \hline
+BT, RT-20.08 &
+El protocolo de aceptación de cada hito se formalizará conforme al Formulario T-17, con criterios objetivos y verificables. &
+Obligatorio \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Operación y soporte}
+Método de verificación: Contrastar dotación y turnos con demanda, probar tickets y escalamiento, medir indicadores y revisar costos, traslados y mantenimiento.
+La Tabla~\ref{tab:a2-2-34} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Operación y soporte}\label{tab:a2-2-34}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Operación y soporte — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-21.01 &
+El ADJUDICATARIO dispondrá de un centro de operaciones de red con cobertura 24x7x365, propio o subcontratado, y declarará su ubicación, dotación por turno y procedimientos. &
+Obligatorio \\ \hline
+BT, RT-21.02 &
+Se designará un gerente de servicio dedicado como contraparte permanente del CLIENTE durante la fase de Operación. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-21.03 &
+El equipo de operación contará con especialistas por tecnología, nominados y con dedicación declarada. &
+Obligatorio \\ \hline
+BT, RT-21.04 &
+Los procedimientos de operación estarán documentados y serán ejecutables por el personal del CLIENTE tras la transferencia de conocimiento. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-21.05 &
+El PROPONENTE dispondrá de un centro de atención adecuado para soportar integralmente las consultas, propio o subcontratado con un operador de nivel acreditado. &
+Obligatorio \\ \hline
+BT, RT-21.06 &
+El centro de atención cumplirá un tiempo de atención al usuario final de 80 \% antes de 20 segundos y una resolución al primer contacto de al menos 70 \%. La tasa de abandono no superará el 5 \%. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-21.07 &
+El horario mínimo de atención será de 8:00 a 20:00 en días hábiles, ampliado a 24x7 para los incidentes de severidad crítica y para la ventana operacional que defina el caso. &
+Según caso \\ \hline
+BT, RT-21.08 &
+La atención cubrirá orientación funcional de distintos grados de complejidad, desde preguntas simples hasta situaciones complejas, y las preguntas técnicas más frecuentes sobre la aplicación y su entorno de uso. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-21.09 &
+Se mantendrá un registro histórico de las actividades de soporte que permita monitorear y gestionar los principales requerimientos, con análisis de tendencia mensual. &
+Obligatorio \\ \hline
+BT, RT-21.10 &
+Existirá un proceso de aprendizaje del centro de soporte que acumule conocimiento sobre las complejidades de la operación y las necesidades de las personas usuarias, reflejado en la base de conocimiento. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-21.11 &
+Se proveerán servicios de capacitación en línea en modalidad de autoformación, con registro de avance para efectos de monitoreo. &
+Obligatorio \\ \hline
+BT, RT-21.12 &
+Se habilitarán espacios de interacción entre las entidades y personas usuarias del sistema, que permitan compartir experiencias de uso. &
+Deseable \\ \hline
+\rowcolor{RFclaro}
+BT, RT-21.13 &
+Los indicadores clave del proceso de soporte estarán abiertos al CLIENTE, y los indicadores específicos serán accesibles según nivel de autorización. &
+Obligatorio \\ \hline
+BT, RT-21.14 &
+El PROPONENTE dimensionará la dotación del centro de atención con fundamento cuantitativo, empleando teoría de colas o el modelo Erlang C, a partir del volumen de contactos proyectado del caso. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-21.15 &
+Existirá un canal único de registro de incidentes y solicitudes, con número de ticket, clasificación por severidad y seguimiento del ciclo de vida completo hasta el cierre conforme. &
+Obligatorio \\ \hline
+BT, RT-21.16 &
+Cuando el caso comprenda sitios alejados, los especialistas de niveles 2 y 3 deberán trasladarse cuando la resolución lo requiera, por el medio más rápido disponible y con disponibilidad de tiempo suficiente, sin alterar la atención normal del resto de los sitios. El costo del traslado está incluido en la oferta. &
+Según caso \\ \hline
+\rowcolor{RFclaro}
+BT, RT-21.17 &
+El cierre de un ticket requerirá confirmación de la persona usuaria o transcurso del plazo de confirmación automática declarado. &
+Obligatorio \\ \hline
+BT, RT-21.18 &
+El ADJUDICATARIO reportará mensualmente el cumplimiento de los niveles de servicio de atención, con el detalle por severidad y el análisis de los incumplimientos. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-21.19 &
+El PROPONENTE declarará el tamaño de la bolsa anual de horas de mantención evolutiva, su composición por perfil y el procedimiento de solicitud, estimación, aprobación y liquidación. &
+Obligatorio \\ \hline
+BT, RT-21.20 &
+La mantención evolutiva se someterá al mismo estándar de calidad, pruebas y seguridad que el desarrollo original. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-21.21 &
+El PROPONENTE mantendrá un registro de deuda técnica cuantificado y destinará una fracción declarada de la capacidad de la Operación a reducirla. &
+Obligatorio \\ \hline
+BT, RT-21.22 &
+Las actualizaciones de versión de los componentes de base se planificarán anualmente, con ventana acordada y plan de reversión. &
+Obligatorio \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Capacitación y transferencia}
+Método de verificación: Revisar plan por perfiles, materiales, evaluaciones y cobertura de personal nuevo; comprobar fechas y responsabilidades adaptadas al cliente sin TI.
+La Tabla~\ref{tab:a2-2-35} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.098425\AnchoTablaAnexo}|L{0.814961\AnchoTablaAnexo}|L{0.086614\AnchoTablaAnexo}|}
+\caption{Capacitación y transferencia}\label{tab:a2-2-35}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Capacitación y transferencia — continuación}}\\
+\hline
+\EncabezadoTabla{Fuente e ID} & \EncabezadoTabla{Condición complementaria} & \EncabezadoTabla{Carácter} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+BT, RT-22.01 &
+El plan de capacitación se estructurará por perfil: personas usuarias finales, usuarias avanzadas, administradoras, equipo técnico y soporte de niveles 1 y 2. &
+Obligatorio \\ \hline
+BT, RT-22.02 &
+Las modalidades incluirán capacitación presencial en cada sitio de operación, sesiones en línea sincrónicas, autoformación y acompañamiento en puesto de trabajo durante la marcha blanca. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-22.03 &
+Todo el material de capacitación se entregará en español, en formato editable y de propiedad del CLIENTE: manuales por perfil, guías rápidas, preguntas frecuentes, videos tutoriales y base de conocimiento consultable. &
+Obligatorio \\ \hline
+BT, RT-22.04 &
+La capacitación no podrá afectar la operación del CLIENTE: se programará por turnos y en horarios acordados, considerando la estacionalidad y la ventana operacional del caso. &
+Según caso \\ \hline
+\rowcolor{RFclaro}
+BT, RT-22.05 &
+Las personas usuarias administradoras y el equipo técnico del CLIENTE serán evaluados y certificados como condición para el cierre de cada marcha blanca. &
+Obligatorio \\ \hline
+BT, RT-22.06 &
+Durante la Operación se ejecutarán al menos dos jornadas anuales de actualización y se capacitará al personal nuevo del CLIENTE sin costo adicional. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-22.07 &
+El ADJUDICATARIO proveerá acompañamiento y mentoría al equipo técnico del CLIENTE durante al menos seis meses posteriores al paso a producción de la Etapa 2. &
+Obligatorio \\ \hline
+BT, RT-22.08 &
+La base de conocimiento será mantenida y actualizada durante todo el Contrato, con métricas de uso y de utilidad percibida. &
+Obligatorio \\ \hline
+\rowcolor{RFclaro}
+BT, RT-22.09 &
+Se valorará la existencia de un ambiente permanente de entrenamiento, con datos sintéticos, disponible para la práctica sin riesgo. &
+Deseable \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\clearpage\section*{A2.2.19 Condiciones específicas de cierre}
+Los pendientes siguientes distinguen información documental faltante de decisiones de diseño que aún requieren resolución. Deben cerrarse antes de presentar la oferta.
+La Tabla~\ref{tab:a2-2-36} detalla las condiciones y los métodos de verificación.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-6\tabcolsep-4\arrayrulewidth\relax}
+\begin{longtable}{|L{0.136187\AnchoTablaAnexo}|L{0.186770\AnchoTablaAnexo}|L{0.677043\AnchoTablaAnexo}|}
+\caption{A2.2.19 Condiciones específicas de cierre}\label{tab:a2-2-36}\\
+\hline
+\EncabezadoTabla{Materia} & \EncabezadoTabla{Referencias} & \EncabezadoTabla{Condición de cierre} \\ \hline
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Condiciones de cierre — continuación}}\\
+\hline
+\EncabezadoTabla{Materia} & \EncabezadoTabla{Referencias} & \EncabezadoTabla{Condición de cierre} \\ \hline
+\endhead
+\multicolumn{3}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Cierre de medición &
+RNF-DES-09 y 11 &
+FALTA DEFINICIÓN: protocolo operacional y medible de tiempo real, incluyendo consistencia entre escuela y portería y confirmación contable. No sustituirlo por actualizaciones cada cinco minutos ni por copias obsoletas. \\ \hline
+Carga y crecimiento &
+RNF-DES-12; RNF-ESCAL-01 y 02 &
+Evidencia por incorporar: volumetría de transacciones, concurrencia y pruebas. El escenario de 90 zarpes no equivale a 90 transacciones. Los 760 puntos suponen dos mediciones por cada una de 380 amarras; documentar el esquema efectivo. \\ \hline
+\rowcolor{RFclaro}
+Desconexión &
+RNF-CONT-01 a 06; RNF-DES-11 &
+Evidencia por incorporar: funciones y datos locales, reglas de conflicto por entidad, capacidad de almacenamiento y energía. La batería no acredita autonomía funcional. Distinguir pérdida de WAN de pérdida de toda comunicación local y demostrar el procedimiento seguro de escuela. \\ \hline
+Cifrado e identidad &
+RNF-SEG-01 a 07 &
+Evidencia por incorporar: política de acceso, solución criptográfica, gestión de claves y consentimiento. Eliminar o enmascarar datos en registros técnicos no debe destruir la identidad necesaria en la auditoría de negocio protegida. \\ \hline
+\rowcolor{RFclaro}
+Retención &
+RNF-RET-01 a 08 &
+Evidencia por incorporar: instante de inicio por dominio, calendario de archivo y eliminación y tratamiento de conservación excepcional aplicable. Para menores se satisfacen ambos límites: edad de 23 años y mínimo de diez años de retención. \\ \hline
+Recuperación y disponibilidad &
+RNF-DISP-01; BT RT-07.01 a 07.14 &
+Evidencia por incorporar: topología, amenazas comunes, objetivos por servicio, conmutación, retorno y pruebas. Diferenciar RPO de recuperación ante desastre de la exigencia de no perder registros capturados durante operación desconectada. \\ \hline
+\rowcolor{RFclaro}
+Interfaces y periféricos &
+RNF-INT-01 y 02; RNF-RED-01; RNF-TER-01 &
+Evidencia por incorporar: contratos de interfaces disponibles y acreditaciones del equipamiento. C07 RT-05.23 exige verificar canales de autoridad, formatos sanitarios, indicadores ambientales y mensajería de baja capacidad; RT-17.06 fija periféricos. No asumir APIs ni compatibilidad de proveedores. \\ \hline
+Servicio y capacitación &
+RNF-OPE; RNF-SOP; RNF-CAP-01 &
+Evidencia por incorporar: dedicaciones, suplencias, costos, traslado a boyas, dotación bilingüe y capacitación antes de tareas críticas. La transferencia técnica se dirige al servicio especializado, conforme a la condición del cliente sin personal propio de TI. Resolver incorporación de personal durante ventanas protegidas. \\ \hline
+\rowcolor{RFclaro}
+Cumplimiento sectorial &
+RNF-CUMP-01 &
+Evidencia por incorporar: investigación vigente y evidencia por control sobre datos, firma, zarpe, residuos, combustible, custodia y traspaso de consumos. No se atribuye validez jurídica general a una modalidad de firma ni se considera suficiente citar una norma. \\ \hline
+Condiciones dependientes del diseño &
+BT, cap. 18; C07 RT-15.02 &
+Evidencia por incorporar: determinar incorporación de IA y sus controles, y acreditar experiencia sectorial y servicio gestionado. Gobierno del proyecto, documentación corporativa, video, prototipo e innovaciones conservan sus propios entregables; no se declaran satisfechos mediante este catálogo. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los umbrales y los métodos de verificación se aplican junto con la condición y el carácter indicados en cada fila.
+\subsection*{Parámetros particulares y alcance de la verificación}
+Las condiciones de C07 complementan las de BT. Los perfiles móviles,
+portales, firmas, notificaciones e integración de periféricos se especifican
+funcionalmente en A2.1 y se verifican con los RNF de este catálogo.
+Las ventanas protegidas, compras y obras del cliente, personal estacional
+y accesibilidad marítima al campo de boyas deben quedar coordinadas con
+el cronograma y el modelo de operación.
+
+El registro normativo complementario permite localizar obligaciones codificadas;
+no reemplaza la revisión de las tablas de mínimos técnicos, certificaciones,
+niveles de servicio ni disposiciones no codificadas de las bases.
+En particular, la matriz de trazabilidad debe enlazar BT, numerales 7.2,
+8.1--8.4, 11.5 y 15.2--15.3, con la evidencia técnica o institucional correspondiente.

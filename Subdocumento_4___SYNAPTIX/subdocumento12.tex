@@ -1,0 +1,17 @@
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
+\input{componentes/cierre.tex}
+% Las figuras de arquitectura se mantienen en estilo/ por la ruta de carga vigente
+% del proyecto; figuras/ continúa disponible para diagramas TikZ y futuras imágenes.
+\graphicspath{{figuras/}{estilo/}}
+
+\begin{document}
+\pagenumbering{arabic}
+\PortadaPropuesta{4}{Arquitectura lógica y física de la solución}
+\tableofcontents
+\clearpage
+\input{capitulo04.tex}
+\CierreSubdocumento
+\end{document}

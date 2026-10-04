@@ -1,0 +1,99 @@
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
+\input{componentes/cierre.tex}
+\graphicspath{{figuras/}}
+
+% Se reutilizan identidad, fuentes, encabezados y portada del proyecto.
+% La columna L ya está definida por propuesta-tecnica.sty: no redefinirla.
+\colorlet{RFazul}{SynNavy}
+\colorlet{RFclaro}{SynSurface}
+\colorlet{RFlinea}{SynLine}
+\arrayrulecolor{RFlinea}
+\setlength{\tabcolsep}{3pt}
+\setlength{\LTpre}{5pt}
+\setlength{\LTpost}{8pt}
+\setlength{\emergencystretch}{2em}
+\setcounter{tocdepth}{3}
+
+\newlength{\AnchoTablaAnexo}
+
+% El primer título de cada archivo ya identifica el anexo.
+% Los títulos posteriores se incorporan al índice sin duplicar ese primero.
+\newif\ifPrimerTituloAnexo
+\NewDocumentCommand{\IncluirAnexo}{m m m}{%
+  \clearpage
+  \phantomsection
+  \addcontentsline{toc}{chapter}{#1. #2}%
+  \markboth{#1}{#1}%
+  \begingroup
+    \PrimerTituloAnexotrue
+    \let\SeccionAnexoOriginal\section
+    \RenewDocumentCommand{\section}{s o m}{%
+      \IfBooleanTF{##1}{%
+        \SeccionAnexoOriginal*{##3}%
+        \ifPrimerTituloAnexo
+          \PrimerTituloAnexofalse
+        \else
+          \phantomsection\addcontentsline{toc}{section}{##3}%
+        \fi
+      }{%
+        \IfNoValueTF{##2}
+          {\SeccionAnexoOriginal{##3}}
+          {\SeccionAnexoOriginal[##2]{##3}}%
+      }%
+    }%
+    \let\SubseccionAnexoOriginal\subsection
+    \RenewDocumentCommand{\subsection}{s o m}{%
+      \IfBooleanTF{##1}{%
+        \SubseccionAnexoOriginal*{##3}%
+        \phantomsection\addcontentsline{toc}{subsection}{##3}%
+      }{%
+        \IfNoValueTF{##2}
+          {\SubseccionAnexoOriginal{##3}}
+          {\SubseccionAnexoOriginal[##2]{##3}}%
+      }%
+    }%
+    \input{#3}%
+  \endgroup
+  \clearpage
+}
+
+\begin{document}
+\pagenumbering{arabic}
+\setcounter{chapter}{2}
+\renewcommand{\thetable}{A2.\arabic{table}}
+
+\PortadaPropuesta{2 — ANEXOS}{Comprensión del problema y de la necesidad}
+\markboth{Índice general}{Índice general}
+\tableofcontents
+
+\chapter*{Presentación de los anexos}
+\addcontentsline{toc}{chapter}{Presentación de los anexos}
+Synaptix reúne los catálogos funcionales y no funcionales, los supuestos,
+las exclusiones y restricciones, las reglas de negocio, las consultas
+pendientes y el respaldo del dimensionamiento. Los identificadores de cada
+registro mantienen la trazabilidad con el SD2 y con el diseño y las pruebas.
+
+Las funciones, restricciones y magnitudes se contrastan con las Bases Técnicas
+del Caso 07 \parencite[caps.~10--15, pp.~26--36]{pucv-caso07-2026}.
+La interpretación de umbrales y su medición sigue las Bases Técnicas
+Transversales \parencite[secc.~1.7, p.~5; cap.~9, p.~21]{pucv-bases-transversales-2026}.
+La presentación conserva la identificación, la foliación y los campos de firma
+exigidos por las Bases Administrativas \parencite[art.~40, p.~26]{pucv-bases-administrativas-2026}.
+
+\begin{paginaHorizontalSynaptix}
+\IncluirAnexo{A2.1}{Catálogo de requerimientos funcionales}{anexos/anexo2_1.tex}
+\IncluirAnexo{A2.2}{Catálogo de requerimientos no funcionales}{anexos/anexo2_2.tex}
+\IncluirAnexo{A2.3}{Registro de supuestos}{anexos/anexo2_3.tex}
+\IncluirAnexo{A2.4}{Exclusiones y restricciones}{anexos/anexo2_4.tex}
+\IncluirAnexo{A2.5}{Reglas de negocio}{anexos/anexo2_5.tex}
+\IncluirAnexo{A2.6}{Vacíos y consultas pendientes}{anexos/anexo2_6.tex}
+\IncluirAnexo{A2.7}{Respaldo del dimensionamiento}{anexos/anexo2_7.tex}
+
+\end{paginaHorizontalSynaptix}
+
+\CierreSubdocumento
+
+\end{document}

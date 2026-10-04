@@ -1,0 +1,151 @@
+\NewDocumentCommand{\FilaDeclaracionIA}{m m m m m m}{%
+  #1 & #2 & #3 & #4 & #5 & #6 \\
+  \hline
+}
+
+\providecommand{\DeclaracionesIA}{%
+    \FilaDeclaracionIA
+    {2.1}
+    {OpenAI Codex}
+    {Redacción del resumen ejecutivo del problema}
+    {Alto}
+    {Ninguno}
+    {Ignacio Silva: Revisión y reescritura parcial del texto generado}%
+
+    \FilaDeclaracionIA
+    {2.2}
+    {OpenAI Codex}
+    {Redacción de la comprensión del problema y de la necesidad del cliente}
+    {Alto}
+    {Bajo}
+    {Ignacio Silva: Revisión y reescritura parcial de texto generado, diagrama diseñado en Draw.io manualmente}%
+
+    \FilaDeclaracionIA
+    {2.3}
+    {OpenAI Codex}
+    {Redacción del dimensionamiento del problema del caso}
+    {Alto}
+    {Ninguno}
+    {Ignacio Silva: Revisión y reescritura parcial de texto generado}%
+
+    \FilaDeclaracionIA
+    {2.4}
+    {OpenAI Codex}
+    {Redacción e identificación de actores, sus relaciones y responsabilidades.}
+    {Alto}
+    {Bajo}
+    {Ignacio Silva: Revisión y reescritura parcial del texto generado, diagramas diseñados en Draw.io}%
+
+    \FilaDeclaracionIA
+    {2.5}
+    {OpenAI Codex}
+    {Redacción del resumen de los requerimientos, supuestos, exclusiones y restricciones}
+    {Alto}
+    {Ninguno}
+    {Davor Serey: Revisión y reescritura parcial del texto generado}
+
+    \FilaDeclaracionIA
+    {Anexo A2.1}
+    {OpenAI Codex}
+    {Elaboración y revisión del catálogo de requerimientos funcionales y su trazabilidad al caso}
+    {Alto}
+    {Ninguno}
+    {Ignacio Silva: contraste con las bases y revisión de coherencia del catálogo de requerimientos funcionales}
+
+    \FilaDeclaracionIA
+    {Anexo A2.2}
+    {OpenAI Codex}
+    {Elaboración y revisión del catálogo de requerimientos no funcionales, umbrales y métodos de verificación}
+    {Alto}
+    {Ninguno}
+    {Ignacio Silva: contraste con las bases y revisión de coherencia de los requerimientos no funcionales, sus umbrales y métodos de verificación}
+
+    \FilaDeclaracionIA
+    {Anexo A2.3}
+    {OpenAI Codex}
+    {Formulación y revisión del registro de supuestos y decisiones, sus fundamentos, impactos y vínculos; ajuste de las remisiones al documento del Caso 07}
+    {Alto}
+    {Ninguno}
+    {Ignacio Silva: contraste con las bases y revisión de coherencia entre supuestos, decisiones y requerimientos relacionados. José Lara: criterios de consistencia de las remisiones al Caso 07. Validación del ajuste a cargo de Ignacio Silva antes de la emisión.}
+
+    \FilaDeclaracionIA
+    {Anexo A2.4}
+    {OpenAI Codex}
+    {Elaboración y revisión del registro de exclusiones y restricciones y sus consecuencias; ajuste de la remisión al documento del Caso 07}
+    {Alto}
+    {Ninguno}
+    {Ignacio Silva: contraste con las bases y revisión de coherencia de las exclusiones, restricciones y obligaciones. José Lara: criterios de consistencia de las remisiones al Caso 07. Validación del ajuste a cargo de Ignacio Silva antes de la emisión.}
+
+    \FilaDeclaracionIA
+    {Anexo A2.5}
+    {OpenAI Codex}
+    {Formulación y revisión de reglas de negocio y sus relaciones con requerimientos y decisiones}
+    {Alto}
+    {Ninguno}
+    {Davor Serey: revisión de las reglas de negocio y su coherencia con los requerimientos y decisiones relacionados}
+
+    \FilaDeclaracionIA
+    {Anexo A2.6}
+    {OpenAI Codex}
+    {Identificación y organización de vacíos, consultas y definiciones pendientes; corrección documental de VAC-15 conforme al documento del Caso 07}
+    {Alto}
+    {Ninguno}
+    {Davor Serey: revisión de los vacíos y consultas vinculados con las reglas de negocio y los antecedentes necesarios para los cálculos. José Lara: criterios de concordancia del recuento ambiental. Validación del ajuste a cargo de Davor Serey antes de la emisión.}
+
+    \FilaDeclaracionIA
+    {Anexo A2.7}
+    {OpenAI Codex}
+    {Organización de la volumetría, cálculos derivados y métodos de estimación; concordancia del recuento ambiental con la corrección de VAC-15}
+    {Alto}
+    {Ninguno}
+    {Davor Serey: revisión de los cálculos derivados, sus unidades y supuestos, y de su distinción respecto de las estimaciones pendientes. José Lara: criterios de concordancia del recuento ambiental. Validación del ajuste a cargo de Davor Serey antes de la emisión.}
+  \FilaDeclaracionIA{Formato y registro de IA}{OpenAI Codex}{Normalización de portada, índice, metadatos, firmas, foliación, tablas y cierre; ajuste de anchos y estilo de fuentes; concordancia del registro de IA y presentación de los anexos}{Bajo}{Ninguno}{José Lara, Líder de Operación / SRE: control editorial antes de la emisión.}
+}
+
+\newenvironment{declaracionia}{%
+  \begingroup
+  \setlength{\tabcolsep}{3pt}
+  \begin{longtable}{L{\dimexpr.105\textwidth-2\tabcolsep\relax}L{\dimexpr.14\textwidth-2\tabcolsep\relax}L{\dimexpr.21\textwidth-2\tabcolsep\relax}L{\dimexpr.115\textwidth-2\tabcolsep\relax}L{\dimexpr.14\textwidth-2\tabcolsep\relax}L{\dimexpr.29\textwidth-2\tabcolsep\relax}}
+    \caption{Declaración de uso de IA por sección y archivo asociado}
+    \label{tab:declaracion-ia} \\
+    \hline
+    \EncabezadoTabla{Sección} &
+    \EncabezadoTabla{Herramienta} &
+    \EncabezadoTabla{Finalidad del uso} &
+    \EncabezadoTabla{Nivel en texto} &
+    \EncabezadoTabla{Nivel en diagramas} &
+    \EncabezadoTabla{Revisión humana: responsable y verificación} \\
+    \hline
+    \endfirsthead
+    \hline
+    \EncabezadoTabla{Sección} &
+    \EncabezadoTabla{Herramienta} &
+    \EncabezadoTabla{Finalidad del uso} &
+    \EncabezadoTabla{Nivel en texto} &
+    \EncabezadoTabla{Nivel en diagramas} &
+    \EncabezadoTabla{Revisión humana: responsable y verificación} \\
+    \hline
+    \endhead
+}{%
+  \end{longtable}
+  \endgroup
+}
+
+\newcommand{\CierreSubdocumento}{%
+  \clearpage
+
+  \nocite{pucv-bases-administrativas-2026,pucv-bases-transversales-2026}
+  \printbibliography[heading=referenciassynaptix,title={Referencias}]
+  
+  \clearpage
+  \chapter*{Declaración de uso de IA}
+  \addcontentsline{toc}{chapter}{Declaración de uso de IA}
+  \markboth{Declaración de uso de IA}{Declaración de uso de IA}
+  Esta declaración identifica las herramientas de inteligencia artificial utilizadas, su finalidad y la revisión humana aplicada. Los niveles admitidos son Ninguno, Bajo, Medio y Alto. El registro se consolidará en el Formulario A-6.
+
+  La Tabla~\ref{tab:declaracion-ia} registra el uso declarado en este documento y sus archivos asociados.
+  \begin{declaracionia}
+    \DeclaracionesIA
+  \end{declaracionia}
+  \FuenteTabla{Registro de uso de IA de este subdocumento.}
+}

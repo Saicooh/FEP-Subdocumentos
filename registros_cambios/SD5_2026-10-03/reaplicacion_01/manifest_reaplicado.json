@@ -1,0 +1,210 @@
+{
+  "estado": "Reaplicación completada y comprobada en las fuentes; pendiente de revisión visual en Overleaf.",
+  "archivos_modificados": [
+    "capitulo05.tex",
+    "componentes/cierre.tex",
+    "componentes/ejemplos.tex",
+    "componentes/portada.tex",
+    "config/metadatos.tex",
+    "estilo/propuesta-tecnica.sty",
+    "subdocumento05.tex"
+  ],
+  "tablas_conservadas": 21,
+  "figuras_conservadas": 17,
+  "ajustes_locales_de_interlineado_retirados": 21,
+  "figuras_ajustadas_al_margen": 3,
+  "leyendas_normalizadas": 20,
+  "leyendas_de_figura_restauradas": 15,
+  "ajustes_editoriales": [
+    [
+      "Si no se dispone de un documento verificado, su ausencia se registra sin recurrir a valores ficticios.",
+      "Si no se dispone de un documento verificado, su ausencia se registra como dato no acreditado."
+    ],
+    [
+      "Cuando no se conoce el origen del residuo, se mantiene la discrepancia y la evidencia disponible, sin crear una embarcación o una faena ficticia para completar el registro.",
+      "Cuando no se conoce el origen del residuo, se mantiene la discrepancia y la evidencia disponible. La embarcación o faena de origen se identifica a partir de registros verificados."
+    ],
+    [
+      "No se crearán movimientos, pagos, autorizaciones o evidencias ambientales ficticias para completar una serie histórica.",
+      "Los movimientos, pagos, autorizaciones y evidencias ambientales de una serie histórica se incorporarán únicamente con respaldo de las fuentes originales."
+    ],
+    [
+      "multiplicar veinte transacciones/s por todo el año produciría una historia ficticia.",
+      "multiplicar veinte transacciones/s por todo el año sobrestimaría el volumen al suponer una carga máxima sostenida durante todo el año."
+    ]
+  ],
+  "archivos_resultantes": [
+    {
+      "ruta": "SYNAPTIX-Subdocumento5.tex",
+      "sha256": "f30caeb6776fe3d03f71d7fac6377896d1964fd60a60ae958b79e5efa6687eab",
+      "bytes": 90
+    },
+    {
+      "ruta": "capitulo05.tex",
+      "sha256": "cc0ec0c0d7ab509aae00237b8f4bd48db80a08f4cca1bb2b0de1bc6e147fae50",
+      "bytes": 194817
+    },
+    {
+      "ruta": "componentes/cierre.tex",
+      "sha256": "fcbf50777ebe25e98ebb5f0eb50ce515483458297c527e2b11b617309b92c3e0",
+      "bytes": 2763
+    },
+    {
+      "ruta": "componentes/ejemplos.tex",
+      "sha256": "f91e0590c174995304952896e3b29787752ac9d0bc13f98213f796e9dad5d091",
+      "bytes": 2286
+    },
+    {
+      "ruta": "componentes/portada.tex",
+      "sha256": "596ec87a61f492db567465672e79c712250a043c6b18e38f6cf34d1aaddcfb09",
+      "bytes": 4593
+    },
+    {
+      "ruta": "config/identidad.tex",
+      "sha256": "29f993a439dbf8fddc512fa76fed39a11a0e38bfc61e3672e192efbc547f6d4a",
+      "bytes": 713
+    },
+    {
+      "ruta": "config/metadatos.tex",
+      "sha256": "a875be6a507be0608ef72c79c2dcae9cd3791afe013327f317243ed20bc35818",
+      "bytes": 465
+    },
+    {
+      "ruta": "config/referencias.bib",
+      "sha256": "2c4f30d31e23094e6793db7d1d4b81fd5cf89360cc47cfcba31253935446867a",
+      "bytes": 637
+    },
+    {
+      "ruta": "estilo/propuesta-tecnica.sty",
+      "sha256": "3eca2f0aadda66d87eae272a93df1769c69bfc1d0d12f07aabba815e8769e043",
+      "bytes": 11619
+    },
+    {
+      "ruta": "figuras/F5_1.png",
+      "sha256": "a0c72ff35fc7e00adb26a0cb0566eed96c3b765e8b5e241c1bf90a581a0c4d1f",
+      "bytes": 515621
+    },
+    {
+      "ruta": "figuras/F5_10.png",
+      "sha256": "11304b24779a89b5984fbe8a25a72b0a1e0abf8f1554c9c16b615a6adcc7dab2",
+      "bytes": 410620
+    },
+    {
+      "ruta": "figuras/F5_11.png",
+      "sha256": "ccccad7092ac3f8775c190c388e904267ff55801c8ad11dcfba641ccd4e712cb",
+      "bytes": 595885
+    },
+    {
+      "ruta": "figuras/F5_12.png",
+      "sha256": "71762c862751a4c9c172493c0be9618be6a2761e5e694a2ad3d4b7710988c4d8",
+      "bytes": 946761
+    },
+    {
+      "ruta": "figuras/F5_13.png",
+      "sha256": "7f1a0c99033de1ff02ba0d8b0887cbfb8bbd306924f9bdd4a0c8f3e82d53b7c6",
+      "bytes": 796488
+    },
+    {
+      "ruta": "figuras/F5_14.png",
+      "sha256": "53f88506ffef8f6d9971272976862a7f41bcbb2af77b18cbace5b440e1ed331f",
+      "bytes": 495141
+    },
+    {
+      "ruta": "figuras/F5_15.png",
+      "sha256": "7c4d3f0b6c59129884fce9b947da1527dc38d605add8d5ece5d4e4a6be248186",
+      "bytes": 695762
+    },
+    {
+      "ruta": "figuras/F5_16.png",
+      "sha256": "4854bc49cc7f80fe26309be76ed3a1c6708e36c549df16801b8a4a21c0df8a53",
+      "bytes": 829078
+    },
+    {
+      "ruta": "figuras/F5_17.png",
+      "sha256": "e9c131ef0dbfaca33fa3f35d92a240f0b76e3b84ee17b5cb5e0d44a647f480bb",
+      "bytes": 729710
+    },
+    {
+      "ruta": "figuras/F5_17png.png",
+      "sha256": "e9c131ef0dbfaca33fa3f35d92a240f0b76e3b84ee17b5cb5e0d44a647f480bb",
+      "bytes": 729710
+    },
+    {
+      "ruta": "figuras/F5_2.png",
+      "sha256": "607764374db3256a653c2d47b362f6549db909ed49f0faa9cab5d090d2e8fb60",
+      "bytes": 478102
+    },
+    {
+      "ruta": "figuras/F5_3.png",
+      "sha256": "e404fb3e062dc8643562a33410c122c0853cda4a99113c6111333fc27440f060",
+      "bytes": 458068
+    },
+    {
+      "ruta": "figuras/F5_4.png",
+      "sha256": "3c9ba672de2539c1b59180109e50b118a0746146f9f05f0f58f2f771b7aa81f6",
+      "bytes": 909545
+    },
+    {
+      "ruta": "figuras/F5_5.png",
+      "sha256": "842de414d56facc26c7ad7aa1243039774b311cc046d49f5d003819222d04d6c",
+      "bytes": 678524
+    },
+    {
+      "ruta": "figuras/F5_6.png",
+      "sha256": "05009a100c41d9258225e77f1031a248e5745c5fdc6672e39fabee360e3502af",
+      "bytes": 701593
+    },
+    {
+      "ruta": "figuras/F5_7.png",
+      "sha256": "cd66086f8a7388206332025a15e193bffd389c239d208ce61c30096d48f3fddd",
+      "bytes": 695717
+    },
+    {
+      "ruta": "figuras/F5_8.png",
+      "sha256": "8d3d26b32310aca48868a1f09e97b01ba1b7161ca0460ad3c1375e61ecc7fc07",
+      "bytes": 687308
+    },
+    {
+      "ruta": "figuras/F5_9.png",
+      "sha256": "0a12184a3edf796f7722da2a35521dfc021087c0021e9d8df362bba684887a8b",
+      "bytes": 561103
+    },
+    {
+      "ruta": "latexmkrc",
+      "sha256": "107999ccca85a6a401392a6a9ae42ff90fbb102cc3f559b335677e3e9f81e5c6",
+      "bytes": 143
+    },
+    {
+      "ruta": "subdocumento05.tex",
+      "sha256": "a7c982c92a76d7e198376abcfbc548bc3413c6709a73e59fa2d04ed0becc11fc",
+      "bytes": 372
+    }
+  ],
+  "ajustes_adicionales_de_fuentes": [
+    "Atribución del cuadro de calidad de datos a los criterios de Synaptix y las fuentes ya citadas, conservando la verificación pendiente con SD9.",
+    "Actualización del comentario de fuente y de las leyendas del archivo de ejemplos para mantener el criterio editorial común."
+  ],
+  "verificaciones": {
+    "archivo_principal": "SYNAPTIX-Subdocumento5.tex",
+    "mismo_conjunto_de_archivos": true,
+    "tablas_del_capitulo_identicas_a_version_recibida": 21,
+    "figuras_del_capitulo_con_fuente": 17,
+    "imagenes_bibliografia_latexmkrc_identicos_a_version_recibida": true,
+    "estilo_portada_identidad_identicos_a_sd1": true,
+    "rutas_activas_citas_etiquetas_llaves_entornos_comprobados": true,
+    "numeracion_continua_desde_portada": true,
+    "filas_de_declaracion_ia": 2,
+    "revision_visual_en_overleaf": "Pendiente",
+    "revision_tecnica_del_contenido": "Fuera del alcance de esta reaplicación; SD5 sigue en desarrollo."
+  },
+  "respaldos": {
+    "SD5_recibido.zip": {
+      "sha256": "d49e3a2278bb860e6ee74345d47b9829d5263ff9a5288082cf2f5b6b68f65a76",
+      "integridad_zip": "Comprobada"
+    },
+    "SD5_reaplicado.zip": {
+      "sha256": "a09859cf7f45c4552718d19f68928174a9deda6103ac2822504747c180841792",
+      "integridad_zip": "Comprobada"
+    }
+  }
+}

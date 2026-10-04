@@ -1,0 +1,848 @@
+\section*{A2.3. Registro de supuestos}
+Este anexo reúne los supuestos de formulación y colaboración, identificados como SUP-01 a SUP-05, y las 22 decisiones tomadas por el proponente para formular la solución, identificadas como DEC-01 a DEC-22. Estas decisiones forman parte del registro de supuestos y conservan sus identificadores para mantener la trazabilidad.
+
+Cada supuesto o decisión explicita el criterio asumido, su fundamento, el impacto si resulta equivocado y la instancia prevista de validación. Su inclusión no acredita aceptación del cliente ni validación ejecutada.
+
+La responsabilidad de formular las decisiones técnicas corresponde al proponente. La validación con el cliente confirma condiciones operacionales y atribuciones de negocio; no sustituye el diseño. La decisión DEC-17 corresponde a las medidas de cobranza sobre morosos contempladas en el documento del Caso 07.
+
+
+\section*{A2.3.1 Supuestos de formulación y colaboración}
+Las fichas siguientes identifican los supuestos, su fundamento, impacto y validación prevista.
+
+\subsection*{SUP-01 — Disponibilidad de representantes funcionales}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-01} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{SUP-01 — Disponibilidad de representantes funcionales}\label{tab:a2-3-01}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{SUP-01 — Disponibilidad de representantes funcionales — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Supuesto & El cliente facilitará participación acotada de representantes de operaciones, administración, escuela y varadero para revisar procesos y validar resultados, sin suponer dedicación exclusiva. \\ \hline
+Fundamento & La validación necesita conocimiento operativo y la compañía tiene dotación limitada. \\ \hline
+\rowcolor{RFclaro}
+Impacto si no se cumple & Decisiones tardías, reprogramación de talleres y riesgo de aceptación; el proponente deberá planificar alternativas y escalamiento. \\ \hline
+Instancia de validación & Al inicio de planificación y antes de cada validación: acordar representantes, suplentes y disponibilidad por actividad. \\ \hline
+\rowcolor{RFclaro}
+Responsable propuesto & Responsable del proyecto y contraparte del cliente. \\ \hline
+Fuente y referencia & SD2 sec. 2.5.2; Evidencia por incorporar: RACI y agenda acordada en SD6/SD7. \\ \hline
+\rowcolor{RFclaro}
+Estado & Validación documental no acreditada; registrar responsable, resultado y tratamiento del desvío. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{SUP-02 — Acceso autorizado a fuentes}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-02} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{SUP-02 — Acceso autorizado a fuentes}\label{tab:a2-3-02}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{SUP-02 — Acceso autorizado a fuentes — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Supuesto & El cliente permitirá el acceso autorizado a sistemas, archivos y documentación necesarios, dentro de sus atribuciones; no se presume calidad, integridad, documentación ni disponibilidad de APIs. \\ \hline
+Fundamento & La migración e integración requieren examinar datos reales y permisos. \\ \hline
+\rowcolor{RFclaro}
+Impacto si no se cumple & Mayor esfuerzo de extracción, saneamiento y conciliación o necesidad de replanificar; no justifica omitir datos obligatorios. \\ \hline
+Instancia de validación & Antes del perfilado e integración: verificar permisos, inventario, extracción y disponibilidad del único conocedor del legado. \\ \hline
+\rowcolor{RFclaro}
+Responsable propuesto & Responsable de datos y contraparte propietaria de la información. \\ \hline
+Fuente y referencia & SD2 sec. 2.5.2; C07 RT-05.15; Evidencia por incorporar: inventario y autorizaciones vigentes en SD5. \\ \hline
+\rowcolor{RFclaro}
+Estado & Validación documental no acreditada; registrar responsable, resultado y tratamiento del desvío. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{SUP-03 — Volumetría como línea base}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-03} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{SUP-03 — Volumetría como línea base}\label{tab:a2-3-03}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{SUP-03 — Volumetría como línea base — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Supuesto & Los valores del caso constituyen la línea base de dimensionamiento; personas, embarcaciones y movimientos no equivalen automáticamente a usuarios concurrentes, mensajes o transacciones. \\ \hline
+Fundamento & El peak y las dependencias requieren derivación explícita de carga. \\ \hline
+\rowcolor{RFclaro}
+Impacto si no se cumple & Subdimensionamiento o sobredimensionamiento si la conversión a carga es incorrecta. \\ \hline
+Instancia de validación & Durante formulación de arquitectura y antes de pruebas: declarar fórmulas, escenarios y crecimiento, y contrastar con pruebas. \\ \hline
+\rowcolor{RFclaro}
+Responsable propuesto & Responsable de arquitectura y operaciones. \\ \hline
+Fuente y referencia & SD2 sec. 2.5.2; C07 sec. 14.1–14.2 y RT-09.02; Evidencia por incorporar: dimensionamiento SD4 y plan de carga SD9. \\ \hline
+\rowcolor{RFclaro}
+Estado & Validación documental no acreditada; registrar responsable, resultado y tratamiento del desvío. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{SUP-04 — Compras y obras a cargo del cliente}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-04} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{SUP-04 — Compras y obras a cargo del cliente}\label{tab:a2-3-04}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{SUP-04 — Compras y obras a cargo del cliente — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Supuesto & El cliente ejecutará compras de hardware y obras excluidas de la prestación de construcción, a partir de especificaciones, cantidades, costos y coordinación provistos por el proponente; no se presume infraestructura lista al inicio. \\ \hline
+Fundamento & La obligación de especificar e integrar subsiste aunque compre o construya el cliente. \\ \hline
+\rowcolor{RFclaro}
+Impacto si no se cumple & Retraso de pruebas o despliegue por disponibilidad de equipos, energía o canalizaciones; requiere dependencias y contingencias. \\ \hline
+Instancia de validación & Antes de fijar ventanas de instalación: acordar hitos de adquisición, recepción y habilitación con responsables. \\ \hline
+\rowcolor{RFclaro}
+Responsable propuesto & Responsable de infraestructura y contraparte de compras/obras del cliente. \\ \hline
+Fuente y referencia & SD2 sec. 2.5.2; C07 cap. 11; Evidencia por incorporar: SD4/T-11 y dependencias del cronograma SD7. \\ \hline
+\rowcolor{RFclaro}
+Estado & Validación documental no acreditada; registrar responsable, resultado y tratamiento del desvío. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{SUP-05 — Aprobación de decisiones de negocio}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-05} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{SUP-05 — Aprobación de decisiones de negocio}\label{tab:a2-3-05}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{SUP-05 — Aprobación de decisiones de negocio — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Supuesto & El cliente designará las autoridades competentes para aprobar criterios comerciales y operativos; el proponente formulará y justificará sus propuestas, sin trasladar al cliente las 22 decisiones de diseño ni atribuirse facultades societarias. \\ \hline
+Fundamento & El diseño requiere criterios concretos y los actos del cliente necesitan atribuciones. \\ \hline
+\rowcolor{RFclaro}
+Impacto si no se cumple & Reglas sin legitimidad, cambios reiterados o uso de medidas no autorizadas. \\ \hline
+Instancia de validación & Durante formulación y antes de parametrizar reglas: identificar autoridad y registrar decisión, alcance y versión. \\ \hline
+\rowcolor{RFclaro}
+Responsable propuesto & Responsable del proyecto y autoridad de negocio competente. \\ \hline
+Fuente y referencia & SD2 sec. 2.5.2; C07 sec. 16.1; Evidencia por incorporar: matriz de atribuciones y actas de aprobación. \\ \hline
+\rowcolor{RFclaro}
+Estado & Validación documental no acreditada; registrar responsable, resultado y tratamiento del desvío. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+
+
+\section*{A2.3.2 Supuestos de decisiones del proponente}
+Las fichas siguientes registran las decisiones de formulación y sus condiciones de validación.
+
+\subsection*{DEC-01 — Estado de ocupación y salida}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-06} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-01 — Estado de ocupación y salida}\label{tab:a2-3-06}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-01 — Estado de ocupación y salida — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 1. \\ \hline
+Requerimientos relacionados & RF-NAV-01, RF-NAV-04, RF-AMA-03 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Combinar confirmación identificada del marinero o guardia y declaraciones del armador; conservar discrepancias y antigüedad de evidencia. La elección concreta del mecanismo de detección requerido por RT-17.06 permanece abierta hasta comparar fiabilidad, cobertura y costo; no declarar resuelto el diseño completo. \\ \hline
+Fundamento & Evita equiparar ausencia de registro con ausencia física y mantiene la radio. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Una ocupación falsa altera asignación, avisos y retorno seguro. \\ \hline
+Instancia y responsables propuestos de validación & Operaciones marítimas y responsable de arquitectura: prueba de campo y comparación de alternativas antes de cerrar arquitectura. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Parcial: mecanismo de detección sin evidencia suficiente. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD3/SD4: decisión del mecanismo, precisión y manejo de discrepancias; T-11 si incorpora sensores. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-02 — Legado y migración}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-07} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-02 — Legado y migración}\label{tab:a2-3-07}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-02 — Legado y migración — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 2. \\ \hline
+Requerimientos relacionados & RF-ADM-06, RF-ADM-07, RNF-MIG-01 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Migrar íntegramente el alcance obligatorio de RT-05.15, preservar otros antecedentes exigibles en consulta protegida y ejecutar dos ensayos, conciliación y reversión; no conservar el software obsoleto como única vía de consulta. \\ \hline
+Fundamento & Distingue los doce años de historia del alcance mínimo de migración y de la retención. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Pérdida de saldos o evidencia de custodia impide cobro y defensa documental. \\ \hline
+Instancia y responsables propuestos de validación & Administración, conocedor del legado y responsable de datos: perfilado y conciliación antes de cada corte. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Criterio parcialmente documentado; desarrollo pendiente. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD5, plan de migración, inventario de fuentes y acta de conciliación. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-03 — Medición por amarra}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-08} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-03 — Medición por amarra}\label{tab:a2-3-08}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-03 — Medición por amarra — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 3. \\ \hline
+Requerimientos relacionados & RF-CON-01 a RF-CON-06 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Proponer medición atribuible a cada amarra, con asociación temporal a contrato y una misma serie para cobro y ambiente. No consolidar como decisión aceptada el reparto de una torreta: requiere fórmula, precisión, tratamiento de cambios de ocupante y respaldo del marco de traspaso de costos. \\ \hline
+Fundamento & Evita cobrar consumos ajenos y construir indicadores con una serie diferente. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Cobros discutibles, errores de atribución y falta de serie ambiental. \\ \hline
+Instancia y responsables propuestos de validación & Responsable de integración, administración y especialista competente: piloto en pantalán y revisión del marco aplicable antes de especificar compra. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Abierta la selección física y el respaldo del cobro. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD4/T-11: esquema y cantidad de medidores; SD5: datos; SD11: costos; investigación sectorial. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-04 — Alcance del plan voluntario}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-09} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-04 — Alcance del plan voluntario}\label{tab:a2-3-09}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-04 — Alcance del plan voluntario — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 4. \\ \hline
+Requerimientos relacionados & RF-NAV-06 a RF-NAV-09, RF-AUT-08 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Proponer campos de nave, patrón, personas a bordo, salida, destino o recorrido declarado, retorno previsto y contactos; permitir actualización y cierre identificados. Alertar dentro de 15 minutos desde vencimiento sin gracia adicional; derivar a guardia y aplicar protocolo documentado. La marina recibe antecedentes y comunica, sin prometer vigilancia permanente ni búsqueda y salvamento. \\ \hline
+Fundamento & Define el compromiso y evita una expectativa de rescate automático. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Demora de aviso, falsa tranquilidad o obligación operacional no financiada. \\ \hline
+Instancia y responsables propuestos de validación & Operaciones y responsable de servicio: escenario de vencimiento, mensaje tardío y falso cierre antes de validar el flujo. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Propuesta completada para revisión; completar su justificación. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD3: alcance; SD4: estados y canal de baja capacidad; protocolo de escalamiento y destinatarios. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-05 — Confirmación del regreso}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-10} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-05 — Confirmación del regreso}\label{tab:a2-3-10}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-05 — Confirmación del regreso — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 5. \\ \hline
+Requerimientos relacionados & RF-NAV-04, RF-NAV-05 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & El marinero identificado confirma la embarcación amarrada en condición segura; la guardia puede registrar la observación comunicada por radio, identificando informante y registrador. El cierre declarado por el armador se conserva como evidencia y se concilia con la confirmación operacional; una discrepancia no se borra automáticamente. \\ \hline
+Fundamento & Permite cierre sin dispositivo a bordo y separa autor de la evidencia de quien digita. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Cierre falso o persistencia de alertas pese al regreso. \\ \hline
+Instancia y responsables propuestos de validación & Jefatura de operaciones y marineros: prueba de regreso, amarra distinta y reporte por tercero en momento seguro. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Criterio formulado; pendiente ratificación. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD3/SD4: autoridad de cierre, catálogo de evidencias y manejo de discrepancias. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-06 — Alumno, bote y monitor}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-11} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-06 — Alumno, bote y monitor}\label{tab:a2-3-11}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-06 — Alumno, bote y monitor — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 6. \\ \hline
+Requerimientos relacionados & RF-ESC-03 a RF-ESC-06, RF-ESC-09 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Preparar nómina y asignación antes de salir; confirmar grupalmente en momento seguro, registrar cambios de bote o monitor y verificar el regreso de cada alumno antes del cierre. Sin cámaras de alumnos ni dispositivos en embarcaciones menores; sin exigir interacción durante una maniobra. \\ \hline
+Fundamento & Produce evidencia humana identificada dentro del plazo de 60 segundos para hasta 18 botes. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & No saber quién permanece en el agua y confundir asistencia prevista con efectiva. \\ \hline
+Instancia y responsables propuestos de validación & Coordinación y monitores: ensayo realista con lluvia, ausencias y cambios antes de recepción del módulo. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Criterio documentado, detalle por validar. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD3/SD4: estados y pantalla; SD9: prueba de clase completa. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-07 — Retiro anticipado}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-12} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-07 — Retiro anticipado}\label{tab:a2-3-12}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-07 — Retiro anticipado — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 7. \\ \hline
+Requerimientos relacionados & RF-ESC-07, RF-ESC-08, RF-ESC-14 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Usar un único expediente de asistencia con retiro solicitado, verificado y confirmado; portería solicita y comprueba identidad y autorización, escuela verifica situación y entrega segura, y ambos confirman el mismo evento. Si falla la comunicación digital, confirmar por radio y registrar la contingencia; se identifica quién recibe la confirmación y quién la registra, se conserva el vínculo con el evento para la reconciliación posterior. \\ \hline
+Fundamento & Resuelve la divergencia de dos registros; una alerta sola no prueba entrega. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Alumno retirado permanece como presente o alumno en agua se da por entregado. \\ \hline
+Instancia y responsables propuestos de validación & Portería, escuela y responsable de continuidad: ensayo de retiro con clase en agua, WAN caída y terminal aislado. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Propuesta de corrección; validación operacional imprescindible. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD3/SD4: protocolo único y consistencia; SD9: prueba de fallo simultáneo. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-08 — Vista de salud mínima}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-13} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-08 — Vista de salud mínima}\label{tab:a2-3-13}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-08 — Vista de salud mínima — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 8. \\ \hline
+Requerimientos relacionados & RF-ESC-11, RF-ESC-12, RNF-SEG-04 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Proponer que el monitor sólo vea alertas y pautas de emergencia necesarias y autorizadas para los alumnos a su cargo, junto con contacto de emergencia. La coordinación designada por el cliente aprueba visibilidad y vigencia con respaldo profesional pertinente y autorización aplicable; el monitor no accede al expediente íntegro ni se inventan pautas clínicas. \\ \hline
+Fundamento & Minimiza exposición sin impedir acceso útil en emergencia. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Divulgación indebida o falta de información relevante para asistencia. \\ \hline
+Instancia y responsables propuestos de validación & Coordinación, responsable de protección de datos y contraparte competente: revisión de campos y prueba de permisos antes de carga real. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Parcial: campos y autoridad necesitan referencia. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD5: clasificación/campos; SD4: permisos; autorización y fundamento de tratamiento. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-09 — Compatibilidad y excepciones}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-14} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-09 — Compatibilidad y excepciones}\label{tab:a2-3-14}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-09 — Compatibilidad y excepciones — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 9. \\ \hline
+Requerimientos relacionados & RF-AMA-03 a RF-AMA-05 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Evaluar eslora, manga, calado, tipo y condiciones de maniobra/exposición; bloquear incompatibilidades de seguridad. Someter excepciones comerciales admisibles a responsable de operaciones y segundo perfil habilitado, con razón y evidencia; registrar la matriz de límites antes de parametrizar. \\ \hline
+Fundamento & La aprobación jerárquica no vuelve segura una amarra incompatible. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Daño a embarcaciones o asignaciones arbitrarias. \\ \hline
+Instancia y responsables propuestos de validación & Jefatura de operaciones: validar matriz con casos límite y trazabilidad de excepción. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Criterio precisado; límites faltantes. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD3/SD4: reglas y cargos; SD5: atributos; anexo de reglas futuro. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-10 — Lista de espera}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-15} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-10 — Lista de espera}\label{tab:a2-3-15}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-10 — Lista de espera — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 10. \\ \hline
+Requerimientos relacionados & RF-AMA-06, RF-AMA-07 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Proponer orden por fecha de ingreso entre candidatos compatibles, con criterio de desempate transparente y registro de ofertas, aceptación, rechazo y vencimiento. FALTA DEFINICIÓN: plazo de respuesta y desempate final; no inventar una subasta o discrecionalidad comercial. \\ \hline
+Fundamento & Hace reproducible el orden sin tratar una salida temporal como vacante definitiva. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Reclamos de socios y asignación injustificable. \\ \hline
+Instancia y responsables propuestos de validación & Administración y autoridad societaria competente: revisar simulación de cola y aprobar regla antes de uso. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Criterio propuesto formulado parcialmente; plazo de respuesta y tratamiento del vencimiento pendientes de desarrollo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD3: política; reglas de negocio y acta del órgano competente. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-11 — Visitantes sin prepago}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-16} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-11 — Visitantes sin prepago}\label{tab:a2-3-16}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-11 — Visitantes sin prepago — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 11. \\ \hline
+Requerimientos relacionados & RF-AMA-10 a RF-AMA-12, RF-FAC-01 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Registrar la llegada y estadía aunque no exista reserva o prepago; asociar responsable de pago, tarifa vigente y evidencia operacional, generar el hecho facturable y derivarlo a contabilidad. Ofrecer pago posterior por canal disponible y seguimiento de pendientes, sin obstaculizar una maniobra segura. \\ \hline
+Fundamento & El prepago no cubre a quien llega de noche ni elimina la conciliación. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Recaladas no cobradas o exigencias inseguras al arribo. \\ \hline
+Instancia y responsables propuestos de validación & Torre y administración: prueba nocturna sin reserva, enlace caído y salida antes de oficina. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Propuesta complementaria para revisión. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD3/SD4: flujo excepcional; SD5: hecho facturable e integración contable. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-12 — Plan de izaje}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-17} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-12 — Plan de izaje}\label{tab:a2-3-17}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-12 — Plan de izaje — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 12. \\ \hline
+Requerimientos relacionados & RF-VAR-04 a RF-VAR-07 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Capturar y versionar antes de la maniobra los antecedentes entregados por fabricante/armador y verificados por personal competente. Operador calificado valida el plan antes de iniciar; encargado controla vigencia y discrepancias. Identificar autor, validador y cambios; no atribuir al software cálculo certificado ni sustituir responsabilidad del ejecutor. \\ \hline
+Fundamento & Evita depender de la memoria de una persona y del registro con carga suspendida. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Izaje con plan incorrecto, daño y responsabilidad no trazable. \\ \hline
+Instancia y responsables propuestos de validación & Encargado de varadero y profesional competente: revisión de ficha y simulación previa a cualquier maniobra real. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Parcial: responsables y fuente técnica por acreditar. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD3: responsabilidades; SD4: flujo; fuentes técnicas del plan y modalidad de firma. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-13 — Reprogramación por clima}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-18} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-13 — Reprogramación por clima}\label{tab:a2-3-18}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-13 — Reprogramación por clima — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 13. \\ \hline
+Requerimientos relacionados & RF-VAR-01 a RF-VAR-03 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Proponer nuevas secuencias considerando marea, viento, disponibilidad del travelift, personal, ubicación de cunas y dependencias; encargado valida antes de confirmar y avisar a armadores y contratistas. Conservar agenda anterior, motivos y avisos pendientes. \\ \hline
+Fundamento & Mover fechas sin revisar dependencias puede volver imposible la secuencia. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Conflictos de patio, jornadas sobrecargadas y avisos inconsistentes. \\ \hline
+Instancia y responsables propuestos de validación & Varadero: simular la cancelación de un día completo de campaña y revalidar dependencias. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Criterio desarrollado para revisión. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD3/SD4: reglas de replanificación; SD7: reservas de capacidad y calendario. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-14 — Origen de residuos sin app del contratista}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-19} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-14 — Origen de residuos sin app del contratista}\label{tab:a2-3-19}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-14 — Origen de residuos sin app del contratista — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 14. \\ \hline
+Requerimientos relacionados & RF-AMB-01 a RF-AMB-05, RF-AUT-06 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Registrar por personal autorizado de portería/varadero o acopio la declaración del contratista, vinculada a trabajo y embarcación; identificar el recipiente y conciliar entrega al gestor. Ofrecer portal como alternativa, sin exigir instalación de app al generador. Registrar origen desconocido como discrepancia a resolver. \\ \hline
+Fundamento & Se ajusta al punto de control que sí opera y permite evidencia por generador. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Residuos sin origen o declaración de origen sin respaldo documental. \\ \hline
+Instancia y responsables propuestos de validación & Varadero y responsable ambiental: recorrer generación, depósito, traslado y certificado con un contratista sin app. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Complemento propuesto para revisión. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD3/SD4: captura asistida; formatos sanitarios y trazabilidad en SD5. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-15 — Control en portería}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-20} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-15 — Control en portería}\label{tab:a2-3-20}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-15 — Control en portería — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 15. \\ \hline
+Requerimientos relacionados & RF-CTR-01 a RF-CTR-07 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Usar portería como control de habilitación de trabajadores y de obligaciones documentales: identidad, seguros vigentes, inducción y vínculo con faena autorizada. Dar al guardia resultado mínimo y motivo; registrar excepciones por responsable habilitado, sin sustituir procedimientos de emergencia ni bloquear rescate. \\ \hline
+Fundamento & Es el punto donde la marina puede exigir antecedentes antes de una faena. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Ingreso no autorizado o guardia obligado a interpretar documentos complejos. \\ \hline
+Instancia y responsables propuestos de validación & Portería y operaciones: prueba de vigencia, trabajador no registrado y excepción autorizada. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Criterio documentado; interfaz pendiente. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD3/SD4: matriz de habilitación y compatibilidad con control existente. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-16 — Formación ambiental externa}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-21} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-16 — Formación ambiental externa}\label{tab:a2-3-21}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-16 — Formación ambiental externa — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 16. \\ \hline
+Requerimientos relacionados & RF-CTR-03, RF-CTR-02 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Proponer un servicio de formación por personal competente coordinado por el adjudicatario, con lista nominativa, contenidos, evaluación y vencimiento. La renovación periódica y por cambio relevante debe quedar definida con sustento; no inventar una vigencia anual. Antes de habilitar nuevas faenas se comprueba la acreditación exigible. \\ \hline
+Fundamento & No existe un formador interno disponible al cual trasladar la obligación. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Registro de cursos sin enseñanza efectiva o costo de capacitación omitido. \\ \hline
+Instancia y responsables propuestos de validación & Responsable ambiental y de servicio: revisar programa, competencia del impartidor y mecanismo de evaluación para 140 trabajadores. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Abierta periodicidad y prestación concreta. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: Plan de capacitación, contrato del impartidor, periodicidad y costos de SD11. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-17 — Medidas de cobranza}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-22} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-17 — Medidas de cobranza}\label{tab:a2-3-22}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-17 — Medidas de cobranza — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 17 (fila transcrita como «47», medidas sobre morosos). \\ \hline
+Requerimientos relacionados & RF-FAC-06, RF-FAC-07 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Registrar propuestas de gestión y someter cualquier medida que afecte el acceso a decisión formal del órgano o cargo competente de la compañía, con fundamento y respaldo aplicable. No bloquear automáticamente por tramo de deuda. Conservar expediente y evidencia de ejecución o rechazo; no ejecutar cobranza judicial. \\ \hline
+Fundamento & Custodia y condición de accionista requieren autoridad y fundamento explícitos. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Restricción indebida de acceso o medida sin respaldo documental. \\ \hline
+Instancia y responsables propuestos de validación & Administración y asesor autorizado del cliente: aprobar catálogo de medidas y atribuciones antes de habilitarlo. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Parcial: autoridad y medidas admisibles no acreditadas. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD3: alcance; matriz de atribuciones y fundamento de cada medida. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-18 — Expedientes de abandonadas}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-23} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-18 — Expedientes de abandonadas}\label{tab:a2-3-23}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-18 — Expedientes de abandonadas — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 18. \\ \hline
+Requerimientos relacionados & RF-FAC-08, RF-FAC-09, RNF-MIG-01 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Administración consolida contratos, saldos, comunicaciones, identificación del titular, custodia, fotografías y actuaciones disponibles; registra documentos faltantes como tales. Asesor autorizado define suficiencia para una actuación; conservar íntegro el legado y la cadena de cambios y exportaciones. \\ \hline
+Fundamento & Una carpeta digital vacía o parcial no respalda una actuación. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Pérdida de prueba, titular mal identificado o acción paralizada. \\ \hline
+Instancia y responsables propuestos de validación & Administración y asesor: inventario individual de 14 casos y conciliación íntegra del origen. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Criterio documentado; integridad por demostrar. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD5: migración y retención; lista de documentos por expediente y autorización de acceso. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-19 — Ocupación de boyas}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-24} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-19 — Ocupación de boyas}\label{tab:a2-3-24}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-19 — Ocupación de boyas — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 19. \\ \hline
+Requerimientos relacionados & RF-BOY-01 a RF-BOY-05 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Registrar inspección visual identificada desde embarcación de servicio, con boya, ocupante y hora; conciliar con reservas/declaraciones al reconectar y mostrar antigüedad y discrepancias. No afirmar conocimiento en tiempo real sin infraestructura que lo acredite ni depender del piloto opcional. \\ \hline
+Fundamento & Sin energía ni cobertura, la última observación no garantiza ocupación actual. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Asignación doble o confianza injustificada en dato antiguo. \\ \hline
+Instancia y responsables propuestos de validación & Operaciones e inspectores: salida de ocho horas y conciliación con cambios ocurridos durante ausencia. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Criterio observable disponible; piloto sin justificar. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD3/SD4: fuente y vigencia del estado; SD11: visitas y logística. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-20 — Inspección del tren de fondeo}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-25} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-20 — Inspección del tren de fondeo}\label{tab:a2-3-25}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-20 — Inspección del tren de fondeo — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 20. \\ \hline
+Requerimientos relacionados & RF-BOY-05 a RF-BOY-07, RNF-RET-06 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Registrar por componente inspección, método, hallazgo, evidencia, recomendación y reemplazo ejecutado por el mantenedor. Adoptar un programa respaldado por personal competente y especificaciones del activo; habilitar inspección extraordinaria tras eventos definidos. No fijar umbrales de desgaste ni periodicidad sin ese respaldo. \\ \hline
+Fundamento & Condiciones de mar y material no pueden reducirse a una regla arbitraria del software. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Fondeos sin inspección adecuada o reemplazos injustificados. \\ \hline
+Instancia y responsables propuestos de validación & Responsable de operaciones y especialista de fondeo: aprobar programa y criterios antes de parametrizar alertas. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Abierta la periodicidad y los disparadores técnicos. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: Programa técnico de inspección, criterios de sustitución, SD3/SD5 y costos de traslado. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-21 — Caída del enlace en peak}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-26} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-21 — Caída del enlace en peak}\label{tab:a2-3-26}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-21 — Caída del enlace en peak — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 21. \\ \hline
+Requerimientos relacionados & RF-NAV-13, RF-CON-08, RF-ESC-13, RNF-CONT-01 a RNF-CONT-06 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Mantener los procesos exigidos con persistencia local 24 horas, terminales 12 horas y boyas 8 horas; conservar IDs y orden causal, resolver conflictos por regla de negocio y sincronizar en 30 minutos sin pérdidas. Publicar funciones externas indisponibles y su alternativa, sin excluir ninguna operación mínima del caso. \\ \hline
+Fundamento & Los 90 zarpes del escenario no equivalen a 90 transacciones; se debe derivar y probar la carga. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Pérdida o duplicación de movimientos y filas de atención sin continuidad. \\ \hline
+Instancia y responsables propuestos de validación & Arquitectura y operaciones: ensayo de la mañana de peak con 24 horas sin WAN y reconexión posterior. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Criterio documentado; validación pendiente. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD4: topología y fallas; SD5: conciliación; SD9: prueba de carga y desconexión. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.
+\subsection*{DEC-22 — Administración funcional}
+La ficha establece el criterio de trabajo y las condiciones necesarias para su validación.
+La Tabla~\ref{tab:a2-3-27} detalla los campos y las condiciones de validación de esta ficha.
+\begin{longtable}{|L{.25\linewidth}|L{\dimexpr.75\linewidth-4\tabcolsep-3\arrayrulewidth\relax}|}
+\caption{DEC-22 — Administración funcional}\label{tab:a2-3-27}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endfirsthead
+\multicolumn{2}{l}{\small\textit{DEC-22 — Administración funcional — continuación}}\\
+\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\ \hline
+\endhead
+\multicolumn{2}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+Fuente de la decisión & C07, sec. 16.1, decisión 22. \\ \hline
+Requerimientos relacionados & RF-ADM-01 a RF-ADM-05, RNF-OPE-01, RNF-SOP-03 \\ \hline
+\rowcolor{RFclaro}
+Criterio formulado para revisión & Proponer un modelo combinado: cliente conserva aprobación de reglas y responsables de negocio; adjudicatario presta administración funcional asistida y todas las tareas especializadas. Mantener titular y suplente por función, cobertura ante vacaciones/licencias/rotación, transferencia documentada y acceso individual. No exigir un cargo TI del cliente. \\ \hline
+Fundamento & Separa autoridad de negocio de capacidad técnica y evita depender de una sola persona. \\ \hline
+\rowcolor{RFclaro}
+Impacto si el criterio resulta incorrecto & Parámetros desactualizados, usuarios sin baja o costos omitidos durante 36 meses. \\ \hline
+Instancia y responsables propuestos de validación & Jefatura del servicio y contraparte del cliente: simular ausencia del titular y revisar carga de tareas antes de cerrar oferta. \\ \hline
+\rowcolor{RFclaro}
+Estado de formulación & Propuesta del modelo combinado; costo y dedicación faltantes. No se presenta como acuerdo del equipo. \\ \hline
+Referencia faltante & Evidencia por incorporar: SD3: responsabilidades; modelo de operación; RACI, dedicaciones, suplencias y costo de 36 meses en SD11. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El impacto y la instancia de validación permiten priorizar el control de este antecedente.

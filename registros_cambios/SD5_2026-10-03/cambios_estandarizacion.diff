@@ -1,0 +1,732 @@
+--- a/Subdocumento_5___SYNAPTIX/capitulo05.tex
++++ b/Subdocumento_5___SYNAPTIX/capitulo05.tex
+@@ -28,7 +28,6 @@
+ 
+ \begingroup
+ \setlength{\tabcolsep}{3pt}
+-\renewcommand{\arraystretch}{1.2}
+ 
+ \begin{longtable}{@{}
+     L{.34\textwidth}
+@@ -75,6 +74,7 @@
+     \includegraphics[width= \linewidth]{figuras/F5_1.png}
+     \caption{Entidades compartidas y sus responsabilidades}
+     \label{fig:entidades_responsabilidades}
++    \FuenteFigura{Modelo de datos de Synaptix; dominios y relaciones descritos en esta sección.}
+ \end{figure}
+ 
+ La Figura~\ref{fig:entidades_responsabilidades} distingue la identidad de una persona de la de una organización y muestra cómo participan en las relaciones del puerto sin confundirse entre sí. Parte contractual referencia exactamente una de esas identidades; Participación contractual registra el rol con que interviene en un contrato. Vínculo de armador conserva, de manera independiente, quién ejerce ese rol respecto de una embarcación y durante qué período. Cada vínculo identifica una persona o una organización, evitando registrar ambas como titulares indistintos de un mismo vínculo.
+@@ -127,6 +127,7 @@
+     \includegraphics[width=0.8 \linewidth]{figuras/F5_2.png}
+     \caption{Clientes, contratos y asignaciones}
+     \label{fig:clientes_contratos}
++    \FuenteFigura{Modelo de datos de Synaptix; dominios y relaciones descritos en esta sección.}
+ \end{figure}
+ 
+ La relación entre contrato y asignación ayuda a mantener su historia sin interpretar que una embarcación ocupa físicamente la amarra durante toda la vigencia contractual. Esa condición se obtiene de Operación marítima. Una reserva comienza como 'solicitada' y puede avanzar a 'confirmada', 'atendida', 'cancelada' o 'vencida', su confirmación requiere compatibilidad, período y autorización operacional del puesto. Las asignaciones y reservas confirmadas no pueden comprometer simultáneamente un mismo recurso para usos incompatibles.
+@@ -145,6 +146,7 @@
+     \includegraphics[width= \linewidth ]{figuras/F5_3.png}
+     \caption{Navegación, confirmación y evidencia operacional}
+     \label{fig:operacion_maritima}
++    \FuenteFigura{Modelo de datos de Synaptix; dominios y relaciones descritos en esta sección.}
+ \end{figure}
+ 
+ La Figura~\ref{fig:operacion_maritima} separa el movimiento informado de su comprobación operacional. Confirmación operacional conserva la actuación que verifica un hecho. Su ausencia mantiene ese hecho pendiente de confirmación, conforme a las reglas del dominio. Versión de plan conserva la historia del Plan de navegación y pertenece a Operación marítima. Esta versión no corresponde a una modificación del contrato comercial ni se registra como participación contractual.
+@@ -171,6 +173,7 @@
+     }
+     \caption{Participación de escuela y retiros}
+     \label{fig:escuela_nautica}
++    \FuenteFigura{Modelo de datos de Synaptix; dominios y relaciones descritos en esta sección.}
+ \end{figure}
+ 
+ La participación distingue prevista, presente en tierra, en el agua, regreso confirmado, retirada y ausente. Antes de confirmar una salida deben existir autorización vigente, presencia comprobada y asignación válida, sin un retiro pendiente incompatible. Un cambio de bote o monitor cierra el intervalo anterior y abre otro con hora e informante; se impiden asignaciones simultáneas incompatibles. La proporción de alumnos por monitor se comprueba contra la política técnica versionada que corresponda a la actividad. Un incidente se conserva como registro adicional y no modifica por sí solo la situación efectiva del alumno.
+@@ -191,6 +194,7 @@
+     \includegraphics[width=0.8 \linewidth ]{figuras/F5_5.png}
+     \caption{Faenas, plan de izaje y habilitación}
+     \label{fig:varadero_contratistas}
++    \FuenteFigura{Modelo de datos de Synaptix; dominios y relaciones descritos en esta sección.}
+ \end{figure}
+ \newpage
+ Una maniobra pasa por planificada, habilitada, en ejecución y finalizada, y puede quedar suspendida o cancelada. La planificación puede comenzar antes de disponer del plan aprobado, pero la habilitación y el inicio requieren una versión válida y aplicable a la embarcación. Las revisiones posteriores conservan la versión utilizada en la faena. Los recursos se reservan sin solapamientos incompatibles, y una suspensión por clima registra la evidencia disponible, las dependencias afectadas y la actuación del encargado. La nueva fecha se relaciona con la anterior mediante Reprogramación y conserva las comunicaciones realizadas.
+@@ -209,6 +213,7 @@
+     \includegraphics[width=0.8 \linewidth ]{figuras/F5_6.png}
+     \caption{Despacho de combustible y evidencia original}
+     \label{fig:combustible}
++    \FuenteFigura{Modelo de datos de Synaptix; dominios y relaciones descritos en esta sección.}
+ \end{figure}
+ % Fuente: Elaboración del modelo a partir de SD4 tabla 4.2 y \S\,4.2; SD2/A2.1, ámbito CON.
+ 
+@@ -228,6 +233,7 @@
+     \includegraphics[width= \linewidth ]{figuras/F5_7.png}
+     \caption{Consumos y trazabilidad ambiental}
+     \label{fig:ambiente}
++    \FuenteFigura{Modelo de datos de Synaptix; dominios y relaciones descritos en esta sección.}
+ \end{figure}
+ % Fuente: SD4 DA-09 y \S\,4.2, pp. PDF 24-25; SD2/A2.3, DEC-03/14; RN-19 a RN-21.
+ La Figura~\ref{fig:ambiente} muestra dos cadenas de trazabilidad. En consumos, Soporte de consumo relaciona el resultado del intervalo con las lecturas originales utilizadas para calcularlo, la asociación temporal del medidor permite reconocer a qué servicio y amarra correspondían esas lecturas. En residuos, la embarcación o la orden de trabajo se vincula con el Registro de residuo que documenta su generación o recepción. Entrega a gestor agrupa cantidades mediante Detalle de entrega, de modo que una misma entrega puede contener residuos procedentes de distintos registros y faenas.
+@@ -253,6 +259,7 @@
+     \includegraphics[width=0.86 \linewidth ]{figuras/F5_8.png}
+     \caption{Hechos facturables, conciliación y custodia}
+     \label{fig:finanzas}
++    \FuenteFigura{Modelo de datos de Synaptix; dominios y relaciones descritos en esta sección.}
+ \end{figure}
+ %SD3 \S\,3.4.2 y SD4 \S\,4.1, autoridad contable externa; SD2/A2.3, DEC-17/18.
+ 
+@@ -275,6 +282,7 @@
+     \includegraphics[width= \linewidth ]{figuras/F5_9.png}
+     \caption{Activos, asociaciones de medición e inspecciones}
+     \label{fig:infraestructura}
++    \FuenteFigura{Modelo de datos de Synaptix; dominios y relaciones descritos en esta sección.}
+ \end{figure}
+ % Fuente: Elaboración del modelo sobre SD4 tabla 4.2 y \S\,4.2; SD2/A2.3, DEC-03/19/20.
+ 
+@@ -298,6 +306,7 @@
+     \includegraphics[width=0.9 \linewidth ]{figuras/F5_10.png}
+     \caption{Identidad, consentimiento y evidencia de acceso}
+     \label{fig:auditoria}
++    \FuenteFigura{Modelo de datos de Synaptix; dominios y relaciones descritos en esta sección.}
+ \end{figure}
+ % Fuente: SD4 DA-16 y \S\,4.1; BT RT-05.03/08; C07 RT-16.09.
+ 
+@@ -319,6 +328,7 @@
+     \includegraphics[width=0.75 \linewidth ]{figuras/F5_11.png}
+     \caption{Notificaciones como servicio compartido}
+     \label{fig:notificaciones}
++    \FuenteFigura{Modelo de datos de Synaptix; dominios y relaciones descritos en esta sección.}
+ \end{figure}
+ % Fuente: SD4 \S\,4.1, servicio de notificaciones; SD2/A2.1, ALE, y A2.5, RN-06.
+ 
+@@ -331,7 +341,6 @@
+ 
+ \begingroup
+ \setlength{\tabcolsep}{3pt}
+-\renewcommand{\arraystretch}{1.2}
+ \begin{longtable}{@{}L{.20\textwidth}L{.45\textwidth}L{\dimexpr.35\textwidth-12pt\relax}@{}}
+ \caption{Invariantes esenciales del modelo}\label{tab:sd5_invariantes_modelo}\\
+ \hline
+@@ -350,7 +359,7 @@
+ Sincronización & Sin pérdida ni duplicación de efectos & Outbox, inbox y versión \\ \addlinespace \hline
+ Privacidad & Acceso mínimo con trazabilidad & Política, relación y auditoría \\ \addlinespace \hline
+ \end{longtable}
+-\noindent{\small\textit{Fuente:} BT RT-05.01 a RT-05.09 y parámetros de C07.\par}
++\FuenteTabla{BT RT-05.01 a RT-05.09 y parámetros de C07.}
+ \endgroup
+ 
+ Estas invariantes vinculan las reglas de negocio con sus evidencias de control. Las garantías de persistencia y sincronización se desarrollan en 5.2, mientras el diccionario A5.1 especifica los atributos y restricciones necesarios para aplicarlas.
+@@ -371,7 +380,6 @@
+ 
+ \begingroup
+ \setlength{\tabcolsep}{3pt}
+-\renewcommand{\arraystretch}{1.2}
+ \begin{longtable}{@{}L{.32\textwidth}L{.32\textwidth}L{\dimexpr.36\textwidth-12pt\relax}@{}}
+ \caption{Datos maestros, autoridad y validación funcional}\label{tab:sd5_maestros_autoridad}\\
+ \hline
+@@ -411,14 +419,11 @@
+ \begin{figure}[htbp]
+     \centering
+     \makebox[\linewidth][c]{%
+-        \includegraphics[width=1.2 \linewidth ]{figuras/F5_12.png}
++        \includegraphics[width=\linewidth]{figuras/F5_12.png}
+     }
+     \caption{Proceso de identificación y conciliación de datos maestros}
+     \label{fig:datos_maestros}
+-    %\par\smallskip
+-    %\noindent\begin{minipage}{\linewidth}
+-        %{\small \textit{Fuente de información:} tabla 4.2 y DA-05/DA-16; SD2, \S\,2.5.2, DEC-22; BT RT-05.09 y RT-16.02--03.\par}
+-    %\end{minipage}
++    \FuenteFigura{Flujo de conciliación de Synaptix; autoridad y correspondencias descritas en esta sección.}
+ \end{figure}
+ \newpage
+ 
+@@ -472,7 +477,6 @@
+ 
+ \begingroup
+ \setlength{\tabcolsep}{3pt}
+-\renewcommand{\arraystretch}{1.15}
+ \begin{longtable}{@{}L{.24\textwidth}L{.20\textwidth}L{.28\textwidth}L{\dimexpr.28\textwidth-18pt\relax}@{}}
+ \caption{Autoridad y consistencia ante pérdida de conectividad}\label{tab:sd5_consistencia_dominios}\\
+ \hline
+@@ -491,7 +495,7 @@
+ Infraestructura & Según actuación & Maestro autorizado & Inventario e inspección \\ \addlinespace \hline
+ Auditoría y seguridad & Central / local & Política central vigente & Evidencia durable \\ \addlinespace \hline
+ \end{longtable}
+-%\noindent{\small\textit{Fuente:} elaboración propia a partir de SD4, tablas 4.2--4.3 y DA-05/DA-06/DA-16; BT RT-05.02; C07 RT-03.10.\par}
++%\FuenteTabla{elaboración propia a partir de SD4, tablas 4.2--4.3 y DA-05/DA-06/DA-16; BT RT-05.02; C07 RT-03.10.}
+ \endgroup
+ 
+ La tabla distingue la disponibilidad de captura de la posibilidad de confirmar una decisión exclusiva. Clientes y contratos priorizan consistencia, es decir, sin acceso a la autoridad central, sus copias permiten consultar versiones, pero no aprobar nuevos cambios. La Operación marítima, Escuela náutica y Combustible mantienen la autoridad operacional del recinto y proyectan sus hechos hacia nube al reconectar. Un dispositivo aislado conserva hechos y solicitudes, no arbitra por sí solo un puesto o una entrega compartidos con otro equipo.
+@@ -536,10 +540,11 @@
+ \begin{figure}[htbp]
+     \centering
+     \makebox[\linewidth][c]{%
+-        \includegraphics[width=1.1 \linewidth ]{figuras/F5_13.png}
++        \includegraphics[width=\linewidth]{figuras/F5_13.png}
+     }
+     \caption{Persistencia, recepción y aceptación durante la sincronización}
+     \label{fig:sincronizacion}
++    \FuenteFigura{Flujo de sincronización de Synaptix; persistencia, acuses y aceptación descritos en esta sección.}
+ \end{figure}
+ \newpage
+ 
+@@ -569,6 +574,7 @@
+     }
+     \caption{Separación de la explotación operacional y la analítica histórica}
+     \label{fig:explotacion}
++    \FuenteFigura{Arquitectura de persistencia de Synaptix; separación transaccional y analítica descrita en esta sección.}
+ \end{figure}
+ \newpage
+ 
+@@ -578,7 +584,6 @@
+ 
+ \begingroup
+ \setlength{\tabcolsep}{3pt}
+-\renewcommand{\arraystretch}{1.15}
+ \begin{longtable}{@{}L{.28\textwidth}L{.40\textwidth}L{\dimexpr.32\textwidth-12pt\relax}@{}}
+ \caption{Oportunidad exigida y ruta de actualización}\label{tab:sd5_latencias}\\
+ \hline
+@@ -593,7 +598,7 @@
+ Situación escolar & En tiempo real, sin excepción & Participación confirmada \\ \addlinespace \hline
+ Indicadores ambientales & Consolidación diaria & Cierre conciliado \\ \addlinespace \hline
+ \end{longtable}
+-\noindent{\small\textit{Fuente:} C07 RT-05.29; SD4 DA-09. Las rutas corresponden al diseño de Synaptix.\par}
++\FuenteTabla{C07 RT-05.29; SD4 DA-09. Las rutas corresponden al diseño de Synaptix.}
+ \endgroup
+ 
+ Una interrupción de comunicaciones impide asegurar actualidad remota del hecho aún no recibido. La interfaz identifica cobertura, última confirmación y elementos pendientes; no presenta la última copia como realidad actual. En la escuela, la persistencia offline no basta para conocer inmediatamente hechos de otro dispositivo: la coordinación entre monitor, portería y autoridad local debe mantener el control efectivo de personas, según el flujo de 5.1.2. El contrato de actualización del saldo externo y los escenarios de operación escolar deben verificarse con SD3/SD4/SD9. Registrar una limitación técnica no rebaja las exigencias del caso ni acredita su cumplimiento.
+@@ -617,7 +622,6 @@
+ 
+ \begingroup
+ \setlength{\tabcolsep}{3pt}
+-\renewcommand{\arraystretch}{1.15}
+ \begin{longtable}{@{}L{.27\textwidth}L{.43\textwidth}L{\dimexpr.30\textwidth-12pt\relax}@{}}
+ \caption{Indicadores de calidad y metas de diseño}\label{tab:sd5_calidad_indicadores}\\
+ \hline
+@@ -633,7 +637,7 @@
+ Oportunidad & $N_{\mathrm{en\ plazo}}/N_{\mathrm{exigibles}}$ & Plazos de C07 \\ \addlinespace \hline
+ Integridad de sincronización & $N_{\mathrm{recibidos}}/N_{\mathrm{manifestados}}$ & 100\,\% de registros críticos \\ \addlinespace \hline
+ \end{longtable}
+-\noindent{\small\textit{Fuente:} elaboración propia conforme a BT RT-05.04 y C07 RT-03.13/RT-05.29; metas por verificar con SD9.\par}
++\FuenteTabla{elaboración propia conforme a BT RT-05.04 y C07 RT-03.13/RT-05.29; metas por verificar con SD9.}
+ \endgroup
+ 
+ En completitud se cuentan campos obligatorios aplicables, según el estado y la actuación evaluados; un campo opcional no integra ese denominador. En exactitud se contrastan valores con evidencia independiente dentro de una muestra cuya población, selección y tamaño quedan registrados. Validar el formato de un dato no prueba su exactitud. En consistencia se cuentan registros sometidos a reglas identificadas, conservando el detalle de las reglas fallidas. Las razones se expresan como porcentaje multiplicándolas por cien, sin mezclar universos entre períodos.
+@@ -669,7 +673,6 @@
+ 
+ \begingroup
+ \setlength{\tabcolsep}{3pt}
+-\renewcommand{\arraystretch}{1.15}
+ \begin{longtable}{@{}L{.53\textwidth}L{.29\textwidth}L{\dimexpr.18\textwidth-12pt\relax}@{}}
+ \caption{Síntesis de las retenciones exigidas por las bases}\label{tab:sd5_retencion}\\
+ \hline
+@@ -689,7 +692,7 @@
+ Auditoría & Al menos 5 años & BT RT-16.10 \\ \addlinespace \hline
+ Eventos técnicos de seguridad & 12 meses + 24 en archivo & BT RT-11.14 \\ \addlinespace \hline
+ \end{longtable}
+-\noindent{\small\textit{Fuente:} C07 RT-05.10; BT RT-16.10 y RT-11.14. El detalle de cómputos y bloqueos se especifica mediante A5.2.\par}
++\FuenteTabla{C07 RT-05.10; BT RT-16.10 y RT-11.14. El detalle de cómputos y bloqueos se especifica mediante A5.2.}
+ \endgroup
+ 
+ La síntesis diferencia archivo documental de registros técnicos. Los eventos de seguridad permanecen al menos doce meses en línea y veinticuatro adicionales en archivo recuperable. La auditoría se conserva al menos cinco años y por el plazo mayor cuando respalda un expediente cuya conservación lo requiere. El video permanece en la plataforma existente; una evidencia extraída y vinculada a un expediente sigue la regla de ese expediente.
+@@ -733,7 +736,6 @@
+ 
+ \begingroup
+ \setlength{\tabcolsep}{3pt}
+-\renewcommand{\arraystretch}{1.15}
+ \begin{longtable}{@{}L{.23\textwidth}L{.23\textwidth}L{.27\textwidth}L{\dimexpr.27\textwidth-18pt\relax}@{}}
+ \caption{Conjuntos incluidos en la migración}\label{tab:sd5_alcance_historico}\\
+ \hline
+@@ -749,7 +751,7 @@
+ Embarcaciones abandonadas & Sistema 2014; expedientes & 14 de 14; antecedentes completos & Expedientes y evidencia relacionada \\ \addlinespace \hline
+ Matrícula de escuela & Registros de escuela & Últimos tres años & Alumno, matrícula y relaciones \\ \addlinespace \hline
+ \end{longtable}
+-\noindent{\small\textit{Fuente:} PUCV (2026c, cap.~15, RT-05.15); correspondencia propuesta con el modelo de 5.1.\par}
++\FuenteTabla{PUCV (2026c, cap.~15, RT-05.15); correspondencia propuesta con el modelo de 5.1.}
+ \endgroup
+ 
+ La totalidad se comprobará contra manifiestos de origen y no contra las cifras actuales del caso. Los 1.240 socios y los 296 contratos permanentes sirven como referencias de escala, pero no determinan cuántas identidades, versiones o documentos existen en doce años. Las matrículas de tres años tampoco equivalen a tres padrones de personas distintas. Las relaciones entre alumno, apoderado y autorización se preservarán cuando formen parte del antecedente disponible; una autorización antigua no se convertirá en una autorización vigente por efecto de la carga.
+@@ -771,6 +773,7 @@
+     }
+     \caption{Ruta controlada de migración}
+     \label{fig:ruta_migracion}
++    \FuenteFigura{Estrategia de migración de Synaptix; etapas y controles descritos en esta sección.}
+ \end{figure}
+ \newpage
+ %Fuente: PUCV (2026b, RT-05.11--RT-05.14
+@@ -810,7 +813,6 @@
+ 
+ \begingroup
+ \setlength{\tabcolsep}{3pt}
+-\renewcommand{\arraystretch}{1.15}
+ \begin{longtable}{@{}L{.17\textwidth}L{.34\textwidth}L{.21\textwidth}L{\dimexpr.28\textwidth-18pt\relax}@{}}
+ \caption{Programa relativo de preparación y ensayos}\label{tab:sd5_programa_ensayos}\\
+ \hline
+@@ -826,7 +828,7 @@
+ \(C-2\) días hábiles & Revisión de habilitación & Dos horas & Autorización o reprogramación \\ \addlinespace \hline
+ Desde \(C\) & Conciliación de marcha blanca & Diaria y en cierre mensual & Registro de diferencias y decisiones \\ \addlinespace \hline
+ \end{longtable}
+-\noindent{\small\textit{Fuente:} PUCV (2026b, RT-05.13 y RT-20.03); restricciones de PUCV (2026c, cap.~13 y RT-10.05).\par}
++\FuenteTabla{PUCV (2026b, RT-05.13 y RT-20.03); restricciones de PUCV (2026c, cap.~13 y RT-10.05).}
+ \endgroup
+ 
+ Las reservas de ensayo expresan dedicación planificada y no duración demostrada. El primer ensayo entregará los tiempos de cada fase para ajustar la reserva del segundo. La precarga de ocho horas y la simulación de cuatro horas se registrarán por separado. La fecha calendario se fijará en el cronograma de implantación al disponer del calendario náutico, las campañas y la disponibilidad de los custodios; la falta de una fecha habilitada impide autorizar el corte.
+@@ -843,7 +845,6 @@
+ 
+ \begingroup
+ \setlength{\tabcolsep}{3pt}
+-\renewcommand{\arraystretch}{1.15}
+ \begin{longtable}{@{}L{.24\textwidth}L{.29\textwidth}L{.18\textwidth}L{\dimexpr.29\textwidth-18pt\relax}@{}}
+ \caption{Controles de conciliación y tolerancias de paso}\label{tab:sd5_controles_conciliacion}\\
+ \hline
+@@ -861,7 +862,7 @@
+ Atributos no críticos & Muestra por fuente y categoría & Cero defectos sin tratamiento & Muestra y ampliación de revisión \\ \addlinespace \hline
+ Retorno & Todas las operaciones del ensayo & Cero pérdida; ejecución en 90 min & Diario y acta de retorno \\ \addlinespace \hline
+ \end{longtable}
+-\noindent{\small\textit{Fuente:} PUCV (2026b, RT-05.12--RT-05.14); PUCV (2026c, RT-05.15); SD2, DEC-02.\par}
++\FuenteTabla{PUCV (2026b, RT-05.12--RT-05.14); PUCV (2026c, RT-05.15); SD2, DEC-02.}
+ \endgroup
+ 
+ La conciliación monetaria utilizará precisión decimal y separará monedas. Se compararán documento, pago, cliente, fecha e importe, además de los totales por período. La diferencia de carga debe ser cero a la precisión del origen. Una deuda histórica discutida podrá conservarse como tal, con su explicación y autoridad, siempre que la migración no cambie su valor ni la presente como resuelta. No se compensará un error positivo con otro negativo para obtener un total aparentemente correcto.
+@@ -889,7 +890,6 @@
+ 
+ \begingroup
+ \setlength{\tabcolsep}{3pt}
+-\renewcommand{\arraystretch}{1.15}
+ \begin{longtable}{@{}L{.20\textwidth}L{.36\textwidth}L{.16\textwidth}L{\dimexpr.28\textwidth-18pt\relax}@{}}
+ \caption{Distribución propuesta del corte administrativo}\label{tab:sd5_ventana_corte}\\
+ \hline
+@@ -904,7 +904,7 @@
+ 135--150 min & Decidir continuidad o retorno & 15 min & Decisión registrada \\ \addlinespace \hline
+ 150--240 min & Reserva exclusiva para retorno & 90 min & Autoridad anterior recuperable \\ \addlinespace \hline
+ \end{longtable}
+-\noindent{\small\textit{Fuente:} PUCV (2026b, RT-05.11 y RT-20.02); PUCV (2026c, cap.~13).\par}
++\FuenteTabla{PUCV (2026b, RT-05.11 y RT-20.02); PUCV (2026c, cap.~13).}
+ \endgroup
+ 
+ La decisión deberá adoptarse a más tardar a las 00:30, transcurridos 150 minutos. La reserva de 90 minutos no se utilizará para extender una carga atrasada. Si los controles no terminan a tiempo, se ejecutará el retorno, aunque una fase técnica haya finalizado correctamente. Si el segundo ensayo muestra que la carga o el retorno exceden sus reservas, se ajustarán la precarga y el procedimiento o se reprogramará una ventana habilitada antes de comprometer el corte.
+@@ -918,11 +918,11 @@
+ \begin{figure}[htbp]
+     \centering
+     \makebox[\linewidth][c]{%
+-        \includegraphics[width=1.2 \linewidth ]{figuras/F5_16.png}
++        \includegraphics[width=\linewidth]{figuras/F5_16.png}
+     }
+     \caption{Decisión de continuidad o retorno}
+     \label{fig:decision_corte}
+-    \noindent{\small\textit{Fuente:} PUCV (2026b, RT-05.11 y RT-20.02--RT-20.03).\par}
++    \FuenteFigura{PUCV (2026b, RT-05.11 y RT-20.02--RT-20.03).}
+ \end{figure}
+ 
+ \newpage
+@@ -967,7 +967,6 @@
+ 
+ \begingroup
+ \setlength{\tabcolsep}{3pt}
+-\renewcommand{\arraystretch}{1.2}
+ 
+ \begin{longtable}{@{}
+     L{.20\textwidth}
+--- a/Subdocumento_5___SYNAPTIX/componentes/cierre.tex
++++ b/Subdocumento_5___SYNAPTIX/componentes/cierre.tex
+@@ -12,13 +12,15 @@
+     {Medio}
+     {Alto}
+     {Equipo de Synaptix: control de tipografía, tablas y paginación antes de la emisión.}
+-  \FilaDeclaracionIA{Presentación y declaración de IA}{OpenAI Codex}{Revisión editorial de la identificación, la plantilla, las reglas de calidad de datos y el registro de responsabilidades empresariales}{Bajo}{Ninguno}{José Lara, Líder de Operación / SRE: control editorial antes de la emisión.}%
++  \FilaDeclaracionIA{Formato y registro de IA}{OpenAI Codex}{Normalización de portada, índice, metadatos, firmas, foliación, tablas y cierre; ajuste de anchos, fuentes y legibilidad de figuras; concordancia del registro de IA}{Bajo}{Bajo}{José Lara, Líder de Operación / SRE: control editorial antes de la emisión.}%
+ }
+ 
+ \newenvironment{declaracionia}{%
+   \begingroup
+   \setlength{\tabcolsep}{3pt}
+-  \begin{longtable}{@{}L{.09\textwidth}L{.12\textwidth}L{.18\textwidth}L{.10\textwidth}L{.12\textwidth}L{.25\textwidth}@{}}
++  \begin{longtable}{L{\dimexpr.105\textwidth-2\tabcolsep\relax}L{\dimexpr.14\textwidth-2\tabcolsep\relax}L{\dimexpr.21\textwidth-2\tabcolsep\relax}L{\dimexpr.115\textwidth-2\tabcolsep\relax}L{\dimexpr.14\textwidth-2\tabcolsep\relax}L{\dimexpr.29\textwidth-2\tabcolsep\relax}}
++    \caption{Declaración de uso de IA por sección y archivo asociado}
++    \label{tab:declaracion-ia} \\
+     \hline
+     \EncabezadoTabla{Sección} &
+     \EncabezadoTabla{Herramienta} &
+@@ -44,17 +46,16 @@
+ 
+ \newcommand{\CierreSubdocumento}{%
+   \clearpage
+-  \chapter*{Referencias}
+-  \addcontentsline{toc}{chapter}{Referencias}
+-  \markboth{Referencias}{Referencias}
+-  \printbibliography[heading=none]
++  \printbibliography[heading=referenciassynaptix,title={Referencias}]
+   \clearpage
+   \chapter*{Declaración de uso de IA}
+   \addcontentsline{toc}{chapter}{Declaración de uso de IA}
+   \markboth{Declaración de uso de IA}{Declaración de uso de IA}
+   Esta declaración identifica las herramientas de inteligencia artificial utilizadas, su finalidad y la revisión humana aplicada. Los niveles admitidos son Ninguno, Bajo, Medio y Alto. Synaptix mantiene el registro conforme al uso efectivo y lo consolida en el Formulario A-6.
+ 
++  La Tabla~\ref{tab:declaracion-ia} registra el uso declarado en este documento y sus archivos asociados.
+   \begin{declaracionia}
+     \DeclaracionesIA
+   \end{declaracionia}
++  \FuenteTabla{Registro de uso de IA de este subdocumento.}
+ }
+--- a/Subdocumento_5___SYNAPTIX/componentes/portada.tex
++++ b/Subdocumento_5___SYNAPTIX/componentes/portada.tex
+@@ -1,6 +1,8 @@
+ % Portada vectorial reutilizable. No requiere una imagen de fondo.
+-\NewDocumentCommand{\PortadaPropuesta}{m m}{%
+-  \begin{titlepage}
++\NewDocumentCommand{\PortadaDocumento}{m m}{%
++  % La portada consume un folio sin reiniciar el contador de páginas.
++  \clearpage
++  \begingroup
+     \thispagestyle{empty}
+     \begin{tikzpicture}[remember picture,overlay]
+       \fill[SynNavy] (current page.south west) rectangle (current page.north east);
+@@ -51,22 +53,49 @@
+ 
+       \node[anchor=west,align=left,text width=.68\paperwidth]
+         at ($(current page.west)+(1.55cm,-1.0cm)$) {%
+-          {\fontsize{10}{12}\selectfont\bfseries\textcolor{SynCyan}{SUBDOCUMENTO #1}}\\[2mm]
++          {\fontsize{11}{14}\selectfont\bfseries\textcolor{SynCyan}{#1}}\\[2mm]
+           {\fontsize{19}{23}\selectfont\bfseries\textcolor{SynWhite}{#2}}
++        };
++
++      \node[anchor=west,align=left,text width=.68\paperwidth]
++        at ($(current page.west)+(1.55cm,-4.5cm)$) {%
++          {\fontsize{11}{14}\selectfont\bfseries\textcolor{SynWhite}{\RazonSocial}}\\[2mm]
++          {\fontsize{11}{14}\selectfont\textcolor{SynWhite!82}{RUT \RUTEmpresa\quad Licitación N\textsuperscript{o} \CodigoLicitacion}}
+         };
+ 
+       \draw[SynCyan,line width=1.5pt]
+         ($(current page.south west)+(1.55cm,3.25cm)$) -- ++(3.2cm,0);
+-      \node[anchor=south west,align=left,text=SynWhite!74]
++      \node[anchor=south west,align=left,text width=.54\paperwidth,text=SynWhite!74]
+         at ($(current page.south west)+(1.55cm,1.35cm)$) {%
+-          \fontsize{9}{12}\selectfont
++          \fontsize{11}{14}\selectfont
+           \textbf{Versión} \VersionDocumento\quad
+-          \textbf{Fecha} \FechaDocumento\quad
+-          \textbf{Clasificación} \ClasificacionDocumento\\[2mm]
+-          \textbf{Firmante autorizado:} \FirmanteDocumento
++          \textbf{Fecha} \FechaDocumento\\[1mm]
++          \textbf{Clasificación} \ClasificacionDocumento
++        };
++
++      \node[anchor=south east,text=SynWhite!84]
++        at ($(current page.south east)+(-1.45cm,2.65cm)$) {%
++          \FirmaCompletaRepresentante
++        };
++
++      % Media firma y folio propios de la portada sobre el fondo oscuro.
++      \node[anchor=south east,text=SynWhite!78]
++        at ($(current page.south east)+(-1.45cm,0.72cm)$) {%
++          \fontsize{8}{10}\selectfont
++          \MediaFirmaRepresentante\hspace{5mm}%
++          Página\enspace\textbf{\textcolor{SynCyan}{\thepage}}
+         };
+     \end{tikzpicture}
+     \null
+-  \end{titlepage}
+   \clearpage
++  \endgroup
+ }
++
++\NewDocumentCommand{\PortadaPropuesta}{m m}{%
++  \PortadaDocumento{SUBDOCUMENTO #1}{#2}%
++}
++
++% Cada formulario abre con una portada independiente de su índice.
++\NewDocumentCommand{\PortadaFormulario}{m m}{%
++  \PortadaDocumento{FORMULARIO #1}{#2}%
++}
+--- a/Subdocumento_5___SYNAPTIX/config/metadatos.tex
++++ b/Subdocumento_5___SYNAPTIX/config/metadatos.tex
+@@ -1,8 +1,10 @@
+-% Complete estos campos antes de iniciar la migración del contenido.
+ \newcommand{\Empresa}{Synaptix}
+ \newcommand{\EmpresaArchivo}{SYNAPTIX}
+-\newcommand{\NombreOferta}{N.° TFEP-01/2026 - Caso 07: Puerto Deportivo}
+-\newcommand{\VersionDocumento}{0.1}
+-\newcommand{\FechaDocumento}{\today}
++\newcommand{\RazonSocial}{Synaptix Ingeniería de Software SpA}
++\newcommand{\RUTEmpresa}{76.913.482-4}
++\newcommand{\CodigoLicitacion}{TFEP-01/2026}
++\newcommand{\RepresentanteLegal}{Ignacio Silva}
++\newcommand{\NombreOferta}{Puerto Deportivo Bahía Panitao}
++\newcommand{\VersionDocumento}{0.2}
++\newcommand{\FechaDocumento}{3 de octubre de 2026}
+ \newcommand{\ClasificacionDocumento}{Confidencial}
+-\newcommand{\FirmanteDocumento}{Ignacio Silva, representante legal}
+--- a/Subdocumento_5___SYNAPTIX/estilo/propuesta-tecnica.sty
++++ b/Subdocumento_5___SYNAPTIX/estilo/propuesta-tecnica.sty
+@@ -1,7 +1,8 @@
+ \NeedsTeXFormat{LaTeX2e}
+-\ProvidesPackage{propuesta-tecnica}[2026/09/25 Synaptix technical proposal]
++\ProvidesPackage{propuesta-tecnica}[2026/10/03 Synaptix technical proposal]
+ 
+ \RequirePackage{fontspec}
++\RequirePackage{amsmath}
+ \RequirePackage{xcolor}
+ \input{config/identidad.tex}
+ \RequirePackage[spanish,es-nodecimaldot]{babel}
+@@ -23,9 +24,12 @@
+ \RequirePackage{enumitem}
+ \RequirePackage{fancyhdr}
+ \RequirePackage{titlesec}
++\RequirePackage{tocloft}
+ \RequirePackage[most]{tcolorbox}
+ \RequirePackage{xparse}
+ \RequirePackage{etoolbox}
++\RequirePackage{float}
++\RequirePackage{comment}
+ \RequirePackage[
+   backend=biber,
+   style=apa,
+@@ -52,7 +56,6 @@
+ \providecommand{\VersionDocumento}{0.1}
+ \providecommand{\FechaDocumento}{\today}
+ \providecommand{\ClasificacionDocumento}{Confidencial}
+-\providecommand{\FirmanteDocumento}{Firmante autorizado}
+ 
+ \color{SynInk}
+ \setstretch{1.12}
+@@ -62,15 +65,97 @@
+ \setcounter{tocdepth}{3}
+ \setlist{topsep=0.35em,itemsep=0.2em,parsep=0pt,leftmargin=1.7em}
+ 
+-\pagestyle{fancy}
+-\fancyhf{}
+-\fancyhead[L]{\small\textbf{\textcolor{SynNavy}{\Empresa}}}
+-\fancyhead[R]{\small\textcolor{SynMuted}{\nouppercase{\leftmark}}}
+-\fancyfoot[L]{\fontsize{9}{11}\selectfont\textcolor{SynMuted}{Versión \VersionDocumento\enspace·\enspace\ClasificacionDocumento}}
+-\fancyfoot[R]{\fontsize{9}{11}\selectfont\textbf{\textcolor{SynNavy}{\thepage}}}
+-\renewcommand{\headrulewidth}{0pt}
+-\renewcommand{\footrulewidth}{0pt}
+-\fancypagestyle{plain}{\pagestyle{fancy}}
++% Espacios de firma del representante identificado en los metadatos.
++% Las líneas son campos por completar; no constituyen firmas incorporadas.
++\newcommand{\MediaFirmaRepresentante}{%
++  {\fontsize{8}{10}\selectfont
++    \shortstack[r]{\rule{32mm}{0.3pt}\\Media firma: \RepresentanteLegal}}%
++}
++\newcommand{\FirmaCompletaRepresentante}{%
++  \begin{minipage}{60mm}
++    \raggedleft
++    \setstretch{1}%
++    \setlength{\parskip}{2pt}%
++    \fontsize{11}{14}\selectfont
++    Firma completa\par
++    \vspace{10mm}%
++    \rule{60mm}{0.4pt}\par
++    \textbf{\RepresentanteLegal}\par
++    Representante legal de \Empresa
++  \end{minipage}%
++}
++
++% Encabezado y pie compartidos por páginas verticales y horizontales.
++\newcommand{\MarcaEncabezadoSynaptix}{%
++  \fontsize{11}{13}\selectfont\textbf{\textcolor{SynNavy}{SYNAP}\textcolor{SynBlue}{TIX}}%
++}
++\newcommand{\IdentificacionEncabezadoSynaptix}{%
++  \fontsize{8}{10}\selectfont\textcolor{SynMuted}{\CodigoLicitacion\enspace·\enspace OFERTA TÉCNICA}%
++}
++\newcommand{\VersionPieSynaptix}{%
++  \fontsize{8}{10}\selectfont\textcolor{SynMuted}{\ClasificacionDocumento\quad\textcolor{SynLine}{|}\quad Versión \VersionDocumento}%
++}
++\newcommand{\FolioPieSynaptix}{%
++  \textcolor{SynMuted}{\MediaFirmaRepresentante}\hspace{5mm}%
++  \fontsize{8}{10}\selectfont\textcolor{SynMuted}{Página}\enspace\textbf{\textcolor{SynBlue}{\thepage}}%
++}
++\newcommand{\ConfiguracionPaginaVerticalSynaptix}{%
++  \fancyhf{}%
++  \fancyhead[L]{\MarcaEncabezadoSynaptix}%
++  \fancyhead[R]{\IdentificacionEncabezadoSynaptix}%
++  \fancyfoot[L]{\VersionPieSynaptix}%
++  \fancyfoot[R]{\FolioPieSynaptix}%
++  \renewcommand{\headrulewidth}{0.6pt}%
++  \renewcommand{\footrulewidth}{0.3pt}%
++  \renewcommand{\headrule}{\hbox to\headwidth{\color{SynCyan}\leaders\hrule height 0.6pt\hfill}}%
++  \renewcommand{\footrule}{\hbox to\headwidth{\color{SynLine}\leaders\hrule height 0.3pt\hfill}}%
++}
++\fancypagestyle{synaptixvertical}{\ConfiguracionPaginaVerticalSynaptix}
++\fancypagestyle{plain}{\ConfiguracionPaginaVerticalSynaptix}
++\pagestyle{synaptixvertical}
++\setlength{\footskip}{30pt}
++
++% pdflscape gira el cuerpo, pero no el encabezado y el pie de fancyhdr.
++% Estos elementos se sitúan y giran sobre la hoja para conservar su posición
++% al leer el PDF horizontal: marca arriba y media firma/folio abajo a la derecha.
++\fancypagestyle{synaptixhorizontal}{%
++  \fancyhf{}%
++  \renewcommand{\headrulewidth}{0pt}%
++  \renewcommand{\footrulewidth}{0pt}%
++  \renewcommand{\headrule}{}%
++  \renewcommand{\footrule}{}%
++  \fancyfoot[C]{%
++    \begin{tikzpicture}[remember picture,overlay]
++      \node[rotate=90,anchor=west] at ($(current page.south west)+(15mm,27mm)$)
++        {\MarcaEncabezadoSynaptix};
++      \node[rotate=90,anchor=east] at ($(current page.north west)+(15mm,-24mm)$)
++        {\IdentificacionEncabezadoSynaptix};
++      \draw[SynCyan,line width=.6pt]
++        ($(current page.south west)+(20mm,27mm)$) --
++        ($(current page.north west)+(20mm,-24mm)$);
++      \node[rotate=90,anchor=west] at ($(current page.south east)+(-13mm,27mm)$)
++        {\VersionPieSynaptix};
++      \node[rotate=90,anchor=east] at ($(current page.north east)+(-13mm,-24mm)$)
++        {\FolioPieSynaptix};
++      \draw[SynLine,line width=.3pt]
++        ($(current page.south east)+(-19mm,27mm)$) --
++        ($(current page.north east)+(-19mm,-24mm)$);
++    \end{tikzpicture}%
++  }%
++}
++\newenvironment{paginaHorizontalSynaptix}{%
++  \clearpage
++  % Márgenes transpuestos para conservar 27/24 mm a izquierda/derecha
++  % y 26/24 mm arriba/abajo después del giro de la página.
++  \newgeometry{top=24mm,bottom=27mm,left=26mm,right=24mm,headheight=18pt,footskip=30pt}%
++  \begin{landscape}%
++  \pagestyle{synaptixhorizontal}%
++  \setlength{\LTcapwidth}{\linewidth}%
++}{%
++  \end{landscape}%
++  \restoregeometry
++  \pagestyle{synaptixvertical}%
++}
+ 
+ \titleformat{\chapter}[display]
+   {\bfseries\color{SynNavy}}
+@@ -89,18 +174,84 @@
+   {\normalsize\bfseries\color{SynInk}}
+   {\textcolor{SynCyan}{\thesubsubsection}}{0.6em}{}
+ 
++% Índice: texto de 11 puntos, bloques separados y folios alineados.
++\addto\captionsspanish{%
++  \renewcommand{\contentsname}{Índice}%
++  \renewcommand{\tablename}{Tabla}%
++}
++\renewcommand{\cfttoctitlefont}{\fontsize{25}{30}\selectfont\bfseries\color{black}}
++\setlength{\cftbeforetoctitleskip}{0pt}
++\setlength{\cftaftertoctitleskip}{16pt}
++% tocloft redefine \tableofcontents en \AtBeginDocument.
++% Su prehook se ejecuta dentro del grupo del índice, antes de leer el .toc.
++\renewcommand{\cfttocprehook}{%
++  \hypersetup{linkcolor=black}%
++  \color{black}%
++  \setstretch{1}%
++  \fontsize{11}{15}\selectfont
++}
++\setlength{\cftbeforechapskip}{12pt}
++\setlength{\cftchapindent}{0pt}
++\setlength{\cftchapnumwidth}{1.7em}
++\renewcommand{\cftchapfont}{\normalfont\fontsize{11}{15}\selectfont\bfseries\color{black}}
++\renewcommand{\cftchappagefont}{\normalfont\fontsize{11}{15}\selectfont\color{black}}
++\renewcommand{\cftchapleader}{\hfill}
++\setlength{\cftbeforesecskip}{6pt}
++\setlength{\cftsecindent}{1.7em}
++\setlength{\cftsecnumwidth}{2.7em}
++\renewcommand{\cftsecfont}{\normalfont\fontsize{11}{15}\selectfont\color{black}}
++\renewcommand{\cftsecpagefont}{\cftsecfont}
++\setlength{\cftbeforesubsecskip}{1.5pt}
++\setlength{\cftsubsecindent}{3.4em}
++\setlength{\cftsubsecnumwidth}{3.6em}
++\renewcommand{\cftsubsecfont}{\cftsecfont}
++\renewcommand{\cftsubsecpagefont}{\cftsecfont}
++\setlength{\cftbeforesubsubsecskip}{1.5pt}
++\setlength{\cftsubsubsecindent}{5.1em}
++\setlength{\cftsubsubsecnumwidth}{4.5em}
++\renewcommand{\cftsubsubsecfont}{\cftsecfont}
++\renewcommand{\cftsubsubsecpagefont}{\cftsecfont}
++\renewcommand{\cftdotsep}{4.5}
++\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
++\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
++\renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
++\cftsetpnumwidth{2em}
++\cftsetrmarg{3em}
++
++% El cierre mantiene un texto de apertura antes de la lista bibliográfica.
++\defbibheading{referenciassynaptix}[Referencias]{%
++  \chapter*{#1}%
++  \addcontentsline{toc}{chapter}{#1}%
++  \markboth{#1}{#1}%
++  Esta lista reúne las fuentes citadas en el documento.\par
++}
++
++\DeclareCaptionLabelSeparator{synaptix}{\space—\space}
+ \captionsetup{
+   font={small},
+   labelfont={bf,color=SynNavy},
+   textfont={color=SynInk},
+-  labelsep=period,
++  labelsep=synaptix,
+   justification=raggedright,
+   singlelinecheck=false,
+   skip=7pt
+ }
+-\AtBeginEnvironment{tabular}{\fontsize{9}{11}\selectfont}
+-\AtBeginEnvironment{tabularx}{\fontsize{9}{11}\selectfont}
+-\AtBeginEnvironment{longtable}{\fontsize{9}{11}\selectfont}
++% Ajustes locales: no modifican la tipografía ni el interlineado del cuerpo.
++\newcommand{\EstiloTablaSynaptix}{%
++  \fontsize{9}{12}\selectfont
++  \setstretch{1}%
++  \renewcommand{\arraystretch}{1.4}%
++  \setlength{\extrarowheight}{2pt}%
++  \arrayrulecolor{SynLine}%
++}
++\AtBeginEnvironment{tabular}{\EstiloTablaSynaptix}
++\AtBeginEnvironment{tabularx}{\EstiloTablaSynaptix}
++\AtBeginEnvironment{longtable}{\EstiloTablaSynaptix}
++\setlength{\LTleft}{0pt}
++\setlength{\LTright}{0pt}
++\setlength{\LTcapwidth}{\textwidth}
++\setlength{\LTpre}{10pt}
++\setlength{\LTpost}{12pt}
+ \arrayrulecolor{SynLine}
+ \setlength{\arrayrulewidth}{0.45pt}
+ \renewcommand{\arraystretch}{1.28}
+@@ -135,6 +286,7 @@
+ \NewDocumentCommand{\FuenteFigura}{m}{%
+   \par\vspace{2pt}{\fontsize{9}{11}\selectfont\textcolor{SynMuted}{\textbf{Fuente:} #1}}%
+ }
++\NewDocumentCommand{\FuenteTabla}{m}{\FuenteFigura{#1}}
+ \NewDocumentCommand{\FiguraTecnica}{O{width=\linewidth} m m m m}{%
+   \begin{figure}[htbp]
+     \centering
+@@ -147,9 +299,15 @@
+ \NewDocumentCommand{\ReferenciaAnexo}{m m}{%
+   \textcolor{SynNavy}{\textbf{#1}} (archivo independiente: \texttt{#2})%
+ }
+-\newcommand{\EncabezadoTabla}[1]{\cellcolor{SynNavy}\textcolor{SynWhite}{\textbf{#1}}}
+-\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+-\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
++\newcommand{\EncabezadoTabla}[1]{%
++  \cellcolor{SynNavy}%
++  \rule[-5pt]{0pt}{19pt}%
++  \textcolor{SynWhite}{\textbf{#1}}%
++}
++% Las celdas cambian de línea entre palabras, sin partición silábica.
++\newcolumntype{L}[1]{>{\RaggedRight\hyphenpenalty=10000\exhyphenpenalty=10000\arraybackslash}p{#1}}
++\newcolumntype{Y}{>{\RaggedRight\hyphenpenalty=10000\exhyphenpenalty=10000\arraybackslash}X}
++\newcolumntype{R}[1]{>{\RaggedLeft\hyphenpenalty=10000\exhyphenpenalty=10000\arraybackslash}p{#1}}
+ 
+ \AtBeginDocument{%
+   \hypersetup{
+--- a/Subdocumento_5___SYNAPTIX/subdocumento05.tex
++++ b/Subdocumento_5___SYNAPTIX/subdocumento05.tex
+@@ -4,11 +4,9 @@
+ \input{componentes/portada.tex}
+ \input{componentes/cierre.tex}
+ \graphicspath{{figuras/}}
+-\usepackage{float}
+ \begin{document}
+-\PortadaPropuesta{5}{Introducción al Modelo y gestión de datos}
+ \pagenumbering{arabic}
+-\setcounter{page}{1}
++\PortadaPropuesta{5}{Modelo y gestión de datos}
+ \tableofcontents
+ \clearpage
+ \input{capitulo05.tex}
+--- /dev/null
++++ b/Subdocumento_5___SYNAPTIX/SYNAPTIX-Subdocumento5.tex
+@@ -0,0 +1,2 @@
++% Archivo de entrada para exportar SYNAPTIX-Subdocumento5.pdf.
++\input{subdocumento05.tex}

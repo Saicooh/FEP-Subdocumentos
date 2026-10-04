@@ -1,0 +1,904 @@
+% Generado a partir del borrador aprobado de arquitectura.
+% La estructura obligatoria de títulos se conserva sin renombrar ni reordenar.
+\setcounter{chapter}{3}
+\renewcommand{\tablename}{Tabla}
+\chapter{Introducción a la Arquitectura lógica y física de la solución}
+
+Synaptix propone una arquitectura híbrida, modular y \emph{offline-first} para sostener la custodia de embarcaciones, la seguridad de las personas y la evidencia ambiental de Marina y Club Náutico Bahía Panitao S.A. La carga corporativa principal se ejecuta en nube pública, mientras una Célula Operacional Local participa permanentemente en la operación del recinto y conserva las funciones críticas durante una interrupción total de los enlaces externos. Esta distribución responde al modelo híbrido obligatorio, a la ausencia de personal interno de tecnologías de información y a la exigencia de operar al menos veinticuatro horas sin nube \parencites[art. 16, pp. 11--12]{pucv-admin}[cap. 3, pp. 8--10]{pucv-transversal}.
+
+La arquitectura no trata cada área funcional como una aplicación aislada ni equipara automáticamente dominio, módulo y unidad de despliegue. Los nueve dominios de información definidos en el Capítulo 5 se implementan como módulos con propiedad de datos y contratos explícitos; estos módulos se agrupan en pocas unidades desplegables cuando comparten perfil de carga y criticidad. Solo la integración, las notificaciones, la telemetría, la sincronización y la auditoría se separan como procesos especializados. Con ello se preserva el aislamiento necesario sin imponer la carga operacional de una plataforma de microservicios completa.
+
+El presente capítulo complementa el esquema de solución del Capítulo 3 y el modelo de datos del Capítulo 5. La sección 4.1 define límites, responsabilidades, interfaces, seguridad y continuidad lógica. La sección 4.2 asigna cada componente a nube, recinto o terreno, describe los ambientes y cuantifica la capacidad. La sección 4.3 identifica los centros de datos primario y secundario y su papel en recuperación. El detalle contractual de fabricantes, modelos, licencias y cantidades ofertadas se consolidará en el Formulario T-11 sin alterar los mínimos técnicos establecidos aquí.
+
+\section{Arquitectura lógica}
+
+La arquitectura lógica organiza la solución en ocho capas de referencia y nueve dominios de negocio. Las capas determinan cómo se presenta, protege, ejecuta, integra, persiste y observa la solución; los dominios determinan quién es responsable de cada regla y dato. Esta separación permite que una función cambie de infraestructura sin perder su significado y que un servicio administrado pueda sustituirse sin redefinir los procesos del puerto.
+
+\textbf{Principios de diseño.} La solución se rige por seis principios. Primero, la seguridad humana prevalece sobre la conveniencia comercial y la automatización. Segundo, las operaciones críticas deben continuar sin conectividad externa. Tercero, cada dato tiene una autoridad explícita y ningún conflicto se resuelve mediante “última escritura gana”. Cuarto, las integraciones se desacoplan mediante contratos versionados y operaciones idempotentes. Quinto, la evidencia sensórica complementa, pero no sustituye, una confirmación operacional autorizada. Sexto, la operación técnica se administra como servicio durante treinta y seis meses, porque el CLIENTE no dispone de personal informático.
+
+La Tabla~\ref{tab:4-1} resume las ocho capas y establece la responsabilidad que deberá representarse en la vista lógica.
+
+\begin{longtable}{L{\dimexpr0.155556\linewidth-2\tabcolsep\relax}L{\dimexpr0.244444\linewidth-2\tabcolsep\relax}L{\dimexpr0.322222\linewidth-2\tabcolsep\relax}L{\dimexpr0.277778\linewidth-2\tabcolsep\relax}}
+  \caption{Capas lógicas de la solución}\label{tab:4-1}\\
+  \hline
+  \EncabezadoTabla{Capa} & \EncabezadoTabla{Responsabilidad} & \EncabezadoTabla{Componentes principales} & \EncabezadoTabla{Restricción dominante} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{Capa} & \EncabezadoTabla{Responsabilidad} & \EncabezadoTabla{Componentes principales} & \EncabezadoTabla{Restricción dominante} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  Presentación & Interacción por perfil y contexto de uso & Portal público y autenticado, consola operacional, aplicación Android & Accesibilidad, bilingüismo, uso mojado y operación offline \\
+  \hline
+Borde y exposición & Publicación segura y protección del perímetro & CDN, WAF, mitigación DDoS, terminación TLS & Solo esta capa se expone a Internet \\
+  \hline
+  \rowcolor{SynSurface}
+Puerta de enlace de servicios & Autenticación inicial, cuotas y enrutamiento & API Gateway, validación de contratos, límites de tasa & No contiene reglas de negocio \\
+  \hline
+Servicios de negocio & Ejecución de reglas y casos de uso & Tres núcleos modulares y servicios especializados & Módulos con límites verificables y sin acceso cruzado a tablas \\
+  \hline
+  \rowcolor{SynSurface}
+Integración y eventos & Desacoplamiento, entrega y adaptación & EventBridge, SQS/SNS, adaptadores, MQTT en el borde & Idempotencia, reintentos y mensajes fallidos \\
+  \hline
+Datos & Persistencia, evidencia y consulta & PostgreSQL, S3, exportaciones analíticas & Propiedad por dominio, cifrado y retención \\
+  \hline
+  \rowcolor{SynSurface}
+Seguridad transversal & Identidad, autorización, secretos y auditoría & Cognito, IAM, KMS, Secrets Manager, controles Zero Trust & Mínimo privilegio y verificación continua \\
+  \hline
+Observabilidad transversal & Métricas, registros, trazas y alertas & OpenTelemetry y CloudWatch & Cobertura de nube y recinto sin puntos ciegos \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia a partir de PUCV (2026b, cap. 2, pp. 5-7).}
+
+La división por capas restringe dependencias: presentación consume contratos de servicio, los servicios de negocio publican eventos a través de integración y ningún canal accede directamente a la base de datos. Seguridad y observabilidad cruzan todas las capas, por lo que no se representan como utilidades opcionales ni como un módulo final agregado después del desarrollo.
+
+La Figura 4-1 presentará primero la arquitectura completa, desde las personas y sistemas externos hasta nube, recinto y dispositivos. Las figuras posteriores ampliarán cada zona por separado para conservar legibilidad.
+
+\begin{tcolorbox}[enhanced,breakable,colback=SynCyan!6,colframe=SynLine,boxrule=0.6pt,arc=1.5mm]
+\small \textbf{Ficha para Figura 4-1. Vista general híbrida de la solución.} Mostrar, de izquierda a derecha, personas usuarias y sistemas externos; capa de exposición AWS; tres núcleos de negocio y cinco servicios especializados; datos centrales; túneles redundantes; Célula Operacional Local; cinco pantalanes, portería, escuela, varadero, surtidor y campo de boyas. Diferenciar flujo síncrono, evento, telemetría y sincronización. Señalar que VHF, contabilidad, control de acceso, cámaras y estación meteorológica permanecen vigentes. Fuente de la figura: elaboración propia.
+\end{tcolorbox}
+
+La vista deberá evidenciar que la nube aloja la carga principal, pero que el recinto no depende de ella para registrar hechos críticos. También deberá evitar presentar el campo de boyas como un sitio conectado: su operación inicial es totalmente desconectada y la eventual sensorización constituye un piloto independiente.
+
+\textbf{Dominios y propiedad de información.} La Tabla~\ref{tab:4-2} utiliza exactamente la nomenclatura del modelo de datos. Cada dominio posee sus reglas, su esquema lógico y sus eventos; compartir una instancia PostgreSQL no autoriza consultas directas entre esquemas.
+
+\begin{longtable}{L{\dimexpr0.155556\linewidth-2\tabcolsep\relax}L{\dimexpr0.244444\linewidth-2\tabcolsep\relax}L{\dimexpr0.322222\linewidth-2\tabcolsep\relax}L{\dimexpr0.277778\linewidth-2\tabcolsep\relax}}
+  \caption{Dominios canónicos, responsabilidad y autoridad}\label{tab:4-2}\\
+  \hline
+  \EncabezadoTabla{Dominio} & \EncabezadoTabla{Responsabilidad} & \EncabezadoTabla{Autoridad sobre datos principales} & \EncabezadoTabla{Eventos publicados} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{Dominio} & \EncabezadoTabla{Responsabilidad} & \EncabezadoTabla{Autoridad sobre datos principales} & \EncabezadoTabla{Eventos publicados} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  Operación marítima & Salida, regreso, plan de navegación, estado operacional y ocupación basada en evidencias & Hechos operacionales confirmados y estado calculado & SalidaRegistrada, RegresoConfirmado, PlanVencido, OcupaciónActualizada \\
+  \hline
+Clientes y contratos & Personas, organizaciones, embarcaciones, contratos y asignaciones de amarra & Maestros contractuales y vigencias & ContratoActualizado, AsignaciónModificada, ContactoActualizado \\
+  \hline
+  \rowcolor{SynSurface}
+Escuela náutica & Clases, nóminas, embarcaciones, asistencia, retiro y antecedentes mínimos de salud & Estado de cada clase y participación & ClaseIniciada, AlumnoRetirado, ClaseCerrada \\
+  \hline
+Varadero y contratistas & Agenda, plan de izaje, orden, acreditación, faena y evidencia & Plan aprobado y ejecución de faena & PlanAprobado, ManiobraFinalizada, AcreditaciónVencida \\
+  \hline
+  \rowcolor{SynSurface}
+Combustible & Despacho, operador, embarcación, producto, volumen y evidencia & Hecho de despacho validado & CombustibleDespachado \\
+  \hline
+Ambiente y consumos & Medición, residuo, entrega, indicador y evidencia ambiental & Serie conciliada y trazabilidad ambiental & MediciónConsolidada, ResiduoRecibido, ResiduoEntregado \\
+  \hline
+  \rowcolor{SynSurface}
+Finanzas y cobranza & Hecho facturable, exportación contable, saldo importado y expediente & Preparación del hecho facturable y copia del saldo externo & HechoFacturableGenerado, SaldoActualizado \\
+  \hline
+Infraestructura & Amarra, boya, tren de fondeo, medidor, activo, condición e inspección & Inventario físico e historial del activo & ActivoInspeccionado, MedidorAsociado, CondiciónReportada \\
+  \hline
+  \rowcolor{SynSurface}
+Auditoría y seguridad & Consentimiento, decisión sensible, acceso y modificación & Registro protegido de quién hizo o consultó qué & ConsentimientoModificado, AccesoSensibleRegistrado \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia en coherencia con el modelo de datos del Subdocumento 5 y con las Bases Técnicas del Caso 07, caps. 4, 9 y 14.}
+
+Esta propiedad elimina duplicidades. Por ejemplo, Clientes y contratos mantiene la asignación contractual de una amarra, Infraestructura describe la amarra física y Operación marítima calcula su estado operacional. Ninguno reemplaza a los otros: una embarcación puede tener asignación vigente y, al mismo tiempo, encontrarse fuera del recinto; un sensor puede indicar presencia sin identificar de manera concluyente qué embarcación ocupa el puesto.
+
+La Figura 4-2 representará las capas y la Figura 4-3 ampliará los dominios, sus datos y sus eventos. No se recortará la Figura 4-3 desde la vista general, porque debe poder leerse por sí misma.
+
+\begin{tcolorbox}[enhanced,breakable,colback=SynCyan!6,colframe=SynLine,boxrule=0.6pt,arc=1.5mm]
+\small \textbf{Ficha para Figura 4-2. Arquitectura lógica por capas.} Ocho franjas horizontales con componentes concretos; Seguridad y Observabilidad como bandas verticales. Indicar protocolos entre capas y prohibir conexiones directas desde presentación hacia datos. Fuente: elaboración propia basada en PUCV (2026b, cap. 2, pp. 5-7).
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced,breakable,colback=SynCyan!6,colframe=SynLine,boxrule=0.6pt,arc=1.5mm]
+\small \textbf{Ficha para Figura 4-3. Dominios, componentes y propiedad de datos.} Nueve dominios con color por unidad desplegable, esquema de datos propio, eventos de salida y consumidores. Destacar entidades compartidas por referencia, no por copia. Fuente: elaboración propia.
+\end{tcolorbox}
+
+La separación entre ambas figuras evita confundir organización técnica con organización del negocio. La primera explica el recorrido de una solicitud; la segunda explica quién puede decidir y modificar cada concepto.
+
+\textbf{Unidades desplegables.} Los módulos se agrupan por criticidad y perfil de cambio. El Núcleo Operacional contiene Operación marítima, Escuela náutica e Infraestructura. El Núcleo de Servicios contiene Varadero y contratistas, Combustible, y Ambiente y consumos. El Núcleo Administrativo contiene Clientes y contratos, y Finanzas y cobranza. Auditoría y seguridad conserva su modelo propio y recibe eventos de los tres núcleos. Integración externa, notificaciones, telemetría, sincronización y auditoría se ejecutan como procesos especializados porque requieren escalado, permisos y tratamiento de fallas diferentes.
+
+Cada núcleo se empaqueta como contenedor independiente y mantiene módulos internos verificados por Spring Modulith. Una dependencia entre módulos debe declararse y probarse; queda prohibido importar clases internas o consultar tablas ajenas. Si un módulo supera la capacidad o el ritmo de cambio de su núcleo, podrá extraerse sin modificar el contrato público. Este camino de evolución evita fragmentar prematuramente la solución.
+
+\textbf{Célula Operacional Local.} La Célula Operacional Local no replica toda la plataforma cloud. Ejecuta un Runtime Operacional de Borde que contiene: registro de salida, regreso, plan y observación de ocupación; nómina activa y cierre de clases; agenda y planes vigentes de varadero; validación de acceso y acreditaciones cacheadas; captura de combustible, mediciones, telemetría y evidencia; inventario operativo mínimo; cola local de notificaciones críticas; sincronización; e identidades operacionales con permisos offline limitados. Este runtime se usa también con enlace disponible, de modo que el cambio a desconectado no depende de una activación manual.
+
+La Tabla~\ref{tab:4-3} declara qué funciones continúan y cuáles se suspenden cuando se pierde la nube.
+
+\begin{longtable}{L{\dimexpr0.155556\linewidth-2\tabcolsep\relax}L{\dimexpr0.244444\linewidth-2\tabcolsep\relax}L{\dimexpr0.322222\linewidth-2\tabcolsep\relax}L{\dimexpr0.277778\linewidth-2\tabcolsep\relax}}
+  \caption{Disponibilidad funcional durante operación desconectada}\label{tab:4-3}\\
+  \hline
+  \EncabezadoTabla{Capacidad} & \EncabezadoTabla{Estado offline} & \EncabezadoTabla{Mecanismo local} & \EncabezadoTabla{Contingencia complementaria} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{Capacidad} & \EncabezadoTabla{Estado offline} & \EncabezadoTabla{Mecanismo local} & \EncabezadoTabla{Contingencia complementaria} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  Salida, regreso y plan de navegación & Disponible & Runtime local y dispositivo Android & VHF conserva su rol operacional \\
+  \hline
+Estado y observación de amarra & Disponible & Evidencia local y cálculo con nivel de confianza & Ronda física ante discrepancia \\
+  \hline
+  \rowcolor{SynSurface}
+Escuela náutica & Disponible & Nómina firmada, retiro y cierre local & Lista impresa numerada si fallan ambos nodos \\
+  \hline
+Varadero & Disponible en ejecución & Agenda y plan vigentes cacheados; captura antes/después & No se interactúa durante carga suspendida \\
+  \hline
+  \rowcolor{SynSurface}
+Acceso y acreditación & Disponible con datos vigentes cacheados & Lista firmada y eventos locales & Verificación manual de excepción \\
+  \hline
+Combustible, consumos y residuos & Disponible para captura & Totalizador, gateway y cola local & Conciliación posterior \\
+  \hline
+  \rowcolor{SynSurface}
+Portales externos y nuevas reservas & No disponible & No aplica & Atención por teléfono/radio y registro local posterior \\
+  \hline
+Cambios contractuales, facturación y cobranza & No disponible & Datos de consulta cacheados cuando corresponda & Cola de hechos; procesamiento al reconectar \\
+  \hline
+  \rowcolor{SynSurface}
+Analítica y configuración global & No disponible & No aplica & Se difiere hasta recuperar nube \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia a partir de PUCV (2026b, requisitos RT-03.10 a RT-03.18, pp. 8-10) y Bases Técnicas del Caso 07, cap. 17.4.}
+
+La tabla hace explícita la degradación y evita una promesa imprecisa de “funcionamiento total”. Las funciones suspendidas no impiden custodiar embarcaciones, responder por las personas en el agua ni conservar hechos que luego producen consecuencias administrativas o ambientales.
+
+\textbf{Contratos sincrónicos.} Las interfaces de negocio utilizan HTTPS y REST/JSON, descritos con OpenAPI 3.1. Cada operación que crea o modifica un hecho admite \texttt{Idempotency-Key}, devuelve un identificador global y propaga un \texttt{Correlation-Id}. Los contratos se versionan por compatibilidad: un cambio aditivo mantiene la versión; eliminar o reinterpretar un campo exige una versión mayor y un período de convivencia. La puerta de enlace valida formato, autenticación, cuota y tamaño, pero la autorización de negocio se ejecuta nuevamente dentro del dominio propietario.
+
+\begin{sloppypar}
+\textbf{Contratos asíncronos.} Los eventos emplean un sobre común con \texttt{eventId}, \texttt{eventType}, \texttt{schemaVersion}, \texttt{aggregateId}, \texttt{aggregateSequence}, \texttt{occurredAt}, \texttt{recordedAt}, \texttt{source}, \texttt{actor}, \texttt{correlationId}, \texttt{causationId} y \texttt{payload}. El productor registra el evento en su bandeja de salida dentro de la misma transacción del dato de negocio. Un publicador lo entrega a EventBridge o SQS; el consumidor registra el identificador en su bandeja de entrada antes de aplicar efectos. La entrega es al menos una vez, por lo que todo consumidor debe ser idempotente. Los errores transitorios se reintentan con espera exponencial y dispersión; los agotados pasan a una cola de mensajes fallidos con alerta y procedimiento de reproceso.
+\end{sloppypar}
+
+\textbf{Telemetría.} MQTT 5.0 se limita a la relación entre dispositivos, concentradores y Célula Local. Los temas se separan por recinto, zona, tipo de activo e identificador; cada equipo posee certificado individual y lista de publicación/suscripción mínima. Los concentradores conservan lectura acumulativa, secuencia y sello temporal, agregan localmente y publican hacia la nube mediante el servicio de telemetría. Los sistemas de negocio no dependen directamente del broker MQTT.
+
+La Figura 4-4 detallará las integraciones y la Figura 4-5 explicará la sincronización después de una interrupción.
+
+\begin{tcolorbox}[enhanced,breakable,colback=SynCyan!6,colframe=SynLine,boxrule=0.6pt,arc=1.5mm]
+\small \textbf{Ficha para Figura 4-4. Integraciones y contratos.} Ubicar los tres núcleos al centro; API Gateway arriba; EventBridge y SQS debajo; adaptadores laterales para contabilidad, acceso, cámaras, meteorología, combustible, pagos y comunicaciones; MQTT solo entre terreno y borde. Rotular OpenAPI 3.1, eventos versionados y archivos controlados. Fuente: elaboración propia.
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced,breakable,colback=SynCyan!6,colframe=SynLine,boxrule=0.6pt,arc=1.5mm]
+\small \textbf{Ficha para Figura 4-5. Operación desconectada y sincronización.} Secuencia con dispositivo, Runtime Local, base local, coordinador de sincronización, API cloud y dominio propietario. Mostrar aceptación local, outbox, reconexión, deduplicación, validación de secuencia, confirmación y revisión humana de conflicto. Fuente: elaboración propia.
+\end{tcolorbox}
+
+Las figuras deberán mostrar que la mensajería transporta información, pero no se convierte en autoridad. La autoridad permanece en el registro transaccional del dominio y en la bitácora de reconciliación.
+
+\textbf{Autoridad, conflicto y reconciliación.} Los maestros contractuales se administran en nube y se distribuyen al recinto como versiones firmadas. Los hechos que ocurren en terreno —salida, regreso, retiro de alumno, despacho, lectura, inspección o recepción de residuo— se aceptan localmente con identificador global, persona o dispositivo, secuencia y sello temporal. Una edición cloud posterior no sobrescribe un hecho local válido. Al reconectar, el dominio aplica una regla determinista: incorporar un evento nuevo, rechazar un duplicado exacto, mantener ambos hechos si no son excluyentes o enviar una excepción a revisión si la regla no puede decidir sin riesgo.
+
+La ocupación de una amarra se modela como conclusión explicable, no como un booleano sensórico. Sus evidencias pueden incluir asignación contractual, salida o regreso confirmado, lectura de consumo, observación autorizada y sensor de presencia. Cada evidencia conserva origen, antigüedad y calidad. Si las señales coinciden, aumenta la confianza; si se contradicen o están vencidas, el estado se declara indeterminado y se solicita verificación. El historial de estas evidencias puede sustentar los períodos de permanencia verificados que utiliza el Pasaporte Ambiental Náutico con Planes de Reducción, innovación 5 del Subdocumento 13. El piloto de sensores previsto en DA-20 es complementario y no condiciona esa evaluación.
+
+\textbf{Integraciones externas.} El sistema contable y fiscal permanece como autoridad para documentos tributarios, pagos y saldos. La plataforma le envía hechos facturables y recibe estados mediante un adaptador con conciliación; no emite documentos tributarios. El control de acceso y las treinta y ocho cámaras permanecen vigentes: se intercambian autorizaciones y eventos permitidos, mientras el video permanece en su plataforma salvo que una evidencia autorizada deba conservarse. La estación meteorológica entrega observaciones; los avisos oficiales se reciben desde el canal autorizado de la autoridad. VHF continúa como medio operacional y la solución no presupone una API de DIRECTEMAR ni reemplaza actos de autoridad.
+
+Las comunicaciones masivas se desacoplan mediante un servicio de notificaciones con proveedores intercambiables de correo, SMS y mensajería expresamente autorizada. Cada destinatario mantiene canal, intento, entrega, acuse y escalamiento. Para 296 armadores en diez minutos se requiere un promedio inferior a una entrega por segundo, pero el servicio se prueba con ráfagas, reintentos y caída de un proveedor.
+
+\textbf{Seguridad lógica Zero Trust.} La arquitectura no confía en una solicitud por provenir de la red interna. Cada persona usa identidad individual; cada carga y dispositivo usa identidad técnica propia. Cognito administra identidades externas y federación OIDC/SAML; los perfiles internos se federan con el directorio que el CLIENTE autorice. MFA es obligatorio para administración, acceso a datos sensibles y acciones de alto impacto. Las políticas combinan rol, dominio, relación con el dato, estado del dispositivo y contexto de operación.
+
+En modo desconectado, el dispositivo conserva un permiso firmado y cifrado, renovado diariamente y válido por un máximo de setenta y dos horas. El permiso solo contiene funciones del rol operacional y no habilita administración global. Las credenciales de emergencia son nominativas, expiran y generan revisión posterior. La revocación se aplica inmediatamente con enlace; si el recinto permanece aislado, la corta vigencia limita la exposición.
+
+Los datos de menores, salud, deuda y ubicación consentida se clasifican como sensibles. Solo el subconjunto mínimo llega al recinto; el acceso se registra con persona, propósito, dato consultado y resultado. Los datos se cifran en tránsito y reposo, y los campos de mayor sensibilidad se protegen adicionalmente con claves administradas por el CLIENTE. Los secretos residen en Secrets Manager o en el almacén local cifrado; no se incorporan a imágenes ni repositorios.
+
+La Figura 4-6 mostrará las zonas de confianza, los puntos de decisión y las identidades que cruzan los límites.
+
+\begin{tcolorbox}[enhanced,breakable,colback=SynCyan!6,colframe=SynLine,boxrule=0.6pt,arc=1.5mm]
+\small \textbf{Ficha para Figura 4-6. Arquitectura Zero Trust.} Representar Internet, borde público, subredes privadas de aplicación y datos, túnel al recinto, VLAN operacionales y dispositivos. Incluir identidad humana, identidad de carga, certificado de dispositivo, MFA, autorización de dominio, KMS, secretos y auditoría. Indicar que una VLAN no equivale a confianza. Fuente: elaboración propia basada en NIST (2020) y PUCV (2026b, caps. 11-12, pp. 22-26).
+\end{tcolorbox}
+
+La vista de seguridad permitirá comprobar que cada flujo posee sujeto, recurso, política y evidencia. También mostrará que el acceso técnico se realiza de manera temporal y auditada, sin publicar puertos de administración en Internet.
+
+\textbf{Observabilidad y operación.} Todas las aplicaciones se instrumentan con OpenTelemetry y propagan el mismo identificador de correlación por HTTP, evento y sincronización. CloudWatch concentra métricas, registros, trazas, alertas y tableros. La Célula Local conserva un búfer cuando no existe enlace y lo reenvía al recuperar conectividad. Las señales mínimas cubren disponibilidad, latencia, errores, saturación, profundidad de colas, atraso de sincronización, estado de réplicas, vigencia de certificados, batería, temperatura, humedad y conectividad de dispositivos.
+
+Los indicadores técnicos se relacionan con servicios de negocio: tiempo para registrar salida o regreso, porcentaje de planes vencidos sin cierre, tiempo de difusión de marejada, lecturas faltantes, discrepancias de ocupación, hechos facturables pendientes y accesos a información sensible. La observabilidad no se limita a infraestructura, porque el CLIENTE debe demostrar resultados y no dispone de personal que interprete métricas técnicas sin contexto.
+
+\subsection{Especificaciones Tecnologías de Software a utilizar}
+
+La selección tecnológica privilegia componentes con soporte vigente, formatos abiertos y operación administrada. El código de negocio y el modelo de datos permanecen portables; los servicios AWS se usan cuando reducen riesgo operacional. Cada dependencia se mantiene mediante una política de versión N o N-1, revisión semestral de obsolescencia y actualización planificada antes del fin de soporte.
+
+La Tabla~\ref{tab:4-4} identifica el stack de construcción y ejecución.
+
+\begin{longtable}{L{\dimexpr0.155556\linewidth-2\tabcolsep\relax}L{\dimexpr0.244444\linewidth-2\tabcolsep\relax}L{\dimexpr0.322222\linewidth-2\tabcolsep\relax}L{\dimexpr0.277778\linewidth-2\tabcolsep\relax}}
+  \caption{Stack de aplicaciones y ejecución}\label{tab:4-4}\\
+  \hline
+  \EncabezadoTabla{Capacidad} & \EncabezadoTabla{Tecnología base} & \EncabezadoTabla{Uso} & \EncabezadoTabla{Política de ciclo de vida} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{Capacidad} & \EncabezadoTabla{Tecnología base} & \EncabezadoTabla{Uso} & \EncabezadoTabla{Política de ciclo de vida} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  Portal web y consola & TypeScript 5.x, React 19, HTML5 y CSS accesible & Portal público/autenticado y operación de escritorio & Última versión estable y dos anteriores de navegadores; revisión trimestral \\
+  \hline
+Aplicación de terreno & Kotlin 2.x, Android compatible con API 34 o superior, Room/SQLite & Operación mojada, captura de evidencia y trabajo offline & Android Enterprise, versión soportada N o N-1 \\
+  \hline
+  \rowcolor{SynSurface}
+Servicios de negocio & Java 21 LTS, Spring Boot 3.5 o versión compatible soportada, Spring Modulith & Reglas, casos de uso, contratos y eventos & Parches trimestrales; salto de LTS antes del fin de soporte \\
+  \hline
+Contenedores cloud & OCI, Amazon ECR y Amazon ECS sobre Fargate & Ejecución administrada y escalado por servicio & Imágenes mínimas, firmadas e inmutables \\
+  \hline
+  \rowcolor{SynSurface}
+Contenedores locales & Podman 5.x sobre Ubuntu Server 24.04 LTS/Pro & Runtime de borde en dos nodos & Actualización semestral en ventana acordada \\
+  \hline
+Persistencia & PostgreSQL 18 en RDS y en sitio; SQLite/Room en móvil & Transacciones, réplica local y cola de dispositivo & Misma versión mayor nube/sitio; migraciones versionadas y actualización mayor antes del fin de soporte \\
+  \hline
+  \rowcolor{SynSurface}
+Telemetría & MQTT 5.0 y EMQX 5.x en el recinto & Recepción y búfer de instrumentación & Certificado por dispositivo y actualización anual \\
+  \hline
+Observabilidad & OpenTelemetry 1.x y Amazon CloudWatch & Métricas, registros, trazas y alertas & Instrumentación portable; revisión semestral \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia; disponibilidad regional contrastada con AWS (2026a, 2026b).}
+
+El stack separa experiencia de terreno y portal. La aplicación Android concentra los perfiles de marinero, escuela, varadero, portería e inspección mediante permisos por rol, evitando mantener aplicaciones distintas. La PWA se reserva para consultas y formularios de baja criticidad; no se utiliza como único mecanismo para procesos que requieren cola durable, cámara, administración del dispositivo y sincronización prolongada.
+
+PostgreSQL 18 es la línea base para construcción y puesta en marcha, no una promesa de permanencia durante los cincuenta y seis meses contractuales. El plan de mantenimiento incluye ensayar y ejecutar una actualización a una versión mayor soportada antes de que PostgreSQL 18 alcance su fin de soporte, manteniendo la misma versión mayor en nube y recinto. El cambio se prueba primero en QA y Preproducción, con respaldo, reversión y validación de replicación.
+
+La Tabla~\ref{tab:4-5} identifica servicios administrados e integración. Los servicios no esenciales que no estén disponibles en la región secundaria no forman parte del mínimo de recuperación.
+
+\begin{longtable}{L{\dimexpr0.155556\linewidth-2\tabcolsep\relax}L{\dimexpr0.244444\linewidth-2\tabcolsep\relax}L{\dimexpr0.322222\linewidth-2\tabcolsep\relax}L{\dimexpr0.277778\linewidth-2\tabcolsep\relax}}
+  \caption{Servicios cloud, seguridad e integración}\label{tab:4-5}\\
+  \hline
+  \EncabezadoTabla{Función} & \EncabezadoTabla{Servicio o tecnología} & \EncabezadoTabla{Decisión de uso} & \EncabezadoTabla{Alternativa de reversibilidad} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{Función} & \EncabezadoTabla{Servicio o tecnología} & \EncabezadoTabla{Decisión de uso} & \EncabezadoTabla{Alternativa de reversibilidad} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  Exposición & Route 53, CloudFront, AWS WAF, Shield Standard y ACM & Perímetro administrado, TLS y protección DDoS & DNS/CDN/WAF equivalentes; contratos HTTP estándar \\
+  \hline
+API & Amazon API Gateway HTTP API & Autenticación inicial, cuotas y enrutamiento & Gateway compatible con OpenAPI delante de contenedores \\
+  \hline
+  \rowcolor{SynSurface}
+Eventos y colas & EventBridge, SQS y SNS & Enrutamiento, búfer, reintento y notificación & Broker AMQP o servicio equivalente mediante adaptador \\
+  \hline
+Datos transaccionales & Amazon RDS for PostgreSQL 18 Multi-AZ & Operación administrada y recuperación a un punto & PostgreSQL administrado o autogestionado \\
+  \hline
+  \rowcolor{SynSurface}
+Evidencia & Amazon S3 con versionado y Object Lock & Documentos, fotografías, retención y replicación & Almacén compatible con API S3 y exportación íntegra \\
+  \hline
+Analítica & Exportaciones Parquet y Amazon Athena & Consulta histórica desacoplada & Motor SQL sobre Parquet; no forma parte del RTO crítico \\
+  \hline
+  \rowcolor{SynSurface}
+Identidad & Amazon Cognito con OIDC/SAML & Identidades externas y federación & Proveedor OIDC/SAML equivalente \\
+  \hline
+Claves y secretos & AWS KMS y Secrets Manager & Cifrado, rotación y custodia & Exportación de datos descifrados controlada y nueva bóveda \\
+  \hline
+  \rowcolor{SynSurface}
+Seguridad cloud & CloudTrail, GuardDuty, Security Hub, AWS Config e Inspector & Detección, postura y trazabilidad & Exportación normalizada a SIEM/servicios equivalentes \\
+  \hline
+Infraestructura & OpenTofu 1.x, módulos versionados y estados protegidos & Reproducción total sin consola manual & HCL portable y exportación de inventario \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia a partir de PUCV (2026a, art. 16, pp. 11-12) y AWS (2026a).}
+
+Se excluyen Kafka/MSK porque 26,63 millones de lecturas anuales equivalen a menos de un evento por segundo en promedio y no justifican operar una plataforma de \emph{streaming} distribuido. También se excluyen Kubernetes en el recinto, AWS Verified Permissions, OpenSearch y Grafana administrado mientras los casos de uso puedan satisfacerse con Podman, autorización dentro de los dominios y CloudWatch. Estas exclusiones reducen componentes que parchear y supervisar sin cerrar una evolución futura sustentada por métricas.
+
+\textbf{Entrega segura y ambientes.} El repositorio Git mantiene código, contratos, migraciones e infraestructura. La canalización de integración compila, ejecuta pruebas unitarias y de arquitectura, analiza código y dependencias, genera SBOM CycloneDX, examina imágenes con Trivy o equivalente, firma artefactos con Cosign o equivalente y publica únicamente imágenes inmutables en ECR. QA ejecuta pruebas de contrato, integración, seguridad y carga; Preproducción reproduce la topología productiva a escala menor. Producción se despliega progresivamente con comprobaciones de salud y reversión automática.
+
+Los secretos no se copian entre ambientes y los datos productivos no se utilizan fuera de Producción salvo extracción anonimizada y autorización expresa. Desarrollo y QA pueden compartir infraestructura no productiva segmentada; Preproducción, Producción, Seguridad/Registros y DR usan cuentas o límites de administración separados. Todo recurso se etiqueta por ambiente, dominio, servicio, propietario y centro de costo para soportar gobierno y FinOps.
+
+\textbf{Software del borde.} Ubuntu Server LTS se endurece conforme a CIS, Podman ejecuta contenedores sin privilegios, PostgreSQL usa réplica síncrona y EMQX recibe MQTT. Pacemaker/Corosync administra el rol activo-pasivo con IP virtual y fencing mediante Redfish/BMC para impedir dos primarios. OpenTelemetry Collector, el agente de gestión, el EDR seleccionado y el gestor de parches reportan a las consolas centrales. La pérdida de consola central no impide la ejecución local.
+
+\textbf{Registro de decisiones.} Las Tablas 4-6 a 4-9 consolidan las alternativas evaluadas y el criterio que determina cada elección. El detalle de implementación puede evolucionar, pero cambiar una decisión exige registrar impacto en alcance, datos, seguridad, operación, T-11 y costos.
+
+\begin{longtable}{L{\dimexpr0.155556\linewidth-2\tabcolsep\relax}L{\dimexpr0.244444\linewidth-2\tabcolsep\relax}L{\dimexpr0.322222\linewidth-2\tabcolsep\relax}L{\dimexpr0.277778\linewidth-2\tabcolsep\relax}}
+  \caption{Decisiones de estructura lógica}\label{tab:4-6}\\
+  \hline
+  \EncabezadoTabla{ID} & \EncabezadoTabla{Decisión seleccionada} & \EncabezadoTabla{Alternativas evaluadas} & \EncabezadoTabla{Criterio de selección} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{ID} & \EncabezadoTabla{Decisión seleccionada} & \EncabezadoTabla{Alternativas evaluadas} & \EncabezadoTabla{Criterio de selección} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  DA-01 & Nube principal y Célula Operacional Local permanente & Nube con contingencia activable; réplica local completa & Cumplir modelo híbrido y 24 h offline con el mínimo administrable \\
+  \hline
+DA-02 & Arquitectura modular híbrida & Microservicios completos; monolito único & Aislar cargas distintas sin imponer operación distribuida innecesaria \\
+  \hline
+  \rowcolor{SynSurface}
+DA-03 & Nueve dominios canónicos & Doce módulos anteriores; dominios A/B/C & Coincidencia con modelo de datos y propiedad funcional estable \\
+  \hline
+DA-04 & Tres núcleos y cinco procesos especializados & Un despliegue total; servicio por dominio & Independencia donde cambian carga, falla o permisos \\
+  \hline
+  \rowcolor{SynSurface}
+DA-05 & Autoridad por dominio y agregado & Última escritura; nube siempre prevalece & Evitar pérdida silenciosa de hechos válidos generados offline \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia a partir de PUCV (2026a, art. 16), PUCV (2026b, caps. 2-3) y Bases Técnicas del Caso 07, cap. 17.4.}
+
+Estas decisiones separan deliberadamente organización del negocio y topología física. Los dominios no cambian porque un proceso sea extraído o porque una carga migre entre servicios.
+
+\begin{longtable}{L{\dimexpr0.155556\linewidth-2\tabcolsep\relax}L{\dimexpr0.244444\linewidth-2\tabcolsep\relax}L{\dimexpr0.322222\linewidth-2\tabcolsep\relax}L{\dimexpr0.277778\linewidth-2\tabcolsep\relax}}
+  \caption{Decisiones de integración y datos}\label{tab:4-7}\\
+  \hline
+  \EncabezadoTabla{ID} & \EncabezadoTabla{Decisión seleccionada} & \EncabezadoTabla{Alternativas evaluadas} & \EncabezadoTabla{Criterio de selección} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{ID} & \EncabezadoTabla{Decisión seleccionada} & \EncabezadoTabla{Alternativas evaluadas} & \EncabezadoTabla{Criterio de selección} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  DA-06 & REST/OpenAPI para comando y consulta; eventos para propagación & Solo llamadas síncronas; solo eventos & Claridad transaccional con desacoplamiento posterior \\
+  \hline
+DA-07 & EventBridge y SQS/SNS & Kafka/MSK; broker autogestionado & Volumen bajo, operación administrada y DLQ nativa \\
+  \hline
+  \rowcolor{SynSurface}
+DA-08 & PostgreSQL 18 y S3 & DynamoDB como núcleo; archivos en base relacional & Integridad, portabilidad, consulta relacional e inmutabilidad documental \\
+  \hline
+DA-09 & Muestreo local por minuto y acumulado cloud cada 15 min & Enviar toda muestra; lectura horaria & Detección local con 26,63 millones de registros/año controlados \\
+  \hline
+  \rowcolor{SynSurface}
+DA-10 & Ocupación multifuente con nivel de confianza & Declaración única; sensor como verdad & Seguridad, explicabilidad y tolerancia a señales contradictorias \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia sobre la volumetría del Caso 07, cap. 14, y requisitos de integración de PUCV (2026b).}
+
+La mensajería se selecciona por necesidad y no por tendencia tecnológica. El diseño conserva evidencia de origen y permite cambiar el transporte sin modificar la semántica del evento.
+
+\begin{longtable}{L{\dimexpr0.155556\linewidth-2\tabcolsep\relax}L{\dimexpr0.244444\linewidth-2\tabcolsep\relax}L{\dimexpr0.322222\linewidth-2\tabcolsep\relax}L{\dimexpr0.277778\linewidth-2\tabcolsep\relax}}
+  \caption{Decisiones de plataforma y borde}\label{tab:4-8}\\
+  \hline
+  \EncabezadoTabla{ID} & \EncabezadoTabla{Decisión seleccionada} & \EncabezadoTabla{Alternativas evaluadas} & \EncabezadoTabla{Criterio de selección} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{ID} & \EncabezadoTabla{Decisión seleccionada} & \EncabezadoTabla{Alternativas evaluadas} & \EncabezadoTabla{Criterio de selección} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  DA-11 & AWS como proveedor & Azure Chile; Google Cloud Santiago & Coherencia con capacidad, socio y certificaciones ya declaradas \\
+  \hline
+DA-12 & São Paulo primaria y México Central secundaria & Depender de AWS Chile; Estados Unidos como DR & Regiones disponibles, separación geográfica y catálogo requerido \\
+  \hline
+  \rowcolor{SynSurface}
+DA-13 & ECS/Fargate & EKS; EC2 administrado & Contenedores sin administrar clúster ni sistema operativo \\
+  \hline
+DA-14 & Podman en borde & Kubernetes/K3s; procesos instalados en host & Dos nodos y carga baja no justifican orquestador adicional \\
+  \hline
+  \rowcolor{SynSurface}
+DA-15 & Dos nodos activo-pasivo con fencing & Tres nodos; un nodo más repuesto & Redundancia obligatoria con menor complejidad en sitio sin TI \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia conforme a PUCV (2026a, art. 16) y catálogo regional de AWS (2026a, 2026b).}
+
+La selección de AWS no convierte todos los componentes en propietarios. El código, los contenedores, PostgreSQL, OpenAPI, MQTT y OpenTelemetry conservan una ruta de reversibilidad documentada.
+
+\begin{longtable}{L{\dimexpr0.155556\linewidth-2\tabcolsep\relax}L{\dimexpr0.244444\linewidth-2\tabcolsep\relax}L{\dimexpr0.322222\linewidth-2\tabcolsep\relax}L{\dimexpr0.277778\linewidth-2\tabcolsep\relax}}
+  \caption{Decisiones de seguridad, continuidad y canales}\label{tab:4-9}\\
+  \hline
+  \EncabezadoTabla{ID} & \EncabezadoTabla{Decisión seleccionada} & \EncabezadoTabla{Alternativas evaluadas} & \EncabezadoTabla{Criterio de selección} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{ID} & \EncabezadoTabla{Decisión seleccionada} & \EncabezadoTabla{Alternativas evaluadas} & \EncabezadoTabla{Criterio de selección} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  DA-16 & Cognito central y permisos offline firmados & Directorio local completo; cuenta compartida & Identidad individual, mínimo privilegio y baja administración local \\
+  \hline
+DA-17 & Warm standby regional & Activo-activo; recuperación solo desde copia & Cumplir RTO/RPO sin conflicto de escrituras ni duplicación total \\
+  \hline
+  \rowcolor{SynSurface}
+DA-18 & Fibra principal y respaldo por medio/proveedor distinto & Dos fibras sin ruta comprobada; un solo enlace & Diversidad física y conmutación exigidas por las Bases \\
+  \hline
+DA-19 & Android nativo para terreno y React/PWA para portales & PWA única; aplicaciones separadas por rol & Offline durable, MDM y APIs de dispositivo sin duplicar aplicaciones \\
+  \hline
+  \rowcolor{SynSurface}
+DA-20 & Piloto de 40 sensores de ocupación & Despliegue total; ausencia de piloto & Validar ambiente marino y precisión antes de comprometer 380 unidades \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia a partir de PUCV (2026b, caps. 3, 8, 11 y 12) y restricciones del Caso 07.}
+
+Estas decisiones deberán revisarse en los hitos indicados cuando exista nueva evidencia, pero una validación pendiente no autoriza mantener dos arquitecturas simultáneas. Mientras no se apruebe un cambio, rige la alternativa seleccionada.
+
+\section{Arquitectura física}
+
+La arquitectura física asigna cada componente lógico a nube, recinto o terreno según latencia, consecuencia de perder conectividad, proximidad con equipamiento, volumen, custodia y costo operacional. La carga principal se ubica en AWS South America (São Paulo), mientras la Célula Operacional Local aloja el mínimo necesario para continuidad. La región AWS Mexico (Central) actúa como sitio secundario. Esta distribución cumple el carácter híbrido obligatorio y evita convertir el recinto, que no posee sala técnica ni personal informático, en un centro de datos completo \parencites[art. 16, pp. 11--12]{pucv-admin}[caps. 4 y 17.4]{caso07}.
+
+La Figura 4-7 presenta la vista de despliegue completa y la Tabla~\ref{tab:4-10} demuestra el mapeo de cada componente.
+
+\setcounter{figure}{6}
+\FiguraTecnica[width=\textwidth]{Figura-4-7-Arquitectura-Fisica-General.png}{Vista física general de la solución híbrida}{elaboración propia.}{fig:4-7}
+
+La vista organiza la solución en cinco zonas numeradas que se amplían en las figuras siguientes. La Zona 0 reúne personas y canales autorizados; la Zona 1 contiene la producción primaria en AWS São Paulo; la Zona 2 representa la Célula Operacional Local y los cinco pantalanes; la Zona 3 corresponde al \emph{warm standby} en AWS México Central; y la Zona 4 reúne las integraciones con sistemas vigentes. Las flechas distinguen acceso HTTPS/OIDC, operación local, sincronización protegida, continuidad regional e intercambio con terceros. La figura evita repetir el detalle interno de cada zona, pero conserva las dependencias necesarias para comprender dónde se ejecuta cada capacidad y hacia qué ampliación debe dirigirse el lector.
+
+La figura distinguirá alta disponibilidad dentro de la región, recuperación entre regiones y autonomía del recinto. Ninguna de estas capacidades sustituye a otra: Multi-AZ no protege de la pérdida regional y DR no permite operar el puerto cuando se cortan ambos enlaces.
+
+La Tabla~\ref{tab:4-10} utiliza los mismos nombres de la arquitectura lógica y justifica el emplazamiento conforme al Artículo 16.
+
+\begin{longtable}{L{\dimexpr0.104651\linewidth-2\tabcolsep\relax}L{\dimexpr0.209302\linewidth-2\tabcolsep\relax}L{\dimexpr0.244186\linewidth-2\tabcolsep\relax}L{\dimexpr0.244186\linewidth-2\tabcolsep\relax}L{\dimexpr0.197675\linewidth-2\tabcolsep\relax}}
+  \caption{Correspondencia entre esquema de solución, lógica y emplazamiento físico}\label{tab:4-10}\\
+  \hline
+  \EncabezadoTabla{Componente del esquema 3.3} & \EncabezadoTabla{Componente lógico 4.1} & \EncabezadoTabla{Emplazamiento principal 4.2} & \EncabezadoTabla{Presencia local o secundaria} & \EncabezadoTabla{Justificación} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{Componente del esquema 3.3} & \EncabezadoTabla{Componente lógico 4.1} & \EncabezadoTabla{Emplazamiento principal 4.2} & \EncabezadoTabla{Presencia local o secundaria} & \EncabezadoTabla{Justificación} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  Canales digitales & Portal público y autenticado & CloudFront, WAF y origen en São Paulo & Recuperable en México; no local & Demanda externa variable y tolerancia a indisponibilidad durante corte del recinto \\
+  \hline
+Exposición y API & API Gateway & São Paulo & Configuración reproducible en México & Exposición administrada y políticas centralizadas \\
+  \hline
+  \rowcolor{SynSurface}
+Núcleo Operacional & Operación marítima, Escuela náutica e Infraestructura & ECS/Fargate São Paulo & Subconjunto en Célula Local; warm standby México & Elasticidad cloud y continuidad crítica \\
+  \hline
+Núcleo de Servicios & Varadero y contratistas, Combustible, Ambiente y consumos & ECS/Fargate São Paulo & Captura crítica local; warm standby México & Procesamiento central con hechos de terreno preservados \\
+  \hline
+  \rowcolor{SynSurface}
+Núcleo Administrativo & Clientes y contratos, Finanzas y cobranza & ECS/Fargate São Paulo & Maestros de consulta cacheados; warm standby México & Procesos administrativos pueden diferirse offline \\
+  \hline
+Integración y comunicaciones & Integración externa y notificaciones & ECS/Fargate, EventBridge, SQS/SNS & Cola local crítica; warm standby México & Aislamiento de terceros y escalado por demanda \\
+  \hline
+  \rowcolor{SynSurface}
+Telemetría e IoT & Servicio de telemetría & Concentradores y EMQX en recinto; procesador São Paulo & Búfer local y procesador recuperable en México & Acoplamiento físico y reducción de tráfico \\
+  \hline
+Continuidad y sincronización & Coordinador de sincronización & Agente en recinto y coordinador São Paulo & Coordinador en warm standby & Reconciliación auditable entre autoridades \\
+  \hline
+  \rowcolor{SynSurface}
+Datos transaccionales & Persistencia por dominio & RDS Multi-AZ São Paulo & PostgreSQL local acotado y réplica México & Integridad central, continuidad local y RPO regional \\
+  \hline
+Documentos y evidencia & Repositorio de objetos & S3 São Paulo & Caché local cifrada y réplica S3 México & Retención, inmutabilidad y recuperación \\
+  \hline
+  \rowcolor{SynSurface}
+Identidad, seguridad y auditoría & Controles transversales y dominio de auditoría & Servicios AWS y núcleos & Permisos offline y controles DR & Mínimo privilegio con continuidad limitada \\
+  \hline
+Observabilidad & Métricas, registros y trazas & CloudWatch São Paulo & Búfer OpenTelemetry local y registros DR & Vista unificada sin impedir ejecución offline \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia a partir de PUCV (2026a, art. 16, pp. 11-12) y PUCV (2026b, cap. 3, pp. 8-10).}
+
+El mapeo cubre la totalidad de los componentes lógicos. La única duplicación funcional intencional es el subconjunto crítico entre nube y Célula Local; no constituye una réplica completa y utiliza reglas de autoridad explícitas para evitar divergencia.
+
+La Figura 4-8 amplía la Zona 0 y relaciona cada perfil con sus canales autorizados y con la ruta cloud o local correspondiente.
+
+\FiguraTecnica[width=\textwidth]{Figura-4-8-Zona-0-Usuarios-Canales.png}{Usuarios, canales e identidad de la Zona 0}{elaboración propia.}{fig:4-8}
+
+Los armadores, la administración, los equipos de operación, la escuela, el varadero, combustible, portería y el soporte Synaptix utilizan identidades individuales y funciones delimitadas por rol. El portal y la consola React/TypeScript consumen la exposición cloud; la aplicación Kotlin/Android y los terminales administrados pueden operar contra la VIP de la Célula Local cuando la función exige continuidad en terreno. Cognito soporta OIDC/SAML y MFA, mientras los permisos offline firmados y cifrados se limitan a setenta y dos horas y no habilitan administración global. Ningún canal accede directamente a una base de datos. VHF y el registro manual permanecen como contingencia humana y se reconcilian posteriormente, sin presentarlos como una integración API.
+
+La Figura 4-9 amplía la Zona 1 de la vista general y muestra el despliegue físico de Producción en AWS São Paulo.
+
+\FiguraTecnica[width=\textwidth]{Figura-4-9-Zona-1-AWS-Sao-Paulo.png}{Despliegue físico detallado de la Zona 1: AWS São Paulo}{elaboración propia.}{fig:4-9}
+
+Route 53 resuelve DNS; el tráfico HTTPS entra por CloudFront, AWS WAF y Shield Standard antes de alcanzar API Gateway. Cognito aporta autenticación OIDC/SAML y MFA, mientras el VPC Link conduce las solicitudes al balanceador interno. Este distribuye tráfico y comprobaciones de salud entre tareas ECS/Fargate ubicadas en subredes privadas de aplicación de dos zonas de disponibilidad. Las tareas acceden por SQL/TLS a RDS PostgreSQL 18, cuyo primario y standby se mantienen en zonas distintas mediante Multi-AZ, y utilizan endpoints privados para EventBridge, SQS, SNS, S3, ECR y Athena. La Célula Operacional Local intercambia contratos, hechos, secuencias y confirmaciones mediante dos túneles IPsec y HTTPS/mTLS; por su parte, los webhooks externos ingresan por API Gateway y las llamadas salientes a sistemas existentes se originan en adaptadores independientes y atraviesan NAT Gateway redundantes. Hacia México Central solo salen los flujos de continuidad: réplica PostgreSQL asíncrona cifrada, replicación S3, imágenes ECR e infraestructura como código. IAM, KMS, Secrets Manager, OpenTelemetry, CloudWatch, CloudTrail, GuardDuty, Config, Security Hub e Inspector actúan transversalmente, y los registros protegidos se conservan en una cuenta separada. Así, la figura distingue entrada pública, tráfico privado, sincronización con el recinto, integración externa y replicación de desastre sin exponer directamente las subredes de aplicación o datos.
+
+\textbf{Topología cloud primaria.} Producción se distribuye en al menos dos zonas de disponibilidad de \texttt{sa-east-1}. Una VPC productiva contiene subredes públicas exclusivas para balanceo y salida controlada, subredes privadas de aplicación para ECS/Fargate y subredes privadas de datos para RDS. Las rutas, grupos de seguridad y listas de control aplican denegación por defecto. RDS PostgreSQL opera Multi-AZ; las tareas de cada núcleo mantienen un mínimo de dos instancias en zonas distintas. SQS, EventBridge y S3 utilizan la resiliencia regional administrada del proveedor.
+
+CloudFront, WAF y Shield Standard protegen la exposición. API Gateway publica contratos y aplica cuota; la comunicación con aplicaciones permanece privada. NAT y endpoints privados se dimensionan para evitar que un único dispositivo de salida interrumpa todas las zonas. Los registros de seguridad se envían a una cuenta separada con retención protegida, de modo que una credencial comprometida en Producción no pueda eliminarlos.
+
+\textbf{Región secundaria.} \texttt{mx-central-1} mantiene infraestructura de red reproducible, imágenes replicadas, una réplica de lectura RDS PostgreSQL entre regiones, evidencia en S3 mediante Cross-Region Replication y configuración preparada para levantar las tareas críticas. AWS documenta las réplicas RDS PostgreSQL entre regiones para PostgreSQL 18 en todas las regiones que soportan el motor \parencite{aws-rds-crossregion}. El modo es \emph{warm standby}: conserva componentes mínimos activos para comprobar salud y replicación, pero no duplica toda la capacidad productiva en régimen normal. Los servicios indispensables —ECS/Fargate, RDS, EventBridge, SQS, S3, KMS, Secrets Manager, VPN y observabilidad— forman el conjunto mínimo de DR. Analítica y funciones administrativas no críticas pueden recuperarse después del RTO.
+
+La identidad externa utiliza un pool Cognito de contingencia configurado en México, región donde el servicio está disponible \parencite{aws-cognito-mexico}. Las identidades federadas vuelven a autenticarse contra su proveedor OIDC/SAML. Para personas sin federación, el flujo de recuperación usa correo o SMS verificado y la relación estable persona-identidad conservada en Clientes y contratos; no se afirma replicación de contraseñas hacia una combinación regional que AWS no haya certificado. Los permisos operacionales offline permanecen independientes de este mecanismo.
+
+\textbf{Célula Operacional Local.} El sitio se materializa mediante un gabinete técnico autónomo en administración. Dos nodos x86 contienen el mismo conjunto de imágenes y configuración. Uno posee la IP virtual y ejecuta el runtime; el otro mantiene réplica síncrona y está preparado para asumir. Cada nodo utiliza RAID 1, de modo que la falla de un disco no degrada inmediatamente el servicio y la falla del nodo activo no pierde transacciones confirmadas. El fencing por BMC garantiza que un nodo aislado sea apagado antes de promover el segundo.
+
+Dos cortafuegos forman un par de alta disponibilidad y terminan los túneles IPsec. Dos conmutadores L3 apilables distribuyen VLAN y enlaces. Dos UPS online alimentan circuitos A/B; cada una debe sostener la carga crítica completa durante al menos treinta minutos. El gabinete incorpora control de acceso, temperatura, humedad, humo, extinción apropiada y monitoreo remoto. No se requiere que el personal del CLIENTE administre sistema operativo, base de datos, certificados o respaldos.
+
+La Figura 4-10 amplía la Zona 2 de la vista general y muestra la topología física del recinto, desde los enlaces externos hasta los cinco pantalanes.
+
+\FiguraTecnica[width=\textwidth]{Figura-4-10-Zona-2-Celula-Local.png}{Despliegue físico detallado de la Zona 2: Célula Operacional Local y pantalanes}{elaboración propia basada en PUCV (2026a, arts. 11 y 16) y Bases Técnicas del Caso 07 (caps. 2-4 y 17.4).}{fig:4-10}
+
+La lectura de la figura comienza con dos enlaces WAN de proveedor y ruta independientes, que llegan al par de cortafuegos en alta disponibilidad y sostienen dos túneles IPsec hacia AWS São Paulo. Desde ese borde, los switches L3 apilados distribuyen rutas A/B hacia la IP virtual del clúster local y troncales \texttt{802.1Q} hacia seis segmentos: administración, operación, IoT y medición, CCTV y acceso, invitados o \emph{partners}, y gestión técnica. Los dos nodos conservan las mismas imágenes y configuración; el nodo A presta el servicio en régimen normal, el nodo B mantiene una réplica PostgreSQL síncrona y el mecanismo de \emph{heartbeat} con \emph{fencing} permite promoverlo sin aceptar escrituras simultáneas. EMQX, la base local y el Runtime Operacional soportan al menos veinticuatro horas de funciones críticas sin nube, mientras HTTPS con mTLS intercambia contratos, hechos, secuencias y confirmaciones con la Zona 1. Dos UPS online y circuitos A/B protegen la carga crítica, junto con sensores ambientales y control físico del gabinete. Hacia terreno, los segmentos autorizados alcanzan portería, escuela, varadero, combustible, acceso, CCTV, meteorología y VHF; las troncales de fibra marina llegan a los cinco pantalanes, cada uno con gabinete protegido, dos puntos de distribución, medición, conectividad y terminal operacional. La base representada cubre 320 puntos de agua y 320 de energía y deja capacidad para 760 puntos más veinte por ciento de reserva en los concentradores. La figura evidencia rutas, protecciones y fronteras físicas, pero no representa cámaras dirigidas a alumnos ni dispositivos instalados en embarcaciones de armadores o botes menores de la escuela.
+
+La Figura 4-11 amplía la Zona 3 y separa la preparación permanente del procedimiento autorizado de conmutación regional.
+
+\FiguraTecnica[width=\textwidth]{Figura-4-11-Zona-3-AWS-Mexico-DR.png}{Continuidad regional de la Zona 3: AWS México Central}{elaboración propia.}{fig:4-11}
+
+México Central mantiene una VPC privada Multi-AZ, una réplica PostgreSQL 18 asíncrona y cifrada, evidencia mediante S3 CRR, imágenes replicadas en ECR e infraestructura reproducible con OpenTofu. La identidad de contingencia exige reautenticación o recuperación validada y no presupone una réplica regional de contraseñas. Route 53 permanece cerrado hacia DR hasta que el responsable declare el incidente, promueva una sola base de datos, escale y valide los servicios críticos y autorice el cambio DNS. La Célula Local conserva su autonomía durante el proceso y se conecta a México mediante VPN y HTTPS/mTLS al activarse la contingencia. El retorno requiere réplica inversa, atraso cero, una ventana aprobada y cambio único de autoridad; nunca se admiten escrituras simultáneas en ambas regiones.
+
+La Figura 4-12 amplía la Zona 4 y delimita cada integración mediante un adaptador independiente y un contrato versionado.
+
+\FiguraTecnica[width=\textwidth]{Figura-4-12-Zona-4-Integraciones-Sistemas.png}{Integraciones y sistemas vigentes de la Zona 4}{elaboración propia.}{fig:4-12}
+
+Contabilidad conserva la autoridad sobre documentos, pagos y saldos; la plataforma solo prepara hechos facturables y recibe resultados. Acceso y CCTV mantienen sus sistemas vigentes y entregan exclusivamente autorizaciones, eventos o evidencia permitida; el video no se copia indiscriminadamente. Meteorología aporta observaciones, DIRECTEMAR se representa mediante el canal oficial efectivamente autorizado y VHF permanece como coordinación humana. El surtidor entrega pulsos o datos mediante un gateway y barrera intrínseca fuera de la zona clasificada, y el proveedor de notificaciones devuelve acuses, errores y reintentos. Cuando la capacidad técnica de un tercero no se haya validado, el contrato se expresa como API, \emph{webhook} o archivo seguro sin inventar un protocolo. Los terceros no se conectan entre sí.
+
+\textbf{Segmentación de red.} La red se divide en segmentos de administración, operación, instrumentación, cámaras, socios/invitados y gestión técnica. El tráfico entre segmentos atraviesa el cortafuegos o políticas L3 explícitas. Administración no inicia conexiones hacia instrumentación salvo desde servicios autorizados; socios/invitados solo accede a Internet; cámaras permanece aislada y entrega únicamente los eventos permitidos; gestión técnica requiere estación administrada, MFA y acceso temporal. Los switches aplican 802.1X o autenticación de dispositivo cuando sea compatible, protección de puertos, DHCP snooping y registro de cambios.
+
+El enlace principal será fibra empresarial simétrica de al menos 100 Mb/s. El respaldo tendrá proveedor y medio físico distintos, con al menos 50 Mb/s útiles; la línea base es 5G empresarial con antena exterior y doble SIM de operador diferente, sujeta a medición de cobertura. Si el levantamiento demuestra que no cumple disponibilidad, se reemplazará por radio o enlace satelital empresarial sin modificar la arquitectura. La conmutación será automática y se probará trimestralmente.
+
+\textbf{Pantalanes y ambiente marino.} El troncal tierra-pantalán utiliza fibra óptica apta para ambiente marino, reserva de longitud, alivio de tensión y cajas estancas. Los gabinetes de cabeza de pantalán son IP66, de acero inoxidable AISI 316L o poliéster reforzado, categoría de corrosividad C5-M, con control de condensación y prensaestopas certificados. La distribución eléctrica y de datos respeta rutas separadas, puesta a tierra, protección diferencial, aislamiento y flexión por marea. Las obras civiles, canalizaciones, soportes, torretas y circuitos las ejecuta el CLIENTE sobre especificación de Synaptix.
+
+La base considera dos puntos de distribución por pantalán, sujetos a estudio RF y distancia efectiva. Los puntos de acceso exteriores y dispositivos se ensayan con marea alta y baja, lluvia, manos mojadas y carga concurrente. Una pérdida de cobertura no elimina el registro: la aplicación conserva localmente la operación y sincroniza al recuperar conexión.
+
+\textbf{Medición de agua y energía.} Se instalan inicialmente 320 puntos de agua y 320 de energía, uno de cada servicio por amarra, con capacidad de crecer a 760 puntos. Diez concentradores —dos por pantalán— admiten en conjunto la ampliación más un veinte por ciento de reserva. Los medidores conservan totalizador no volátil; los concentradores muestrean localmente cada minuto, calculan calidad y publican acumulados de quince minutos, además de alarmas. La asociación medidor-amarra tiene vigencia temporal y pertenece a Infraestructura; la serie conciliada pertenece a Ambiente y consumos.
+
+La Figura 4-13 detalla este flujo sin mezclarlo con la topología general.
+
+\FiguraTecnica[width=\textwidth]{Figura-4-13-Telemetria-Submedicion.png}{Flujo de telemetría y submedición}{elaboración propia.}{fig:4-13}
+
+La cadena comienza en los medidores de agua y energía, cuyos totalizadores no volátiles alimentan buses industriales y diez concentradores distribuidos a razón de dos por pantalán. Los concentradores conservan calidad, secuencia y sello UTC, muestrean cada minuto, agregan cada quince minutos y mantienen al menos veinticuatro horas de cola. MQTT 5 con mTLS finaliza en EMQX dentro del borde local; los dominios cloud no consumen directamente el broker. PostgreSQL de borde conserva las particiones temporales y el \emph{outbox}, mientras el servicio de sincronización transmite lotes idempotentes por HTTPS/mTLS y elimina la cola únicamente después del ACK. El procesamiento cloud entrega una serie conciliada a Ambiente y consumos, que publica \texttt{MediciónConsolidada}; Finanzas y cobranza genera el hecho facturable solo después de validar asociación, unidad, calidad y período. La figura también distingue operación normal, pérdida de WAN y reproducción ordenada durante la reconexión.
+
+La figura deberá separar captura, conciliación y uso comercial. Una lectura no se factura directamente: primero se valida continuidad, asociación, unidad, calidad y período; luego Ambiente y consumos publica el consumo conciliado y Finanzas y cobranza genera el hecho facturable.
+
+\textbf{Ocupación de amarras y boyas.} La arquitectura habilita un piloto de cuarenta sensores en un sector representativo, con tecnología sustituible mediante adaptador. El piloto compara salinidad, marea, movimiento, cobertura, falsos positivos, mantenimiento y energía. Solo después de validar precisión y costo se definirá una expansión. El estado siempre combina evidencia, no una señal única.
+
+Bahía Ilque no recibe infraestructura permanente obligatoria en la línea base. La inspección se realiza con dispositivo IP68, autonomía mínima de ocho horas, formularios y mapas offline, fotografías georreferenciadas y carga posterior. Cualquier sensor autónomo de boya se trata como piloto separado y no sustituye las rondas ni presume cobertura o energía inexistentes.
+
+\textbf{Escuela, varadero y combustible.} La escuela usa un dispositivo por semirrígido de apoyo y uno de respaldo; no se entregan dispositivos a menores ni se usan cámaras para controlarlos. Varadero usa el dispositivo antes y después de la maniobra, nunca con carga suspendida. En el surtidor, la interfaz recibe pulsos o datos desde equipo certificado; la barrera intrínsecamente segura y el gateway se instalan fuera de la zona clasificada. La selección final depende de la clasificación formal del recinto y de certificados aplicables.
+
+\textbf{Ambientes.} Desarrollo, QA, Preproducción, Producción y DR se mantienen diferenciados. Desarrollo y QA utilizan datos sintéticos y pueden apagar cargas fuera de horario. Preproducción reproduce contratos, red y topología productiva a menor capacidad y se utiliza para ensayos de migración, seguridad, rendimiento y despliegue. Producción contiene datos reales y cambios aprobados. DR replica solo Producción y se prueba sin emplearlo como QA.
+
+La Tabla~\ref{tab:4-11} resume el propósito y aislamiento de cada ambiente.
+
+\begin{longtable}{L{\dimexpr0.155556\linewidth-2\tabcolsep\relax}L{\dimexpr0.244444\linewidth-2\tabcolsep\relax}L{\dimexpr0.322222\linewidth-2\tabcolsep\relax}L{\dimexpr0.277778\linewidth-2\tabcolsep\relax}}
+  \caption{Ambientes y condiciones de uso}\label{tab:4-11}\\
+  \hline
+  \EncabezadoTabla{Ambiente} & \EncabezadoTabla{Propósito} & \EncabezadoTabla{Datos permitidos} & \EncabezadoTabla{Disponibilidad} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{Ambiente} & \EncabezadoTabla{Propósito} & \EncabezadoTabla{Datos permitidos} & \EncabezadoTabla{Disponibilidad} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  Desarrollo & Construcción y prueba local de componentes & Sintéticos & Horario de trabajo; sin SLA \\
+  \hline
+QA & Integración, contratos, regresión y seguridad automatizada & Sintéticos o anonimizados aprobados & Bajo demanda \\
+  \hline
+  \rowcolor{SynSurface}
+Preproducción & Ensayo integral, carga, migración y liberación & Sintéticos representativos; copia anonimizada excepcional & Topología productiva a menor escala \\
+  \hline
+Producción & Operación real & Productivos & Alta disponibilidad Multi-AZ y servicio gestionado \\
+  \hline
+  \rowcolor{SynSurface}
+DR & Recuperación de Producción & Réplica cifrada de productivos & Warm standby y pruebas semestrales \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia a partir de PUCV (2026b, cap. 4, pp. 10-12).}
+
+La separación impide que una prueba altere la operación o exponga información real. Las promociones usan el mismo artefacto firmado; cambia la configuración externa, no se recompila código para cada ambiente.
+
+\textbf{Dimensionamiento de transacciones y concurrencia.} La proyección a tres años contempla 380 amarras, 70 boyas, 2.400 recaladas, 5.600 zarpes, 1.350 movimientos de travelift, 1.400 salidas de clase, 2.300 documentos mensuales, 88 trabajadores en peak y 4.000 personas distintas ingresando al recinto en un mes de temporada \parencite[cap. 14, sec. 14.1]{caso07}. Se adopta un régimen de 5 transacciones de negocio por segundo, peak de 20 y capacidad técnica mínima de 100 solicitudes por segundo. La concurrencia de diseño es 50 personas internas y 150 externas, con prueba a 300 sesiones externas simultáneas.
+
+Estas cifras son deliberadamente superiores a la frecuencia media. Ciento diez zarpes concentrados en dos mañanas equivalen a menos de quince por hora si cada ventana dura cuatro horas; el margen cubre consultas, invitados, clases, sincronización y reintentos simultáneos. Las aplicaciones se mantienen sin estado para ampliar tareas sin migrar sesiones.
+
+\textbf{Dimensionamiento de telemetría.} Para 760 puntos cada quince minutos, el cálculo anual es:
+
+\begin{center}
+\texttt{760 puntos × 4 lecturas/hora × 24 horas/día}\\
+\texttt{× 365 días/año = 26.630.400 lecturas/año}
+\end{center}
+
+El promedio es 0,84 lecturas por segundo. Si cada intervalo se distribuye en sesenta segundos, el peak esperado es 12,7 lecturas/s. El servicio se dimensiona para 25 eventos/s sostenidos y 100 eventos/s en ráfaga. Con 300 bytes efectivos por registro, incluidos índices y metadatos, la serie requiere cerca de 8 GB/año; se reservan 25 GB/año para índices, correcciones y holgura.
+
+\textbf{Almacenamiento y operación desconectada.} RDS inicia con 200 GB ampliables automáticamente hasta 1 TB. S3 reserva una proyección de 100 GB/año para contratos, seguros, fichas, fotografías y actas, con políticas de ciclo de vida. Veinticuatro horas generan 72.960 lecturas agregadas; la evidencia fotográfica domina el volumen. La Célula Local reserva al menos 10 GB por día de cola y treinta días de margen cifrado. Sus dos discos de 1,92 TB en RAID 1 por nodo permiten absorber el período aun cuando la evidencia supere la estimación.
+
+\textbf{Ancho de banda y sincronización.} Transferir un peor caso de 10 GB en treinta minutos requeriría aproximadamente 45 Mb/s útiles. El enlace principal de 100 Mb/s y el respaldo de 50 Mb/s permiten cumplirlo en condiciones nominales. La sincronización prioriza transacciones, estados y bitácoras; fotografías y documentos continúan después sin impedir que la consistencia operacional se recupere dentro de treinta minutos.
+
+\textbf{Cómputo.} Cada núcleo productivo inicia con dos tareas distribuidas, de 1 vCPU y entre 2 y 4 GB de memoria por tarea. Los workers escalan por profundidad de cola. RDS parte con una clase equivalente a 2 vCPU y 8 GB Multi-AZ, que se ajustará con pruebas. Cada nodo local ofrece al menos 8 núcleos y 64 GB ECC y debe sostener por sí solo toda la carga con cuarenta por ciento de reserva. Si una prueba supera setenta por ciento sostenido de CPU, memoria, IOPS o cola durante el peak, se escala antes de Producción.
+
+La Tabla~\ref{tab:4-12} consolida las hipótesis verificables.
+
+\begin{longtable}{L{\dimexpr0.155556\linewidth-2\tabcolsep\relax}L{\dimexpr0.244444\linewidth-2\tabcolsep\relax}L{\dimexpr0.322222\linewidth-2\tabcolsep\relax}L{\dimexpr0.277778\linewidth-2\tabcolsep\relax}}
+  \caption{Resumen de capacidad y prueba}\label{tab:4-12}\\
+  \hline
+  \EncabezadoTabla{Dimensión} & \EncabezadoTabla{Línea base} & \EncabezadoTabla{Margen o límite} & \EncabezadoTabla{Verificación} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{Dimensión} & \EncabezadoTabla{Línea base} & \EncabezadoTabla{Margen o límite} & \EncabezadoTabla{Verificación} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  Solicitudes de negocio & 20/s peak estimado & 100/s capacidad mínima & Prueba de carga con mezcla operacional \\
+  \hline
+Concurrencia & 50 internas + 150 externas & 300 externas en prueba & Sesiones y percentiles de respuesta \\
+  \hline
+  \rowcolor{SynSurface}
+Telemetría & 12,7 eventos/s en ventana & 25/s sostenidos; 100/s ráfaga & Publicación, cola y persistencia \\
+  \hline
+Base transaccional & 200 GB inicial & Autoescalado hasta 1 TB & Crecimiento, IOPS y restauración \\
+  \hline
+  \rowcolor{SynSurface}
+Evidencia & 100 GB/año & Ciclo de vida y réplica & Carga, descarga e integridad \\
+  \hline
+Cola offline & 10 GB/día & 30 días de margen local & Corte de 24 h y posterior sincronización \\
+  \hline
+  \rowcolor{SynSurface}
+WAN principal/respaldo & 100/50 Mb/s útiles & Transacciones prioritarias & Medición real y conmutación \\
+  \hline
+Cómputo local & 8 núcleos/64 GB por nodo & ≥40 \% libre en peak & Prueba con un solo nodo activo \\
+  \hline
+\end{longtable}
+\FuenteTabla{cálculos propios sobre la volumetría de las Bases Técnicas del Caso 07, cap. 14.}
+
+El primer recurso susceptible de saturarse es la transferencia de evidencia después de una interrupción, no PostgreSQL ni la tasa transaccional. Por eso se separan colas y prioridades, y no se sobredimensiona la plataforma de eventos con Kafka.
+
+\textbf{Alta disponibilidad y eliminación de puntos únicos.} La Tabla~\ref{tab:4-13} identifica fallas relevantes y su tratamiento. Los elementos externos que no pueden duplicarse, como travelift o surtidor, se aíslan para que su falla no detenga el resto de la plataforma.
+
+\begin{longtable}{L{\dimexpr0.155556\linewidth-2\tabcolsep\relax}L{\dimexpr0.244444\linewidth-2\tabcolsep\relax}L{\dimexpr0.322222\linewidth-2\tabcolsep\relax}L{\dimexpr0.277778\linewidth-2\tabcolsep\relax}}
+  \caption{Fallas, detección y contingencia}\label{tab:4-13}\\
+  \hline
+  \EncabezadoTabla{Falla} & \EncabezadoTabla{Detección} & \EncabezadoTabla{Respuesta automática} & \EncabezadoTabla{Continuidad resultante} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{Falla} & \EncabezadoTabla{Detección} & \EncabezadoTabla{Respuesta automática} & \EncabezadoTabla{Continuidad resultante} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  Tarea cloud & Health check y métrica & ECS reemplaza tarea & Otra tarea atiende en zona distinta \\
+  \hline
+Zona AWS & Salud de balanceo/RDS & Tráfico a zona sana; failover RDS & Producción continúa regionalmente \\
+  \hline
+  \rowcolor{SynSurface}
+Región São Paulo & Monitoreo sintético y alarma & Activación dirigida de DR y cambio DNS & México dentro de RTO ≤4 h \\
+  \hline
+Nodo local & Watchdog, heartbeat y fencing & Promoción del pasivo & Runtime local en menos de 5 min objetivo \\
+  \hline
+  \rowcolor{SynSurface}
+Disco local & RAID y SMART & RAID 1 mantiene servicio & Reemplazo planificado sin pérdida \\
+  \hline
+WAN principal & Sonda por ruta & Conmutación a respaldo & Operación conectada degradada \\
+  \hline
+  \rowcolor{SynSurface}
+Ambas WAN & Pérdida de túneles & Runtime pasa a cola local & Funciones críticas ≥24 h \\
+  \hline
+Gateway de pantalán & Heartbeat y lecturas faltantes & Dispositivo conserva cola/totalizador & Captura local y revisión de zona \\
+  \hline
+  \rowcolor{SynSurface}
+Proveedor de mensajería & Error y tasa de entrega & Segundo canal y reintento & Lista operativa para llamada/VHF \\
+  \hline
+Interfaz contable & Cola y timeout & Circuit breaker y reintento & Hechos facturables no se pierden ni duplican \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia conforme a PUCV (2026b, caps. 3, 7 y 10).}
+
+La tabla distingue recuperación automática de procedimientos dirigidos. Una caída regional requiere una decisión controlada para evitar dos primarios; una falla de tarea o enlace sí se resuelve automáticamente. Los planes se ensayan con evidencias, tiempos y responsables.
+
+\textbf{Respaldo y recuperación.} RDS mantiene recuperación a un punto en el tiempo por treinta y cinco días, respaldos automáticos y copias mensuales conforme a la política de retención. S3 usa versionado, Object Lock para evidencia y replicación entre regiones. La base local mantiene réplica síncrona, respaldos cifrados y exportación a S3 cuando existe enlace. Infraestructura, imágenes, contratos, configuración y procedimientos se versionan para reconstruir un ambiente sin depender de acciones manuales en consola.
+
+La Figura 4-14 representa alta disponibilidad, respaldo y recuperación.
+
+\FiguraTecnica[width=\textwidth]{Figura-4-14-Alta-Disponibilidad-Respaldo-DR.png}{Alta disponibilidad, respaldo y recuperación ante desastres}{elaboración propia.}{fig:4-14}
+
+La figura diferencia cinco mecanismos complementarios. La redundancia local usa WAN, cortafuegos, core, nodos y alimentación A/B; la alta disponibilidad regional distribuye tareas y RDS entre zonas de São Paulo; la réplica regional mantiene PostgreSQL y S3 preparados en México; los respaldos permiten volver a un punto anterior cuando la réplica ya propagó un error; y ECR junto con OpenTofu reconstruyen software e infraestructura, pero no recuperan datos. La conmutación regional es secuencial y autorizada: declarar, aislar escrituras, promover una única réplica, escalar y validar, y finalmente cambiar Route 53. El retorno utiliza una ventana aprobada y réplica inversa con atraso cero. Los objetivos de veinticuatro horas offline, sincronización en treinta minutos, RTO de cuatro horas y RPO de quince minutos se validan mediante pruebas trimestrales de WAN y modo desconectado y ejercicios semestrales de DR y restauración.
+
+La figura deberá impedir una interpretación frecuente: una réplica no sustituye un respaldo inmutable, porque también puede propagar una eliminación o corrupción lógica. Por ello se conservan ambos mecanismos.
+
+\textbf{Objetivos y pruebas de continuidad.} La disponibilidad de componentes críticos será al menos 99,9 \%, el RTO regional no superará cuatro horas y el RPO transaccional no superará quince minutos. La Célula Local opera al menos veinticuatro horas sin nube y la sincronización operacional se completa dentro de treinta minutos después de recuperar capacidad suficiente. Semestralmente se ejecuta un ejercicio regional; trimestralmente se prueban WAN y modo desconectado; después de cada cambio relevante se prueban restauración, nodo, disco y reconciliación.
+
+Además se verifican escenarios propios del caso: 296 destinatarios notificados en diez minutos con evidencia individual; registro de salida o regreso en diez segundos y dos interacciones; nómina de dieciocho embarcaciones de escuela en sesenta segundos; visitante atendido en cuarenta y cinco segundos; atraso de plan detectado y escalado dentro de quince minutos; estado de amarra actualizado en sesenta segundos; y 760 puntos de medición sin pérdida ni duplicación.
+
+\subsection{Especificaciones Implementos a proveer (Hardware y Software)}
+
+La presente sección resume los implementos necesarios para materializar la arquitectura. El Formulario T-11 individualizará fabricante, modelo, soporte, licencia, cantidad y equivalencia aceptable después de los levantamientos de energía, radiofrecuencia, distancias, buses de medición y clasificación del surtidor. Ningún ajuste podrá reducir la capacidad, redundancia o protección declarada aquí.
+
+La Tabla~\ref{tab:4-14} resume el gabinete técnico y comunicaciones.
+
+\begin{longtable}{L{\dimexpr0.155556\linewidth-2\tabcolsep\relax}R{\dimexpr0.244444\linewidth-2\tabcolsep\relax}L{\dimexpr0.322222\linewidth-2\tabcolsep\relax}L{\dimexpr0.277778\linewidth-2\tabcolsep\relax}}
+  \caption{Implementos del gabinete técnico y comunicaciones}\label{tab:4-14}\\
+  \hline
+  \EncabezadoTabla{Implemento} & \EncabezadoTabla{Cantidad base} & \EncabezadoTabla{Especificación mínima} & \EncabezadoTabla{Responsable operativo} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{Implemento} & \EncabezadoTabla{Cantidad base} & \EncabezadoTabla{Especificación mínima} & \EncabezadoTabla{Responsable operativo} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  Gabinete técnico autónomo & 1 & Capacidad ≥24U equivalente, cerrado, acceso controlado, clima, sensores y extinción apropiada & Synaptix remoto; acceso físico autorizado del CLIENTE \\
+  \hline
+Servidor de borde & 2 & x86, ≥8 núcleos, 64 GB ECC, TPM 2.0, BMC, doble NIC, fuentes redundantes, 2×1,92 TB SSD enterprise RAID 1 & Synaptix \\
+  \hline
+  \rowcolor{SynSurface}
+NGFW & 2 & Alta disponibilidad, doble WAN, VPN IPsec, IDS/IPS y ≥200 Mb/s cifrados & Synaptix \\
+  \hline
+Switch central L3 PoE+ & 2 & Apilable, uplinks SFP+, fuentes redundantes, VLAN, 802.1X, ACL y telemetría & Synaptix \\
+  \hline
+  \rowcolor{SynSurface}
+UPS online & 2 & Doble conversión, circuitos A/B, cada unidad soporta carga crítica ≥30 min & Synaptix con mantenedor certificado \\
+  \hline
+Terminación WAN & 2 & Fibra empresarial y respaldo de proveedor/medio distinto & Operadores; supervisión Synaptix \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia conforme a PUCV (2026b, caps. 3, 6 y 8) y Bases Técnicas del Caso 07, requisito RT-06.01.}
+
+Cada servidor puede sostener toda la carga local; cada UPS puede sostener el conjunto crítico. Esta condición evita que un componente “redundante” dependa de la misma fuente, disco o chasis que su par.
+
+La Tabla~\ref{tab:4-15} resume red de terreno, medición e integración.
+
+\begin{longtable}{L{\dimexpr0.155556\linewidth-2\tabcolsep\relax}R{\dimexpr0.244444\linewidth-2\tabcolsep\relax}L{\dimexpr0.322222\linewidth-2\tabcolsep\relax}L{\dimexpr0.277778\linewidth-2\tabcolsep\relax}}
+  \caption{Implementos de terreno e instrumentación}\label{tab:4-15}\\
+  \hline
+  \EncabezadoTabla{Implemento} & \EncabezadoTabla{Cantidad base} & \EncabezadoTabla{Especificación mínima} & \EncabezadoTabla{Criterio de ampliación} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{Implemento} & \EncabezadoTabla{Cantidad base} & \EncabezadoTabla{Especificación mínima} & \EncabezadoTabla{Criterio de ampliación} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  Gabinete principal de pantalán & 5 & IP66, AISI 316L o PRFV, C5-M, anticondensación y monitoreo & Uno por pantalán; extensiones por distancia \\
+  \hline
+Switch industrial PoE & 10 & Administrable, fibra, temperatura extendida y protección ambiental & Dos por pantalán, sujeto a diseño final \\
+  \hline
+  \rowcolor{SynSurface}
+Punto de acceso exterior & 10 & Wi-Fi 6, exterior marino, administración central y PoE & Cobertura validada con estudio RF \\
+  \hline
+Concentrador de medición & 10 & Protocolos abiertos, búfer, reloj, ≥760 puntos totales +20 \% & Dos por pantalán \\
+  \hline
+  \rowcolor{SynSurface}
+Medidor de agua & 320 + repuestos T-11 & Totalizador no volátil, grado IP y metrología aplicable & Hasta 380 unidades \\
+  \hline
+Medidor de energía & 320 + repuestos T-11 & Lectura acumulativa, aislamiento y metrología aplicable & Hasta 380 unidades \\
+  \hline
+  \rowcolor{SynSurface}
+Lector de acceso & 7 base & Exterior cuando corresponda, credencial segura e integración & Portería, pantalanes y punto validado \\
+  \hline
+Interfaz de surtidor & 1 conjunto & Transmisor/interfaz certificado, barrera intrínseca y gateway fuera de zona & Según dos mangueras y clasificación formal \\
+  \hline
+  \rowcolor{SynSurface}
+Sensor de ocupación & 40 piloto & Tecnología reemplazable, sellada, identificada y observable & Expansión solo tras resultado del piloto \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia sobre inventario y proyección de las Bases Técnicas del Caso 07, caps. 2, 4, 14 y 17.4.}
+
+Las cantidades de medidores cubren 320 amarras y la arquitectura de concentradores cubre 380. La reserva de repuestos se individualizará en T-11 y no disminuirá el número instalado. Los sensores de ocupación no se compran masivamente antes de demostrar desempeño en ambiente real.
+
+La Tabla~\ref{tab:4-16} resume los dispositivos móviles y software asociado.
+
+\begin{longtable}{L{\dimexpr0.155556\linewidth-2\tabcolsep\relax}R{\dimexpr0.244444\linewidth-2\tabcolsep\relax}L{\dimexpr0.322222\linewidth-2\tabcolsep\relax}L{\dimexpr0.277778\linewidth-2\tabcolsep\relax}}
+  \caption{Dispositivos operacionales y licencias}\label{tab:4-16}\\
+  \hline
+  \EncabezadoTabla{Implemento} & \EncabezadoTabla{Cantidad base} & \EncabezadoTabla{Protección y autonomía} & \EncabezadoTabla{Uso principal} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{Implemento} & \EncabezadoTabla{Cantidad base} & \EncabezadoTabla{Protección y autonomía} & \EncabezadoTabla{Uso principal} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  Terminal de pantalán & 6 & IP68, MIL-STD-810H o equivalente, pantalla mojada/con guantes, ≥12 h & Salida, regreso, amarra y visita \\
+  \hline
+Terminal de escuela & 3 & IP68, flotante o arnés, ≥12 h & Nómina, salida, retiro y regreso \\
+  \hline
+  \rowcolor{SynSurface}
+Terminal de varadero & 3 & IP67, resistente a polvo y golpes, ≥12 h & Plan y evidencia antes/después \\
+  \hline
+Terminal de boyas & 2 & IP68, GNSS, cámara, mapas offline, ≥8 h & Inspección totalmente desconectada \\
+  \hline
+  \rowcolor{SynSurface}
+Terminal de portería/respaldo & 2 & IP67 o equipo fijo protegido, ≥12 h & Acceso, retiro y acreditación \\
+  \hline
+MDM/UEM & 16 licencias + crecimiento & Android Enterprise, cifrado, kiosco, borrado y actualización & Administración remota de la flota \\
+  \hline
+  \rowcolor{SynSurface}
+EDR/XDR & Cobertura de nodos y terminales compatibles & Detección, aislamiento y telemetría central & Protección de cargas y endpoints \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia conforme a PUCV (2026b, RT-03.18 y cap. 8) y Bases Técnicas del Caso 07, caps. 2, 8 y 17.4.}
+
+Los dieciséis equipos incluyen dos repuestos configurados dentro de la distribución. La asignación exacta por turno se valida con Operaciones, pero la capacidad no depende de dispositivos personales ni de que un especialista prepare un reemplazo.
+
+\textbf{Energía y PUE del recinto.} Para dimensionamiento inicial se considera una carga TI máxima aproximada de 1,0 kW entre nodos, red, seguridad y comunicaciones. Con pérdidas de UPS y climatización estimadas en 0,35 kW, el gabinete presenta un PUE preliminar de \texttt{1,35 kW / 1,0 kW = 1,35}. El cálculo se reemplazará por potencias nominales y medición real de los modelos seleccionados. Dos UPS de 3 kVA o capacidad equivalente, cada una capaz de sostener la carga crítica, proporcionan el margen requerido. Los circuitos, protecciones y puesta a tierra se diseñan conforme a la normativa chilena aplicable.
+
+\textbf{Criterios de aceptación de implementos.} Todo equipo debe entregar ficha técnica, serie, garantía, fin de soporte, consumo, condiciones ambientales, certificaciones, firmware inicial y procedimiento de actualización. Los equipos marinos se ensayan en su ubicación; los medidores se concilian con totalizadores; los dispositivos se prueban mojados y con guantes; las UPS se prueban a plena carga; el failover se ejecuta desconectando físicamente el componente activo. La recepción documental sin prueba no constituye aceptación.
+
+\section{Data center}
+
+La estrategia de centros de datos combina infraestructura cloud regional y un gabinete de borde operacional. El núcleo productivo reside en una región AWS con múltiples zonas; una región geográficamente separada mantiene recuperación; el recinto solo conserva el subconjunto imprescindible para continuidad y proximidad con dispositivos. La residencia primaria se declara en Brasil y la secundaria en México. Toda transferencia internacional de datos personales queda sujeta a aprobación del CLIENTE, base de licitud y controles exigidos por la Ley N.º 21.719 \parencite[cap. 4, p. 16]{pucv-admin}.
+
+El gabinete local se clasifica como borde operacional y no como centro de datos primario. Sin embargo, se le aplican controles proporcionales de energía, ambiente, acceso, incendio, monitoreo y mantenimiento porque aloja transacciones críticas. El proveedor gestionado conserva inventario, contratos de soporte, repuestos y procedimientos, y entrega al CLIENTE los informes de disponibilidad, capacidad, seguridad, energía y pruebas de recuperación.
+
+\subsection{Especificaciones Data Center Primaria}
+
+El centro de datos primario corresponde a AWS South America (São Paulo), código \texttt{sa-east-1}. La región cumple la exigencia de presencia en Sudamérica y ofrece las capacidades administradas seleccionadas. La aplicación productiva usa al menos dos zonas de disponibilidad; los servicios de aplicación no mantienen estado local y RDS opera Multi-AZ. La selección de São Paulo preserva coherencia con la capacidad AWS declarada por Synaptix y no depende de una región anunciada pero todavía no confirmada como disponible.
+
+\textbf{Red y emplazamiento.} Producción utiliza una VPC exclusiva, subredes por capa y zona, endpoints privados y salida controlada. Solo CloudFront, WAF, API Gateway y los balanceadores necesarios reciben tráfico público. Las capas de aplicación y datos no poseen direcciones públicas. Los túneles del recinto terminan en gateways redundantes y las políticas solo permiten flujos inventariados.
+
+\textbf{Capacidad y disponibilidad.} Los tres núcleos mantienen dos tareas como mínimo y autoescalan según CPU, memoria, latencia y cola. Los workers escalan por profundidad y antigüedad del mensaje. RDS Multi-AZ, S3, SQS y EventBridge proporcionan redundancia regional. La capacidad se revisa mensualmente y antes de temporada alta, regatas o campañas de varadero.
+
+\textbf{Datos y respaldos.} PostgreSQL cifra almacenamiento, réplicas y copias. La recuperación a un punto en el tiempo conserva treinta y cinco días. S3 aplica versionado, política de retención y Object Lock en evidencia que lo requiera. Los respaldos se prueban mediante restauración y no solo por presencia del archivo. Las claves productivas son administradas por el CLIENTE y su uso se registra.
+
+\textbf{Seguridad y operación.} AWS CloudTrail, Config, GuardDuty, Security Hub e Inspector centralizan actividad, postura y hallazgos. Los registros se copian a una cuenta protegida. El acceso privilegiado requiere MFA, aprobación temporal y trazabilidad. Synaptix aplica parches, revisa vulnerabilidades, mantiene certificados, monitorea capacidad y ejecuta respuesta a incidentes durante el servicio gestionado.
+
+\textbf{Sostenibilidad.} El reporte mensual incorpora consumo cloud etiquetado y el reporte anual incorpora el PUE y las certificaciones publicados por el proveedor, además de la intensidad o huella disponible para la región. Los ambientes no productivos se apagan fuera de horario cuando no existe una prueba en curso. Las decisiones de capacidad privilegian autoescalado y reservas justificadas por uso medido, no sobreaprovisionamiento permanente.
+
+La Tabla~\ref{tab:4-17} resume los controles del centro primario.
+
+\begin{longtable}{L{\dimexpr0.217391\linewidth-2\tabcolsep\relax}L{\dimexpr0.391304\linewidth-2\tabcolsep\relax}L{\dimexpr0.391305\linewidth-2\tabcolsep\relax}}
+  \caption{Especificaciones del centro de datos primario}\label{tab:4-17}\\
+  \hline
+  \EncabezadoTabla{Dimensión} & \EncabezadoTabla{Especificación} & \EncabezadoTabla{Evidencia de aceptación} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{Dimensión} & \EncabezadoTabla{Especificación} & \EncabezadoTabla{Evidencia de aceptación} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  Región & AWS \texttt{sa-east-1}, São Paulo, Brasil & Inventario IaC y consola de organización \\
+  \hline
+Disponibilidad & Aplicación en ≥2 AZ; RDS Multi-AZ & Prueba de falla zonal y reporte de despliegue \\
+  \hline
+  \rowcolor{SynSurface}
+Red & Subredes por capa, datos privados, exposición solo en borde & Diagrama, reglas y prueba de alcance \\
+  \hline
+Seguridad & Cifrado, MFA, registros protegidos, detección y postura & Reportes de KMS, CloudTrail y seguridad \\
+  \hline
+  \rowcolor{SynSurface}
+Respaldo & PITR 35 días, S3 versionado/Object Lock y restauración probada & Acta de restauración y tiempos medidos \\
+  \hline
+Operación & Monitoreo 24×7 del servicio, parches, capacidad y FinOps & Reporte mensual y registros de cambio \\
+  \hline
+  \rowcolor{SynSurface}
+Sostenibilidad & Apagado no productivo, capacidad ajustada y métricas del proveedor & Reporte anual de energía/huella disponible \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia a partir de PUCV (2026a, arts. 16 y 20, pp. 11-17), PUCV (2026b, caps. 3, 6, 10 y 15) y AWS (2026a).}
+
+La aceptación del sitio primario exige probar la arquitectura desplegada, no solo acreditar que la región existe. La prueba incluye pérdida de una tarea, indisponibilidad de una zona simulada, failover de base, restauración, aislamiento de red y continuidad desde la Célula Local.
+
+\subsection{Especificaciones Data Center Secundario}
+
+El centro de datos secundario corresponde a AWS Mexico (Central), código \texttt{mx-central-1}. AWS declara tres zonas de disponibilidad y disponibilidad regional de los servicios base utilizados por esta solución. La región se habilita explícitamente en la organización y se gobierna con las mismas políticas, etiquetas y registros que el sitio primario \parencites{aws-regiones}{aws-rds-regiones}. Cognito también se encuentra disponible en México Central, aunque su configuración de contingencia debe probarse separadamente de la réplica transaccional \parencite{aws-cognito-mexico}.
+
+El modo de recuperación es \emph{warm standby}. La red, claves, secretos, repositorios, observabilidad y componentes mínimos permanecen preparados; las imágenes y la infraestructura se replican; una réplica RDS PostgreSQL entre regiones recibe cambios de manera asíncrona; S3 replica objetos y versiones. Las tareas de aplicación se mantienen a capacidad mínima o listas para escalar. Esta modalidad permite cumplir RTO sin pagar una duplicación activa completa que no se justifica por la carga.
+
+\textbf{Conmutación.} Una pérdida regional se declara cuando las sondas independientes, los servicios AWS y la operación confirman que no se trata de una falla local de Internet. El responsable de continuidad autoriza promover la réplica, escalar tareas, verificar integridad y cambiar Route 53. La Célula Local continúa mientras se ejecuta el procedimiento. La conmutación no es ciega ni activo-activo: se evita aceptar escrituras simultáneas en ambas regiones.
+
+\textbf{Operación en DR.} Primero se recuperan identidad, API, tres núcleos, sincronización, integración crítica, notificaciones, PostgreSQL y evidencia. Analítica, reportes históricos y tareas administrativas secundarias pueden recuperarse después de restablecer los servicios prioritarios. El servicio valida colas, secuencias, certificados, integraciones y estado de la Célula Local antes de declarar recuperada Producción.
+
+\textbf{Retorno.} El regreso a São Paulo se ejecuta en ventana aprobada. Se establece réplica inversa, se comprueba atraso cero, se detienen escrituras, se cambia autoridad y se reactiva tráfico. Las evidencias del incidente y del retorno se conservan. Si el sitio primario no es recuperable, México permanece como autoridad hasta que un nuevo primario sea aprobado.
+
+\textbf{Pruebas.} Dos veces al año se realiza una conmutación técnica o ejercicio equivalente que incluya promoción de datos, despliegue de tareas, cambio de tráfico y validación de casos críticos. Cada prueba mide RPO, RTO, integridad, colas, sincronización y retorno. Una simulación de escritorio sin levantar servicios no satisface esta obligación.
+
+La Tabla~\ref{tab:4-18} resume el centro secundario.
+
+\begin{longtable}{L{\dimexpr0.217391\linewidth-2\tabcolsep\relax}L{\dimexpr0.391304\linewidth-2\tabcolsep\relax}L{\dimexpr0.391305\linewidth-2\tabcolsep\relax}}
+  \caption{Especificaciones del centro de datos secundario}\label{tab:4-18}\\
+  \hline
+  \EncabezadoTabla{Dimensión} & \EncabezadoTabla{Especificación} & \EncabezadoTabla{Evidencia de aceptación} \\
+  \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{Dimensión} & \EncabezadoTabla{Especificación} & \EncabezadoTabla{Evidencia de aceptación} \\
+  \hline
+  \endhead
+  \rowcolor{SynSurface}
+  Región & AWS \texttt{mx-central-1}, México Central & Región habilitada e inventario IaC \\
+  \hline
+Modalidad & Warm standby de Producción & Recursos mínimos activos y capacidad de escalado \\
+  \hline
+  \rowcolor{SynSurface}
+Datos & Réplica continua PostgreSQL y replicación S3 & Atraso, consistencia y prueba de lectura \\
+  \hline
+Objetivos & RTO ≤4 h; RPO ≤15 min & Cronología firmada del ejercicio \\
+  \hline
+  \rowcolor{SynSurface}
+Activación & Autorización, promoción única y cambio Route 53 & Runbook y registro de decisión \\
+  \hline
+Alcance inicial & Servicios críticos; analítica posterior & Lista de prioridades y validación funcional \\
+  \hline
+  \rowcolor{SynSurface}
+Prueba & Semestral, con retorno o recuperación equivalente & Acta, hallazgos y plan de mejora \\
+  \hline
+\end{longtable}
+\FuenteTabla{elaboración propia a partir de PUCV (2026a, art. 20, pp. 14-17), PUCV (2026b, cap. 10) y AWS (2026a, 2026b).}
+
+La región secundaria mantiene separación geográfica y de falla respecto del primario. La transferencia internacional, la latencia y el costo de replicación se revisan en diseño detallado y en cada cambio de residencia.
+
+\textbf{Evolución hacia AWS Chile.} A la fecha de corte de esta propuesta, AWS continúa anunciando una región en Chile para 2026; el anuncio no se trata como disponibilidad productiva \parencite{aws-chile}. Cuando la región esté comercialmente disponible, Synaptix evaluará catálogo de servicios, tres zonas, certificaciones, conectividad, latencia, residencia, costo, capacidad, RPO/RTO y operación. Una migración requerirá diseño, pruebas, autorización y plan de reversión. Chile podrá reemplazar al primario o secundario, pero nunca se realizará una migración automática basada solo en el anuncio.
+
+\nocite{*}

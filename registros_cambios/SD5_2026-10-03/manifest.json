@@ -1,0 +1,160 @@
+{
+  "fecha_registro": "2026-10-03",
+  "captura_local": "2026-10-03T19:47:09-03:00",
+  "proyecto": "C:\\Users\\Nijika\\Documents\\FEP-Subdocumentos\\Subdocumento_5___SYNAPTIX",
+  "estado": "Reaplicación autorizada; pendiente de recibir la versión nueva del SD5.",
+  "respaldo": "SD5_con_correcciones.zip",
+  "sha256_respaldo": "2f5f5f17cd93ee5fd231041cfa5473db4bf6edf61d73b0b5cab6a1b5c14d4583",
+  "comparacion": "Instantánea anterior a la estandarización del 3 de octubre de 2026; no contiene el estado previo a todas las correcciones históricas.",
+  "archivos_con_cambios_de_estandarizacion": [
+    "capitulo05.tex",
+    "componentes/cierre.tex",
+    "componentes/portada.tex",
+    "config/metadatos.tex",
+    "estilo/propuesta-tecnica.sty",
+    "subdocumento05.tex",
+    "SYNAPTIX-Subdocumento5.tex"
+  ],
+  "archivos": [
+    {
+      "ruta": "capitulo05.tex",
+      "bytes": 148161,
+      "sha256": "42fc21a0a9d431abe189a4cbecf61afc6a601acece2fbab31efb3c41fba0d772"
+    },
+    {
+      "ruta": "componentes/cierre.tex",
+      "bytes": 2680,
+      "sha256": "9f6bfbfc132a58f7c63738a7df836def72eed8c08c150f141fea73d255acbaeb"
+    },
+    {
+      "ruta": "componentes/ejemplos.tex",
+      "bytes": 2295,
+      "sha256": "e265355ba7291e1c2feecbd2d27938ebccce24a569b8565fb898d5980d086a90"
+    },
+    {
+      "ruta": "componentes/portada.tex",
+      "bytes": 4593,
+      "sha256": "596ec87a61f492db567465672e79c712250a043c6b18e38f6cf34d1aaddcfb09"
+    },
+    {
+      "ruta": "config/identidad.tex",
+      "bytes": 713,
+      "sha256": "29f993a439dbf8fddc512fa76fed39a11a0e38bfc61e3672e192efbc547f6d4a"
+    },
+    {
+      "ruta": "config/metadatos.tex",
+      "bytes": 465,
+      "sha256": "a875be6a507be0608ef72c79c2dcae9cd3791afe013327f317243ed20bc35818"
+    },
+    {
+      "ruta": "config/referencias.bib",
+      "bytes": 637,
+      "sha256": "2c4f30d31e23094e6793db7d1d4b81fd5cf89360cc47cfcba31253935446867a"
+    },
+    {
+      "ruta": "estilo/propuesta-tecnica.sty",
+      "bytes": 11619,
+      "sha256": "3eca2f0aadda66d87eae272a93df1769c69bfc1d0d12f07aabba815e8769e043"
+    },
+    {
+      "ruta": "figuras/F5_1.png",
+      "bytes": 515621,
+      "sha256": "a0c72ff35fc7e00adb26a0cb0566eed96c3b765e8b5e241c1bf90a581a0c4d1f"
+    },
+    {
+      "ruta": "figuras/F5_10.png",
+      "bytes": 410620,
+      "sha256": "11304b24779a89b5984fbe8a25a72b0a1e0abf8f1554c9c16b615a6adcc7dab2"
+    },
+    {
+      "ruta": "figuras/F5_11.png",
+      "bytes": 595885,
+      "sha256": "ccccad7092ac3f8775c190c388e904267ff55801c8ad11dcfba641ccd4e712cb"
+    },
+    {
+      "ruta": "figuras/F5_12.png",
+      "bytes": 946761,
+      "sha256": "71762c862751a4c9c172493c0be9618be6a2761e5e694a2ad3d4b7710988c4d8"
+    },
+    {
+      "ruta": "figuras/F5_13.png",
+      "bytes": 796488,
+      "sha256": "7f1a0c99033de1ff02ba0d8b0887cbfb8bbd306924f9bdd4a0c8f3e82d53b7c6"
+    },
+    {
+      "ruta": "figuras/F5_14.png",
+      "bytes": 495141,
+      "sha256": "53f88506ffef8f6d9971272976862a7f41bcbb2af77b18cbace5b440e1ed331f"
+    },
+    {
+      "ruta": "figuras/F5_15.png",
+      "bytes": 686190,
+      "sha256": "0c6b765bba7061a605e68960af023e909b77df97a465aa7374a5cfe916fa388b"
+    },
+    {
+      "ruta": "figuras/F5_16.png",
+      "bytes": 950512,
+      "sha256": "26bcf1c3b74387b79114da3a9bd22c432c5567e1fa26c7705e5ae8d0b6891f4c"
+    },
+    {
+      "ruta": "figuras/F5_17png.png",
+      "bytes": 729710,
+      "sha256": "e9c131ef0dbfaca33fa3f35d92a240f0b76e3b84ee17b5cb5e0d44a647f480bb"
+    },
+    {
+      "ruta": "figuras/F5_2.png",
+      "bytes": 478102,
+      "sha256": "607764374db3256a653c2d47b362f6549db909ed49f0faa9cab5d090d2e8fb60"
+    },
+    {
+      "ruta": "figuras/F5_3.png",
+      "bytes": 458068,
+      "sha256": "e404fb3e062dc8643562a33410c122c0853cda4a99113c6111333fc27440f060"
+    },
+    {
+      "ruta": "figuras/F5_4.png",
+      "bytes": 909545,
+      "sha256": "3c9ba672de2539c1b59180109e50b118a0746146f9f05f0f58f2f771b7aa81f6"
+    },
+    {
+      "ruta": "figuras/F5_5.png",
+      "bytes": 678524,
+      "sha256": "842de414d56facc26c7ad7aa1243039774b311cc046d49f5d003819222d04d6c"
+    },
+    {
+      "ruta": "figuras/F5_6.png",
+      "bytes": 701593,
+      "sha256": "05009a100c41d9258225e77f1031a248e5745c5fdc6672e39fabee360e3502af"
+    },
+    {
+      "ruta": "figuras/F5_7.png",
+      "bytes": 695717,
+      "sha256": "cd66086f8a7388206332025a15e193bffd389c239d208ce61c30096d48f3fddd"
+    },
+    {
+      "ruta": "figuras/F5_8.png",
+      "bytes": 687308,
+      "sha256": "8d3d26b32310aca48868a1f09e97b01ba1b7161ca0460ad3c1375e61ecc7fc07"
+    },
+    {
+      "ruta": "figuras/F5_9.png",
+      "bytes": 561103,
+      "sha256": "0a12184a3edf796f7722da2a35521dfc021087c0021e9d8df362bba684887a8b"
+    },
+    {
+      "ruta": "latexmkrc",
+      "bytes": 143,
+      "sha256": "107999ccca85a6a401392a6a9ae42ff90fbb102cc3f559b335677e3e9f81e5c6"
+    },
+    {
+      "ruta": "subdocumento05.tex",
+      "bytes": 372,
+      "sha256": "a7c982c92a76d7e198376abcfbc548bc3413c6709a73e59fa2d04ed0becc11fc"
+    },
+    {
+      "ruta": "SYNAPTIX-Subdocumento5.tex",
+      "bytes": 90,
+      "sha256": "f30caeb6776fe3d03f71d7fac6377896d1964fd60a60ae958b79e5efa6687eab"
+    }
+  ]
+}

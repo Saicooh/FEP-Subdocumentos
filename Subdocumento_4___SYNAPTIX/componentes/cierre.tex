@@ -1,0 +1,65 @@
+% Declaración ajustada al trabajo real del Subdocumento 4.
+\NewDocumentCommand{\FilaDeclaracionIA}{m m m m m m}{%
+  #1 & #2 & #3 & #4 & #5 & #6 \\
+  \hline
+}
+
+\providecommand{\DeclaracionesIA}{%
+  \FilaDeclaracionIA{Introducción}{OpenAI Codex}{Organización de restricciones y trazabilidad}{Medio}{Ninguno}{Equipo proponente: alcance y terminología contractual}%
+  \FilaDeclaracionIA{Arquitectura lógica}{OpenAI Codex}{Síntesis de capas, dominios, contratos y seguridad; corrección de la remisión a la innovación 5 vigente del SD13}{Alto}{Alto}{Arquitecto de Solución y responsables funcionales: control de capas, dominios y contratos. José Lara: criterios de integración con la operación. Control de la remisión a la innovación 5 a cargo del Arquitecto de Solución y del Líder Funcional antes de la emisión.}%
+  \FilaDeclaracionIA{Tecnologías}{OpenAI Codex}{Comparación y redacción del stack}{Alto}{Medio}{Arquitectura cloud, desarrollo y licenciamiento}%
+  \FilaDeclaracionIA{Arquitectura física}{OpenAI Codex}{Mapeo, dimensionamiento y escenarios de continuidad}{Alto}{Alto}{Infraestructura, redes, electricidad y terreno}%
+  \FilaDeclaracionIA{Implementos}{OpenAI Codex}{Inventario mínimo y criterios de aceptación}{Medio}{Medio}{Levantamiento, fabricantes y Formulario T-11}%
+  \FilaDeclaracionIA{Data center}{OpenAI Codex}{Primaria, secundaria, failover y retorno}{Alto}{Alto}{Arquitectura AWS, seguridad y continuidad}%
+  \FilaDeclaracionIA{Referencias}{OpenAI Codex}{Normalización bibliográfica preliminar}{Medio}{Ninguno}{Comprobación bibliográfica y paginación final}
+  \FilaDeclaracionIA{Formato y registro de IA}{OpenAI Codex}{Normalización de portada, índice, metadatos, firmas, foliación, tablas y cierre; ajuste de anchos y legibilidad; normalización de bordes, separación de filas y fondos alternados de las tablas conforme al SD1; concordancia del registro de IA}{Bajo}{Ninguno}{José Lara, Líder de Operación / SRE: control editorial antes de la emisión.}%
+}
+
+\newenvironment{declaracionia}{%
+  \begingroup
+  \setlength{\tabcolsep}{3pt}
+  \begin{longtable}{L{\dimexpr.105\textwidth-2\tabcolsep\relax}L{\dimexpr.14\textwidth-2\tabcolsep\relax}L{\dimexpr.21\textwidth-2\tabcolsep\relax}L{\dimexpr.115\textwidth-2\tabcolsep\relax}L{\dimexpr.14\textwidth-2\tabcolsep\relax}L{\dimexpr.29\textwidth-2\tabcolsep\relax}}
+    \caption{Declaración de uso de IA por sección y archivo asociado}
+    \label{tab:declaracion-ia} \\
+    \hline
+    \EncabezadoTabla{Sección} &
+    \EncabezadoTabla{Herramienta} &
+    \EncabezadoTabla{Finalidad del uso} &
+    \EncabezadoTabla{Nivel en texto} &
+    \EncabezadoTabla{Nivel en diagramas} &
+    \EncabezadoTabla{Revisión humana: responsable y verificación} \\
+    \hline
+    \endfirsthead
+    \hline
+    \EncabezadoTabla{Sección} &
+    \EncabezadoTabla{Herramienta} &
+    \EncabezadoTabla{Finalidad del uso} &
+    \EncabezadoTabla{Nivel en texto} &
+    \EncabezadoTabla{Nivel en diagramas} &
+    \EncabezadoTabla{Revisión humana: responsable y verificación} \\
+    \hline
+    \endhead
+}{%
+  \end{longtable}
+  \endgroup
+}
+
+\newcommand{\CierreSubdocumento}{%
+  \clearpage
+  \printbibliography[heading=referenciassynaptix,title={Referencias}]
+  \clearpage
+  \chapter*{Declaración de uso de IA}
+  \addcontentsline{toc}{chapter}{Declaración de uso de IA}
+  \markboth{Declaración de uso de IA}{Declaración de uso de IA}
+  Synaptix utilizó una herramienta de inteligencia artificial generativa como apoyo para organizar antecedentes, comparar nomenclatura, proponer redacción técnica y revisar consistencia. Las decisiones, la comprobación de cálculos y el contraste de las fuentes corresponden a los responsables de Synaptix, que asume la responsabilidad completa por el contenido. La herramienta no reemplazó validaciones de terreno, certificaciones, decisiones del CLIENTE ni revisión profesional.
+
+  Los niveles admitidos son Ninguno, Bajo, Medio y Alto. El registro se consolidará en el Formulario A-6.
+
+  La Tabla~\ref{tab:declaracion-ia} registra el uso declarado en este documento y sus archivos asociados.
+  \begin{declaracionia}
+    \DeclaracionesIA
+  \end{declaracionia}
+  \FuenteTabla{Registro de uso de IA de este subdocumento.}
+
+  El control previo a la emisión comprende modelos, certificaciones, distancias, disponibilidad regional, clasificación del surtidor, normas eléctricas y localización de las fuentes en las bases.
+}

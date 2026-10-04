@@ -1,0 +1,62 @@
+\section*{A2.5. Reglas de negocio}
+Las reglas siguientes expresan condiciones de actuación y control, complementarias al catálogo funcional. Se distingue la exigencia del caso de la regla propuesta por Synaptix. Las reglas propuestas no se presentan como aprobadas; sus parámetros pendientes se vinculan con A2.6. Los códigos RN identifican reglas del registro y no son códigos RT de las bases.
+
+La Tabla~\ref{tab:a2-5-01} detalla las reglas, su origen y sus vínculos.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-10\tabcolsep-6\arrayrulewidth\relax}
+\begin{longtable}{|L{0.116466\AnchoTablaAnexo}|L{0.160643\AnchoTablaAnexo}|L{0.325301\AnchoTablaAnexo}|L{0.257028\AnchoTablaAnexo}|L{0.140562\AnchoTablaAnexo}|}
+\caption{A2.5. Reglas de negocio}\label{tab:a2-5-01}\\
+\hline
+\EncabezadoTabla{ID / proceso} & \EncabezadoTabla{Disparador} & \EncabezadoTabla{Regla verificable} & \EncabezadoTabla{Origen, excepción y autorización} & \EncabezadoTabla{Fuente / vínculos} \\ \hline
+\endfirsthead
+\multicolumn{5}{l}{\small\textit{Reglas de negocio — continuación}}\\
+\hline
+\EncabezadoTabla{ID / proceso} & \EncabezadoTabla{Disparador} & \EncabezadoTabla{Regla verificable} & \EncabezadoTabla{Origen, excepción y autorización} & \EncabezadoTabla{Fuente / vínculos} \\ \hline
+\endhead
+\multicolumn{5}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RN-01 — Estado de embarcación & Se recibe observación o declaración de movimiento. & Conservar separadamente el estado operacional de la embarcación, el estado del plan voluntario y el estado de atención de las alertas. Identificar la fuente y la fecha y hora de cada cambio. Las discrepancias permanecen visibles hasta su resolución por un responsable autorizado. & Propuesta: ninguna fuente contradictoria se descarta sin evidencia. & DEC-01 y 05; RF-NAV-01, 04 y 05 \\ \hline
+RN-02 — Regreso seguro & Personal confirma llegada a amarra. & Registrar el regreso en momento seguro con identidad del informante; diferenciar declaración del armador de confirmación operacional. & Propuesta; nunca exigir equipo de seguimiento a bordo. & C07 cap. 10; DEC-05; RF-NAV-04 \\ \hline
+\rowcolor{RFclaro}
+RN-03 — Plan voluntario & Armador crea o modifica un plan. & Obtener consentimiento aplicable, asociar embarcación y vencimiento, y permitir cierre identificado. & Base: datos voluntarios y revocables; campos finales pendientes. & C07 cap. 10; DEC-04; RF-NAV-08 y 09 \\ \hline
+RN-04 — Vencimiento del plan & Llega vencimiento sin cierre. & Generar alerta en no más de 15 minutos desde el vencimiento. & Base; no sumar gracia de 30 minutos. & C07 RT-09.01; RF-NAV-06 \\ \hline
+\rowcolor{RFclaro}
+RN-05 — Mensaje tardío & Se recibe cierre o modificación fuera de orden. & Conciliar por identidad y secuencia causal; un mensaje antiguo no reabre automáticamente un plan cerrado. & Propuesta; conservar mensaje y decisión de conciliación. & C07 RT-16.21; DEC-21; RF-AUT-08 \\ \hline
+RN-06 — Emergencia multicanal & Responsable autoriza aviso de emergencia. & Despachar SMS, mensajería y correo simultáneamente; registrar acuse por destinatario y gestionar llamadas sin acuse. & Base; plazo máximo hasta último envío: diez minutos para 296 armadores. & C07 RT-16.21 y RT-09.01; RF-ALE-03 a 05 \\ \hline
+\rowcolor{RFclaro}
+RN-07 — Compatibilidad de amarra & Se solicita asignación. & Evaluar dimensiones y condiciones de maniobra/exposición antes de confirmar el puesto. & Propuesta; límites y autoridad de excepción por documentar, sin vulnerar seguridad. & C07 sec. 16.1, decisión 9; RF-AMA-03 a 05 \\ \hline
+RN-08 — Lista de espera & Queda una vacante permanente. & Ofrecer a candidatos compatibles siguiendo antigüedad y registrar oferta, respuesta y vencimiento. & Propuesta; desempate y plazo de respuesta por definir. No confundir salida temporal con vacante definitiva. & DEC-10; RF-AMA-06 y 07 \\ \hline
+\rowcolor{RFclaro}
+RN-09 — Visita sin reserva & Embarcación llega sin prepago. & Registrar recepción y estadía efectiva; asociar responsable y tarifa y generar hecho facturable. & Propuesta; no condicionar la maniobra segura a pasar por oficina. & C07 sec. 4.2; DEC-11; RF-AMA-10 a 12 \\ \hline
+RN-10 — Autorización de menor & Se prepara salida de clase. & Comprobar autorización vigente y vínculo alumno-bote-monitor antes de confirmar salida. & Base y desarrollo propuesto; parámetros pedagógicos requieren respaldo. & C07 sec. 4.9; DEC-06; RF-ESC-02 a 05 \\ \hline
+\rowcolor{RFclaro}
+RN-11 — Cambio en clase & Alumno cambia de bote o hay relevo de monitor. & Actualizar vínculo con hora y responsable, conservando situación efectiva de cada alumno. & Propuesta; registro sólo en momento seguro. & C07 sec. 17.1; DEC-06; RF-ESC-04 y 06 \\ \hline
+RN-12 — Retiro anticipado & Portería recibe solicitud de retiro. & Verificar identidad y autorización; coordinar entrega con escuela y confirmar el mismo evento antes de cerrar el retiro. & Propuesta; si falla comunicación digital, aplicar coordinación segura documentada. & DEC-07; RF-ESC-07, 08 y 14 \\ \hline
+\rowcolor{RFclaro}
+RN-13 — Cierre de clase & Grupo retorna a tierra. & Confirmar todos los alumnos antes de cerrar la clase, todo participante sin confirmación queda pendiente y con seguimiento. Se comunica retorno al cerrar la clase & Propuesta de control y aviso exigido; no deducir retorno desde asistencia matinal. & C07 RT-16.21; RF-ESC-09 y 10 \\ \hline
+RN-14 — Acceso a salud & Monitor consulta antecedentes. & Mostrar sólo datos autorizados de emergencia de los alumnos a cargo y registrar toda consulta. & Base: protección reforzada; campos y aprobador por documentar. & C07 RT-16.09; DEC-08; RF-ESC-11 y 12 \\ \hline
+\rowcolor{RFclaro}
+RN-15 — Plan de izaje & Se prepara maniobra. & Disponer de ficha vigente y validación del operador calificado antes de iniciar; conservar autor y cambios. & Propuesta; cero interacción con carga suspendida. & C07 cap. 10; DEC-12; RF-VAR-04 a 07 \\ \hline
+RN-16 — Replanificación por clima & Aviso impide ejecutar agenda. & Revisar dependencias, recursos y posiciones antes de confirmar nuevo orden y notificar afectados. & Base: suspensión; método de replanificación propuesto. & C07 RT-10.05; DEC-13; RF-VAR-02 y 03 \\ \hline
+\rowcolor{RFclaro}
+RN-17 — Acceso de contratista & Trabajador solicita ingreso a faena. & Comprobar identidad, acreditación, inducción y autorización de trabajo vinculada a embarcación. & Propuesta; excepciones identificadas y autorizadas, sin impedir emergencias. & C07 sec. 4.7; DEC-15; RF-CTR-01 a 07 \\ \hline
+RN-18 — Inducción ambiental & Se habilita o renueva trabajador externo. & Registrar impartidor, contenido, fecha y resultado de la formación exigible. & Propuesta; no inventar periodicidad ni vigencia de capacitación. & DEC-16; RF-CTR-03 \\ \hline
+\rowcolor{RFclaro}
+RN-19 — Trazabilidad de residuos & Se deposita un residuo. & Conservar toda recepción de residuo con sus antecedentes; distinguir origen declarado, verificado y pendiente. Conciliar entrega y certificado con los registros de acopio. Un certificado de entrega no resuelve por sí solo la identidad del generador pendiente. & Base y desarrollo propuesto; permitir registro asistido, sin exigir app al contratista. & C07 sec. 4.7; DEC-14; RF-AMB-01 a 05 \\ \hline
+RN-20 — Calidad de medición & Llega lectura anómala o duplicada. & Conservar origen, marcar calidad y excluir del cobro automático el dato no validado; registrar corrección. & Propuesta; no borrar silenciosamente lecturas. & DEC-03; RF-CON-03 \\ \hline
+\rowcolor{RFclaro}
+RN-21 — Imputación de consumo & Se calcula cargo por período. & Usar lectura atribuible, asociación temporal a contrato y tarifa aprobada; mantener una única serie para cobro y ambiente. & Propuesta; fórmula de reparto y marco del cobro pendientes. & C07 RT-05.29; DEC-03; RF-CON-04 a 06 \\ \hline
+RN-22 — Medida de cobranza & Se propone restricción por deuda. & Exigir decisión formal competente y fundamento antes de afectar acceso a la embarcación. & Base; no habilitar bloqueo automático por tramo de deuda. & C07 cap. 10; DEC-17; RF-FAC-07 \\ \hline
+\rowcolor{RFclaro}
+RN-23 — Observación de boya & Inspector identifica ocupación. & Registrar boya, embarcación, hora y autor; mostrar antigüedad y conciliar con reservas al reconectar; emitir un informe nuevo no renueva la observación; no asignar a una boya el estado de ocupación física confirmada sólo de su reserva contractual. & Propuesta; última observación no equivale a estado en vivo. & DEC-19; RF-BOY-02 y 03 \\ \hline
+RN-24 — Inspección de fondeo & Vence programa o sucede evento extraordinario. & Generar tarea según programa aprobado y registrar hallazgo y actuación por componente. & Propuesta; periodicidad y umbral de reemplazo requieren fundamento técnico. & DEC-20; RF-BOY-05 a 07 \\ \hline
+\rowcolor{RFclaro}
+RN-25 — Cambio de parámetro & Se propone modificación operacional. & Exigir segundo perfil aprobador y registrar motivo, versión y fecha de entrada en vigencia. & Base; no presentar como configurable lo que exige desarrollo. & BT RT-16.02 a 04; RF-ADM-12 a 14 \\ \hline
+RN-26 — Conciliación offline & Se restablece el enlace. & Aplicar reglas por entidad, conservar conflictos y evitar efectos duplicados; completar en 30 minutos tras 24 horas de desconexión. & Base de plazo e integridad; reglas de precedencia por documentar. & C07 RT-03.13; DEC-21; RF-ADM-08 \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+El origen y los vínculos distinguen las exigencias del caso de las reglas propuestas para su validación.
+
+Antes de parametrizar, cada regla propuesta debe tener responsable, autoridad de aprobación, versión y evidencia de prueba. Los plazos de cortesía, desempates, razón monitor-alumno, criterios meteorológicos, límites de izaje y fórmulas de cobro no se consideran definidos por la sola existencia de una pantalla configurable.

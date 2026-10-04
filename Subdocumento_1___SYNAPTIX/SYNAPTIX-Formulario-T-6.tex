@@ -1,21 +1,11 @@
 \documentclass[11pt,letterpaper]{report}
 \input{config/metadatos.tex}
 \usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
 
 \begin{document}
 \pagenumbering{arabic}
-\begin{center}
-  {\Large\bfseries SYNAPTIX INGENIERÍA DE SOFTWARE\par}
-  \vspace{4mm}
-  {\large\bfseries Formulario T-6: experiencia en proyectos similares\par}
-  \vspace{2mm}
-  Licitación N\textsuperscript{o} TFEP-01/2026 \quad Puerto Deportivo Bahía Panitao
-  \par\vspace{2mm}
-  Versión \VersionDocumento\quad Fecha \FechaDocumento
-\end{center}
-
-\noindent\hfill\FirmaCompletaRepresentante\par
-\vspace{5mm}
+\PortadaFormulario{T-6}{Experiencia en proyectos similares}
 \tableofcontents
 \clearpage
 
@@ -122,12 +112,15 @@ La ficha reúne los once campos del formulario oficial para comparar los anteced
     \textbf{Contraparte y contacto} &
     Ing. Rodrigo Morales S.\newline
     Gerente de Operaciones\newline
+    Tel.: +56 32 245 8101\newline
     \nolinkurl{contacto.morales@oppacifico.cl} &
     Patricia Henríquez V.\newline
     Subgerente de Sistemas Comerciales\newline
+    Tel.: +56 2 2586 4202\newline
     \nolinkurl{phenriquez@litoralutil.cl} &
     Carlos Valenzuela R.\newline
     Jefe Corporativo de Mantenimiento\newline
+    Tel.: +56 41 287 6303\newline
     \nolinkurl{cvalenzuela@logaustral.cl} \\
     \hline
 \end{longtable}
@@ -140,5 +133,5 @@ La experiencia específica en arquitectura híbrida y niveles de servicio se acr
 Para el proyecto de Logística y Maquinaria Austral Ltda., la carta de referencia identificará la ausencia de un área interna de tecnologías de información en el mandante y el alcance del servicio gestionado asumido por Synaptix desde 2025: administración de accesos, monitoreo, respaldos y pruebas de recuperación, actualización de la plataforma y soporte a las personas usuarias. Estos antecedentes acreditan experiencia pertinente a la condición de Bahía Panitao de operar sin personal propio de TI \parencite[sec.~9.11 y cap.~15, certificaciones sectoriales del adjudicatario]{caso07}.
 
 \clearpage
-\printbibliography[heading=bibintoc,title={Referencias}]
+\printbibliography[heading=referenciassynaptix,title={Referencias}]
 \end{document}

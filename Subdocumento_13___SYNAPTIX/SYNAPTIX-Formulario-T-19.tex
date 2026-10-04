@@ -1,12 +1,15 @@
 \documentclass[11pt,letterpaper]{report}
 \input{config/metadatos.tex}
 \usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
 
 \newcommand{\CampoFicha}[2]{#1 & #2 \\ \hline}
 \newcommand{\FichaInnovacion}[3]{%
   \section*{Ficha #1: #2}
-  Esta ficha presenta el alcance, la verificación y las condiciones de incorporación de la innovación #1.
+  \addcontentsline{toc}{section}{Ficha #1: #2}
+  La Tabla~\ref{tab:t19-#1} presenta los diecisiete campos del Formulario T-19 para la innovación #1.
   \begin{longtable}{L{\dimexpr.30\textwidth-2\tabcolsep\relax}L{\dimexpr.70\textwidth-2\tabcolsep\relax}}
+    \caption{Ficha #1 de innovación: #2}\label{tab:t19-#1} \\
     \hline
     \EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido} \\
     \hline
@@ -17,21 +20,19 @@
     \endhead
     #3
   \end{longtable}
-  \FuenteTabla{Formulario T-19 elaborado por Synaptix para la innovación #1.}
+  \FuenteTabla{Antecedentes y diseño de Synaptix para la innovación #1; fuentes identificadas en la ficha.}
 }
 
 \begin{document}
-\begin{center}
-  {\Large\bfseries SYNAPTIX INGENIERÍA DE SOFTWARE\par}
-  \vspace{4mm}
-  {\large\bfseries Formulario T-19: cartera de innovaciones\par}
-  \vspace{2mm}
-  Licitación N\textsuperscript{o} TFEP-01/2026 \quad Puerto Deportivo Bahía Panitao
-\end{center}
+\pagenumbering{arabic}
+\renewcommand{\thetable}{T-19.\arabic{table}}
+\PortadaFormulario{T-19}{Cartera de innovaciones}
+\tableofcontents
+\clearpage
 \chapter*{Fichas de innovación}
+\addcontentsline{toc}{chapter}{Fichas de innovación}
 
-\vspace{5mm}
-Synaptix presenta cinco fichas, una por cada tipo del artículo 28 de las Bases Administrativas. Los campos siguen el Formulario T-19 y los siete elementos exigidos por el artículo 29 \parencite[pp.~19--20 y 64]{bases-admin}. La escala TRL se aplica a la integración tecnológica específica propuesta para Bahía Panitao \parencite{nasa-trl}.
+Synaptix presenta una ficha por cada tipo del artículo 28. Los campos siguen el Formulario T-19 y los siete elementos del artículo 29 \parencite[pp.~19--20 y 64]{bases-admin}. Las fichas se corresponden con los apartados 13.1 a 13.5 del SD13. Los valores de línea base que no aporta el caso requieren medición; las metas son propuestas de diseño. Los códigos de las extensiones 4 y 5 se conciliarán con los catálogos de SD4 y SD7. La valorización monetaria se presenta en la Oferta Económica, conforme al artículo 50.2 \parencite[p.~30]{bases-admin}.
 
 \FichaInnovacion{1}{Servicio de Solicitud y Seguimiento de Mantenimiento de Embarcaciones}{%
   \CampoFicha{Tipo de innovación}{Producto o servicio de base tecnológica.}
@@ -53,25 +54,27 @@ Synaptix presenta cinco fichas, una por cada tipo del artículo 28 de las Bases 
   \CampoFicha{Contingencia}{Si el contratista no usa el sistema, la marina registrará la respuesta recibida, con autor, fecha y canal de origen.}
 }
 
-\FichaInnovacion{2}{Reprogramación Operacional Resiliente}{%
+\FichaInnovacion{2}{Programa de Mantenimiento Preventivo en Invernada}{%
   \CampoFicha{Tipo de innovación}{Proceso.}
-  \CampoFicha{Nombre}{Reprogramación Operacional Resiliente.}
-  \CampoFicha{Problema u oportunidad}{1.150 movimientos de travelift al año; 62\,\% concentrado en dos campañas de seis semanas \parencite[caps.~2 y 7]{caso07}.}
-  \CampoFicha{Tecnología o práctica}{Planificación por restricciones y comparación de escenarios con aprobación del operador \parencite{google-cp}.}
-  \CampoFicha{Madurez y escala}{TRL 2 preliminar para la integración local; los métodos de programación por restricciones tienen aplicaciones documentadas \parencite{nasa-trl,google-cp}.}
-  \CampoFicha{Fuentes APA 7}{Bases Técnicas del Caso 07; Google OR-Tools; escala TRL de NASA.}
-  \CampoFicha{Inserción en arquitectura}{Agenda operativa, motor de restricciones y vista de alternativas; sin control físico del travelift.}
-  \CampoFicha{Paquetes de la EDT}{[PENDIENTE: identificadores de paquetes de trabajo.]}
-  \CampoFicha{Mes de materialización}{[PENDIENTE: mes del piloto y mes de aceptación.]}
-  \CampoFicha{Inversión requerida}{[PENDIENTE: modelado, integración y pruebas en UF.]}
-  \CampoFicha{Costo operacional}{[PENDIENTE: mantenimiento del motor y reglas en UF/mes.]}
-  \CampoFicha{Beneficio y cuantificación}{Menor tiempo de coordinación y menos conflictos. [PENDIENTE: beneficio en UF y método.]}
-  \CampoFicha{Indicador, línea base y meta}{Minutos desde cancelación registrada hasta agenda factible aprobada. [PENDIENTE: línea base y meta.]}
-  \CampoFicha{Momento de medición}{[PENDIENTE: mes; medir primero en operación de sombra.]}
-  \CampoFicha{Riesgo, probabilidad e impacto}{Recomendaciones inviables por reglas incompletas. [PENDIENTE: probabilidad e impacto.]}
-  \CampoFicha{Mitigación}{Validación de reglas con operadores, restricciones de seguridad y aprobación humana.}
-  \CampoFicha{Contingencia}{Reprogramación manual en la agenda digital obligatoria.}
+  \CampoFicha{Nombre}{Programa de Mantenimiento Preventivo en Invernada.}
+  \CampoFicha{Problema u oportunidad}{180 puestos de invernada, 152 ocupados en invierno de 2026; 14 puestos de trabajo del varadero; 62\,\% de los 1.150 movimientos anuales del travelift concentrados en dos campañas de seis semanas. La línea base de trabajos pendientes a la botadura no está cuantificada \parencite[caps.~2 y 7]{caso07}.}
+  \CampoFicha{Tecnología o práctica}{Ficha de ingreso, propuesta voluntaria de tareas preventivas, calendario de invierno según secuencia de botadura y revisión de cierre. Cada trabajo aceptado se vincula a la solicitud de la innovación 1. El armador conserva la decisión de contratar y elegir al contratista.}
+  \CampoFicha{Madurez y escala}{TRL 2 preliminar aplicado al proceso integrado para esta marina; no existe evidencia de un ciclo implantado en el caso \parencite{nasa-trl}.}
+  \CampoFicha{Fuentes APA 7}{Caso 07: cifras, calendario y restricciones; UNE-EN 13306:2018: terminología de mantenimiento \parencite{une13306}; NASA: escala TRL \parencite{nasa-trl}.}
+  \CampoFicha{Inserción en arquitectura}{VAR aporta posición y secuencia de la explanada; CTR, acreditación de empresas; AUT, ficha y aceptación; ALE, avisos; ADM, catálogo configurable. Integración con la innovación 1. Interfaces por conciliar con SD4.}
+  \CampoFicha{Paquetes de la EDT}{Catálogo de tareas, ficha y reglas, calendario de invernada, integración, pruebas, capacitación y piloto. Correspondencia de códigos y cargas por conciliar en SD7/T-15.}
+  \CampoFicha{Mes de materialización}{Piloto en la ventana de junio a agosto, con evaluación en la botadura siguiente. El ciclo completo comenzará en la campaña del año posterior. Los meses relativos requieren conciliación con el inicio del contrato y las restricciones del varadero.}
+  \CampoFicha{Inversión requerida}{Levantamiento, diseño, calendario, integración, pruebas, capacitación y piloto. Estimación monetaria por desarrollar en la Oferta Económica.}
+  \CampoFicha{Costo operacional}{Actualización del catálogo, soporte y notificaciones. Incluir sus costos incrementales en el flujo de caja.}
+  \CampoFicha{Beneficio y cuantificación}{Diferencia entre proporción base y posterior de embarcaciones con trabajos pendientes, multiplicada por participantes y costo documentado de reprogramación, menos operación incremental. No atribuir ingresos de charter o derechos de trabajo sin evidencia.}
+  \CampoFicha{Indicador, línea base y meta}{Embarcaciones con trabajos pendientes al turno de botadura / embarcaciones con trabajos contratados. Base: grupo sin programa de la misma campaña y, cuando exista, historial propio. Meta preliminar: reducir a la mitad la proporción respecto del grupo sin programa.}
+  \CampoFicha{Momento de medición}{Cierre de la campaña de botadura posterior al piloto. Complementos: trabajos ejecutados en junio--agosto y trazabilidad de trabajos aceptados.}
+  \CampoFicha{Riesgo, probabilidad e impacto}{Rechazo por intromisión, incumplimiento de semanas y cancelaciones por marejada; sesgo de selección voluntaria. Probabilidad e impacto por evento no están valorados en el apartado revisado; deben completarse en la matriz de riesgos.}
+  \CampoFicha{Mitigación}{Participación voluntaria; armador elige tareas y empresa; holguras de calendario; vínculo con orden de trabajo; apoyo de la marina si el contratista no actualiza el sistema.}
+  \CampoFicha{Contingencia}{Recoordinar trabajos y botadura por el procedimiento base; conservar responsables, avance y evidencia. No exigir contratación ni alterar maniobras durante izaje.}
 }
+
+La ficha conserva el proceso revisado de invernada y sustituye la antigua reprogramación por restricciones. La revisión del concepto no resuelve por sí sola la correspondencia de meses, códigos, valorización y valoración del riesgo.
 
 \FichaInnovacion{3}{Lectura inteligente de documentos para el ingreso asistido de antecedentes}{%
 
@@ -145,44 +148,49 @@ Mantener ingreso manual ante fallos o resultados insuficientes; ajustar el extra
 }
 
 \FichaInnovacion{4}{Servicio Gestionado por Resultados}{%
-  \CampoFicha{Tipo de innovación}{Modelo de negocio o contratación.}
+  \CampoFicha{Tipo de innovación}{Modelo de negocio o de contratación.}
   \CampoFicha{Nombre}{Servicio Gestionado por Resultados.}
-  \CampoFicha{Problema u oportunidad}{Operación de la plataforma durante 36 meses sin área interna de informática \parencite[caps.~2 y 9]{caso07}.}
-  \CampoFicha{Tecnología o práctica}{Tarifa base para obligaciones; componente variable sólo por beneficios adicionales medidos, atribuibles y permitidos por el contrato \parencite{uk-outcomes}.}
-  \CampoFicha{Madurez y escala}{Diseño conceptual, sin validación contractual. Escala de adopción: concepto, piloto sin pago variable, acuerdo y operación.}
-  \CampoFicha{Fuentes APA 7}{Bases Técnicas del Caso 07; guía de contratación por resultados del Cabinet Office.}
-  \CampoFicha{Inserción en arquitectura}{Tablero de métricas operacionales y registro de conciliaciones; la regla económica reside en el contrato.}
-  \CampoFicha{Paquetes de la EDT}{[PENDIENTE: paquetes de medición, servicio y gestión contractual.]}
-  \CampoFicha{Mes de materialización}{[PENDIENTE: inicio de observación y posible activación contractual.]}
-  \CampoFicha{Inversión requerida}{[PENDIENTE: instrumentación y auditoría de métricas en UF.]}
-  \CampoFicha{Costo operacional}{[PENDIENTE: seguimiento y conciliación en UF/mes.]}
-  \CampoFicha{Beneficio y cuantificación}{Beneficios adicionales verificados sin degradar obligaciones. [PENDIENTE: fórmula y monto en UF.]}
-  \CampoFicha{Indicador, línea base y meta}{Mejora observada menos efectos externos y costo incremental. [PENDIENTE: indicador específico, línea base, meta y atribución.]}
-  \CampoFicha{Momento de medición}{[PENDIENTE: período de observación y primer cierre conjunto.]}
-  \CampoFicha{Riesgo, probabilidad e impacto}{Incentivo contrario a seguridad o calidad. [PENDIENTE: probabilidad e impacto.]}
-  \CampoFicha{Mitigación}{Condiciones mínimas de servicio, topes, datos auditables y revisión conjunta.}
-  \CampoFicha{Contingencia}{Conservar tarifa y SLA obligatorios; usar tablero de beneficios sin pago variable.}
+  \CampoFicha{Problema u oportunidad}{36 meses de operación sin TI interna y coordinación con 62 empresas contratistas. No existe un tiempo base de seguimiento de mantenimiento en el caso \parencite[caps.~2 y 7; sec.~9.11]{caso07}.}
+  \CampoFicha{Tecnología o práctica}{Componente fijo para obligaciones y variable por reducción comprobada de tiempo activo de seguimiento del servicio adicional de la innovación 1. Factor proporcional a la meta, sujeto a datos, calidad, atribución y acta. E-25 admite componentes variables durante los meses 21--56 \parencite[pp.~74--75]{bases-admin}.}
+  \CampoFicha{Madurez y escala}{Diseño conceptual del modelo. Hitos de validación: diseño, piloto sin efectos de pago, aceptación de evidencia y condiciones, y conciliación en operación. No se declaran los últimos tres como realizados.}
+  \CampoFicha{Fuentes APA 7}{Bases Administrativas: artículos 28--30, 50.2 y E-25; Caso 07: operación; Cabinet Office: indicadores objetivos y controlables por el proveedor \parencite[sec.~5.1.5]{uk-outcomes}.}
+  \CampoFicha{Inserción en arquitectura}{Se propone IN4-MET en Varadero y contratistas/Núcleo de Servicios e IN4-CON en Finanzas y cobranza/Núcleo Administrativo, sobre ECS/Fargate según SD4, DA-04 y tabla 4-10. Enlace con solicitudes y faenas de SD5; tiempos activos con captura propia. REST/OpenAPI 3.1, escrituras idempotentes y eventos versionados conforme a DA-06; PostgreSQL y evidencia S3 conforme a DA-08. AUT ofrece el canal; ADM separa preparación y aprobación. Conciliación diferida hasta sincronización y validación, sin cobro automático. Códigos, contratos, entidades y retención aún por incorporar a SD4 y A5.1/A5.2.}
+  \CampoFicha{Paquetes de la EDT}{IN4.1 regla y medición, meses 2--4; IN4.2 instrumentación y pruebas, 14--18; IN4.3 piloto, 19--20; IN4.4 conciliación, 21--56. Incorporar identificadores y cargas a SD7/T-15.}
+  \CampoFicha{Mes de materialización}{Mes 21, tras piloto de meses 19--20 y aceptación de evidencia. Requiere disponible el flujo adicional de mantenimiento.}
+  \CampoFicha{Inversión requerida}{Definición de la regla, instrumentación, expediente y pruebas, representadas por \(I_4\). Valorización en la Oferta Económica.}
+  \CampoFicha{Costo operacional}{\(O_{4,m}\): medición, revisión y conciliación mensual. El proveedor lo considera aun en el escenario de incentivo cero.}
+  \CampoFicha{Beneficio y cuantificación}{\(H_{4,m}=N_m\max(0,\bar T_0-\bar T_m)/60\) horas estimadas recuperadas. La valorización del beneficio corresponde a la innovación que lo produce; la 4 añade costos de medición y transferencia variable, sin sumar un segundo ahorro bruto. Las horas no constituyen automáticamente ahorro de caja.}
+  \CampoFicha{Indicador, línea base y meta}{Reducción de tiempo medio activo de seguimiento frente a base prospectiva con las funciones obligatorias del SD2, incluidas RF-CTR-04, RF-AUT-06 y RF-AUT-10. Registrar tarea, responsable e intervalos; excluir esperas y ejecución del mantenimiento. Comparar composición equivalente y conservar faltantes y casos abiertos. Meta propuesta: 20\,\%, sin aumentar tasa de errores ni reducir cierres en el mismo plazo. Fijar protocolo y meta antes de medir. Factor \(F_4=\min(1,\max(0,R_4/0{,}20))\); resultado no evaluable o calidad insuficiente implica cero. El reconocimiento económico requiere además beneficio neto aceptado y tope de la Oferta Económica.}
+  \CampoFicha{Momento de medición}{Base al inicio del mes 19; cierre del piloto en el 20; conciliación mensual desde el 21. Mínimo propuesto: 30 solicitudes comparables por condición, con igual plazo de observación. Synaptix prepara evidencia, la Contraparte Técnica la verifica y el Administrador del Contrato tramita el estado de pago. Sin evidencia suficiente, el variable del período es cero.}
+  \CampoFicha{Riesgo, probabilidad e impacto}{Atribución incorrecta o incentivos a omitir casos difíciles. Valoración preliminar: probabilidad media, impacto alto.}
+  \CampoFicha{Mitigación}{Muestra y exclusiones acordadas antes de medir; revisión de cambios externos; control de errores, cierres y reaperturas; auditoría y acta del cliente. Multas contractuales independientes.}
+  \CampoFicha{Contingencia}{Suspender el reconocimiento variable, corregir la medición y reevaluar. Mantener la operación y componente fijo obligatorios; incentivo cero si no se demuestra beneficio económico aceptable.}
 }
 
-\FichaInnovacion{5}{Pasaporte Ambiental Náutico}{%
-  \CampoFicha{Tipo de innovación}{Experiencia de usuario y sostenibilidad.}
-  \CampoFicha{Nombre}{Pasaporte Ambiental Náutico.}
-  \CampoFicha{Problema u oportunidad}{Tres no conformidades: residuos sin trazabilidad completa, consumo sin medición por amarra y capacitación no acreditada para unas 140 personas contratistas \parencite[caps.~4 y 7]{caso07}.}
-  \CampoFicha{Tecnología o práctica}{Historial por embarcación y faena, comparación de consumo propio por días de permanencia y acciones documentadas, con acceso autorizado \parencite{iso14031}.}
-  \CampoFicha{Madurez y escala}{TRL 2 preliminar para la integración local; requiere piloto con evidencia real \parencite{nasa-trl}.}
-  \CampoFicha{Fuentes APA 7}{Bases Técnicas del Caso 07; ISO 14031:2021; escala TRL de NASA.}
-  \CampoFicha{Inserción en arquitectura}{Capa de datos, registros de residuos y medición, acreditación de contratistas y portal autorizado.}
-  \CampoFicha{Paquetes de la EDT}{[PENDIENTE: identificadores de paquetes de trabajo.]}
-  \CampoFicha{Mes de materialización}{[PENDIENTE: mes de piloto y serie histórica anterior a 2029.]}
-  \CampoFicha{Inversión requerida}{[PENDIENTE: integración, historial y vistas en UF.]}
-  \CampoFicha{Costo operacional}{[PENDIENTE: conciliación, almacenamiento y rectificaciones en UF/mes.]}
-  \CampoFicha{Beneficio y cuantificación}{Acciones de reducción ambiental basadas en información propia; menor esfuerzo de recopilación. [PENDIENTE: beneficio en UF.]}
-  \CampoFicha{Indicador, línea base y meta}{Embarcaciones participantes con acción de reducción documentada / embarcaciones participantes. [PENDIENTE: línea base y meta; la integridad de datos es condición de calidad.]}
-  \CampoFicha{Momento de medición}{[PENDIENTE: medición de piloto y cierre antes de auditoría 2029.]}
-  \CampoFicha{Riesgo, probabilidad e impacto}{Historial engañoso por lecturas incompletas o documentos vencidos. [PENDIENTE: probabilidad e impacto.]}
-  \CampoFicha{Mitigación}{Mostrar procedencia, fecha y validación de datos; conciliación manual de discrepancias.}
-  \CampoFicha{Contingencia}{Mantener los registros obligatorios de residuos, medición y capacitación sin la vista integrada.}
+La mejora contractual depende de un resultado aceptado y no de la disponibilidad obligatoria. El flujo de caja debe distinguir ahorro bruto, costos de medición y transferencia variable para evitar duplicaciones.
+
+\FichaInnovacion{5}{Pasaporte Ambiental Náutico con Planes de Reducción}{%
+  \CampoFicha{Tipo de innovación}{Experiencia de usuario, sostenibilidad o impacto social.}
+  \CampoFicha{Nombre}{Pasaporte Ambiental Náutico con Planes de Reducción.}
+  \CampoFicha{Problema u oportunidad}{Cero de 320 amarras con medición individual; tres brechas ambientales descritas y unas 140 personas contratistas sin capacitación acreditada. Charter con 14 embarcaciones y 22\,\% de ingresos por amarra exige certificación vigente en 2029 \parencite[caps.~1, 8, 11 y 13; sec.~7.3]{caso07}. Los controles de base no se atribuyen al aporte innovador.}
+  \CampoFicha{Tecnología o práctica}{Historial propio y plan voluntario de reducción de agua: acción, responsable, plazo, evidencia y comparación posterior. Reglas deterministas, sin IA ni control automático del suministro. Prácticas de objetivos, educación, medición y detección de fugas de WaterSense \parencite{epa-watersense-work}.}
+  \CampoFicha{Madurez y escala}{TRL 2 preliminar para la incorporación local, aún sin prototipo ni piloto ejecutados \parencite{nasa-trl}.}
+  \CampoFicha{Fuentes APA 7}{Caso 07: ambiente y charter; EPA: WaterSense at Work; NASA: TRL; Transversales: integración, indicadores y riesgos del capítulo 26 \parencite[pp.~44--45]{bases-transversales}.}
+  \CampoFicha{Inserción en arquitectura}{IN5-PLAN se propone en Ambiente y consumos/Núcleo de Servicios sobre ECS/Fargate, con PostgreSQL; IN5-HIS utiliza historia derivada Parquet/S3/Athena según SD4 y SD5. AUT presenta la vista React. Consume MediciónConsolidada y referencias de Infraestructura, Operación marítima y Clientes y contratos; ConsentimientoModificado restringe usos. REST/OpenAPI y eventos idempotentes conforme a DA-06. Reutiliza captura local y sincronización de DA-09, sin acceso directo a MQTT ni modificación de cobros. Evaluaciones pendientes durante desconexión o con evidencia incompleta. Códigos, entidades, contratos y retención aún por detallar en SD4 y A5.1/A5.2.}
+  \CampoFicha{Paquetes de la EDT}{IN5.1 diseño y consentimiento, meses 14--15; IN5.2 historial, portal y pruebas, 16--18; IN5.3 piloto, 19--20; IN5.4 seguimiento, 21--56. Incorporar correspondencia y cargas a SD7/T-15.}
+  \CampoFicha{Mes de materialización}{Mes 21, tras evaluación del piloto 19--20. Requiere medición y permanencias validadas, adquisición de medidores y obras del cliente conforme a SUP-04/EXC-06/EXC-10. VAC-03 y VAC-14 siguen por validar. Conciliar con SD7/T-15, inicio contractual, congelamientos RES-11, marejadas RES-12 y serie previa a temporada 2029.}
+  \CampoFicha{Inversión requerida}{\(I_5\): historial, planes, vistas, consentimiento e integración y pruebas. Valorización en la Oferta Económica.}
+  \CampoFicha{Costo operacional}{\(O_{5,t}\): almacenamiento, soporte, revisión de acciones y conciliación de discrepancias. Registrar sólo costo incremental.}
+  \CampoFicha{Beneficio y cuantificación}{Volumen evitado estimado \(V_t=D_t(w_0-w_t)\). Escenario objetivo: \(0{,}10w_0D_t\), sin presentarlo como medición. Valorar con costo documentado del recurso y descontar operación incremental e inversión. Asignar ahorro al actor que paga el recurso, sin duplicarlo ni atribuir el ingreso completo del charter.}
+  \CampoFicha{Indicador, línea base y meta}{Agua suministrada en la marina y atribuible a la embarcación, en metros cúbicos por día efectivo de permanencia. Se reutiliza la serie obligatoria de RF-CON-01 a 06 y la consulta de RF-AUT-03 del SD2; no representa consumo total durante navegación. Base propia de 28 días del mes 19; comparar 28 días del 20. Metas propuestas y fijadas antes del piloto: reducción del 10\,\% y, por separado, acción ejecutada con evidencia en el 50\,\% de inscritos. Informar datos válidos, exclusiones y resultados desfavorables; una acción no demuestra por sí sola ahorro.}
+  \CampoFicha{Momento de medición}{Evaluación en mes 20 y seguimiento mensual desde el 21, con informe previo a temporada 2029. Iniciar sólo con lecturas, permanencias y accesos validados; ejecutar acciones entre las ventanas comparadas. El responsable de la marina revisa contexto, Synaptix prepara el cálculo y la Contraparte Técnica acepta evidencia. Sin base positiva, permanencia o comparación defendible, no declarar reducción.}
+  \CampoFicha{Riesgo, probabilidad e impacto}{Sesgo voluntario o datos incompletos: probabilidad media, impacto alto. Baja participación: media/medio. Acceso indebido entre flotas: baja/alto. Valoraciones preliminares.}
+  \CampoFicha{Mitigación}{Criterios fijados antes del piloto; comparación propia; trazabilidad y conservación de resultados desfavorables; acciones breves y voluntarias; permisos por embarcación, pruebas de aislamiento y auditoría.}
+  \CampoFicha{Contingencia}{No publicar reducciones no evaluables; ampliar observación y ajustar o desactivar el plan si no demuestra utilidad. Suspender vista afectada ante incidente de privacidad y conservar medición, residuos y capacitación obligatorios.}
 }
 
-\printbibliography[title={Referencias}]
+La ficha mide una reducción de agua adicional al registro y la facturación obligatorios. El porcentaje de adopción informa sobre el uso del plan; el resultado ambiental requiere consumo comparable y no acredita una certificación.
+
+\clearpage
+\printbibliography[heading=referenciassynaptix,title={Referencias}]
 \end{document}

@@ -1,0 +1,86 @@
+\section*{A2.4. Exclusiones y restricciones}
+Las exclusiones delimitan actividades no contratadas; las restricciones son condiciones que la solución debe respetar. Ninguna exclusión elimina la obligación de especificar interfaces, dependencias, controles o evidencias asociadas. Los identificadores EXC y RES son códigos de este registro, no numerales oficiales de las bases.
+
+\subsection*{Exclusiones de alcance}
+Las diez exclusiones proceden de C07, capítulo 11. La última columna identifica el tratamiento funcional o la dependencia que permanece dentro de la propuesta.
+
+La Tabla~\ref{tab:a2-4-01} detalla el alcance y sus dependencias.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-10\tabcolsep-6\arrayrulewidth\relax}
+\begin{longtable}{|L{0.124498\AnchoTablaAnexo}|L{0.204819\AnchoTablaAnexo}|L{0.261044\AnchoTablaAnexo}|L{0.281124\AnchoTablaAnexo}|L{0.128515\AnchoTablaAnexo}|}
+\caption{Exclusiones de alcance}\label{tab:a2-4-01}\\
+\hline
+\EncabezadoTabla{ID / materia} & \EncabezadoTabla{Actividad excluida} & \EncabezadoTabla{Obligación remanente} & \EncabezadoTabla{Responsabilidad y dependencia} & \EncabezadoTabla{Vínculo} \\ \hline
+\endfirsthead
+\multicolumn{5}{l}{\small\textit{Exclusiones — continuación}}\\
+\hline
+\EncabezadoTabla{ID / materia} & \EncabezadoTabla{Actividad excluida} & \EncabezadoTabla{Obligación remanente} & \EncabezadoTabla{Responsabilidad y dependencia} & \EncabezadoTabla{Vínculo} \\ \hline
+\endhead
+\multicolumn{5}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+EXC-01 — Sistema contable y documentos tributarios & No reemplazar contabilidad ni emitir documentos tributarios desde la solución. & Generar hechos facturables, intercambiar información y conciliar respuestas. & Cliente mantiene contabilidad; proponente implementa integración. & RF-FAC-01 a 05; RF-CON-05 \\ \hline
+EXC-02 — Sistema de la autoridad marítima & No desarrollar ni sustituir el sistema que otorga el zarpe. & Preparar, validar y trazar antecedentes en formatos y canales verificados. & Autoridad otorga zarpe; proponente verifica la interfaz disponible. & RF-NAV-10 a 12 \\ \hline
+\rowcolor{RFclaro}
+EXC-03 — Remuneraciones y personal & No incorporar nómina salarial ni administración general de recursos humanos. & Gestionar identidades, permisos y acreditaciones necesarias para operar la solución. & Cliente mantiene gestión laboral; proponente cubre acceso y soporte. & RF-ADM-03, 11; RF-CTR-01 \\ \hline
+EXC-04 — Cobranza judicial y abandono & No ejecutar procesos judiciales ni el procedimiento sobre embarcaciones abandonadas. & Construir y conservar expediente trazable y exportarlo para el asesor autorizado. & Cliente y asesor realizan actuaciones; proponente facilita evidencia. & RF-FAC-07 a 09; DEC-17 y 18 \\ \hline
+\rowcolor{RFclaro}
+EXC-05 — Restaurante concesionado & No administrar el restaurante ni su punto de venta. & Registrar su relación contractual y consumo de servicios de la marina. & Concesionario opera restaurante; cliente informa contrato. & RF-CON-09 \\ \hline
+EXC-06 — Construcción de infraestructura & No ejecutar canalizaciones, obras eléctricas, torretas ni postación. & Especificar, dimensionar y costear obras requeridas; coordinar dependencias e integración. & Cliente ejecuta obras; proponente entrega especificaciones y requisitos de recepción. & SUP-04; RNF-TER-01 \\ \hline
+\rowcolor{RFclaro}
+EXC-07 — Certificación ambiental & No otorgar ni ejecutar la certificación de la marina. & Proveer datos y evidencia para cerrar las no conformidades y sostener indicadores. & Cliente y certificador gestionan certificación; proponente soporta los controles. & RF-AMB-01 a 07; RF-CON-06 \\ \hline
+EXC-08 — Equipamiento a bordo & No instrumentar embarcaciones de armadores ni proveerles dispositivos a bordo. & Ofrecer declaración voluntaria y revocable y confirmación operacional de regreso. & Armador decide compartir datos; operaciones confirma observaciones. & RF-NAV-04, 05, 08 y 09; DEC-01 y 05 \\ \hline
+\rowcolor{RFclaro}
+EXC-09 — Mantenimiento físico de boyas & No mantener físicamente boyas ni trenes de fondeo. & Registrar estado, ocupación, inspecciones y actuaciones del mantenedor competente. & Cliente contrata mantenimiento; proponente mantiene el sistema de registro. & RF-BOY-01 a 07; DEC-19 y 20 \\ \hline
+EXC-10 — Adquisición de hardware & Cliente adquiere medidores, lectores, equipos de terreno, red e instrumentación. & Especificar cantidades y características, compatibilidad, integración y reposición requeridas. & Cliente compra; proponente dimensiona y justifica la especificación conforme a BT cap. 8. & SUP-04; RNF-TER-01; RF-ADM-10 \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los vínculos permiten contrastar el alcance con los requerimientos y las decisiones del SD2.
+
+\subsection*{Restricciones no negociables}
+Las quince condiciones siguientes corresponden a las restricciones establecidas en el capítulo 10 del documento del Caso 07. Los códigos RES identifican las condiciones dentro de esta propuesta y conservan su vínculo con la fuente.
+
+La Tabla~\ref{tab:a2-4-02} detalla el alcance y sus dependencias.
+\setlength{\AnchoTablaAnexo}{\dimexpr\linewidth-8\tabcolsep-5\arrayrulewidth\relax}
+\begin{longtable}{|L{0.079681\AnchoTablaAnexo}|L{0.458167\AnchoTablaAnexo}|L{0.155378\AnchoTablaAnexo}|L{0.306774\AnchoTablaAnexo}|}
+\caption{Restricciones no negociables}\label{tab:a2-4-02}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición exigida} & \EncabezadoTabla{Procesos afectados} & \EncabezadoTabla{Consecuencia para la solución} \\ \hline
+\endfirsthead
+\multicolumn{4}{l}{\small\textit{Restricciones — continuación}}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Condición exigida} & \EncabezadoTabla{Procesos afectados} & \EncabezadoTabla{Consecuencia para la solución} \\ \hline
+\endhead
+\multicolumn{4}{r}{\small\textit{}}\\
+\endfoot
+\endlastfoot
+\rowcolor{RFclaro}
+RES-01 & Nada de lo que se proponga puede retrasar ni interferir una maniobra de amarre o una maniobra de izaje. En ambas hay personas junto a cabos en tensión y cargas suspendidas. Ninguna interacción con un dispositivo puede exigirse durante la maniobra. & Pantalán y varadero & Diseñar registro en momentos seguros y comprobar que ningún flujo obliga a interactuar durante la maniobra. \\ \hline
+RES-02 & No se instalarán dispositivos de seguimiento a bordo de embarcaciones de armadores sin su consentimiento expreso. La asamblea de socios ya rechazó la medida. Cualquier función que dependa de datos del armador debe ser voluntaria y con consentimiento revocable. & Navegación y privacidad & Mantener consentimiento revocable; no hacer depender el control de regreso de dispositivos a bordo. \\ \hline
+\rowcolor{RFclaro}
+RES-03 & No habrá cámaras dirigidas a los alumnos de la escuela de vela ni dispositivos a bordo de las embarcaciones menores. El centro de padres lo planteó expresamente. & Escuela de vela & Usar declaración identificada de monitor y conciliación de asistencia sin cámaras ni dispositivos en las embarcaciones menores. \\ \hline
+RES-04 & La radio marítima se mantiene como medio de coordinación operacional. La solución debe convivir con ella y no puede suponer su reemplazo. & Torre y terreno & Conservar coordinación radial y registrar la evidencia comunicada por ese medio. \\ \hline
+\rowcolor{RFclaro}
+RES-05 & El otorgamiento del zarpe es facultad de la autoridad marítima y su formato es de ella. La solución prepara, valida y traza; no sustituye ni simula el acto de la autoridad. & Zarpes & Separar validación documental del acto de otorgamiento de la autoridad. \\ \hline
+RES-06 & El sistema contable se mantiene y sigue siendo el único emisor de documentos tributarios. & Gestión comercial & Mantener emisión tributaria externa y conciliación de hechos facturables. \\ \hline
+\rowcolor{RFclaro}
+RES-07 & La compañía no tiene personal de tecnologías de información y no lo tendrá. Toda función que requiera un especialista debe ofrecerse como servicio y estar costeada por los 36 meses de operación. & Operación del servicio & Costear especialistas, administración, suplencias y soporte durante 36 meses. \\ \hline
+RES-08 & El recinto sigue operando cuando se cae el enlace de datos. La recepción de embarcaciones, el amarre, el registro de salida y regreso y el expendio de combustible no pueden depender de la conectividad hacia el exterior. & Continuidad & Dimensionar y probar operación local; aplicar 24/12/8 horas y conciliación según parámetros C07. \\ \hline
+\rowcolor{RFclaro}
+RES-09 & Todo equipamiento a instalar en pantalanes debe acreditar su comportamiento en estructura flotante, con flexión permanente del cableado y atmósfera marina, y tener su plan de reposición costeado. & Infraestructura marina & Exigir acreditación de intemperie, flexión, instalación y reposición. \\ \hline
+RES-10 & El equipamiento que se instale en la zona del surtidor debe acreditar su idoneidad para un recinto clasificado por almacenamiento y manipulación de combustibles. & Surtidor & Acreditar idoneidad del equipamiento para la clasificación efectiva del recinto. \\ \hline
+\rowcolor{RFclaro}
+RES-11 & Prohibido intervenir sistemas entre el 15 de diciembre y el 15 de marzo, durante las 14 regatas y eventos del calendario, y durante las campañas de varada de abril-mayo y de septiembre-noviembre en lo que afecte al varadero. & Cronograma y cambios & Programar fuera de ventanas protegidas y registrar congelamientos locales. \\ \hline
+RES-12 & Toda actividad programada queda suspendida ante un aviso de marejadas de la autoridad marítima, que se emite con 24 a 48 horas de anticipación y varias veces al año. El plan debe absorber esas cancelaciones sin desplazar hitos contractuales. & Planificación y contingencias & Incluir reservas y alternativas que absorban cancelaciones sin desplazar hitos contractuales. \\ \hline
+\rowcolor{RFclaro}
+RES-13 & Las interfaces destinadas a clientes y visitantes deben estar disponibles en español e inglés como mínimo. & Canales de atención & Verificar contenido, errores, ayuda y comunicaciones en ambos idiomas. \\ \hline
+RES-14 & Los datos de salud de los alumnos de la escuela de vela y los datos personales de menores de edad reciben tratamiento reforzado. Ninguna función puede exponerlos a personal que no los requiera para la actividad. & Datos de escuela & Aplicar acceso mínimo, cifrado y auditoría de consultas y cambios. \\ \hline
+\rowcolor{RFclaro}
+RES-15 & Ninguna medida de cobranza puede impedir a un armador el acceso a su embarcación sin que exista una decisión formal de la compañía que lo autorice, registrada y con fundamento. La embarcación está bajo custodia de la marina y varios deudores son accionistas de la sociedad. & Cobranza y custodia & Impedir restricciones automáticas por deuda y exigir autorización formal competente. \\ \hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
+
+Los vínculos permiten contrastar el alcance con los requerimientos y las decisiones del SD2.
+
+La matriz de trazabilidad vinculará estas condiciones con el alcance del SD3, las especificaciones de compra, el cronograma, los riesgos y los costos. Las firmas, autorizaciones y certificaciones se acreditarán mediante sus documentos de respaldo; la disponibilidad de interfaces y el estado de las compras se registrarán conforme a la evidencia efectiva.
