@@ -1,0 +1,57 @@
+% Módulos: responsabilidades de negocio, sin proveedores ni productos.
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  bloque/.style={draw=SynNavyLight,fill=SynSurface,align=left,
+    font=\fontsize{9.5}{11.5}\selectfont,text width=44mm,inner sep=2mm},
+  nucleo/.style={bloque,minimum height=86mm},
+  banda/.style={bloque,text width=146mm},
+  doble/.style={{Latex}-{Latex},draw=SynNavyLight,thick}]
+  \node[nucleo] (servicios)
+    {\textbf{Núcleo de Servicios}\\[3mm]
+     \textbf{Varadero y contratistas}\\
+     Coordina agenda, izaje, acreditación, faenas y mantenimiento.\\[3mm]
+     \textbf{Combustible}\\
+     Conserva el despacho, su responsable, volumen y evidencia.\\[3mm]
+     \textbf{Ambiente y consumos}\\
+     Relaciona mediciones, residuos, evidencia y planes de reducción.};
+  \node[nucleo,left=3mm of servicios] (operacional)
+    {\textbf{Núcleo Operacional}\\[3mm]
+     \textbf{Operación marítima}\\
+     Controla salidas, regresos, planes, ocupación y autorización de amarra.\\[3mm]
+     \textbf{Escuela náutica}\\
+     Relaciona clases, alumnos, botes, monitores, retornos y retiros.\\[3mm]
+     \textbf{Infraestructura}\\
+     Mantiene amarras, boyas, medidores, condiciones e inspecciones.};
+  \node[nucleo,right=3mm of servicios] (administrativo)
+    {\textbf{Núcleo Administrativo}\\[3mm]
+     \textbf{Clientes y contratos}\\
+     Mantiene personas, naves, contratos, contactos, asignaciones y espera.\\[3mm]
+     \textbf{Finanzas y cobranza}\\
+     Relaciona hechos facturables, conciliación, saldos y expedientes.};
+  \node[banda,below=7mm of servicios] (seguridad)
+    {\textbf{Auditoría y seguridad}\\
+     Conserva consentimientos, habilitación de identidades y decisiones;
+     protege el acceso y la evidencia de todos los dominios.};
+  \node[banda,below=4mm of seguridad] (procesos)
+    {\textbf{Procesos especializados compartidos}\\
+     \textbf{Integración externa}: intercambia y concilia datos de terceros.
+     \textbf{Notificaciones}: gestiona avisos y seguimiento.
+     \textbf{Telemetría}: recibe lecturas identificadas.
+     \textbf{Sincronización}: concilia registros y confirmaciones.
+     \textbf{Auditoría}: transporta y protege evidencia de actuación.};
+  \node[banda,below=7mm of procesos] (local)
+    {\textbf{Célula Operacional Local: Runtime Operacional de Borde}\\
+     Mantiene el subconjunto crítico de movimientos, autorización de amarra,
+     escuela, faenas, combustible, medición e inspección durante
+     24 horas sin enlace exterior; al reconectar concilia hechos y evidencias.};
+  \draw[doble] (operacional.south) -- (seguridad.north -| operacional.south);
+  \draw[doble] (servicios.south) -- (seguridad.north);
+  \draw[doble] (administrativo.south) -- (seguridad.north -| administrativo.south);
+  \draw[doble] (seguridad.south) -- (procesos.north);
+  \draw[doble] (procesos.south) -- (local.north);
+\end{tikzpicture}
+\caption{Modelo de módulos: dominios, responsabilidades y capacidades comunes}
+\label{fig:modulos-solucion}
+\FuenteFigura{Elaboración de Synaptix. Las flechas indican colaboración e intercambio de información; cada dominio conserva la responsabilidad sobre sus datos.}
+\end{figure}

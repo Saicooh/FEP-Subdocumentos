@@ -1,0 +1,49 @@
+% Vista preparada para recuperación regional; numeración automática del capítulo.
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+    bloque/.style={draw=SynNavyLight,fill=SynSurface,rounded corners=1mm,
+      align=left,font=\fontsize{9}{11}\selectfont,text width=69mm,
+      inner sep=2mm,minimum height=29mm},
+    banda/.style={bloque,text width=148mm,fill=SynNavy,text=SynWhite,
+      minimum height=17mm},
+    enlace/.style={-{Latex},draw=SynNavyLight,thick}]
+    \node[banda] (objetivo) {\textbf{Zona 3: AWS México Central, mx-central-1}\\
+      Warm standby regional. RTO $\leq$4 h y RPO transaccional $\leq$15 min.
+      La alta disponibilidad primaria y la autonomía del recinto conservan sus funciones propias.};
+    \node[bloque,below=6mm of objetivo.south west,anchor=north west] (datos)
+      {\textbf{Preparación: datos}\\PostgreSQL 18 con réplica asíncrona cifrada;
+       S3 CRR para evidencia. Se observa atraso y consistencia antes de promover.
+       Las réplicas no sustituyen los respaldos.};
+    \node[bloque,below=6mm of objetivo.south east,anchor=north east] (plataforma)
+      {\textbf{Preparación: plataforma}\\VPC privada Multi-AZ, imágenes ECR
+       replicadas y configuración OpenTofu. Identidad de contingencia con
+       reautenticación; no se presupone réplica de contraseñas.};
+    \node[bloque,below=6mm of datos.south west,anchor=north west] (autoridad)
+      {\textbf{Activación autorizada}\\Declarar incidente, impedir escrituras
+       en el primario y promover una sola autoridad. Comprobar el último estado
+       recuperable y registrar la decisión.};
+    \node[bloque,below=6mm of plataforma.south east,anchor=north east] (servicio)
+      {\textbf{Recuperación del servicio}\\Escalar tareas, validar identidad,
+       API, núcleos, colas y evidencia; cambiar Route 53. El recinto usa VPN y
+       HTTPS/mTLS hacia México al activarse DR.};
+    \node[banda,below=6mm of autoridad.south west,anchor=north west] (retorno)
+      {\textbf{Retorno controlado}\\Réplica inversa, atraso cero y ventana
+       aprobada. Detener escrituras, cambiar una sola autoridad y reactivar
+       tráfico. Conservar evidencia del incidente y de la recuperación.};
+    \node[bloque,text width=148mm,minimum height=17mm,
+      below=6mm of retorno] (ensayo)
+      {\textbf{Aceptación y ensayo semestral}\\Conmutación real con cambio
+       efectivo de tráfico y retorno; medir RPO, RTO e integridad.
+       La capacidad mínima de DR se individualiza en T-11.};
+    \draw[enlace] (datos) -- (autoridad);
+    \draw[enlace] (plataforma) -- (servicio);
+    \draw[enlace] (autoridad.east) -- (servicio.west);
+    \draw[enlace] (autoridad.south) -- (retorno.north -| autoridad.south);
+    \draw[enlace] (servicio.south) -- (retorno.north -| servicio.south);
+    \draw[enlace] (retorno) -- (ensayo);
+  \end{tikzpicture}
+  \caption{Continuidad regional de la Zona 3: AWS México Central}
+  \label{fig:4-11}
+  \FuenteFigura{Elaboración de Synaptix; \parencites[RT-07.01--07, p.~17]{pucv-transversal}{aws-rds-crossregion,aws-cognito-mexico}; SD4, sección 4.3.2.}
+\end{figure}

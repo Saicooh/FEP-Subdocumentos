@@ -49,7 +49,7 @@ Seguridad transversal & Identidad, autorización, secretos y auditoría & Cognit
 Observabilidad transversal & Métricas, registros, trazas y alertas & OpenTelemetry y CloudWatch & Cobertura de nube y recinto sin puntos ciegos \\
   \hline
 \end{longtable}
-\FuenteTabla{elaboración propia a partir de PUCV (2026b, cap. 2, pp. 5-7).}
+\FuenteTabla{Elaboración de Synaptix a partir de \parencite[cap.~2, pp.~6--7]{pucv-transversal}.}
 
 La división por capas restringe dependencias: presentación consume contratos de servicio, los servicios de negocio publican eventos a través de integración y ningún canal accede directamente a la base de datos. Seguridad y observabilidad cruzan todas las capas, por lo que no se representan como utilidades opcionales ni como un módulo final agregado después del desarrollo.
 
@@ -96,7 +96,7 @@ Infraestructura & Amarra, boya, tren de fondeo, medidor, activo, condición e in
 Auditoría y seguridad & Consentimiento, decisión sensible, acceso y modificación & Registro protegido de quién hizo o consultó qué & ConsentimientoModificado, AccesoSensibleRegistrado \\
   \hline
 \end{longtable}
-\FuenteTabla{elaboración propia en coherencia con el modelo de datos del Subdocumento 5 y con las Bases Técnicas del Caso 07, caps. 4, 9 y 14.}
+\FuenteTabla{Elaboración de Synaptix en coherencia con el modelo de datos de SD5 y \parencite[caps.~4, 9 y 14]{caso07}.}
 
 Esta propiedad elimina duplicidades. Por ejemplo, Clientes y contratos mantiene la asignación contractual de una amarra, Infraestructura describe la amarra física y Operación marítima calcula su estado operacional. Ninguno reemplaza a los otros: una embarcación puede tener asignación vigente y, al mismo tiempo, encontrarse fuera del recinto; un sensor puede indicar presencia sin identificar de manera concluyente qué embarcación ocupa el puesto.
 
@@ -160,7 +160,7 @@ Cambios contractuales, facturación y cobranza & No disponible & Datos de consul
 Analítica y configuración global & No disponible & No aplica & Se difiere hasta recuperar nube \\
   \hline
 \end{longtable}
-\FuenteTabla{elaboración propia a partir de PUCV (2026b, requisitos RT-03.10 a RT-03.18, pp. 8-10) y Bases Técnicas del Caso 07, cap. 17.4.}
+\FuenteTabla{Elaboración de Synaptix a partir de \parencites[RT-03.10--18, p.~9]{pucv-transversal}[secc.~17.4]{caso07}.}
 
 La tabla hace explícita la degradación y evita una promesa imprecisa de “funcionamiento total”. Las funciones suspendidas no impiden custodiar embarcaciones, responder por las personas en el agua ni conservar hechos que luego producen consecuencias administrativas o ambientales.
 
@@ -313,7 +313,7 @@ Seguridad cloud & CloudTrail, GuardDuty, Security Hub, AWS Config e Inspector & 
 Infraestructura & OpenTofu 1.x, módulos versionados y estados protegidos & Reproducción total sin consola manual & HCL portable y exportación de inventario \\
   \hline
 \end{longtable}
-\FuenteTabla{elaboración propia a partir de PUCV (2026a, art. 16, pp. 11-12) y AWS (2026a).}
+\FuenteTabla{Elaboración de Synaptix a partir de \parencites[art.~16, pp.~11--12]{pucv-admin}{aws-regiones,aws-rds-regiones}.}
 
 Se excluyen Kafka/MSK porque 26,63 millones de lecturas anuales equivalen a menos de un evento por segundo en promedio y no justifican operar una plataforma de \emph{streaming} distribuido. También se excluyen Kubernetes en el recinto, AWS Verified Permissions, OpenSearch y Grafana administrado mientras los casos de uso puedan satisfacerse con Podman, autorización dentro de los dominios y CloudWatch. Estas exclusiones reducen componentes que parchear y supervisar sin cerrar una evolución futura sustentada por métricas.
 
@@ -323,7 +323,7 @@ La autenticación federada del portal utiliza Cognito; un Lambda authorizer vali
 
 Cada método exige parámetros y modelo de cuerpo; se rechazan tipos de contenido sin modelo. El contrato maestro sigue siendo OpenAPI 3.1 y se genera una proyección compatible con las limitaciones de API Gateway y JSON Schema draft 4; la aplicación valida los tipos, formatos y reglas que el gateway no verifica. Los mensajes JSON por esta puerta se limitan como configuración propuesta a 64 KiB, máximo de inspección ampliada de WAF para este uso; el exceso se rechaza mediante su manejo de sobredimensión. Fotografías y documentos usan carga firmada temporal a un área S3 de cuarentena con tamaño y tipo permitidos, examen de contenido y asociación al manifiesto antes de aceptarse como evidencia. Este flujo no difiere evidencia obligatoria fuera del plazo de sincronización. Se ensayan solicitudes válidas e inválidas, falta de autorización, esquema erróneo, tipo no registrado, exceso de tamaño, abuso de cliente y rutas que eluden CloudFront. Los parámetros de cuotas y la selección completa de examen de objetos siguen por cerrar; el nombre del producto no acredita todo RT-11.11 \parencites{p3-api-validacion,p3-api-limites,p3-waf-cuerpos}[RT-11.11, p.~23]{pucv-transversal}.
 
-\textbf{Entrega segura y ambientes.} El repositorio Git mantiene código, contratos, migraciones e infraestructura. La canalización de integración compila, ejecuta pruebas unitarias y de arquitectura, analiza código y dependencias, genera SBOM CycloneDX, examina imágenes con Trivy o equivalente, firma artefactos con Cosign o equivalente y publica únicamente imágenes inmutables en ECR. QA ejecuta pruebas de contrato, integración, seguridad y carga; Preproducción reproduce la topología productiva a escala menor. Producción se despliega progresivamente con comprobaciones de salud y reversión automática.
+\textbf{Entrega segura y ambientes.} El repositorio Git mantiene código, contratos, migraciones e infraestructura. La canalización de integración compila, ejecuta pruebas unitarias y de arquitectura, analiza código y dependencias, genera SBOM CycloneDX, examina imágenes con Trivy o equivalente, firma artefactos con Cosign o equivalente y publica únicamente imágenes inmutables en ECR. QA ejecuta pruebas de contrato, integración, seguridad y carga; Preproducción reproduce la topología productiva a escala menor. Producción se despliega progresivamente con comprobaciones de salud y reversión automática. SD6, sección 6.2, desarrolla las prácticas DevSecOps y SD9, secciones 9.1 y 9.2, fija los umbrales, puertas bloqueantes y verificación de calidad. Este capítulo especifica los componentes y ambientes que soportan esas prácticas, sin sustituir sus planes.
 
 Los secretos no se copian entre ambientes y los datos productivos no se utilizan fuera de Producción salvo extracción anonimizada y autorización expresa. Desarrollo y QA pueden compartir infraestructura no productiva segmentada; Preproducción, Producción, Seguridad/Registros y DR usan cuentas o límites de administración separados. Todo recurso se etiqueta por ambiente, dominio, servicio, propietario y centro de costo para soportar gobierno y FinOps.
 
@@ -335,7 +335,7 @@ Durante una caída WAN, un bloqueo o borrado remoto se ejecuta cuando el disposi
 
 \input{componentes/gobierno_nube_rt.tex}
 
-\textbf{Registro de decisiones.} Las Tablas 4-6 a 4-9 consolidan las alternativas evaluadas y el criterio que determina cada elección. El detalle de implementación puede evolucionar, pero cambiar una decisión exige registrar impacto en alcance, datos, seguridad, operación, T-11 y costos.
+\textbf{Registro de decisiones.} Las Tablas~\ref{tab:4-6}, \ref{tab:4-7}, \ref{tab:4-8} y~\ref{tab:4-9} consolidan las alternativas evaluadas y el criterio que determina cada elección. El detalle de implementación puede evolucionar, pero cambiar una decisión exige registrar impacto en alcance, datos, seguridad, operación, T-11 y costos.
 
 \begin{longtable}{L{\dimexpr0.155556\linewidth-2\tabcolsep\relax}L{\dimexpr0.244444\linewidth-2\tabcolsep\relax}L{\dimexpr0.322222\linewidth-2\tabcolsep\relax}L{\dimexpr0.277778\linewidth-2\tabcolsep\relax}}
   \caption{Decisiones de estructura lógica}\label{tab:4-6}\\
@@ -361,7 +361,7 @@ DA-04 & Tres núcleos y cinco procesos especializados & Un despliegue total; ser
 DA-05 & Autoridad por dominio y agregado & Última escritura; nube siempre prevalece & Evitar pérdida silenciosa de hechos válidos generados offline \\
   \hline
 \end{longtable}
-\FuenteTabla{elaboración propia a partir de PUCV (2026a, art. 16), PUCV (2026b, caps. 2-3) y Bases Técnicas del Caso 07, cap. 17.4.}
+\FuenteTabla{Elaboración de Synaptix a partir de \parencites[art.~16, pp.~11--12]{pucv-admin}[caps.~2--3, pp.~6--10]{pucv-transversal}[secc.~17.4]{caso07}.}
 
 Estas decisiones separan deliberadamente organización del negocio y topología física. Los dominios no cambian porque un proceso sea extraído o porque una carga migre entre servicios.
 
@@ -389,7 +389,7 @@ DA-09 & Muestreo local por minuto y acumulado cloud cada 15 min & Enviar toda mu
 DA-10 & Ocupación multifuente con nivel de confianza & Declaración única; sensor como verdad & Seguridad, explicabilidad y tolerancia a señales contradictorias \\
   \hline
 \end{longtable}
-\FuenteTabla{elaboración propia sobre la volumetría del Caso 07, cap. 14, y requisitos de integración de PUCV (2026b).}
+\FuenteTabla{Elaboración de Synaptix sobre \parencites[cap.~14]{caso07}[RT-05.16--24, pp.~12--13]{pucv-transversal}.}
 
 La mensajería se selecciona por necesidad y no por tendencia tecnológica. El diseño conserva evidencia de origen y permite cambiar el transporte sin modificar la semántica del evento.
 
@@ -417,7 +417,7 @@ DA-14 & Podman en borde & Kubernetes/K3s; procesos instalados en host & Dos nodo
 DA-15 & Dos nodos activo-pasivo con fencing & Tres nodos; un nodo más repuesto & Redundancia obligatoria con menor complejidad en sitio sin TI \\
   \hline
 \end{longtable}
-\FuenteTabla{elaboración propia conforme a PUCV (2026a, art. 16) y catálogo regional de AWS (2026a, 2026b).}
+\FuenteTabla{Elaboración de Synaptix conforme a \parencites[art.~16, pp.~11--12]{pucv-admin}{aws-regiones,aws-rds-regiones}.}
 
 La selección de AWS no convierte todos los componentes en propietarios. El código, los contenedores, PostgreSQL, OpenAPI, MQTT y OpenTelemetry conservan una ruta de reversibilidad documentada.
 
@@ -445,7 +445,7 @@ DA-19 & Android nativo para terreno y React/PWA para portales & PWA única; apli
 DA-20 & Piloto de 40 sensores de ocupación & Despliegue total; ausencia de piloto & Validar ambiente marino y precisión antes de comprometer 380 unidades \\
   \hline
 \end{longtable}
-\FuenteTabla{elaboración propia a partir de PUCV (2026b, caps. 3, 8, 11 y 12) y restricciones del Caso 07.}
+\FuenteTabla{Elaboración de Synaptix a partir de \parencites[cap.~3, pp.~8--10; cap.~8, pp.~18--20; caps.~11--12, pp.~23--26]{pucv-transversal}[cap.~10; secc.~17.4]{caso07}.}
 
 Estas decisiones deberán revisarse en los hitos indicados cuando exista nueva evidencia, pero una validación pendiente no autoriza mantener dos arquitecturas simultáneas. Mientras no se apruebe un cambio, rige la alternativa seleccionada.
 
@@ -453,9 +453,8 @@ Estas decisiones deberán revisarse en los hitos indicados cuando exista nueva e
 
 La arquitectura física asigna cada componente lógico a nube, recinto o terreno según latencia, consecuencia de perder conectividad, proximidad con equipamiento, volumen, custodia y costo operacional. La carga principal se ubica en AWS South America (São Paulo), mientras la Célula Operacional Local aloja el mínimo necesario para continuidad. La región AWS Mexico (Central) actúa como sitio secundario. Esta distribución cumple el carácter híbrido obligatorio y evita convertir el recinto, que no posee sala técnica ni personal informático, en un centro de datos completo \parencites[art. 16, pp. 11--12]{pucv-admin}[caps. 4 y 17.4]{caso07}.
 
-La Figura 4-7 presenta la vista de despliegue completa y la Tabla~\ref{tab:4-10} demuestra el mapeo de cada componente.
+La Figura~\ref{fig:4-7} presenta la vista de despliegue completa y la Tabla~\ref{tab:4-10} demuestra el mapeo de cada componente.
 
-\setcounter{figure}{6}
 \input{figuras/figura4_7_coherencia.tex}
 
 La vista organiza la solución en cinco zonas numeradas que se amplían en las figuras siguientes. La Zona 0 reúne personas y canales autorizados; la Zona 1 contiene la producción primaria en AWS São Paulo; la Zona 2 representa la Célula Operacional Local y los cinco pantalanes; la Zona 3 corresponde al \emph{warm standby} en AWS México Central; y la Zona 4 reúne las integraciones con sistemas vigentes. Los bloques y enlaces sitúan acceso HTTPS/OIDC, operación local, sincronización protegida, continuidad regional e intercambio con terceros. La vista de recinto desarrolla la Autoridad local de acceso y su dependencia de una fuente laboral actual; las veinticuatro horas son el objetivo que debe demostrar la prueba conjunta. La figura evita repetir el detalle interno de cada zona, pero conserva las dependencias necesarias para comprender dónde se ejecuta cada capacidad y hacia qué ampliación debe dirigirse el lector.
@@ -505,17 +504,17 @@ Identidad, seguridad y auditoría & Controles transversales y dominio de auditor
 Observabilidad & Métricas, registros y trazas & CloudWatch São Paulo & Búfer OpenTelemetry local y registros DR & Vista unificada sin impedir ejecución offline \\
   \hline
 \end{longtable}
-\FuenteTabla{elaboración propia a partir de PUCV (2026a, art. 16, pp. 11-12) y PUCV (2026b, cap. 3, pp. 8-10).}
+\FuenteTabla{Elaboración de Synaptix a partir de \parencites[art.~16, pp.~11--12]{pucv-admin}[cap.~3, pp.~8--10]{pucv-transversal}.}
 
 El mapeo cubre los componentes de la solución base. La única duplicación funcional intencional es el subconjunto crítico entre nube y Célula Local; no constituye una réplica completa y utiliza reglas de autoridad explícitas para evitar divergencia.
 
-La Figura 4-8 amplía la Zona 0 y relaciona cada perfil con sus canales autorizados y con la ruta cloud o local correspondiente.
+La Figura~\ref{fig:4-8} amplía la Zona 0 y relaciona cada perfil con sus canales autorizados y con la ruta cloud o local correspondiente.
 
 \input{figuras/figura4_8_coherencia.tex}
 
 Los armadores, la administración, los equipos de operación, la escuela, el varadero, combustible, portería y el soporte Synaptix utilizan identidades individuales y funciones delimitadas por rol. El portal y la consola React/TypeScript consumen la exposición cloud; la aplicación Kotlin/Android y los terminales administrados pueden operar contra la VIP de la Célula Local cuando la función exige continuidad en terreno. Cognito soporta OIDC/SAML y MFA, mientras los permisos offline firmados y cifrados se limitan a veinticuatro horas desde su emisión y no habilitan administración global. Ningún canal accede directamente a una base de datos. VHF y el registro manual permanecen como contingencia humana y se reconcilian posteriormente, sin presentarlos como una integración API.
 
-La Figura 4-9 amplía la Zona 1 de la vista general y muestra el despliegue físico de Producción en AWS São Paulo.
+La Figura~\ref{fig:4-9} amplía la Zona 1 de la vista general y muestra el despliegue físico de Producción en AWS São Paulo.
 
 \input{figuras/figura4_9_coherencia.tex}
 
@@ -533,21 +532,21 @@ La identidad externa utiliza un pool Cognito de contingencia configurado en Méx
 
 Dos cortafuegos forman un par de alta disponibilidad y terminan los túneles IPsec. Dos conmutadores L3 apilables distribuyen VLAN y enlaces. Dos UPS online alimentan circuitos A/B; cada una debe sostener la carga crítica completa durante al menos treinta minutos. La tipología funcional es sala técnica secundaria o de sitio, materializada mediante gabinetes técnicos en un módulo nuevo adyacente a administración; su energía, generación autónoma, climatización N+1, incendio y seguridad física se dimensionan en 4.2.1 y 4.3. El gabinete no convierte el sitio en un simple punto de borde ni exime sus exigencias. Synaptix administra sistema operativo, base de datos, certificados, respaldos y alertas ambientales, sin atribuir una función TI al CLIENTE.
 
-La Figura 4-10 amplía la Zona 2 de la vista general y muestra la topología física del recinto, desde los enlaces externos hasta los cinco pantalanes.
+La Figura~\ref{fig:4-10} amplía la Zona 2 de la vista general y muestra la topología física del recinto, desde los enlaces externos hasta los cinco pantalanes.
 
 \input{figuras/figura4_10_coherencia.tex}
 
 La lectura de la figura comienza con dos enlaces WAN de proveedor y ruta independientes, que llegan al par de cortafuegos en alta disponibilidad y sostienen dos túneles IPsec hacia AWS São Paulo. Desde ese borde, los switches L3 apilados distribuyen rutas A/B hacia la IP virtual del clúster local y troncales \texttt{802.1Q} hacia seis segmentos: administración, operación, IoT y medición, CCTV y acceso, invitados o \emph{partners}, y gestión técnica. Los dos nodos conservan las mismas imágenes y configuración; el nodo A presta el servicio en régimen normal, el nodo B mantiene una réplica PostgreSQL síncrona y el mecanismo de \emph{heartbeat} con \emph{fencing} permite promoverlo sin aceptar escrituras simultáneas. EMQX, la base local y el Runtime Operacional soportan al menos veinticuatro horas de funciones críticas sin nube, mientras HTTPS con mTLS intercambia contratos, hechos, secuencias y confirmaciones con la Zona 1. Dos UPS online y circuitos A/B protegen la carga crítica, junto con sensores ambientales y control físico del gabinete. Hacia terreno, los segmentos autorizados alcanzan portería, escuela, varadero, combustible, acceso, CCTV, meteorología y VHF; las troncales de fibra marina llegan a los cinco pantalanes, cada uno con gabinete protegido, dos puntos de distribución, medición, conectividad y terminal operacional. La base representada cubre 320 puntos de agua y 320 de energía y deja capacidad para 760 puntos más veinte por ciento de reserva en los concentradores. La figura evidencia rutas, protecciones y fronteras físicas, pero no representa cámaras dirigidas a alumnos ni dispositivos instalados en embarcaciones de armadores o botes menores de la escuela. La caja de Célula Local sintetiza la zona técnica: su distribución efectiva usa gabinetes de cómputo y comunicaciones separados, y la Figura~\ref{fig:energia-fisica} desarrolla generación, UPS y clima que esta vista no detalla.
 
-La Figura 4-11 amplía la Zona 3 y separa la preparación permanente del procedimiento autorizado de conmutación regional.
+La Figura~\ref{fig:4-11} amplía la Zona 3 y separa la preparación permanente del procedimiento autorizado de conmutación regional.
 
-\FiguraTecnica[width=\textwidth]{Figura-4-11-Zona-3-AWS-Mexico-DR.png}{Continuidad regional de la Zona 3: AWS México Central}{elaboración propia.}{fig:4-11}
+\input{figuras/figura4_11_coherencia.tex}
 
 México Central mantiene una VPC privada Multi-AZ, una réplica PostgreSQL 18 asíncrona y cifrada, evidencia mediante S3 CRR, imágenes replicadas en ECR e infraestructura reproducible con OpenTofu. La identidad de contingencia exige reautenticación o recuperación validada y no presupone una réplica regional de contraseñas. Route 53 permanece cerrado hacia DR hasta que el responsable declare el incidente, promueva una sola base de datos, escale y valide los servicios críticos y autorice el cambio DNS. La Célula Local conserva su autonomía durante el proceso y se conecta a México mediante VPN y HTTPS/mTLS al activarse la contingencia. El retorno requiere réplica inversa, atraso cero, una ventana aprobada y cambio único de autoridad; nunca se admiten escrituras simultáneas en ambas regiones.
 
-La Figura 4-12 amplía la Zona 4 y delimita cada integración mediante un adaptador independiente y un contrato versionado.
+La Figura~\ref{fig:4-12} amplía la Zona 4 y delimita cada integración mediante un adaptador independiente y un contrato versionado.
 
-\FiguraTecnica[width=\textwidth]{Figura-4-12-Zona-4-Integraciones-Sistemas.png}{Integraciones y sistemas vigentes de la Zona 4}{elaboración propia.}{fig:4-12}
+\input{figuras/figura4_12_coherencia.tex}
 
 Contabilidad conserva la autoridad sobre documentos, pagos y saldos; la plataforma solo prepara hechos facturables y recibe resultados. Acceso y CCTV mantienen sus sistemas vigentes y entregan exclusivamente autorizaciones, eventos o evidencia permitida; el video no se copia indiscriminadamente. Meteorología aporta observaciones, DIRECTEMAR se representa mediante el canal oficial efectivamente autorizado y VHF permanece como coordinación humana. El surtidor entrega pulsos o datos mediante un gateway y barrera intrínseca fuera de la zona clasificada, y el proveedor de notificaciones devuelve acuses, errores y reintentos. Cuando la capacidad técnica de un tercero no se haya validado, el contrato se expresa como API, \emph{webhook} o archivo seguro sin inventar un protocolo. Los terceros no se conectan entre sí.
 
@@ -563,9 +562,9 @@ La base considera dos puntos de distribución por pantalán, sujetos a estudio R
 
 \textbf{Medición de agua y energía.} Se instalan inicialmente 320 puntos de agua y 320 de energía, uno de cada servicio por amarra, con capacidad de crecer a 760 puntos. Diez concentradores —dos por pantalán— admiten en conjunto la ampliación más un veinte por ciento de reserva. Los medidores conservan totalizador no volátil; los concentradores muestrean localmente cada minuto, calculan calidad y publican acumulados de quince minutos, además de alarmas. La asociación medidor-amarra tiene vigencia temporal y pertenece a Infraestructura; la serie conciliada pertenece a Ambiente y consumos.
 
-La Figura 4-13 detalla este flujo sin mezclarlo con la topología general.
+La Figura~\ref{fig:4-13} detalla este flujo sin mezclarlo con la topología general.
 
-\FiguraTecnica[width=\textwidth]{Figura-4-13-Telemetria-Submedicion.png}{Flujo de telemetría y submedición}{elaboración propia.}{fig:4-13}
+\input{figuras/figura4_13_coherencia.tex}
 
 La cadena comienza en los medidores de agua y energía, cuyos totalizadores no volátiles alimentan buses industriales y diez concentradores distribuidos a razón de dos por pantalán. Los concentradores conservan calidad, secuencia y sello UTC, muestrean cada minuto, agregan cada quince minutos y mantienen al menos veinticuatro horas de cola. MQTT 5 con mTLS finaliza en EMQX dentro del borde local; los dominios cloud no consumen directamente el broker. PostgreSQL de borde conserva las particiones temporales y el \emph{outbox}, mientras el servicio de sincronización transmite lotes idempotentes por HTTPS/mTLS y elimina la cola únicamente después del ACK. El procesamiento cloud entrega una serie conciliada a Ambiente y consumos, que publica \texttt{MediciónConsolidada}; Finanzas y cobranza genera el hecho facturable solo después de validar asociación, unidad, calidad y período. La figura también distingue operación normal, pérdida de WAN y reproducción ordenada durante la reconexión.
 
@@ -605,9 +604,9 @@ Producción & Operación real & Productivos & Alta disponibilidad Multi-AZ y ser
 DR & Recuperación de Producción & Réplica cifrada de productivos & Warm standby y pruebas semestrales \\
   \hline
 \end{longtable}
-\FuenteTabla{elaboración propia a partir de PUCV (2026b, cap. 4, pp. 10-12).}
+\FuenteTabla{Elaboración de Synaptix a partir de \parencite[cap.~4, pp.~10--11]{pucv-transversal}.}
 
-La separación impide que una prueba altere la operación o exponga información real. Las promociones usan el mismo artefacto firmado; cambia la configuración externa, no se recompila código para cada ambiente.
+La separación impide que una prueba altere la operación o exponga información real. Las promociones usan el mismo artefacto firmado; cambia la configuración externa, no se recompila código para cada ambiente. Los cinco ambientes se entregan habilitados y operativos como condición del hito H3. Desarrollo y QA se apagan fuera de sus ventanas de uso; Preproducción reduce capacidad cuando no ejecuta validación, preservando configuración, datos protegidos y capacidad de restitución. El inventario IaC registra horarios, excepciones aprobadas y diferencias frente a Producción. El sitio de Recuperación ante Desastres conserva la capacidad mínima y replicación necesarias para RPO/RTO, sin tratarlo como un ambiente prescindible \parencite[RT-04.01, p.~10; RT-15.02, p.~27]{pucv-transversal}.
 
 \textbf{Dimensionamiento de transacciones y concurrencia.} La proyección a tres años contempla 380 amarras, 70 boyas, 2.400 recaladas, 5.600 zarpes, 1.350 movimientos de travelift, 1.400 salidas de clase, 2.300 documentos mensuales, 88 trabajadores en peak y 4.000 personas distintas ingresando al recinto en un mes de temporada \parencite[cap. 14, sec. 14.1]{caso07}. Se adopta un régimen de 5 transacciones de negocio por segundo, peak de 20 y capacidad técnica mínima de 100 solicitudes por segundo. La concurrencia de diseño es 50 personas internas y 150 externas, con prueba a 300 sesiones externas simultáneas.
 
@@ -628,7 +627,7 @@ El promedio es 0,84 lecturas por segundo. Si cada intervalo se distribuye en ses
 
 \input{componentes/caudal_sitios_rt.tex}
 
-\textbf{Cómputo.} Cada núcleo productivo inicia con dos tareas distribuidas, de 1 vCPU y entre 2 y 4 GB de memoria por tarea. Los workers escalan por profundidad de cola. RDS parte con una clase equivalente a 2 vCPU y 8 GB Multi-AZ, que se ajustará con pruebas. Cada nodo local ofrece al menos 8 núcleos y 64 GB ECC y debe sostener por sí solo toda la carga con cuarenta por ciento de reserva. Si una prueba supera setenta por ciento sostenido de CPU, memoria, IOPS o cola durante el peak, se escala antes de Producción.
+\textbf{Cómputo.} Cada núcleo productivo inicia con dos tareas distribuidas, de 1 vCPU y entre 2 y 4 GB de memoria por tarea. Los workers escalan por profundidad de cola. RDS parte con una clase equivalente a 2 vCPU y 8 GB Multi-AZ, que se ajustará con pruebas. En nube, superar el 70\,\% sostenido de CPU, memoria o capacidad de IOPS provisionada durante el peak obliga a ampliar antes de Producción. Cada nodo local ofrece al menos 8 núcleos y 64 GB ECC y debe sostener por sí solo toda la carga, con el otro nodo retirado, utilizando como máximo el 60\,\% de CPU, memoria y capacidad útil de almacenamiento e IOPS definida para la configuración. Ese límite conserva el 40\,\% de reserva local y no se sustituye por el umbral cloud del 70\,\%. La capacidad de IOPS se determina con la mezcla y los tiempos de respuesta exigidos; no se deduce únicamente del número de discos. Para las colas se comprueban profundidad, antigüedad y capacidad de drenaje, en vez de asignarles un porcentaje sin capacidad de referencia. Todo exceso en el ensayo de peak o crecimiento exige redimensionar antes de habilitar el escenario afectado.
 
 La Tabla~\ref{tab:4-12} consolida las hipótesis verificables.
 
@@ -663,7 +662,7 @@ WAN principal/respaldo & ≥100 Mb/s útiles cada uno & 20 nuevo +80 lote; presu
 Cómputo local & 8 núcleos/64 GB por nodo & ≥40 \% libre en peak & Prueba con un solo nodo activo \\
   \hline
 \end{longtable}
-\FuenteTabla{cálculos propios sobre la volumetría de las Bases Técnicas del Caso 07, cap. 14.}
+\FuenteTabla{Cálculos de Synaptix sobre \parencite[cap.~14]{caso07}.}
 
 La transferencia de evidencia después de una interrupción concentra el riesgo de capacidad identificado; las pruebas medirán también PostgreSQL y la tasa transaccional para confirmar el recurso limitante. Por eso se separan colas y prioridades, y no se sobredimensiona la plataforma de eventos con Kafka.
 
@@ -705,13 +704,13 @@ Proveedor de mensajería & Error y tasa de entrega & Segundo canal y reintento &
 Interfaz contable & Cola y timeout & Circuit breaker y reintento & Hechos facturables no se pierden ni duplican \\
   \hline
 \end{longtable}
-\FuenteTabla{elaboración propia conforme a PUCV (2026b, caps. 3, 7 y 10).}
+\FuenteTabla{Elaboración de Synaptix conforme a \parencite[cap.~3, pp.~8--10; cap.~7, pp.~17--18; cap.~10, p.~22]{pucv-transversal}.}
 
 La tabla distingue recuperación automática de procedimientos dirigidos. Una caída regional requiere una decisión controlada para evitar dos primarios; una falla de tarea o enlace sí se resuelve automáticamente. Los planes se ensayan con evidencias, tiempos y responsables.
 
 \textbf{Respaldo y recuperación.} RDS mantiene recuperación a un punto en el tiempo por treinta y cinco días, respaldos automáticos y copias mensuales conforme a la política de retención. S3 usa versionado, Object Lock para evidencia y replicación entre regiones. La base local mantiene réplica síncrona, respaldos cifrados y exportación a S3 cuando existe enlace. Infraestructura, imágenes, contratos, configuración y procedimientos se versionan para reconstruir un ambiente sin depender de acciones manuales en consola.
 
-La Figura 4-14 representa alta disponibilidad, respaldo y recuperación.
+La Figura~\ref{fig:4-14} representa alta disponibilidad, respaldo y recuperación.
 
 \input{figuras/figura4_14_coherencia.tex}
 
@@ -732,9 +731,9 @@ La Tabla~\ref{tab:4-14} resume los gabinetes técnicos y comunicaciones.
 \begin{table}[htbp]
 \centering\small
 \caption{Síntesis cuantitativa de cómputo y comunicaciones}\label{tab:4-14}
-\begin{tabular}{L{\dimexpr0.24\linewidth-2\tabcolsep\relax}L{\dimexpr0.14\linewidth-2\tabcolsep\relax}L{\dimexpr0.43\linewidth-2\tabcolsep\relax}L{\dimexpr0.19\linewidth-2\tabcolsep\relax}}
+\begin{tabular}{L{\dimexpr0.24\linewidth-2\tabcolsep\relax}R{\dimexpr0.14\linewidth-2\tabcolsep\relax}L{\dimexpr0.43\linewidth-2\tabcolsep\relax}L{\dimexpr0.19\linewidth-2\tabcolsep\relax}}
 \hline
-\EncabezadoTabla{Componente} & \EncabezadoTabla{Unidades instaladas} & \EncabezadoTabla{Capacidad por unidad} & \EncabezadoTabla{Reserva de montaje} \\ \hline
+\EncabezadoTabla{Componente} & \EncabezadoTabla{Unidades instaladas} & \EncabezadoTabla{Capacidad por unidad} & \EncabezadoTabla{Asignación de montaje} \\ \hline
 \rowcolor{SynSurface}
 R360 de la Célula Local & 2 & 8 núcleos; 64 GB ECC; RAID 1 de 1,92 TB & 2 U por nodo \\ \hline
 FG-120G & 2 & VPN útil requerida $\geq$200 Mb/s & 1 U por equipo \\ \hline
@@ -756,7 +755,7 @@ La Tabla~\ref{tab:4-15} resume red de terreno, medición e integración.
 \begin{table}[htbp]
 \centering\small
 \caption{Red y medición: cantidades instaladas, crecimiento y reserva}\label{tab:4-15}
-\begin{tabular}{L{\dimexpr0.34\linewidth-2\tabcolsep\relax}L{\dimexpr0.16\linewidth-2\tabcolsep\relax}L{\dimexpr0.28\linewidth-2\tabcolsep\relax}L{\dimexpr0.22\linewidth-2\tabcolsep\relax}}
+\begin{tabular}{L{\dimexpr0.34\linewidth-2\tabcolsep\relax}R{\dimexpr0.16\linewidth-2\tabcolsep\relax}R{\dimexpr0.28\linewidth-2\tabcolsep\relax}R{\dimexpr0.22\linewidth-2\tabcolsep\relax}}
 \hline
 \EncabezadoTabla{Tipo} & \EncabezadoTabla{Instalado} & \EncabezadoTabla{Crecimiento previsto} & \EncabezadoTabla{Stock mínimo en sitio} \\ \hline
 \rowcolor{SynSurface}
@@ -770,7 +769,7 @@ Medidor de energía & 320 & 380 instalados & 32 compatibles \\ \hline
 Lector de acceso & 7 & Según accesos validados & 1 compatible \\ \hline
 \end{tabular}
 \end{table}
-\FuenteTabla{elaboración propia sobre inventario y proyección de las Bases Técnicas del Caso 07, caps. 2, 4, 14 y 17.4.}
+\FuenteTabla{Elaboración de Synaptix sobre \parencite[caps.~2, 4 y 14; secc.~17.4]{caso07}.}
 
 Los medidores instalados cubren 320 amarras y los concentradores se dimensionan para 380 amarras, 760 puntos más veinte por ciento de margen. Cada tipo de equipo de terreno tendrá stock en sitio con configuración precargada de al menos diez por ciento, redondeado hacia arriba: para 320 medidores son 32 adicionales por tipo, y para diez concentradores uno, y para doce switches o AP dos por tipo compatible. No disminuye el instalado y se recalcula al crecer el parque. La compra de estos repuestos se especifica en T-11, sin afirmar stock ya disponible. Los cinco gabinetes de pantalán y el gabinete adicional de varadero, la interfaz de dos mangueras del surtidor y cuarenta sensores de ocupación para piloto se detallan allí; sus modelos, buses, accesorios, clasificación y aptitud marina siguen por individualizar. Los sensores no se compran masivamente antes de demostrar desempeño real \parencite[secc.~8.4, pp.~19--20]{pucv-transversal}.
 
@@ -781,7 +780,7 @@ La Tabla~\ref{tab:4-16} resume los dispositivos móviles y software asociado.
 \begin{table}[htbp]
 \centering\small
 \caption{Distribución de la flota móvil de un mismo modelo compatible}\label{tab:4-16}
-\begin{tabular}{L{\dimexpr0.34\linewidth-2\tabcolsep\relax}L{\dimexpr0.18\linewidth-2\tabcolsep\relax}L{\dimexpr0.18\linewidth-2\tabcolsep\relax}L{\dimexpr0.3\linewidth-2\tabcolsep\relax}}
+\begin{tabular}{L{\dimexpr0.34\linewidth-2\tabcolsep\relax}R{\dimexpr0.18\linewidth-2\tabcolsep\relax}R{\dimexpr0.18\linewidth-2\tabcolsep\relax}R{\dimexpr0.3\linewidth-2\tabcolsep\relax}}
 \hline
 \EncabezadoTabla{Destino} & \EncabezadoTabla{Operacionales} & \EncabezadoTabla{Stock} & \EncabezadoTabla{Autonomía continua exigida} \\ \hline
 \rowcolor{SynSurface}
@@ -795,7 +794,7 @@ Reserva común en sitio & 0 & 2 & Mismo perfil al sustituir \\ \hline
 Total administrado & 14 & 2 & 16 terminales \\ \hline
 \end{tabular}
 \end{table}
-\FuenteTabla{elaboración propia conforme a PUCV (2026b, RT-03.18 y cap. 8) y Bases Técnicas del Caso 07, caps. 2, 8 y 17.4.}
+\FuenteTabla{Elaboración de Synaptix conforme a \parencites[RT-03.18, p.~9; cap.~8, pp.~18--20]{pucv-transversal}[caps.~2 y 8; secc.~17.4]{caso07}.}
 
 Se propone un mismo XCover7 Pro compatible para los catorce operacionales y dos reservas precargadas: $\lceil14\times0,10\rceil=2$. Las dieciséis unidades están administradas; no son dieciséis operacionales más dos reservas. Portería usa los dos puestos fijos de negocio con monitores duales; no dispone simultáneamente de un móvil de reserva. Las estaciones se dimensionan por separado en la Tabla~\ref{tab:p4-puestos}. La asignación por turno requiere validación con Operaciones, sin depender de dispositivos personales ni preparación técnica del repuesto.
 
@@ -807,7 +806,9 @@ El plan de ciclo de vida del T-11 desarrolla recepción de equipo nuevo sin uso,
 
 \section{Data center}
 
-La estrategia combina nube primaria Multi-AZ, recuperación en una región separada y cómputo local de continuidad. La residencia primaria se declara en Brasil y la secundaria en México. La Célula Operacional Local aloja el subconjunto crítico en administración y los pantalanes y varadero distribuyen interfaces protegidas de terreno. La tipología se determina por la función alojada, no por llamar gabinete a su envolvente. Toda transferencia internacional de datos personales queda sujeta a aprobación del CLIENTE, base de licitud y controles exigidos por la Ley N.º 21.719 \parencite[cap.~4, p.~16]{pucv-admin}.
+La estrategia combina nube primaria Multi-AZ, recuperación en una región separada y cómputo local de continuidad. La residencia primaria se declara en Brasil y la secundaria en México. La Célula Operacional Local aloja el subconjunto crítico en administración y los pantalanes y varadero distribuyen interfaces protegidas de terreno. La tipología se determina por la función alojada, no por llamar gabinete a su envolvente. La residencia propuesta requiere aprobación del CLIENTE; toda transferencia internacional de datos personales exige base de licitud, resguardos adecuados y autorización previa y escrita del CLIENTE, conforme a la Ley N.º 21.719 y a los artículos 23 y 85.8 de las Bases Administrativas. Esta obligación comprende el envío inicial a Brasil, la replicación y los respaldos en México y cualquier procesamiento, soporte o integración desde otro país \parencite[art.~23, p.~17; art.~85.8, p.~44]{pucv-admin}.
+
+Antes de habilitar un flujo internacional con datos personales, Synaptix entregará el registro de tratamiento y transferencias: finalidad, categorías de datos y titulares, origen, destino y ubicación de procesamiento, proveedor y subencargados, retención, base de licitud, resguardos y autorización aplicable. El acuerdo de tratamiento recogerá las instrucciones del CLIENTE y las obligaciones de cada subencargado; su incorporación requerirá también autorización previa y escrita. El diseño aplicará minimización, seudonimización cuando proceda, cifrado en tránsito y reposo, privilegio mínimo y registro de accesos. Las rutas de salida y las tareas de replicación, exportación y procesamiento se habilitarán únicamente para destinos y finalidades autorizados; cualquier cambio se someterá al mismo control antes de activarse. No se enviarán datos personales por un flujo sin autorización vigente. Las políticas de datos se desarrollan en SD5; SD4 conserva su aplicación a los servicios y emplazamientos seleccionados \parencite[art.~85.1--4, p.~44]{pucv-admin}.
 
 \textbf{Tipología por emplazamiento.} La Célula contiene dos nodos, persistencia PostgreSQL y procesamiento local para continuidad, mientras el núcleo de la plataforma permanece en nube. Corresponde por ello a \emph{sala técnica secundaria o de sitio} de BT 6.1, materializada en gabinetes técnicos autónomos en administración. Se descarta sala principal porque duplicaría el núcleo y supondría procesamiento local sustantivo que el caso no requiere; se descarta la categoría de simple borde para esta Célula porque no describe sus servidores y persistencia. Los gabinetes de pantalán y varadero sí son \emph{borde operacional}: conmutación, concentración, interfaz y búfer de captura; no albergan el núcleo ni sustituyen los nodos de continuidad. La inexistencia de sala, la referencia al armario actual de 12 U y la ausencia de personal TI son condiciones de partida, no evidencia de que ese armario pueda recibir el diseño \parencites[secc.~6.1, p.~14]{pucv-transversal}[cap.~15, RT-06.01; cap.~17, secc.~17.4]{caso07}.
 
@@ -901,7 +902,7 @@ Operación & Monitoreo 24×7 del servicio, parches, capacidad y FinOps & Reporte
 Sostenibilidad & Apagado no productivo, capacidad ajustada y métricas del proveedor & Reporte anual de energía/huella disponible \\
   \hline
 \end{longtable}
-\FuenteTabla{elaboración propia a partir de PUCV (2026a, arts. 16 y 20, pp. 11-17), PUCV (2026b, caps. 3, 6, 10 y 15) y AWS (2026a).}
+\FuenteTabla{Elaboración de Synaptix a partir de \parencites[art.~16, pp.~11--12; art.~20, pp.~14--15]{pucv-admin}[cap.~3, pp.~8--10; cap.~6, pp.~14--17; cap.~10, p.~22; secc.~15.1, pp.~27--28]{pucv-transversal}{aws-regiones,aws-reliability}.}
 
 La aceptación del sitio primario exige probar la arquitectura desplegada, no solo acreditar que la región existe. La prueba incluye pérdida de una tarea, indisponibilidad de una zona simulada, failover de base, restauración, aislamiento de red y continuidad desde la Célula Local.
 
@@ -917,7 +918,7 @@ El modo de recuperación es \emph{warm standby}. La red, claves, secretos, repos
 
 \textbf{Retorno.} El regreso a São Paulo se ejecuta en ventana aprobada. Se establece réplica inversa, se comprueba atraso cero, se detienen escrituras, se cambia autoridad y se reactiva tráfico. Las evidencias del incidente y del retorno se conservan. Si el sitio primario no es recuperable, México permanece como autoridad hasta que un nuevo primario sea aprobado.
 
-\textbf{Pruebas.} Dos veces al año se realiza una conmutación técnica o ejercicio equivalente que incluya promoción de datos, despliegue de tareas, cambio de tráfico y validación de casos críticos. Cada prueba mide RPO, RTO, integridad, colas, sincronización y retorno. Una simulación de escritorio sin levantar servicios no satisface esta obligación.
+\textbf{Pruebas.} Al menos una vez cada semestre se realiza una conmutación real al sitio secundario, que incluye promoción de datos, despliegue de tareas, cambio efectivo de tráfico y validación de los casos críticos. Cada prueba mide RPO, RTO, integridad, colas, sincronización y retorno al primario. La autorización y la ventana se coordinan con el CLIENTE y con las restricciones operacionales de la marina. Una simulación de escritorio, un ensayo sin cambio efectivo de tráfico o una restauración aislada no sustituyen esa conmutación. Si durante un incidente el primario permanece irrecuperable, México conserva la autoridad según el procedimiento anterior; esa contingencia no elimina la obligación de ejercitar el retorno en el ensayo semestral \parencites[art.~20, pp.~14--15]{pucv-admin}[RT-07.07, p.~17]{pucv-transversal}.
 
 La Tabla~\ref{tab:4-18} resume el centro secundario.
 
@@ -947,10 +948,10 @@ Activación & Autorización, promoción única y cambio Route 53 & Runbook y reg
 Alcance inicial & Servicios críticos; analítica posterior & Lista de prioridades y validación funcional \\
   \hline
   \rowcolor{SynSurface}
-Prueba & Semestral, con retorno o recuperación equivalente & Acta, hallazgos y plan de mejora \\
+Prueba & Conmutación real y retorno, al menos una vez cada semestre & Acta, hallazgos y plan de mejora \\ 
   \hline
 \end{longtable}
-\FuenteTabla{elaboración propia a partir de PUCV (2026a, art. 20, pp. 14-17), PUCV (2026b, cap. 10) y AWS (2026a, 2026b).}
+\FuenteTabla{Elaboración de Synaptix a partir de \parencites[art.~20, pp.~14--15]{pucv-admin}[cap.~7, pp.~17--18; cap.~10, p.~22]{pucv-transversal}{aws-rds-crossregion,aws-reliability}.}
 
 La región secundaria mantiene separación geográfica y de falla respecto del primario. La transferencia internacional, la latencia y el costo de replicación se revisan en diseño detallado y en cada cambio de residencia.
 

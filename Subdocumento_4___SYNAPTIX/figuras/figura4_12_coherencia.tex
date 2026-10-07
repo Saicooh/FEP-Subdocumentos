@@ -1,0 +1,56 @@
+% Cada contraparte se conecta a su adaptador; no hay enlaces entre terceros.
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+    bloque/.style={draw=SynNavyLight,fill=SynSurface,rounded corners=1mm,
+      align=left,font=\fontsize{9}{11}\selectfont,text width=69mm,
+      inner sep=2mm,minimum height=27mm},
+    banda/.style={bloque,text width=148mm,fill=SynNavy,text=SynWhite,
+      minimum height=17mm},
+    enlace/.style={draw=SynNavyLight,thick}]
+    \node[banda] (plataforma) {\textbf{Zona 4: integración gobernada}\\
+      Núcleos y procesos especializados: Spring Boot 4.1.1 y Spring Modulith 2.1.1.
+      Contratos versionados, Correlation-ID, idempotencia, reintentos acotados
+      y aislamiento por contraparte.};
+    \node[bloque,below=6mm of plataforma.south west,anchor=north west] (contabilidad)
+      {\textbf{Adaptador contable}\\Clientes y contratos / Finanzas y cobranza.
+       El sistema vigente conserva autoridad sobre documentos, pagos y saldos;
+       la plataforma prepara hechos y recibe resultados.};
+    \node[bloque,below=6mm of plataforma.south east,anchor=north east] (acceso)
+      {\textbf{Adaptador de acceso y CCTV}\\Autorizaciones, eventos y evidencia
+       permitida. Se conserva la plataforma vigente y su red segregada;
+       no se replica video ordinario.};
+    \node[bloque,below=6mm of contabilidad.south west,anchor=north west] (autoridad)
+      {\textbf{Adaptador de autoridad y meteorología}\\Canal oficial autorizado
+       para DIRECTEMAR y observaciones de la fuente meteorológica.
+       VHF conserva la coordinación humana.};
+    \node[bloque,below=6mm of acceso.south east,anchor=north east] (combustible)
+      {\textbf{Adaptador del surtidor}\\Pulsos o datos mediante interfaz apta
+       y barrera fuera de zona clasificada. La variante y clasificación se
+       individualizan antes de autorizar la instalación.};
+    \node[bloque,below=6mm of autoridad.south west,anchor=north west] (avisos)
+      {\textbf{Adaptador de notificaciones}\\SMS, mensajería y correo
+       simultáneos en emergencia. Estado por destinatario, acuse, error,
+       reintento y escalamiento.};
+    \node[bloque,below=6mm of combustible.south east,anchor=north east] (navegacion)
+      {\textbf{Adaptador de baja capacidad}\\Mensajes hacia embarcaciones:
+       tamaño, vigencia, demora, desorden y ausencia de entrega forman parte
+       del contrato del canal seleccionado.};
+    \node[banda,below=6mm of avisos.south west,anchor=north west] (frontera)
+      {\textbf{Frontera de cada integración}\\Entrada por API Gateway y
+       salida desde el adaptador autorizado. Protocolo y autenticación se
+       individualizan por tercero: no se atribuye una API no comprobada.
+       Los terceros no se conectan entre sí.};
+    \draw[draw=SynNavyLight,thick] (plataforma.south) --
+      (plataforma.south |- avisos.center);
+    \draw[enlace] (plataforma.south |- contabilidad.center) -- (contabilidad.east);
+    \draw[enlace] (plataforma.south |- acceso.center) -- (acceso.west);
+    \draw[enlace] (plataforma.south |- autoridad.center) -- (autoridad.east);
+    \draw[enlace] (plataforma.south |- combustible.center) -- (combustible.west);
+    \draw[enlace] (plataforma.south |- avisos.center) -- (avisos.east);
+    \draw[enlace] (plataforma.south |- navegacion.center) -- (navegacion.west);
+  \end{tikzpicture}
+  \caption{Integraciones y sistemas vigentes de la Zona 4}
+  \label{fig:4-12}
+  \FuenteFigura{Elaboración de Synaptix; \parencite[secc.~17.4]{caso07}; SD4, secciones 4.1 y 4.2. Cada bloque identifica un adaptador independiente; los contratos efectivos se conservan en su catálogo.}
+\end{figure}

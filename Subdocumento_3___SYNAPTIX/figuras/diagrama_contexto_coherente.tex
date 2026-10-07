@@ -1,0 +1,64 @@
+% Contexto: la solución se representa como una sola caja.
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  externo/.style={draw=SynNavyLight,fill=SynSurface,align=left,
+    font=\fontsize{9.5}{11.5}\selectfont,text width=40mm,
+    inner sep=2mm,minimum height=33mm},
+  persona/.style={externo,text width=66mm,minimum height=25mm},
+  sistema/.style={draw=SynNavy,fill=SynNavy,text=SynWhite,align=center,
+    font=\fontsize{10}{13}\selectfont,text width=44mm,
+    inner sep=2mm,minimum height=130mm},
+  doble/.style={{Latex}-{Latex},draw=SynNavyLight,thick},
+  entrada/.style={-{Latex},draw=SynNavyLight,thick}]
+  \node[sistema] (sistema) at (0,0)
+    {\textbf{Solución Synaptix}\\[5mm]
+     Apoya la custodia de embarcaciones y la seguridad de personas.\\[4mm]
+     Coordina faenas, conserva evidencia ambiental y relaciona
+     la operación con contratos y cobros.\\[4mm]
+     Incluye los canales de atención y el servicio gestionado.};
+  \node[persona] (personal) at (-39mm,96mm)
+    {\textbf{Personal de la marina}\\
+     Torre, marinería, escuela, portería, varadero, combustible y administración.\\
+     Registra y valida hechos; consulta estados y recibe alertas.};
+  \node[persona] (usuarios) at (39mm,96mm)
+    {\textbf{Armadores, apoderados, contratistas y visitantes}\\
+     Declaran planes, presentan solicitudes y antecedentes;
+     consultan su información y reciben avisos.};
+  \node[externo] (contabilidad) at (-53mm,40mm)
+    {\textbf{Sistema contable}\\
+     Recibe hechos facturables.\\
+     Devuelve emisión, pagos y saldos para conciliación.};
+  \node[externo] (terreno) at (-53mm,0)
+    {\textbf{Equipos y sistemas del recinto}\\
+     Medidores, surtidor, meteorología y control de acceso.\\
+     Aportan lecturas, eventos y confirmaciones.};
+  \node[externo] (autoridad) at (-53mm,-40mm)
+    {\textbf{Autoridad Marítima}\\
+     Recibe antecedentes por canales autorizados.\\
+     Emite avisos oficiales y conserva el otorgamiento del zarpe.};
+  \node[externo] (comunicacion) at (53mm,40mm)
+    {\textbf{Servicios de comunicación}\\
+     Reciben avisos para SMS, mensajería y correo.\\
+     Informan entrega o falla según su capacidad.};
+  \node[externo] (pagos) at (53mm,0)
+    {\textbf{Servicios de pago}\\
+     Reciben solicitudes autorizadas.\\
+     Devuelven el resultado de la transacción para conciliación.};
+  \node[externo] (ambiente) at (53mm,-40mm)
+    {\textbf{Declaración sanitaria y gestores autorizados}\\
+     Reciben declaraciones y antecedentes de residuos.\\
+     Aportan constancias y certificados según su competencia.};
+  \draw[doble] (personal.south) -- ([xshift=-12mm]sistema.north);
+  \draw[doble] (usuarios.south) -- ([xshift=12mm]sistema.north);
+  \draw[doble] (contabilidad.east) -- (sistema.west |- contabilidad.east);
+  \draw[entrada] (terreno.east) -- (sistema.west |- terreno.east);
+  \draw[doble,dashed] (autoridad.east) -- (sistema.west |- autoridad.east);
+  \draw[doble] (sistema.east |- comunicacion.west) -- (comunicacion.west);
+  \draw[doble] (sistema.east |- pagos.west) -- (pagos.west);
+  \draw[doble] (sistema.east |- ambiente.west) -- (ambiente.west);
+\end{tikzpicture}
+\caption{Diagrama de contexto: usuarios, solución e intercambios externos}
+\label{fig:contexto-solucion}
+\FuenteFigura{Elaboración de Synaptix a partir de la operación, actores y exclusiones del Caso 07. Las flechas representan intercambios de información; la línea discontinua con la autoridad indica canales autorizados, sin presumir una integración automática.}
+\end{figure}

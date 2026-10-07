@@ -1,0 +1,42 @@
+% Se distingue el protocolo MQTT 5 de la versión del producto EMQX.
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+    bloque/.style={draw=SynNavyLight,fill=SynSurface,rounded corners=1mm,
+      align=left,font=\fontsize{9}{11}\selectfont,text width=148mm,
+      inner sep=2mm,minimum height=17mm},
+    banda/.style={bloque,fill=SynNavy,text=SynWhite},
+    enlace/.style={-{Latex},draw=SynNavyLight,thick}]
+    \node[banda] (puntos) {\textbf{Medidores y asociación vigente}\\
+      Base: 320 puntos de agua y 320 de energía. Ampliación: 760 puntos.
+      Totalizador no volátil; Infraestructura conserva la asociación medidor--amarra.};
+    \node[bloque,below=6mm of puntos] (concentradores)
+      {\textbf{Diez concentradores: dos por pantalán}\\Muestreo cada minuto;
+       calidad, secuencia y sello UTC. Acumulados cada quince minutos y
+       alarmas; capacidad prevista de ampliación más 20\,\% de reserva.};
+    \node[bloque,below=6mm of concentradores] (broker)
+      {\textbf{Borde local: EMQX Enterprise 6.3.0 LTS}\\MQTT 5 con mTLS.
+       Los consumidores cloud no acceden directamente al broker.
+       Búfer local para interrupción WAN; alimentación y configuración en T-11.};
+    \node[bloque,below=6mm of broker] (persistencia)
+      {\textbf{PostgreSQL local y outbox}\\Persistir antes de confirmar.
+       Lotes idempotentes por HTTPS/mTLS hacia sincronización cloud;
+       retirar de la cola solo después del ACK durable.};
+    \node[bloque,below=6mm of persistencia] (ambiente)
+      {\textbf{Ambiente y consumos}\\Validar asociación, continuidad, unidad,
+       calidad y período. Conciliar la serie y publicar
+       \texttt{MediciónConsolidada}; separar lectura y hecho facturable.};
+    \node[banda,below=6mm of ambiente] (finanzas)
+      {\textbf{Finanzas y cobranza}\\Generar el hecho facturable desde
+       consumo validado. Mantener trazabilidad hasta medidor, intervalo,
+       versión de asociación y conciliación.};
+    \draw[enlace] (puntos) -- (concentradores);
+    \draw[enlace] (concentradores) -- (broker);
+    \draw[enlace] (broker) -- (persistencia);
+    \draw[enlace] (persistencia) -- (ambiente);
+    \draw[enlace] (ambiente) -- (finanzas);
+  \end{tikzpicture}
+  \caption{Flujo de telemetría y submedición}
+  \label{fig:4-13}
+  \FuenteFigura{Elaboración de Synaptix; \parencites[secc.~17.4, num.~5]{caso07}{p3-emqx-ciclo,p3-emqx-licencia}; SD4, sección 4.2, y SD5, gestión de series y hechos facturables.}
+\end{figure}

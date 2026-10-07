@@ -1,0 +1,16 @@
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
+\input{componentes/cierre.tex}
+\graphicspath{{figuras/}}
+
+\begin{document}
+\pagenumbering{arabic}
+\PortadaPropuesta{3}{Introducción al Alcance de la Solución}
+\tableofcontents
+\clearpage
+\setcounter{chapter}{2}
+\input{capitulo03.tex}
+\CierreSubdocumento
+\end{document}
