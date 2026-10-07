@@ -1,0 +1,61 @@
+% Actualice estas filas en cada subdocumento para reflejar el uso real.
+\NewDocumentCommand{\FilaDeclaracionIA}{m m m m m m}{%
+  #1 & #2 & #3 & #4 & #5 & #6 \\
+  \hline
+}
+
+\providecommand{\DeclaracionesIA}{%
+  \FilaDeclaracionIA
+    {Plantilla base}
+    {OpenAI Codex}
+    {Diseño y generación inicial de la plantilla LaTeX}
+    {Medio}
+    {Alto}
+    {Equipo de Synaptix: control de tipografía, tablas y paginación pendiente antes de emisión}%
+  \FilaDeclaracionIA{Formato del SD7, 2026-10-07}{OpenAI Codex}{Adaptación de portada, metadatos, índice, encabezados, firmas, foliación y cierre al formato común de Synaptix.}{Bajo}{Ninguno}{José Lara: responsable del control editorial y visual previo a emisión; revisión pendiente.}
+}
+
+\newenvironment{declaracionia}{%
+  \begingroup
+  \setlength{\tabcolsep}{3pt}
+  \begin{longtable}{L{\dimexpr.105\textwidth-2\tabcolsep\relax}L{\dimexpr.14\textwidth-2\tabcolsep\relax}L{\dimexpr.21\textwidth-2\tabcolsep\relax}L{\dimexpr.115\textwidth-2\tabcolsep\relax}L{\dimexpr.14\textwidth-2\tabcolsep\relax}L{\dimexpr.29\textwidth-2\tabcolsep\relax}}
+    \caption{Declaración de uso de IA por sección y archivo asociado}
+    \label{tab:declaracion-ia} \\
+    \hline
+    \EncabezadoTabla{Sección} &
+    \EncabezadoTabla{Herramienta} &
+    \EncabezadoTabla{Finalidad del uso} &
+    \EncabezadoTabla{Nivel en texto} &
+    \EncabezadoTabla{Nivel en diagramas} &
+    \EncabezadoTabla{Revisión humana: responsable y verificación} \\
+    \hline
+    \endfirsthead
+    \hline
+    \EncabezadoTabla{Sección} &
+    \EncabezadoTabla{Herramienta} &
+    \EncabezadoTabla{Finalidad del uso} &
+    \EncabezadoTabla{Nivel en texto} &
+    \EncabezadoTabla{Nivel en diagramas} &
+    \EncabezadoTabla{Revisión humana: responsable y verificación} \\
+    \hline
+    \endhead
+}{%
+  \end{longtable}
+  \endgroup
+}
+
+\newcommand{\CierreSubdocumento}{%
+  \clearpage
+  \printbibliography[heading=referenciassynaptix,title={Referencias}]
+  \clearpage
+  \chapter*{Declaración de uso de IA}
+  \addcontentsline{toc}{chapter}{Declaración de uso de IA}
+  \markboth{Declaración de uso de IA}{Declaración de uso de IA}
+  Esta declaración identifica las herramientas de inteligencia artificial utilizadas, su finalidad y los controles humanos consignados. Las filas distinguen responsabilidades asignadas de verificaciones realizadas; los controles pendientes se completan antes de emisión. Los niveles admitidos son Ninguno, Bajo, Medio y Alto. Synaptix mantiene el registro conforme al uso efectivo y lo consolida en el Formulario A-6.
+
+  La Tabla~\ref{tab:declaracion-ia} registra el uso declarado en este documento y sus archivos asociados.
+  \begin{declaracionia}
+    \DeclaracionesIA
+  \end{declaracionia}
+  \FuenteTabla{Registro de uso de IA de este subdocumento.}
+}
