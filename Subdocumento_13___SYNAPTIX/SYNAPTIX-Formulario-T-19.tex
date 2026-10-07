@@ -34,25 +34,145 @@
 
 Synaptix presenta una ficha por cada tipo del artículo 28. Los campos siguen el Formulario T-19 y los siete elementos del artículo 29 \parencite[pp.~19--20 y 64]{bases-admin}. Las fichas se corresponden con los apartados 13.1 a 13.5 del SD13. Los valores de línea base que no aporta el caso requieren medición; las metas son propuestas de diseño. Los códigos de las extensiones 4 y 5 se conciliarán con los catálogos de SD4 y SD7. La valorización monetaria se presenta en la Oferta Económica, conforme al artículo 50.2 \parencite[p.~30]{bases-admin}.
 
+%Reemplaza la ficha 1 por este bloque. Incluye el calendario, la EDT, los indicadores y los riesgos de la última versión, sin estimaciones de horas-hombre y con las contingencias explícitas. Subdocumento_13___SYNAPTIX-5.pdf
+
 \FichaInnovacion{1}{Servicio de Solicitud y Seguimiento de Mantenimiento de Embarcaciones}{%
-  \CampoFicha{Tipo de innovación}{Producto o servicio de base tecnológica.}
-  \CampoFicha{Nombre}{Servicio de Solicitud y Seguimiento de Mantenimiento de Embarcaciones.}
-  \CampoFicha{Problema u oportunidad}{Las bases describen la participación de contratistas independientes y contabilizan 62 contratistas y cerca de 140 personas vinculadas a la operación \parencite{caso07}. Esta cantidad de actores plantea una oportunidad para dar seguimiento a las solicitudes entre armador, marina y contratista. Las bases no cuantifican solicitudes sin respuesta ni tiempos actuales de coordinación.}
-  \CampoFicha{Tecnología o práctica}{Flujo digital asociado a una embarcación: el armador solicita trabajos; la marina revisa y deriva la solicitud; el contratista acepta o rechaza, programa y actualiza su avance. Se registran estados, responsables, fechas, observaciones y notificaciones \parencite{ibm-work-orders,ibm-work-order-statuses}.}
-  \CampoFicha{Madurez y escala}{TRL 2 preliminar para la integración específica en la marina: el concepto está formulado, pero aún no se ha demostrado en el entorno previsto. Debe revisarse tras construir y probar un prototipo \parencite{nasa-trl}.}
-  \CampoFicha{Fuentes APA 7}{Club Náutico Bahía Panitao S.~A. (2026), \textit{Bases técnicas del Caso 07: Puerto Deportivo}; IBM (s.~f.), \textit{Creating work orders} y \textit{Work order statuses}; Manning (2023), \textit{Technology readiness levels}, NASA.}
-  \CampoFicha{Inserción en arquitectura}{Extensión relacionada con VAR, CTR, AUT, ALE y ADM. Validar su alcance e interfaces con la arquitectura y el T-12 para evitar duplicar funciones comprometidas.}
-  \CampoFicha{Paquetes de la EDT}{[PENDIENTE: códigos para diseño, desarrollo, integración, pruebas, capacitación y piloto.]}
-  \CampoFicha{Mes de materialización}{[PENDIENTE: definir con el cronograma base.]}
-  \CampoFicha{Inversión requerida}{[PENDIENTE: estimar diseño, desarrollo, integración, pruebas y puesta en marcha en UF.]}
-  \CampoFicha{Costo operacional}{[PENDIENTE: estimar soporte y operación incremental en UF/mes.]}
-  \CampoFicha{Beneficio y cuantificación}{Reducir horas de coordinación y facilitar la detección de solicitudes pendientes o detenidas. Estimar el beneficio con las horas ahorradas y el costo horario. Incorporar inversión y costos operacionales incrementales al flujo de caja; los montos quedan pendientes de evaluación.}
-  \CampoFicha{Indicador, línea base y meta}{Mediana de horas entre envío y primera respuesta del contratista. Línea base: medir antes del piloto. Meta preliminar: reducirla en 20\,\% respecto de la línea base, sujeta a validación.}
-  \CampoFicha{Momento de medición}{Levantar línea base antes del piloto y medir durante el piloto y al cierre. Meses por definir según cronograma.}
-  \CampoFicha{Riesgo, probabilidad e impacto}{Armadores o contratistas podrían no actualizar las solicitudes. Probabilidad e impacto: [PENDIENTE: evaluar en la matriz de riesgos.]}
-  \CampoFicha{Mitigación}{Acordar responsables y plazos de actualización; capacitar a los participantes y notificar cambios de estado.}
-  \CampoFicha{Contingencia}{Si el contratista no usa el sistema, la marina registrará la respuesta recibida, con autor, fecha y canal de origen.}
+
+\CampoFicha{Tipo de innovación}{%
+Producto o servicio de base tecnológica.
 }
+
+\CampoFicha{Nombre}{%
+Servicio de Solicitud y Seguimiento de Mantenimiento de Embarcaciones.
+}
+
+\CampoFicha{Problema u oportunidad}{%
+Dar trazabilidad a las solicitudes de mantenimiento entre armador,
+marina y contratista, desde su envío hasta su cierre. Complementa
+la autorización de acceso asociada a la orden de trabajo de
+RF-CTR-04 con seguimiento del avance e información para el armador.
+}
+
+\CampoFicha{Tecnología o práctica}{%
+Flujo digital de solicitudes con estados, responsables, historial
+y notificaciones. La marina revisa y deriva; el contratista acepta
+o rechaza y actualiza el avance; el armador consulta el estado.
+La asignación no es automática y el cierre administrativo no
+certifica la calidad técnica de la reparación.
+}
+
+\CampoFicha{Madurez y escala}{%
+TRL 2 preliminar para el servicio integrado: concepto y flujo
+definidos, aún sin implementación ni validación en la marina.
+El avance de madurez dependerá de las pruebas y del piloto.
+}
+
+\CampoFicha{Fuentes APA 7}{%
+IBM (s.f.-a, s.f.-b): creación y estados de órdenes de trabajo;
+Manning (2023): escala TRL; Pontificia Universidad Católica de Valparaíso
+(2026): contexto operacional. Referencias completas en SD13.
+}
+
+\CampoFicha{Inserción en arquitectura}{%
+Componente IN1-SOL en Varadero y contratistas. Interfaces
+IN1-IF-01 a IN1-IF-06 con AUT, CTR, VAR, ALE, ADM y Clientes
+y contratos para solicitudes, habilitación, órdenes, avisos,
+permisos y vínculo del armador. Incluye control de duplicados,
+versiones e historial auditable. Ante indisponibilidad se
+utilizará un registro controlado y posterior conciliación.
+}
+
+\CampoFicha{Paquetes de la EDT}{%
+IN1.1.1 a IN1.1.3: diseño; IN1.2.1 a IN1.2.3: servicio y
+portal; IN1.3.1 a IN1.3.3: integración; IN1.4.1 a IN1.4.2:
+pruebas; IN1.5.1 a IN1.5.6: capacitación, línea base y piloto;
+IN1.6.1: despliegue; IN1.7: operación y seguimiento.
+Desglose en la tabla 13.1 del SD13 y correspondencia con SD7/T-15.
+}
+
+\CampoFicha{Mes de materialización}{%
+Mes 21, después de la aceptación. Diseño: 14--15; desarrollo
+e integración: 16--17; pruebas: 18; línea base y capacitación:
+19; piloto y evaluación: 20. Operación durante los meses 21--56.
+}
+
+\CampoFicha{Inversión requerida}{%
+Diseño, desarrollo, integración, pruebas, capacitación y puesta
+en marcha, asociados a IN1.1 a IN1.6. Se valorizarán los recursos
+incrementales en SD11 y la Oferta Económica, reutilizando los
+componentes financiados por la solución base.
+}
+
+\CampoFicha{Costo operacional}{%
+Soporte, mantenimiento, almacenamiento del historial,
+notificaciones y asistencia a usuarios durante los meses
+21--56, asociados a IN1.7. Se considerará el esfuerzo de
+registro asistido y se evitará duplicar costos del servicio base.
+}
+
+\CampoFicha{Beneficio y cuantificación}{%
+Reducir el esfuerzo administrativo de seguimiento, coordinación
+y búsqueda de antecedentes. Se comparará el trabajo requerido
+por solicitudes equivalentes antes y durante el piloto.
+La capacidad liberada será un beneficio operacional; sólo se
+reconocerá ahorro económico con gasto evitado u otro beneficio
+valorizado y aceptado, descontando los costos incrementales.
+El beneficio no se duplicará con la innovación 4.
+}
+
+\CampoFicha{Indicador, línea base y meta}{%
+Mediana de horas entre envío y primera respuesta explícita del
+contratista, sea aceptación o rechazo. Base: solicitudes
+comparables del mes 19. Meta propuesta: reducción del 20\,\%
+en el mes 20, sin disminuir la proporción respondida en siete
+días. Indicador complementario: 100\,\% de transiciones con
+estado anterior y nuevo, fecha y responsable.
+}
+
+\CampoFicha{Momento de medición}{%
+Línea base en el mes 19 y piloto en el mes 20. Se incluirán
+solicitudes ingresadas durante los primeros 21 días de cada
+mes, observadas por siete días, con un mínimo operativo de
+30 solicitudes por condición. Se informarán casos sin respuesta,
+cancelados y excluidos. Con muestra insuficiente, base cero
+o falta de comparabilidad, el beneficio será no demostrado.
+}
+
+\CampoFicha{Riesgo, probabilidad e impacto}{%
+Valoraciones iniciales: R-IN1-01, actualización insuficiente
+por contratistas, probabilidad alta e impacto alto;
+R-IN1-02, baja participación de armadores, probabilidad media
+e impacto medio; R-IN1-03, fallas de integración, probabilidad
+media e impacto alto; R-IN1-04, acceso no autorizado,
+probabilidad baja e impacto muy alto.
+}
+
+\CampoFicha{Mitigación}{%
+R-IN1-01 y R-IN1-02: capacitación, orientación, recordatorios
+y responsabilidades claras, a cargo del Líder de Implantación.
+R-IN1-03: definición de interfaces y pruebas de integración,
+a cargo del Arquitecto de Solución.
+R-IN1-04: validación de permisos, vínculo del armador y
+asignación del contratista, a cargo del Encargado de Seguridad.
+}
+
+\CampoFicha{Contingencia}{%
+R-IN1-01: registro asistido por la marina si un cambio comunicado
+lleva más de un día hábil sin registrarse, conservando fuente
+y fecha.
+R-IN1-02: reforzar la convocatoria con menos de 15 solicitudes
+a mitad del piloto; si al cierre no se alcanzan 30, informar
+beneficio no demostrado y proponer ampliar la observación.
+R-IN1-03: postergar el piloto afectado y mantener la solución
+base si falla una interfaz crítica al cierre del mes 18.
+R-IN1-04: suspender la función ante acceso indebido confirmado,
+preservar evidencia y corregir y repetir pruebas antes de
+reactivarla. Los ajustes de calendario se tramitarán mediante
+control de cambios.
+}
+
+}
+
 
 \FichaInnovacion{2}{Programa de Mantenimiento Preventivo en Invernada}{%
   \CampoFicha{Tipo de innovación}{Proceso.}
@@ -62,19 +182,19 @@ Synaptix presenta una ficha por cada tipo del artículo 28. Los campos siguen el
   \CampoFicha{Madurez y escala}{TRL 2 preliminar aplicado al proceso integrado para esta marina; no existe evidencia de un ciclo implantado en el caso \parencite{nasa-trl}.}
   \CampoFicha{Fuentes APA 7}{Caso 07: cifras, calendario y restricciones; UNE-EN 13306:2018: terminología de mantenimiento \parencite{une13306}; NASA: escala TRL \parencite{nasa-trl}.}
   \CampoFicha{Inserción en arquitectura}{VAR aporta posición y secuencia de la explanada; CTR, acreditación de empresas; AUT, ficha y aceptación; ALE, avisos; ADM, catálogo configurable. Integración con la innovación 1. Interfaces por conciliar con SD4.}
-  \CampoFicha{Paquetes de la EDT}{Catálogo de tareas, ficha y reglas, calendario de invernada, integración, pruebas, capacitación y piloto. Correspondencia de códigos y cargas por conciliar en SD7/T-15.}
-  \CampoFicha{Mes de materialización}{Piloto en la ventana de junio a agosto, con evaluación en la botadura siguiente. El ciclo completo comenzará en la campaña del año posterior. Los meses relativos requieren conciliación con el inicio del contrato y las restricciones del varadero.}
+  \CampoFicha{Paquetes de la EDT}{IN2.1 diseño, meses 14--15; IN2.2 ficha y propuestas, 16--17; IN2.3 calendario e integración, 17--18; IN2.4 pruebas y aceptación técnica, 19--20; IN2.5 piloto y evaluación, de \(M_{\mathrm{inv}}\) a \(M_{\mathrm{inv}}+5\); IN2.6 transferencia, \(M_{\mathrm{inv}}+5\); IN2.7 operación incremental, de \(M_{\mathrm{inv}}\) a 56. Paquetes terminales en la tabla 13.3 del SD13; correspondencia de códigos y cargas por conciliar en SD7/T-15.}
+  \CampoFicha{Mes de materialización}{\(M_{\mathrm{inv}}\) será el primer junio disponible con IN1 y las interfaces aceptadas, no anterior al mes 21. Piloto en junio--agosto, de \(M_{\mathrm{inv}}\) a \(M_{\mathrm{inv}}+2\); evaluación de botaduras y transferencia hasta \(M_{\mathrm{inv}}+5\). Ciclo completo desde abril--mayo siguiente, \(M_{\mathrm{inv}}+10\), si el plazo permite completar la evaluación. SD7 fijará el número contractual a partir de la fecha de inicio y las restricciones del varadero.}
   \CampoFicha{Inversión requerida}{Levantamiento, diseño, calendario, integración, pruebas, capacitación y piloto. Estimación monetaria por desarrollar en la Oferta Económica.}
-  \CampoFicha{Costo operacional}{Actualización del catálogo, soporte y notificaciones. Incluir sus costos incrementales en el flujo de caja.}
-  \CampoFicha{Beneficio y cuantificación}{Diferencia entre proporción base y posterior de embarcaciones con trabajos pendientes, multiplicada por participantes y costo documentado de reprogramación, menos operación incremental. No atribuir ingresos de charter o derechos de trabajo sin evidencia.}
-  \CampoFicha{Indicador, línea base y meta}{Embarcaciones con trabajos pendientes al turno de botadura / embarcaciones con trabajos contratados. Base: grupo sin programa de la misma campaña y, cuando exista, historial propio. Meta preliminar: reducir a la mitad la proporción respecto del grupo sin programa.}
-  \CampoFicha{Momento de medición}{Cierre de la campaña de botadura posterior al piloto. Complementos: trabajos ejecutados en junio--agosto y trazabilidad de trabajos aceptados.}
-  \CampoFicha{Riesgo, probabilidad e impacto}{Rechazo por intromisión, incumplimiento de semanas y cancelaciones por marejada; sesgo de selección voluntaria. Probabilidad e impacto por evento no están valorados en el apartado revisado; deben completarse en la matriz de riesgos.}
-  \CampoFicha{Mitigación}{Participación voluntaria; armador elige tareas y empresa; holguras de calendario; vínculo con orden de trabajo; apoyo de la marina si el contratista no actualiza el sistema.}
-  \CampoFicha{Contingencia}{Recoordinar trabajos y botadura por el procedimiento base; conservar responsables, avance y evidencia. No exigir contratación ni alterar maniobras durante izaje.}
+  \CampoFicha{Costo operacional}{Actualización del catálogo, seguimiento de planes, soporte y notificaciones desde el inicio del piloto hasta el término del servicio. Incluir únicamente sus costos incrementales en el flujo de caja.}
+  \CampoFicha{Beneficio y cuantificación}{Reprogramaciones de botadura efectivamente evitadas por trabajos pendientes y costos unitarios respaldados de coordinación y movimientos adicionales, descontando costos incrementales de implementación y operación. Una reducción de pendientes no constituye por sí sola ahorro monetario. Separar inversión, costos recurrentes y ahorros verificables; no duplicar beneficios de IN1 ni atribuir ingresos de charter o derechos de trabajo sin evidencia.}
+  \CampoFicha{Indicador, línea base y meta}{Embarcaciones con trabajos pendientes en su fecha originalmente prevista de botadura / embarcaciones con al menos un trabajo contratado. Conservar esa fecha aunque se reprograme. Base: grupo comparable sin programa de la misma campaña y, cuando exista, historial propio. Meta preliminar: reducir a la mitad la proporción respecto del grupo sin programa; registrar diferencias de alcance, clima, retiros y exclusiones.}
+  \CampoFicha{Momento de medición}{Cierre de la campaña de botadura posterior al piloto, en \(M_{\mathrm{inv}}+5\). Complementos: proporción de trabajos ejecutados en junio--agosto y trazabilidad del 100\,\% de trabajos aceptados mediante IN1 con estado y fecha. Sin referencia positiva o evidencia suficiente, no declarar demostrada la reducción relativa.}
+  \CampoFicha{Riesgo, probabilidad e impacto}{Valoraciones iniciales: R-IN2-01, baja participación de armadores, probabilidad media e impacto alto; R-IN2-02, incumplimiento de fechas por contratistas, alta/alto; R-IN2-03, suspensión por meteorología, alta/alto; R-IN2-04, indisponibilidad de IN1 o sus interfaces, media/alto. Se revisarán con el piloto y se incorporarán al plan de riesgos.}
+  \CampoFicha{Mitigación}{Participación voluntaria y capacitación a cargo de Implantación; confirmación de disponibilidad y fechas por el Líder Funcional y la administración del varadero; reserva de planificación y alertas marítimas por el Jefe de Proyecto y la marina; verificación de IN1 e interfaces por Arquitectura. El armador conserva la elección de trabajos y contratista.}
+  \CampoFicha{Contingencia}{Sin grupo evaluable, ampliar convocatoria o ajustar alcance sin declarar beneficio; ante atraso, reprogramar o proponer otro contratista con aceptación del armador; ante meteorología insegura, suspender y reprogramar, acordando el tratamiento de pendientes si se agota la reserva. Sin IN1 o interfaces aceptadas, no iniciar el piloto; ante interrupción, usar el procedimiento vigente con registro controlado y conciliación posterior. No exigir contratación ni alterar maniobras durante izaje.}
 }
 
-La ficha conserva el proceso revisado de invernada y sustituye la antigua reprogramación por restricciones. La revisión del concepto no resuelve por sí sola la correspondencia de meses, códigos, valorización y valoración del riesgo.
+La ficha corresponde al programa de invernada del apartado 13.2 y conserva sus meses relativos y valoraciones preliminares de riesgo. SD7/T-15 deberá conciliar códigos, cargas y calendario contractual; la Oferta Económica desarrollará la valorización.
 
 \FichaInnovacion{3}{Lectura inteligente de documentos para el ingreso asistido de antecedentes}{%
 
@@ -103,47 +223,47 @@ AWS: extracción documental \parencite{in3-aws-analisis,in3-aws-practicas,in3-aw
 }
 
 \CampoFicha{Inserción en arquitectura}{%
-AUT recibe documentos; ADM revisa y aprueba; NAV utiliza los datos aprobados. Adaptador asíncrono conectado al repositorio y la auditoría existentes.
+AUT recibe documentos; ADM presenta la revisión al funcionario autorizado y administra permisos bajo las políticas de Auditoría y seguridad. Clientes y contratos conserva los maestros de armador y embarcación; NAV aplica las validaciones de vigencia sobre los datos aprobados. La identidad procede de la capa de Seguridad transversal del SD4. Adaptador asíncrono conectado al repositorio y la auditoría existentes.
 }
 
 \CampoFicha{Paquetes de la EDT}{%
-Levantamiento, integración, interfaz de revisión, pruebas, capacitación y piloto. Códigos pendientes de conciliación con la EDT.
+IN3.1 diseño, meses 14--15; IN3.2 extracción, 16; IN3.3 revisión e integración, 17; IN3.4 pruebas y matriz de controles de IA, 18; IN3.5 preparación y piloto, 18--20; IN3.6 transferencia, 21; IN3.7 operación incremental, 21--56. Paquetes terminales en la tabla 13.6 del SD13; correspondencia y cargas por conciliar con SD7/T-15.
 }
 
 \CampoFicha{Mes de materialización}{%
-Por definir en el cronograma, una vez disponibles la recepción documental, los expedientes y la revisión.
+Mes 21, tras piloto de los meses 19--20 y aceptación. Diseño: 14--15; implementación: 16--17; pruebas y preparación: 18. Requiere interfaces de AUT, ADM, NAV, repositorio y auditoría disponibles, y controles de IA aceptados. SD7 deberá confirmar perfiles compartidos y dependencias; los despliegues respetarán las ventanas protegidas.
 }
 
 \CampoFicha{Inversión requerida}{%
-Integración, interfaz, pruebas y capacitación. Monto en UF pendiente de estimación.
+Levantamiento documental, configuración del extractor, integraciones, interfaz de revisión, pruebas y capacitación, según hitos de los meses 14--21. Valorización en la Oferta Económica sin duplicar repositorio, identidad y auditoría de la solución base.
 }
 
 \CampoFicha{Costo operacional}{%
-Procesamiento, almacenamiento y soporte técnico. Monto periódico en UF por estimar según volumen documental.
+Procesamiento de páginas, almacenamiento adicional, monitoreo y mantenimiento de reglas. Consumo del piloto en meses 19--20 y operación recurrente desde el 21. Valorización según volumen medido y condiciones comerciales aplicables.
 }
 
 \CampoFicha{Beneficio y cuantificación}{%
-Horas recuperadas frente al ingreso manual de la solución base, por costo horario, menos costo operacional incremental. Solo constituye ahorro de caja si reduce gastos efectivos.
+Capacidad operacional recuperada por reducción del tiempo de ingreso y revisión frente al método manual, incluidas correcciones y casos completados manualmente. Solo se incorporará como ahorro de caja cuando reduzca costos efectivos y respaldados. El flujo de caja distinguirá inversión, costos recurrentes y ahorros verificables; ampliar a otros documentos requerirá evaluación adicional.
 }
 
 \CampoFicha{Indicador, línea base y meta}{%
-Reducción de la mediana del tiempo total de ingreso y revisión, incluidas correcciones. Base: ingreso manual comparable. Meta preliminar: 30\,\%, sin aumentar errores; trazabilidad del 100\,\% de aprobaciones.
+Reducción de la mediana del tiempo total de ingreso y revisión, incluidas correcciones y esperas que impidan continuar la tarea. Base: grupo manual comparable; los casos derivados a ingreso manual permanecen en el grupo asistido y la latencia del extractor se registra por separado. Meta preliminar: al menos 30\,\%, sin aumentar registros aprobados con errores ni aceptar errores críticos de asociación de embarcación o vigencias; trazabilidad del 100\,\% de aprobaciones.
 }
 
 \CampoFicha{Momento de medición}{%
-Línea base antes del piloto; seguimiento durante su ejecución y evaluación al cierre. Muestra y duración por definir.
+Ocho semanas consecutivas dentro de los meses 19--20; evaluación al cierre del mes 20. Muestra de 120 pólizas distintas: 60 con ingreso manual y 60 asistido, comparables por formato, páginas y legibilidad, alternando métodos entre funcionarios. Pueden utilizarse pólizas históricas autorizadas en pruebas sin modificar expedientes vigentes. Los documentos de configuración quedan fuera de la evaluación. QA contrastará los 120 registros con el original. Sin muestra suficiente, informar resultado inconcluso y actualizar calendario para cualquier ampliación.
 }
 
 \CampoFicha{Riesgo, probabilidad e impacto}{%
-Riesgo global preliminar: medio. Extracción errónea, revisión insuficiente, fallos externos o bajo volumen. Probabilidad e impacto por evento pendientes de evaluación.
+Valoraciones iniciales: R-IN3-01, extracción incorrecta por calidad o formato, probabilidad alta e impacto alto; R-IN3-02, revisión humana insuficiente, media/alto; R-IN3-03, tratamiento fuera de condiciones autorizadas, media/alto; R-IN3-04, interrupción del extractor o conectividad, media/medio; R-IN3-05, volumen o ahorro insuficiente, media/medio. Cada evento tendrá responsable, mitigación y contingencia registrados.
 }
 
 \CampoFicha{Mitigación}{%
-Mostrar documento de origen, contrastar identificadores y exigir aprobación humana. Aplicar permisos, cifrado, auditoría y capacitación; ampliar solo tras validar el piloto.
+Datos aplicará reglas, fragmentos de origen y evaluación por formato; Implantación capacitará revisores y QA comprobará aprobaciones; Seguridad verificará permisos, ubicación, retención y proveedor; Operación/SRE supervisará fallos y reintentos. El Jefe de Proyecto revisará volumen, tiempos y costos. Ampliar solo tras validar el piloto.
 }
 
 \CampoFicha{Contingencia}{%
-Mantener ingreso manual ante fallos o resultados insuficientes; ajustar el extractor y reevaluar su continuidad si no demuestra beneficio.
+Suspender formatos con errores críticos o recurrentes y usar ingreso manual; ante error crítico aprobado, pausar el flujo y revisar registros afectados. Bloquear envíos incompatibles con las condiciones autorizadas y aplicar respuesta a incidentes. Ante interrupción, conciliar resultados tardíos sin duplicar ni sobrescribir datos aprobados. Sin beneficio demostrado, mantener el proceso manual y ajustar o deshabilitar la extensión, sin ampliar automáticamente su alcance.
 }
 }
 
@@ -154,7 +274,7 @@ Mantener ingreso manual ante fallos o resultados insuficientes; ajustar el extra
   \CampoFicha{Tecnología o práctica}{Componente fijo para obligaciones y variable por reducción comprobada de tiempo activo de seguimiento del servicio adicional de la innovación 1. Factor proporcional a la meta, sujeto a datos, calidad, atribución y acta. E-25 admite componentes variables durante los meses 21--56 \parencite[pp.~74--75]{bases-admin}.}
   \CampoFicha{Madurez y escala}{Diseño conceptual del modelo. Hitos de validación: diseño, piloto sin efectos de pago, aceptación de evidencia y condiciones, y conciliación en operación. No se declaran los últimos tres como realizados.}
   \CampoFicha{Fuentes APA 7}{Bases Administrativas: artículos 28--30, 50.2 y E-25; Caso 07: operación; Cabinet Office: indicadores objetivos y controlables por el proveedor \parencite[sec.~5.1.5]{uk-outcomes}.}
-  \CampoFicha{Inserción en arquitectura}{Se propone IN4-MET en Varadero y contratistas/Núcleo de Servicios e IN4-CON en Finanzas y cobranza/Núcleo Administrativo, sobre ECS/Fargate según SD4, DA-04 y tabla 4-10. Enlace con solicitudes y faenas de SD5; tiempos activos con captura propia. REST/OpenAPI 3.1, escrituras idempotentes y eventos versionados conforme a DA-06; PostgreSQL y evidencia S3 conforme a DA-08. AUT ofrece el canal; ADM separa preparación y aprobación. Conciliación diferida hasta sincronización y validación, sin cobro automático. Códigos, contratos, entidades y retención aún por incorporar a SD4 y A5.1/A5.2.}
+  \CampoFicha{Inserción en arquitectura}{Se propone IN4-MET en Varadero y contratistas/Núcleo de Servicios e IN4-CON en Finanzas y cobranza/Núcleo Administrativo, sobre ECS/Fargate según SD4, DA-04 y tabla 4-10. Enlace con solicitudes y faenas de SD5; tiempos activos con captura propia. REST/OpenAPI 3.1, escrituras idempotentes y eventos versionados conforme a DA-06; PostgreSQL y evidencia S3 conforme a DA-08. AUT ofrece el canal; ADM separa preparación y aprobación. Conciliación diferida hasta sincronización y validación, sin cobro automático. SD4 recoge la ubicación de IN4-MET e IN4-CON. Contratos, entidades y retención detallados siguen pendientes en SD4/SD5 y A5.1/A5.2.}
   \CampoFicha{Paquetes de la EDT}{IN4.1 regla y medición, meses 2--4; IN4.2 instrumentación y pruebas, 14--18; IN4.3 piloto, 19--20; IN4.4 conciliación, 21--56. Incorporar identificadores y cargas a SD7/T-15.}
   \CampoFicha{Mes de materialización}{Mes 21, tras piloto de meses 19--20 y aceptación de evidencia. Requiere disponible el flujo adicional de mantenimiento.}
   \CampoFicha{Inversión requerida}{Definición de la regla, instrumentación, expediente y pruebas, representadas por \(I_4\). Valorización en la Oferta Económica.}

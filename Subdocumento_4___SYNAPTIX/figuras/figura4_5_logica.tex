@@ -1,0 +1,66 @@
+﻿% Continuidad condicionada por autoridad vigente, no por una copia renovable.
+\begin{figure}[htbp]
+\centering
+\setstretch{1}
+\begin{tikzpicture}[
+  bloque/.style={draw=SynNavyLight,fill=SynSurface,align=left,
+    font=\fontsize{9.5}{11.5}\selectfont,text width=65mm,inner sep=2mm,
+    minimum height=32mm},
+  banda/.style={bloque,text width=140mm,minimum height=0mm},
+  enlace/.style={-{Latex},draw=SynNavyLight,thick},
+  diferido/.style={-{Latex},draw=SynNavyLight,thick,dashed}]
+  \node[banda,fill=SynNavy,text=SynWhite] (condicion)
+    {\textbf{Acceso autorizado durante el aislamiento}\\
+    Permiso nominativo $\leq24$ h desde emisión y última comprobación fiable.
+    Nueva emisión: reautenticación individual y fuente laboral/de acceso
+    actual, autoritativa y disponible por LAN. Cobertura aún por individualizar.};
+  \node[bloque,below=6mm of condicion.south west,anchor=north west] (captura)
+    {\textbf{1. Captura local}\\
+    Dispositivo y Runtime de Borde validan permiso y regla.
+    La autoridad local serializa puesto e intervalo; una copia aislada no asigna.};
+  \node[bloque,below=6mm of condicion.south east,anchor=north east] (sinfuente)
+    {\textbf{Sin fuente vigente}\\
+    No se emite un nuevo permiso.
+    Al vencer la vigencia residual se deniegan nuevas acciones y se preserva
+    la cola. La contingencia humana se mide aparte.};
+  \node[bloque,below=6mm of captura.south west,anchor=north west] (durable)
+    {\textbf{2. Confirmación durable}\\
+    PostgreSQL local guarda hecho, identificador, secuencia y evidencia.
+    El segundo nodo mantiene réplica síncrona; fencing impide dos primarios.};
+  \node[bloque,below=6mm of sinfuente.south east,anchor=north east] (reconexion)
+    {\textbf{4. Reconexión de WAN}\\
+    El coordinador transmite manifiesto y lote obligatorio por HTTPS/mTLS.
+    Principal o respaldo: caudal útil y reserva de operaciones nuevas.};
+  \node[bloque,below=6mm of durable.south west,anchor=north west] (outbox)
+    {\textbf{3. Outbox y autonomía}\\
+    Cola durable e idempotente, sin borrar por caducidad de caché.
+    Objetivos: recinto 24 h; terreno 12 h; inspección de boyas 8 h.};
+  \node[bloque,below=6mm of reconexion.south east,anchor=north east] (dominio)
+    {\textbf{5. Dominio propietario cloud}\\
+    Deduplica, valida secuencia y concilia por regla determinista.
+    Persiste hechos/evidencia; una discrepancia conserva estado explícito.};
+  \node[banda,below=7mm of outbox.south west,anchor=north west] (ack)
+    {\textbf{6. ACK y cierre verificable}\\
+    Solo la aceptación durable permite depurar la cola local.
+    Sincronización completa $\leq30$ min desde restitución efectiva:
+    incluye transferencia, proceso, validación, persistencia y cierre.
+    No espera revisión humana para incorporar hechos válidos.};
+  \draw[enlace] (condicion.south -| captura.north) -- (captura.north);
+  \draw[enlace] (captura.south) -- (durable.north);
+  \draw[enlace] (durable.south) -- (outbox.north);
+  \draw[diferido] (outbox.east) -- ++(3mm,0) |- (reconexion.west);
+  \draw[enlace] (reconexion.south) -- (dominio.north);
+  \draw[enlace] (dominio.south) -- (ack.north -| dominio.south);
+  \node[banda,below=5mm of ack.south west,anchor=north west] (limite)
+    {\textbf{Criterios de continuidad}\\
+    Se comprueban permisos de distintas antigüedades, bajas locales/externas,
+    reinicio y fuente ausente. Radio o papel conservan seguridad/evidencia,
+    pero no acreditan tiempo electrónico ni sincronización automática.};
+\end{tikzpicture}
+\caption{Captura durable, autoridad local y sincronización tras aislamiento}
+\label{fig:4-5}
+\FuenteFigura{Elaboración de Synaptix desde SD4, 4.1/4.2, y SD5, 5.2.2/5.4.3;
+  \parencites[cap.~15, RT-03.10/13 y RT-05.29]{caso07}
+  [RT-12.10/13, p.~26]{pucv-transversal}.
+  La vía de nueva emisión requiere individualizar fuente y cobertura.}
+\end{figure}

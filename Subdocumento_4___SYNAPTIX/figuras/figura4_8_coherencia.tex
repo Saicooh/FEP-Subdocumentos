@@ -1,0 +1,45 @@
+% Esquema vectorial: reemplaza la figura raster con el alcance vigente de MFA.
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+    bloque/.style={draw=SynNavyLight,fill=SynSurface,rounded corners=1mm,
+      align=left,font=\fontsize{9}{11}\selectfont,text width=69mm,inner sep=2mm},
+    banda/.style={bloque,text width=148mm,fill=SynNavy,text=SynWhite},
+    enlace/.style={-{Latex},draw=SynNavyLight,thick}]
+    \node[banda] (perfiles) {Identidades individuales y permisos por perfil:
+      armador, administración, marinero, escuela, varadero, portería,
+      combustible, inspección de boyas y soporte Synaptix.};
+    \node[bloque,below=7mm of perfiles.south west,anchor=north west] (web)
+      {\textbf{Portal y consola}\\React/TypeScript; PWA para consultas de baja
+       criticidad. Armadores y personal consultan solo su ámbito autorizado.};
+    \node[bloque,below=7mm of perfiles.south east,anchor=north east] (movil)
+      {\textbf{Aplicación móvil}\\Kotlin/Android; cola durable. Terreno e
+       inspección offline; armador con plan y modo de baja capacidad.};
+    \node[bloque,below=7mm of web] (cloud)
+      {\textbf{Ruta cloud}\\HTTPS, CDN/WAF y API Gateway. Cognito y OIDC/SAML.
+       MFA para todo acceso privilegiado o externo, datos sensibles
+       y acciones de alto impacto.};
+    \node[bloque,below=7mm of movil] (local)
+      {\textbf{Ruta local}\\VIP de la Célula Operacional Local; solo funciones
+       autorizadas. Permiso firmado y cifrado, máximo 24 h desde emisión.
+       Autoridad local de acceso: nueva emisión tras reautenticación y fuente laboral autoritativa vigente.};
+    \node[banda,below=7mm of local.south east,anchor=north east] (control)
+      {La autorización se verifica en el dominio. Ningún canal accede
+       directamente a la base. La fuente laboral completa condiciona la nueva emisión. La prueba conjunta verifica autonomía,
+       vencimiento y baja laboral efectiva dentro de 24 h.};
+    \node[bloque,text width=148mm,below=6mm of control] (humano)
+      {\textbf{Contingencia operacional}\\VHF y registro manual identificado,
+       con conciliación posterior. Conservan su función humana; no se
+       representan como una API, prórroga de permisos ni continuidad electrónica cumplida.};
+    \draw[enlace] (perfiles.south -| web.north) -- (web.north);
+    \draw[enlace] (perfiles.south -| movil.north) -- (movil.north);
+    \draw[enlace] (web) -- (cloud);
+    \draw[enlace] (movil) -- (local);
+    \draw[enlace] (cloud.south) -- (control.north -| cloud.south);
+    \draw[enlace] (local.south) -- (control.north -| local.south);
+    \draw[enlace] (control) -- (humano);
+  \end{tikzpicture}
+  \caption{Usuarios, canales e identidad de la Zona 0}
+  \label{fig:4-8}
+  \FuenteFigura{Elaboración de Synaptix; \parencites[cap.~15, RT-17.01]{caso07}[RT-12.03, p.~25; RT-12.10, p.~26; RT-17.03, p.~31]{pucv-transversal}.}
+\end{figure}

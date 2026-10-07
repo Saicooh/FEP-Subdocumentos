@@ -1,0 +1,40 @@
+﻿\newcommand{\CierreFormularioTOnce}{%
+  \clearpage
+  \printbibliography[heading=referenciassynaptix,title={Referencias}]
+  \clearpage
+  \chapter*{Declaración de uso de IA}
+  \addcontentsline{toc}{chapter}{Declaración de uso de IA}
+  \markboth{Declaración de uso de IA}{Declaración de uso de IA}
+  Esta declaración corresponde a la elaboración del Formulario T-11. Identifica la herramienta utilizada, el alcance de su apoyo y el responsable del control técnico previo a emisión. Se consolidará en el Formulario A-6 y se mantendrá la declaración de las demás intervenciones en sus respectivos archivos.
+
+  La Tabla~\ref{tab:t11-ia} registra el uso de IA en este formulario y la verificación humana que debe efectuarse antes de su emisión.
+
+  \begin{paginaHorizontalSynaptix}
+  \begingroup
+  \renewcommand{\EstiloTablaSynaptix}{%
+    \fontsize{9.5}{12}\selectfont\setstretch{1}%
+    \renewcommand{\arraystretch}{1.3}\setlength{\extrarowheight}{2pt}%
+    \arrayrulecolor{SynLine}%
+  }
+  \setlength{\tabcolsep}{3pt}
+  \begin{longtable}{L{\dimexpr.13\linewidth-2\tabcolsep\relax}L{\dimexpr.10\linewidth-2\tabcolsep\relax}L{\dimexpr.25\linewidth-2\tabcolsep\relax}L{\dimexpr.08\linewidth-2\tabcolsep\relax}L{\dimexpr.10\linewidth-2\tabcolsep\relax}L{\dimexpr.34\linewidth-2\tabcolsep\relax}}
+  \caption{Declaración de uso de IA del Formulario T-11}\label{tab:t11-ia}\\
+  \hline
+  \EncabezadoTabla{Sección} & \EncabezadoTabla{Herramienta} & \EncabezadoTabla{Finalidad del uso} & \EncabezadoTabla{Nivel en texto} & \EncabezadoTabla{Nivel en diagramas} & \EncabezadoTabla{Revisión humana: responsable y verificación} \\ \hline
+  \endfirsthead
+  \hline
+  \EncabezadoTabla{Sección} & \EncabezadoTabla{Herramienta} & \EncabezadoTabla{Finalidad del uso} & \EncabezadoTabla{Nivel en texto} & \EncabezadoTabla{Nivel en diagramas} & \EncabezadoTabla{Revisión humana: responsable y verificación} \\ \hline
+  \endhead
+  Formulario T-11, 2026-10-06 & OpenAI Codex & Investigación de referencias de productos, individualización parcial de inventario, versiones, capacidades, reservas y plan de ciclo de vida; contraste con bases y SD4/SD5. & Alto & Ninguno & José Lara: responsable de la revisión técnica previa a emisión. Alcance: plantilla, fuentes, cantidades, soporte, dependencias, cálculos, citas y presentación final. \\ \hline
+  Puestos, gestión, varadero y energía; parte4, 2026-10-06 & OpenAI Codex & Integración de inventario, reservas, modelos de puesto, licencias y límites de cálculo con control de bases. & Alto & Ninguno & José Lara: responsable de la revisión técnica previa a emisión. Alcance: cantidades, fichas, licencias, balance y presentación PDF. \\ \hline
+  Balance y alternativas UPS/generación/clima; parte 5, 2026-10-06 & OpenAI Codex & Investigación de consumos, curvas y compatibilidad; hoja por activo, configuraciones alternativas, stock y corrección de PDU/racks. & Alto & Ninguno & José Lara: responsable de la revisión técnica previa a emisión. Alcance: fuentes, variantes, estados de falla, cálculos, reservas y PDF. \\ \hline
+  Energía y selección climática; parte 7, 2026-10-06 & OpenAI Codex & Individualización de UPS, banco, generación, obra, fases, autonomía y combustible; concordancia con perfil anual/PUE y condición de clima. & Alto & Ninguno & José Lara: revisión técnica pendiente antes de emisión. Alcance asignado: cantidades, fuentes, cálculos, estados, T-12 y PDF. \\ \hline
+  Cadena seleccionada y hoja de cargas; parte 6, 2026-10-06 & OpenAI Codex & Reconciliación de modelos, cotas por activo/fase, bancos, autonomía, generación, combustible y climatización con SD4/T-12. & Alto & Ninguno & José Lara: revisión técnica pendiente antes de emisión. Alcance asignado: fuentes, BOM, cantidades, cálculos, fallas y PDF. \\ \hline
+  Formulación y concordancia documental, 2026-10-06 & OpenAI Codex & Normalización del lenguaje de la oferta y declaración de IA; conservación de responsabilidades, datos y referencias. & Medio & Ninguno & José Lara: responsable de la revisión técnica previa a emisión. Alcance: redacción, fuentes, cálculos y correspondencia con SD4. \\ \hline
+  Estados térmicos y ventilación; parte 8, 2026-10-06 & OpenAI Codex & Balance de calor por estado, cálculo conservador de gasificación y cargas de reposición; delimitación del ajuste de recarga y concordancia de selección, plano y estimación energética. & Alto & Ninguno & José Lara: revisión técnica y visual pendiente antes de emisión. Alcance asignado: bases, estados, ecuaciones, modelos, caudales, control, fuentes, T-11/T-12 y PDF. \\ \hline
+  Servicios WAN y fuente de habilitación; parte 9, 2026-10-06 & OpenAI Codex & Individualización de Entel/Gtd, capacidad e ingresos de proyecto; concordancia del RLH y las brechas con SD4/T-12. & Alto & Ninguno & José Lara: revisión técnica y visual pendiente antes de emisión. Alcance asignado: bases, servicios, rutas, cantidades, fuentes, estados y PDF. \\ \hline
+  Evaluación de puestos redundantes; parte 9, 2026-10-06 & OpenAI Codex & BOM candidata, alimentación cruzada, RAID 1, reservas, certificación y concordancia con el alcance de T-12 y el recinto climatizado. & Alto & Ninguno & José Lara: revisión técnica y visual pendiente antes de emisión. Alcance asignado: bases, variantes, cantidades, almacenamiento, fuentes, recinto, estados y PDF. \\ \hline
+  \end{longtable}
+  \endgroup
+  \end{paginaHorizontalSynaptix}
+}

@@ -1,0 +1,64 @@
+﻿% Seis capas de recorrido y dos capas transversales: ocho en total.
+\begin{figure}[htbp]
+\centering
+\setstretch{1}
+\begin{tikzpicture}[
+  bloque/.style={draw=SynNavyLight,fill=SynSurface,align=left,
+    font=\fontsize{9.5}{11.5}\selectfont,text width=80mm,inner sep=2mm,
+    minimum height=19mm},
+  transversal/.style={bloque,text width=28mm,minimum height=137mm},
+  enlace/.style={-{Latex},draw=SynNavyLight,thick}]
+  \node[bloque] (presentacion) {\textbf{1. Presentación}\\
+    Portal, consola y Android por perfil.
+    HTTPS/REST; Android también consume el runtime local.};
+  \node[bloque,below=4mm of presentacion] (borde)
+    {\textbf{2. Borde y exposición}\\
+    CloudFront, WAF, Shield y TLS.
+    Ingreso público restringido; sin acceso a datos.};
+  \node[bloque,below=4mm of borde] (api)
+    {\textbf{3. Puerta de enlace de servicios}\\
+    REST API Regional, authorizer, validación y planes de uso.
+    VPC Link V2 hacia ALB privado.};
+  \node[bloque,below=4mm of api] (negocio)
+    {\textbf{4. Servicios de negocio}\\
+    Tres núcleos modulares y cinco procesos especializados.
+    Autorización de recurso en cada dominio.};
+  \node[bloque,below=4mm of negocio] (integracion)
+    {\textbf{5. Integración y eventos}\\
+    EventBridge, SQS/SNS y adaptadores.
+    MQTT en borde; idempotencia y mensajes fallidos.};
+  \node[bloque,below=4mm of integracion] (datos)
+    {\textbf{6. Datos}\\
+    PostgreSQL y S3; lectura reconstruible por eventos.
+    Esquemas propios; cifrado y retención.};
+  \node[transversal,left=5mm of presentacion.north west,anchor=north east]
+    (seguridad) {\textbf{7. Seguridad}\\[2mm]
+    Cognito\\IAM\\KMS\\Secretos\\[2mm]
+    Persona, carga y dispositivo identificados.\\[2mm]
+    Autorización por dato y contexto.\\[2mm]
+    Controles en todas las capas.};
+  \node[transversal,right=5mm of presentacion.north east,anchor=north west]
+    (observacion) {\textbf{8. Observabilidad}\\[2mm]
+    OpenTelemetry\\CloudWatch\\[2mm]
+    Métricas, registros y trazas.\\[2mm]
+    Salud cloud y local.\\[2mm]
+    Alarmas en cola durante aislamiento.};
+  \draw[enlace] (presentacion.south) -- (borde.north);
+  \draw[enlace] (borde.south) -- (api.north);
+  \draw[enlace] (api.south) -- (negocio.north);
+  \draw[enlace] (negocio.south) -- (integracion.north);
+  \draw[enlace] (integracion.south) -- (datos.north);
+  \node[draw=SynNavyLight,fill=SynSurface,align=left,
+    font=\fontsize{9.5}{11.5}\selectfont,text width=140mm,inner sep=2mm,
+    below=6mm of datos.south] (restriccion)
+    {\textbf{Dependencias permitidas}\\
+    Las flechas muestran el recorrido lógico; la persistencia se ejecuta
+    desde el dominio propietario. Ningún canal consulta directamente
+    bases ni tablas de otro dominio.};
+\end{tikzpicture}
+\caption{Ocho capas lógicas y controles transversales de la solución}
+\label{fig:4-2}
+\FuenteFigura{Elaboración de Synaptix desde las responsabilidades de SD4, 4.1;
+  \parencites[cap.~2, pp.~5--7; cap.~3, pp.~8--10]{pucv-transversal}
+  {p3-api-tipos}{p3-api-privada}. Las bandas laterales actúan en todas las capas.}
+\end{figure}

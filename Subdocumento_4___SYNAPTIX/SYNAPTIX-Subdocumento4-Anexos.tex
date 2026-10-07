@@ -1,0 +1,318 @@
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
+\input{componentes/cierre.tex}
+\begin{document}
+\pagenumbering{arabic}
+\PortadaPropuesta{4}{Anexos de arquitectura}
+\tableofcontents
+\clearpage
+\chapter*{A4.1 Registro de decisiones de arquitectura}
+\addcontentsline{toc}{chapter}{A4.1 Registro de decisiones de arquitectura}
+\label{anexo:adr-arquitectura}
+
+Este registro desarrolla las decisiones DA-01 a DA-20 de SD4, sección 4.1.1, como ADR de la oferta. La fecha de formulación de estos registros es el 6 de octubre de 2026; su estado es seleccionado para la propuesta y no representa un acta de aceptación del CLIENTE. Cada registro conserva contexto, elección, alternativas, fundamento y consecuencias. Arquitectura mantiene su versión en el repositorio del CLIENTE, agrega sucesores sin borrar el antecedente y actualiza la línea base después del control de cambios contractual \parencites{iso42010}[RT-02.04, p.~7]{pucv-transversal}.
+
+\section*{DA-01}
+\addcontentsline{toc}{section}{DA-01}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda cumplir modelo híbrido y 24 h offline con el mínimo administrable. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} Nube principal y Célula Operacional Local permanente.
+
+\textbf{Alternativas examinadas.} Nube con contingencia activable; réplica local completa.
+
+\textbf{Fundamento.} Cumplir modelo híbrido y 24 h offline con el mínimo administrable.
+
+\textbf{Consecuencias y comprobación.} La continuidad del recinto se dimensiona y prueba separadamente de la disponibilidad regional. El runtime local permanece activo también con WAN disponible. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-02}
+\addcontentsline{toc}{section}{DA-02}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda aislar cargas distintas sin imponer operación distribuida innecesaria. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} Arquitectura modular híbrida.
+
+\textbf{Alternativas examinadas.} Microservicios completos; monolito único.
+
+\textbf{Fundamento.} Aislar cargas distintas sin imponer operación distribuida innecesaria.
+
+\textbf{Consecuencias y comprobación.} Cada núcleo puede desplegarse sin liberar los otros; los límites internos se verifican y la extracción posterior conserva contratos. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-03}
+\addcontentsline{toc}{section}{DA-03}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda coincidencia con modelo de datos y propiedad funcional estable. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} Nueve dominios canónicos.
+
+\textbf{Alternativas examinadas.} Doce módulos anteriores; dominios A/B/C.
+
+\textbf{Fundamento.} Coincidencia con modelo de datos y propiedad funcional estable.
+
+\textbf{Consecuencias y comprobación.} Los doce grupos RF se mapean a nueve propietarios de datos; un grupo funcional no crea otro dominio ni otro despliegue. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-04}
+\addcontentsline{toc}{section}{DA-04}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda independencia donde cambian carga, falla o permisos. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} Tres núcleos y cinco procesos especializados.
+
+\textbf{Alternativas examinadas.} Un despliegue total; servicio por dominio.
+
+\textbf{Fundamento.} Independencia donde cambian carga, falla o permisos.
+
+\textbf{Consecuencias y comprobación.} Cada unidad mantiene su pipeline, identidad y recursos. Los procesos especializados aíslan fallas y no asumen autoridad de los dominios. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-05}
+\addcontentsline{toc}{section}{DA-05}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda evitar pérdida silenciosa de hechos válidos generados offline. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} Autoridad por dominio y agregado.
+
+\textbf{Alternativas examinadas.} Última escritura; nube siempre prevalece.
+
+\textbf{Fundamento.} Evitar pérdida silenciosa de hechos válidos generados offline.
+
+\textbf{Consecuencias y comprobación.} No se usa última escritura gana. La reconciliación conserva identificadores, secuencia y discrepancias; una copia de lectura no confirma una asignación. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-06}
+\addcontentsline{toc}{section}{DA-06}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda claridad transaccional con desacoplamiento posterior. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} REST/OpenAPI para comando y consulta; eventos para propagación.
+
+\textbf{Alternativas examinadas.} Solo llamadas síncronas; solo eventos.
+
+\textbf{Fundamento.} Claridad transaccional con desacoplamiento posterior.
+
+\textbf{Consecuencias y comprobación.} OpenAPI describe comandos y consultas; los eventos conservan sobre, versión y contrato. Un adaptador no inventa una API de terceros. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-07}
+\addcontentsline{toc}{section}{DA-07}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda volumen bajo, operación administrada y DLQ nativa. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} EventBridge y SQS/SNS.
+
+\textbf{Alternativas examinadas.} Kafka/MSK; broker autogestionado.
+
+\textbf{Fundamento.} Volumen bajo, operación administrada y DLQ nativa.
+
+\textbf{Consecuencias y comprobación.} Los consumidores implementan inbox y orden por agregado. La deduplicación del proveedor no sustituye la de negocio y los agotados pasan a DLQ. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-08}
+\addcontentsline{toc}{section}{DA-08}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda integridad, portabilidad, consulta relacional e inmutabilidad documental. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} PostgreSQL 18 y S3.
+
+\textbf{Alternativas examinadas.} DynamoDB como núcleo; archivos en base relacional.
+
+\textbf{Fundamento.} Integridad, portabilidad, consulta relacional e inmutabilidad documental.
+
+\textbf{Consecuencias y comprobación.} Se separan registro transaccional, proyecciones y objetos. Exportación y restauración conservan relaciones, permisos y huellas. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-09}
+\addcontentsline{toc}{section}{DA-09}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda detección local con 26,63 millones de registros/año controlados. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} Muestreo local por minuto y acumulado cloud cada 15 min.
+
+\textbf{Alternativas examinadas.} Enviar toda muestra; lectura horaria.
+
+\textbf{Fundamento.} Detección local con 26,63 millones de registros/año controlados.
+
+\textbf{Consecuencias y comprobación.} La captura conserva muestras locales y totalizadores; la consolidación cloud controla volumen sin perder evidencia de conciliación. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-10}
+\addcontentsline{toc}{section}{DA-10}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda seguridad, explicabilidad y tolerancia a señales contradictorias. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} Ocupación multifuente con nivel de confianza.
+
+\textbf{Alternativas examinadas.} Declaración única; sensor como verdad.
+
+\textbf{Fundamento.} Seguridad, explicabilidad y tolerancia a señales contradictorias.
+
+\textbf{Consecuencias y comprobación.} Un desacuerdo o dato vencido produce estado indeterminado y revisión operacional; el sensor no decide custodia ni cobro por sí solo. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-11}
+\addcontentsline{toc}{section}{DA-11}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda coherencia con capacidad, socio y certificaciones ya declaradas. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} AWS como proveedor.
+
+\textbf{Alternativas examinadas.} Azure Chile; Google Cloud Santiago.
+
+\textbf{Fundamento.} Coherencia con capacidad, socio y certificaciones ya declaradas.
+
+\textbf{Consecuencias y comprobación.} Se verifican servicio, región y catálogo de la variante. La reversibilidad conserva formatos abiertos y estima esfuerzo de sustitución. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-12}
+\addcontentsline{toc}{section}{DA-12}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda regiones disponibles, separación geográfica y catálogo requerido. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} São Paulo primaria y México Central secundaria.
+
+\textbf{Alternativas examinadas.} Depender de AWS Chile; Estados Unidos como DR.
+
+\textbf{Fundamento.} Regiones disponibles, separación geográfica y catálogo requerido.
+
+\textbf{Consecuencias y comprobación.} La residencia se comprueba por servicio y subencargado; una región distinta no implica disponibilidad automática de todo el catálogo. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-13}
+\addcontentsline{toc}{section}{DA-13}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda contenedores sin administrar clúster ni sistema operativo. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} ECS/Fargate.
+
+\textbf{Alternativas examinadas.} EKS; EC2 administrado.
+
+\textbf{Fundamento.} Contenedores sin administrar clúster ni sistema operativo.
+
+\textbf{Consecuencias y comprobación.} Las tareas son sin estado y mantienen identidad y límites por servicio; Fargate no sustituye gobierno de artefactos, configuración o costos. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-14}
+\addcontentsline{toc}{section}{DA-14}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda dos nodos y carga baja no justifican orquestador adicional. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} Podman en borde.
+
+\textbf{Alternativas examinadas.} Kubernetes/K3s; procesos instalados en host.
+
+\textbf{Fundamento.} Dos nodos y carga baja no justifican orquestador adicional.
+
+\textbf{Consecuencias y comprobación.} El recinto usa distribución soportada y configuración versionada. El inventario distingue parches de distribución y número de versión upstream. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-15}
+\addcontentsline{toc}{section}{DA-15}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda redundancia obligatoria con menor complejidad en sitio sin TI. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} Dos nodos activo-pasivo con fencing.
+
+\textbf{Alternativas examinadas.} Tres nodos; un nodo más repuesto.
+
+\textbf{Fundamento.} Redundancia obligatoria con menor complejidad en sitio sin TI.
+
+\textbf{Consecuencias y comprobación.} La promoción exige exclusión del primario anterior mediante fencing. La réplica protege disponibilidad y las copias protegen recuperación. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-16}
+\addcontentsline{toc}{section}{DA-16}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda identidad individual y fuente laboral actual. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} Cognito central y Autoridad local de acceso.
+
+\textbf{Alternativas examinadas.} Directorio local completo; cuenta compartida.
+
+\textbf{Fundamento.} Identidad individual y fuente laboral actual.
+
+\textbf{Consecuencias y comprobación.} Cognito acredita autenticación con enlace; el RLH y la Autoridad local gobiernan habilitación operacional. No se renueva desde una copia laboral vencida. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-17}
+\addcontentsline{toc}{section}{DA-17}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda cumplir RTO/RPO sin conflicto de escrituras ni duplicación total. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} Warm standby regional.
+
+\textbf{Alternativas examinadas.} Activo-activo; recuperación solo desde copia.
+
+\textbf{Fundamento.} Cumplir RTO/RPO sin conflicto de escrituras ni duplicación total.
+
+\textbf{Consecuencias y comprobación.} La réplica secundaria conserva cifrado, claves y capacidad de promoción. El retorno exige evitar dos primarios y comprobar conciliación. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-18}
+\addcontentsline{toc}{section}{DA-18}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda diversidad física y conmutación exigidas por las Bases. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} Entel dedicado por fibra y Gtd dedicado por radio.
+
+\textbf{Alternativas examinadas.} Dos fibras sin ruta comprobada; un solo enlace.
+
+\textbf{Fundamento.} Diversidad física y conmutación exigidas por las Bases.
+
+\textbf{Consecuencias y comprobación.} La contratación exige caminos independientes de acceso y transporte, no solo dos marcas. Los planos y pruebas de cada ruta forman parte de la recepción. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-19}
+\addcontentsline{toc}{section}{DA-19}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda offline durable, MDM y APIs de dispositivo sin duplicar aplicaciones. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} Android nativo para terreno y React/PWA para portales.
+
+\textbf{Alternativas examinadas.} PWA única; aplicaciones separadas por rol.
+
+\textbf{Fundamento.} Offline durable, MDM y APIs de dispositivo sin duplicar aplicaciones.
+
+\textbf{Consecuencias y comprobación.} Android conserva cola durable y políticas del terminal; la PWA se limita a usos apropiados. La validación de batería y conectividad se ejecuta por perfil. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\section*{DA-20}
+\addcontentsline{toc}{section}{DA-20}
+
+\textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda validar ambiente marino y precisión antes de comprometer 380 unidades. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
+
+\textbf{Elección.} Piloto de 40 sensores de ocupación.
+
+\textbf{Alternativas examinadas.} Despliegue total; ausencia de piloto.
+
+\textbf{Fundamento.} Validar ambiente marino y precisión antes de comprometer 380 unidades.
+
+\textbf{Consecuencias y comprobación.} La función obligatoria de estado de amarra continúa sin el piloto. Sus resultados deben justificar una eventual ampliación y sus activos se inventarían por separado. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+
+\textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\CierreSubdocumento
+\end{document}

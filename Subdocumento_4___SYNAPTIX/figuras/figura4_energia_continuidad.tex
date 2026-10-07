@@ -1,0 +1,54 @@
+﻿% Esquema funcional; la agrupación de cargas no es una barra compartida.
+\begin{figure}[htbp]
+\centering
+\setstretch{1}
+\begin{tikzpicture}[
+  bloque/.style={draw=SynNavyLight,fill=SynSurface,align=left,
+    font=\fontsize{9.5}{11.5}\selectfont,text width=68mm,inner sep=2mm},
+  banda/.style={bloque,text width=148mm},
+  enlace/.style={-{Latex},draw=SynNavyLight,thick}]
+  \node[banda,fill=SynNavy,text=SynWhite] (tipologia)
+    {\textbf{Administración: sala técnica secundaria o de sitio}\\
+     Acometida exterior común; generación y caminos internos A/B separados.
+     Nueva instalación 400/230 V, 50 Hz, 3F+N; cuadros A/B propios por proyecto.};
+  \node[bloque,below=5mm of tipologia.south west,anchor=north west] (ramaA)
+    {\textbf{Camino A}\\
+     P200-6 A; combustible propio ($\geq1.190$ L útiles, 24 h).\\
+     Transferencia A; 93T60 60 kVA/60 kW y banco A ($\geq30$ min).\\
+     Distribución, circuito y conversor/PSU A por activo.};
+  \node[bloque,below=5mm of tipologia.south east,anchor=north east] (ramaB)
+    {\textbf{Camino B}\\
+     P200-6 B; combustible propio ($\geq1.190$ L útiles, 24 h).\\
+     Transferencia B; 93T60 60 kVA/60 kW y banco B ($\geq30$ min).\\
+     Distribución, circuito y conversor/PSU B por activo.};
+  \node[banda,below=5mm of ramaA.south west,anchor=north west] (cargas)
+    {\textbf{Entradas individuales de las cargas requeridas}\\
+     Célula Local, red y protección; cinco pantalanes y borde de varadero;
+     dieciséis puestos con treinta y dos monitores, accesos e interfaz de combustible.
+     Este bloque agrupa funciones: no une las distribuciones A/B en una barra.
+     Entrada única: transferencia individual con aceptación prevista; no equivale a doble PSU.};
+  \node[bloque,below=5mm of cargas.south west,anchor=north west] (climaA)
+    {\textbf{Unidad de clima A desde camino A}\\
+     022/YKA2 candidato, con exterior propio; temperatura/humedad.
+     Incluir espera, arranque y relevo; sin depender de un único controlador.};
+  \node[bloque,below=5mm of cargas.south east,anchor=north east] (climaB)
+    {\textbf{Unidad de clima B desde camino B}\\
+     022/YKA2 candidato, con exterior propio; temperatura/humedad.
+     Debe sostener la zona técnica al perder A; la selección térmica sigue pendiente.};
+  \node[banda,below=5mm of climaA.south west,anchor=north west] (control)
+    {\textbf{Balance y aceptación del conjunto}\\
+     Contar PoE, conversión y periféricos una sola vez; distinguir kW y kVA.
+     Retirar A/B; probar clima, fases, carga plena, recarga y segundo corte.
+     Protección local autónoma; aviso al NOC con canal o entrega posterior.
+     Clima candidato: seleccionar calor por estado, banda T/HR y tratamiento de aire de bancos.};
+  \draw[enlace] (ramaA.south) -- (cargas.north -| ramaA.south);
+  \draw[enlace] (ramaB.south) -- (cargas.north -| ramaB.south);
+  \draw[enlace] (ramaA.west) -- ++(-3mm,0) |- (climaA.west);
+  \draw[enlace] (ramaB.east) -- ++(3mm,0) |- (climaB.east);
+  \draw[enlace] (climaA.south) -- (control.north -| climaA.south);
+  \draw[enlace] (climaB.south) -- (control.north -| climaB.south);
+\end{tikzpicture}
+\caption{Caminos independientes de energía y cargas críticas del recinto}
+\label{fig:energia-fisica}
+\FuenteFigura{Elaboración de Synaptix a partir de \parencites[secc.~6.1, p.~14; RT-06.07/08/11/13--19, pp.~15--16; RT-08.04, p.~18]{pucv-transversal}[cap.~15, RT-03.10/24 y RT-06.01]{caso07}. Esquema funcional, no plano constructivo ni certificación de capacidad.}
+\end{figure}

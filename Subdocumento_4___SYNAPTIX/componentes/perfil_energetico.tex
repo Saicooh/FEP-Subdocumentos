@@ -1,0 +1,51 @@
+﻿\textbf{Perfil anual y PUE estimada.} La frontera comprende TI y auxiliares interiores, pérdidas de las UPS/bancos y su climatización. La energía exportada a puestos/campo se resta del recinto, conservando las pérdidas que su suministro disipa dentro. Cloud, NOC e industria se evalúan en sus balances respectivos. Para el año de 365 días se adopta temporada alta de noventa días como hipótesis de planificación; los servicios críticos siguen activos 24 horas. La Tabla~\ref{tab:4-perfil-anual} fija horas y fracciones del consumo máximo de compra, no utilización CPU ni consumos medidos \parencites[RT-06.11, p.~15]{pucv-transversal}[cap.~15, RT-21.06]{caso07}.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Perfil eléctrico anual proyectado}\label{tab:4-perfil-anual}
+\begin{tabularx}{\linewidth}{X R{19mm} R{18mm} R{18mm} R{30mm}}
+\hline
+\EncabezadoTabla{Estado} & \EncabezadoTabla{h/año} & \EncabezadoTabla{TI} & \EncabezadoTabla{Puestos} & \EncabezadoTabla{Motor / móvil} \\ \hline
+Alta, atención 18 h/día & 1.620 & 0,65 & 0,70 & 0,080 / 0,50 \\ \hline
+Alta, noche 6 h/día & 540 & 0,40 & 0,25 & 0,010 / 0,20 \\ \hline
+Resto, atención 12 h/día & 3.300 & 0,45 & 0,55 & 0,040 / 0,35 \\ \hline
+Resto, noche 12 h/día & 3.300 & 0,30 & 0,15 & 0,005 / 0,10 \\ \hline
+\end{tabularx}
+\FuenteTabla{Hipótesis de proyecto de Synaptix sobre horarios de \parencite[cap.~15, RT-21.06]{caso07}; suma $90(18+6)+275(12+12)=8.760$ h. La última columna presenta las fracciones de motor y carga móvil, en ese orden.}
+\end{table}
+
+TI interior máxima suma $1,400+0,100+0,500+0,200+0,150=2,350$ kW de servidores, NGFW, core, NVR y WAN. Los auxiliares interiores suman 0,360 kW constantes. En cada estado $i$, $T_i=2,350u_{TI,i}$, $A_i=0,360$ y $X_i=4,214222+0,300+0,600+5,920u_{PC,i}+1,200u_{motor,i}+0,800u_{movil,i}$ kW. $X$ es energía exportada; DC/radio/borde permanecen presupuestados a su cota. Ninguna fracción anual rebaja UPS, banco o grupo a plena carga.
+
+Para la estimación se presupuestan pérdida fija $P_0=0,250$ kW/UPS, coeficiente variable $\eta_v=0,960$, ventilación media conjunta $F=0,900$ kW, rendimiento equivalente de compresión $COP=3,000$, envolvente media $Q_e=0,300$ kW y reserva latente $Q_l=0,100$ kW. Humedad/recalentamiento dispone de $E_H=1.700$ kWh/año y ciclos de bancos de $E_R=250$ kWh/año de pérdidas netas adicionales. Son parámetros energéticos propios para presupuesto y sensibilidad; no prestaciones certificadas de la 93T/022 ni una selección psicrométrica. La recepción sustituirá el modelo por curvas y reparto reales sin sumar nuevamente pérdidas incluidas.
+
+La climatización aumenta salida UPS, y las pérdidas UPS aumentan calor. Se resuelve esa realimentación con $N_i=T_i+A_i+X_i$, $k=1/\eta_v-1$, $H=E_H/8.760$ y $R=E_R/8.760$:
+\[
+C_i=\frac{F+H+[T_i+A_i+2P_0+kN_i+R+Q_e+F+H+Q_l]/COP}{1-k/COP},
+\qquad L_i=2P_0+k(N_i+C_i).
+\]
+El consumo del recinto es $T_i+A_i+L_i+R+C_i$. El ventilador/humedad se cuenta una vez como electricidad y una vez como calor a retirar, que son fenómenos distintos. En un ciclo anual con estado inicial/final de batería equivalente, la energía útil restituida ya alimentó cargas del perfil: sumar toda la recarga bruta la duplicaría. $E_R$ agrega pérdidas netas no incluidas, y los ensayos externos se registran como exportación y pérdidas adicionales propias.
+
+La Tabla~\ref{tab:4-energia-anual} presenta la energía reconstruible desde ese perfil. La fracción eléctrica media de TI es $8.798,40/(2,350\times8.760)=42,74\,\%$.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Energía anual y sensibilidad del PUE local}\label{tab:4-energia-anual}
+\begin{tabularx}{\linewidth}{X R{30mm}}
+\hline
+\EncabezadoTabla{Partida del presupuesto inicial} & \EncabezadoTabla{kWh/año} \\ \hline
+TI interior & 8.798,40 \\ \hline
+Auxiliares interiores & 3.153,60 \\ \hline
+Pérdidas de conversión/espera UPS & 8.591,70 \\ \hline
+Pérdidas adicionales netas de bancos & 250,00 \\ \hline
+Climatización total & 20.877,90 \\ \hline
+Recinto técnico, numerador PUE & 41.671,60 \\ \hline
+Exportación a puestos/campo, separada & 68.250,87 \\ \hline
+\end{tabularx}
+\FuenteTabla{Cálculo de Synaptix sin redondear subtotales: $PUE=41.671,60/8.798,40=4,7363\approx4,74$. La energía exportada emplea la cota DC completa $3,7028/0,90+0,100$ kW.}
+\end{table}
+
+El PUE de proyecto es 4,74; en crecimiento, al aumentar solo DC/PoE convertido a 5,034222 kW, es 4,78. La cifra refleja TI interior pequeña y dos UPS que también atienden carga exterior, cuyas pérdidas permanecen dentro. Es una estimación de energía anual con hipótesis explícitas, distinta de una razón entre máximos instantáneos. La sensibilidad combinada es 3,42--7,12: caso menor con $P_0=0,150$, $\eta_v=0,975$, $COP=4,0$, $F=0,650$, $E_H=800$, $E_R=150$, $Q_e=0,200$ y $Q_l=0,050$; caso mayor con 0,400, 0,940, 2,2, 1,300, 3.000, 400, 0,500 y 0,200, en las mismas unidades. Se mantienen horas y factores de uso; la amplitud no representa una curva de fabricante ni una predicción meteorológica.
+
+El presupuesto conserva el escenario energético de referencia 022, con medias propias de ventilación, humedad y pérdidas; los escenarios de extracción de la Tabla~\ref{tab:4-estados-termicos} y su memoria no constituyen una instalación ya seleccionada. Al seleccionar caudal, ventiladores y tratamiento de bancos se sustituyen $F$, $Q_e$, $Q_l$, $E_H$ y $E_R$, se incorporan sus estados y se resuelve nuevamente la realimentación. Los 4,74 no se atribuyen como PUE garantizada de una alternativa con equipos o caudales distintos.
+
+La recepción habilita medición separada de entrada por fuente, TI, auxiliares, clima y exportación; en operación se integran doce meses comparables y se actualiza la estimación al cambiar parque o uso. El combustible y emisiones tienen metodología propia. Este PUE desarrolla RT-06.11 junto con kW/FP proyectados; no acredita por sí solo la intensidad de carbono de la región cloud exigida en RT-15.04 ni el control de humedad de RT-06.13.

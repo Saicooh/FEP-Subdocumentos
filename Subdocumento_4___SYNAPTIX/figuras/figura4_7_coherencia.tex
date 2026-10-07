@@ -1,0 +1,77 @@
+% Vista general de cinco zonas. Sin escalado; columnas con altura común.
+\begin{figure}[htbp]
+\centering
+\setstretch{1}
+\begin{tikzpicture}[
+  bloque/.style={draw=SynNavyLight,fill=SynSurface,align=left,
+    font=\fontsize{9.5}{11.5}\selectfont,text width=67mm,inner sep=2mm},
+  banda/.style={bloque,text width=146mm},
+  titulo/.style={banda,fill=SynNavy,text=SynWhite},
+  enlace/.style={-{Latex},draw=SynNavyLight,thick},
+  intercambio/.style={{Latex}-{Latex},draw=SynNavyLight,thick}]
+  \node[titulo,minimum height=21mm] (canales)
+    {\textbf{Zona 0: personas y canales autorizados}\\
+     Portal y consola por HTTPS/OIDC; aplicación Android por nube o LAN local.
+     Armadores, administración, operación, escuela, contratistas y soporte.
+     VHF conserva la coordinación humana.};
+  \node[titulo,below=7mm of canales,minimum height=13mm] (primaria)
+    {\textbf{Zona 1: AWS São Paulo, \texttt{sa-east-1}, Multi-AZ}\\
+     Exposición protegida y aplicación privada en dos zonas de disponibilidad.};
+  \node[bloque,below=0mm of primaria.south west,anchor=north west,
+    minimum height=31mm] (nucleos)
+    {\textbf{Tres núcleos modulares}\\
+     Núcleo Operacional\\
+     Núcleo de Servicios\\
+     Núcleo Administrativo};
+  \node[bloque,below=0mm of primaria.south east,anchor=north east,
+    minimum height=31mm] (procesos)
+    {\textbf{Cinco procesos especializados}\\
+     Integración externa; notificaciones;\\
+     telemetría; sincronización; auditoría.\\
+     Auditoría y seguridad: dominio propio.};
+  \node[banda,below=0mm of nucleos.south west,anchor=north west,
+    minimum height=13mm] (datos)
+    {RDS PostgreSQL Multi-AZ; S3 para evidencia; eventos y colas.
+     Identidad, claves y observabilidad transversales.
+     Autoridad de datos según dominio.};
+  \node[bloque,below=7mm of datos.south west,anchor=north west,
+    minimum height=43mm] (recinto)
+    {\textbf{Zona 2: recinto y terreno}\\
+     Célula Local: sala secundaria.\\
+     Cómputo 24 U y comunicaciones 12 U,
+     en gabinetes separados.\\
+     WAN principal y respaldo:
+     $\geq100$ Mb/s útiles por enlace.\\
+     Objetivo sin WAN: 24 h con autorización vigente.\\
+     Cinco pantalanes e interfaces de faena.
+     Sincronización por IPsec y mTLS.};
+  \node[bloque,below=7mm of datos.south east,anchor=north east,
+    minimum height=43mm] (dr)
+    {\textbf{Zona 3: AWS México Central}\\
+     \texttt{mx-central-1}; \emph{warm standby}.\\
+     Réplica PostgreSQL asíncrona;
+     S3 CRR, imágenes ECR e IaC.\\
+     Una autoridad tras promoción y
+     validación autorizadas.\\
+     RTO $\leq4$ h; RPO $\leq15$ min.\\
+     Retorno controlado al primario.};
+  \node[banda,below=7mm of recinto.south west,anchor=north west,
+    minimum height=20mm] (terceros)
+    {\textbf{Zona 4: terceros y sistemas vigentes}\\
+     Contabilidad y pagos; acceso y CCTV; meteorología y avisos oficiales;
+     comunicaciones y gestión de residuos.
+     Adaptadores con contratos y eventos: no trasladan la autoridad del tercero.};
+  \draw[enlace] (canales.south) -- (primaria.north);
+  \draw[intercambio] (datos.south -| recinto.north) -- (recinto.north);
+  \draw[enlace] (datos.south -| dr.north) -- (dr.north);
+  \draw[intercambio] (datos.east) -- ($(datos.east)+(2.5mm,0)$)
+    |- (terceros.east);
+\end{tikzpicture}
+\caption{Vista física general de la solución híbrida}
+\label{fig:4-7}
+\FuenteFigura{Elaboración de Synaptix con base en
+  \parencites[art.~16, pp.~11--12]{pucv-admin}
+  [cap.~3, pp.~8--10; secc.~6.1, p.~14; secc.~7.1, p.~17]{pucv-transversal}
+  [cap.~15, RT-03.10 y RT-06.01; cap.~17, secc.~17.4]{caso07}.
+  Síntesis del diseño de SD4, secciones 4.1--4.3; capacidades propuestas.}
+\end{figure}

@@ -1,0 +1,59 @@
+% La proyección operacional tiene recursos separados del almacén de autoridad.
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+    bloque/.style={draw=SynNavyLight,fill=SynSurface,rounded corners=1mm,
+      align=left,font=\fontsize{9}{11}\selectfont,text width=69mm,inner sep=2mm},
+    banda/.style={bloque,text width=148mm,fill=SynNavy,text=SynWhite},
+    enlace/.style={-{Latex},draw=SynNavyLight,thick}]
+    \node[banda] (entrada) {\textbf{AWS São Paulo, sa-east-1}\\Route 53,
+      CloudFront, WAF/Shield, HTTPS y API Gateway REST Regional; Cognito OIDC/SAML y MFA.
+      VPC Link V2 hacia ALB interno; aplicación y datos privados.};
+    \node[bloque,below=7mm of entrada.south west,anchor=north west] (aza)
+      {\textbf{Zona de disponibilidad A}\\ECS/Fargate: núcleos Operacional,
+       de Servicios y Administrativo; procesos especializados.};
+    \node[bloque,below=7mm of entrada.south east,anchor=north east] (azb)
+      {\textbf{Zona de disponibilidad B}\\Tareas redundantes de los mismos
+       núcleos; escalado y reemplazo por comprobaciones de salud.};
+    \node[bloque,below=7mm of aza] (autoridad)
+      {\textbf{RDS PostgreSQL 18 Multi-AZ}\\Primario y standby entre zonas;
+       autoridad transaccional. 200 GB iniciales, ampliables a 1 TB.};
+    \node[bloque,below=7mm of azb] (lectura)
+      {\textbf{PostgreSQL de proyecciones}\\Multi-AZ; recursos separados y eventos del
+       propietario. Reserva lógica 15 GB; prueba a 45 GB. Vista reconstruible,
+       sin autoridad de confirmación.};
+    \node[bloque,below=7mm of autoridad] (eventos)
+      {\textbf{Eventos e integración}\\EventBridge, SQS/SNS; adaptadores
+       versionados. Notificaciones, reintentos y cola de fallos.
+       Webhooks por API y salida NAT redundante.};
+    \node[bloque,below=7mm of lectura] (objetos)
+      {\textbf{Objetos y explotación histórica}\\S3 con versiones y Object
+       Lock; Parquet/Athena desacoplado. Textract propone campos con
+       revisión humana y alternativa manual.};
+    \node[bloque,below=7mm of eventos] (recinto)
+      {\textbf{Recinto}\\Dos túneles IPsec y HTTPS/mTLS; contratos, hechos,
+       secuencias y acuses. Célula Local con autoridad operacional
+       y autonomía mínima de 24 h.};
+    \node[bloque,below=7mm of objetos] (dr)
+      {\textbf{AWS México Central}\\Réplica PostgreSQL asíncrona, S3 CRR,
+       ECR e infraestructura reproducible. Promoción autorizada de
+       una única autoridad; warm standby.};
+    \node[banda,below=7mm of recinto.south west,anchor=north west] (transversal)
+      {IAM, KMS y Secrets Manager; OpenTelemetry/CloudWatch;
+       CloudTrail, GuardDuty Runtime Monitoring, Config, Security Hub e Inspector.
+       Registros protegidos en cuenta separada; OpenTofu y artefactos ECR.};
+    \draw[enlace] (entrada.south -| aza.north) -- (aza.north);
+    \draw[enlace] (entrada.south -| azb.north) -- (azb.north);
+    \draw[enlace] (aza) -- (autoridad);
+    \draw[enlace] (azb) -- (lectura);
+    \draw[enlace] (autoridad) -- (eventos);
+    \draw[enlace] (eventos.east) -- node[above,font=\fontsize{9}{11}\selectfont]
+       {contratos} (objetos.west);
+    \draw[enlace] (eventos.north east) -- (lectura.south west);
+    \draw[enlace] (eventos) -- (recinto);
+    \draw[enlace] (objetos) -- (dr);
+  \end{tikzpicture}
+  \caption{Despliegue físico detallado de la Zona 1: AWS São Paulo}
+  \label{fig:4-9}
+  \FuenteFigura{Elaboración de Synaptix; SD4, sección 4.2, y SD5, secciones 5.2.3 y 5.4. Las reservas de capacidad son hipótesis de diseño.}
+\end{figure}

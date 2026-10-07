@@ -1,0 +1,59 @@
+\begin{figure}[htbp]
+\centering
+\setstretch{1}
+\begin{tikzpicture}[
+  bloque/.style={draw=SynNavyLight,fill=SynSurface,align=left,
+    font=\fontsize{9.5}{11.5}\selectfont,text width=64mm,inner sep=2mm,
+    minimum height=28mm},
+  banda/.style={bloque,text width=136mm,minimum height=0mm},
+  flujo/.style={-{Latex},draw=SynNavyLight,thick},
+  copia/.style={flujo,dashed}]
+  \node[banda,fill=SynNavy,text=SynWhite] (propiedad)
+    {\textbf{Propiedad por nueve dominios}\\
+    Cada dominio escribe su esquema; API y eventos intercambian referencias.
+    Seguridad registra identidad, consentimiento y decisión.};
+  \node[bloque,below=7mm of propiedad.south west,anchor=north west] (local)
+    {\textbf{PostgreSQL local + SQLite en terreno}\\
+    Hechos críticos, RLH, secuencias y outbox.
+    Autoridad local de puesto y captura durable.
+    Terminal aislado no arbitra una amarra.};
+  \node[bloque,below=7mm of propiedad.south east,anchor=north east] (cloud)
+    {\textbf{PostgreSQL transaccional cloud}\\
+    Esquemas de los núcleos y Seguridad.
+    Maestros comerciales y hechos incorporados.
+    Inbox y restricciones de identidad.};
+  \node[banda,below=7mm of local.south west,anchor=north west] (intercambio)
+    {\textbf{Sincronización y eventos versionados}\\
+    Hechos local a cloud; maestros firmados cloud a local.
+    Idempotencia, secuencia, validación y persistencia antes del ACK.
+    El evento transporta información y conserva su propietario.};
+  \node[bloque,below=7mm of intercambio.south west,anchor=north west] (lectura)
+    {\textbf{PostgreSQL de proyecciones}\\
+    Recursos y permisos separados.
+    Vistas reconstruibles, versión y antigüedad.
+    Sin escritura sobre maestros ni confirmación crítica.};
+  \node[bloque,below=7mm of intercambio.south east,anchor=north east] (evidencia)
+    {\textbf{S3: evidencia y Parquet}\\
+    Original, versiones, huella y retención.
+    Referencias desde el hecho propietario.
+    Athena consulta historia autorizada.};
+  \node[banda,below=7mm of lectura.south west,anchor=north west] (proteccion)
+    {\textbf{Protección y recuperación}\\
+    Cifrado, permisos por dominio y campo sensible; réplica regional y copias.
+    La restauración conserva identidades, relaciones y trazabilidad.
+    Una réplica o proyección no sustituye el respaldo ni la autoridad.};
+  \draw[flujo] (propiedad.south -| local.north) -- (local.north);
+  \draw[flujo] (propiedad.south -| cloud.north) -- (cloud.north);
+  \draw[flujo] (local.south) -- (intercambio.north -| local.south);
+  \draw[flujo] (cloud.south) -- (intercambio.north -| cloud.south);
+  \draw[copia] (intercambio.south -| lectura.north) -- (lectura.north);
+  \draw[flujo] (intercambio.south -| evidencia.north) -- (evidencia.north);
+  \draw[copia] (lectura.south) -- (proteccion.north -| lectura.south);
+  \draw[copia] (evidencia.south) -- (proteccion.north -| evidencia.south);
+\end{tikzpicture}
+\caption{Vista arquitectónica de datos, autoridades y proyecciones}
+\label{fig:datos-arquitectura}
+\FuenteFigura{Elaboración de Synaptix desde SD4, 4.1, y SD5, 5.1/5.2;
+  \parencites{iso42010}[RT-02.03, p.~7]{pucv-transversal}.
+  Las flechas continuas representan contratos; las discontinuas, derivación o copia.}
+\end{figure}

@@ -1,0 +1,37 @@
+\TituloTOnce{Evaluación de puestos con alimentación y almacenamiento redundantes}
+La combinación candidata para sustituir las referencias Dell de los ítems 42, 72 y 76 es Vecow ECS-4700-2G-1345UE, dos EIZO DuraVision MDF2701W-BK y dos Phoenix Contact QUINT4-PS/1AC/24DC/10 por puesto. Su evaluación conserva las cantidades de ambos parques y la continuidad local; la selección de suministro exige satisfacer conjuntamente alimentación, almacenamiento, certificación energética, ergonomía y ciclo de vida. La referencia Dell con fuente única no queda autorizada para compra por esta evaluación \parencite[RT-08.02/04/08/13, pp.~18--19]{pucv-transversal}.
+
+La BOM candidata del PC utiliza Core i5-1345UE, 32 GB DDR5-4800 mediante SMART SR4G6SO5285-SB y dos SSD SATA de 2,5 pulgadas Innodisk 3TE7 con Innodisk NAND, referencia \texttt{DES25-C12DK1KCCQL-H03}, de 512 GB cada uno. La memoria y el disco aparecen en la lista de compatibilidad del manual Vecow; la ficha de la serie admite Windows 11, dos salidas DisplayPort, dos SATA con RAID 0/1 y dos entradas DC redundantes. Se configura RAID 1 de arranque, con 512 GB comerciales útiles antes de formato para SO, aplicación, cola y registros. La variante 2G utiliza soporte interior de discos; no se especifica extracción en caliente ni bandejas frontales \parencites[pp.~7--8, 93--98 y 104--105]{p6-puestos-vecow-manual}{p9-vecow-datasheet-2025}.
+
+El espejo tolera la falla de cualquiera de sus discos, con alarma de volumen degradado, sustitución identificada y reconstrucción controlada. Se supervisan salud SMART/iSMART individual, desgaste, errores no corregibles y estado del volumen; ECC/LDPC y protección de ruta de datos corresponden a la serie Innodisk. La aceptación fija BIOS y controlador RAID compatibles con Windows 11 y esta BOM, y prueba arranque, persistencia, falla de cada disco, alarma y reconstrucción. El respaldo independiente cubre corrupción lógica, borrado y fallas comunes que el espejo no resuelve. La variante NAND seleccionada publica hasta 2,4 W por disco: los 4,8 W del par se incluyen dentro de la cota del PC, sin añadirlos de nuevo al balance \parencites{p9-innodisk-3te7-nand,p9-innodisk-3te7-producto}.
+
+Cada entrada DC del PC recibe 24 V desde una QUINT física distinta, alimentada respectivamente por los circuitos AC A y B. La pantalla 1 recibe AC de A y DC de QUINT B; la pantalla 2, AC de B y DC de QUINT A. EIZO declara redundancia AC/DC y prioridad AC cuando ambas están presentes: no se suman 45 W AC y 44 W DC como consumos simultáneos de una pantalla. Al perder una rama, la QUINT sobreviviente sostiene el PC y una pantalla DC, mientras la otra pantalla conserva AC. Con cota de adquisición de 120 W DC para el PC completo, el margen es $(120+44)(1,20)=196,8<240$ W y la corriente $164/24=6,833<10$ A. El consumo de PC es límite propio de aceptación; las eficiencias y el FP nominales de la fuente no acreditan todos los estados de carga parcial \parencites{p6-puestos-quint,p6-puestos-eizo}[p.~15]{p6-puestos-eizo-setup}.
+
+Las QUINT se ubican junto al puesto, con derivaciones DC de hasta 2 m de ida, cableado compatible, protecciones selectivas, PE y pinout del fabricante. Cada pantalla recibe soporte MDS-T272 compatible; su diagonal de 27 pulgadas obliga a ajustar mesa, alcance y disposición de ambas pantallas. La Tabla~\ref{tab:t11-puestos-candidatos} conserva el parque: CLIENTE incluye dieciséis PC instalados y dos de reserva; el servicio remoto, dos instalados y uno de reserva. Las reservas de servicio y CLIENTE pertenecen a inventarios separados \parencites{p6-puestos-eizo-manual,p6-puestos-eizo-soporte}[secc.~8.4, pp.~19--20]{pucv-transversal}.
+
+\begin{longtable}{L{\dimexpr0.46\linewidth-2\tabcolsep\relax}R{\dimexpr0.18\linewidth-2\tabcolsep\relax}R{\dimexpr0.18\linewidth-2\tabcolsep\relax}R{\dimexpr0.18\linewidth-2\tabcolsep\relax}}
+\caption{Cantidades de la configuración candidata, incluidas reservas}\label{tab:t11-puestos-candidatos}\\
+\hline
+\EncabezadoTabla{Tipo} & \EncabezadoTabla{CLIENTE} & \EncabezadoTabla{Servicio remoto} & \EncabezadoTabla{Total} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Tipo} & \EncabezadoTabla{CLIENTE} & \EncabezadoTabla{Servicio remoto} & \EncabezadoTabla{Total} \\ \hline
+\endhead
+PC Vecow & 18 & 3 & 21 \\ \hline
+\rowcolor{SynSurface}
+Pantallas EIZO & 36 & 6 & 42 \\ \hline
+Fuentes QUINT & 36 & 6 & 42 \\ \hline
+\rowcolor{SynSurface}
+SSD dentro de PC & 36 & 6 & 42 \\ \hline
+SSD de reparación adicionales & 4 & 1 & 5 \\ \hline
+\rowcolor{SynSurface}
+Soportes MDS-T272 & 36 & 6 & 42 \\ \hline
+Cables DisplayPort & 36 & 6 & 42 \\ \hline
+\rowcolor{SynSurface}
+Juegos teclado y mouse & 18 & 3 & 21 \\ \hline
+\end{longtable}
+\FuenteTabla{Elaboración de Synaptix: dos pantallas, dos fuentes y dos SSD por PC; reservas de los ítems 42, 72 y 76 y stock adicional de reparación propuesto.}
+
+Los 42 SSD incluidos en PC y los cinco de reparación suman 47 unidades. Un disco dentro de un PC de reserva no se cuenta simultáneamente como stock suelto disponible para otro equipo. La envolvente de adquisición se mantiene en 370 W por puesto, 5,920 kW para los dieciséis puestos CLIENTE y 2,590 kW para los siete críticos; no se reduce por ensayos de otra configuración ni se duplican conversión, cables o discos. VA, FP, arranque, calor y consumo por estado se comprobarán con la BOM completa antes de su selección.
+
+La autorización de suministro requiere certificado o registro verificable de eficiencia energética aplicable al PC configurado y a MDF2701W-BK, identificando esquema, emisor, modelo, variantes y condiciones. Los certificados CE/CB, las homologaciones marítimas, ISO 50001 de fábrica y el consumo publicado no sustituyen esa certificación. Se completarán además la evaluación del puesto frente a NCh 2527, compatibilidad OEM/agentes y reposición individual durante 56 meses. Synaptix mantendrá inventario, stock compatible, vigilancia de fin de soporte, sustitución antes de EOL y verificación del sustituto con RAID, cifrado y doble alimentación; la garantía comercial no se equipara por sí sola a ese horizonte. Esta evaluación desarrolla una alternativa concreta, sin declarar seleccionados ni certificados los productos \parencite[RT-08.08/13, p.~19]{pucv-transversal}.

@@ -1,0 +1,115 @@
+﻿\TituloTOnce{Hoja de cargas por activo, frontera y estado}
+La Tabla~\ref{tab:t11-hoja-cargas} desarrolla las partidas físicas del inventario sin modificar sus seis columnas oficiales ni crear nuevos números de ítem. El símbolo $p_i(s)$ representa potencia de entrada todavía por individualizar, no cero. El estado $s$ recorre régimen normal, retirada de A, retirada de B y relevo/arranque de clima; se añade recarga y prueba de reserva cuando sean simultáneas. Una carga imprescindible que pierde alimentación conserva una brecha funcional y no se elimina de la suma \parencites[RT-06.07--11/13, p.~15; RT-08.01/04, p.~18]{pucv-transversal}[cap.~15, RT-03.10 y RT-06.01]{caso07}.
+
+La protección comprende los dieciséis PC y treinta y dos monitores, además de cómputo, comunicaciones, medición, acceso, protección, carga móvil y clima. Siete puestos tienen prioridad de negocio; los otros nueve conservan suministro ininterrumpido. Cada camino superviviente sostiene toda la carga no climática y su propio clima. Las consolas del NOC remoto, maquinaria de negocio y cargas de terceros tienen balances separados. Aplicaciones y agentes se incluyen en sus anfitriones.
+
+Los límites siguientes son condiciones propuestas de adquisición e integración, no consumos medidos ni máximos publicados de una BOM incompleta. Si una configuración los excede, se sustituye o se recalcula antes de compra. El margen del veinte por ciento no absorbe una partida desconocida.
+
+\begin{paginaHorizontalSynaptix}
+\begingroup
+\renewcommand{\EstiloTablaSynaptix}{\fontsize{9.5}{12}\selectfont\setstretch{1}\renewcommand{\arraystretch}{1.3}\setlength{\extrarowheight}{2pt}\arrayrulecolor{SynLine}}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr.07\linewidth-2\tabcolsep\relax}L{\dimexpr.20\linewidth-2\tabcolsep\relax}L{\dimexpr.25\linewidth-2\tabcolsep\relax}L{\dimexpr.23\linewidth-2\tabcolsep\relax}L{\dimexpr.25\linewidth-2\tabcolsep\relax}}
+\caption{Hoja de cargas complementaria al inventario T-11}\label{tab:t11-hoja-cargas}\\
+\hline
+\EncabezadoTabla{Ítems} & \EncabezadoTabla{Instalación y frontera} & \EncabezadoTabla{Dato utilizable} & \EncabezadoTabla{Entrada por estado} & \EncabezadoTabla{Condición de cierre} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Ítems} & \EncabezadoTabla{Instalación y frontera} & \EncabezadoTabla{Dato utilizable} & \EncabezadoTabla{Entrada por estado} & \EncabezadoTabla{Condición de cierre} \\ \hline
+\endhead
+32 & 2 R360, sala técnica & BOM completa $\leq700$ W AC/nodo; PSU 600 W no es consumo & 1,400 kW; FP mínimo 0,90; L3 & EIPT, discos/NIC/agentes, 1+1 y fuente retirada \\ \hline
+34 & 2 FG-120G, sala técnica & $2\times50=100$ W AC, ópticas incluidas & 0,100 kW; FP mínimo 0,90; L3 & Catálogo 40 W/unidad; confirmar alcance, ópticas, FP y transitorio \\ \hline
+36 & 2 core, sala técnica & $2\times250=500$ W AC propios; PD separados & 0,500 kW; FP mínimo 0,90; L3 & BOM, dos PSU, módulos, stack y ópticas; no sumar ensayos con y sin PoE \\ \hline
+38--40 & 2 racks, 4 PDU y luz & 40 W AC; gabinetes pasivos & 0,040 kW; 0/40/0 W L1/L2/L3 & PDU, medición y luz sin duplicar cargas conectadas \\ \hline
+41 & 12 conversores distribuidos & $12\times5=60$ W DC; ópticas host en su anfitrión & 0,060 kW DC en bloque convertido & SKU, puertos y distancias; fibra pasiva no consume \\ \hline
+42/72 & 7 puestos prioritarios, 14 pantallas & 220 W PC AC +$2\times65$ W pantallas +20 W periféricos/puesto & 2,590 kW AC; todos protegidos; FP mínimo 0,90 & BOM, doble fuente, pérdida de camino; USB incluido no se suma otra vez \\ \hline
+42/72 & 9 puestos restantes, 18 pantallas & Misma cota: 370 W AC/puesto & 3,330 kW AC; todos protegidos; FP mínimo 0,90 & Prioridad funcional no excluye de UPS; reparto total puestos 0/8/8 \\ \hline
+43/44 & 2 UPS y bancos A/B & Salida, pérdidas y recarga separadas; selección en Tabla~\ref{tab:t11-alternativas-ups} & Superviviente: 48,4916 kW/51,2335 kVA de diseño & Tabla CSB y factores propios; programación, aceptación plena y reserva recuperada \\ \hline
+45/46 & 2 grupos, transferencias y estanques & $\eta_{UPS}\geq0,94$ de proyecto; recarga de 20 A DC fija; auxiliares externos $\leq0,1$ kW & P200-6; capacidad efectiva $\geq129$ kW/$\geq90$ kVA por grupo & PRP, derating, escalones, armónicos, arranque, volumen útil y reposición \\ \hline
+47 & 2 circuitos 022/YKA2 candidatos & Interior 230 V, 35,9 A; exterior 400 V, 3F, 22,5 A: 23,845457 kVA & Clima propio por camino; $P\leq23,845457$ kW; relevo en ramas distintas & Banda T/HR, recarga, sensible/latente y mínima carga antes de compra \\ \hline
+48/49 & Incendio y seguridad/ambiente de sala & 200 W incendio +120 W seguridad AC & 0,320 kW; 0/320/0 W L1/L2/L3; FP mínimo 0,90 & Panel, aspiración, disparo, sensores y cerradura incluidos; accesos terreno separados \\ \hline
+50/51 & 2 terminaciones WAN & $2\times75=150$ W AC completos & 0,150 kW; 0/150/0 W L1/L2/L3; FP mínimo 0,90 & ONT/router/módem/radio y alimentación, incluso con WAN caída \\ \hline
+52 & 6 gabinetes de borde & $6\times100=600$ W AC auxiliares & 0,600 kW; 200 W/fase; FP mínimo 0,90 & Ventilación, anticondensación, control y pérdidas no incluidas en conversión \\ \hline
+53 & 12 switches, 2/gabinete & $12\times30=360$ W DC propios; PD separados & 0,360 kW DC en bloque convertido & Moxa candidato: 15,58 W sin PD; modelo/mapa por cerrar \\ \hline
+54 & 12 AP, 2/gabinete & $12\times32=384$ W PD; doble entrada no duplica dato & 0,384 kW DC, una vez en PSE & AP-575 candidato; funciones/RF tras falla de PSE; cable separado \\ \hline
+55 & 10 concentradores en pantalán & $10\times25=250$ W DC, interfaces incluidas & 0,250 kW DC; reparto 4/4/2 & Modelo, buses, captura, búfer y fuentes A/B \\ \hline
+56/57 & Medidores: 320/380 de cada servicio & Agua $\leq0,5$ W/punto; energía $\leq3$ W/punto DC & Inicial 0,160/0,960; crecimiento 0,190/1,140 kW DC & Autoconsumo y captura durante corte; reparto 128/128/64 o 152/152/76 \\ \hline
+58 & 7 accesos y 2 motores & $7\times50=350$ W DC control; $2\times600=1.200$ W AC motores & Control DC; motores L3, FP mínimo 0,75 & Arranque agregado $\leq2,4$ kVA; otra barrera en reposo antes de iniciar; incluir espera y seguridad \\ \hline
+59 & 1 interfaz de combustible & 80 W DC interfaz/aislamiento/conversión & 0,080 kW DC; bomba negocio fuera de frontera & Clasificación/certificados, totalizador, alimentación y modo seguro \\ \hline
+60 & 40 sensores piloto & $40\times2=80$ W DC, captura propia incluida & 0,080 kW DC; sin expansión automática & Tecnología, baterías/gateway dentro de cota o recálculo \\ \hline
+61--64 & 14 móviles +2 reservas; 16 juegos de carga & $16\times50=800$ W AC completos & 0,800 kW; 6/5/5 juegos; FP mínimo 0,75 & Cargadores, baterías sueltas, pérdidas y simultaneidad \\ \hline
+66 & Radio, CCTV y meteo & Radio 300 W/NVR 200 W AC; cámaras $\leq20$ W PD; meteo 30 W DC & Radio fuera de sala; cámaras 38/60: 0,760/1,200 kW DC & Radio 0/300/0 W L1/L2/L3; NVR L3; inventario y dependencias existentes \\ \hline
+33/35/37/42/52--65/70 & Stock y muestras apagados & Bancada $\leq1,0$ kW/1,25 kVA; reparto 0/0,60/0,65 kVA & Suspender durante arranque de motor; ensayos nominales separados & Stock no disponible si está prestado; contar muestra energizada \\ \hline
+72/76 & NOC: 2 PC y 4 monitores +reserva & Balance propio del servicio remoto & No integra carga ni PUE local & Sala, red, telefonía, energía y licencias remotas individualizadas \\ \hline
+\end{longtable}
+\FuenteTabla{Elaboración de Synaptix desde cantidades del inventario. Datos: \parencites[p.~8]{p5-fortinet-energia}[tabla~24]{p3-cisco-ficha}{p3-dell-psu}{p4-dell-adaptador}{p4-dell-monitor}{p5-moxa-candidato}{p5-aruba-candidato}{p5-samsung-carga}. Los valores de ensayo, capacidad y candidatos no se tratan como consumo completo de la BOM.}
+\endgroup
+\end{paginaHorizontalSynaptix}
+
+La hoja distingue el consumo máximo de catálogo, el ensayo bajo una configuración y la hipótesis propia. Fortinet permite una referencia de 80 W para el par FG-120G, pero falta su FP. Cisco no autoriza sumar el ensayo de 104,5 W sin PoE al de 554,4 W que ya contiene la entrega PoE. Dell dirige al planificador EIPT para la configuración R360: el rating de PSU y los BTU/h calculados desde ese rating no sustituyen el consumo del servidor \parencites[p.~8]{p5-fortinet-energia}[tabla~24]{p3-cisco-ficha}{p3-dell-psu}.
+
+Los candidatos Moxa/HPE aún no modifican los ítems 53/54 ni el cálculo de compra. Para un PSE se suma electrónica, ópticas no incluidas, entrada de sus PD y pérdidas de cable; la conversión a AC se incorpora una sola vez. Si ambos PSE sobreviven mediante fuentes A/B, retirar una rama puede conservar ambas entradas PoE del AP: los 26,1 W de una entrada no equivalen automáticamente al estado de rama retirada. La prueba de pérdida de PSE es distinta. Se comprueban puertos y prestaciones, además de energía; dos AP por gabinete no demuestran cobertura superviviente \parencites{p5-moxa-candidato}{p5-aruba-candidato}.
+
+El bloque DC suma 3,7028 kW iniciales o 4,4408 kW en crecimiento, incluyendo veinte por ciento de pérdidas de cable sobre AP/cámaras: 0,2288/0,3168 kW. Con eficiencia de conversión mínima 0,90 y 0,100 kW de espera no incluidos, la entrada es $3,7028/0,90+0,100=4,2142$ kW AC iniciales o $4,4408/0,90+0,100=5,0342$ kW AC en crecimiento. Entrega PoE, cable y conversión se cuentan una vez; el FP mínimo del bloque AC es 0,90.
+
+Se distribuyen switches/AP/conversores por cuatro unidades de cada familia y fase; concentradores 4/4/2; accesos 2/2/3; piloto 20/20/0; surtidor/meteo L1. La espera de conversión es 40/40/20 W. Cámaras: 13/17/8 al inicio y 20/24/16 en crecimiento. Los cinco pantalanes y varadero aportan dos gabinetes por fase. Son condiciones de instalación nueva por casar con puertos, fuentes y circuitos, no características medidas del edificio.
+
+\TituloTOnce{Configuración propuesta de energía y climatización}
+La Tabla~\ref{tab:t11-alternativas-ups} individualiza la propuesta eléctrica y la candidatura climática. SD4 desarrolla el cálculo, el modo de regulación, el banco, la obra nueva, el combustible y la estimación energética. La selección térmica incompleta conserva su estado No en T-12. Los protocolos de aceptación corresponden a verificaciones futuras.
+
+\begin{paginaHorizontalSynaptix}
+\begingroup
+\renewcommand{\EstiloTablaSynaptix}{\fontsize{9.5}{12}\selectfont\setstretch{1}\renewcommand{\arraystretch}{1.3}\setlength{\extrarowheight}{2pt}\arrayrulecolor{SynLine}}
+\begin{longtable}{L{\dimexpr.25\linewidth-2\tabcolsep\relax}L{\dimexpr.35\linewidth-2\tabcolsep\relax}L{\dimexpr.18\linewidth-2\tabcolsep\relax}L{\dimexpr.22\linewidth-2\tabcolsep\relax}}
+\caption{Configuración eléctrica y selección climática condicionada}\label{tab:t11-alternativas-ups}\\
+\hline
+\EncabezadoTabla{Partida} & \EncabezadoTabla{Configuración por camino} & \EncabezadoTabla{Instalado A+B} & \EncabezadoTabla{Reserva compatible} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Partida} & \EncabezadoTabla{Configuración por camino} & \EncabezadoTabla{Instalado A+B} & \EncabezadoTabla{Reserva compatible} \\ \hline
+\endhead
+UPS & 93T60KMBSB, 60 kVA/60 kW, 3:3; sin baterías internas; modo regulado sin bypass operativo & 2 UPS & 1 UPS en Chile \\ \hline
+Banco & 2 cadenas de 40 HRL12540W, neutro 20/20; gabinete de proyecto por cadena & 160 bloques/4 gabinetes & 1 cadena de 40 bloques en Chile \\ \hline
+Espacio/masa & UPS: $0,50\times0,82\times1,75$ m/235,5 kg; cadena: 1.756 kg de baterías y cota de 2.056 kg con gabinete & 7.024 kg de baterías, sin estructuras & Reserva fuera de huella instalada \\ \hline
+Generación & P200-6, FGL30120, 180 kVA/144 kW PRP, 400/230 V, 50 Hz & 2 grupos & 1 grupo en Chile \\ \hline
+Combustible/transferencia & 1.500 L nominales/1.190 L útiles; transferencia $\geq320$ A, cuatro polos según esquema aprobado & 2 estanques/2 transferencias & Controlador/bomba críticos por tipo \\ \hline
+Clima candidato & 022/YKA2; 23,845457 kVA de cota eléctrica y 18,60 kW sensibles netos nominales; selección T/HR pendiente & 2 circuitos N+1 proyectados & 1 conjunto compatible en Chile \\ \hline
+\end{longtable}
+\FuenteTabla{\parencites{p7-eaton-93t60}{p7-eaton-93t-guia}{csbHRL12540WRA260131}{p7-fg-p200-ficha}{p6-mext-pi-2025}. Stock propuesto por redondeo del diez por ciento.}
+\endgroup
+\end{paginaHorizontalSynaptix}
+
+La selección del banco usa $80(1.129)(0,85)(0,90)/1.000=69,0948$ kW AC a sesenta minutos, desde la tabla CSB a 25\,$^{\circ}$C y final de 1,80 V por celda. Los factores propios incluyen eficiencia y reserva. Se exige recepción a 60 kW con al menos sesenta minutos iniciales, seguimiento semestral y sustitución preventiva al llegar a 45 minutos para preservar el mínimo de treinta. Banco de 480 V nominales, flotación propuesta de 546 V y techo de 588 V; el servicio autorizado configura el perfil compensado. Cada cadena conserva neutro, protección y TB20 de 24 V DC según la guía \parencites{csbHRL12540WRA260131}{p7-eaton-93t-guia}{csbManualJunio2025}.
+
+\textbf{Mapa y fases.} Se conservan las cantidades y la descomposición de DC/PoE, medidores, piloto y accesos. Los puestos se reparten 0/8/8; las cargas centrales, 0/810/2.200 W; los juegos móviles, 6/5/5. El interior climático ocupa L1 y su exterior las tres fases del mismo camino. La Tabla~\ref{tab:t11-fases} reproduce el mapa en crecimiento. PDU/luz, CPE, incendio/ambiente y radio se asignan conjuntamente a L2, manteniendo sus cargas completas.
+
+\begin{paginaHorizontalSynaptix}
+\begingroup
+\renewcommand{\EstiloTablaSynaptix}{\fontsize{9.5}{12}\selectfont\setstretch{1}\renewcommand{\arraystretch}{1.3}\setlength{\extrarowheight}{2pt}\arrayrulecolor{SynLine}}
+\begin{longtable}{L{\dimexpr.16\linewidth-2\tabcolsep\relax}R{\dimexpr.21\linewidth-2\tabcolsep\relax}R{\dimexpr.21\linewidth-2\tabcolsep\relax}R{\dimexpr.21\linewidth-2\tabcolsep\relax}R{\dimexpr.21\linewidth-2\tabcolsep\relax}}
+\caption{Cotas por fase, camino superviviente en crecimiento}\label{tab:t11-fases}\\
+\hline
+\EncabezadoTabla{Fase} & \EncabezadoTabla{No clima kW/kVA} & \EncabezadoTabla{Clima kVA} & \EncabezadoTabla{Diseño kVA +20\,\%} & \EncabezadoTabla{Máximo A a 225,4 V} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Fase} & \EncabezadoTabla{No clima kW/kVA} & \EncabezadoTabla{Clima kVA} & \EncabezadoTabla{Diseño kVA +20\,\%} & \EncabezadoTabla{Máximo A a 225,4 V} \\ \hline
+\endhead
+L1 & 2,3796/2,7106 & 13,4532 & 19,3965 & 84,511 \\ \hline
+L2 & 6,0840/6,8156 & 5,1962 & 14,4140 & 66,479 \\ \hline
+L3 & 8,1007/9,3230 & 5,1962 & 17,4229 & 80,893 \\ \hline
+\end{longtable}
+\FuenteTabla{Cálculo de Synaptix: máximo entre régimen, bancada y arranque; corrientes climáticas de ficha y no-clima como potencia constante. Límite UPS de 86 A \parencites[p.~3]{p6-mext-pi-2025}[pp.~33--35]{p7-eaton-93t-guia}.}
+\endgroup
+\end{paginaHorizontalSynaptix}
+
+Al retirar A, B conserva el parque completo y su climatizador; el caso inverso conserva A. La bancada externa se limita a 1,0 kW/1,25 kVA, repartida 0/0,60/0,65 kVA, y se inhibe durante arranque de barrera. La otra barrera debe estar en reposo antes de iniciar; se conservan maniobras en curso, seguridad y liberación de emergencia. La entrada agregada de ambos circuitos de motor se limita a 2,4 kVA, frente a 1,6 kVA de régimen. La aceptación comprueba controladoras y estado seguro. El modo Frequency Converter de 50/50 Hz mantiene operación por inversor/batería sin bypass disponible; ESS y Auto Bypass de arranque quedan inhabilitados y el bypass separado abierto y bloqueado. El mantenimiento requiere parque transferido y clima propio detenido. Un STS no convierte una fuente única en doble fuente.
+
+\textbf{Grupo y combustible.} Con recarga de 20 A por UPS, techo de 588 V, eficiencia de proyecto $\geq0,94$ y FP de entrada $\geq0,99$, el arranque con sensibilidad climática de $+2\,\%$ da 66,3382 kW/67,0406 kVA por grupo. La entrada máxima publicada de 108 A a 400 V equivale a 74,8246 kVA y ya incluye recarga. La sensibilidad propia a 478 V da 89,5487 kVA con auxiliares; no es una curva de fabricante. Se exige demanda total $\leq90$ kW/90 kVA y capacidad efectiva $\geq129$ kW/$\geq90$ kVA después de correcciones. Con el criterio propio de media $\leq70\,\%$ PRP efectivo, $129(0,70)=90,3$ kW cubre el techo activo. La selección del fabricante debe completar derating, transitorios y baja carga \parencites{p7-eaton-93t-tecnica}{p7-fg-p200-ficha}.
+
+Combustible: $24(41,3)(1,20)=1.189,44$ L; mínimo de 1.190 L útiles por grupo en 1.500 L nominales, con 150 L de expansión y volumen no extraíble $\leq160$ L. El pedido se activa a 450 L; confirmación en una hora y entrega en ocho horas desde el pedido original dejan 119,6 L, equivalentes a 2,90 horas. El prestador alternativo conserva ese vencimiento. Enex Express y Copec Empresas son prestadores propuestos; Synaptix formaliza el contrato y comprueba recepción segura antes de habilitar. El plano SD4 separa depósitos y contención neta de 1.650 L, con transferencia $\geq320$ A de cuatro polos según esquema de neutro/tierra aprobado \parencites{p7-fg-p200-ficha}{p6-enex-express}{p6-copec-industrial}.
+
+\textbf{Condición térmica y energía.} La 022/YKA2 es candidata: 18,60 kW netos en el punto de retorno de 27\,$^{\circ}$C/47\,\% HR, exterior de 35\,$^{\circ}$C, 20 Pa y tubería de 5 m. La banda de entrada de 23--25\,$^{\circ}$C y HR de 40--55\,\%, con vapor de fugas/ocupación $\leq0,50$ kg/h, requiere selección por estado y carga baja; la reposición de bancos se calcula aparte. Antes de calor adicional de bancos/recarga, la referencia térmica es $1,25(2,710+2\times2,80092+0,500+0,700+3,900)=16,7648$ kW. La reserva nominal admisible es 1,46816 kW; dos cargadores de 20 A a 588 V, con eficiencia de proyecto 0,94, dan 1,50128 kW de pérdidas antes del banco. Los puntos AC/AC de UPS no son máximos universales en batería/recarga. SD4 desarrolla además la cota de gasificación por corriente agregada: 300 m$^3$/h por banco para el escenario de 20 A, o 900 m$^3$/h para 60 A, bajo hipótesis conservadoras de electrólisis y mezcla. El primero añade 13,5062 kg/h y 9,1917 kW latentes en ambos bancos, además de 2,2440 kW sensibles de reposición. Son escenarios de selección, con extracción independiente del aire TI, no caudales normativos ni gas real. La guía no acredita el mínimo/paso para fijar 20 A. Esta envolvente exige seleccionar disipaciones, ajuste de carga, caudal y tratamiento por zona, y recalcular antes de compra \parencites{p7-eaton-93t-tecnica}{p6-mext-pi-2025}{p6-mext-control-me38}.
+
+El plano de SD4 configura un único recinto TI/climatización de 27,5 m$^2$, con ambas unidades interiores y comunicación permanente de aire; bancos y otros recintos no completan artificialmente esa superficie. El manual 2024 fija 21 m$^2$ mínimos para 022 F2, acceso categoría C y menos de una persona por 10 m$^2$. Se mantienen frente útil de 1,20 m y circulación del fabricante. Carga R32, líneas y condiciones de ambas unidades se completarán para la variante suministrada; la superficie no cierra por sí sola la selección térmica \parencite[secc.~2.2.5--2.2.7, p.~21]{p9-mext-manual-2024}.
+
+Tras una descarga, Synaptix mantiene generación, camino sano y rama en recuperación hasta comprobar la reserva disponible. La prueba secuencial de descarga, recarga y nuevo corte valida ese criterio sin atribuir treinta minutos de autonomía al simple retorno de AC. El perfil anual de SD4 suma 8.760 horas, 8.798,40 kWh de TI y 41.671,60 kWh del recinto: PUE estimada de 4,74, o 4,78 en crecimiento; sensibilidad de 3,42--7,12, con parámetros propios explícitos. La exportación de 68.250,87 kWh se contabiliza por separado. El PUE corresponde al escenario 022 con parámetros propios; seleccionar extracción y tratamiento de bancos exige actualizar el perfil y las cotas por fase. T-12 distingue esa estimación de las condiciones de temperatura/humedad y carbono regional.

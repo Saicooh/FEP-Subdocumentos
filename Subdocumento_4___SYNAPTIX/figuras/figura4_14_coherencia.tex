@@ -1,0 +1,48 @@
+% Frecuencias distintas: muestra mensual de restauración y DR semestral.
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+    bloque/.style={draw=SynNavyLight,fill=SynSurface,rounded corners=1mm,
+      align=left,font=\fontsize{9}{11}\selectfont,text width=69mm,inner sep=2mm},
+    banda/.style={bloque,text width=148mm,fill=SynNavy,text=SynWhite},
+    enlace/.style={-{Latex},draw=SynNavyLight,thick}]
+    \node[banda] (objetivos) {\textbf{Objetivos independientes}\\Componentes
+      críticos: 99,95 \%; transacción de negocio de extremo a extremo:
+      99,9 \%. RTO regional: 4 h; RPO transaccional: 15 min.};
+    \node[bloque,below=7mm of objetivos.south west,anchor=north west] (local)
+      {\textbf{Redundancia del recinto}\\WAN, cortafuegos, core, nodos y
+       alimentación A/B. PostgreSQL síncrono y fencing.
+       Objetivo sin WAN: 24 h, con autorización vigente. Principal y respaldo: 100 Mb/s útiles. Lote obligatorio sincronizado en 30 min.};
+    \node[bloque,below=7mm of objetivos.south east,anchor=north east] (regional)
+      {\textbf{Alta disponibilidad primaria}\\São Paulo: ECS/Fargate
+       redundante y RDS Multi-AZ. Pérdida de una tarea o zona
+       sin promover simultáneamente dos primarios.};
+    \node[bloque,below=7mm of local] (respaldo)
+      {\textbf{Respaldo e integridad}\\Copias protegidas para recuperar
+       errores o corrupción ya replicados. Restauración con claves,
+       permisos y conciliación; la réplica no sustituye al respaldo.};
+    \node[bloque,below=7mm of regional] (dr)
+      {\textbf{Recuperación regional}\\México: réplica PostgreSQL
+       asíncrona y S3 CRR. ECR y OpenTofu reconstruyen software
+       e infraestructura; los respaldos recuperan datos.};
+    \node[banda,below=7mm of respaldo.south west,anchor=north west] (secuencia)
+      {\textbf{Conmutación y retorno}\\Declarar incidente, aislar escrituras,
+       promover una réplica, escalar, validar y cambiar Route 53.
+       Retorno con réplica inversa, atraso cero y ventana aprobada.};
+    \node[bloque,text width=148mm,below=7mm of secuencia] (pruebas)
+      {\textbf{Evidencia de continuidad}\\Mensual: muestra representativa
+       de restauración y tiempo efectivo. Trimestral: WAN y modo offline.
+       Semestral: DR con conmutación real. Tras cambios relevantes:
+       restauración, nodo, disco y reconciliación. La prueba cruza antigüedad, vencimiento, fuente laboral, bajas y aislamiento. Verifica también UPS 30 min y generación 24 h.};
+    \draw[enlace] (objetivos.south -| local.north) -- (local.north);
+    \draw[enlace] (objetivos.south -| regional.north) -- (regional.north);
+    \draw[enlace] (local) -- (respaldo);
+    \draw[enlace] (regional) -- (dr);
+    \draw[enlace] (respaldo.south) -- (secuencia.north -| respaldo.south);
+    \draw[enlace] (dr.south) -- (secuencia.north -| dr.south);
+    \draw[enlace] (secuencia) -- (pruebas);
+  \end{tikzpicture}
+  \caption{Alta disponibilidad, respaldo y recuperación ante desastres}
+  \label{fig:4-14}
+  \FuenteFigura{Elaboración de Synaptix; Transversales, apartados 7.1--7.3 y RT-07.07/12; SD5, secciones 5.2.5 y 5.4.}
+\end{figure}

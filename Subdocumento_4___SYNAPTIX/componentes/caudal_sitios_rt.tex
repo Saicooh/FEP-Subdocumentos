@@ -1,0 +1,30 @@
+\textbf{Presupuesto de tráfico por ubicación.}
+El cálculo distingue las transacciones de negocio de las solicitudes HTTP. Se mantiene la hipótesis de cinco transacciones/s en régimen y veinte en peak, con cinco intercambios HTTP por transacción: veinticinco y cien intercambios/s. Para cada intercambio se reserva un tamaño conjunto de solicitud y respuesta de 16 KiB, incluidos contratos y cabeceras de aplicación. El payload útil normal resulta $25\times16.384\times8=3,2768$ Mb/s y el peak $100\times16.384\times8=13,1072$ Mb/s. El límite de 16 KiB es una envolvente de diseño: los documentos e imágenes se cargan mediante transferencia asíncrona separada, sin ampliar silenciosamente los contratos interactivos. SD5 conserva las hipótesis de población y mezcla; la recepción verifica los tamaños y recalcula si se exceden.
+
+La Tabla~\ref{tab:caudal-sitios} distribuye esos intercambios entre administración, los cinco pantalanes y el varadero. Son hipótesis concurrentes de la misma mezcla, no una suma de máximos incompatibles. Las interfaces externas cloud se prueban además con su propia concurrencia y no se hacen depender del enlace de la marina.
+
+\begin{table}[htbp]
+\centering
+\fontsize{9}{11}\selectfont
+\begin{tabularx}{\linewidth}{|X|r|r|r|r|}
+\hline
+\EncabezadoTabla{Ubicación} & \EncabezadoTabla{HTTP/s normal} & \EncabezadoTabla{HTTP/s peak} & \EncabezadoTabla{Mb/s normal} & \EncabezadoTabla{Mb/s peak}\\ \hline
+Administración y torre & 10 & 40 & 1,31072 & 5,24288\\ \hline
+Cada pantalán (cinco) & 2 & 10 & 0,262144 & 1,31072\\ \hline
+Varadero & 5 & 10 & 0,65536 & 1,31072\\ \hline
+Total del recinto & 25 & 100 & 3,2768 & 13,1072\\ \hline
+\end{tabularx}
+\caption{Caudal interactivo normal y peak por ubicación}
+\label{tab:caudal-sitios}
+\FuenteTabla{Cálculo de Synaptix con las hipótesis de SD5, 5.4, y BT RT-03.20.}
+\end{table}
+
+En la proyección de 760 puntos, cada pantalán concentra 152. La muestra local de 300 bytes por punto cada minuto produce $152\times300\times8/60=6.080$ bit/s por pantalán; los cinco producen 30,4 kbit/s. El supuesto de ráfaga de cien registros/s añade 0,24 Mb/s al tráfico útil. El muestreo local y la consolidación cloud cada quince minutos se mantienen separados y conservan las secuencias, totalizadores y evidencia.
+
+Se reserva una cola asíncrona de imágenes y documentos limitada a 1 Mb/s en régimen y 3 Mb/s en peak, más 1 y 2 Mb/s respectivamente para auditoría, control, protocolos y una consulta de video autorizada. Con ello, régimen requiere $3,2768+0,0304+1+1=5,3072$ Mb/s y peak $13,1072+0,24+3+2=18,3472$ Mb/s. El presupuesto de tráfico nuevo de 20 Mb/s deja 1,6528 Mb/s en peak y no se consume por el lote histórico. Una exportación de video, una actualización masiva o un archivo mayor usa cola y ventana de mantenimiento; no reduce la reserva de funciones críticas. La grabación de las cámaras permanece en su plataforma y red local, sin transmitir permanentemente todos sus flujos a nube.
+
+Cada uno de los dos enlaces se dimensiona para cien Mb/s útiles como mínimo después de cifrado y transporte. Durante reconexión se reservan ochenta para el lote obligatorio y veinte para tráfico nuevo; el presupuesto de veintiocho minutos desarrollado en SD5 permanece válido solo bajo esa mezcla. Para el ensayo de crecimiento a tres veces esta mezcla, el tráfico nuevo alcanza $3\times18,3472=55,0416$ Mb/s y exige una reserva de sesenta Mb/s. Se incorpora al diseño la ampliación de ambos contratos a 800 Mb/s CIR y al menos cuatrocientos Mb/s útiles, con sesenta para tráfico nuevo y trescientos cuarenta para lote. La ampliación se activa antes de habilitar el crecimiento o si el P95 del caudal nuevo supera quince Mb/s durante siete días de operación representativa; el inventario y el costo conservan base y ampliación como dos capacidades de la misma prestación. No se atribuye a la base de cien Mb/s un resultado de reconexión bajo esa carga mayor. Con lote de 30 GB y sensibilidad del 20\,\%, el escenario ampliado requiere $36\times10^9\times8/(340\times10^6)+480=1.327,06$ segundos, es decir 22,12 minutos. El procesamiento debe sostener al menos 120 MB/s equivalentes para aplicar ese lote sensible en los trescientos segundos previstos, más la carga nueva; se verifica y amplía cómputo y almacenamiento antes de habilitar el crecimiento.
+
+Los puertos troncales y el acceso LAN cableado se especifican a 1 Gb/s como mínimo; los accesos Wi-Fi del pantalán y varadero se reciben con al menos diez Mb/s útiles por celda en la mezcla crítica, cobertura de todas las posiciones, marea, flexión y ambiente operativo. No se deduce cobertura radioeléctrica de la velocidad del puerto. La embarcación de inspección captura sin enlace durante ocho horas y descarga por LAN al retornar; su presupuesto en travesía es cero Mb/s y su lote está incluido en el conjunto de sincronización.
+
+La aceptación mide normal, peak, crecimiento, falla de un enlace y reconexión simultánea por ubicación; conserva tamaño de mensaje, carga útil, pérdida, latencia P95, reserva y volumen pendiente. Un resultado que exceda la envolvente obliga a ampliar capacidad o ajustar el dimensionamiento antes de habilitación, sin eliminar evidencia obligatoria de los treinta minutos \parencites[RT-03.20, p.~9]{pucv-transversal}[cap.~15, RT-03.10/13]{caso07}.

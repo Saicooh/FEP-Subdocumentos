@@ -13,7 +13,7 @@ La escala de nueve niveles de madurez tecnológica (\textit{Technology Readiness
 
 
 
-La innovación propuesta corresponde a un producto o servicio de base tecnológica denominado \textit{Servicio de Solicitud y Seguimiento de Mantenimiento de Embarcaciones}. Su objetivo es facilitar que el armador solicite trabajos de mantenimiento, que el contratista registre su respuesta y avance, y que la marina y el armador pueda consultar el estado de cada solicitud. 
+La innovación propuesta corresponde a un producto o servicio de base tecnológica denominado \textit{Servicio de Solicitud y Seguimiento de Mantenimiento de Embarcaciones}. Su objetivo es facilitar que el armador solicite trabajos de mantenimiento, que el contratista registre su respuesta y avance, y que la marina y el armador pueda consultar el estado de cada solicitud.
 
 \subsection{ Problema u oportunidad concreta}
 
@@ -51,60 +51,297 @@ Para el Servicio de Solicitud y Seguimiento de Mantenimiento, se cataloga como T
 
 \subsection{Diseño de la incorporación}
 
-\textbf{Arquitectura.} Se propone incorporar el flujo como una extensión asociada a los módulos VAR (Varadero, Travelift e Invernada), CTR (Contratistas y Control de Acceso), AUT (Portales de Autoatención), ALE (Alertas y Marejadas) y ADM (Administración Funcional e Identidad). La vinculación específica y los contratos de interfaz deberán confirmarse con la arquitectura del proyecto. La innovación se limitará a la solicitud de mantenimiento del armador y su seguimiento; no duplicará la gestión de estadías del varadero ni el registro general de contratistas.
+El servicio se incorporará mediante el componente \texttt{IN1-SOL}, responsable de las solicitudes de mantenimiento y su historial, dentro del dominio de Varadero y contratistas. AUT ofrecerá las vistas del armador, la marina y el contratista; ADM ofrecerá la administración de permisos bajo las políticas de Auditoría y seguridad y la autenticación de la capa de Seguridad transversal del SD4; CTR mantendrá la información y habilitación del contratista; y ALE tramitará los avisos del flujo. Clientes y contratos conservará la autoridad sobre los maestros de armador y embarcación y su vínculo vigente. La marina designará al responsable operacional que revisa y deriva solicitudes. El contratista registrará aceptación o rechazo, avance y finalización; la marina verificará la integridad del expediente para cerrar administrativamente la solicitud. Ese cierre NO certifica la calidad técnica de la reparación.
 
-\textbf{Paquetes de la EDT.} La incorporación requiere, como mínimo, paquetes de trabajo para:
-\begin{itemize}
-    \item diseño del flujo, los estados y las reglas de transición;
-    \item desarrollo de formularios para crear y consultar solicitudes;
-    \item gestión de roles, historial y notificaciones;
-    \item integración con los módulos correspondientes;
-    \item pruebas funcionales y de aceptación;
-    \item capacitación y ejecución del piloto.
-\end{itemize}
-Los códigos de estos paquetes quedan \textbf{pendientes de conciliación con la EDT aprobada}.
+La solicitud adicional conservará su propio identificador y se vinculará con la orden de trabajo autorizada de la solución base. Aceptar una solicitud no autoriza acceso a faena: esa autorización seguirá las reglas de CTR. El servicio no duplicará la gestión de estadías, la programación de recursos de varadero ni el registro general de contratistas.
 
-\textbf{Mes de materialización.} El mes de diseño, el período de desarrollo, el piloto y la aceptación quedan \textbf{pendientes de alinear con el cronograma base}. No se asigna un mes sin revisar la planificación vigente.
+Se definen los siguientes identificadores de contrato para su incorporación a la arquitectura del SD4.
+\begin{description}
+\item[\texttt{IN1-IF-01}: IN1-SOL / AUT .] Crear y consultar solicitudes y solicitar transiciones autorizadas. La entrada incluirá embarcación, solicitante, trabajos, descripción y disponibilidad. La salida contendrá identificador, estado, versión e historial visible según rol. El vínculo vigente entre usuario y embarcación se verificará con el dominio de Clientes y contratos.
+\item[\texttt{IN1-IF-02}: IN1-SOL / CTR.] Consultar identidad, servicios declarados y habilitación del contratista; registrar su designación por la marina y su respuesta. CTR conservará la autoridad sobre acreditación y acceso. Una habilitación vencida bloqueará la programación o el inicio de la faena, conservando la solicitud y el motivo.
+\item[\texttt{IN1-IF-03}: IN1-SOL / VAR.] Vincular la solicitud con la orden de trabajo autorizada y consultar su programación o reprogramación. Se conservará la relación entre identificadores y versiones, sin crear automáticamente una segunda orden ni reservar recursos al aceptar la solicitud.
+\item[\texttt{IN1-IF-04}: IN1-SOL / ALE.] Enviar eventos de cambio de estado para notificar a los destinatarios autorizados. Se registrará la entrega o el fallo del aviso. Un fallo de notificación no revertirá una transición válida y el estado seguirá disponible en AUT.
+\item[\texttt{IN1-IF-05}: IN1-SOL / ADM.] Aplicar la identidad autenticada por la capa de Seguridad transversal y validar rol y ámbito de acceso en cada operación, bajo las políticas de Auditoría y seguridad. Se distinguirá entre el armador de la embarcación, el contratista asignado y el personal autorizado de la marina. Las transiciones y las correcciones conservarán su autor y su evidencia de auditoría.
+\item[\texttt{IN1-IF-06}: IN1-SOL / Clientes y contratos.] Consultar embarcación y vínculo vigente con el armador. No se aceptará como prueba de autorización un identificador de embarcación enviado por el navegador sin validación del servidor.
+\end{description}
+
+Las interfaces utilizarán los mecanismos HTTPS, REST/JSON y contratos OpenAPI previstos en el SD4 para la arquitectura común. Cada escritura incorporará una clave de idempotencia, un identificador de correlación y la versión esperada del registro. Una versión desactualizada se rechazará para evitar sobrescrituras. Los eventos tendrán identificador único y secuencia por solicitud; su consumo descartará duplicados y detectará discontinuidades. Cada transición conservará identificador de solicitud, estado anterior y nuevo, instante del hecho, instante de registro, actor y motivo cuando corresponda. Las correcciones añadirán un registro, sin borrar el anterior.
+
+Antes de iniciar el piloto se probarán el aislamiento entre armadores, la restricción al contratista asignado, las transiciones inválidas, los reintentos, los duplicados, la concurrencia, el rechazo por falta de habilitación y la recuperación de avisos fallidos. Los contratos detallarán campos, respuestas y errores en la especificación del paquete \texttt{IN1.1.2}.
+
+\textbf{Desconexión y continuidad.}
+La extensión funcionará en los servicios centrales. Si no se encuentra disponible, la marina mantendrá un registro controlado de solicitudes y comunicaciones, con identificador provisional, fuente, autor y fecha. La carga posterior distinguirá el instante del hecho del instante de ingreso y conciliará duplicados. Esta alternativa no autorizará accesos ni maniobras y no alterará la operación crítica local de la solución base.
+
+\subsubsection{EDT de la innovación.}
+La tabla \ref{tab:edt-innovacion-1}, indica el EDT con los entregables y paquetes de trabajo. Los identificadores siguientes son el código interno de esta extensión y deberán conservar una correspondencia unívoca con el código de cuentas de SD7/T-15. Los niveles \texttt{IN1.1} a \texttt{IN1.7} agrupan entregables; los códigos terminales identifican paquetes de trabajo. Las fechas se muestran como asociación al cronograma, no como parte de la estructura de la EDT.
+
+%Las horas-hombre (HH) son estimaciones iniciales de planificación para una extensión que reutiliza portales, identidad, órdenes y notificaciones existentes; no son mediciones ni precios. Cada paquete terminal se programa dentro de una quincena y tiene entre 8 y 80 HP. Q1 y Q2 identifican la primera y segunda quincena del mes contractual.
+
+\begin{longtable}{
+  L{\dimexpr0.18\linewidth-2\tabcolsep\relax}
+  L{\dimexpr0.47\linewidth-2\tabcolsep\relax}
+  L{\dimexpr0.13\linewidth-2\tabcolsep\relax}
+  L{\dimexpr0.22\linewidth-2\tabcolsep\relax}
+}
+  \caption{Entregables y paquetes de trabajo de la innovación 1}
+  \label{tab:edt-innovacion-1}\\
+  \hline
+  \EncabezadoTabla{Código} &
+  \EncabezadoTabla{Entregable / paquete de trabajo} &
+  \EncabezadoTabla{Mes} &
+  \EncabezadoTabla{Responsable} \\
+  \hline
+  \endfirsthead
+
+  \hline
+  \EncabezadoTabla{Código} &
+  \EncabezadoTabla{Entregable / paquete de trabajo} &
+  \EncabezadoTabla{Mes} &
+  \EncabezadoTabla{Responsable} \\
+  \hline
+  \endhead
+
+  \rowcolor{SynSurface}
+  \textbf{IN1.1} & \textbf{Diseño del servicio} &
+  \textbf{14--15} & \textbf{Arquitectura} \\
+  \hline
+  IN1.1.1 & Flujo, estados y matriz de roles revisados &
+  14-Q1 & Arquitectura \\
+  \hline
+  IN1.1.2 & Especificación de las interfaces &
+  14-Q2 & Arquitectura \\
+  \hline
+  IN1.1.3 & Protocolo de medición y aceptación &
+  15-Q1 & Calidad \\
+  \hline
+
+  \rowcolor{SynSurface}
+  \textbf{IN1.2} & \textbf{Servicio de solicitudes y portal} &
+  \textbf{16--17} & \textbf{Desarrollo} \\
+  \hline
+  IN1.2.1 & Servicio de solicitudes y transiciones &
+  16-Q1 & Desarrollo \\
+  \hline
+  IN1.2.2 & Formularios y vistas en AUT &
+  16-Q2 & Desarrollo \\
+  \hline
+  IN1.2.3 & Historial y registro asistido auditable &
+  17-Q1 & Desarrollo \\
+  \hline
+
+  \rowcolor{SynSurface}
+  \textbf{IN1.3} & \textbf{Integración con los módulos existentes} &
+  \textbf{17} & \textbf{Arquitectura} \\
+  \hline
+  IN1.3.1 & Conexiones con CTR y VAR verificadas &
+  17-Q1 & Arquitectura \\
+  \hline
+  IN1.3.2 & Identidad y vínculo de armador integrados &
+  17-Q2 & Seguridad \\
+  \hline
+  IN1.3.3 & Notificaciones y reintentos integrados &
+  17-Q2 & Desarrollo \\
+  \hline
+
+  \rowcolor{SynSurface}
+  \textbf{IN1.4} & \textbf{Servicio verificado mediante pruebas} &
+  \textbf{18} & \textbf{Calidad} \\
+  \hline
+  IN1.4.1 & Informe de pruebas funcionales &
+  18-Q1 & Calidad \\
+  \hline
+  IN1.4.2 & Informe de seguridad y recuperación &
+  18-Q2 & Seguridad \\
+  \hline
+
+  \rowcolor{SynSurface}
+  \textbf{IN1.5} & \textbf{Usuarios capacitados y piloto evaluado} &
+  \textbf{19--20} & \textbf{Implantación} \\
+  \hline
+  IN1.5.1 & Guía operativa y capacitación registrada &
+  19-Q2 & Implantación \\
+  \hline
+  IN1.5.2 & Registro base de la primera quincena &
+  19-Q1 & Calidad \\
+  \hline
+  IN1.5.3 & Registro base de la segunda quincena &
+  19-Q2 & Calidad \\
+  \hline
+  IN1.5.4 & Registro de piloto de la primera quincena &
+  20-Q1 & Implantación \\
+  \hline
+  IN1.5.5 & Registro de piloto de la segunda quincena &
+  20-Q2 & Implantación \\
+  \hline
+  IN1.5.6 & Informe comparativo y acta de evaluación &
+  20-Q2 & Calidad \\
+  \hline
+
+  \rowcolor{SynSurface}
+  \textbf{IN1.6} & \textbf{Servicio puesto en operación} &
+  \textbf{21} & \textbf{Operación/SRE} \\
+  \hline
+  IN1.6.1 & Servicio desplegado y transferido a operación &
+  21-Q1 & Operación/SRE \\
+  \hline
+
+  \rowcolor{SynSurface}
+  \textbf{IN1.7} & \textbf{Servicio operado y seguimiento documentado} &
+  \textbf{21--56} & \textbf{Operación/SRE} \\
+  \hline
+  IN1.7.m.q & Informe quincenal de operación con registro de
+  incidencias, notificaciones fallidas y cambios &
+  21--56 & Operación/SRE \\
+  \hline
+\end{longtable}
+
+La rama \texttt{IN1.7} comprende la operación incremental desde el mes 21 hasta el 56. Se utilizará un paquete por quincena: \texttt{IN1.7.m.q}, donde $m$ toma cada valor entero de 21 a 56 y $q$ vale 1 o 2. Por ejemplo, \texttt{IN1.7.21.1} identifica el primer informe quincenal de operación.  a cargo de Operación/SRE, con registro de incidencias, notificaciones fallidas, cambios y continuidad del seguimiento.
+
+Como criterio de recepción, los entregables de diseño requerirán revisión de la contraparte; los de software, pruebas satisfactorias de sus contratos y permisos; los de prueba, evidencias reproducibles sin defectos críticos abiertos; y los de piloto, registros trazables e informe que conserve resultados favorables, nulos y adversos. La aceptación técnica del flujo y la comprobación de su beneficio se documentarán por separado.
+
+\subsubsection{Calendario y dependencias}
+El diseño se realizará en los meses 14--15, la construcción e integración en 16--17 y las pruebas en 18. La línea base se levantará durante el mes 19 con la solución obligatoria, manteniendo desactivado el flujo adicional para la cohorte evaluada. La capacitación se impartirá al final del mes 19, tras cerrar la captura base. El piloto se ejecutará durante el mes 20 y se evaluará al cierre de ese mes. La materialización operativa se programa para el mes 21, tras la aceptación, y el seguimiento continuará hasta el mes 56.
+
+Este calendario permite compartir la medición del esfuerzo administrativo con la innovación 4, cuyo piloto también ocupa los meses 19--20. La innovación 1 mantendrá como indicador principal el tiempo de primera respuesta; la 4 medirá el tiempo activo de coordinación. Los resultados no se confundirán ni se contabilizará dos veces su beneficio. Este calendario no acredita el criterio deseable de beneficio verificable antes del mes 16.
 
 \subsection{Impacto económico estimado}
 
-La inversión incremental comprenderá el diseño del flujo, desarrollo, integración, pruebas, capacitación y puesta en marcha. El costo operacional incluirá soporte, mantenimiento del servicio y envío de notificaciones. Los montos en UF quedan pendientes de estimación y deberán incorporarse al flujo de caja en los períodos correspondientes.
+La inversión incremental comprenderá el diseño, desarrollo, integración,
+pruebas, capacitación y puesta en marcha del servicio, asociados a los
+paquetes IN1.1.1 a IN1.6.1. La operación, representada por IN1.7,
+considerará el soporte, mantenimiento y consumo adicional de
+infraestructura y notificaciones durante los meses 21--56. Estos costos
+se valorizarán en SD11 y en la Oferta Económica, evitando duplicar
+recursos ya considerados en la solución base.
 
-El beneficio esperado es reducir el tiempo que la marina dedica a coordinar y responder consultas sobre solicitudes, además de facilitar la detección de trabajos pendientes o detenidos. Para estimarlo, se propone medir el volumen de solicitudes y las horas de coordinación antes y después del piloto. El beneficio económico podrá calcularse como:
+El beneficio esperado consiste en reducir el esfuerzo administrativo
+dedicado a consultar avances, coordinar respuestas y localizar
+información sobre los trabajos de mantenimiento. Su evaluación comparará
+solicitudes equivalentes antes y durante el piloto, registrando el
+trabajo de coordinación requerido en ambos períodos. Una respuesta
+más rápida del contratista no se interpretará automáticamente como
+una reducción de costos.
 
-\[
-B_t =
-\left(H_{\mathrm{base},t} - H_{\mathrm{posterior},t}\right)
-\times C_{\mathrm{hora}}
--
-C_{\mathrm{operación},t},
-\]
+La disminución del esfuerzo administrativo se considerará una mejora
+de capacidad operativa. Sólo se reconocerá ahorro económico cuando
+exista un gasto efectivamente evitado u otro beneficio valorizado y
+aceptado por el cliente. La evaluación económica descontará los costos
+incrementales de implementación y operación del servicio.
 
-donde \(H_{\mathrm{base},t}\) representa las horas de coordinación antes del servicio, \(H_{\mathrm{posterior},t}\) las horas observadas después de su puesta en marcha y \(C_{\mathrm{hora}}\) el costo horario asociado. La inversión y los costos de operación deberán registrarse como egresos incrementales en el flujo de caja. No se atribuirán ahorros o ingresos hasta contar con mediciones que los respalden.
+El beneficio atribuible a esta innovación se contabilizará una sola
+vez. Los costos específicos de medición y el incentivo de la
+innovación 4 se registrarán en dicha innovación, sin duplicar el
+ahorro generado por el servicio de mantenimiento.
 
 \subsection{Indicador de verificación del beneficio}
 
-El indicador principal será la **mediana del tiempo transcurrido entre el envío de una solicitud y la primera respuesta del contratista**, medida en horas:
-
+El indicador principal será la mediana de horas transcurridas entre el envío de la solicitud y la primera respuesta explícita del contratista, sea aceptación o rechazo:
 \[
-T_{\mathrm{respuesta}} =
-\operatorname{mediana}
-\left(
-t_{\mathrm{primera\ respuesta}} -
-t_{\mathrm{envío}}
-\right).
+ T_\mathrm{respuesta}=\operatorname{mediana}
+ \left(t_\mathrm{primera\ respuesta}-t_\mathrm{envío}\right).
 \]
+Una confirmación automática o el aviso de recepción no contará como respuesta del contratista. La fuente del instante de respuesta quedará registrada, incluso si la marina ingresa una comunicación recibida por otro canal.
 
-La línea base se obtendrá de una muestra de solicitudes gestionadas antes del piloto. Si no existen registros históricos comparables, se levantará una línea base prospectiva durante un período inicial acordado con la marina. Como meta preliminar del piloto, se propone reducir la mediana del tiempo de primera respuesta en un 20\,\% respecto de la línea base; esta meta deberá validarse una vez medido el valor inicial.
+La línea base se levantará en el mes 19 y el piloto en el mes 20. Como diseño de evaluación se utilizarán solicitudes ingresadas durante los primeros 21 días de cada mes, observadas por siete días desde su envío; así se conserva la misma ventana y se cierra el seguimiento dentro del mes. Se propone un mínimo operativo de 30 solicitudes por condición, sin atribuirle potencia estadística demostrada. Se mantendrán tipos de trabajo y contratistas comparables, explicando los cambios de composición.
 
-La medición se realizará durante el piloto y al cierre del período de evaluación. Como indicador complementario de integridad, se verificará que el 100\,\% de las solicitudes gestionadas por el nuevo flujo conserve el estado, la fecha de actualización y el responsable de cada transición.
+La meta propuesta es reducir la mediana en un 20\%, conservando o mejorando la proporción de solicitudes respondidas dentro de siete días. Se informarán también las solicitudes sin respuesta, canceladas y excluidas, con sus motivos. Las solicitudes sin respuesta no recibirán un tiempo cero ni se ocultarán del informe. Si la muestra es insuficiente, la base es cero o los cambios de composición impiden comparar, el beneficio se declarará no demostrado; se mantendrá el registro y se ampliará la observación conforme al cronograma autorizado, sin inventar datos para cumplir la meta.
 
-\subsection{ Riesgo de adopción}
+El indicador complementario será que el 100\% de las transiciones del flujo conserve estado anterior y nuevo, fecha y responsable. La captura del esfuerzo administrativo se realizará con el mismo método en ambos períodos para la evaluación económica y su coordinación con la innovación 4. Calidad preparará el informe; el responsable operacional validará los hechos y la Contraparte Técnica aceptará la evidencia. La ausencia de beneficio demostrado no se sustituirá por la mera instalación del software.
 
-Existe el riesgo de que algunos contratistas no actualicen oportunamente las solicitudes o continúen coordinando exclusivamente por teléfono o mensajería. También puede haber baja adopción por parte de los armadores, lo que produciría historiales incompletos y reduciría la utilidad del seguimiento.
 
-Para mitigar este riesgo, se validarán los estados y responsabilidades con la marina, los armadores y los contratistas participantes; se capacitará a los usuarios del piloto y se acordará quién debe actualizar cada etapa. Si un contratista no utiliza directamente el sistema, la marina podrá registrar la respuesta recibida por el canal acordado, dejando constancia de quién ingresó la información, cuándo lo hizo y cuál fue su fuente.
+\subsection{Riesgo de adopción}
 
+La adopción del servicio depende de que los armadores utilicen el canal
+de solicitudes, los contratistas actualicen el avance y la marina
+supervise el seguimiento. También requiere una integración confiable
+con los módulos existentes y permisos que protejan la información de
+cada usuario. La tabla~\ref{tab:riesgos-innovacion-1} muestra el listado de riesgos de esta innovación junto a su probabilidad de ocurrencia y nivel de impacto. Las probabilidades e impactos son valoraciones
+iniciales que se revisarán antes y durante el piloto y se consolidarán
+en la matriz de riesgos de SD6.
+
+\begin{longtable}{
+  L{\dimexpr0.18\linewidth-2\tabcolsep\relax}
+  L{\dimexpr0.44\linewidth-2\tabcolsep\relax}
+  L{\dimexpr0.20\linewidth-2\tabcolsep\relax}
+  L{\dimexpr0.18\linewidth-2\tabcolsep\relax}
+}
+  \caption{Riesgos de adopción de la innovación 1}
+  \label{tab:riesgos-innovacion-1}\\
+  \hline
+  \EncabezadoTabla{Código} &
+  \EncabezadoTabla{Riesgo} &
+  \EncabezadoTabla{Probabilidad} &
+  \EncabezadoTabla{Impacto} \\
+  \hline
+  \endfirsthead
+
+  \hline
+  \EncabezadoTabla{Código} &
+  \EncabezadoTabla{Riesgo} &
+  \EncabezadoTabla{Probabilidad} &
+  \EncabezadoTabla{Impacto} \\
+  \hline
+  \endhead
+
+  \rowcolor{SynSurface}
+  R-IN1-01 & Actualización insuficiente por contratistas &
+  Alta & Alto \\
+  \hline
+
+  R-IN1-02 & Baja participación de los armadores &
+  Media & Medio \\
+  \hline
+
+  \rowcolor{SynSurface}
+  R-IN1-03 & Fallas de integración con los módulos existentes &
+  Media & Alto \\
+  \hline
+
+  R-IN1-04 & Acceso no autorizado a solicitudes &
+  Baja & Muy alto \\
+  \hline
+\end{longtable}
+
+
+El riesgo \textbf{R-IN1-01} corresponde a que los contratistas mantengan
+la coordinación por teléfono o mensajería sin actualizar las solicitudes.
+Se mitigará con capacitación, recordatorios y responsabilidades claras.
+Como medida de contingencia, si una actualización comunicada permanece
+sin registrar por más de un día hábil, la marina realizará el registro
+asistido, conservando su fuente y fecha. El Líder de Implantación
+coordinará estas medidas, vinculadas a los paquetes IN1.1.1, IN1.3.3
+e IN1.5.1.
+
+El riesgo \textbf{R-IN1-02} consiste en una participación insuficiente
+de los armadores para evaluar el beneficio. Se mitigará mediante
+orientación e ingreso asistido. Como medida de contingencia, si al
+finalizar la primera quincena del piloto existen menos de 15 solicitudes
+elegibles, se reforzará la convocatoria. Si al cierre no se alcanzan
+30, el beneficio se informará como no demostrado y se propondrá ampliar
+la observación mediante el control de cambios. El responsable será
+el Líder de Implantación, mediante los paquetes IN1.5.1, IN1.5.4
+e IN1.5.6.
+
+El riesgo \textbf{R-IN1-03} comprende fallas de integración que impidan
+vincular solicitudes, contratistas y órdenes de trabajo. Se mitigará
+mediante la definición de interfaces y pruebas de integración,
+coordinadas por el Arquitecto de Solución en los paquetes IN1.1.2,
+IN1.3.1 a IN1.3.3 e IN1.4.1. Como medida de contingencia, si una
+interfaz crítica no supera las pruebas al cierre del mes 18, se
+postergará el piloto del flujo afectado y se mantendrá la atención
+mediante la solución base hasta corregirla. Cualquier ajuste del
+calendario se tramitará mediante el control de cambios.
+
+El riesgo \textbf{R-IN1-04} corresponde al acceso no autorizado a
+solicitudes de otras embarcaciones. Se mitigará verificando los permisos,
+el vínculo del armador y la asignación del contratista. Como medida
+de contingencia, ante cualquier acceso indebido confirmado, se
+suspenderá la función afectada, se conservará la evidencia y se
+corregirán los controles, repitiendo las pruebas antes de reactivarla.
+El Encargado de Seguridad será responsable de estas medidas, asociadas
+a los paquetes IN1.3.2 e IN1.4.2.
+
+\newpage
 \section{Innovación 2}
 
 La innovación propuesta corresponde a una innovación de proceso denominada
@@ -112,11 +349,11 @@ La innovación propuesta corresponde a una innovación de proceso denominada
 preventivo y distribuirlos a lo largo del invierno, de modo que cada embarcación llegue a su turno de botadura con esos trabajos terminados.
 
 \subsection{Problema u oportunidad concreta}
- 
+
 Las Bases Técnicas describen una explanada de invernada con 180 puestos en seco,de los cuales 152 estuvieron ocupados en el invierno de 2026. Las embarcaciones salen del agua entre abril y mayo y vuelven a entrar entre septiembre y noviembre, el 62~\% de los 1.150 movimientos anuales del travelift se concentraen esas dos campañas de seis semanas. Mientras la embarcación está en tierra, su armador contrata por su cuenta trabajos de casco, pintura, motor, velas o electrónica, que ejecutan empresas contratistas externas en los 14 puestos de trabajo del varadero \parencite[caps.~2 y 7; anexo~B.2]{caso07}.
- 
+
 Cada armador decide qué trabajos contratar y cuándo, sin un calendario común y sin relación con el orden en que su embarcación saldrá de la explanada, que es el que determina la  secuencia de botadura, una embarcación ubicada al fondo no puede botarse antes que las que tiene delante. A esto se suma que la operadora de charter, con 14 embarcaciones basadas en la marina, necesita que cada una esté lista, con el chequeo hecho, cuando llegan sus tripulaciones.
- 
+
 La oportunidad consiste en convertir un período en que la embarcación ya está en seco (cuando revisar el casco, cambiar ánodos o renovar la pintura
 antiincrustante no exige una varada adicional), en un ciclo de mantenimiento
 planificado. Las Bases no entregan una línea base sobre cuántos trabajos se
@@ -125,9 +362,9 @@ embarcaciones llegan a su botadura con trabajos pendientes, estos datos deberán
 levantarse para estimar el problema actual y comprobar el beneficio.
 
 \subsection{Tecnología, práctica o modelo que la sustenta}
- 
+
 La innovación se basa en una forma de trabajo que se llama \emph{mantenimiento preventivo}. Cuando el mantenimiento preventivo se realiza en fechas fijadas de antemano, en lugar de esperar a que alguien se acuerde de hacerlo, se habla de \emph{mantenimiento programado}. Esta es la terminología que utiliza la norma europea de mantenimiento UNE-EN 13306:2018 \parencite{une13306}.
- 
+
 En una embarcación, varias de estas tareas solo pueden hacerse con el casco
 fuera del agua. Por ejemplo: antes de volver a poner una embarcación en el agua
 se recomienda revisar la pintura antiincrustante, que evita que algas y otros
@@ -138,10 +375,10 @@ mangueras, válvulas del casco y hélices. Durante la
 invernada, la embarcación ya permanece varios meses en tierra, por lo que es el
 momento natural para hacer estos trabajos sin tener que sacarla del agua una
 vez más.
- 
+
 El proceso se organiza en cuatro etapas que siguen el calendario de la
 invernada:
- 
+
 \begin{enumerate}
   \item \textbf{Ficha de ingreso} (abril-mayo): Una vez que la embarcación
         queda apoyada en sus calzos (nunca durante la maniobra de izaje), el
@@ -166,11 +403,11 @@ invernada:
         el armador una nueva fecha para el trabajo o un ajuste de su turno de
         botadura antes de fijar la secuencia definitiva.
 \end{enumerate}
- 
+
 La figura~\ref{fig:inn2-ciclo} representa el ciclo completo y distingue las
 funciones que ya forman parte de la solución base de las que agrega esta
 innovación.
- 
+
 \begin{figure}[H]
   \centering
   \colorlet{innNavy}{SynNavy}
@@ -199,7 +436,7 @@ innovación.
     \node[rotate=90, font=\sffamily\bfseries\small, text=innNavy] at (0.45,-1.6)  {Armador};
     \node[rotate=90, font=\sffamily\bfseries\small, text=innNavy] at (0.45,-4.8)  {Marina};
     \node[rotate=90, font=\sffamily\bfseries\small, text=innNavy] at (0.45,-8.0) {Contratista};
- 
+
     \fill[innHead] (0.9,0) rectangle (16.4,1.5);
     \draw[innLine, line width=0.4pt] (0.9,0) -- (16.4,0);
     \foreach \x in {4.0,7.1,10.2,13.3} \draw[innLine, line width=0.4pt] (\x,1.5) -- (\x,0);
@@ -215,11 +452,11 @@ innovación.
     \node[paso] (M2) at (5.55,-4.8)  {Propone un paquete preventivo según ficha y catálogo\\ \textbf{PROPUESTA}};
     \node[paso] (A2) at (5.55,-1.6)  {Elige tareas y empresa acreditada, o rechaza\\ \textbf{ACEPTADA}};
     \node[paso] (M3) at (8.65,-4.8)  {Asigna semana y cupo según orden de botadura\\ \textbf{CALENDARIZADA}};
-    \node[paso] (C3) at (8.65,-8.0) {Ejecuta y cierra cada trabajo (flujo de la Innovación~1)};
+    \node[paso] (C3) at (8.65,-8.0) {Ejecuta y registra la finalización de cada trabajo (flujo de la Innovación~1)};
     \node[paso] (M4) at (11.75,-4.8) {Detecta trabajos pendientes antes de la campaña\\ \textbf{EN REVISIÓN}};
     \node[paso] (A4) at (11.75,-1.6) {Confirma recepción o acuerda nueva fecha};
     \node[base] (M5) at (14.85,-4.8) {Botadura según la secuencia de la explanada};
- 
+
 
     \draw[flecha] (M1) -- (A1);
     \draw[flecha] (A1.east) -- (4.0,-1.6)  |- (M2.west);
@@ -230,8 +467,8 @@ innovación.
     \draw[flecha] (M4) -- node[nota, right=2pt, pos=0.3, align=left] {con\\ pendientes} (A4);
     \draw[flecha] (A4.east) -| (M5.north);
     \draw[flecha] (M4.east) -- node[nota, above=1pt, align=center] {sin\\ pendientes} (M5.west);
- 
-   
+
+
     \node[paso, text width=0.5cm, minimum height=0.35cm, inner sep=1pt] (L1) at (1.4,-10.3) {};
     \node[anchor=west, font=\sffamily\fontsize{9}{11}\selectfont, text=innNavy] at (L1.east) {Aporte de la innovación};
     \node[base, text width=0.5cm, minimum height=0.35cm, inner sep=1pt] (L2) at (6.4,-10.3) {};
@@ -239,14 +476,13 @@ innovación.
   \end{tikzpicture}%
   \caption{Ciclo del Programa de Mantenimiento Preventivo en Invernada}
   \label{fig:inn2-ciclo}
-  \FuenteFigura{Diseño del proceso de Synaptix a partir del calendario de invernada y las restricciones del Caso 07.}
 \end{figure}
- 
+
 El diagrama presenta el ciclo de la invernada y las responsabilidades del
 armador, la marina y el contratista.
- 
+
 El proceso no obliga al armador a contratar trabajos, no elige al contratista por él, no certifica la calidad de los trabajos ejecutados y no administra la gestión interna de las empresas contratistas, exclusión ya declarada en la propuesta (RST-ALC-06). La marina coordina fechas y cupos; la contratación sigue siendo un acuerdo entre el armador y la empresa.
- 
+
 
 
 
@@ -255,105 +491,319 @@ El proceso no obliga al armador a contratar trabajos, no elige al contratista po
 
 
 \subsection{Nivel de madurez de la tecnología o práctica}
- 
+
 El Programa de Mantenimiento Preventivo en Invernada, como proceso coordinado por la marina entre armadores y contratistas, se cataloga como TRL~2 de forma preliminar: su secuencia y sus reglas están formuladas conceptualmente, pero aún no se han implementado ni probado en Bahía Panitao. La escala se aplica al proceso integrado para este caso y no a sus componentes. Si el proceso se prueba durante una temporada de invernada completa, podría evaluarse si corresponde avanzar a TRL~3 o~4, no se asigna ese nivel por anticipado.
- 
+
 
 \subsection{Diseño de la incorporación}
- 
-\textbf{Arquitectura:} Se propone incorporar el proceso como una extensión
-asociada a los módulos VAR (Varadero, Travelift e Invernada), del que toma la
-posición y la secuencia de cada embarcación en la explanada; CTR (Contratistas y
-Control de Acceso), del que toma la vigencia de la acreditación de cada empresa;
-AUT (Portales de Autoatención), donde el armador completa la ficha y acepta el
-paquete; ALE (Alertas y Marejadas), que emite las notificaciones de la revisión
-de cierre; ADM (Administración Funcional e Identidad), donde se mantiene el
-catálogo de tareas. Como la marina no cuenta con personal de tecnologías de
-información, el catálogo y sus parámetros (tareas por tipo de embarcación,
-intervalos sugeridos y plazo de la revisión de cierre) deberán poder
-modificarse desde la administración funcional, sin intervención de un
-especialista. La innovación no duplicará la agenda del travelift ni el registro
-de contratistas. La vinculación específica y los contratos de interfaz deberán
-confirmarse con la arquitectura del proyecto.
- 
-\textbf{Paquetes de la EDT:} La incorporación requiere, como mínimo, paquetes
-de trabajo para:
- 
-\begin{itemize}
-  \item Levantamiento del catálogo de tareas preventivas con el encargado de
-        varadero y las empresas contratistas.
-  \item Diseño de la ficha de ingreso y de las reglas de propuesta.
-  \item Desarrollo del calendario de invernada y de su vínculo con la
-        secuencia de la explanada.
-  \item Integración con el flujo de solicitudes de la Innovación~1 y con los
-        módulos correspondientes.
-  \item Pruebas funcionales y de aceptación.
-  \item Capacitación y ejecución del piloto durante una temporada de invernada.
-\end{itemize}
- 
- 
-\textbf{Mes de materialización:} Esta innovación depende del calendario de la
-marina. Las Bases prohíben intervenir los sistemas que afectan al varadero
-durante las campañas de abril-mayo y septiembre-noviembre, además del
-congelamiento total entre el 15 de diciembre y el 15 de marzo. Por ello, se propone habilitar el piloto
-durante el invierno (junio-agosto), con embarcaciones que ya están en la
-explanada y cuya ficha de ingreso se completaría al inicio del piloto, y medir sus resultados en la campaña de botadura siguiente. El ciclo completo, desde la ficha de ingreso en la varada, comenzaría en la campaña del año posterior.
+
+La innovación se incorporará al módulo de Varadero y contratistas,
+reutilizando las solicitudes de mantenimiento de la innovación 1.
+Cada trabajo aceptado por el armador quedará vinculado a una solicitud
+IN1, desde la cual se consultarán sus estados y antecedentes. El
+programa permitirá organizar las propuestas de mantenimiento y su
+seguimiento, sin duplicar la agenda del varadero ni el registro de
+contratistas.
+
+Las interfaces comprenderán la consulta de posiciones y fechas de
+botadura en VAR; la verificación de habilitación de contratistas en
+CTR; el ingreso de antecedentes y la aceptación del armador en AUT;
+los avisos de seguimiento mediante ALE; y la configuración del
+catálogo y los permisos en ADM. Utilizarán los mecanismos comunes
+HTTPS, REST/JSON y OpenAPI previstos en la arquitectura. Antes del
+piloto se comprobarán los permisos, la vinculación con IN1 y el
+tratamiento de reintentos y avisos fallidos.
+
+La siguiente EDT agrupa los entregables y sus paquetes de trabajo.
+La conciliación con SD4 deberá confirmar las interfaces y sus
+responsables; SD7 deberá incorporar los plazos y verificar la
+disponibilidad de los perfiles compartidos. Se considerará únicamente
+el trabajo adicional de esta innovación, evitando contabilizar
+nuevamente las capacidades desarrolladas para IN1.
+
+\begin{longtable}{
+L{\dimexpr0.14\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.44\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.22\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.20\linewidth-2\tabcolsep\relax}
+}
+\caption{EDT de incorporación de la innovación 2}
+\label{tab:in2-edt}\\
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Entregable / paquete de trabajo} &
+\EncabezadoTabla{Mes contractual} &
+\EncabezadoTabla{Responsable} \\
+\hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Entregable / paquete de trabajo} &
+\EncabezadoTabla{Mes contractual} &
+\EncabezadoTabla{Responsable} \\
+\hline
+\endhead
+
+\rowcolor{SynSurface}
+\textbf{IN2.1} &
+\textbf{Diseño aprobado} &
+\textbf{14--15} &
+\textbf{Líder funcional} \\
+\hline
+IN2.1.1 & Catálogo de mantenimiento y reglas de planificación definidos &
+14 & Líder funcional \\
+\hline
+IN2.1.2 & Ficha, responsabilidades e interfaces especificadas &
+15 & Arquitectura \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN2.2} &
+\textbf{Ficha y propuestas implementadas} &
+\textbf{16--17} &
+\textbf{Desarrollo} \\
+\hline
+IN2.2.1 & Ficha de ingreso de antecedentes disponible en AUT &
+16 & Desarrollo \\
+\hline
+IN2.2.2 & Catálogo configurable y aceptación de propuestas implementados &
+17 & Desarrollo \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN2.3} &
+\textbf{Calendario e integraciones operativos} &
+\textbf{17--18} &
+\textbf{Arquitectura} \\
+\hline
+IN2.3.1 & Calendario integrado con posiciones, botaduras y habilitación de contratistas &
+17 & Desarrollo \\
+\hline
+IN2.3.2 & Trabajos aceptados vinculados a solicitudes IN1 &
+18 & Desarrollo \\
+\hline
+IN2.3.3 & Permisos y notificaciones configurados &
+18 & Desarrollo \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN2.4} &
+\textbf{Solución probada y aceptada técnicamente} &
+\textbf{19--20} &
+\textbf{QA} \\
+\hline
+IN2.4.1 & Evidencias de pruebas funcionales y de integración &
+19 & QA \\
+\hline
+IN2.4.2 & Pruebas de seguridad y recuperación, y acta de aceptación técnica &
+20 & Seguridad / QA \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN2.5} &
+\textbf{Piloto ejecutado y evaluado} &
+$M_{\mathrm{inv}}$ a $M_{\mathrm{inv}}+5$ &
+\textbf{Implantación} \\
+\hline
+IN2.5.1 & Participantes inscritos, fichas completas y capacitación registrada &
+$M_{\mathrm{inv}}$ & Implantación \\
+\hline
+IN2.5.2 & Planes aceptados y calendario confirmado &
+$M_{\mathrm{inv}}$ & Líder funcional \\
+\hline
+IN2.5.3 & Informes quincenales de seguimiento del piloto &
+$M_{\mathrm{inv}}$ a $M_{\mathrm{inv}}+2$ &
+Implantación \\
+\hline
+IN2.5.4 & Registro de revisión de pendientes previo a cada botadura &
+$M_{\mathrm{inv}}+2$ a $M_{\mathrm{inv}}+5$ &
+Líder funcional \\
+\hline
+IN2.5.5 & Registro de resultados de la campaña de botaduras &
+$M_{\mathrm{inv}}+3$ a $M_{\mathrm{inv}}+5$ &
+QA \\
+\hline
+IN2.5.6 & Informe comparativo de resultados y acta de evaluación &
+$M_{\mathrm{inv}}+5$ & QA \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN2.6} &
+\textbf{Procedimiento ajustado y transferido} &
+$M_{\mathrm{inv}}+5$ &
+\textbf{Operación/SRE} \\
+\hline
+IN2.6.1 & Procedimiento, documentación y acta de transferencia a operación &
+$M_{\mathrm{inv}}+5$ & Operación/SRE \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN2.7} &
+\textbf{Operación incremental: soporte, actualización del catálogo
+y registros periódicos de seguimiento} &
+$M_{\mathrm{inv}}$ a 56 &
+\textbf{Operación/SRE} \\
+\hline
+
+\end{longtable}
+
+Se define $M_{\mathrm{inv}}$ como el mes contractual correspondiente
+al primer junio disponible con IN1 y las interfaces aceptadas,
+no anterior al mes 21. Su número definitivo deberá fijarse en SD7
+a partir de la fecha de inicio contractual. El piloto comprenderá
+junio--agosto, entre $M_{\mathrm{inv}}$ y
+$M_{\mathrm{inv}}+2$, con embarcaciones ya varadas; sus resultados
+se observarán durante las botaduras de septiembre--noviembre,
+hasta $M_{\mathrm{inv}}+5$. La revisión de cada embarcación se
+realizará tres semanas antes de su botadura prevista.
+
+El piloto validará la planificación y el seguimiento invernal.
+El ciclo completo, incluida la recepción de abril--mayo, se
+aplicará desde $M_{\mathrm{inv}}+10$, si el plazo contractual
+permite completar su evaluación. Los despliegues respetarán las
+restricciones de las campañas de varada y botadura, la congelación
+del 15 de diciembre al 15 de marzo y las alertas marítimas. Como
+reserva inicial se proponen dos semanas dentro de la ventana
+invernal, sujetas a validación en SD7.
+
+La recepción exigirá diseño revisado, pruebas satisfactorias,
+trabajos aceptados vinculados a IN1 y un informe del piloto que
+conserve resultados favorables, nulos y adversos. La aceptación
+técnica y la comprobación del beneficio se documentarán por separado.
+
 
 \subsection{Impacto económico estimado}
- 
-La inversión contemplara el levantamiento del catálogo, el diseño
-de la ficha y de las reglas, el desarrollo del calendario, la integración, las
-pruebas, la capacitación y el piloto. El costo operacional incluirá la
-actualización anual del catálogo, el soporte del proceso y el envío de
-notificaciones. Los montos en UF quedan pendientes de estimación y deberán
-incorporarse al flujo de caja en los períodos correspondientes.
- 
-El beneficio esperado para la marina es reducir las botaduras que deben
-reprogramarse porque la embarcación mantiene trabajos pendientes. Cada
-reprogramación exige volver a coordinar con el armador y el contratista, y
-puede obligar a mover otras embarcaciones de la explanada para respetar la
-secuencia. El beneficio económico podrá calcularse como:
-\[
-  B_t = \left(p_{\text{base},t} - p_{\text{posterior},t}\right)
-        \times N_t \times C_{\text{reprog}} - C_{\text{operación},t},
-\]
-donde $p_{\text{base},t}$ es la proporción de embarcaciones que llegan a su
-turno de botadura con trabajos pendientes sin el programa,
-$p_{\text{posterior},t}$ la proporción observada con el programa, $N_t$ el
-número de embarcaciones participantes en la temporada $t$ y
-$C_{\text{reprog}}$ el costo medio de una reprogramación, que incluye las horas
-de coordinación y los movimientos adicionales en la explanada. Otros beneficios
-posibles, como mayores ingresos por derechos de trabajo en el varadero o
-embarcaciones de charter listas a la llegada de sus tripulaciones, no se contabilizarán
-mientras no pueda demostrarse que se deben al programa. No se atribuirán
-ahorros o ingresos hasta contar con mediciones que los respalden.
- 
+
+La inversión requerida comprende la definición del catálogo,
+la ficha de antecedentes, las reglas de planificación, el calendario,
+las integraciones, las pruebas y la preparación del piloto.
+Se reflejará en el flujo de caja según los hitos de ejecución,
+considerando únicamente los desarrollos adicionales a IN1 y
+a los servicios comunes.
+
+El efecto en el costo operacional corresponde a la actualización
+del catálogo, el seguimiento de los planes, el soporte y las
+notificaciones. Estos costos se incorporarán desde el inicio
+del piloto hasta el término del servicio, distinguiendo las
+actividades periódicas de los gastos iniciales.
+
+El beneficio esperado consiste en reducir las botaduras
+reprogramadas por trabajos pendientes y los costos asociados
+a coordinación y movimientos adicionales. Su valorización
+utilizará reprogramaciones efectivamente evitadas y costos
+unitarios respaldados; una reducción de trabajos pendientes
+no se considerará, por sí sola, un ahorro monetario.
+
+El flujo de caja separará inversión, costos recurrentes y
+ahorros verificables. Mientras no existan antecedentes suficientes,
+los beneficios se presentarán como escenarios y no como ingresos
+o ahorros asegurados, evitando duplicarlos con los de IN1.
+
 
 \subsection{Indicador de verificación del beneficio}
- 
-El indicador principal será la proporción de embarcaciones que llegan a
-su turno de botadura con trabajos de mantenimiento pendientes:
+
+El indicador principal será la proporción de embarcaciones con
+trabajos pendientes en su fecha originalmente prevista de botadura:
+
 \[
-  p_{\text{pendiente}} = \frac{N_{\text{pendientes}}}{N_{\text{con trabajos}}},
+p_{\mathrm{pendiente}} =
+\frac{N_{\mathrm{embarcaciones\ con\ trabajos\ pendientes}}}
+     {N_{\mathrm{embarcaciones\ con\ trabajos\ contratados}}}.
 \]
-donde $N_{\text{con trabajos}}$ corresponde a las embarcaciones que contrataron al menos un trabajo durante la invernada y $N_{\text{pendientes}}$ a las que, en la fecha programada de su botadura, mantienen al menos uno de esos trabajos sin cerrar.
- 
-Como la participación es voluntaria, la línea base se obtendrá en la misma
-campaña de botadura, comparando las embarcaciones del piloto con las que no
-participan y que también contrataron trabajos. Esta comparación controla el
-efecto del clima y de las marejadas de esa temporada, aunque los armadores que se inscriben voluntariamente podrían ser, de por sí, más organizados, por ello, cuando existan registros de la campaña anterior, también se comparará cada embarcación del piloto con su propio historial. Como meta preliminar del piloto, se propone reducir a la mitad la proporción de embarcaciones con trabajos pendientes respecto del grupo sin programa, esta meta deberá validarse una vez medido el valor inicial.
- 
-La medición se realizará al cierre de la campaña de botadura siguiente al
-piloto. Como indicador complementario, se medirá la proporción de trabajos del programa ejecutados entre junio y agosto, fuera de las campañas de varada y botadura. Como indicador de integridad, se verificará que el 100~\% de los trabajos aceptados quede vinculado a una solicitud con su estado de cierre y su fecha.
- 
+
+Se considerarán las embarcaciones con al menos un trabajo contratado.
+La fecha de referencia quedará registrada antes de la revisión
+previa a botadura y se conservará aunque posteriormente se reprograme,
+para evitar que el cambio de fecha oculte incumplimientos.
+
+La meta propuesta será reducir esta proporción en un 50\,\%
+respecto de un grupo comparable de la misma campaña que no
+participe en el programa. Cuando existan antecedentes, se
+complementará con el historial de los participantes. La evaluación
+registrará diferencias de alcance, condiciones meteorológicas,
+retiros y exclusiones, considerando el carácter voluntario
+de la participación.
+
+Como indicadores complementarios se medirán la proporción de
+trabajos ejecutados durante junio--agosto y la trazabilidad del
+100\,\% de los trabajos aceptados mediante solicitudes IN1 con
+estado y fecha. El informe se emitirá al cierre de la campaña;
+si la referencia es cero o la evidencia resulta insuficiente,
+no se declarará demostrada la reducción relativa.
+
 
 \subsection{Riesgo de adopción}
- 
-Existe el riesgo de que los armadores perciban la propuesta como una intromisión o como una forma de venderles servicios. En el levantamiento, un armador y accionista señaló que parte de lo que compra al pagar una amarra es que nadie lo esté mirando. También es posible que las empresas contratistas, muchas de ellas pequeñas o de un solo trabajador, no respeten las semanas asignadas, y que las marejadas, más frecuentes en invierno, cancelen jornadas de trabajo y desordenen el calendario.
- 
-Para mitigar estos riesgos, la participación será voluntaria y la propuesta
-tendrá carácter de sugerencia, es decir, el armador decide qué contratar, con quién y cuándo, y puede retirarse en cualquier momento. El calendario reservará semanas de holgura para absorber las jornadas canceladas por marejada. Respecto de los contratistas, la semana asignada se incorporará a la orden de trabajo que la portería ya verifica antes de autorizar el ingreso, que es el punto donde la marina tiene control efectivo sobre las empresas externas. Si un contratista no usa el sistema, la marina podrá registrar el avance informado por el canal acordado, dejando constancia de su fuente. Finalmente, el piloto se ofrecerá primero a un grupo acotado de armadores voluntarios, si sus embarcaciones invernan en la marina, a la operadora de charter, que ya exige embarcaciones listas a la llegada de sus tripulaciones para ajustar el catálogo antes de extenderlo.
 
+Los riesgos se valoran inicialmente mediante probabilidad e impacto
+cualitativos. Su seguimiento quedará incorporado al plan de riesgos,
+con responsables, medidas preventivas y contingencias. Las
+valoraciones se revisarán con los resultados del piloto.
+
+\begin{longtable}{
+L{\dimexpr0.17\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.47\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.18\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.18\linewidth-2\tabcolsep\relax}
+}
+\caption{Riesgos de adopción de la innovación 2}
+\label{tab:in2-riesgos}\\
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Riesgo} &
+\EncabezadoTabla{Probabilidad} &
+\EncabezadoTabla{Impacto} \\
+\hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Riesgo} &
+\EncabezadoTabla{Probabilidad} &
+\EncabezadoTabla{Impacto} \\
+\hline
+\endhead
+
+\rowcolor{SynSurface}
+R-IN2-01 & Baja participación de los armadores. & Media & Alto \\
+\hline
+R-IN2-02 & Incumplimiento de fechas por los contratistas. & Alta & Alto \\
+\hline
+\rowcolor{SynSurface}
+R-IN2-03 & Suspensión de trabajos por condiciones meteorológicas. & Alta & Alto \\
+\hline
+R-IN2-04 & Indisponibilidad de IN1 o de sus interfaces. & Media & Alto \\
+\hline
+\end{longtable}
+\FuenteTabla{elaboración propia; valoración inicial para planificación.}
+
+\textbf{R-IN2-01.}
+La participación será voluntaria y el armador conservará la
+decisión sobre los trabajos y el contratista. Implantación
+gestionará la convocatoria y capacitación mediante IN2.1.2
+e IN2.5.1. Como contingencia, si al cierre de la convocatoria
+no existe un grupo evaluable, se ampliará la convocatoria o
+se ajustará el alcance, sin declarar beneficios no comprobados.
+
+\textbf{R-IN2-02.}
+El líder funcional y la administración del varadero confirmarán
+disponibilidad y fechas con los contratistas, mediante IN2.3.1,
+IN2.5.2 e IN2.5.3. Si un atraso amenaza la botadura, la contingencia
+será reprogramar los trabajos o proponer otro contratista,
+siempre con aceptación del armador.
+
+\textbf{R-IN2-03.}
+El jefe de proyecto y la marina considerarán la reserva de
+planificación y las alertas marítimas en IN2.5.2 e IN2.5.3.
+Ante condiciones inseguras se suspenderán los trabajos y se
+reprogramarán cuando sea posible retomarlos. Si se agota la
+reserva, se acordará el tratamiento de los pendientes y su
+efecto en la botadura, sin extender automáticamente el piloto.
+
+\textbf{R-IN2-04.}
+Arquitectura verificará la vinculación con IN1 y las interfaces
+mediante IN2.3.2 e IN2.4.1. Si estas capacidades no están
+disponibles, no se iniciará el piloto. Ante una interrupción
+durante su ejecución, se utilizará el procedimiento vigente
+con registro controlado y posterior conciliación de los datos.
 \newpage
 
 \section{Innovación 3}
@@ -396,74 +846,420 @@ La lectura automática no acreditará la autenticidad de la póliza ni determina
 
 El reconocimiento de texto y la extracción de formularios cuentan con componentes comerciales disponibles, como el servicio descrito. Esta disponibilidad permite plantear una integración sobre capacidades existentes, aunque no acredita su desempeño sobre las pólizas particulares de Bahía Panitao.
 
-Debido a lo anterior, se clasifica preliminarmente en \textbf{TRL 2}: al igual que las innovaciones anteriores su aplicación y flujo están formulados conceptualmente, pero todavía no se han implementado ni probado en la marina. La escala considera ese nivel con la formulación del concepto o aplicación tecnológica. La clasificación se refiere al componente integrado para este caso y no al servicio comercial utilizado. 
+Debido a lo anterior, se clasifica preliminarmente en \textbf{TRL 2}: al igual que las innovaciones anteriores su aplicación y flujo están formulados conceptualmente, pero todavía no se han implementado ni probado en la marina. La escala considera ese nivel con la formulación del concepto o aplicación tecnológica. La clasificación se refiere al componente integrado para este caso y no al servicio comercial utilizado.
 
 \subsection{Diseño de la incorporación}
 
-\textbf{Arquitectura.} La innovación se incorporará mediante un componente de extracción documental conectado con los módulos AUT (Portales de Autoatención), ADM (Administración Funcional e Identidad) y NAV (Dominio Náutico y Zarpes). AUT proporcionará la carga y consulta del estado del documento; ADM gestionará permisos, campos y revisión; y NAV utilizará los antecedentes confirmados para sus validaciones. El repositorio y la auditoría existentes conservarán el original, los valores propuestos, las correcciones, la versión del procesamiento y el responsable de aprobación.
+La lectura inteligente se incorporará mediante un componente de
+extracción documental conectado con AUT, ADM y NAV. El alcance
+inicial comprenderá exclusivamente pólizas de embarcaciones.
+El sistema propondrá los campos extraídos y un funcionario
+autorizado deberá revisarlos, corregirlos cuando corresponda
+y aprobarlos antes de su incorporación al expediente. La lectura
+no acreditará la autenticidad ni la suficiencia de la cobertura.
 
-El adaptador del extractor separará la respuesta del proveedor del modelo de datos de la marina. El procesamiento se ejecutará en segundo plano, con estados visibles de pendiente, en procesamiento, pendiente de revisión, aprobado o pendiente de nueva carga. Los reintentos no deberán duplicar antecedentes ni sobrescribir registros confirmados. Si el servicio o la conexión no están disponibles, el funcionario podrá continuar con el ingreso manual previsto en la base; la extracción asistida no será una dependencia de las operaciones náuticas críticas.
+Las interfaces se organizarán de la siguiente forma:
 
-Antes de habilitar el servicio se comprobarán las condiciones de tratamiento de los archivos y la compatibilidad con las restricciones de alojamiento del proyecto. Los documentos y resultados estarán sujetos a los controles de acceso, cifrado, retención y auditoría ya definidos. El alcance de esta innovación para Synaptix consta de la configuración y el mantenimiento técnico; el funcionario de la marina realizaría la revisión operacional.
-
-\textbf{Paquetes de la EDT.} La incorporación comprenderá:
 \begin{itemize}
-    \item levantamiento del volumen documental, formatos y campos requeridos;
-    \item preparación de muestras autorizadas y definición de reglas de comprobación;
-    \item integración del extractor y desarrollo del formulario de revisión;
-    \item conexión con expedientes, repositorio y auditoría;
-    \item pruebas funcionales, de permisos y de continuidad ante fallos;
-    \item capacitación, ejecución del piloto y evaluación del beneficio.
+    \item \textbf{IN3-IF01, AUT y repositorio:} recepción de la póliza,
+    identificación de la embarcación, conservación del original
+    y consulta del estado de procesamiento.
+
+    \item \textbf{IN3-IF02, adaptador de extracción:} envío del documento
+    al servicio autorizado y recepción de campos, fragmentos de
+    origen y niveles de confianza. Los campos no identificados
+    permanecerán pendientes.
+
+    \item \textbf{IN3-IF03, ADM y revisión:} administración de permisos
+    bajo las políticas de Auditoría y seguridad,
+    presentación del original junto a los valores propuestos
+    y registro de correcciones y aprobación.
+
+    \item \textbf{IN3-IF04, expediente y NAV:} incorporación exclusiva
+    de antecedentes aprobados mediante los servicios existentes.
+    NAV conservará la responsabilidad sobre las validaciones
+    de vigencia de la solución base.
 \end{itemize}
 
-Los códigos de los paquetes quedan pendientes de conciliación con la EDT aprobada. El piloto se limitará a pólizas de embarcaciones; una ampliación a certificados u otros documentos requerirá comprobar su calidad de extracción y beneficio.
+Clientes y contratos conservará la autoridad sobre los maestros de
+armador y embarcación y su vínculo vigente. La identidad autenticada
+procederá de la capa de Seguridad transversal del SD4; la aprobación
+de los campos corresponderá al funcionario autorizado del cliente.
 
-\textbf{Mes de materialización.} El piloto se programará una vez disponibles los expedientes, la recepción documental y las funciones de revisión requeridas, respetando las ventanas protegidas del proyecto. El mes específico queda pendiente de alineación con el cronograma base. La habilitación de la innovación no modificará los criterios de aceptación de las funciones obligatorias.
+Las interfaces internas utilizarán HTTPS, REST/JSON y contratos
+OpenAPI. Cada procesamiento conservará un identificador que permita
+controlar reintentos y evitar registros duplicados. Una nueva
+extracción no sobrescribirá antecedentes aprobados. La auditoría
+vinculará el original, los valores propuestos, las correcciones,
+la versión del procesamiento y el responsable de aprobación.
+
+El procesamiento será asíncrono y mostrará los estados pendiente,
+en procesamiento, pendiente de revisión, aprobado o pendiente de
+nueva carga. Ante una falla del servicio o de conectividad,
+se mantendrá disponible el ingreso manual de la solución base.
+Los resultados recibidos posteriormente requerirán revisión y
+no reemplazarán automáticamente los datos ingresados.
+
+\subsubsection{Controles de IA y evidencia de aceptación}
+
+La habilitación requerirá una matriz de correspondencia entre
+los controles aplicables del capítulo 18, su implementación
+en SD4 y sus requisitos verificables en T-12. Los siguientes
+identificadores son internos de esta innovación y deberán
+vincularse con los códigos definitivos de esos documentos.
+
+\begin{longtable}{
+L{\dimexpr0.16\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.42\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.42\linewidth-2\tabcolsep\relax}
+}
+\caption{Controles de IA y evidencias requeridas para IN3}
+\label{tab:in3-controles}\\
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Control que debe reflejarse en SD4/T-12} &
+\EncabezadoTabla{Evidencia de aceptación} \\
+\hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Control que debe reflejarse en SD4/T-12} &
+\EncabezadoTabla{Evidencia de aceptación} \\
+\hline
+\endhead
+
+\rowcolor{SynSurface}
+IN3-C01 &
+Aprobación humana obligatoria antes de incorporar datos. &
+Prueba que demuestre el rechazo de escrituras sin aprobación
+y registro del revisor autorizado. \\
+\hline
+
+IN3-C02 &
+Trazabilidad del documento, extracción, correcciones
+y versión del procesamiento. &
+Reconstrucción de un registro aprobado desde su documento
+y bitácora de revisión. \\
+\hline
+
+\rowcolor{SynSurface}
+IN3-C03 &
+Acceso restringido, cifrado, retención y tratamiento
+en ubicaciones autorizadas. &
+Configuración, pruebas de permisos y verificación de las
+condiciones de tratamiento del proveedor. \\
+\hline
+
+IN3-C04 &
+Evaluación por campo y formato, y reevaluación ante cambios
+del extractor o sus reglas. &
+Informe de calidad y pruebas de regresión previas
+a habilitar una nueva versión. \\
+\hline
+
+\rowcolor{SynSurface}
+IN3-C05 &
+Ingreso manual disponible y desactivación del componente
+sin impedir el proceso base. &
+Prueba de continuidad ante indisponibilidad y conciliación
+de resultados tardíos sin sobrescritura. \\
+\hline
+\end{longtable}
+\FuenteTabla{elaboración propia; correspondencia documental pendiente
+de validación con el capítulo 18, SD4 y T-12.}
+
+La matriz y sus evidencias formarán parte de IN3.4.2.
+La referencia a estos controles no constituirá por sí sola
+su acreditación: deberán quedar incorporados en los documentos
+correspondientes y respaldados por pruebas satisfactorias.
+
+\subsubsection{EDT y calendario de incorporación}
+
+La planificación propuesta comprende diseño en los meses 14--15,
+implementación en 16--17, pruebas y preparación en 18, piloto en
+19--20 y transferencia en 21. SD7 deberá confirmar la disponibilidad
+de los perfiles compartidos y las dependencias de AUT, ADM, NAV,
+repositorio y auditoría.
+
+\begin{longtable}{
+L{\dimexpr0.14\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.46\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.16\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.24\linewidth-2\tabcolsep\relax}
+}
+\caption{EDT de incorporación de la innovación 3}
+\label{tab:in3-edt}\\
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Entregable / paquete de trabajo} &
+\EncabezadoTabla{Mes} &
+\EncabezadoTabla{Responsable} \\
+\hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Entregable / paquete de trabajo} &
+\EncabezadoTabla{Mes} &
+\EncabezadoTabla{Responsable} \\
+\hline
+\endhead
+
+\rowcolor{SynSurface}
+\textbf{IN3.1} & \textbf{Diseño aprobado} &
+\textbf{14--15} & \textbf{Arquitectura} \\
+\hline
+IN3.1.1 & Inventario de formatos, volumen y campos requeridos &
+14 & Líder de Datos \\
+\hline
+IN3.1.2 & Interfaces y controles de IA especificados &
+15 & Arquitectura / Seguridad \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN3.2} & \textbf{Extracción configurada} &
+\textbf{16} & \textbf{Desarrollo} \\
+\hline
+IN3.2.1 & Adaptador del extractor y procesamiento asíncrono &
+16 & Desarrollo \\
+\hline
+IN3.2.2 & Reglas de campos, discrepancias y datos pendientes &
+16 & Líder de Datos \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN3.3} & \textbf{Revisión e integración implementadas} &
+\textbf{17} & \textbf{Desarrollo} \\
+\hline
+IN3.3.1 & Formulario de revisión y aprobación humana &
+17 & Desarrollo \\
+\hline
+IN3.3.2 & Integración con expediente, NAV y auditoría &
+17 & Desarrollo \\
+\hline
+IN3.3.3 & Ingreso manual y tratamiento de reintentos
+y resultados tardíos &
+17 & Desarrollo \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN3.4} & \textbf{Solución probada} &
+\textbf{18} & \textbf{QA} \\
+\hline
+IN3.4.1 & Pruebas de extracción, integración y continuidad &
+18 & QA \\
+\hline
+IN3.4.2 & Matriz capítulo 18--SD4--T-12 y evidencias
+de controles de IA &
+18 & Seguridad / QA \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN3.5} & \textbf{Piloto ejecutado y evaluado} &
+\textbf{18--20} & \textbf{Implantación} \\
+\hline
+IN3.5.1 & Muestra autorizada, protocolo de evaluación
+y capacitación &
+18 & Líder de Datos / Implantación \\
+\hline
+IN3.5.2 & Registros de ejecución manual y asistida &
+19--20 & Implantación \\
+\hline
+IN3.5.3 & Informe de tiempos, errores, costos y beneficio &
+20 & QA \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN3.6} & \textbf{Servicio transferido a operación} &
+\textbf{21} & \textbf{Operación/SRE} \\
+\hline
+IN3.6.1 & Configuración aceptada, manuales y acta
+de transferencia &
+21 & Operación/SRE \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN3.7} &
+\textbf{Operación incremental: monitoreo, soporte,
+control de consumo y reevaluación de formatos} &
+\textbf{21--56} & \textbf{Operación/SRE} \\
+\hline
+\end{longtable}
+\FuenteTabla{elaboración propia; programación propuesta
+para conciliación con SD7.}
+
+El piloto comenzará únicamente con las interfaces disponibles
+y los controles aceptados. Los despliegues respetarán las ventanas
+protegidas del proyecto. Si una dependencia impide cumplir
+el calendario, se registrará el ajuste en SD7 antes de iniciar
+el piloto, conservando su duración y criterios de evaluación.
+
 
 \subsection{Impacto económico estimado}
 
-La inversión incremental comprenderá el levantamiento documental, la integración, el desarrollo de la interfaz, las pruebas y la capacitación. El costo operacional incluirá el procesamiento de documentos, el almacenamiento adicional que corresponda y el soporte de las reglas ante cambios de formato. Los montos en UF se estimarán después de medir el volumen, el número de páginas y la frecuencia de recepción; se incorporarán al flujo de caja en los períodos correspondientes.
+La inversión requerida comprenderá el levantamiento documental,
+la configuración del extractor, las integraciones, el formulario
+de revisión, las pruebas y la capacitación. Estos egresos se
+incorporarán al flujo de caja según los hitos de los meses 14--21,
+sin duplicar los costos del repositorio, identidad y auditoría
+incluidos en la solución base.
 
-El beneficio esperado será la reducción del tiempo de ingreso y revisión respecto del procedimiento manual dentro de la solución base. Para un período mensual $t$, se estimará como:
+El costo operacional comprenderá el procesamiento de páginas,
+el almacenamiento adicional, el monitoreo y el mantenimiento
+de reglas ante cambios de formato. El consumo del piloto se
+registrará en los meses 19--20 y la operación recurrente desde
+el mes 21. Su valorización utilizará el volumen medido y las
+condiciones comerciales aplicables.
 
-\[
-B_t = \frac{N_t\bigl(\overline{T}_{\mathrm{base},t}
-      -\overline{T}_{\mathrm{asistido},t}\bigr)}{60}
-      \times C_{\mathrm{hora}}
-      - C_{\mathrm{operacion},t},
-\]
+El beneficio esperado será reducir el tiempo de ingreso y
+revisión documental, incluyendo las correcciones y los casos
+que deban completarse manualmente. El tiempo liberado se
+presentará como capacidad operacional recuperada; solo se
+incorporará como ahorro de caja cuando produzca una reducción
+efectiva y respaldada de costos.
 
-donde $N_t$ es el número de documentos del alcance evaluado; los tiempos promedio se expresan en minutos por documento e incluyen revisión, correcciones y tratamiento manual de los casos que no puedan extraerse; $C_{\mathrm{hora}}$ es el costo horario del personal; y $C_{\mathrm{operacion},t}$ representa el costo incremental de operación. Los promedios se utilizarán para estimar horas acumuladas, mientras que la mediana permitirá evaluar el tiempo típico de atención.
+El flujo de caja distinguirá inversión, costos recurrentes
+y ahorros verificables. La ampliación a otros documentos
+dependerá de los resultados del piloto y de una evaluación
+económica adicional.
 
-La inversión inicial se registrará separadamente como egreso. Si el ahorro corresponde a tiempo liberado de personal contratado, se presentará como capacidad operacional recuperada; solo se reconocerá un ahorro de caja cuando exista una reducción efectiva de costos. No se atribuirán a esta innovación los beneficios de digitalización ya comprometidos por la solución base.
 
 \subsection{Indicador de verificación del beneficio}
 
-El indicador principal será la \textbf{reducción porcentual de la mediana del tiempo total de ingreso y revisión por documento}:
+El piloto tendrá una duración de ocho semanas consecutivas,
+dentro de los meses 19--20. Se evaluarán 120 pólizas distintas:
+60 mediante ingreso manual y 60 mediante ingreso asistido.
+La muestra se distribuirá de forma comparable por formato,
+número de páginas y legibilidad, y se alternarán ambos métodos
+entre funcionarios para reducir diferencias asociadas al operador.
+
+Podrán utilizarse pólizas históricas autorizadas en un entorno
+de prueba, sin modificar expedientes vigentes. Los documentos
+utilizados para configurar las reglas no formarán parte de la
+muestra de evaluación. Si no se alcanza la muestra prevista,
+se informará el resultado como inconcluso y cualquier ampliación
+requerirá actualizar el calendario.
+
+El indicador principal será la reducción porcentual de la
+mediana del tiempo de ingreso y revisión:
 
 \[
-R_T = \frac{\mathrm{mediana}(T_{\mathrm{base}})
-      -\mathrm{mediana}(T_{\mathrm{asistido}})}
-      {\mathrm{mediana}(T_{\mathrm{base}})}\times 100.
+R_T =
+\frac{
+\operatorname{mediana}(T_{\mathrm{manual}})
+-
+\operatorname{mediana}(T_{\mathrm{asistido}})
+}{
+\operatorname{mediana}(T_{\mathrm{manual}})
+}
+\times 100.
 \]
 
-El tiempo se medirá desde que el funcionario comienza a ingresar o revisar el antecedente hasta que queda confirmado. Incluirá correcciones y cualquier espera que le impida continuar la tarea. La latencia completa entre carga y disponibilidad de la propuesta se registrará por separado para no ocultar demoras del procesamiento en segundo plano.
+El tiempo incluirá revisión, correcciones y esperas que impidan
+continuar la tarea. Los casos derivados a ingreso manual
+permanecerán dentro del grupo asistido. La latencia entre carga
+y disponibilidad de la propuesta se registrará por separado.
 
-La línea base se levantará con el ingreso manual de los mismos campos requeridos en el flujo asistido. Se utilizarán muestras comparables por formato, número de páginas y legibilidad; se alternarán los métodos entre funcionarios y se evitará que una persona procese inmediatamente el mismo documento por ambos procedimientos. Los casos que requieran ingreso manual se mantendrán dentro de la evaluación del flujo asistido.
+La meta será una reducción de al menos 30\,\%, sin aumentar
+la proporción de registros aprobados con errores respecto del
+grupo manual. QA revisará independientemente los 120 registros,
+comparándolos con el documento original. No se aceptarán errores
+críticos de asociación de embarcación o fechas de vigencia en
+los registros finales del piloto.
 
-Como meta preliminar se propone reducir la mediana en un \textbf{30\,\%} respecto de la línea base, sin aumentar la tasa de errores en registros aprobados. La meta se revisará una vez medido el desempeño inicial y no representa un beneficio demostrado. El tamaño de muestra y la duración del piloto se fijarán según el volumen y la variabilidad observados.
+También se medirán los campos corregidos, los documentos
+completados manualmente y el costo por documento. El 100\,\%
+de las aprobaciones deberá conservar documento de origen,
+fecha y responsable. El informe de IN3.5.3 presentará resultados
+por formato y las limitaciones de la muestra, separando
+aceptación técnica y beneficio observado.
 
-Como indicadores complementarios se medirán la proporción de campos corregidos, el porcentaje de documentos completados manualmente, el costo por documento y los errores detectados mediante una revisión independiente de los registros aprobados. Se comprobará, además, que el 100\,\% de las aprobaciones conserve el documento de origen, la fecha y el responsable. La evaluación al cierre del piloto determinará la conveniencia de ampliar, ajustar o mantener acotada la implementación.
 
 \subsection{Riesgo de adopción}
 
-El riesgo de adopción se considera preliminarmente \textbf{medio}, aunque un error en la identificación de la embarcación o en la vigencia podría tener consecuencias relevantes. Fotografías deficientes, cambios de formato o confusión entre fecha de emisión y vencimiento pueden producir campos incorrectos. La mitigación consistirá en mostrar el fragmento de origen, destacar ambigüedades, contrastar identificadores y exigir confirmación antes de incorporar los antecedentes.
+Los riesgos se evaluarán por evento, con probabilidad e impacto
+cualitativos iniciales. Cada evento tendrá un responsable,
+medidas preventivas y una contingencia, cuya aplicación
+quedará registrada durante el piloto y la operación.
 
-También existe el riesgo de que el personal acepte los datos propuestos sin revisarlos o que las correcciones consuman tanto tiempo como el ingreso manual. Se capacitará a los funcionarios sobre los límites del extractor, se revisará una muestra de registros aprobados y se analizarán los errores por campo y formato. Si un formato presenta resultados insuficientes, se mantendrá su ingreso manual mientras Synaptix ajusta y vuelve a evaluar el procesamiento.
+\begin{longtable}{
+L{\dimexpr0.17\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.47\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.18\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.18\linewidth-2\tabcolsep\relax}
+}
+\caption{Riesgos de adopción de la innovación 3}
+\label{tab:in3-riesgos}\\
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Evento de riesgo} &
+\EncabezadoTabla{Probabilidad} &
+\EncabezadoTabla{Impacto} \\
+\hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Evento de riesgo} &
+\EncabezadoTabla{Probabilidad} &
+\EncabezadoTabla{Impacto} \\
+\hline
+\endhead
 
-La dependencia de un servicio externo introduce riesgos de indisponibilidad, cambios de condiciones y tratamiento de documentos fuera de las ubicaciones autorizadas. Antes de la habilitación se verificará su compatibilidad con el proyecto; el adaptador y la alternativa manual permitirán mantener el proceso si el componente no está disponible. Los permisos y la trazabilidad existentes se aplicarán también a los archivos y resultados de extracción.
+\rowcolor{SynSurface}
+R-IN3-01 & Extracción incorrecta de campos por calidad
+o cambios de formato. & Alta & Alto \\
+\hline
+R-IN3-02 & Aprobación de datos incorrectos por revisión
+humana insuficiente. & Media & Alto \\
+\hline
+\rowcolor{SynSurface}
+R-IN3-03 & Acceso o tratamiento documental fuera
+de las condiciones autorizadas. & Media & Alto \\
+\hline
+R-IN3-04 & Interrupción del extractor o de la conectividad. &
+Media & Medio \\
+\hline
+\rowcolor{SynSurface}
+R-IN3-05 & Volumen o ahorro de tiempo insuficiente
+para justificar el costo. & Media & Medio \\
+\hline
+\end{longtable}
+\FuenteTabla{elaboración propia; valoración inicial
+para planificación.}
 
-Finalmente, un volumen reducido de documentos podría impedir recuperar la inversión. El piloto comenzará con un alcance acotado y la ampliación se decidirá a partir del tiempo efectivamente recuperado, la calidad de los registros y el costo incremental. Si el beneficio no se demuestra, se conservará el procedimiento manual de la solución base y se revisará la continuidad del componente adicional.
+\textbf{R-IN3-01.}
+El Líder de Datos aplicará reglas de comprobación, mostrará
+los fragmentos de origen y evaluará los errores por formato
+mediante IN3.2.2 e IN3.4.1. Si un formato produce errores
+críticos o recurrentes, se suspenderá su extracción y se
+utilizará ingreso manual hasta corregirlo y repetir las pruebas.
+
+\textbf{R-IN3-02.}
+Implantación capacitará a los revisores y QA comprobará
+los registros aprobados mediante IN3.5.1 e IN3.5.3.
+Ante un error crítico aprobado, se pausará el flujo afectado,
+se revisarán los registros potencialmente comprometidos
+y se reforzará la revisión antes de reanudarlo.
+
+\textbf{R-IN3-03.}
+Seguridad verificará permisos, ubicación de procesamiento,
+retención y condiciones del proveedor mediante IN3.1.2
+e IN3.4.2. Ante una incompatibilidad o incidente, se bloqueará
+el envío de documentos, se aplicará el procedimiento de
+respuesta correspondiente y se continuará mediante ingreso manual.
+
+\textbf{R-IN3-04.}
+Operación/SRE supervisará fallos y reintentos, con pruebas
+de continuidad en IN3.3.3 e IN3.4.1. Si el extractor queda
+indisponible, se utilizará ingreso manual; al recuperarse,
+los resultados pendientes se conciliarán sin duplicar
+ni sobrescribir antecedentes aprobados.
+
+\textbf{R-IN3-05.}
+El Jefe de Proyecto revisará volumen, tiempos y costos
+mediante IN3.1.1 e IN3.5.3. Si el piloto no demuestra
+el beneficio previsto, se mantendrá el proceso manual
+y se ajustará o deshabilitará el componente adicional,
+sin ampliar su alcance automáticamente.
 \newpage
 
 
@@ -517,7 +1313,7 @@ El modelo comercial se encuentra en \textbf{diseño conceptual}. Para esta incor
 
 \subsection{Diseño de la incorporación}
 
-En la capa de Servicios de negocio, se propone incorporar \texttt{IN4-MET} al módulo Varadero y contratistas del Núcleo de Servicios y \texttt{IN4-CON} a Finanzas y cobranza del Núcleo Administrativo. Esta ubicación sigue las agrupaciones del avance del SD4, sección 4.1 y decisión DA-04; los códigos IN4 son extensiones del SD13 que aún deben incorporarse a su catálogo. \texttt{IN4-MET} relacionará la solicitud adicional con Orden de trabajo y, cuando corresponda, Reprogramación del SD5, sección 5.1.2, y recogerá los intervalos de tiempo activo. \texttt{IN4-CON} conservará ficha, solicitudes, versión del cálculo y acta. AUT ofrecerá el canal y ADM la gestión de permisos bajo las políticas de Auditoría y seguridad, separando preparación y aprobación. La salida será un expediente para la administración contractual, sin cobro automático.
+En la capa de Servicios de negocio, se propone incorporar \texttt{IN4-MET} al módulo Varadero y contratistas del Núcleo de Servicios y \texttt{IN4-CON} a Finanzas y cobranza del Núcleo Administrativo. Esta ubicación sigue las agrupaciones del avance del SD4, sección 4.1 y decisión DA-04; los códigos IN4 son extensiones del SD13 cuya ubicación ya se recoge en SD4. Su especificación detallada sigue pendiente. \texttt{IN4-MET} relacionará la solicitud adicional con Orden de trabajo y, cuando corresponda, Reprogramación del SD5, sección 5.1.2, y recogerá los intervalos de tiempo activo. \texttt{IN4-CON} conservará ficha, solicitudes, versión del cálculo y acta. AUT ofrecerá el canal y ADM la gestión de permisos bajo las políticas de Auditoría y seguridad, separando preparación y aprobación. La salida será un expediente para la administración contractual, sin cobro automático.
 
 La integración reutilizará HTTPS y REST/JSON documentados con OpenAPI 3.1, conforme a DA-06. Las escrituras admitirán \texttt{Idempotency-Key} y las llamadas propagarán \texttt{Correlation-Id}. Los eventos usarán el sobre versionado del SD4; su consumo controlará \texttt{eventId} y la secuencia del agregado para evitar efectos duplicados. Los eventos de faena descritos en la tabla 4-2 aportan antecedentes, pero no registran por sí solos el esfuerzo administrativo: los tiempos requieren captura propia. Se consultará la autoridad mediante sus contratos, sin acceso directo a tablas ajenas. Los registros estructurados usarán PostgreSQL por dominio y las actas, el repositorio S3 de evidencia, conforme a DA-08; las correcciones conservarán el cálculo y acta anteriores.
 
@@ -612,7 +1408,7 @@ Infraestructura aportará Medidor y Asociación de medidor para verificar servic
 
 AUT presentará la vista en el portal React previsto en SD4, tabla 4-4; las operaciones utilizarán los contratos REST/OpenAPI y la autorización del dominio propietario definidos en DA-06 y DA-16. El historial recibirá \texttt{MediciónConsolidada}, \texttt{MedidorAsociado}, \texttt{OcupaciónActualizada} y \texttt{AsignaciónModificada} del catálogo de la tabla 4-2, y consultará sus fuentes autorizadas para reconstruir asociaciones históricas. La deduplicación por \texttt{eventId}, la secuencia del agregado y las versiones de corrección impedirán sumar dos veces un intervalo o alterar silenciosamente un informe emitido. \texttt{ConsentimientoModificado} propagará las restricciones de finalidad y acceso. ADM ofrecerá su gestión bajo Auditoría y seguridad; Finanzas y cobranza conservará los hechos facturables, sin cambios de lecturas ni cobros desde el pasaporte.
 
-\texttt{IN5-PLAN} se propone en el Núcleo de Servicios cloud sobre ECS/Fargate, con el emplazamiento de la tabla 4-10. El pasaporte reutilizará la captura obligatoria de medidores, concentradores, telemetría local y sincronización descrita en SD4, sección 4.2 y DA-09, sin consumir directamente el broker MQTT. Ante pérdida de WAN continuará esa captura; las adhesiones y evaluaciones adicionales que requieran la autoridad cloud quedarán pendientes. La vista identificará el último corte validado y su cobertura y no publicará una reducción con evidencia incompleta. Los borradores de SD4/SD5 aún deben incorporar los códigos IN5 y detallar entidades de adhesión, plan, acción y evaluación, sus contratos, estados y reglas de conservación en A5.1/A5.2.
+\texttt{IN5-PLAN} se propone en el Núcleo de Servicios cloud sobre ECS/Fargate, con el emplazamiento de la tabla 4-10. El pasaporte reutilizará la captura obligatoria de medidores, concentradores, telemetría local y sincronización descrita en SD4, sección 4.2 y DA-09, sin consumir directamente el broker MQTT. Ante pérdida de WAN continuará esa captura; las adhesiones y evaluaciones adicionales que requieran la autoridad cloud quedarán pendientes. La vista identificará el último corte validado y su cobertura y no publicará una reducción con evidencia incompleta. SD4 ya recoge la ubicación de IN5-PLAN e IN5-HIS como extensiones de Ambiente y consumos. Queda por detallar en SD4/SD5 y A5.1/A5.2 las entidades de adhesión, plan, acción y evaluación, sus contratos, estados y reglas de conservación.
 
 Se proponen \texttt{IN5.1}, diseño del plan, consentimiento y reglas en meses 14--15; \texttt{IN5.2}, historial y portal en meses 16--17 y pruebas funcionales y de seguridad en el 18; \texttt{IN5.3}, piloto y evaluación en meses 19--20; e \texttt{IN5.4}, despliegue aceptado y seguimiento en meses 21--56. El piloto depende de la medición individual validada, la asociación entre amarra y embarcación y las permanencias conciliadas. El cliente adquiere los medidores y ejecuta las obras previstas en EXC-06/EXC-10 y SUP-04 del SD2; Synaptix especifica, integra y verifica. La descripción de SD4 no acredita su recepción ni cierra VAC-03 sobre precisión e imputación. Se incorporarán paquetes y cargas al SD7/T-15 y se resolverá VAC-14 sobre calendario y habilitaciones. Los meses relativos se cruzarán con la fecha de inicio y las restricciones RES-11/RES-12 para disponer de una serie previa a la temporada 2029; los congelamientos y suspensiones por marejada deberán absorberse sin asumir desplazamientos de hitos contractuales \parencite[cap.~10 y cap.~13]{caso07}.
 

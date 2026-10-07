@@ -1,0 +1,70 @@
+﻿% Integración por contratos; VHF no es una API ni autoridad sustituida.
+\begin{figure}[htbp]
+\centering
+\setstretch{1}
+\begin{tikzpicture}[
+  bloque/.style={draw=SynNavyLight,fill=SynSurface,align=left,
+    font=\fontsize{9.5}{11.5}\selectfont,text width=65mm,inner sep=2mm,
+    minimum height=22mm},
+  banda/.style={bloque,text width=140mm},
+  enlace/.style={-{Latex},draw=SynNavyLight,thick},
+  evento/.style={-{Latex},draw=SynNavyLight,thick,dashed}]
+  \node[banda,fill=SynNavy,text=SynWhite] (api)
+    {\textbf{Ingreso por contrato}\\
+    CloudFront/WAF; API Gateway REST Regional, authorizer y OpenAPI.
+    VPC Link V2 hacia ALB privado. HTTPS/REST valida formato;
+    cada dominio autoriza el efecto.};
+  \node[banda,below=5mm of api.south west,anchor=north west] (nucleos)
+    {\textbf{Núcleos Operacional, de Servicios y Administrativo}\\
+    Publican eventos y consumen contratos versionados.
+    Cada dominio conserva reglas, esquema y autoridad propios.};
+  \node[banda,below=5mm of nucleos.south west,anchor=north west] (bus)
+    {\textbf{EventBridge y SQS: entrega desacoplada}\\
+    Identidad y secuencia de evento, idempotencia, reintentos y cola de errores.
+    El bus transporta información; no decide el estado del negocio.};
+  \node[bloque,below=5mm of bus.south west,anchor=north west] (integracion)
+    {\textbf{1. Integración externa}\\
+    Adaptador por sistema; API, webhook o archivo seguro según capacidad
+    efectiva. Conciliación y registro de indisponibilidad.};
+  \node[bloque,below=5mm of bus.south east,anchor=north east] (telemetria)
+    {\textbf{2. Telemetría}\\
+    EMQX recibe MQTT/mTLS en el recinto.
+    Valida calidad, secuencia y totalizador antes de uso comercial.};
+  \node[bloque,below=5mm of integracion.south west,anchor=north west] (terceros)
+    {\textbf{Sistemas externos vigentes}\\
+    Contabilidad, acceso, CCTV, meteorología, combustible y pagos.
+    Canal de autoridad autorizado; sin API presumida de DIRECTEMAR.};
+  \node[bloque,below=5mm of telemetria.south east,anchor=north east] (borde)
+    {\textbf{3. Sincronización}\\
+    Recinto--cloud por HTTPS/mTLS e IPsec.
+    Lote y manifiesto; validación y persistencia antes del ACK.
+    Evidencia obligatoria dentro del plazo.};
+  \node[bloque,below=6mm of terceros.south west,anchor=north west] (notificacion)
+    {\textbf{4. Notificaciones}\\
+    SMS, mensajería instantánea y correo simultáneos en emergencia.
+    Intento, entrega, acuse y escalamiento por destinatario.};
+  \node[bloque,below=6mm of borde.south east,anchor=north east] (auditoria)
+    {\textbf{5. Auditoría}\\
+    Consume eventos de todos los núcleos.
+    Conserva persona/carga, origen y decisión en registro protegido.};
+  \draw[enlace] (api.south) -- (nucleos.north);
+  \draw[evento] (nucleos.south) -- (bus.north);
+  \draw[evento] (bus.south -| integracion.north) -- (integracion.north);
+  \draw[evento] (telemetria.north) -- (bus.south -| telemetria.north);
+  \draw[enlace,{Latex}-{Latex}] (integracion.south) -- (terceros.north);
+  \draw[enlace] (borde.north) -- (telemetria.south);
+  \draw[evento] (bus.west) -- ++(-3mm,0) |- (notificacion.west);
+  \draw[evento] (bus.east) -- ++(3mm,0) |- (auditoria.east);
+  \node[banda,below=5mm of notificacion.south west,anchor=north west] (limites)
+    {\textbf{Autoridad y coordinación}\\
+    Contabilidad conserva documentos tributarios, pagos y saldos.
+    VHF coordina personas; no se representa como API.
+    Las flechas continuas son contratos; las discontinuas transportan eventos.};
+\end{tikzpicture}
+\caption{Integración por contratos y cinco procesos especializados}
+\label{fig:4-4}
+\FuenteFigura{Elaboración de Synaptix desde SD4, 4.1/4.2, y SD5;
+  \parencites[cap.~5 y 17.4]{caso07}
+  [RT-03.10/13, pp.~8--9; cap.~5, pp.~12--13]{pucv-transversal}
+  {p3-api-tipos}{p3-api-privada}. Las capacidades externas se comprueban antes de habilitación.}
+\end{figure}

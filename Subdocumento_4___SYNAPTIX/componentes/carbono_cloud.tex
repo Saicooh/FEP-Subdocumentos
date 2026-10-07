@@ -1,0 +1,25 @@
+\textbf{Carbono, región y período de referencia.}
+La comparación de ubicación utiliza electricidad de 2024 y distingue el indicador geográfico de la huella asignada a la cuenta AWS. Para el primario São Paulo se declara como aproximación geográfica el promedio de generación de Brasil del BEN 2025: \(59{,}9\ \mathrm{kg\,CO_{2}e/MWh}=0{,}0599\ \mathrm{kg\,CO_{2}e/kWh}\). Para México Central se utiliza el factor SEN 2024 de la CNE: \(0{,}444\ \mathrm{t\,CO_{2}e/MWh}=0{,}444\ \mathrm{kg\,CO_{2}e/kWh}\) \parencites[p.~61]{p9-ben2025}[tabla~6, p.~48]{p9-cne2024}.
+
+La Tabla~\ref{tab:carbono-regiones} compara los indicadores en una unidad común e identifica fuente y cobertura geográfica.
+
+\begin{longtable}{L{\dimexpr.24\linewidth-2\tabcolsep\relax}R{\dimexpr.20\linewidth-2\tabcolsep\relax}L{\dimexpr.26\linewidth-2\tabcolsep\relax}L{\dimexpr.30\linewidth-2\tabcolsep\relax}}
+\caption{Indicadores geográficos de carbono para las regiones seleccionadas}\label{tab:carbono-regiones}\\
+\hline
+\EncabezadoTabla{Región y papel} & \EncabezadoTabla{g CO$_2$e/kWh, 2024} & \EncabezadoTabla{Fuente} & \EncabezadoTabla{Cobertura}\\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Región y papel} & \EncabezadoTabla{g CO$_2$e/kWh, 2024} & \EncabezadoTabla{Fuente} & \EncabezadoTabla{Cobertura}\\ \hline
+\endhead
+São Paulo; primario & 59,9 & EPE/MME, BEN 2025 & Generación nacional de Brasil\\ \hline
+México Central; recuperación & 444 & CNE, SEN 2024 & Generación nacional de México\\ \hline
+\end{longtable}
+\FuenteTabla{EPE/MME, BEN 2025, p.~61; CNE, Reporte de Confiabilidad del SEN 2024, tabla~6, p.~48. Conversión de unidades de Synaptix.}
+
+Ambos valores se refieren a generación y al mismo año; sus poblaciones, inventarios y reglas nacionales difieren. La comparación orienta hacia el primario brasileño de menor intensidad geográfica, pero no cuantifica un ahorro exacto entre instalaciones AWS ni incluye pérdidas de red, fabricación, respaldo diésel o instrumentos contractuales del proveedor. No se combina este promedio BEN con el factor SIN de inventarios corporativos ni se infiere huella anual desde vCPU o memoria.
+
+La elección mantiene São Paulo como primario por el catálogo regional y la arquitectura desarrollados, además de ese indicador. México conserva separación regional y capacidad de recuperación. La latencia se comprobará sobre P95, carga y procesos de las bases en ambos sitios; las transferencias internacionales, residencia y protección se revisarán por categoría de dato. Una menor intensidad no autoriza incumplir latencia o regulación. La evaluación de AWS Chile, al habilitarse comercialmente, añadirá fuente geográfica vigente, servicios, residencia, conectividad y pruebas antes de proponer una migración.
+
+Para la operación, Synaptix selecciona exportaciones de carbono de AWS por cuenta, servicio, región y período. Conserva \texttt{region\_code}, \texttt{usage\_period\_start/end}, \texttt{model\_version} y \texttt{last\_refresh\_timestamp}, con unidades y valores de emisiones. Registra por separado el método por ubicación (LBM) y por mercado (MBM), sus alcances 1/2/3 y las revisiones del proveedor. CloudFront y otros servicios globales mantienen la categoría Global; no se asignan arbitrariamente al primario. AWS describe LBM mediante energía por clúster y mes multiplicada por factores de red, y MBM mediante instrumentos contractuales. Una exportación de toneladas de CO$_2$e sin energía comparable no permite calcular kg CO$_2$e/kWh \parencites{p9-aws-carbon-columns,p9-aws-carbon-method}.
+
+El informe mensual identifica versión, fecha y cobertura; el anual agrega únicamente períodos y métodos compatibles. El valor regional específico y la huella de la cuenta se incorporarán cuando estén disponibles sus datos de operación; no se presenta una cuenta o medición ya existente. El PUE local de referencia 4,74 y su sensibilidad 3,42--7,12 siguen siendo estimaciones de proyecto del perfil de 8.760 horas, sujetas al cierre del tratamiento térmico. Los promedios nacionales completan el análisis geográfico, pero RT-15.04 conserva No mientras no quede individualizada la intensidad específica atribuible a la región cloud y actualizado el PUE con la selección térmica final.

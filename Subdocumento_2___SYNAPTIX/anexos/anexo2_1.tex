@@ -4,7 +4,10 @@
 
 \subsection*{Objeto y alcance}
 Este anexo especifica las funciones de la solución para el Caso 07: Puerto
-Deportivo, organizadas en doce módulos. Cada fila identifica una función,
+Deportivo, organizadas en doce grupos funcionales del catálogo. Estos grupos
+y sus códigos no representan unidades de despliegue: la arquitectura y el
+modelo de datos los relacionan con los nueve dominios canónicos definidos en
+SD4, sección 4.1, y SD5, sección 5.1. Cada fila identifica una función,
 su actor, la condición de inicio, el resultado verificable, su prioridad y
 la fuente que la sustenta. Los identificadores permiten vincular el catálogo
 con las reglas de negocio, el diseño y las pruebas de aceptación.
@@ -910,7 +913,7 @@ Alta &
 C07, sec. 4.8 y 4.12; cap. 15, RT-05.29 y RT-17.06. \\ \hline
 
 RF-\allowbreak{}CON-\allowbreak{}08 &
-Permitir la captura y autorización de despachos de combustible en modo offline en el muelle de combustible mediante el NBR. &
+Permitir la captura y autorización de despachos de combustible en modo offline en el muelle de combustible mediante el Runtime Operacional de Borde de la Célula Operacional Local. &
 Encargado de combustible &
 Interrupción del enlace exterior. &
 Despacho autorizado y persistido para conciliación posterior. &
@@ -1592,12 +1595,12 @@ La Tabla~\ref{tab:a2-1-13} detalla las funciones, los actores y los resultados v
 \rowcolor{RFclaro}
 P-01 & RF-NAV-01; RF-ALE-02, 05 y 07; RF-VAR-03; RF-CTR-02 y 05 & Los objetivos de tres segundos para estado operacional, 30 segundos para seleccionar destinatarios, retención de campañas de seis años, aviso de reprogramación en 15 minutos y anticipación documental de 15 días son criterios propuestos. El objetivo de acceso de cinco segundos también requiere validación. Evidencia por incorporar: fundamento y pruebas. Definir el tiempo de escalamiento telefónico sin retrasar los plazos de alerta exigidos. \\ \hline
 
-P-02 & RF-NAV-01, 04, 05; RF-AMA-03, 05; DEC-01, 05 y 09 & Evidencia por incorporar: mecanismo de detección de ocupación, evidencia de confirmación de regreso, matriz de compatibilidad y atribuciones de excepción. Una aprobación no permite vulnerar límites de seguridad. \\ \hline
+P-02 & RF-NAV-01, 04, 05; RF-AMA-03, 05; DEC-01, 05 y 09 & SD4, sección 4.1 y DA-10/DA-20, formula evidencia multifuente y piloto; SD5, secciones 5.1.2 y 5.2.2, desarrolla confirmación de regreso, estados y discrepancias. Evidencia por incorporar: validación operacional y del piloto, matriz de compatibilidad y atribuciones de excepción. Una aprobación no permite vulnerar límites de seguridad. \\ \hline
 
 \rowcolor{RFclaro}
-P-03 & RF-NAV-08, 09; RF-AUT-04, 08; DEC-04 y 21 & Evidencia por incorporar: campos y estados del plan, consentimiento, destinatarios de escalamiento y canal de baja capacidad efectivamente disponible. La alerta por vencimiento no admite una gracia adicional al máximo de 15 minutos. La marina no asume búsqueda y salvamento. \\ \hline
+P-03 & RF-NAV-08, 09; RF-AUT-04, 08; DEC-04 y 21 & SD5, sección 5.1.2, documenta campos, versiones y estados del plan; SD4, sección 4.1, desarrolla notificaciones. Evidencia por incorporar: consentimiento, protocolo y destinatarios autorizados de escalamiento, canal de baja capacidad verificado y pruebas. La alerta por vencimiento no admite una gracia adicional al máximo de 15 minutos. La marina no asume búsqueda y salvamento. \\ \hline
 
-P-04 & RF-ESC-03 a 14; DEC-06 a 08 & Evidencia por incorporar: reglas de asignación y cambios de bote/monitor, conciliación de retiro entre portería y escuela incluso ante falla de comunicación, vista mínima de salud y autoridad de autorización. La información de quién está en el agua debe mantenerse en tiempo real. No incorporar cámaras de alumnos ni dispositivos en embarcaciones menores. \\ \hline
+P-04 & RF-ESC-03 a 14; DEC-06 a 08 & SD5, secciones 5.1.2 y 5.2.2, documenta asignación por intervalo, cambios de bote/monitor, confirmación única de retiro, contingencia y vista mínima de emergencia. Evidencia por incorporar: política técnica de asignación, autoridad y autorización de datos, y pruebas de consistencia entre portería, escuela y monitor ante fallas. La información de quién está en el agua debe mantenerse en tiempo real. No incorporar cámaras de alumnos ni dispositivos en embarcaciones menores. \\ \hline
 
 \rowcolor{RFclaro}
 P-05 & RF-AMA-06, 07, 10 a 12; DEC-10 y 11 & Antigüedad y compatibilidad constituyen la regla propuesta de espera. Evidencia por incorporar: desempate, plazo de aceptación y aprobación competente; procedimiento de llegada nocturna sin reserva ni prepago y generación del cargo por estadía efectiva. \\ \hline
@@ -1607,7 +1610,7 @@ P-06 & RF-VAR-04 a 08; DEC-12 y 13 & Evidencia por incorporar: fuente técnica, 
 \rowcolor{RFclaro}
 P-07 & RF-CTR-03 a 07; RF-AMB-01 a 05; DEC-14 a 16 & Evidencia por incorporar: formación ambiental, impartidor y renovación, formatos sanitarios y control de acceso disponible. La identificación QR es una propuesta sujeta a compatibilidad. Mantener registro asistido del origen del residuo para contratistas que no utilicen una aplicación. \\ \hline
 
-P-08 & RF-CON-01 a 09; DEC-03 & Evidencia por incorporar: esquema de medición por amarra, método de imputación y fundamento del traspaso de costos, especificación de instrumentación del surtidor. Conservar las lecturas originales y la misma serie para cobro e indicadores ambientales. No presumir reparto válido por torreta sin su justificación. \\ \hline
+P-08 & RF-CON-01 a 09; DEC-03 & SD4, sección 4.2, formula un punto de agua y energía por amarra y la integración del surtidor; SD5, secciones 5.1.2 y 5.2.2, desarrolla asociación e imputación conciliada. Evidencia por incorporar: instrumentación final, metrología, pruebas y fundamento del traspaso de costos. Conservar las lecturas originales y la misma serie para cobro e indicadores ambientales. No presumir reparto válido por torreta sin su justificación. \\ \hline
 
 \rowcolor{RFclaro}
 P-09 & RF-BOY-04 a 07; DEC-19 y 20 & El piloto de telemetría es una mejora condicionada, no una dependencia de la operación mínima. Evidencia por incorporar: factibilidad, costo y decisión de inclusión; programa de inspección, periodicidad, umbrales de desgaste y eventos extraordinarios. La última observación no equivale a ocupación actual confirmada. No se incluye ejecutar mantenimiento físico del fondeo. \\ \hline
@@ -1615,9 +1618,9 @@ P-09 & RF-BOY-04 a 07; DEC-19 y 20 & El piloto de telemetría es una mejora cond
 P-10 & RF-FAC-03 a 09; DEC-17 y 18 & Evidencia por incorporar: interfaz contable, conciliación en tiempo real y catálogo de medidas de cobranza con autoridad y fundamento. No bloquear acceso por deuda automáticamente. Verificar integridad de los 14 expedientes; la exportación no acredita por sí sola suficiencia probatoria. \\ \hline
 
 \rowcolor{RFclaro}
-P-11 & RF-ADM-06 a 10, 19, 24 a 26; DEC-02 y 21 & Evidencia por incorporar: migración y reversión, reglas de conflicto, retención por dominio y modalidad de firma por acto. Mantener íntegro el alcance de C07 RT-05.15, auditar diferencias y realizar dos ensayos completos conforme a BT. No presumir continuidad del software legado sin soporte como única forma de consulta. \\ \hline
+P-11 & RF-ADM-06 a 10, 19, 24 a 26; DEC-02 y 21 & SD5, secciones 5.2.2, 5.2.5 y 5.3, formula conflictos, conservación, migración y reversión. Evidencia por incorporar: matriz detallada de retención por categoría, modalidad de firma por acto, perfilado y resultados de migración, reversión y sincronización. Mantener íntegro el alcance de C07 RT-05.15, auditar diferencias y realizar dos ensayos completos conforme a BT. No presumir continuidad del software legado sin soporte como única forma de consulta. \\ \hline
 
-P-12 & RF-ADM-01 a 04, 11 a 14, 20 a 22; DEC-22 & Evidencia por incorporar: atribuciones, dedicaciones, suplencias y costo del servicio de administración funcional por 36 meses. La aprobación de negocio corresponde al cliente y las tareas especializadas deben tener cobertura sin requerir un área TI interna. \\ \hline
+P-12 & RF-ADM-01 a 04, 11 a 14, 20 a 22; DEC-22 & Modelo de responsabilidad formulado en SD1, secciones 1.1.3 y 1.5: Synaptix conserva la administración técnica y el soporte funcional; el cliente valida las reglas y decisiones de negocio. José Lara Arce es Gerente de Servicio desde el mes 21, con apoyo externo de NOC, SOC y primera atención. Evidencia por incorporar: atribuciones, cargas, turnos, dedicaciones, suplencias y costo del servicio por 36 meses. \\ \hline
 
 \end{longtable}
 \FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}

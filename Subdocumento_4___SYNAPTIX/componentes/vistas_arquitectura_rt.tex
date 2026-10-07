@@ -1,0 +1,31 @@
+\textbf{Descripción y correspondencia de vistas arquitectónicas.}
+La descripción de arquitectura aplica ISO/IEC/IEEE 42010 al sistema compuesto por canales, tres núcleos, cinco procesos especializados, Runtime Operacional de Borde y plataformas de datos. Los interesados son Gerencia y Administración, Torre y Marinería, Escuela, Varadero, contratistas, armadores y apoderados, y los responsables de Arquitectura, Seguridad y Operación de Synaptix. Sus preocupaciones se agrupan en continuidad y custodia, integridad y privacidad, tiempos operacionales, recuperación, mantenibilidad y gobierno. Cada vista utiliza los mismos nombres e identificadores de SD3 y SD5 \parencites{iso42010}[RT-02.03, p.~7]{pucv-transversal}.
+
+La Tabla~\ref{tab:vistas-42010} individualiza los cinco puntos de vista, su preocupación y su representación. Las figuras existentes son modelos de la oferta; el esquema de datos de la Figura~\ref{fig:datos-arquitectura} completa su correspondencia.
+
+\begin{table}[htbp]
+\centering
+\fontsize{9}{11}\selectfont
+\begin{tabularx}{\linewidth}{|l|X|X|}
+\hline
+\EncabezadoTabla{Vista} & \EncabezadoTabla{Preocupación} & \EncabezadoTabla{Modelo y ubicación}\\ \hline
+VL: lógica & Límites, capacidades y contratos & Figuras~\ref{fig:4-2}, \ref{fig:4-3} y \ref{fig:4-4}\\ \hline
+VP: procesos & Captura, concurrencia y sincronización & Figura~\ref{fig:4-5}; contratos y deduplicación de 4.1\\ \hline
+VDP: despliegue & Localización, falla y recuperación & Figuras~\ref{fig:4-7}, \ref{fig:4-9}, \ref{fig:4-10} y \ref{fig:4-14}\\ \hline
+VD: datos & Propiedad, persistencia y evidencia & Figura~\ref{fig:datos-arquitectura}; SD5, 5.1 y 5.2\\ \hline
+VS: seguridad & Identidad, fronteras y privilegios & Figura~\ref{fig:4-6}; controles de 4.1 y 4.2\\ \hline
+\end{tabularx}
+\caption{Puntos de vista y modelos de arquitectura}
+\label{tab:vistas-42010}
+\FuenteTabla{Descripción de Synaptix conforme a ISO/IEC/IEEE 42010 y BT RT-02.03.}
+\end{table}
+
+VL identifica componentes, dominios y dependencias permitidas; VP utiliza secuencias de captura, entrega y confirmación para mostrar quién ejecuta y cuándo persiste; VDP ubica sus procesos y almacenes en regiones, zonas y recinto; VD representa autoridades y flujos de datos, y VS atraviesa cada frontera con identidad, autorización, protección y evidencia. Ninguna vista sustituye a las demás. La restricción de no consultar esquemas ajenos se comprueba en VL y VD; la confirmación durable antes del ACK se comprueba en VP y VD; la continuidad necesita coherencia entre VP, VDP y VS. Toda diferencia conserva registro de problema, vistas afectadas, decisión y solución antes de liberar una nueva línea base.
+
+La Figura~\ref{fig:datos-arquitectura} sitúa los registros transaccionales, las proyecciones y la evidencia, y muestra las autoridades que impiden que una copia de lectura confirme una operación.
+
+\input{figuras/figura4_datos_arquitectura.tex}
+
+Los hechos críticos nacen en su autoridad local y se incorporan al propietario cloud por entrega durable, mientras los maestros comerciales viajan en sentido inverso como versiones. La evidencia documental se relaciona por identificador y huella, sin almacenar binarios dentro de cada transacción. Las proyecciones reciben eventos y conservan su versión; una consulta reconstruida no adquiere autoridad. El detalle de entidades, atributos, clasificación y retención se mantiene en SD5 y sus anexos, con correspondencia explícita a estos almacenes.
+
+El registro contractual de decisiones se entrega en el archivo \ReferenciaAnexo{Anexos de SD4}{SYNAPTIX-Subdocumento4-Anexos.pdf}. Sus registros DA-01 a DA-20 individualizan fecha, contexto, elección, alternativas, fundamento y consecuencias. Arquitectura conserva el registro versionado en el repositorio del CLIENTE durante implementación y operación. Una modificación añade una decisión sucesora y relación de sustitución; no reescribe silenciosamente el antecedente. Seguridad y Operación revisan su impacto y la contraparte autorizada decide los cambios de alcance, mediante control contractual. Los ADR se actualizan en cada cambio y se entregan con la línea base y el informe mensual; su fecha de formulación no representa una aprobación del CLIENTE \parencite[RT-02.04, p.~7]{pucv-transversal}.

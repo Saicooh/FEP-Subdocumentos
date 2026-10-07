@@ -2161,38 +2161,38 @@ La Tabla~\ref{tab:a2-2-36} detalla las condiciones y los métodos de verificaci�
 \rowcolor{RFclaro}
 Cierre de medición &
 RNF-DES-09 y 11 &
-FALTA DEFINICIÓN: protocolo operacional y medible de tiempo real, incluyendo consistencia entre escuela y portería y confirmación contable. No sustituirlo por actualizaciones cada cinco minutos ni por copias obsoletas. \\ \hline
+SD5, secciones 5.1.2, 5.2.2 y 5.2.3, formula participación y entrega escolar, autoridad, contingencia y rutas de actualización. Evidencia por incorporar: procedimiento completo de SD3, medición efectiva de consistencia entre escuela, portería y monitor, y contrato y confirmación contables. No sustituir tiempo real por actualizaciones cada cinco minutos ni por copias obsoletas. \\ \hline
 Carga y crecimiento &
 RNF-DES-12; RNF-ESCAL-01 y 02 &
-Evidencia por incorporar: volumetría de transacciones, concurrencia y pruebas. El escenario de 90 zarpes no equivale a 90 transacciones. Los 760 puntos suponen dos mediciones por cada una de 380 amarras; documentar el esquema efectivo. \\ \hline
+SD4, sección 4.2, y SD5, sección 5.4.1, formulan transacciones, solicitudes HTTP, concurrencia, almacenamiento y crecimiento; A2.7 remite a las hipótesis existentes. Evidencia por incorporar: seis estimaciones faltantes, mediciones y resultados de carga y escalamiento. El escenario de 90 zarpes no equivale a 90 transacciones. El esquema de SD4 considera 640 puntos iniciales y capacidad de 760 con ampliación; instrumentación final y capacidad efectiva pendientes de verificación. \\ \hline
 \rowcolor{RFclaro}
 Desconexión &
 RNF-CONT-01 a 06; RNF-DES-11 &
-Evidencia por incorporar: funciones y datos locales, reglas de conflicto por entidad, capacidad de almacenamiento y energía. La batería no acredita autonomía funcional. Distinguir pérdida de WAN de pérdida de toda comunicación local y demostrar el procedimiento seguro de escuela. \\ \hline
+SD4, secciones 4.1 y 4.2, y SD5, sección 5.2.2, formulan funciones locales, paquetes de datos, autoridad, conflictos y sincronización; EST-14/15 remiten al volumen y tiempo estimados. Evidencia por incorporar: pruebas de capacidad, energía, autonomía funcional y conjunto obligatorio sincronizado por ambos enlaces. La batería no acredita autonomía funcional. Distinguir pérdida de WAN de pérdida de toda comunicación local y demostrar el procedimiento seguro de escuela. \\ \hline
 Cifrado e identidad &
 RNF-SEG-01 a 07 &
-Evidencia por incorporar: política de acceso, solución criptográfica, gestión de claves y consentimiento. Eliminar o enmascarar datos en registros técnicos no debe destruir la identidad necesaria en la auditoría de negocio protegida. \\ \hline
+SD4, sección 4.1, y SD5, sección 5.2.5, formulan identidad, permisos, cifrado y gestión de claves. Evidencia por incorporar: configuración, pruebas de acceso y recuperación de claves, autorización y consentimiento aplicables. Eliminar o enmascarar datos en registros técnicos no debe destruir la identidad necesaria en la auditoría de negocio protegida. \\ \hline
 \rowcolor{RFclaro}
 Retención &
 RNF-RET-01 a 08 &
-Evidencia por incorporar: instante de inicio por dominio, calendario de archivo y eliminación y tratamiento de conservación excepcional aplicable. Para menores se satisfacen ambos límites: edad de 23 años y mínimo de diez años de retención. \\ \hline
+SD5, sección 5.2.5, formula plazos, cómputos de inicio, archivo, eliminación y bloqueos. Evidencia por incorporar: matriz detallada A5.2 por categoría y repositorio, autorización y pruebas de conservación y eliminación. Para menores se satisfacen ambos límites: edad de 23 años y mínimo de diez años de retención. \\ \hline
 Recuperación y disponibilidad &
 RNF-DISP-01; BT RT-07.01 a 07.14 &
-Evidencia por incorporar: topología, amenazas comunes, objetivos por servicio, conmutación, retorno y pruebas. Diferenciar RPO de recuperación ante desastre de la exigencia de no perder registros capturados durante operación desconectada. \\ \hline
+SD4, secciones 4.2 y 4.3, formula topología, disponibilidad, RTO/RPO, conmutación y retorno; SD5, sección 5.4.3, desarrolla estimaciones y pruebas. Evidencia por incorporar: análisis acreditado de amenazas comunes, clasificación detallada por servicio y resultados de conmutación, retorno y restauración. Diferenciar RPO de recuperación ante desastre de la exigencia de no perder registros capturados durante operación desconectada. \\ \hline
 \rowcolor{RFclaro}
 Interfaces y periféricos &
 RNF-INT-01 y 02; RNF-RED-01; RNF-TER-01 &
 Evidencia por incorporar: contratos de interfaces disponibles y acreditaciones del equipamiento. C07 RT-05.23 exige verificar canales de autoridad, formatos sanitarios, indicadores ambientales y mensajería de baja capacidad; RT-17.06 fija periféricos. No asumir APIs ni compatibilidad de proveedores. \\ \hline
 Servicio y capacitación &
 RNF-OPE; RNF-SOP; RNF-CAP-01 &
-Evidencia por incorporar: dedicaciones, suplencias, costos, traslado a boyas, dotación bilingüe y capacitación antes de tareas críticas. La transferencia técnica se dirige al servicio especializado, conforme a la condición del cliente sin personal propio de TI. Resolver incorporación de personal durante ventanas protegidas. \\ \hline
+SD1, secciones 1.1.3 y 1.5, y DEC-22 formulan responsabilidad técnica, Gerente de Servicio y apoyo externo de NOC, SOC y primera atención. Evidencia por incorporar: cargas, turnos, dedicaciones, suplencias, costos, traslado a boyas, dotación bilingüe y capacitación antes de tareas críticas. La transferencia técnica se dirige al servicio especializado, conforme a la condición del cliente sin personal propio de TI. Resolver incorporación de personal durante ventanas protegidas. \\ \hline
 \rowcolor{RFclaro}
 Cumplimiento sectorial &
 RNF-CUMP-01 &
 Evidencia por incorporar: investigación vigente y evidencia por control sobre datos, firma, zarpe, residuos, combustible, custodia y traspaso de consumos. No se atribuye validez jurídica general a una modalidad de firma ni se considera suficiente citar una norma. \\ \hline
 Condiciones dependientes del diseño &
 BT, cap. 18; C07 RT-15.02 &
-Evidencia por incorporar: determinar incorporación de IA y sus controles, y acreditar experiencia sectorial y servicio gestionado. Gobierno del proyecto, documentación corporativa, video, prototipo e innovaciones conservan sus propios entregables; no se declaran satisfechos mediante este catálogo. \\ \hline
+IA formulada: extractor documental Amazon Textract de la innovación 3 (SD13), con integración en SD4 y gobierno en SD1. Evidencia por incorporar: matriz RT-18/T-12, versión o configuración, ubicación de procesamiento, condiciones contractuales, pruebas y supervisión humana; respaldos de experiencia sectorial y servicio gestionado declarados en SD1/T-6. Gobierno del proyecto, documentación corporativa, video, prototipo e innovaciones conservan sus propios entregables; no se declaran satisfechos mediante este catálogo. \\ \hline
 \end{longtable}
 \FuenteTabla{Registro de Synaptix; fuentes y vínculos identificados en las filas.}
 

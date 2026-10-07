@@ -1,0 +1,27 @@
+\textbf{Selección WAN y diversidad de acceso.}
+La propuesta individualiza Entel Internet Dedicado por fibra como principal y Gtd Internet Dedicado mediante radioenlace de última milla como respaldo. Entel publica capacidad exclusiva nacional e internacional; Gtd publica Internet dedicado y acceso inalámbrico para datos e Internet. La modalidad y capacidad siguientes son especificaciones de proyecto para contratación, no tarifas o disponibilidad ya acreditadas en la marina \parencites{p9-entel-dedicado,p9-gtd-dedicado,p9-gtd-radio}.
+
+Ambos servicios se dimensionan con CIR simétrico inicial de proyecto de 200 Mb/s y al menos 100 Mb/s útiles tras VPN/cifrado. La Tabla~\ref{tab:wan-servicios} compara proveedores, medios e ingresos. El detalle del inventario permanece en T-11, ítems 50/51.
+
+\begin{longtable}{L{\dimexpr.25\linewidth-2\tabcolsep\relax}L{\dimexpr.20\linewidth-2\tabcolsep\relax}L{\dimexpr.55\linewidth-2\tabcolsep\relax}}
+\caption{Servicios y recorridos WAN propuestos}\label{tab:wan-servicios}\\
+\hline
+\EncabezadoTabla{Servicio} & \EncabezadoTabla{Medio} & \EncabezadoTabla{Ingreso nuevo}\\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Servicio} & \EncabezadoTabla{Medio} & \EncabezadoTabla{Ingreso nuevo}\\ \hline
+\endhead
+Entel dedicado A & Fibra & Registro, ducto y pasamuros exclusivos A\\ \hline
+Gtd dedicado B & Radio & Mástil, bajada y pasamuros B en otra fachada\\ \hline
+\end{longtable}
+\FuenteTabla{Especificación de Synaptix; catálogos de Entel y Gtd y BT RT-03.17/20 y RT-06.32/33. Los porcentajes son obligaciones a incorporar al contrato, no SLA suscritos.}
+
+La combinación elimina el ducto A como dependencia de ambos accesos de última milla. Las terminaciones se protegen eléctricamente y cada VLAN WAN alcanza ambos NGFW sin unir los dominios de proveedor. Los contratos incorporarán atención 24/7 y disponibilidad mensual de al menos 99,95\,\%, incluyendo acceso, terminación y transporte. Es una obligación de proyecto; no se atribuye el porcentaje de publicidad de un operador como SLA del recinto. Ambos servicios se especifican con agregación 1:1.
+
+Los 200 Mb/s reservan inicialmente un 50\,\% para sobrecarga y variación respecto del mínimo útil; es margen de diseño, no una eficiencia publicada. La recepción mide al menos 100 Mb/s de carga útil bidireccional sobre cada camino completo hasta el destino cloud, con VPN/cifrado, tamaño de mensaje y mezcla declarados. Se conserva la reserva de 20 Mb/s para tráfico nuevo y 80 Mb/s para lote, así como el presupuesto de 28 minutos desde restitución efectiva. El cálculo normal/peak por sitio se desarrolla por volumen en 4.2; la latencia y el caudal útil se reciben con la mezcla declarada y no se deducen de esa velocidad nominal.
+
+La envolvente de caudal por administración, cinco pantalanes, varadero e inspección se desarrolla en 4.2, Tabla~\ref{tab:caudal-sitios}. Los contratos incluyen capacidad de ampliación simétrica a 800 Mb/s CIR y al menos 400 Mb/s útiles por enlace para la mezcla de crecimiento a tres veces, con reserva de 60 Mb/s nuevos y 340 Mb/s de lote. La ampliación se recibe antes de habilitar ese crecimiento o ante el umbral de quince Mb/s definido en el cálculo. Base y ampliación se identifican en T-11 y en la oferta económica, sin atribuir cobertura o ruta exterior ya comprobada.
+
+Synaptix incorpora contratación, provisión, configuración, seguridad y aceptación de ambos servicios. El CLIENTE ejecuta las canalizaciones y soportes físicos conforme al alcance particular de C07, sobre la especificación y recepción de Synaptix. Se levantarán coordenadas de los dos ingresos, recorrido interior/exterior, estación de radio, perfil de línea de vista, protección ambiental, presupuesto RF, transporte y puntos comunes. No se declara una estación, cobertura o ruta existente sin ese respaldo. Gtd y Telsur no se computan como dos proveedores independientes.
+
+La conmutación automática tiene un objetivo propio máximo de 30 segundos: dos sondas fallidas a intervalos de cinco segundos y hasta veinte segundos para ruta y túnel utilizables. El retorno requiere 60 segundos de estabilidad para evitar oscilaciones; no reinicia el cronómetro de sincronización. Se ensayan caída y recuperación de cada acceso, pérdida de terminación, camino sano bajo carga y reconexión por separado con el manifiesto obligatorio. Cada informe conserva proveedor, contrato, CIR, ruta, versiones, instantes y caudal útil. La selección nominal queda definida; la factibilidad de radio y los trazados externos completos siguen pendientes y mantienen RT-03.17/RT-06.32 como No \parencites[RT-03.17/20, p.~9; RT-06.32/33, p.~17]{pucv-transversal}[cap.~11]{caso07}.

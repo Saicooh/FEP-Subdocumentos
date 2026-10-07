@@ -1,0 +1,91 @@
+% Topología local y condiciones de acceso. Sin escalado ni edición del PNG original.
+\begin{figure}[htbp]
+\centering
+\setstretch{1}
+\begin{tikzpicture}[
+  bloque/.style={draw=SynNavyLight,fill=SynSurface,align=left,
+    font=\fontsize{9.5}{11.5}\selectfont,text width=67mm,inner sep=2mm},
+  banda/.style={bloque,text width=146mm},
+  titulo/.style={banda,fill=SynNavy,text=SynWhite},
+  enlace/.style={-{Latex},draw=SynNavyLight,thick},
+  condicion/.style={-{Latex},draw=SynNavyLight,dashed,thick}]
+  \node[bloque,minimum height=19mm] (wana)
+    {\textbf{WAN principal: camino A}\\
+     Entel dedicado: fibra; $\geq100$ Mb/s útiles.\\
+     Ingreso A; CIR de proyecto 200 Mb/s.};
+  \node[bloque,right=8mm of wana,minimum height=19mm] (wanb)
+    {\textbf{WAN de respaldo: camino B}\\
+     Gtd dedicado: radio; $\geq100$ Mb/s útiles.\\
+     Ingreso B; CIR de proyecto 200 Mb/s.};
+  \node[titulo,below=4mm of wana.south west,anchor=north west,
+    minimum height=13mm] (red)
+    {\textbf{Sala secundaria: dos NGFW en HA y dos switches core L3 apilables}\\
+     Túneles hacia la región activa; rutas A/B, VLAN y filtros de acceso.};
+  \node[bloque,below=4mm of red.south west,anchor=north west,
+    minimum height=20mm] (nodoa)
+    {\textbf{Nodo A: servicio activo}\\
+     VIP del clúster y Runtime local.\\
+     PostgreSQL; discos RAID 1.\\
+     BMC para aislamiento del nodo.};
+  \node[bloque,below=4mm of red.south east,anchor=north east,
+    minimum height=20mm] (nodob)
+    {\textbf{Nodo B: relevo del activo}\\
+     Mismas imágenes y configuración.\\
+     PostgreSQL síncrono; RAID 1.\\
+     BMC; promoción tras \emph{fencing}.};
+  \node[banda,below=2mm of nodoa.south west,anchor=north west,
+    minimum height=22mm] (servicios)
+    {\textbf{Clúster y servicios de la Célula Operacional Local}\\
+     Réplica síncrona, \emph{heartbeat} y \emph{fencing}: una sola VIP y autoridad activa.
+     Runtime Operacional de Borde; PostgreSQL; EMQX; sincronización.
+     Objetivo sin WAN: 24 h con identidad vigente; HTTPS/mTLS con la región activa.};
+  \node[banda,below=2mm of servicios,minimum height=21mm] (autoridad)
+    {\textbf{RLH y Autoridad local de acceso: Auditoría y seguridad}\\
+     Nueva emisión tras reautenticación individual y estado actual por LAN.
+     RLH nuevo: origen competente por empleador, bajas e instantes separados;
+     una copia cloud antigua no habilita la reemisión.};
+  \node[titulo,below=2mm of autoridad,minimum height=17mm] (segmentos)
+    {\textbf{Seis segmentos: \texttt{802.1Q} y ACL}\\
+     Administración; Operación; IoT y medición;
+     CCTV y acceso; Invitados o \emph{partners}; Gestión técnica.};
+  \node[bloque,below=4mm of segmentos.south west,anchor=north west,
+    minimum height=33mm] (pantalanes)
+    {\textbf{Cinco pantalanes: borde marino}\\
+     5 gabinetes; objetivo IP66 del conjunto;\\
+     10 switches;\\
+     10 concentradores; 10 AP Wi-Fi.\\
+     Base: 320 de agua y 320 de energía.\\
+     760 de diseño $+20\,\%$ de reserva
+     en concentradores.\\
+     Fibra marina y cableado a flexión.};
+  \node[bloque,below=4mm of segmentos.south east,anchor=north east,
+    minimum height=33mm] (interfaces)
+    {\textbf{Interfaces de faena y atención}\\
+     Varadero: 1 gabinete, 2 switches y 2 AP.\\
+     Escuela; combustible; portería;\\
+     acceso y CCTV existentes.\\
+     Instrumentación idónea para la
+     zona efectiva del surtidor.\\
+     Terminales: 12 h sin cobertura;
+     inspección de boyas: 8 h.};
+  \draw[enlace] (wana.south) -- (red.north -| wana.south);
+  \draw[enlace] (wanb.south) -- (red.north -| wanb.south);
+  \draw[enlace] (red.south -| nodoa.north) -- (nodoa.north);
+  \draw[enlace] (red.south -| nodob.north) -- (nodob.north);
+  \draw[enlace] (nodoa.south) -- (servicios.north -| nodoa.south);
+  \draw[enlace] (nodob.south) -- (servicios.north -| nodob.south);
+  \draw[condicion] (servicios.south) -- (autoridad.north);
+  \draw[enlace] (red.east) -- ($(red.east)+(2.5mm,0)$)
+    |- (segmentos.east);
+  \draw[enlace] (segmentos.south -| pantalanes.north) -- (pantalanes.north);
+  \draw[enlace] (segmentos.south -| interfaces.north) -- (interfaces.north);
+\end{tikzpicture}
+\caption{Despliegue físico de la Zona 2: Célula Operacional Local y terreno}
+\label{fig:4-10}
+\FuenteFigura{Elaboración de Synaptix con base en
+  \parencites[art.~16.4, p.~12; art.~22, p.~16]{pucv-admin}
+  [secc.~6.1, p.~14; RT-06.05/07/08/13, p.~15; RT-08.02--04, p.~18;
+    RT-12.10/13, p.~26]{pucv-transversal}
+  [cap.~15, RT-03.10/24 y RT-06.01; cap.~17, secc.~17.4]{caso07}.
+  Síntesis del diseño de SD4; cantidades y capacidades del dimensionamiento propuesto.}
+\end{figure}

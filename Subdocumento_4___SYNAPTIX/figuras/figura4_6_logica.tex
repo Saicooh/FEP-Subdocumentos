@@ -1,0 +1,66 @@
+﻿% Zero Trust: identidad y autorización en cada frontera, también por LAN.
+\begin{figure}[htbp]
+\centering
+\setstretch{1}
+\begin{tikzpicture}[
+  bloque/.style={draw=SynNavyLight,fill=SynSurface,align=left,
+    font=\fontsize{9.5}{11.5}\selectfont,text width=65mm,inner sep=2mm,
+    minimum height=36mm},
+  banda/.style={bloque,text width=140mm,minimum height=0mm},
+  enlace/.style={-{Latex},draw=SynNavyLight,thick}]
+  \node[banda,fill=SynNavy,text=SynWhite] (identidades)
+    {\textbf{Personas, dispositivos y cargas con identidad propia}\\
+    Acceso individual; estado del dispositivo, rol, dominio y contexto.
+    MFA en accesos privilegiados, externos, administrativos,
+    sensibles o de alto impacto. La ubicación en una VLAN no da confianza.};
+  \node[bloque,below=6mm of identidades.south west,anchor=north west] (cloud)
+    {\textbf{Frontera cloud}\\
+    Cognito/OIDC/SAML y authorizer.
+    CloudFront + WAF; REST API Regional.
+    VPC Link V2 a ALB privado.
+    Endpoint directo deshabilitado; origen protegido.};
+  \node[bloque,below=6mm of identidades.south east,anchor=north east] (local)
+    {\textbf{Frontera local}\\
+    Certificado de dispositivo, mTLS y permiso firmado $\leq24$ h.
+    Nueva emisión con reautenticación y fuente autoritativa actual;
+    ninguna renovación desde una copia antigua.};
+  \node[bloque,below=6mm of cloud.south west,anchor=north west] (negocio)
+    {\textbf{Autorización en el dominio}\\
+    Rol, relación con el recurso y efecto permitido.
+    La API key no sustituye identidad.
+    Una cuota de negocio se comprueba en la autoridad transaccional.};
+  \node[bloque,below=6mm of local.south east,anchor=north east] (autoridad)
+    {\textbf{Autoridad local de acceso}\\
+    Función de Auditoría y seguridad en el runtime.
+    Bajas tienen prioridad; sin fuente vigente no hay nueva emisión.
+    Al vencer, denegación y cola preservada.};
+  \node[banda,below=6mm of negocio.south west,anchor=north west] (datos)
+    {\textbf{Datos privados y claves separadas}\\
+    PostgreSQL/S3 sin acceso directo desde canales; propiedad por dominio.
+    TLS/mTLS; cifrado en reposo y AES-256-GCM por campo sensible.
+    KMS/almacén local protegen claves; secretos fuera de imágenes y repositorios.};
+  \node[banda,below=6mm of datos.south west,anchor=north west] (evidencia)
+    {\textbf{Auditoría, detección y custodia}\\
+    Persona/carga, decisión, origen y consulta sensible quedan registrados.
+    OpenTelemetry y controles de seguridad alimentan observabilidad.
+    Registros protegidos en cuenta separada; sin WAN, alarma y entrega posterior.};
+  \draw[enlace] (identidades.south -| cloud.north) -- (cloud.north);
+  \draw[enlace] (identidades.south -| local.north) -- (local.north);
+  \draw[enlace] (cloud.south) -- (negocio.north);
+  \draw[enlace] (local.south) -- (autoridad.north);
+  \draw[enlace] (negocio.south) -- (datos.north -| negocio.south);
+  \draw[enlace] (autoridad.south) -- (datos.north -| autoridad.south);
+  \draw[enlace] (datos.south) -- (evidencia.north);
+  \node[banda,below=5mm of evidencia.south west,anchor=north west] (control)
+    {\textbf{Separación de responsabilidades}\\
+    Synaptix opera claves, automatización y seguridad técnica;
+    los responsables de negocio autorizan altas, cambios y bajas.
+    Se comprueban denegación, revocación, rotación, recuperación y acceso a evidencia.};
+\end{tikzpicture}
+\caption{Zero Trust en las fronteras cloud, local y de datos}
+\label{fig:4-6}
+\FuenteFigura{Elaboración de Synaptix desde SD4, 4.1/4.2, y SD5;
+  \parencites{nist-zero-trust}[cap.~11--12, pp.~22--26]{pucv-transversal}
+  {p3-api-tipos}{p3-api-privada}.
+  Fuente laboral, enrolamiento y cobertura deben individualizarse.}
+\end{figure}

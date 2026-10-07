@@ -1,0 +1,47 @@
+\textbf{Balance por estado y ventilación de bancos.} La selección de climatización se construye desde los estados físicos de la cadena, conservando por separado el aire de los bancos y el de cómputo/comunicaciones. La extracción de baterías se conduce al exterior y su reposición se incorpora al tratamiento ambiental de esa zona; no se utiliza el retorno TI como vía de dilución. La Figura~\ref{fig:plano-recinto-proyectado} identifica las zonas y la Tabla~\ref{tab:4-estados-termicos} delimita las cargas que deben coexistir. Estas condiciones desarrollan RT-06.13 para la sala secundaria; las consignas de 23--25\,$^{\circ}$C y 40--55\,\% HR son decisiones de proyecto, mientras los límites publicados corresponden a cada variante \parencites[secc.~6.1; RT-06.13, pp.~14--15]{pucv-transversal}{csbManualJunio2025}.
+
+Para una UPS en un estado estacionario, con potencias medidas en sus bornes y signos positivos según el sentido indicado, se emplea
+\[
+Q_{\mathrm{UPS}}=P_{\mathrm{AC,in}}+P_{\mathrm{DC,desc}}
+                -P_{\mathrm{AC,out}}-P_{\mathrm{DC,carga}}.
+\]
+El término incluye rectificador, inversor, cargador y auxiliares internos. Para el banco se define $Q_{\mathrm{banco}}$ como calor neto cedido al entorno, $E_{\mathrm{alm}}$ como energía interna total y $P_{\mathrm{masa}}$ como energía neta que sale con la materia, incluidos gases. Con tiempos en horas, el balance es $Q_{\mathrm{banco}}=P_{\mathrm{DC,carga}}-P_{\mathrm{DC,desc}}-\mathrm{d}E_{\mathrm{alm}}/\mathrm{d}t-P_{\mathrm{masa}}$. Este calor neto distingue transferencia y generación térmica interna. La selección incluye almacenamiento y procesos térmicos; la resistencia aproximada de 2,60 m$\Omega$ por bloque no proporciona por sí sola un máximo de disipación. En maniobras se añade la variación de energía interna de la UPS. Los 2,80092 kW publicados de la 93T y los factores 0,85/0,90 del cálculo de autonomía cumplen funciones distintas: un punto AC/AC y factores propios de dimensionamiento, respectivamente \parencites{p7-eaton-93t-tecnica}{csbHRL12540WRA260131}.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Estados que gobiernan la selección térmica}\label{tab:4-estados-termicos}
+\begin{tabularx}{\linewidth}{L{25mm}X X}
+\hline
+\EncabezadoTabla{Estado} & \EncabezadoTabla{Concurrencia física} & \EncabezadoTabla{Comprobación de selección} \\ \hline
+Red, carga baja & Dos UPS disponibles, banco en flotación y un circuito climático activo. & Pérdidas de espera y flotación; control de HR con mínimos reales del compresor. \\ \hline
+Un camino retirado & UPS sana con el parque completo y su clima; equipos retirados según procedimiento de mantenimiento. & Reparto por fase, calor del camino sano, relevo y suministro individual. \\ \hline
+Corte y descarga & Inversor alimentado por su banco; cargador sin aporte AC. & Pérdidas DC/AC y calor de descarga del banco en la banda térmica de autonomía. \\ \hline
+Retorno y recarga & Parque en servicio; pueden recuperarse ambos bancos a la vez. & Corriente agregada autorizada, calor de cargadores/bancos y renovación de aire, con reserva en recuperación. \\ \hline
+\end{tabularx}
+\FuenteTabla{Balance de Synaptix: los extremos se combinan cuando el estado admite su simultaneidad; la retirada de una rama no presupone reparto normal de PSU al 50\,\%.}
+\end{table}
+
+Si A descarga y B conserva entrada AC, se calcula ese estado mixto por rama: un mismo banco no recibe simultáneamente la recarga y descarga máximas. Una UPS disponible en reserva conserva su consumo real de espera. Las pruebas de 60 kW se ejecutan por camino y con carga resistiva externa, conservando la otra rama para servicio; no incorporan dos cargas resistivas de 60 kW al calor de la sala TI.
+
+\textbf{Cota propia de gasificación.} CSB recomienda mantener hidrógeno por debajo del 1\,\% volumétrico mediante ventilación. Para evaluar la magnitud sin atribuir una capacidad Ah a la HRL12540W, se calcula un escenario conservador de electrólisis de toda la corriente, sin recombinación. Cuarenta bloques de seis celdas dan $n=240$ celdas en serie. Con $I_\Sigma$ como suma de corrientes de las dos cadenas de una UPS, $F=96.485,33212$ C/mol, $R=8,314462618$ J/(mol K), $T_g=323,15$ K y $p_g=95.000$ Pa:
+\[
+\dot V_{H_2}=\frac{nI_\Sigma\,3.600}{2F}\frac{RT_g}{p_g},
+\qquad x_{H_2}\leq\frac{\dot V_{H_2}}{\dot V_{\mathrm{aire}}}.
+\]
+Los 50\,$^{\circ}$C y 95 kPa son condiciones conservadoras del volumen gaseoso, distintas del exterior de cálculo térmico; no son consignas de operación del banco. El modelo de mezcla uniforme permite estudiar 300 m$^3$/h efectivos por banco para 20 A: 2,5326 m$^3$/h de H$_2$ y 0,8442\,\%. Para el máximo configurable publicado de 60 A, el escenario escala a 900 m$^3$/h, 7,5978 m$^3$/h y el mismo porcentaje. La corriente agregada evita duplicar el efecto de las cadenas paralelas. Son escenarios propios de cribado, no gasificación medida, caudal normativo ni selección final de ventiladores \parencites{csbManualJunio2025}[p.~98]{p7-eaton-93t-guia}{nistCODATA2022}.
+
+La selección de extracción desarrolla captación alta, ingreso de reposición, mezcla sin bolsas, pérdida de carga con filtros sucios, descarga segura y capacidad conservada ante falla de un ventilador. El control local comprueba caudal e hidrógeno, alerta al NOC y coordina la inhibición de carga mediante una interfaz autorizada, manteniendo la función de descarga que sostenga las cargas. La selección debe identificar esa interfaz: la HMI de la UPS no acredita por sí sola un enclavamiento autónomo. La purga continúa después de cesar carga para evacuar gas residual. La recepción verifica concentración y distribución espacial, flujo efectivo y respuesta ante falla. Un porcentaje calculado bajo mezcla ideal no acredita esas prestaciones constructivas.
+
+\textbf{Efecto sobre sensible y humedad.} Para el escenario de 300 m$^3$/h por banco, ambos bancos requieren 600 m$^3$/h de reposición. Con exterior 35\,$^{\circ}$C/80\,\% HR, interior 24\,$^{\circ}$C/45\,\% HR y 101,325 kPa, se obtiene $w_e=0,0289204$, $w_i=0,0083562$ kg/kg de aire seco y $\rho_{da,e}=1,094636$ kg/m$^3$. El aporte de agua y su carga latente adicional son
+\[
+\dot m_w=600(1,094636)(0,0289204-0,0083562)
+        =13,5062\ \mathrm{kg/h},\qquad
+Q_l=13,5062(2.450)/3.600=9,1917\ \mathrm{kW}.
+\]
+La cota sensible de reposición, con densidad de diseño 1,2 kg/m$^3$ y $c_p=1,020$ kJ/(kg K), es $600(1,2)(1,020)(35-24)/3.600=2,2440$ kW. Estos aportes se añaden a transmisión, fugas residuales, ocupación y calor eléctrico según la zona. El escenario de 900 m$^3$/h por banco triplica los aportes: 40,5187 kg/h, 27,5752 kW latentes y 6,7320 kW sensibles. Si se acredita una gasificación menor y otra renovación mediante datos específicos, se rehace el balance con ese caudal.
+
+Para el tratamiento completo se emplea la diferencia de entalpía del aire húmedo, $h=1,006T+w(2.501+1,86T)$ kJ/kg de aire seco: $600\rho_{da,e}(h_e-h_i)/3.600=11,6774$ kW en ambos bancos para el escenario de 20 A, equivalentes a 5,8387 kW por banco, o 35,0322 kW en ambos para 60 A. Esa carga total incluye el componente latente, por lo que se cuenta una sola vez; los aportes sensible/latente anteriores son aproximaciones de descomposición y no sustituyen el balance entálpico.
+
+Por tanto, el techo de vapor de 0,50 kg/h describe únicamente fugas/ocupación de la hipótesis inicial, sin la reposición de baterías. Incluso el escenario de 20 A añade 9,1917 kW latentes, frente a $22,6-19,3=3,3$ kW latentes en el punto nominal publicado de la 022. La separación de aire evita transferir esa humedad al recinto TI, pero requiere tratamiento propio de bancos y su balance eléctrico; no otorga capacidad adicional a la 022. Del mismo modo, los 23,52 kW DC de dos recargas de 20 A/588 V son potencia entregada a bancos: su fracción térmica depende del estado de almacenamiento, y no se presenta toda esa potencia como disipación real \parencite[p.~3]{p6-mext-pi-2025}.
+
+La combinación 022/YKA2 mantiene carácter de referencia candidata. Su autorización exige selección sensible/latente en la banda completa y carga mínima, disipaciones UPS/banco por estado, extracción y tratamiento compatibles, además del mapa eléctrico y la autonomía. Se compararán reducción del caudal con evidencia específica, tratamiento separado y alternativas de climatización con modulación acreditada, conservando el dimensionamiento proporcional de BT 6.1, C07 RT-06.01 y RT-15.01. Cambiar a una unidad mayor por su placa, o fijar un techo de calor sin respaldo de la variante, no completa la selección. T-12 conserva RT-06.13 en No por estas causas de diseño; las pruebas futuras verificarán la solución seleccionada, sin sustituirla.

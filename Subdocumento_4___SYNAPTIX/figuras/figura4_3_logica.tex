@@ -1,0 +1,71 @@
+﻿% Ocho dominios en tres núcleos; Auditoría y seguridad es el noveno,
+% con modelo propio y proceso especializado transversal.
+\begin{figure}[htbp]
+\centering
+\setstretch{1}
+\begin{tikzpicture}[
+  dominio/.style={draw=SynNavyLight,fill=SynSurface,align=left,
+    font=\fontsize{9.5}{11.5}\selectfont,text width=42mm,inner sep=2mm,
+    minimum height=31mm},
+  titulo/.style={dominio,text width=140mm,minimum height=8mm,
+    fill=SynNavy,text=SynWhite},
+  banda/.style={dominio,text width=140mm,minimum height=17mm},
+  enlace/.style={-{Latex},draw=SynNavyLight,thick,dashed}]
+  \node[titulo] (operacional) {\textbf{Núcleo Operacional}};
+  \node[dominio,below=3mm of operacional.south west,anchor=north west] (maritima)
+    {\textbf{Operación marítima}\\
+    Salida, regreso, plan y autoridad local de puesto.\\
+    Publica hechos de navegación.};
+  \node[dominio,right=3mm of maritima.north east,anchor=north west] (escuela)
+    {\textbf{Escuela náutica}\\
+    Clase, nómina, asistencia y retiro.\\
+    Publica cambios de clase.};
+  \node[dominio,right=3mm of escuela.north east,anchor=north west] (infra)
+    {\textbf{Infraestructura}\\
+    Amarra, boya, medidor y activo físico.\\
+    Publica asociación y condición.};
+  \node[titulo,below=4mm of maritima.south west,anchor=north west] (servicios)
+    {\textbf{Núcleo de Servicios}};
+  \node[dominio,below=3mm of servicios.south west,anchor=north west] (varadero)
+    {\textbf{Varadero y contratistas}\\
+    Agenda, izaje, acreditación y faena.\\
+    Publica plan y evidencia de ejecución.};
+  \node[dominio,right=3mm of varadero.north east,anchor=north west] (combustible)
+    {\textbf{Combustible}\\
+    Despacho, operador, volumen y evidencia.\\
+    Publica despacho validado.};
+  \node[dominio,right=3mm of combustible.north east,anchor=north west] (ambiente)
+    {\textbf{Ambiente y consumos}\\
+    Series, residuos y evidencia ambiental.\\
+    Publica consumo conciliado.};
+  \node[titulo,below=4mm of varadero.south west,anchor=north west] (administrativo)
+    {\textbf{Núcleo Administrativo}};
+  \node[dominio,text width=65mm,below=3mm of administrativo.south west,
+    anchor=north west] (clientes)
+    {\textbf{Clientes y contratos}\\
+    Persona, embarcación, contrato y asignación contractual.
+    Publica cambios de maestros y vigencias.};
+  \node[dominio,text width=65mm,right=6mm of clientes.north east,
+    anchor=north west] (finanzas)
+    {\textbf{Finanzas y cobranza}\\
+    Hecho facturable, saldo importado y expediente.
+    Consume hechos conciliados; contabilidad conserva autoridad fiscal.};
+  \node[banda,below=5mm of clientes.south west,anchor=north west] (auditoria)
+    {\textbf{Noveno dominio: Auditoría y seguridad}\\
+    Modelo propio: consentimiento, autorización y registro protegido.
+    Recibe eventos de los tres núcleos; la Autoridad local de acceso
+    ejecuta su función en el Runtime Operacional de Borde.};
+  \node[banda,below=5mm of auditoria.south west,anchor=north west] (contratos)
+    {\textbf{Intercambio entre propietarios}\\
+    API o eventos versionados; identificadores compartidos por referencia.
+    Ambiente publica consumo conciliado y Finanzas genera el hecho facturable.
+    No se accede a tablas ni clases internas de otro dominio.};
+  \draw[enlace] (clientes.south) -- (auditoria.north -| clientes.south);
+  \draw[enlace] (finanzas.south) -- (auditoria.north -| finanzas.south);
+\end{tikzpicture}
+\caption{Nueve dominios, tres núcleos y propiedad de la información}
+\label{fig:4-3}
+\FuenteFigura{Elaboración de Synaptix desde SD4, 4.1, y SD5, 5.1.2;
+  \parencite[cap.~4, 9, 14 y 17.4]{caso07}.
+  Auditoría y seguridad conserva su modelo fuera de los tres núcleos de negocio.}
+\end{figure}

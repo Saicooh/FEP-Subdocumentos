@@ -1,0 +1,70 @@
+﻿% Vista lógica propia; no certifica despliegue o aceptación.
+\begin{figure}[htbp]
+\centering
+\setstretch{1}
+\begin{tikzpicture}[
+  bloque/.style={draw=SynNavyLight,fill=SynSurface,align=left,
+    font=\fontsize{9.5}{11.5}\selectfont,text width=65mm,inner sep=2mm},
+  banda/.style={bloque,text width=140mm},
+  cabecera/.style={banda,fill=SynNavy,text=SynWhite},
+  llamada/.style={-{Latex},draw=SynNavyLight,thick},
+  diferido/.style={-{Latex},draw=SynNavyLight,thick,dashed},
+  telemetria/.style={-{Latex},draw=SynNavyLight,thick,densely dotted}]
+  \node[bloque] (personas) {\textbf{Personas y canales}\\
+    Portal y consola: personal, socios, armadores y terceros autorizados.
+    Android: pantalán, varadero, escuela e inspección.};
+  \node[bloque,right=6mm of personas.north east,anchor=north west] (vigentes)
+    {\textbf{Sistemas vigentes}\\
+    Contabilidad, acceso, CCTV y meteorología se integran por adaptadores.
+    VHF conserva coordinación humana.};
+  \node[cabecera,below=7mm of personas.south west,anchor=north west] (ingreso)
+    {\textbf{Exposición cloud: HTTPS y autorización}\\
+    CloudFront + WAF/Shield; API Gateway REST Regional y Cognito.
+    VPC Link V2 hacia ALB interno; aplicaciones y datos privados.};
+  \node[banda,below=7mm of ingreso.south west,anchor=north west] (nube)
+    {\textbf{AWS São Paulo: carga principal, Multi-AZ}\\
+    Tres núcleos: Operacional, de Servicios y Administrativo.
+    Cinco procesos: integración externa, notificaciones, telemetría,
+    sincronización y auditoría. PostgreSQL por dominio y evidencia en S3.};
+  \node[bloque,below=9mm of nube.south west,anchor=north west] (local)
+    {\textbf{Célula Operacional Local}\\
+    Runtime y autoridad local de puesto; PostgreSQL, EMQX y cola durable.
+    Dos nodos activo-pasivo, réplica síncrona y fencing.
+    Objetivo: 24 h sin WAN.};
+  \node[bloque,below=9mm of nube.south east,anchor=north east] (dr)
+    {\textbf{AWS México Central: DR}\\
+    Warm standby, réplica asíncrona, evidencia e imágenes replicadas.
+    Conmutación autorizada: identidad, datos y servicios críticos.
+    RTO $\leq4$ h; RPO $\leq15$ min.};
+  \node[bloque,below=7mm of local.south west,anchor=north west] (recinto)
+    {\textbf{Operación del recinto}\\
+    Cinco pantalanes, portería, escuela, varadero y combustible.
+    Captura local, MQTT y totalizadores.
+    Terminales: 12 h sin cobertura.};
+  \node[bloque,below=7mm of dr.south east,anchor=north east] (boyas)
+    {\textbf{Bahía Ilque}\\
+    Inspección con mapas, formulario y evidencia local: 8 h sin cobertura.
+    Sin red ni energía fija presumidas.
+    Sensores eventuales: piloto separado.};
+  \draw[llamada] (personas.south) -- (ingreso.north -| personas.south);
+  \draw[llamada] (ingreso.south) -- (nube.north);
+  \draw[diferido] (vigentes.east) -- ++(3mm,0) |- (nube.east);
+  \draw[diferido,{Latex}-{Latex}] (nube.south -| local.north) -- (local.north);
+  \draw[diferido] (nube.south -| dr.north) -- (dr.north);
+  \draw[telemetria] (recinto.north) -- (local.south);
+  \draw[diferido] (boyas.west) -- ++(-3mm,0) |- (local.east);
+  \node[banda,below=7mm of recinto.south west,anchor=north west] (control)
+    {\textbf{Contratos y límites de la vista}\\
+    Continuas: llamadas HTTPS/REST. Trazos: intercambio diferido,
+    sincronización o réplica. Puntos: telemetría.
+    Local--cloud usa HTTPS/mTLS sobre dos túneles IPsec.
+    Permisos $\leq24$ h; una nueva emisión exige fuente laboral autoritativa actual.};
+\end{tikzpicture}
+\caption{Vista híbrida de la solución y continuidad del recinto}
+\label{fig:4-1}
+\FuenteFigura{Elaboración de Synaptix desde SD4, 4.1/4.2, y SD5;
+  \parencites[art.~16, pp.~11--12]{pucv-admin}
+  [cap.~3, pp.~8--10]{pucv-transversal}
+  [cap.~15, RT-03.10/13 y RT-06.01]{caso07}.
+  Esquema de diseño propuesto; los objetivos requieren aceptación.}
+\end{figure}

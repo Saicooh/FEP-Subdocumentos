@@ -1,0 +1,32 @@
+\textbf{Deduplicación de escrituras y recuperación de respuestas.}
+Los tres núcleos, el Runtime Operacional de Borde y los adaptadores aplican el mismo contrato de escritura. El cliente genera un UUID por intención de negocio y lo conserva durante todos los reintentos, junto con \texttt{Idempotency-Key}. La identidad, operación, recurso e identificador forman la clave única; una huella del cuerpo normalizado impide reutilizarla con otro contenido. PostgreSQL 18 registra clave, huella, estado y resultado en la misma transacción que el efecto y el \emph{outbox}. Dos solicitudes concurrentes se serializan mediante la restricción única. Un duplicado terminado devuelve el mismo resultado; uno en curso devuelve estado consultable, y una huella diferente produce conflicto sin nueva escritura.
+
+La ventana de recuperación de respuestas es de sesenta días desde la primera aceptación, tanto en nube como en el recinto. Esta elección cubre los treinta días de margen de cola, la desconexión de veinticuatro horas y hasta catorce días de retención de mensajería: $30+1+14=45<60$ días. La clave propia de cada hecho permanece además como restricción única durante la retención del registro de negocio definida en SD5. Una depuración de respuestas o de \emph{inbox} nunca elimina esa restricción. Una solicitud antigua sin resultado recuperable se rechaza y exige consulta o conciliación del hecho; no se interpreta como una intención nueva. Los despachos, movimientos, hechos facturables y decisiones laborales conservan su identificador y versión también al cambiar de región o restituir una copia.
+
+Los consumidores conservan \texttt{eventId} durante sesenta días en \emph{inbox} y comprueban identidad de hecho, versión y secuencia del agregado antes de aplicar efectos. Una secuencia adelantada espera la anterior; una versión antigua no revierte un estado posterior. MQTT no aporta por sí solo deduplicación de negocio, ni la deduplicación temporal del proveedor sustituye estos registros. La aceptación reproduce la misma escritura simultáneamente, tras pérdida de respuesta, reinicio, conmutación y reproceso de cola; debe obtener un solo efecto durable y una respuesta trazable \parencite[RT-02.06/07, p.~7]{pucv-transversal}.
+
+\textbf{Presupuestos de llamada y aislamiento de fallas.}
+Todo cliente remoto declara un tiempo máximo total, incluidos conexión, respuesta y reintentos. Para una acción interactiva crítica, el presupuesto de servidor es de tres segundos y ninguna dependencia puede consumirlo de nuevo por reintento. Las operaciones largas se aceptan como trabajo asíncrono y devuelven identificador y estado, sin mantener una llamada abierta. La Tabla~\ref{tab:resiliencia-llamadas} fija los límites iniciales por clase; son parámetros de diseño que se contrastan con los tiempos P95 del caso en las pruebas.
+
+\begin{table}[htbp]
+\centering
+\fontsize{9}{11}\selectfont
+\begin{tabularx}{\linewidth}{|X|r|r|r|}
+\hline
+\EncabezadoTabla{Clase de llamada} & \EncabezadoTabla{Conexión} & \EncabezadoTabla{Máximo total} & \EncabezadoTabla{Intentos}\\ \hline
+LAN: autoridad y comando crítico & 0,2 s & 1 s & 2\\ \hline
+API interna cloud & 0,5 s & 2 s & 2\\ \hline
+Consulta interactiva de tercero & 1 s & 3 s & 1\\ \hline
+Adaptador o lote asíncrono & 2 s & 15 s & 3\\ \hline
+Sonda de salud WAN & 1 s & 3 s & 1\\ \hline
+\end{tabularx}
+\caption{Límites de llamadas remotas por clase}
+\label{tab:resiliencia-llamadas}
+\FuenteTabla{Especificación de Synaptix para RT-02.08; presupuestos iniciales de aceptación.}
+\end{table}
+
+Un intento adicional solo se ejecuta si cabe íntegramente en el plazo restante y la operación es idempotente. El retroceso usa espera aleatoria uniforme entre cero y $\min(2\,s,0,1\,s\times2^n)$; se respeta \texttt{Retry-After} sin exceder el presupuesto. Errores de autorización, validación o conflicto no se reintentan. La cola asíncrona utiliza hasta cinco entregas de trabajo antes de DLQ; una reentrega conserva el identificador original y queda sujeta a deduplicación.
+
+Cada contraparte y dominio mantiene un cortacircuitos separado: con al menos veinte llamadas observadas, un 50\,\% de fallas de transporte o respuestas 5xx en treinta segundos abre el circuito por treinta segundos; tres sondas exitosas permiten cerrarlo. Los fallos de una contraparte no abren los circuitos de las demás. Cada tarea reserva grupos de ejecución distintos para comandos operacionales, consulta y terceros, con veinte, veinte y cinco llamadas concurrentes respectivamente; la cola por grupo no supera veinte solicitudes. El exceso produce respuesta de saturación y plazo de reintento, sin ocupar recursos del grupo crítico. Integración externa no comparte ejecutores con emisión de permisos, registro de navegación o auditoría durable.
+
+La admisión de API se fija inicialmente en cien solicitudes/s y ráfaga de doscientas para la mezcla completa. Las cuotas por identidad y operación se verifican en el dominio; una API key o el límite del gateway no sustituye esa autorización. Las notificaciones de emergencia tienen su grupo y su reserva de ejecución propios. El catálogo de endpoints identifica clase, plazo, reintentos, cuota, ejecutor y cortacircuitos; el pipeline rechaza un cliente remoto sin estos campos. La prueba desconecta individualmente contabilidad, notificaciones, nube y WAN y satura consultas: verifica tiempos, circuitos, DLQ y continuidad de las funciones cuyo diseño local no necesita esa contraparte. Este control desarrolla RT-02.08 sin atribuir la realización de las pruebas \parencite[RT-02.08/09, p.~7]{pucv-transversal}.

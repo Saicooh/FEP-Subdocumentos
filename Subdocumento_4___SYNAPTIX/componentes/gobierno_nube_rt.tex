@@ -1,0 +1,28 @@
+\textbf{Titularidad y reproducción de infraestructura.}
+El CLIENTE es titular del repositorio Git de código, infraestructura y configuración, así como de las cuentas y estados de despliegue. Synaptix recibe permisos nominativos de administración bajo el gobierno contractual. OpenTofu conserva módulos HCL versionados para cuentas, redes, subredes, rutas, identidades, cifrado, servicios, políticas, registros, alarmas y recuperación. El estado se cifra, versiona y bloquea; la credencial de despliegue es temporal y no se incorpora al repositorio. La configuración de nodos, cortafuegos, switches, puntos de acceso y concentradores se conserva también como archivos versionados con identidad de activo, modelo, firmware, interfaces, VLAN y políticas. Una configuración protegida o un secreto se referencia desde el almacén autorizado, sin publicar su valor.
+
+La única excepción a creación mediante código es la cuenta raíz inicial: el procedimiento registra solicitante autorizado, fecha, titularidad, correo institucional, MFA, custodios y evidencia de apertura, sin generar claves API permanentes de raíz. Inmediatamente se incorpora el gobierno de cuenta a la configuración versionada. Toda modificación posterior requiere solicitud, revisión independiente, plan de diferencias, artefacto identificado y registro de aplicación. El inventario detecta diariamente divergencias; un cambio de emergencia se registra antes de aplicar y se reconcilia en código dentro de veinticuatro horas. No se mantiene infraestructura productiva creada manualmente por consola. La recepción reproduce una región de ensayo desde el repositorio del CLIENTE, compara inventario, permisos y políticas y verifica restauración del estado \parencite[RT-03.03, p.~8]{pucv-transversal}.
+
+\textbf{Reversibilidad y esfuerzo de sustitución.}
+El código Java/Kotlin/TypeScript, contenedores OCI, PostgreSQL, SQL, JSON/OpenAPI, MQTT y Parquet conservan formatos abiertos. API Gateway, Cognito, EventBridge, SNS, KMS y las políticas administradas tienen dependencia de proveedor: no se declaran portables sin sustitución. La Tabla~\ref{tab:reversibilidad-esfuerzo} estima el trabajo de un traslado de la plataforma cloud a un proveedor alternativo que disponga de dos zonas, contenedores, PostgreSQL, objetos y gestión de claves. La estimación es de ingeniería, con jornadas de ocho horas y cobertura de los nueve dominios; no representa una migración medida.
+
+\begin{table}[htbp]
+\centering
+\fontsize{9}{11}\selectfont
+\begin{tabularx}{\linewidth}{|X|X|r|}
+\hline
+\EncabezadoTabla{Conjunto} & \EncabezadoTabla{Trabajo previsto} & \EncabezadoTabla{Jornadas-persona}\\ \hline
+OCI y aplicaciones & 2 especialistas por 8 días & 16\\ \hline
+PostgreSQL, objetos y Parquet & 2 especialistas por 10 días & 20\\ \hline
+Gateway, eventos y comunicaciones & 2 especialistas por 12 días & 24\\ \hline
+Identidad, claves y auditoría & 2 especialistas por 10 días & 20\\ \hline
+Infraestructura, pruebas y corte & 2 especialistas por 15 días & 30\\ \hline
+\end{tabularx}
+\caption{Esfuerzo inicial de reversibilidad por conjunto}
+\label{tab:reversibilidad-esfuerzo}
+\FuenteTabla{Estimación de Synaptix para el alcance de SD3 y BT RT-03.07.}
+\end{table}
+
+El total base es $16+20+24+20+30=110$ jornadas-persona; la reserva del 25\,\% agrega 27,5 y eleva la estimación a 137,5 jornadas-persona, equivalentes a 1.100 horas. Cuatro especialistas dedicados requieren al menos 34,375 días laborables por esfuerzo; se programan ocho semanas para dependencias, revisión y dos ensayos de corte. La duración se recalcula si cambia volumen, región, integración o catálogo del destino.
+
+La salida comprende exportación íntegra de datos y objetos, relaciones y huellas, historial de decisiones, configuración y documentación, y transferencia de la custodia de claves mediante descifrado y recifrado autorizado. Las claves no exportables de KMS se sustituyen mediante reenvoltura o recifrado; se conserva lectura durante la transición. Cognito requiere migración controlada de identidades y verificación de factores, con nueva inscripción cuando el material no sea exportable; no se promete copiar contraseñas o MFA sin restricciones. Los adaptadores de eventos y comunicaciones se sustituyen manteniendo contratos y pruebas por agregado. Se ensayan integridad, permisos, continuidad, retorno y eliminación autorizada antes de liberar el origen. Synaptix entrega inventario de dependencias y actualiza este esfuerzo semestralmente y ante una decisión arquitectónica relevante \parencite[RT-03.07, p.~8]{pucv-transversal}.
