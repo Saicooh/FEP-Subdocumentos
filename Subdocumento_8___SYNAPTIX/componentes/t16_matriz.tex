@@ -1,0 +1,27 @@
+% Fuente: registro_riesgos.csv; valores iniciales y tratamientos de oferta.
+\begin{landscape}
+\begingroup\fontsize{9}{11}\selectfont\setlength{\tabcolsep}{2pt}
+\begin{longtable}{L{\dimexpr.035\linewidth-2\tabcolsep\relax}L{\dimexpr.23\linewidth-2\tabcolsep\relax}L{\dimexpr.09\linewidth-2\tabcolsep\relax}L{\dimexpr.035\linewidth-2\tabcolsep\relax}L{\dimexpr.035\linewidth-2\tabcolsep\relax}L{\dimexpr.035\linewidth-2\tabcolsep\relax}L{\dimexpr.36\linewidth-2\tabcolsep\relax}L{\dimexpr.18\linewidth-2\tabcolsep\relax}}
+\caption{Plan de riesgos: campos oficiales del Formulario T-16}\label{tab:t16-matriz}\\\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Riesgo} & \EncabezadoTabla{Categoría} & \EncabezadoTabla{Prob.} & \EncabezadoTabla{Impacto} & \EncabezadoTabla{Expos.} & \EncabezadoTabla{Mitigación} & \EncabezadoTabla{Responsable}\\\hline\endfirsthead
+\hline\EncabezadoTabla{ID} & \EncabezadoTabla{Riesgo} & \EncabezadoTabla{Categoría} & \EncabezadoTabla{Prob.} & \EncabezadoTabla{Impacto} & \EncabezadoTabla{Expos.} & \EncabezadoTabla{Mitigación} & \EncabezadoTabla{Responsable}\\\hline\endhead
+1 & R-01: Cancelación de trabajo programado por marejadas & Proyecto & 4 & 5 & 20 & Preparar ventanas alternativas y revisar la red completa con suspensión de todos los frentes; proteger el margen anterior al hito. & José Lara Arce (Implantación)\\\hline
+2 & R-02: Pérdida conjunta de enlace, energía o nodo local & Operación & 3 & 5 & 15 & Comprobar caminos de energía, exclusión de escrituras, respaldo y autonomías 24/12/8 horas con mezcla operacional. & José Lara Arce (SRE)\\\hline
+3 & R-03: Conflicto de autoridad o pérdida en sincronización & Técnico & 3 & 5 & 15 & Probar idempotencia, autoridad por período, conflictos y reconexión tras veinticuatro horas; conservar originales y versiones. & Fernando Guerrero (Arquitectura)\\\hline
+4 & R-04: Contraparte no disponible para decisión o acta & Organizacional & 4 & 5 & 20 & Acordar referentes y suplentes por proceso, revisión continua y agenda de decisiones antes de la ventana; entregar expedientes completos. & Ignacio Silva (Proyecto)\\\hline
+5 & R-05: Capacidad compartida y factores UCP deteriorados & Proyecto & 3 & 4 & 12 & Nivelar por persona y día, reservar revisión y verificar competencias, disponibilidad y puestos de refuerzo. & Ignacio Silva (Proyecto)\\\hline
+6 & R-06: Obsolescencia, variante o suministro incompatibles & Técnico & 3 & 4 & 12 & Verificar variante, soporte, licencias, interfaces y sustitución antes de compra; mantener inventario y plan de actualización. & Fernando Guerrero (Arquitectura)\\\hline
+7 & R-07: Bloqueo por proveedor en la salida & Técnico & 3 & 4 & 12 & Versionar contratos, IaC y exportaciones; ensayar alternativas, recifrado y límites de portabilidad; actualizar plan de reversibilidad. & Fernando Guerrero (Arquitectura)\\\hline
+8 & R-08: Saturación en peak o crecimiento de telemetría & Técnico & 3 & 4 & 12 & Probar mezcla, carga/estrés, degradación y recuperación; proyectar capacidad trimestral y límites de telemetría. & Fernando Guerrero (Arquitectura)\\\hline
+9 & R-09: Compromiso de dependencias o entrega & Seguridad & 3 & 5 & 15 & Ramas protegidas, SAST/SCA/DAST, análisis de imágenes, SBOM y aislamiento de firma SLSA L3; intrusión independiente. & Bruno Toro (Seguridad)\\\hline
+10 & R-10: Exposición de menores, salud o datos protegidos & Seguridad & 3 & 5 & 15 & Minimización, cifrado de campo, permisos por finalidad y segregación; verificar rechazo, auditoría y datos de prueba protegidos. & Bruno Toro (Seguridad)\\\hline
+11 & R-11: Intervención o equipo que expone personas & Operación & 3 & 5 & 15 & Recepción de equipos y montaje marino, prueba con guantes/humedad y segregación; respetar obras/compras del CLIENTE y ventanas. & Fernando Guerrero (Arquitectura)\\\hline
+12 & R-12: Migración o retorno no conciliados & Proyecto & 3 & 5 & 15 & Perfilar fuentes con referente, conservar originales y realizar dos ensayos completos por etapa con conciliación y retorno. & Davor Serey (Calidad)\\\hline
+13 & R-13: Cobertura insuficiente del servicio gestionado & Operación & 3 & 4 & 12 & Acreditar puestos y suplencia NOC/SOC/mesa bilingüe, medir colas y comprobar escalamiento 24 por 7 para emergencias. & José Lara Arce (Operación)\\\hline
+14 & R-14: Rotación estacional y adopción incompleta & Organizacional & 4 & 4 & 16 & Formación por perfil/turno en noviembre, ejercicios de tarea, suplentes y mentoría; registrar evaluación individual. & José Lara Arce (Implantación)\\\hline
+15 & R-15: Pilotos o evidencia ambiental fuera de ventana & Proyecto & 3 & 4 & 12 & Mantener fechas y dependencias de SD13, habilitar medición temprana y verificar datos/pilotos con criterios propios. & Ignacio Silva (Proyecto)\\\hline
+16 & R-16: Fuentes, licencias o custodia incompletas & Proyecto & 3 & 4 & 12 & Repositorio del CLIENTE, verificación de depósito en cada liberación y contrato de custodia independiente con condiciones de liberación. & Ignacio Silva (Proyecto)\\\hline
+\end{longtable}
+\FuenteTabla{Registro de Synaptix; campos del T-16, Bases Administrativas, p.~63; escalas de SD8.}
+\endgroup
+\end{landscape}

@@ -1,0 +1,16 @@
+% Nuevas intervenciones; preserva declaraciones históricas del SD8.
+\newcommand{\ControlHumanoRiesgos}{José Lara: responsable del control humano técnico y editorial previo a emisión; revisión pendiente. Alcance: fuentes, criterios, riesgos, cálculos, concordancia, respuestas y PDF.}
+\ifdefined\FormularioRiesgos
+ \renewcommand{\DeclaracionesIA}{%
+  \FilaDeclaracionIA{T-16, 2026-10-08}{OpenAI Codex}{Formulación de dieciséis riesgos, matriz oficial, fichas, objetivos residuales y trazabilidad a SD7.}{Alto}{Ninguno}{\ControlHumanoRiesgos}
+ }
+\else
+ \let\DeclaracionesAnterioresRiesgos\DeclaracionesIA
+ \renewcommand{\DeclaracionesIA}{%
+  \DeclaracionesAnterioresRiesgos
+  \FilaDeclaracionIA{8.1, 2026-10-08}{OpenAI Codex}{Desarrollo del plan ISO 31000, roles, escalas, registro, seguimiento y figura del proceso.}{Alto}{Alto}{\ControlHumanoRiesgos}
+  \FilaDeclaracionIA{8.2, 2026-10-08}{OpenAI Codex}{RBS, priorización, modos de falla y sensibilidades de plazo/esfuerzo con supuestos explícitos.}{Alto}{Ninguno}{\ControlHumanoRiesgos}
+  \FilaDeclaracionIA{8.3, 2026-10-08}{OpenAI Codex}{Respuestas, costo-beneficio sin precios, contingencia, gestión, eficacia y cierre.}{Alto}{Ninguno}{\ControlHumanoRiesgos}
+  \FilaDeclaracionIA{T-16, 2026-10-08}{OpenAI Codex}{Registro y formulario independientes; conservación de responsables PL-R y distinción de residual objetivo/observado.}{Alto}{Ninguno}{\ControlHumanoRiesgos}
+ }
+\fi

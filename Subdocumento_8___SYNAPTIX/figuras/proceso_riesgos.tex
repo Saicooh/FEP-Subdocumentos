@@ -1,0 +1,17 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+ caja/.style={draw=SynLine,fill=SynSurface,rounded corners=1mm,align=left,text width=12.4cm,inner sep=3mm,font=\fontsize{9}{12}\selectfont},
+ enlace/.style={-{Stealth},draw=SynBlue,thick}]
+\node[caja] (a) {\textbf{Contexto y criterios}\quad Proyecto y titulares: obligación, flujo, dependencia, ventana y capacidad.};
+\node[caja,below=4mm of a] (b) {\textbf{Identificación y evaluación}\quad Causa, evento y consecuencia; RBS, P/I/E, modo de falla y sensibilidad.};
+\node[caja,below=4mm of b] (c) {\textbf{Decisión y tratamiento}\quad Responsable, disparador, plazo, recurso y reserva única; aprobación competente antes de ejecutar.};
+\node[caja,below=4mm of c] (d) {\textbf{Comprobación y revisión}\quad Ensayo/evidencia, residual observado y cierre; nueva acción si falla eficacia.};
+\draw[enlace] (a)--(b);
+\draw[enlace] (b)--(c);
+\draw[enlace] (c)--(d);
+\draw[enlace] (d.east)--++(8mm,0)|-(b.east);
+\end{tikzpicture}
+\caption{Ciclo RIESGO-8 y control de eficacia}\label{fig:sd8-proceso}
+\FuenteFigura{Elaboración de Synaptix a partir del enfoque ISO 31000:2018 y RT-19.04 de las Bases Técnicas Transversales, p.~33.}
+\end{figure}

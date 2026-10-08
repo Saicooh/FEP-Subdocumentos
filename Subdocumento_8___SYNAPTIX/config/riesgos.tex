@@ -1,0 +1,7 @@
+% Convenciones comunes del SD8 y T-16.
+\setlength{\headheight}{23pt}
+\newcommand{\ArchivoTDieciseis}{\texttt{SYNAPTIX-Formulario-T-16.pdf}}
+\newcommand{\ArchivoSDOcho}{\texttt{SYNAPTIX-Subdocumento8.pdf}}
+\AtBeginBibliography{\RaggedRight\setlength{\emergencystretch}{3em}}
+\NewDocumentCommand{\TituloFormularioRiesgos}{m}{\chapter*{#1}\addcontentsline{toc}{chapter}{#1}\markboth{#1}{#1}}
+\RenewDocumentCommand{\FuenteTabla}{m}{\FuenteFigura{#1}\par\smallskip}

@@ -1,0 +1,16 @@
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
+\input{componentes/cierre.tex}
+\graphicspath{{figuras/}}
+
+\begin{document}
+\pagenumbering{arabic}
+\setcounter{chapter}{8}
+\PortadaPropuesta{9}{Introducción al Plan de calidad}
+\tableofcontents
+\clearpage
+\input{capitulo09.tex}
+\CierreSubdocumento
+\end{document}

@@ -1,0 +1,29 @@
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
+\input{componentes/cierre.tex}
+\input{config/riesgos.tex}
+\addbibresource{config/riesgos.bib}
+\newcommand{\FormularioRiesgos}{T-16}
+\input{componentes/declaraciones_riesgos.tex}
+\renewcommand{\thesection}{T-16.\arabic{section}}
+\renewcommand{\thetable}{T-16.\arabic{table}}
+\setlength{\cftsecnumwidth}{4.5em}
+\setlength{\cftsubsecnumwidth}{6em}
+\begin{document}
+\pagenumbering{arabic}
+\PortadaFormulario{T-16}{PLAN DE RIESGOS}
+\tableofcontents\clearpage
+\TituloFormularioRiesgos{Plan de riesgos}
+Synaptix presenta la matriz y las respuestas de \ArchivoSDOcho{}, con los ocho campos oficiales de T-16 y trazabilidad adicional a SD7. Las valoraciones son hipótesis de oferta y los controles se verificarán en ejecución; no constituyen probabilidades medidas ni pruebas realizadas. \parencites[Formulario T-16, p.~63]{sd8-ba}[RT-19.04, p.~33]{sd8-bt}[cap.~10, p.~26; cap.~13, pp.~28--30; cap.~15, pp.~33--36]{sd8-c07}
+\section{Matriz oficial y criterios}
+La Tabla~\ref{tab:t16-matriz} utiliza $P/I$ ordinales de uno a cinco y $E=PI$. Los intervalos bajo 1--4, moderado 5--9, apreciable 10--14, alto 15--19 y crítico 20--25 priorizan el tratamiento. Impacto 5 en personas, integridad o privacidad exige revisión competente aunque $E$ sea menor a 15; ninguna aceptación residual permite incumplir una cláusula. Los objetivos residuales de las fichas son metas sujetas a evidencia, no resultados observados.
+\input{componentes/t16_matriz.tex}
+R-01 y R-04 requieren decisión temprana por su exposición 20. Los controles de los demás riesgos conservan sus puertas obligatorias. Un consumo de reserva se registra una sola vez aunque el evento afecte varias fichas.
+\input{componentes/t16_fichas.tex}
+\section{Revisión, evidencia y aceptación}
+Proyecto revisará este registro en cada Comité de Proyecto y ante cambios, incidentes o ventanas críticas. El titular aporta resultado y residual observado; Calidad verifica eficacia; la autoridad competente decide aceptación dentro de sus atribuciones. Seguridad y SRE conservan el procedimiento de incidente y la Contraparte conserva recepción. Las actas se emiten en dos días hábiles y desvíos mayores a 10\,\% de un hito se comunican en cinco días hábiles con recuperación. \parencites[art.~71, pp.~37--38]{sd8-ba}[RT-19.04/09/10, pp.~33--34]{sd8-bt}
+El proceso aplica ISO 31000:2018 y utiliza análisis de modos de falla y sensibilidad de SD8, con IEC 31010 como referencia para seleccionar técnicas. Las relaciones, escalas y decisiones se mantienen versionadas, sin atribuir una certificación ni evaluación humana ya realizada. \parencite{sd8-iso31000,sd8-31010}
+\CierreSubdocumento
+\end{document}

@@ -1,0 +1,21 @@
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
+\input{componentes/cierre.tex}
+\input{config/metodologias.tex}
+\addbibresource{config/metodologias.bib}
+\newcommand{\FormularioMetodologico}{T-10}
+\input{componentes/declaraciones_metodologias.tex}
+\renewcommand{\thesection}{T-10.\arabic{section}}
+\renewcommand{\thetable}{T-10.\arabic{table}}
+\setlength{\cftsecnumwidth}{4.5em}
+\begin{document}
+\pagenumbering{arabic}
+\PortadaFormulario{T-10}{METODOLOGÍA PARA EL DESARROLLO}
+\tableofcontents\clearpage
+\TituloFormularioMetodologico{Metodología para el desarrollo}
+Synaptix adjunta la información solicitada en Subdocumento 6, letra b. Este archivo detalla el flujo, controles y productos de \ArchivoSDSeis, sección 6.2, conservando arquitectura de SD4, datos de SD5 y programación de SD7. Las evidencias de ejecución se obtendrán para cada versión; describir su formato no acredita una prueba realizada.\parencite[Formulario T-10, p.~61]{sd6-ba}
+\input{componentes/t10_procedimientos.tex}
+\CierreSubdocumento
+\end{document}

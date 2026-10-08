@@ -1,0 +1,15 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+ caja/.style={draw=SynLine,fill=SynSurface,rounded corners=1mm,align=left,text width=12.4cm,inner sep=3mm,font=\fontsize{9}{12}\selectfont},
+ enlace/.style={-{Stealth},draw=SynBlue,thick}]
+\node[caja] (a) {\textbf{Preparar}\quad Requisito T-12, paquete EDT, contratos, recepción y datos de prueba; reservar capacidad de construcción y verificación.};
+\node[caja,below=5mm of a] (b) {\textbf{Construir y revisar}\quad Rama protegida, revisión por pares, pruebas, análisis de código/dependencias y controles de seguridad.};
+\node[caja,below=5mm of b] (c) {\textbf{Verificar}\quad QA y Preproducción: integración, regresión, aceptación, carga, desconexión, resiliencia, seguridad y retorno. Falla: corregir sin cerrar el elemento.};
+\node[caja,below=5mm of c] (d) {\textbf{Autorizar y liberar}\quad Ventana permitida, expediente y aprobación; mismo digest, SBOM, firma y procedencia; azul-verde cloud o par local secuencial.};
+\node[caja,below=5mm of d] (e) {\textbf{Observar y aceptar}\quad Síntomas de negocio y técnicos; retorno ante falla; conciliación y acta T-17/T-18 según etapa; aprendizaje en el backlog.};
+\draw[enlace] (a)--(b);\draw[enlace] (b)--(c);\draw[enlace] (c)--(d);\draw[enlace] (d)--(e);
+\end{tikzpicture}
+\caption{Flujo de un incremento y su promoción controlada}\label{fig:sd6-desarrollo}
+\FuenteFigura{Elaboración de Synaptix a partir de las Bases Técnicas Transversales: RT-04, pp.~10--11; RT-11, pp.~23--24; RT-20, p.~35. Aplicación al diseño de SD4 y las puertas de SD7.}
+\end{figure}

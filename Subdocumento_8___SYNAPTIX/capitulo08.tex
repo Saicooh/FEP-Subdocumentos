@@ -1,28 +1,162 @@
-% Estructura obligatoria: no renombre, omita ni reordene estos títulos.
-% Puede agregar únicamente subsecciones de nivel inferior bajo el título correspondiente.
+% Títulos obligatorios preservados; el detalle del registro se entrega en T-16.
 \chapter{Introducción a los Riesgos}
-Este capítulo presenta la gestión de riesgos de la propuesta y su integración con la planificación, la calidad y la operación. El análisis debe priorizar efectos observables y acciones con responsables definidos.
+Synaptix gestionará los riesgos de implementación, marchas blancas y Operación del Puerto Deportivo Bahía Panitao, con horizonte de 56 meses. El plan protege personas, integridad de datos, continuidad, plazos y obligaciones de la oferta. Integra requisitos de SD3/T-12, decisiones de SD4/SD5, métodos de SD6, paquetes y reservas de SD7 e innovaciones de SD13. El archivo independiente \ArchivoTDieciseis{} desarrolla los dieciséis riesgos, sus respuestas y trazabilidad; los registros de ejecución se producirán durante el contrato. \parencites[Formulario T-7, Subdocumento 8, p.~58; T-16, p.~63]{sd8-ba}[RT-19.04, p.~33]{sd8-bt}
 
-\section{Plan de riesgos} %8.1
-Esta sección establece las reglas de gestión de riesgos de la propuesta.
+\section{Plan de riesgos}
+El procedimiento \texttt{RIESGO-8} fija cómo identificar, evaluar, tratar, comunicar y revisar los eventos que pueden impedir los resultados comprometidos. Su aplicación no permite aceptar como riesgo una excepción a un requisito obligatorio.
 
-\subsection{Objetivo, alcance y enfoque de gestión} %8.1.1
-Definir los objetivos protegidos: alcance, plazo, calidad, seguridad, continuidad y viabilidad. Delimitar las fases consideradas y explicar cómo se aplicará ISO 31000. Distinguir riesgo, problema materializado, supuesto y restricción. Por ejemplo, el congelamiento estacional es una restricción conocida; una cancelación imprevista por marejada es un riesgo. Incorporar un diagrama del proceso de gestión.
+\subsection{Objetivo, alcance y enfoque de gestión}
+El plan aplica ISO 31000:2018 mediante contexto y criterios explícitos, identificación por causa--evento--consecuencia, análisis, evaluación, tratamiento y seguimiento. La comunicación y el registro acompañan todo el ciclo. ISO 31000 aporta directrices; este plan concreta responsables, controles y productos de Synaptix y no declara una certificación obtenida. \parencite{sd8-iso31000}
+
+Se distingue riesgo de problema, supuesto y restricción. Una cancelación futura por marejada es un riesgo de plazo; el aviso emitido activa una suspensión obligatoria y una incidencia de planificación. El congelamiento conocido es una restricción que se incorpora al calendario, no una probabilidad que pueda aceptarse. La participación de la Contraparte en la recepción continua es un supuesto que debe comprobarse; el acta futura sigue siendo una puerta de corte. Una deficiencia comprobada se gestiona como acción correctiva, conservando el riesgo de recurrencia.
+
+La Figura~\ref{fig:sd8-proceso} relaciona el tratamiento con la ejecución y aceptación.
+\input{figuras/proceso_riesgos.tex}
+Proyecto registra la decisión y asigna capacidad antes de ejecutar una respuesta. El cierre exige evidencia de eficacia; cambiar una puntuación o emitir un acta de comité no demuestra que el control funcione. Una acción que modifique el compromiso contractual utiliza CC-6 de T-9 antes de ejecutarse.
 
 \subsection{Roles, responsabilidades y escalamiento}
-Definir quién mantiene el registro, quién responde por cada riesgo, quién ejecuta las acciones y quién autoriza su aceptación o el uso de reservas. Establecer cuándo se escala al Jefe de Proyecto o al Comité. Las responsabilidades deben coincidir con SD6 y considerar que el cliente no tiene contraparte informática.
+Ignacio Silva, en Dirección de Proyecto, mantiene T-16, integra calendario y cuentas de costo, coordina decisiones y verifica reservas. Cada titular de riesgo responde por su tratamiento: Fernando Guerrero en Arquitectura, Bruno Toro en Seguridad, Davor Serey en Calidad y José Lara Arce en Implantación/Operación, según las fichas de SD7. Sus funciones compartidas consumen una sola capacidad por persona.
+
+La Contraparte designa un referente y suplente por proceso; valida reglas y recepción sin asumir funciones de un área TI inexistente. El Comité de Proyecto revisa cada riesgo quincenalmente. El Ejecutivo resuelve exposición alta/crítica, aceptación residual competente y uso de reserva de gestión; el Comité de Arquitectura revisa riesgos técnicos y deuda; Operación trata continuidad desde el mes 13. Las actas se emiten dentro de dos días hábiles. \parencites[art.~71, pp.~37--38]{sd8-ba}[RT-19.04/09, pp.~33--34]{sd8-bt}[cap.~10, restricción 7, p.~26; numeral 13.3, pp.~29--30]{sd8-c07}
+
+Ante peligro de personas, pérdida de integridad, incidente crítico o aviso de marejadas se activa de inmediato el procedimiento competente. La escala no retrasa esa acción. Seguridad y SRE conservan autoridades y notificaciones del incidente; Proyecto coordina recuperación de plazo y capacidad.
 
 \subsection{Criterios de evaluación y aceptación de riesgos}
-Definir escalas de probabilidad e impacto, niveles de prioridad y condiciones para aceptar cada nivel. Propongo cinco niveles, con criterios explícitos para plazo, continuidad, datos, seguridad y adopción. Separar riesgo inicial de riesgo residual. Los valores y umbrales serán decisiones metodológicas de Synaptix, no cifras exigidas por las bases.
+La oferta utiliza escalas ordinales de uno a cinco. Las valoraciones iniciales son hipótesis de priorización basadas en exposición y diseño, sin frecuencia histórica ni probabilidad estadística acreditadas. La Tabla~\ref{tab:sd8-probabilidad} fija el significado de $P$.
+\begin{table}[htbp]
+\caption{Escala ordinal de probabilidad}\label{tab:sd8-probabilidad}
+\begin{tabularx}{\linewidth}{L{12mm}L{29mm}Y}
+\hline
+\EncabezadoTabla{P} & \EncabezadoTabla{Nivel} & \EncabezadoTabla{Criterio de clasificación}\\\hline
+1 & Excepcional & Requiere coincidencia de condiciones poco expuestas; justificar mecanismo y controles.\\\hline
+2 & Poco probable & Exposición acotada y tratamiento previsto; demostrar eficacia antes de adoptar el residual.\\\hline
+3 & Posible & Existe un mecanismo concreto y exposición; faltan datos o verificaciones para descartarlo.\\\hline
+4 & Probable & Condición recurrente o varios frentes expuestos, como avisos y participación operacional limitada.\\\hline
+5 & Muy probable & Desencadenante próximo o repetición comprobada; revisar si el evento ya es un problema.\\\hline
+\end{tabularx}
+\FuenteTabla{Criterios de priorización definidos por Synaptix para RIESGO-8.}
+\end{table}
+No se traduce $P=4$ a un porcentaje. El titular documentará motivo, exposición, incertidumbre y fuente; nuevos ensayos, incidentes o cambios pueden modificar la clasificación sin borrar su versión anterior.
+
+El impacto $I$ toma el mayor efecto entre plazo, continuidad, calidad de datos, privacidad, personas y aceptación. La Tabla~\ref{tab:sd8-impacto} expresa umbrales de oferta, subordinados a las obligaciones contractuales.
+\begin{table}[htbp]
+\caption{Escala de impacto y exposición}\label{tab:sd8-impacto}
+\begin{tabularx}{\linewidth}{L{12mm}L{42mm}Y}
+\hline
+\EncabezadoTabla{I} & \EncabezadoTabla{Efecto de plazo} & \EncabezadoTabla{Efecto operacional o de aceptación}\\\hline
+1 & Hasta un día hábil & Corrección local sin afectar personas, datos ni criterios obligatorios.\\\hline
+2 & Hasta dos días hábiles & Retrabajo acotado, recuperable dentro de la capacidad y ventana disponible.\\\hline
+3 & Hasta cinco días hábiles & Varios resultados requieren recuperación; degradación reversible no crítica.\\\hline
+4 & Hasta diez días hábiles & Se compromete margen de varios frentes o una preparación de recepción.\\\hline
+5 & Más de diez días o hito afectado & Peligro de personas, pérdida de datos, exposición grave o incumplimiento de un mínimo obligatorio.\\\hline
+\end{tabularx}
+\FuenteTabla{Criterios de Synaptix; los límites contractuales prevalecen sobre esta escala.}
+\end{table}
+Con $E=P I$, los intervalos son bajo 1--4, moderado 5--9, apreciable 10--14, alto 15--19 y crítico 20--25. $E$ es un índice ordinal, no pérdida monetaria esperada. Un impacto 5 en personas, integridad o privacidad requiere revisión competente aunque el producto sea menor a 15.
+
+El titular puede proponer aceptación baja, que Proyecto registra; el Comité de Proyecto decide moderada/apreciable dentro de su competencia. Alto/crítico se eleva al Ejecutivo con respuesta, capacidad y fecha. Ninguna aceptación autoriza un incumplimiento, falta de prueba impeditiva o corte sin acta. El riesgo residual se valora sólo tras comprobar controles; T-16 muestra un objetivo residual diferenciado del residual observado, todavía no acreditado.
 
 \subsection{Registro y trazabilidad de los riesgos}
-Definir identificadores estables y campos del registro: causa, evento, impacto, categoría, fuente, etapa, evaluación, respuesta, responsable, disparador y estado. Explicar cómo se relacionan con T-16 y cómo se agregarán posteriormente los vínculos a EDT, actividades y pruebas, sin inventar códigos del SD7.
+El registro versionado \path{componentes/registro_riesgos.csv} contiene R-01 a R-16 y es la fuente de las fichas T-16. Cada fila conserva categoría RBS, causa, evento, consecuencia, $P/I/E$ iniciales, objetivo residual, titular, disparador, mitigación, contingencia, plazo, evidencia, paquetes, reserva, fuente y estado. Una nueva revisión añade evaluación residual observada, fecha, evaluador competente y referencia de eficacia.
+
+La Tabla~\ref{tab:sd8-enlace-pl} relaciona los cinco riesgos de planificación existentes sin renombrarlos ni reemplazar sus responsables.
+\begin{table}[htbp]
+\caption{Integración con los riesgos de SD7}\label{tab:sd8-enlace-pl}
+\begin{tabularx}{\linewidth}{L{23mm}L{27mm}Y}
+\hline
+\EncabezadoTabla{SD7} & \EncabezadoTabla{T-16} & \EncabezadoTabla{Tratamiento integrado}\\\hline
+PL-R01 & R-01 & Suspensión de todo trabajo programado; controlar capacidad global y reserva marina.\\\hline
+PL-R02 & R-03/R-12 & Arquitectura conserva responsabilidad del retrabajo; Calidad verifica la evidencia afectada.\\\hline
+PL-R03 & R-12 & Repetición de ensayo y esfuerzo de corrección separados de las dos ejecuciones obligatorias.\\\hline
+PL-R04 & R-04 & Recepción continua condicionada a participación y acta expresa.\\\hline
+PL-R05 & R-05 & Sensibilidad UCP, capacidad real y refuerzo propio.\\\hline
+\end{tabularx}
+\FuenteTabla{Integración de T-16 con riesgos_reservas_planificacion.csv y las fichas de SD7.}
+\end{table}
+Un mismo evento puede relacionarse con varias fichas, pero conserva una sola incidencia, respuesta, consumo y cuenta de costo. Los IDs T-12 y complementos del caso permanecen íntegros; el tratamiento no elimina una cláusula ni cambia su estado automáticamente.
 
 \subsection{Ciclo de revisión, seguimiento y comunicación}
-Establecer la revisión en cada Comité de Proyecto y ante cambios relevantes, incidentes o proximidad de ventanas críticas. Explicar cómo se actualiza, comunica, escala y cierra un riesgo,
+Proyecto incorpora el riesgo en el arranque y lo revisa en cada Comité de Proyecto, además de cambios de diseño, avisos, incidentes y cercanía de ventanas críticas. El titular revisa el disparador al seleccionar trabajo, antes de promover una versión y al preparar una campaña. Publica estado, acción próxima y evidencia en el espacio colaborativo de T-9, con datos sensibles restringidos por perfil.
+
+Los estados son identificado, evaluado, tratamiento autorizado, en ejecución, en seguimiento, materializado y cerrado. Un riesgo materializado se enlaza al incidente y mantiene seguimiento del residual. Para cerrar, el titular aporta evidencia, Calidad comprueba eficacia y Proyecto registra decisión y lección; Seguridad/Operación revisan su ámbito. La revisión mensual informa exposiciones altas/críticas y consumo de reservas. Desviación mayor a 10\,\% en un hito exige aviso en cinco días hábiles y recuperación, sin esperar al comité siguiente. \parencite[RT-19.04--10, pp.~33--34]{sd8-bt}
 
 \section{Identificación y Análisis de Riesgos}
-Esta sección debe exponer riesgos priorizados, causas, consecuencias, probabilidad, impacto y señales tempranas.
+La RBS distingue riesgos de proyecto, técnicos, organizacionales, de seguridad y de operación. La identificación parte de flujos y dependencias concretos: autonomía local, integración con legado, personas menores, estructura flotante, turnos estacionales, dependencia del proveedor y recepción de las etapas. T-16 reúne causas y consecuencias; este capítulo analiza prioridad y sensibilidad.
+
+\subsection{RBS y prioridad de tratamiento}
+La Tabla~\ref{tab:sd8-rbs} agrupa los dieciséis riesgos por mecanismo y criterio de comprobación.
+\begin{table}[htbp]
+\caption{RBS y exposición inicial de la oferta}\label{tab:sd8-rbs}
+\begin{tabularx}{\linewidth}{L{27mm}L{42mm}L{17mm}Y}
+\hline
+\EncabezadoTabla{Grupo} & \EncabezadoTabla{Riesgos} & \EncabezadoTabla{E máx.} & \EncabezadoTabla{Comprobación decisiva}\\\hline
+Proyecto & R-01/05/12/15/16 & 20 & Ventanas/capacidad, dos ensayos, serie/pilotos y depósito por liberación.\\\hline
+Técnico & R-03/06/07/08 & 15 & Autoridad/conciliación, variante, salida y carga representativa.\\\hline
+Organizacional & R-04/14 & 20 & Referente/suplente, recepción expresa y competencia individual.\\\hline
+Seguridad & R-09/10 & 15 & Procedencia, intrusión y rechazo de acceso indebido.\\\hline
+Operación & R-02/11/13 & 15 & Autonomía/DR real, seguridad física y cobertura efectiva.\\\hline
+\end{tabularx}
+\FuenteTabla{Evaluaciones iniciales de registro_riesgos.csv; puntuaciones ordinales de oferta.}
+\end{table}
+R-01 y R-04 alcanzan 20 por suspensión y aceptación sin holgura; requieren atención antes de cada ventana, no sólo respuesta posterior. R-14 alcanza 16 por renovación estacional y capacitación protegida. Otros seis riesgos tienen 15 y siete tienen 12. La prioridad de una falla de permisos o integridad permanece alta por su impacto aunque una valoración residual futura reduzca su exposición.
+
+El orden combina obligación, dependencia y exposición. No se posterga ciberseguridad por disponer de una puntuación menor a la de plazo. Obsolescencia y bloqueo por proveedor se controlan desde la selección y el plan de salida; el peak se comprueba con carga, no con el promedio anual. La disponibilidad de la Contraparte requiere confirmación por proceso y no puede reemplazarse con un supuesto de aceptación tácita. \parencites[cap.~10, pp.~26--27; numerales 13.1--13.3, pp.~28--30; cap.~15, pp.~33--36]{sd8-c07}[RT-19.04, p.~33; cap.~20, pp.~34--35]{sd8-bt}
+
+\subsection{Análisis de modos de falla}
+Se selecciona análisis de modos de falla para ordenar las verificaciones de diseño y recepción, con IEC 31010 como referencia para la selección de técnicas. Además de $P$ e $I$, se utiliza detectabilidad $D$: 1 implica comprobación directa antes de efecto; 3, ensayo o conciliación dedicada; 5, detección tardía o evidencia insuficiente. Los valores intermedios distinguen proximidad y cobertura; la Tabla~\ref{tab:sd8-fmea} muestra hipótesis iniciales. \parencite{sd8-31010}
+\begin{table}[htbp]
+\caption{Modos de falla prioritarios y comprobación}\label{tab:sd8-fmea}
+\begin{tabularx}{\linewidth}{Y L{23mm}L{20mm}Y}
+\hline
+\EncabezadoTabla{Modo de falla} & \EncabezadoTabla{P/I/D} & \EncabezadoTabla{NPR} & \EncabezadoTabla{Control y resultado exigido}\\\hline
+R-03: hecho duplicado al reconectar & 3/5/4 & 60 & Fallos/reintentos y conciliación sin pérdida ni duplicado; sincronización en plazo.\\\hline
+R-10: permiso expone datos de menores & 3/5/4 & 60 & Casos negativos por rol/finalidad; denegación y auditoría correctas.\\\hline
+R-12: retorno no representa hechos nuevos & 3/5/3 & 45 & Ensayar restauración y reaplicación con volumen y respuestas pendientes.\\\hline
+R-04: acta ausente en el corte & 4/5/2 & 40 & Agenda confirmada y evidencia completa; bloquear corte sin firma expresa.\\\hline
+\end{tabularx}
+\FuenteTabla{Análisis de Synaptix: $NPR=P I D$, con supuestos ordinales y controles SD4/SD5/SD7.}
+\end{table}
+NPR no es probabilidad ni monto esperado y no se utiliza para autorizar una puerta incumplida. La mayor prioridad de detección en datos y permisos justifica ensayos negativos y conciliación. Tras el ensayo se revisa $D$ con evidencia, no por la sola existencia del control.
+
+\subsection{Sensibilidad de plazo, esfuerzo y exposición}
+La suspensión por marejadas afecta toda actividad programada. Para mostrar capacidad expuesta se usa un escenario de ocho ejecutores con cinco HH directas por día, la referencia de SD7. La Tabla~\ref{tab:sd8-marejada} multiplica duración suspendida por esa capacidad; no estima frecuencia meteorológica ni afirma pérdida real.
+\begin{table}[htbp]
+\caption{Escenario de capacidad suspendida}\label{tab:sd8-marejada}
+\begin{tabularx}{\linewidth}{L{38mm}L{38mm}Y}
+\hline
+\EncabezadoTabla{Suspensión} & \EncabezadoTabla{HH expuestas} & \EncabezadoTabla{Decisión requerida}\\\hline
+5 días hábiles & $5\times8\times5=200$ & Comprobar reprogramación y reserva por todos los frentes.\\\hline
+10 días hábiles & $10\times8\times5=400$ & No asumir que diez días marinos restituyen estas horas.\\\hline
+15 días hábiles & $15\times8\times5=600$ & Supera el escenario marino; dimensionar refuerzo y red antes del hito.\\\hline
+\end{tabularx}
+\FuenteTabla{Escenario de Synaptix; capacidad directa de referencia SD7, sin convertir ocho titulares en disponibilidad efectiva simultánea.}
+\end{table}
+La operación de un servicio existente y la emergencia conservan su procedimiento; no se utilizan para continuar trabajo de proyecto suspendido. Con dotación distinta se calcula $H_{\mathrm{exp}}=\sum_{d,p} h_{p,d}^{\mathrm{programado}}$ sobre agenda y alcance bloqueados. Las HH expuestas no son horas adicionales automáticas: el esfuerzo de recuperación depende de reprogramación, revisión, ventanas y recursos habilitados.
+
+PL-R02 utiliza $(d,d,1{,}6d)$ para retrabajo, con duración PERT $1{,}1d$ y desviación de escenario $0{,}1d$; no aporta percentiles ni presupuesto de corrección. PL-R03 usa $(10,10,16)$ días: $(10+4\times10+16)/6=11$ y $(16-10)/6=1$ día. La subred de SD7 distingue los déficits de ocho días E1 y dos E2 del escenario esperado, que no se compensan con renombrar una puerta.
+
+Para R-05, el contraste UCP pasa de 12.708 a 19.640,50 HH: diferencia 6.932,50 HH, equivalente a $6.932{,}50/12.708=54{,}55\,\%$. La sensibilidad no se suma al esfuerzo base ni se presenta como calibración histórica. Proyecto decide refuerzo propio y revisa la capacidad antes de seleccionar trabajo.
+
+Los análisis de R-07/R-08 conservan la estimación de salida y los peaks declarados en SD4; una transferencia contractual no equivale a reconstruir otra plataforma, y las pruebas a 1,5 veces peak no prueban toda demanda futura. Los compromisos de autonomía, RTO/RPO y tiempos de negocio permanecen puertas verificables, no riesgos aceptables por puntuación.
 
 \section{Plan de Acción a Riesgos}
-Esta sección debe asignar respuestas, responsables, fechas, indicadores y riesgos residuales en consistencia con el Formulario T-16.
+Cada ficha T-16 selecciona prevención, mitigación y contingencia con titular, disparador, plazo, evidencia y paquete. Proyecto comprueba capacidad y cuenta de costo antes de autorizar. La mitigación reduce exposición; la contingencia se activa por el evento; un compromiso de control no acredita eficacia ejecutada.
+
+\subsection{Selección de respuestas y costo-beneficio}
+La comparación se expresa con esfuerzo, capacidad, efecto en plazo y resultados verificables; importes y valorización se conservan en la Oferta Económica. Se priorizan respuestas que cumplen cláusulas y reducen retrabajo o indisponibilidad sin crear una segunda imputación. \parencite[art.~50.2, p.~29]{sd8-ba}
+
+El control temprano de variante y portabilidad se integra en selección e IaC; su beneficio es evitar una recepción incompatible y permitir traslado íntegro. Los dos ensayos y pruebas negativas consumen los paquetes de calidad/migración ya declarados, y su beneficio se comprueba en conciliación y retorno. La formación por perfil utiliza cohortes y acompañamiento de SD7 para impedir habilitación sin competencia. Las ventanas alternativas y el refuerzo propio sólo son una respuesta suficiente si su red, disponibilidad y costo están demostrados. La seguridad de personas y la protección de menores no se subordinan a una razón monetaria de conveniencia.
+
+Las acciones iniciales de gobierno se imputan a 1.1.2.1, 32 HH de registro y respuestas; la revisión utiliza 1.1.4 y el servicio mensual correspondiente. Esas horas son trabajo comprometido, no una reserva libre. Cada titular informa actividad, horas efectivas y evidencia; Proyecto concilia el consumo con T-15 y la cuenta económica, sin publicar tarifas en este documento.
+
+\subsection{Contingencia, gestión y reflejo en cronograma}
+Se conserva la contingencia marina de diez días hábiles por campaña y las dos ventanas alternativas de SD7, consumidas una sola vez y antes del hito. No se suman automáticamente al escenario de seis días de repetición ni a los déficits CPM/PERT. La ejecución que sobrepase el escenario exige capacidad propia adicional comprobada, sin reducir calidad ni mover meses contractuales.
+
+Se selecciona reserva de gestión temporal de cero días adicionales sobre los hitos obligatorios. Tampoco se presenta una bolsa de HH libres sin personal y agenda. Los riesgos no identificados se financian con gestión interna del precio fijo y refuerzo de Synaptix, con autorización del Ejecutivo y cálculo de esfuerzo/costo antes de ejecutar; su valorización y provisión permanecen en la Oferta Económica. Esto no permite cambiar objeto, garantías o calendario, ni cobrar un incumplimiento como ampliación de alcance. \parencite[art.~72, p.~38]{sd8-ba}
+
+El registro de consumo conserva riesgo, decisión, reserva de origen, unidad, saldo inicial, cantidad usada, saldo final, actividad, ejecutor y cuenta. Proyecto comprueba $S_f=S_i-C$ y que un mismo consumo no aparece en dos riesgos. T-15 recibe cada acción con predecesora, ventana y responsable; si no cabe, se bloquea la selección y se dimensiona refuerzo. Holgura CPM, calendario protegido y tiempo de retorno no se tratan como la misma reserva.
+
+\subsection{Eficacia, residual y cierre}
+Los objetivos residuales de T-16 dependen de ensayos, habilitaciones y participación todavía por comprobar. Hasta disponer de evidencia se mantiene la evaluación inicial y el estado de tratamiento comprometido. Calidad confirma integridad y cobertura; Seguridad, privacidad/procedencia; SRE, continuidad; la Contraparte conserva recepción.
+
+Proyecto registra residual observado y aceptación competente, o nueva acción cuando falla la eficacia. Un riesgo alto/crítico abierto se escala con causa, exposición y recuperación; una condición impeditiva bloquea producción aunque el residual objetivo sea bajo. Al cierre de etapa y en la salida se entregan riesgos vigentes, responsables, reservas consumidas y obligaciones pendientes; no se elimina un antecedente para aparentar cumplimiento.

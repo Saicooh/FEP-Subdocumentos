@@ -1,4 +1,3 @@
-% Actualice estas filas en cada subdocumento para reflejar el uso real.
 \NewDocumentCommand{\FilaDeclaracionIA}{m m m m m m}{%
   #1 & #2 & #3 & #4 & #5 & #6 \\
   \hline
@@ -11,13 +10,16 @@
     {Diseño y generación inicial de la plantilla LaTeX}
     {Medio}
     {Alto}
-    {Equipo proponente: revisar, verificar y actualizar antes de la entrega}%
+    {Equipo proponente: control humano previo a emisión; revisión pendiente.}%
+  \FilaDeclaracionIA{Formato del SD6, 8 de octubre de 2026}{OpenAI Codex}{Adaptación de portada, identidad, metadatos, índice, foliación, firmas y cierre; numeración del capítulo 6 y entrada de exportación.}{Bajo}{Ninguno}{José Lara: responsable del control humano editorial previo a emisión; revisión pendiente. Alcance: formato, metadatos, índice, foliación y PDF.}
 }
 
 \newenvironment{declaracionia}{%
   \begingroup
   \setlength{\tabcolsep}{3pt}
-  \begin{longtable}{@{}L{.09\textwidth}L{.12\textwidth}L{.18\textwidth}L{.10\textwidth}L{.12\textwidth}L{.25\textwidth}@{}}
+  \begin{longtable}{L{\dimexpr.115\textwidth-2\tabcolsep\relax}L{\dimexpr.17\textwidth-2\tabcolsep\relax}L{\dimexpr.215\textwidth-2\tabcolsep\relax}L{\dimexpr.11\textwidth-2\tabcolsep\relax}L{\dimexpr.14\textwidth-2\tabcolsep\relax}L{\dimexpr.25\textwidth-2\tabcolsep\relax}}
+    \caption{Declaración de uso de IA por sección y archivo asociado}
+    \label{tab:declaracion-ia} \\
     \hline
     \EncabezadoTabla{Sección} &
     \EncabezadoTabla{Herramienta} &
@@ -43,17 +45,16 @@
 
 \newcommand{\CierreSubdocumento}{%
   \clearpage
-  \chapter*{Referencias}
-  \addcontentsline{toc}{chapter}{Referencias}
-  \markboth{Referencias}{Referencias}
-  \printbibliography[heading=none]
+  \printbibliography[heading=referenciassynaptix,title={Referencias}]
   \clearpage
   \chapter*{Declaración de uso de IA}
   \addcontentsline{toc}{chapter}{Declaración de uso de IA}
   \markboth{Declaración de uso de IA}{Declaración de uso de IA}
-  Esta declaración identifica las herramientas de inteligencia artificial utilizadas, su finalidad y la revisión humana aplicada. Los niveles admitidos son Ninguno, Bajo, Medio y Alto. El equipo proponente debe actualizarla conforme al uso efectivo y consolidarla en el Formulario A-6.
+  Synaptix registra por sección las herramientas de IA generativa utilizadas, su finalidad, el grado de intervención y la revisión humana. Ninguno indica ausencia de uso. En texto, Bajo corresponde a corrección de redacción; Medio, a borradores reescritos y verificados por el equipo; Alto, a generación sustancial. En diagramas, Bajo corresponde a sugerencias de formato; Medio, a generación asistida desde un modelo del equipo; Alto, a generación sustancial. El registro se consolidará en el Formulario A-6. Synaptix asume la responsabilidad por la exactitud y coherencia de la propuesta.
 
+  La Tabla~\ref{tab:declaracion-ia} registra el uso declarado por sección y formulario asociado.
   \begin{declaracionia}
     \DeclaracionesIA
   \end{declaracionia}
+  \FuenteTabla{Registro de uso de IA de este subdocumento.}
 }

@@ -1,0 +1,18 @@
+% Convenciones comunes del SD6 y sus formularios independientes.
+\setlength{\headheight}{23pt}
+\AtBeginBibliography{\RaggedRight\setlength{\emergencystretch}{3em}}
+\titleformat{\chapter}[display]
+  {\bfseries\color{SynNavy}\raggedright}
+  {\fontsize{12}{14}\selectfont\textcolor{SynCyan}{CAPÍTULO \thechapter}}
+  {0.35em}
+  {\fontsize{27}{31}\selectfont}
+  [\vspace{0.45em}\textcolor{SynCyan}{\rule{36mm}{2.3pt}}]
+\newcommand{\ArchivoTNueve}{\texttt{SYNAPTIX-Formulario-T-9.pdf}}
+\newcommand{\ArchivoTDiez}{\texttt{SYNAPTIX-Formulario-T-10.pdf}}
+\newcommand{\ArchivoSDSeis}{\texttt{SYNAPTIX-Subdocumento6.pdf}}
+\newcommand{\TituloFormularioMetodologico}[1]{%
+  \chapter*{#1}\addcontentsline{toc}{chapter}{#1}\markboth{#1}{#1}%
+}
+
+% Separación de la fuente respecto del párrafo siguiente.
+\RenewDocumentCommand{\FuenteTabla}{m}{\FuenteFigura{#1}\par\smallskip}

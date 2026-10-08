@@ -1,0 +1,49 @@
+\section{Metodología de Gestión de Proyectos}
+La dirección utiliza PMBOK como marco base, conforme al artículo 4.3 y RT-19.01. Synaptix adopta gestión híbrida: líneas base y control de compromisos, con revisión iterativa de productos. El procedimiento de adaptación publicado por PMI en 2021 para la séptima edición propone elegir el enfoque, ajustarlo a la organización y al proyecto, y mejorar continuamente. Las reglas operativas siguientes son decisiones de esta oferta, sujetas a las bases. \parencites[art.~4.3, pp.~5--6]{sd6-ba}[RT-19.01, p.~33]{sd6-bt}[pp.~1--7]{sd6-pmi-adaptacion}
+
+\subsection{Enfoque aplicado y líneas base}
+El enfoque híbrido combina hitos invariables e instalación física con procesos que requieren validación frecuente de las personas usuarias. PMI reconoce la combinación de prácticas predictivas y ágiles; Synaptix la concreta mediante líneas base y un flujo de construcción que permite precisar requisitos sin ampliar unilateralmente el contrato. \parencite{sd6-pmi-hibrido}
+
+El Jefe de Proyecto constituirá la oficina de gestión y consolidará alcance, requisitos, cronograma, recursos, calidad, riesgos, comunicaciones, interesados y adquisiciones. Conservará códigos de SD7 y la relación requisito--entregable--paquete--prueba. Enunciado, EDT y diccionario definen alcance; red y calendario definen programación. La aprobación de las líneas base se documentará con el CLIENTE: la formulación de la oferta no acredita esa aprobación. La estimación ascendente, el contraste UCP y CPM/PERT de SD7 son sus instrumentos. Los puntos funcionales no se vuelven a sumar a las horas distribuidas, y una duración PERT no equivale a probabilidad de entrega sin sustento. \parencites[RT-19.03--05, p.~33]{sd6-bt}[art.~72, p.~38]{sd6-ba}
+
+Los meses 13--15 combinan marcha blanca E1 y construcción E2; los meses 19--20, marcha blanca E2 y preparación de Operación. La selección quincenal comprueba la capacidad por persona en todos sus frentes, incluidos comités y soporte. Un recurso compartido no cuenta como dos personas. Un incremento construido no habilita por sí mismo la producción.
+
+\subsection{Gobierno, interesados y comunicaciones}
+El Jefe de Proyecto tendrá dedicación exclusiva en implementación y facultades de ejecución. La Contraparte Técnica validará productos; el Administrador del Contrato ejercerá sus atribuciones contractuales. Arquitectura, Seguridad, Datos, Calidad, Integración y Operación deciden en sus competencias. El CLIENTE conserva la aceptación. La nómina y acreditaciones corresponden a SD12/T-8; la capacidad se programa en SD7/T-15. \parencites[arts.~70--71, p.~37]{sd6-ba}[cap.~19, pp.~33--34]{sd6-bt}
+
+La Tabla~\ref{tab:sd6-gobierno} resume el gobierno obligatorio. La oficina prepara expedientes con decisión requerida, alternativas, impacto y responsable. Las actas se emiten dentro de dos días hábiles, con acuerdos, responsables y plazos. Un comité técnico no sustituye la aprobación contractual de alcance.
+\begin{table}[htbp]
+\caption{Cadencias de gobierno del proyecto}\label{tab:sd6-gobierno}
+\begin{tabularx}{\linewidth}{L{.23\linewidth}L{.22\linewidth}Y}
+\hline
+\EncabezadoTabla{Instancia} & \EncabezadoTabla{Frecuencia} & \EncabezadoTabla{Resultado principal}\\\hline
+\rowcolor{SynSurface} Comité Ejecutivo & Mensual & Decisiones estratégicas, cambios de alcance y riesgos mayores.\\\hline
+Comité de Proyecto & Quincenal & Entregables, desviaciones y decisiones operativas.\\\hline
+\rowcolor{SynSurface} Comité de Arquitectura & Mensual & Arquitectura, seguridad y deuda técnica.\\\hline
+Comité de Operación & Mensual desde mes 13 & Servicio, incidentes, problemas y mejora.\\\hline
+\rowcolor{SynSurface} Seguimiento & Semanal & Coordinación, impedimentos y compromisos.\\\hline
+\end{tabularx}
+\FuenteTabla{Bases Administrativas, art.~71, pp.~37--38; Bases Técnicas Transversales, RT-19.09, p.~34.}
+\end{table}
+Estas instancias separan autorización contractual y revisión de ingeniería. Los participantes y productos están en el Formulario T-9, \ArchivoTNueve. SRE participa desde el mes 6; el Comité de Operación comienza en 13 sin adelantar la Operación contractual de 21--56.
+
+El registro de interesados identifica proceso, autoridad, impacto, disponibilidad y canal. La Contraparte coordina sesiones breves con administración, torre, portería, varadero y escuela; Funcional consolida observaciones y conflictos. Las validaciones se agrupan por proceso para que las 39 personas de invierno no deban actuar como un equipo TI permanente. Salud, menores y expedientes personales se muestran sólo a perfiles autorizados. Documentación, actas, riesgos y cambios permanecen en el espacio colaborativo accesible al CLIENTE. \parencites[numerales 13.1--13.3, pp.~28--30]{sd6-c07}[RT-19.05/08, pp.~33--34]{sd6-bt}
+
+\subsection{Control integrado de cambios y adquisiciones}
+Una observación se clasifica como defecto, precisión dentro del alcance o modificación. Un defecto se corrige; una precisión conserva obligación y recepción. Si cambia alcance, plazo, costo, riesgo o servicio se tramita solicitud contractual. La Figura~\ref{fig:sd6-cambios} muestra su decisión y registros. \parencite[art.~72, p.~38]{sd6-ba}
+\input{figuras/gobierno_cambios.tex}
+La secuencia impide ejecutar una modificación mientras sólo existe una propuesta. El Comité Ejecutivo aprueba antes de ejecutar y ambas partes formalizan por escrito. Proyecto actualiza las líneas base y comunica la versión. Se comprueban límite acumulado, objeto, garantías y calendario del artículo 72, manteniendo los importes fuera de la oferta técnica. La Figura describe el procedimiento ofrecido, sin acreditar aprobaciones obtenidas.
+
+Las adquisiciones se vinculan a paquetes y fechas de necesidad de SD7 y al inventario T-11. Arquitectura define compatibilidad, Seguridad verifica licencia y tratamiento de datos y Calidad comprueba recepción. Se registran proveedor, producto, dependencia, plazo, aceptación, sustitución y riesgo de suministro. La justificación de hacer o comprar y la autorización de subcontratación se desarrollan en SD12; el método controla interfaces y no presume acuerdos firmados. \parencite[arts.~71--73, pp.~37--38]{sd6-ba}
+
+\subsection{Seguimiento cuantitativo y respuesta a desviaciones}
+El informe mensual contiene entregables, estado de hitos, desviaciones, riesgos, incidencias y compromisos siguientes. El tablero enlaza resultados y actas; el avance se mide con valor ganado. Se emplean $SPI=EV/PV$ y $CPI=EV/AC$: $PV$ es valor presupuestado del trabajo planificado, $EV$ el del trabajo realizado y $AC$ su costo real. Deben usar idéntica base monetaria y corte: sustituir $AC$ por horas sin ponderación no acredita CPI. Las fórmulas se sustentan en la ficha oficial de NASA; sus umbrales de contratación no se trasladan a esta oferta. \parencites[RT-19.06--10, p.~34]{sd6-bt}[p.~1]{sd6-nasa}
+
+Los importes se administrarán en el expediente contractual y económico autorizado. SD6 fija el procedimiento sin publicar precios ni valores que permitan inferir la oferta, conforme al artículo 50.2. Los paquetes ganan valor mediante resultados verificables; T-9 establece hitos ponderados y tratamiento de servicios periódicos. Con denominador cero, el índice se declara no calculable y se explica la causa. Un índice agregado no reemplaza el control de ruta crítica.
+
+Una desviación superior al 10\,\% en un hito se comunica dentro de cinco días hábiles de detectada, con causa, impacto y recuperación. Se comparan fecha proyectada, holgura y capacidad sin alterar retrospectivamente la línea base para ocultar retrasos. La gestión del riesgo aplica ISO 31000:2018 mediante el plan de SD8 y el registro T-16: contexto, identificación, análisis, evaluación, tratamiento, comunicación y seguimiento. En cada Comité de Proyecto se revisan responsable, respuesta, plazo, disparador y riesgo residual; un riesgo materializado se enlaza al incidente sin borrar su historial. \parencites[RT-19.04/10, pp.~33--34]{sd6-bt}{sd6-iso31000}
+
+\subsection{Protección de la operación y evidencia de aplicación}
+La marina impone congelamiento total del 15 de diciembre al 15 de marzo, protección del varadero en abril--mayo y septiembre--noviembre, y congelamientos locales en 14 fechas náuticas. Un aviso de marejadas suspende inmediatamente toda actividad programada del proyecto, incluida la construcción aislada o remota. Proyecto registra suspensión, trabajo afectado, capacidad y consumo de reserva; sólo reprograma tras cesar la condición y comprobar una ventana admisible. Las reservas de SD7 no se vuelven a sumar ni autorizan desplazar hitos contractuales. La atención de una emergencia real conserva su procedimiento de incidente y no habilita trabajo programado. Los mantenimientos programados requieren además aviso al CLIENTE con al menos diez días hábiles. \parencites[cap.~10, restricción 12, p.~26; numeral 13.2, p.~29; cap.~15, RT-10.05, p.~34]{sd6-c07}[art.~20, p.~15]{sd6-ba}[RT-10.05, p.~22]{sd6-bt}
+
+El expediente enlaza versiones de línea base, capacidad, actas, riesgos, cambios, aceptaciones y reportes. T-9 define campos, responsables y cierre. La comprobación del método exigirá un cambio trazable desde solicitud hasta actualización documental, un corte de avance reproducible desde paquetes y la comprobación de que el trabajo quincenal cabe en la capacidad autorizada.

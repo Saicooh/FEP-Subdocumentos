@@ -1,0 +1,21 @@
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
+\input{componentes/cierre.tex}
+\input{config/metodologias.tex}
+\addbibresource{config/metodologias.bib}
+\newcommand{\FormularioMetodologico}{T-9}
+\input{componentes/declaraciones_metodologias.tex}
+\renewcommand{\thesection}{T-9.\arabic{section}}
+\renewcommand{\thetable}{T-9.\arabic{table}}
+\setlength{\cftsecnumwidth}{4em}
+\begin{document}
+\pagenumbering{arabic}
+\PortadaFormulario{T-9}{METODOLOGÍA PARA LA ADMINISTRACIÓN Y GESTIÓN DEL PROYECTO}
+\tableofcontents\clearpage
+\TituloFormularioMetodologico{Metodología para la administración y gestión del proyecto}
+Synaptix adjunta la información del Subdocumento 6, letra a, mediante procedimientos, campos de registro y condiciones de aplicación. Este formulario desarrolla \ArchivoSDSeis, sección 6.1; comparte alcance, responsables y programación con SD7/T-14/T-15/T-18. Los registros se generarán durante la ejecución y sus formatos no acreditan aprobación ni medición realizada.\parencite[Formulario T-9, p.~61]{sd6-ba}
+\input{componentes/t9_procedimientos.tex}
+\CierreSubdocumento
+\end{document}

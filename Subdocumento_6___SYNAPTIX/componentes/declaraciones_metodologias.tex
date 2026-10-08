@@ -1,0 +1,41 @@
+% Registro específico; conserva el historial de SD6 en su archivo principal.
+\newcommand{\ControlHumanoMetodologias}{José Lara: responsable del control humano técnico y editorial previo a emisión; revisión pendiente. Alcance: fuentes, requisitos, cálculos, concordancia y PDF.}
+\ifdefined\FormularioMetodologico
+  \ifdefstring{\FormularioMetodologico}{T-9}{%
+    \renewcommand{\DeclaracionesIA}{%
+      \FilaDeclaracionIA{T-9.1}{OpenAI Codex}{Formulación del enfoque y adaptación desde fuentes oficiales PMI.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+      \FilaDeclaracionIA{T-9.2}{OpenAI Codex}{Gobierno, participantes, comunicación y tabla conforme a las bases.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+      \FilaDeclaracionIA{T-9.3}{OpenAI Codex}{Planificación, capacidad y configuración en concordancia con SD7.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+      \FilaDeclaracionIA{T-9.4}{OpenAI Codex}{Procedimiento de cambios conforme al artículo 72.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+      \FilaDeclaracionIA{T-9.5}{OpenAI Codex}{Método de valor ganado, fórmulas y controles de avance.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+      \FilaDeclaracionIA{T-9.6}{OpenAI Codex}{Adquisiciones y restricciones de la marina.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+      \FilaDeclaracionIA{T-9.7}{OpenAI Codex}{Comprobación del método y cierre por evidencias.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+    }%
+  }{%
+    \renewcommand{\DeclaracionesIA}{%
+      \FilaDeclaracionIA{T-10.1}{OpenAI Codex}{Ciclo y definición de flujo con Kanban y SSDF oficiales.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+      \FilaDeclaracionIA{T-10.2}{OpenAI Codex}{Capacidad, cadencias y expectativa de servicio.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+      \FilaDeclaracionIA{T-10.3}{OpenAI Codex}{Requisitos, diseño, código y dependencias.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+      \FilaDeclaracionIA{T-10.4}{OpenAI Codex}{Ambientes, pipeline y controles SLSA conforme a SD4 y bases.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+      \FilaDeclaracionIA{T-10.5}{OpenAI Codex}{Pruebas, definición de terminado y aceptación.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+      \FilaDeclaracionIA{T-10.6}{OpenAI Codex}{Liberación y retorno en concordancia con SD4 y SD7.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+      \FilaDeclaracionIA{T-10.7}{OpenAI Codex}{Métricas, cálculo de reserva de deuda y mejora.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+    }%
+  }
+\else
+  \let\DeclaracionesIAAnterioresSDSeis\DeclaracionesIA
+  \renewcommand{\DeclaracionesIA}{%
+    \DeclaracionesIAAnterioresSDSeis
+    \FilaDeclaracionIA{6 (intro.)}{OpenAI Codex}{Corrección del alcance metodológico y remisiones a la oferta.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+    \FilaDeclaracionIA{6.1}{OpenAI Codex}{Gestión híbrida, gobierno, cambios, valor ganado y figura aplicada.}{Alto}{Alto}{\ControlHumanoMetodologias}
+    \FilaDeclaracionIA{6.2}{OpenAI Codex}{Desarrollo Kanban, SSDF, DevSecOps, liberación, métricas y figura aplicada.}{Alto}{Alto}{\ControlHumanoMetodologias}
+    \FilaDeclaracionIA{T-9}{OpenAI Codex}{Procedimientos de gestión en formulario separado.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+    \FilaDeclaracionIA{T-10}{OpenAI Codex}{Procedimientos de desarrollo en formulario separado.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+  }
+\fi
+
+\let\DeclaracionesAntesCorreccionNormativa\DeclaracionesIA
+\renewcommand{\DeclaracionesIA}{%
+ \DeclaracionesAntesCorreccionNormativa
+ \FilaDeclaracionIA{Correcciones normativas, 2026-10-08}{OpenAI Codex}{Reconciliación con las tres bases: marejadas, repositorio/custodia, preaviso, pruebas ISO 29119, riesgos ISO 31000, herramientas y citas a páginas originales.}{Alto}{Bajo}{\ControlHumanoMetodologias}
+}

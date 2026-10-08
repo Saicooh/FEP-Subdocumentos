@@ -1,0 +1,14 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  caja/.style={draw=SynLine,fill=SynSurface,rounded corners=1mm,align=left,text width=12.4cm,inner sep=3mm,font=\fontsize{9}{12}\selectfont},
+  enlace/.style={-{Stealth},draw=SynBlue,thick}]
+\node[caja] (a) {\textbf{1. Registrar y clasificar}\quad Proyecto y Funcional: requisito, motivo y solicitante; defecto, precisión o cambio contractual.};
+\node[caja,below=5mm of a] (b) {\textbf{2. Analizar impacto}\quad Arquitectura, Datos, Seguridad, Calidad y SRE: alcance, plazo, capacidad, costo, riesgo y servicio.};
+\node[caja,below=5mm of b] (c) {\textbf{3. Resolver antes de ejecutar}\quad Comité Ejecutivo y formalización escrita de ambas partes. Rechazo o aplazamiento: registrar decisión y comunicar.};
+\node[caja,below=5mm of c] (d) {\textbf{4. Actualizar y comprobar}\quad Proyecto: versiones de alcance, EDT, calendario y T-12; responsables: implementar y probar; CLIENTE: recepción aplicable.};
+\draw[enlace] (a)--(b);\draw[enlace] (b)--(c);\draw[enlace] (c)--node[right,font=\fontsize{9}{11}\selectfont]{Aprobado}(d);
+\end{tikzpicture}
+\caption{Control integrado de una modificación contractual}\label{fig:sd6-cambios}
+\FuenteFigura{Elaboración de Synaptix a partir de las Bases Administrativas, art.~72, p.~38, y las Bases Técnicas Transversales, RT-19.03, p.~33.}
+\end{figure}
