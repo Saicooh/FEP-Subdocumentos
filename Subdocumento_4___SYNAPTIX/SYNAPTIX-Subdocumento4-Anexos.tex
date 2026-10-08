@@ -38,7 +38,7 @@ Este registro desarrolla las decisiones DA-01 a DA-20 de SD4, sección 4.1.1, co
 
 \textbf{Alternativas examinadas.} Microservicios completos; monolito único.
 
-\textbf{Fundamento.} Aislar cargas distintas sin imponer operación distribuida innecesaria.
+\textbf{Fundamento.} La marina concentra 50 personas internas y 150 externas concurrentes como hipótesis y carece de equipo TI. Microservicios por dominio multiplicarían despliegues, contratos remotos, pruebas y turnos; un monolito único impediría liberar por separado los componentes críticos. Tres núcleos permiten que responsables de backend, integración, datos, seguridad y SRE compartan prácticas y canalización, conservando despliegue independiente y sin exigir un operador de Kubernetes al CLIENTE. El costo de administración y de cambios se considera junto con el consumo cloud; la valorización se mantiene en la Oferta Económica. La cantidad de equipo y dedicaciones se concilia con SD7/T-15, sin inventar una dotación a partir del número de dominios \parencite[sec.~2.3, p.~7]{pucv-transversal}.
 
 \textbf{Consecuencias y comprobación.} Cada núcleo puede desplegarse sin liberar los otros; los límites internos se verifican y la extracción posterior conserva contratos. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
 
@@ -203,7 +203,7 @@ Este registro desarrolla las decisiones DA-01 a DA-20 de SD4, sección 4.1.1, co
 
 \textbf{Alternativas examinadas.} EKS; EC2 administrado.
 
-\textbf{Fundamento.} Contenedores sin administrar clúster ni sistema operativo.
+\textbf{Fundamento.} Fargate conserva contenedores e independencia sin que Synaptix mantenga hosts cloud; EC2 administrado exige parches, reemplazo de hosts, capacidad de reserva y su guardia técnica; EKS añade plano de control y competencias de clúster que esta carga no demanda. La comparación utiliza las mismas aplicaciones, ambientes, zonas y perfiles de crecimiento; incluye recursos de ejecución, red, respaldo, observabilidad, licencias y esfuerzo SRE. Fargate puede aumentar consumo unitario y reducir trabajo de administración: la decisión no supone que sea siempre más barato. La comparación valorizada y la sensibilidad se incorporan en el expediente económico bajo BA 50.2, con los identificadores del plan de capacidad de SD4 y T-11, sin precios en este anexo \parencites[RT-03.05, p.~8; RT-03.09, p.~9]{pucv-transversal}[art.~50.2, p.~29]{pucv-admin}.
 
 \textbf{Consecuencias y comprobación.} Las tareas son sin estado y mantienen identidad y límites por servicio; Fargate no sustituye gobierno de artefactos, configuración o costos. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
 
@@ -313,6 +313,8 @@ Este registro desarrolla las decisiones DA-01 a DA-20 de SD4, sección 4.1.1, co
 \textbf{Consecuencias y comprobación.} La función obligatoria de estado de amarra continúa sin el piloto. Sus resultados deben justificar una eventual ampliación y sus activos se inventarían por separado. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
 
 \textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
+
+\input{anexos/a4_2_integraciones.tex}
 
 \CierreSubdocumento
 \end{document}

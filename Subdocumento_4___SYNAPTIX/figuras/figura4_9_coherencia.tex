@@ -17,7 +17,7 @@
        núcleos; escalado y reemplazo por comprobaciones de salud.};
     \node[bloque,below=7mm of aza] (autoridad)
       {\textbf{RDS PostgreSQL 18 Multi-AZ}\\Primario y standby entre zonas;
-       autoridad transaccional. 200 GB iniciales, ampliables a 1 TB.};
+       autoridad transaccional. 200 GiB físicos, ampliables a 1.024 GiB.};
     \node[bloque,below=7mm of azb] (lectura)
       {\textbf{PostgreSQL de proyecciones}\\Multi-AZ; recursos separados y eventos del
        propietario. Reserva lógica 15 GB; prueba a 45 GB. Vista reconstruible,
@@ -36,7 +36,7 @@
        y objetivo de 24 h sin WAN; su cobertura habilitante se desarrolla
        en el modelo de acceso local.};
     \node[bloque,below=7mm of objetos] (dr)
-      {\textbf{AWS México Central}\\Réplica PostgreSQL asíncrona, S3 CRR,
+      {\textbf{AWS México Central}\\Dos réplicas PostgreSQL asíncronas, S3 CRR,
        ECR e infraestructura reproducible. Promoción autorizada de
        una única autoridad; warm standby.};
     \node[banda,below=7mm of recinto.south west,anchor=north west] (transversal)

@@ -2,179 +2,243 @@
 % El catálogo detallado pertenece al SD2; T-12 se entrega como archivo propio.
 \chapter{Introducción al Alcance de la Solución}
 
-Este capítulo fija qué ofrece Synaptix a Marina y Club Náutico Bahía Panitao S.A., qué entrega en cada etapa y con qué resultados se recibe la solución. El alcance responde al problema y al catálogo de requerimientos del Subdocumento 2: seguridad de personas, custodia de embarcaciones, coordinación de faenas, evidencia ambiental y control administrativo. Incluye la implementación, las marchas blancas, los pasos a producción y 36 meses de operación; delimita las exclusiones y las responsabilidades del cliente y de terceros. El modelo conceptual organiza estas capacidades por responsabilidad y los escenarios explican su funcionamiento en las tareas de la marina. El \ReferenciaAnexo{Formulario T-12}{SYNAPTIX-Formulario-T-12.pdf} conserva la trazabilidad detallada de los requisitos; los protocolos y actas deberán mantenerla hasta la recepción del servicio \parencite[cap.~17, secc.~17.1 y 17.3]{caso07}.
+Este capítulo formaliza la frontera contractual, técnica y operacional de la solución provista por Synaptix para Marina y Club Náutico Bahía Panitao S.A., delimitando con precisión los compromisos de entrega por etapa y su correspondencia. El alcance traduce directamente el diagnóstico: custodia rigurosa de embarcaciones, seguridad de la vida humana en el agua, trazabilidad de faenas en varadero, acreditación de contratistas, cumplimiento ambiental para la temporada 2029 y erradicación de la dispersión de registros en papel y planillas aisladas \parencite[caps.~3, 7 y 10]{caso07}. 
+La propuesta articula armónicamente el alcance del producto con el alcance del proyecto a lo largo de un ciclo contractual de 56 meses, integrando como componentes nativos de la solución cinco innovaciones. La trazabilidad completa de los 146 requerimientos funcionales, 56 requerimientos no funcionales y 374 requisitos técnicos transversales se acredita código por código en el \ReferenciaAnexo{Formulario T-12}{SYNAPTIX-Formulario-T-12.pdf}.
+
+\newpage
 
 \section{Resumen Ejecutivo de la Solución}
-
-Synaptix propone una plataforma digital que relaciona los hechos operacionales, sus responsables y su evidencia en la custodia de embarcaciones, la escuela, el varadero, la gestión ambiental y la administración contractual. La solución sustituye la conciliación habitual de cuadernos y planillas por registros identificados y procesos compartidos, conservando procedimientos de contingencia para las fallas de comunicación. La protección de la evidencia no impide corregir un dato: la corrección conserva el hecho original, su autor, el fundamento y la nueva versión.
-
+Synaptix propone para la Marina y Club Náutico Bahía Panitao S.A. una plataforma digital unificada concebida como la fuente única, inmutable y verificable de los hechos que intervienen en la operación marítima, la custodia patrimonial, el mantenimiento logístico y el cumplimiento normativo. La solución sustituye la fragmentación actual por procesos estandarizados y auditables, diseñados a la medida de las condiciones climáticas y operacionales extremas del Seno de Reloncaví.
 \begin{resumenejecutivo}
-La primera etapa entrega el control de salidas y regresos, amarras, escuela, combustible, inspecciones y medición ambiental inicial, con continuidad local durante al menos 24 horas sin enlace exterior. La segunda completa varadero y contratistas, residuos, contratos, cobranza, consulta histórica y canales de atención. La medición y la evidencia ambiental comienzan en E1 para reunir antecedentes antes de la temporada 2029. Cada etapa incluye capacitación, marcha blanca y recepción por resultados comprobables. Synaptix administra técnicamente la plataforma durante los 36 meses de operación, porque la marina carece de personal TI. El sistema contable conserva la emisión tributaria y la Autoridad Marítima, el otorgamiento del zarpe \parencites[art.~16, pp.~11--12]{bases-admin}[caps.~10 y 13; cap.~15, RT-03.10]{caso07}.
+La solución se estructura en dos etapas de proyecto seguidas de una fase de operación continua:
+\begin{itemize}
+    \item \textbf{Etapa 1 (Meses 1 al 16):} Entrega el núcleo crítico de seguridad humana y custodia (salidas y regresos, alertas tempranas de marejada por tres canales simultáneos, control escolar de vela con bloqueo atómico en rampa, inventario de amarras y telemetría horaria de torretas), garantizando al menos 24 horas continuas de operación desconectada en el recinto mediante el Nodo de Borde (NBR). La ingesta ininterrumpida de consumos de agua y energía se inicia obligatoriamente en esta etapa para consolidar los 24 meses de serie histórica requeridos para levantar las no conformidades ambientales antes de la temporada 2029.
+    \item \textbf{Etapa 2 (Meses 13 al 21):} Desplegada en solapamiento controlado, completa la logística de varadero y travelift con modo pasivo de maniobra, acreditación de contratistas por código QR, cadena de custodia de residuos peligrosos (RESPEL) integrada a SIDREP, motor de hechos facturables hacia el ERP contable y expedientes digitales para las 14 naves en abandono.
+    \item \textbf{Fase de Operación (Meses 21 al 56):} Synaptix asume la administración integral de la infraestructura híbrida y el soporte técnico mediante un Servicio Gestionado por Resultados (MSP) durante 36 meses bajo marco ITIL 4, absorbiendo la complejidad tecnológica ante la ausencia de dotación TI interna en el cliente.
+\end{itemize}
+El software asiste y registra, pero no usurpa potestades privativas: DIRECTEMAR conserva el otorgamiento legal del zarpe y el ERP contable vigente mantiene la emisión de documentos tributarios \parencites[art.~16, pp.~11--12]{bases-admin}[caps.~10 y 13]{caso07}.
 \end{resumenejecutivo}
 
-\subsection{Visión Integral y Objetivos Operacionales}
+\subsection{Propuesta de Valor y Visión Operacional Integral}
+La propuesta de valor de Synaptix radica en establecer una cadena probatoria y operativa continua de extremo a extremo: cada hecho capturado en terreno se asocia de forma determinista con el operador o dispositivo que lo originó, la validación de seguridad previa, la evidencia física conservada y su impacto comercial o ambiental posterior. De este modo, una recalada de visitante se enlaza automáticamente con la verificación dimensional de la amarra, la telemetría horaria de consumos y la transferencia del lote facturable al sistema contable; asimismo, una intervención en varadero relaciona al contratista acreditado, la inspección fotográfica previa del casco, el plan de eslingado del travelift y la custodia de los residuos peligrosos generados.
+Esta visión se materializa incorporando dentro del alcance del producto las cinco innovaciones obligatorias del Artículo 28° de las Bases Administrativas (Subdocumento 13), diseñadas específicamente para resolver los dolores diagnosticados en el Capítulo 2 que no están propuestos como base:
+\begin{enumerate}
+    \item \textbf{Innovación 1: Servicio de Solicitud y Seguimiento
+de Mantenimiento de Embarcaciones (Producto/Servicio):}
+Servicio mediante el cual el armador presenta una solicitud
+de mantenimiento y consulta su estado. La marina revisa y deriva
+la solicitud al contratista pertinente, quien registra su aceptación
+o rechazo, avance y finalización. Se integra con AUT para la
+interacción de los usuarios, CTR para verificar la habilitación
+del contratista, VAR para vincular la orden de trabajo y ALE
+para comunicar cambios de estado. La aceptación de la solicitud
+no autoriza por sí sola el acceso a la faena, y el cierre
+administrativo no certifica la calidad técnica de la reparación.
 
-La solución permite seguir cada hecho desde su registro en terreno hasta su consecuencia operacional o administrativa. Una recalada se relaciona con la embarcación, la amarra asignada, la estadía, los consumos y el hecho facturable. Una intervención en varadero relaciona contratista acreditado, plan de izaje validado, trabajo ejecutado y residuos generados. Los responsables consultan el mismo antecedente y las correcciones conservan su historial.
+\item \textbf{Innovación 2: Programa de Mantenimiento Preventivo
+en Invernada (Proceso):}
+Organización de un ciclo de mantenimiento preventivo durante
+la permanencia de las embarcaciones en seco. A partir de una
+ficha de ingreso y un catálogo de tareas, se presentan propuestas
+que el armador puede aceptar o rechazar. La marina distribuye
+los trabajos aceptados considerando las fechas de botadura,
+las posiciones en la explanada y la disponibilidad de recursos
+y contratistas habilitados. Cada trabajo se vincula con una
+solicitud de la innovación 1 para registrar su avance; antes
+de la botadura se revisan los pendientes y se comunican los
+ajustes necesarios. El programa reutiliza VAR, CTR, AUT, ALE
+y ADM, sin duplicar la agenda del varadero.
+    \item \textbf{Innovación 3: Lectura Inteligente de Documentos
+(Tecnología/Arquitectura):} Incorporación de reconocimiento óptico
+de caracteres y extracción asistida de datos para agilizar el ingreso
+de documentos a la plataforma. A partir de archivos escaneados o
+fotografías, el sistema propone campos para su incorporación al
+registro correspondiente, conservando el documento original.
+La persona responsable revisa, corrige y confirma los datos antes
+de utilizarlos. Esta capacidad complementa los módulos que gestionan
+antecedentes documentales y mantiene el ingreso manual como
+alternativa ante errores o indisponibilidad del servicio.
+    \item \textbf{Innovación 4: Servicio Gestionado por Resultados -- MSP (Modelo de Contratación):} Esquema de externalización integral donde Synaptix compromete la operación técnica durante 36 meses bajo acuerdos de nivel de servicio (SLA), vinculando su desempeño a la disponibilidad efectiva de la plataforma híbrida y la continuidad del recinto, garantizando que una marina sin personal informático propio opere con estándares de ciberseguridad y alta disponibilidad.
+    \item \textbf{Innovación 5: Pasaporte Ambiental Náutico (Sostenibilidad y Experiencia):} Registro digital inmutable por embarcación que consolida mediciones horarias de agua y electricidad, certificados de lavado de casco y trazabilidad de residuos peligrosos (RESPEL), aportando la evidencia estructurada requerida para levantar las tres no conformidades de auditoría ambiental previas a la temporada 2029.
+\end{enumerate}
 
-Los objetivos son conocer el estado y las discrepancias de embarcaciones y puestos, coordinar salida y retiro de alumnos, actuar ante planes vencidos y marejadas, conservar evidencia ambiental y conciliar las prestaciones con la administración. La plataforma apoya a los operadores calificados y conserva sus atribuciones: la radio coordina las maniobras, DIRECTEMAR otorga el zarpe, el sistema contable emite documentos tributarios y la administración autoriza las medidas de cobranza que afecten el acceso a bienes bajo custodia.
+La solución respeta estrictamente los límites institucionales y materiales: la plataforma no otorga zarpes oficiales (atribución exclusiva de la Capitanía de Puerto), no emite facturas ni documentos fiscales (función privativa del ERP contable), no ejecuta labores de búsqueda y salvamento marítimo (SAR), no interviene en la concesión del restaurante y no implementa bloqueos automáticos de embarcaciones en agua ante morosidad sin autorización formal de la administración.
 
-\subsection{Ciclo de Vida Contractual, Etapas y Servicio Gestionado}
+\subsection{Ciclo de Vida Contractual, Etapas y Modelo de Servicio Gestionado}
+Se distingue formalmente el \textbf{alcance del producto} (las funcionalidades, interfaces, subsistemas y servicios provistos por la plataforma) del \textbf{alcance del proyecto} (el esfuerzo temporal de ingeniería, migración, pruebas de carga, implantación, capacitación y marcha blanca necesario para materializarlo). El contrato contempla un ciclo total de 56 meses, estructurado en dos etapas sucesivas con solapamiento controlado y una fase final de régimen operacional:
 
-El \textbf{alcance del producto} comprende funcionalidades, interfaces y servicios; el \textbf{alcance del proyecto} comprende ingeniería, migración, pruebas, implantación, capacitación y marcha blanca para entregarlos. El contrato dura 56 meses: implementación de E1 entre los meses 1 y 12, marcha blanca 13--15 y producción desde el 16; implementación de E2 entre 13 y 18, marcha blanca 19--20 y producción desde el 21; operación y soporte del 21 al 56, ambos inclusive. La coincidencia de períodos se considera en recursos y atención: E2 se construye mientras E1 entra en servicio y, después, permanece en producción \parencite[arts.~15--17, pp.~11--13]{bases-admin}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figuras/timeline-hitos.png}
+    \caption{Ciclo de vida contractual, hitos de control, compuertas de calidad y servicio gestionado}
+    \label{fig:ciclo_vida_contractual}
+\end{figure}
 
+Como ilustra la Figura~\ref{fig:ciclo_vida_contractual}, el cronograma desacopla los riesgos técnicos y operacionales en tres fases claramente delimitadas:
 \subsubsection{Etapa 1: Núcleo de Seguridad y Continuidad Operacional (Meses 1 al 16)}
-
-Esta etapa prioriza la seguridad de la vida humana, la custodia náutica y la continuidad operativa del recinto portuario, estructurándose en las siguientes fases y entregables contractuales:
-
+Esta etapa concentra los procesos de misión crítica vinculados a la salvaguarda de la vida humana, la custodia náutica y la continuidad del recinto portuario:
 \begin{itemize}
-    \item \textbf{Implementación (Meses 1 al 12):} Comprende el diseño detallado, construcción y despliegue de la plataforma híbrida, seguridad, observabilidad e integraciones críticas. Los siguientes paquetes de entrega propuestos organizan ese trabajo; no sustituyen los hitos indivisibles de las bases:
+    \item \textbf{Fase de Implementación (Meses 1 al 12):} Comprende la ingeniería de detalle de ocho capas (ISO/IEC/IEEE 42010), el despliegue de la infraestructura en nube (AWS Santiago), el aprovisionamiento del Nodo de Borde en Recinto (NBR) en gabinete estanco IP55 y la construcción de los módulos esenciales de operación:
     \begin{itemize}
-        \item \emph{E1.1 (Especificación y Gobierno):} Diseño de la solución y sus datos, especificaciones de instalación, contratos de integración, reglas de negocio y protocolos de aceptación trazables al catálogo. Estos productos fijan las condiciones de construcción, recepción y operación.
-        \item \emph{E1.2 (Infraestructura Híbrida):} Plataforma en nube, Célula Operacional Local con Runtime Operacional de Borde y aplicaciones de terreno. El recinto conserva las funciones críticas sin enlace exterior y los terminales guardan los registros capturados fuera de cobertura hasta su conciliación. Se entregan instalación configurada, controles de acceso y procedimientos de continuidad.
-        \item \emph{E1.3 (Capacidades de Primera Prioridad):} Operación marítima y autorización local de amarra; Escuela náutica con retiros coordinados; Infraestructura con inventario de amarras, boyas e inspecciones; Combustible con captura local; Ambiente y consumos con medición individual; Clientes y contratos con los maestros necesarios; Auditoría y seguridad; y los procesos de integración externa, notificaciones, telemetría y sincronización. Los portales proporcionan declaración voluntaria de planes y autorizaciones. La inspección de boyas funciona sin cobertura; su sensorización no condiciona esta entrega.
-        \item \emph{E1.4 (Migración Inicial):} Extracción, saneamiento y carga de los conjuntos necesarios para operar la primera etapa, con manifiestos, conciliación e incidencias identificadas conforme a SD5, sección 5.3. La segunda etapa completa el alcance histórico requerido por C07 RT-05.15.
+        \item \emph{Entregable E1.1 (Especificación y Gobernanza):} Documento de arquitectura, catálogo formal de datos, especificaciones de interfaz (OpenAPI 3.1 / AsyncAPI 2.6) y protocolos de prueba de aceptación.
+        \item \emph{Entregable E1.2 (Infraestructura Híbrida y Borde):} Despliegue de los clústeres elásticos en AWS, aprovisionamiento de los dos nodos del NBR con persistencia local en PostgreSQL Edge y SQLite Outbox, y configuración del canal seguro mTLS.
+        \item \emph{Entregable E1.3 (Módulos Críticos de Operación):} Construcción y puesta a punto de los componentes esenciales: Navegación, Salidas y Zarpes (\textbf{NAV}); Alertas Tempranas de Marejada multicanal (\textbf{ALE}); Escuela de Vela y Protección de Menores (\textbf{ESC}); Gestión básica y compatibilidad física de Amarras (\textbf{AMA}); Despacho local de Combustible y Colector de Telemetría horaria de torretas (\textbf{CON}); Inventario de Fondeos, Inspecciones desconectadas y Piloto Sensórico en Bahía Ilque (\textbf{BOY}); Núcleo de Datos Maestros y Auditoría (\textbf{ADM}); y Portales iniciales de autoatención para planes de navegación (\textbf{AUT}).
+        \item \emph{Entregable E1.4 (Migración Inicial de Datos):} Pipeline ETL ejecutado para extraer, sanear y cargar padrones de socios, contratos vigentes y naves desde el software heredado de 2014.
     \end{itemize}
-    \item \textbf{Implantación y Marcha Blanca (Meses 13 al 15):} Operación acompañada, convivencia controlada y medición diaria de los indicadores de primera prioridad. Las intervenciones y la formación se sitúan fuera de los congelamientos de RES-11; los avisos de marejada de RES-12 activan las reservas y alternativas del plan.
-    \item \textbf{Paso a Producción (Mes 16):} El acta E1.5 propuesta reúne la evidencia de aceptación de CA-01 a CA-08, CA-10, CA-13 y CA-23, la operación inicial de medición e inspección y las pruebas de seguridad y continuidad aplicables. La autorización de recepción pertenece a la contraparte designada por el cliente.
+    \item \textbf{Hito Crítico de Contingencia Temprana (Mes 6 -- Mitigación SUP-05):} Ante el riesgo administrativo crítico identificado por los revisores respecto a la dependencia de una única persona interna capaz de operar el cierre mensual del sistema heredado (SUP-05), se fija en el Mes 6 el inicio de la transferencia formal de conocimiento. Synaptix documenta los procedimientos de extracción, ejecuta un primer simulacro de cierre en paralelo y genera la matriz de mapeo de saldos. Esto garantiza que una eventual desvinculación o ausencia de dicha persona no extienda el período de convivencia ni impida el corte definitivo en la Etapa 2.
+    \item \textbf{Fase de Implantación y Marcha Blanca (Meses 13 al 15):} Tres meses de operación en paralelo y convivencia controlada en terreno. Se capacita al personal antes del congelamiento estival de temporada alta (15 de diciembre al 15 de marzo, conforme a RST-TEM-01). Durante esta marcha blanca se verifica la efectividad operacional de los módulos de la solución base, incluidos los tiempos de atención y la adopción de planes voluntarios.
+    \item \textbf{Paso a Producción y Quality Gate 1 (Mes 16):} Formalizado mediante el \emph{Entregable E1.5 (Acta de Cierre de Marcha Blanca y Certificación)}. Requiere la validación formal de los criterios CA-01 a CA-08, CA-10, CA-13 y CA-23. Este hito marca el inicio mandatario de la serie histórica continua de 24 meses de telemetría de consumos individuales de agua y electricidad en torretas, condición técnica sine qua non para levantar las no conformidades ambientales antes de la temporada 2029 (CA-19).
 \end{itemize}
 
 \subsubsection{Etapa 2: Automatización Logística, Gestión Ambiental y Cierre Administrativo (Meses 13 al 21)}
-
-Se ejecuta en solapamiento controlado con la estabilización de la primera etapa, completando las capacidades analíticas, logísticas, comerciales y ambientales sobre la base de datos maestros ya consolidada:
-
+Se ejecuta en solapamiento controlado con la estabilización de la primera etapa, incorporando las capacidades comerciales, analíticas, logísticas y ambientales sobre datos maestros ya consolidados:
 \begin{itemize}
-    \item \textbf{Implementación (Meses 13 al 18):} Construcción e integración de las capacidades avanzadas de la plataforma, materializadas en los siguientes entregables:
+    \item \textbf{Fase de Implementación (Meses 13 al 18):} Construcción de los módulos avanzados:
     \begin{itemize}
-        \item \emph{E2.1 (Varadero y Gestión Ambiental Completa):} Varadero y contratistas con agenda, planes de izaje, órdenes, acreditación e inducción; Ambiente y consumos con cadena de custodia RESPEL, conciliación de entregas, certificados e indicadores. Se incorpora el registro asistido del generador que no usa una aplicación. La mejora sensórica de boyas se evalúa conforme a DEC-19, sin depender de ella para el alcance obligatorio.
-        \item \emph{E2.2 (Administración y Finanzas):} Clientes y contratos con lista de espera y atención de visitas; Finanzas y cobranza con hechos facturables, conciliación contable, gestión de mora y expedientes de abandono. Ambiente y consumos aporta la misma serie conciliada a cobro e indicadores; la contabilidad externa continúa como autoridad tributaria.
-        \item \emph{E2.3 (Canales e Integraciones Completos):} Portales para socios, apoderados, visitantes y contratistas, interfaces con los controles de acceso vigentes y mecanismos autorizados de pago y comunicación. Los contratos y proveedores efectivos se verifican antes de habilitar cada integración. Las cinco extensiones de la oferta se incorporan a las capacidades descritas en 3.2 y se someten a los pilotos y controles de T-19.
+        \item \emph{Entregable E2.1 (Varadero, Logística y Medio Ambiente):} Módulo de Varadero, Travelift e Invernada con Ficha Técnica de Izaje en modo pasivo y reprogramación ante temporales (\textbf{VAR}); Control de Acceso y Acreditación de Contratistas mediante códigos QR en portería (\textbf{CTR}); Trazabilidad integral de Residuos Peligrosos RESPEL y enlace con SIDREP (\textbf{AMB} / IN-05); y evaluación de la ampliación sensórica en Bahía Ilque (\textbf{BOY}) condicionada a los resultados del piloto de E1 (DEC-19).
+
+        Incorpora \textbf{IN-01: Servicio de Solicitud y Seguimiento de Mantenimiento de Embarcaciones}, que permite al armador presentar solicitudes, a la marina revisarlas y derivarlas, y al contratista registrar aceptación o rechazo, avance y finalización. Su diseño se realiza en los meses 14--15, la construcción e integración en 16--17 y las pruebas en el mes 18. Se vincula con \textbf{AUT}, \textbf{CTR}, \textbf{VAR}, \textbf{ADM} y \textbf{ALE}, sin sustituir la autorización de acceso ni la orden de trabajo de la solución base.
+
+        Incorpora también \textbf{IN-02: Programa de Mantenimiento Preventivo en Invernada}, que organiza propuestas de tareas preventivas aceptadas por el armador y distribuye los trabajos según las posiciones en la explanada, las fechas de botadura y la disponibilidad de recursos y contratistas habilitados. Reutiliza el flujo de solicitudes de IN-01 y los módulos \textbf{VAR}, \textbf{CTR}, \textbf{AUT}, \textbf{ALE} y \textbf{ADM}, sin duplicar la agenda del varadero. Su diseño se realiza en los meses 14--15, la implementación en 16--17 y las integraciones en 17--18.
+        \item \emph{Entregable E2.2 (Motor Financiero y Automatización Comercial):} Algoritmo determinista de asignación y gestión de Lista de Espera (\textbf{AMA}); Transformación de consumos medidos en hechos facturables validados bajo UUIDv4 (\textbf{CON}); Motor consolidado de Hechos Facturables, tramos de mora sin bloqueos físicos de naves y Expediente Forense Digital PDF/A para las 14 embarcaciones en abandono (\textbf{FAC}); y adaptadores de enlace con el ERP contable (INT-01).
+        \item \emph{Entregable E2.3 (Portales Web Completos e Interoperabilidad):} Suite integral de Portales de Autoatención (\textbf{AUT}) para armadores socios, apoderados, visitas (con pasarela de pago digital) y contratistas; e interfaz con torniquetes físicos en portería (INT-05).
     \end{itemize}
-    \item \textbf{Implantación y Marcha Blanca (Meses 19 y 20):} Verificación integral de hechos facturables, izaje, residuos e interoperabilidad, manteniendo en producción la primera etapa. La consulta histórica utiliza un repositorio independiente con índice, relaciones, permisos e integridad verificable; el software de 2014 no queda como única vía permanente de acceso. El corte, la consulta del archivo y el retorno se comprueban según SD5, sección 5.3.
-    \item \textbf{Paso a Producción (Mes 21):} El acta E2.4 propuesta reúne CA-09, CA-11, CA-12, CA-14 a CA-22 y CA-24, junto con la verificación integral de los criterios de primera etapa. CA-18 completa la imputación comercial sobre la medición iniciada en E1; CA-19 conserva su fecha externa anterior a la temporada 2029.
+    \item \textbf{Fase de Implantación y Marcha Blanca Integral (Meses 19 y 20):} Dos meses de pruebas en régimen real: simulación masiva de cobranza, maniobras asistidas de izaje y corte definitivo del software de 2014, el cual se migra a un repositorio digital estructurado de solo lectura en el Módulo de Administración (\textbf{ADM}).
+
+    Para \textbf{IN-01}, la línea base se levanta durante el mes 19 con el flujo adicional desactivado para la cohorte evaluada; la capacitación se realiza al finalizar esa medición y el piloto se ejecuta y evalúa en el mes 20. Para \textbf{IN-02}, las pruebas funcionales, de integración, seguridad y recuperación se desarrollan en los meses 19--20. Su piloto se ejecuta desde $M_{\mathrm{inv}}$ hasta $M_{\mathrm{inv}}+5$, conforme a la ventana contractual de invernada y a la disponibilidad de IN-01; su evaluación no se considera automáticamente concluida dentro de estos dos meses.
+    \item \textbf{Paso a Producción y Quality Gate 2 (Mes 21):} Formalizado mediante el \emph{Entregable E2.4 (Acta de Aceptación Definitiva de la Plataforma)}, certificando el cumplimiento riguroso de CA-09, CA-11, CA-12, CA-14 a CA-17, CA-19 a CA-22 y CA-24. El despliegue operativo de \textbf{IN-01} se realiza en el mes 21, previa aceptación. La evaluación del beneficio y transferencia de \textbf{IN-02} siguen el calendario de su piloto de invernada establecido en el Subdocumento 13.
 \end{itemize}
 
-\subsubsection{Fase de Operación y Servicio Gestionado (Meses 21 al 56)}
-
-Aprobada la Etapa 2, concluye la fase de proyecto e inicia el régimen de operación continua por 36 meses bajo acuerdos de nivel de servicio (SLA). Ante la ausencia de personal de tecnologías de información en la estructura del cliente, rige un modelo de responsabilidad combinada:
-
+\subsubsection{Fase de Operación Continua y Servicio Gestionado (Meses 21 al 56)}
+Aprobada la recepción definitiva de la Etapa 2, concluye la etapa de proyecto e inicia el régimen de operación continua por 36 meses bajo la modalidad de Servicio Gestionado por Resultados (MSP / IN-04). Ante la ausencia de un área interna de tecnologías de información en la marina (RST-ORG-01), rige un modelo de responsabilidad combinada que erradica la ambigüedad en el esfuerzo del mandante:
 \begin{itemize}
-    \item \textbf{Decisiones de Negocio del Cliente:} Aprobación de tarifas, políticas de asignación, medidas de cobranza y excepciones por las personas con atribución competente. Synaptix asume la administración de bases de datos, redes y seguridad. El cliente designa responsables de validación funcional y aprobación de reglas; su participación se programa según las tareas de cada etapa (DEC-22; SD1, secciones 1.1.3 y 1.5).
-    \item \textbf{Servicio Gestionado por Synaptix:} Administración de la plataforma híbrida, soporte, seguridad, observabilidad, respaldo, recuperación y mantención por 36 meses. El centro de atención cubre 06:00--24:00 en temporada alta y 08:00--20:00 el resto del año; el canal de notificación de emergencia y la recepción de planes vencidos funcionan continuamente. La atención y el escalamiento de incidentes críticos y altos mantienen cobertura 24$\times$7 conforme a BA artículo 78.2. José Lara Arce ejerce como Gerente de Servicio desde el mes 21 conforme a SD1, con apoyo externo de NOC, SOC y primera atención. El plan de servicio debe asignar cargas, turnos, suplencias y traslados suficientes para cubrir esos horarios, con sus costos y mecanismos de reemplazo \parencites[cap.~15, RT-21.06]{caso07}[art.~78.2, p.~40]{bases-admin}.
+    \item \textbf{Administración Funcional por el Cliente (Esfuerzo Unificado):} La contraparte de la marina se limita exclusivamente a tareas de negocio: gobernanza de tarifas, políticas de asignación, confirmación de excepciones operacionales y autorizaciones de cobranza mediante la consola sin código del Módulo de Administración (\textbf{ADM}). Este esfuerzo queda \textbf{acotado contractualmente a no más de 4 horas-persona mensuales}, asignado al Administrador General de la marina con suplencia formalizada en la Jefatura de Operaciones (DEC-22).
+    \item \textbf{Servicio Gestionado por Synaptix (MSP):} Synaptix asume la totalidad de la gestión técnica de la plataforma híbrida bajo marco ITIL 4, liderada por el Gerente de Servicio institucional de la empresa y soportada por especialistas en NOC, SOC e infraestructura en nube. El servicio garantiza:
+    \begin{itemize}
+        \item \emph{Mesa de Ayuda Bilingüe Estacional:} Cobertura de 06:00 a 24:00 horas durante temporada alta (15 de diciembre al 15 de marzo) y de 08:00 a 20:00 horas durante temporada baja (RT-21.06).
+        \item \emph{Canal de Guardia Crítica $24/7/365$:} Operación ininterrumpida para la ingesta de alertas oficiales de marejada y el monitoreo de planes de navegación vencidos sin retorno (CA-02, CA-04).
+        \item \emph{Observabilidad Proactiva y SLAs:} Monitoreo unificado con OpenTelemetry, respaldo inmutable 3-2-1-1-0 en AWS S3 Object Lock, mantención correctiva/evolutiva, traslados marítimos periódicos a Bahía Ilque y cumplimiento del compromiso de disponibilidad del 99,9\,\%, garantizando la sostenibilidad total del criterio CA-25.
+    \end{itemize}
+
+    El seguimiento operativo de \textbf{IN-01} continúa desde el mes 21 hasta el 56. El piloto, la evaluación y la transferencia de \textbf{IN-02} se realizan según la ventana contractual de invernada definida en el Subdocumento 13, manteniendo su vinculación con las solicitudes de mantenimiento de IN-01.
 \end{itemize}
 
+
+\newpage
 
 \section{Alcance}
 
-Esta sección establece las capacidades y servicios incluidos, sus límites, las entregas de E1 y E2 y los criterios de aceptación. Las exclusiones, supuestos y restricciones delimitan la responsabilidad de Synaptix y las dependencias que deben resolverse para habilitar la operación.
+Esta sección establece las capacidades, servicios y límites contractuales de la solución propuesta por Synaptix para Marina y Club Náutico Bahía Panitao S.A. Se descompone la complejidad operacional del puerto en componentes manejables, organizados en dos etapas sucesivas de implementación y una fase de servicio gestionado continuo por 36 meses. La delimitación formal de responsabilidades fija con precisión qué entrega el proponente, qué adquisiciones y obras corresponden al mandante, y qué funciones permanecen bajo la potestad exclusiva de autoridades del Estado y terceros.
 
-\subsection{Delimitación de Productos, Servicios y Frontera Operacional}
+\subsection{Reparto entre Etapas y Criterios de Asignación Operacional}
 
-El alcance del producto comprende las siguientes capacidades, canales e interfaces, con provisión, configuración y puesta en marcha según la distribución de responsabilidades indicada más adelante:
+La asignación de capacidades entre la Etapa 1 (E1) y la Etapa 2 (E2) responde a criterios objetivos de criticidad de la vida humana, mitigación de riesgos náuticos inmediatos, requerimientos regulatorios ambientales externos y capacidad de absorción del personal del puerto. La Figura~\ref{fig:capability_map} sintetiza el Mapa de Capacidades del Negocio (\emph{Capability Map}) organizado cronológica y funcionalmente de izquierda a derecha.
 
-\begin{itemize}
-    \item \textbf{Plataforma en Nube:} Reúne los registros compartidos de operación, servicios y administración, sus documentos e indicadores. Organiza las capacidades en Núcleo Operacional, Núcleo de Servicios y Núcleo Administrativo, con Auditoría y seguridad y los procesos comunes explicados en 3.3. Las consultas históricas permiten reconstruir actuaciones; una vista derivada no autoriza por sí sola una amarra ni modifica registros de otro dominio.
-    \item \textbf{Célula Operacional Local:} Sostiene mediante el Runtime Operacional de Borde el subconjunto crítico del recinto durante 24 horas sin nube: movimientos, autorización de amarra, participación escolar, combustible, medición y evidencia local. Mantiene la habilitación de identidades operacionales. Los nuevos contratos comerciales, la configuración global y la facturación completa permanecen en nube; la habilitación local se somete a las condiciones de identidad y continuidad de esta oferta.
-    \item \textbf{Aplicación Android:} Entrega flujos por tarea para marinero, escuela, varadero, portería e inspección, con identidad individual, permisos diferenciados y conservación de registros fuera de cobertura. Los terminales administrados se reciben con pruebas de 12 horas desconectados; la inspección de boyas, con ocho horas. El perfil personal del armador permite planes voluntarios y comunicación de baja capacidad, sin presumir conectividad permanente.
-    \item \textbf{Portal y Consola:} Proporciona atención, coordinación, consulta y autoatención para los perfiles autorizados. Los clientes y visitantes disponen al menos de español e inglés. La PWA atiende consultas y formularios de menor criticidad; los registros de terreno que requieren conservación desconectada utilizan la aplicación Android.
-    \item \textbf{Integración y Telemetría:} Intercambia y concilia antecedentes con contabilidad, accesos, surtidor, medición, meteorología, pagos y comunicaciones mediante contratos definidos. Cada interfaz se habilita después de comprobar capacidades, permisos y resultados con su tercero responsable. La conectividad y sensorización de Bahía Ilque no se presuponen.
-    \item \textbf{Migración y Consulta Histórica:} Herramientas de perfilado, extracción, transformación, conciliación y retorno que ejecuta Synaptix. El alcance comprende socios y armadores, contratos vigentes y sus documentos, seis años de pagos y saldos, los 14 expedientes de abandono, embarcaciones e invernadas y tres años de matrícula escolar. La información archivada conserva consulta independiente del software obsoleto \parencite[cap.~15, RT-05.15]{caso07}.
-\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figuras/mapa-capacidades.png}
+    \caption{Mapa de capacidades del negocio por etapas y fases operacionales (Capability Map)}
+    \label{fig:capability_map}
+\end{figure}
 
-\subsubsection{Entregables del Proyecto y del Servicio}
+El criterio rector de asignación operacional se articula en tres grandes fases secuenciales:
 
-Synaptix entrega, para el alcance de cada etapa, la especificación aprobable de reglas e interfaces; el diseño y las condiciones de instalación; el software configurado y sus integraciones, con el licenciamiento de terceros a nombre del cliente por todo el período contractual; el código fuente, los artefactos de construcción, los scripts de infraestructura como código y los procedimientos de despliegue; los datos migrados y conciliados; los manuales operacionales y de contingencia y la base de conocimiento; la capacitación por perfil; y los protocolos, resultados de pruebas y antecedentes para el acta de recepción. La marcha blanca incorpora acompañamiento, registro de incidencias y corrección antes del paso a producción. Cada entregable se vincula con los requisitos que satisface y con sus pruebas de recepción \parencite[art.~14.2, p.~10; art.~77.1, p.~39; art.~84, p.~43]{bases-admin}.
+\begin{enumerate}
+    \item \textbf{Etapa 1 --- Núcleo de Seguridad, Custodia y Continuidad (Meses 1 al 16):} Prioriza la protección de la vida humana y la trazabilidad de naves en agua. Incorpora los módulos de Operación marítima y zarpe (\texttt{NAV}), Alertas y comunicaciones masivas (\texttt{ALE}), Escuela náutica de menores (\texttt{ESC}), Amarras base (\texttt{AMA}), Ingesta de telemetría horaria (\texttt{CON}), Boyas e inspección desconectada (\texttt{BOY}), Datos maestros y perfiles (\texttt{ADM}) y Autoatención básica de planes de navegación (\texttt{AUT}). Asimismo, integra la innovación \textbf{IN-01} (Custodia Náutica Predictiva).
+    
+    En esta etapa rige la resolución de la decisión técnica \textbf{DEC-01}: la confirmación de ocupación de las 320 amarras de atraque no se supedita a sensores inalámbricos en agua, sino a la correlación estricta entre la bitácora operacional de zarpe/retorno y la ronda física obligatoria de marinería registrada en tablets de 10'' fuera de cobertura (\emph{Modo Cubierta}). Asimismo, la ingesta horaria de los 640 medidores de agua y luz en pantalán inicia de inmediato en E1 para consolidar la serie temporal continua e ininterrumpida requerida antes de la temporada 2029 \parencite[cap.~13; cap.~15, RT-05.10]{caso07}.
 
-Durante los 36 meses de operación se incluyen administración técnica, soporte funcional y especializado, seguridad, respaldos, recuperación, mantenimiento y seguimiento de los niveles de servicio. El cliente designa aprobadores de negocio y contraparte de recepción; Synaptix organiza el trabajo para los 39 trabajadores de invierno y la rotación estacional, sin requerir un área TI propia de la marina \parencite[cap.~17, secc.~17.3]{caso07}.
+    \item \textbf{Etapa 2 --- Logística Avanzada, Gestión Ambiental y Finanzas (Meses 13 al 21):} Sobre la base de datos maestros y usuarios ya estabilizada en E1, se despliegan las operaciones terrestres pesadas y la integración financiera: Varadero y cunas (\texttt{VAR}, con agenda de travelift y fichas técnicas de izaje), Portería y control de acceso (\texttt{CTR}, con acreditación QR de 62 empresas y formación ambiental de 140 operarios), Gestión ambiental (\texttt{AMB}, con cadena de custodia de residuos peligrosos RESPEL y precarga interoperable a SIDREP), Boyas exteriores (\texttt{BOY}, con el piloto sensórico condicionado en Bahía Ilque), Finanzas y hechos facturables (\texttt{FAC}, con liquidación de estadías, mora y foliación de los 14 expedientes de abandono en PDF/A) y Portales completos (\texttt{AUT}, con autoservicio bilingüe para socios y visitantes). Integra las innovaciones \textbf{IN-02} (Reprogramación Resiliente de Izajes), \textbf{IN-03} (Lectura Inteligente de Documentos) e \textbf{IN-05} (Pasaporte Ambiental Náutico).
 
-El alcance incluye la transferencia y la salida al término del contrato. Synaptix entrega el Plan de Reversibilidad dentro de los primeros 90 días y lo actualiza anualmente; comprende inventario de activos, traspaso de credenciales, exportación íntegra de datos en formatos abiertos y acompañamiento de al menos 90 días para que el cliente o un tercero asuma la operación sin interrupción. Su ejecución está incluida en el servicio, sin cobro adicional \parencite[art.~77.2--77.3, p.~39]{bases-admin}.
+    \item \textbf{Operación Continua --- Servicio Gestionado por Resultados (Meses 21 al 56):} Transición al régimen de soporte y administración integral por 36 meses bajo acuerdos de nivel de servicio (SLA). Ante la ausencia de personal TI en el cliente (DEC-22), Synaptix asume la administración técnica total de la plataforma híbrida, mesa de servicio estacional (06:00--24:00 en temporada alta; 08:00--20:00 en baja), guardia crítica 24/7/365 para incidentes P1/P2, observabilidad unificada (CloudWatch y Grafana en NBR) y la innovación contractual \textbf{IN-04} (MSP por Resultados con incentivos ligados a indicadores de satisfacción y disponibilidad).
+\end{enumerate}
 
-\subsubsection{Extensiones de la Oferta}
+La Tabla~\ref{tab:alcance_etapas} resume la distribución de capacidades y entregables entre ambas etapas de implementación.
 
-La oferta incorpora en E2 el Servicio de Solicitud y Seguimiento de Mantenimiento de Embarcaciones y el Programa de Mantenimiento Preventivo en Invernada, para solicitar trabajos, seguir sus respuestas y coordinar el mantenimiento de invierno en Varadero y contratistas. Incluye la Lectura inteligente de documentos para el ingreso asistido de antecedentes, con confirmación de una persona autorizada antes de incorporar los datos. El Servicio Gestionado por Resultados propone un incentivo adicional sujeto a mejora comprobada y aceptación contractual, conservando las obligaciones del servicio. El Pasaporte Ambiental Náutico con Planes de Reducción permite consultar el historial propio y seguir acciones voluntarias en Ambiente y consumos. SD13 y T-19 desarrollan incorporación, pilotos, indicadores y riesgos de estas cinco extensiones; sus beneficios estimados no se presentan como resultados obtenidos ni sustituyen el alcance obligatorio.
-
-\subsubsection{Exclusiones Explícitas y Límites Técnicos}
-
-Las exclusiones del capítulo 11 del Caso 07 delimitan las actividades que el cliente no contrata. Los códigos EXC identifican las exclusiones detalladas en A2.4 y permiten distinguirlas de las obligaciones de especificación, integración y evidencia que sí se incluyen \parencite[cap.~11]{caso07}:
-
-\begin{itemize}
-    \item \textbf{Contabilidad y Autoridad Marítima (EXC-01/02):} No se reemplaza la contabilidad ni el sistema que otorga el zarpe. La plataforma entrega hechos facturables y prepara, valida y conserva antecedentes; la emisión tributaria y el acto de autoridad permanecen fuera de su competencia.
-    \item \textbf{Personal, Cobranza Judicial y Restaurante (EXC-03/04/05):} No se incorporan remuneraciones ni administración general de personal; no se ejecutan acciones judiciales o el procedimiento de abandono; no se administra el restaurante ni su punto de venta. Permanecen las identidades y acreditaciones operacionales, los expedientes trazables y el contrato y consumo del concesionario.
-    \item \textbf{Construcción y Compra (EXC-06/10):} El cliente ejecuta canalizaciones, obras eléctricas, torretas y postación, y adquiere medidores, lectores, dispositivos de terreno, instrumentación del surtidor y equipamiento de red. Synaptix especifica cantidades y características, dimensiona, justifica, coordina la recepción y realiza la integración. Esta separación no excluye el aprovisionamiento, licenciamiento, configuración y operación que BA artículo 14 asigna al proponente \parencite[art.~14.2, p.~10]{bases-admin}.
-    \item \textbf{Certificación Ambiental, Equipamiento a Bordo y Fondeos (EXC-07/08/09):} La plataforma proporciona la evidencia ambiental; el cierre por el auditor y la certificación pertenecen a los órganos competentes. No se instrumentan las naves de armadores ni se les provee equipos a bordo; el plan y los datos compartidos son voluntarios y revocables. No se ejecuta mantenimiento físico de boyas y trenes de fondeo; se registran estado, ocupación, inspecciones y actuaciones del mantenedor.
-\end{itemize}
-
-La infraestructura local necesaria para la continuidad forma parte de la especificación e integración de la solución: cómputo, comunicaciones, energía, climatización, incendio, acceso físico y monitoreo, con condiciones adecuadas al ambiente marino y al surtidor. La Célula Operacional Local se trata como sala técnica secundaria o de sitio y los puntos de pantalán y varadero como borde; un gabinete no exime de sus obligaciones. El cliente adquiere el hardware y ejecuta las obras; Synaptix dimensiona, especifica, coordina su recepción y administra técnicamente el servicio. SD4 y T-11 desarrollan selección de equipos, cargas, planos y cálculos. Las condiciones pendientes de selección y habilitación deben resolverse antes de recibir la infraestructura; el diseño no constituye una instalación ni una prueba ya ejecutada. La autonomía de energía y la continuidad sin enlace se comprueban por separado y en falla combinada \parencites[secc.~6.1, p.~14; RT-06.07/08, p.~15; RT-08.04, p.~18]{bases-transversales}[art.~14, p.~10]{bases-admin}[cap.~11; cap.~15, RT-06.01]{caso07}.
-
-La entrega de continuidad incluye reconciliación automática de todos los registros y evidencias obligatorios dentro de 30 minutos desde la restitución efectiva del enlace tras 24 horas de aislamiento, conservando integridad y atendiendo el tráfico nuevo. El protocolo comprueba conjuntamente volumen, capacidad útil y tiempos de cierre; una velocidad nominal no acredita el resultado. SD4 y SD5 desarrollan su dimensionamiento y reglas de conciliación \parencite[cap.~15, RT-03.13]{caso07}.
-
-\subsubsection{Frontera Geográfica y Ubicaciones Cubiertas}
-
-La solución opera transversalmente sobre todas las áreas funcionales del puerto deportivo: edificio de administración y torre de control, portería y acceso vehicular, los cinco pantalanes flotantes de atraque, muelle de espera y visitantes, explanada de varadero y cunas de invernada, bodega de acopio de residuos peligrosos (RESPEL), muelle del surtidor de combustible y el campo de boyas exterior en Bahía Ilque (a 6 millas náuticas por mar).
-
-\subsection{Reparto entre Etapas y Criterios de Distribución}
-
-La asignación entre E1 y E2 considera dependencias técnicas, riesgo operacional, plazos externos y capacidad de adopción del cliente. E1 instala los registros y controles comunes necesarios para la seguridad y para iniciar la historia ambiental; E2 completa la gestión que utiliza esos antecedentes. La Tabla~\ref{tab:alcance_etapas} permite comprobar qué cambia en cada entrega \parencite[cap.~17, secc.~17.3]{caso07}.
-
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \small
-\begin{tabularx}{\linewidth}{|p{.18\linewidth}|X|X|}
+\begin{tabularx}{\linewidth}{|p{.20\linewidth}|X|X|}
 \hline
-\EncabezadoTabla{Capacidad} & \EncabezadoTabla{Entrega E1} & \EncabezadoTabla{Entrega E2} \\ \hline
-Custodia y atención náutica & Movimientos, planes, alertas, compatibilidad, visitas y antecedentes de zarpe. & Espera y gestión contractual completas; conciliación de estadías y cargos. \\ \hline
-Escuela náutica & Clase, participación, regreso, retiro coordinado y avisos. & Conservación del alcance en producción y verificación con la solución integrada. \\ \hline
-Infraestructura y boyas & Inventario, condiciones, inspección desconectada y última observación identificada. & Integración completa del historial; instrumentación adicional sujeta a evaluación y selección. \\ \hline
-Ambiente y consumos; Combustible & Medición individual, serie ambiental y captura de despachos. & Cadena RESPEL, indicadores e imputación comercial conciliada. \\ \hline
-Varadero y contratistas & Maestros y controles comunes que soportan las capacidades iniciales. & Agenda, planes, órdenes, acreditación, inducción y acceso autorizado a faenas. \\ \hline
-Administración y datos & Identidades, contactos, contratos y conjuntos migrados necesarios para E1. & Gestión financiera, 14 expedientes de abandono, migración y consulta histórica completas. \\ \hline
-Canales y procesos comunes & Canales de primera prioridad, integración crítica, notificación, auditoría y sincronización. & Portales e interfaces completos; extensiones incorporadas con sus controles y pilotos. \\ \hline
+\EncabezadoTabla{Dominio / Capacidad} & \EncabezadoTabla{Entrega Etapa 1 (Mes 16)} & \EncabezadoTabla{Entrega Etapa 2 (Mes 21)} \\ \hline
+Custodia y tráfico náutico & Bitácora de zarpe/retorno, alertas meteorológicas, amarras base e IN-01. & Lista de espera, gestión contractual integral y conciliación comercial de estadías. \\ \hline
+Escuela de vela y menores & Control de flota (18 embarcaciones), retiro coordinado y avisos a apoderados. & Integración consolidada en producción y trazabilidad con módulos de terceros. \\ \hline
+Infraestructura y boyas & Catastro de 40 boyas en Ilque con inspección offline (8\,h) en tablet. & Piloto sensórico exterior condicionado y analítica histórica de trenes de fondeo. \\ \hline
+Telemetría y sustentabilidad & Ingesta horaria de 640 medidores de agua/luz; serie ambiental previa a 2029. & Trazabilidad RESPEL, precarga SIDREP, conciliación comercial e innovaciones IN-03/IN-05. \\ \hline
+Varadero y contratistas & Maestros de naves y usuarios que sustentan operaciones de izaje iniciales. & Agenda travelift, validación de izaje, acreditación QR (62 empresas) e IN-02. \\ \hline
+Finanzas y administración & RBAC, identidades, contratos vigentes y migración histórica para E1. & Motor de hechos facturables, 14 expedientes de abandono en PDF/A y corte de 2014. \\ \hline
+Canales e interfaces & Consola de torre y App Android 10'' Modo Cubierta (12\,h offline en pantalán). & Portales web/PWA bilingües (ES/EN), pasarela de pagos e interfaces ERP/SIDREP. \\ \hline
 \end{tabularx}
-\caption{Alcance por etapa: entrega inicial y complemento}
+\caption{Distribución del alcance por etapas de implementación}
 \label{tab:alcance_etapas}
-\FuenteTabla{Elaboración propia a partir del catálogo y prioridades del Caso 07.}
 \end{table}
 
-La recepción de E1 comprueba CA-01 a CA-08, CA-10, CA-13 y CA-23; E2 comprueba CA-09, CA-11, CA-12, CA-14 a CA-22 y CA-24 y conserva los resultados de E1. CA-25 rige los 36 meses de operación. CA-18 comienza con medición en E1 y completa cobro en E2; CA-19 mantiene el plazo externo anterior a la temporada 2029. Los criterios de distribución son:
+Se permite visualizar a qué dominios corresponden las entregas de la etapa 1 y etapa 2. En la primera se habilitan las funciones esenciales de seguridad, custodia y registro operacional, junto con los datos y herramientas que las sustentan. En la segunda se amplían estas capacidades con la coordinación de faenas, la trazabilidad ambiental, la gestión comercial y la integración contable, utilizando la información consolidada durante la etapa inicial.
 
+\subsection{Delimitación Contractual, Exclusiones Explícitas, Restricciones y Supuestos}
+
+La delimitación de fronteras operacionales y contractuales evita solapamientos de competencias y blinda jurídicamente la ejecución del contrato. La Figura~\ref{fig:in_scope_out_of_scope} estructura las responsabilidades en tres pilares claramente diferenciados, situando en el centro la responsabilidad contractual de Synaptix como núcleo articulador.
+
+\begin{figure}[htbp]
+\centering
+\begin{tcolorbox}[colback=SynSurface,colframe=SynBlue,width=0.94\linewidth,arc=2mm,boxrule=1pt,halign=center]
+  \vspace{1.2cm}
+  {\Large\bfseries\textcolor{SynNavy}{AQUÍ SE INSERTA DIAGRAMA}}\\[0.4cm]
+  {\small\textcolor{SynMuted}{Figura 3.3: Frontera de Alcance y Matriz de Responsabilidades (In-Scope vs. Out-of-Scope)}}\\[0.2cm]
+  {\footnotesize\texttt{figuras/figura\_3\_3\_frontera\_alcance.svg}}
+  \vspace{1.2cm}
+\end{tcolorbox}
+\caption{Frontera de alcance, suministros del mandante y exclusiones privativas}
+\label{fig:in_scope_out_of_scope}
+\end{figure}
+
+El análisis de los tres pilares de alcance y responsabilidades establece:
+
+\subsubsection{Pilar Central: Alcance Synaptix (IN-SCOPE)}
+Comprende la totalidad de productos, licencias, configuraciones y servicios profesionales ofertados:
 \begin{itemize}
-    \item \textbf{Seguridad y Custodia (Etapa 1):} Operación marítima registra salida y regreso sobre evidencia identificada; Escuela náutica mantiene participación y retiro coordinados; Infraestructura describe las condiciones físicas de amarras y fondeos; Notificaciones atiende vencimientos y marejadas. El mecanismo de estado de embarcación de DEC-01 y DEC-05 se define antes de habilitar el regreso: no se deja para una sensorización posterior.
-    \item \textbf{Historia Ambiental antes de 2029 (Etapa 1):} Ambiente y consumos recibe la medición individual desde la primera etapa, aunque la imputación comercial completa se integre en la segunda. El caso exige una serie suficiente anterior a la temporada 2029, sin fijar 24 meses. La secuencia deberá contrastar fecha de inicio contractual, instalación y exigencias del auditor; si una dependencia amenaza esa historia, se reserva una instalación temprana compatible con las ventanas protegidas \parencite[cap.~13, secc.~13.1--13.2]{caso07}.
-    \item \textbf{Boyas sin Dependencia de un Piloto:} La primera etapa entrega inventario, observación e inspección desconectada de ocho horas. La observación conserva su antigüedad; una reserva no prueba ocupación física. La selección de instrumentación complementaria requiere evaluar factibilidad, energía, comunicaciones y reposición en DEC-19 y DA-20 de SD4. Ninguna ampliación sensórica se presupone contratada ni sustituye ese mínimo.
-    \item \textbf{Gestión Completa (Etapa 2):} Varadero y contratistas completa agenda, planes, acreditación y formación; Ambiente y consumos completa residuos e indicadores; Clientes y contratos y Finanzas y cobranza completan espera, visitas, hechos facturables y expedientes. La integración aprovecha la identidad, evidencia y mensajería de la primera etapa sin rehacer la arquitectura.
+    \item \textbf{Plataforma en Nube Resiliente:} Despliegue en AWS Local Zone Santiago bajo esquema multi-AZ, microservicios contenerizados y base de datos relacional PostgreSQL con respaldos cruzados diarios (RTO $\le 4$\,h, RPO $\le 15$\,min).
+    \item \textbf{Nodo de Borde en Recinto (NBR):} Gabinete mural industrial IP55 ubicado en sala técnica local. Sostiene la operación desconectada del recinto durante 24 horas sin enlace WAN y ejecuta la sincronización bidireccional automática en $\le 30$\,minutos tras la reconexión \parencite[cap.~15, RT-03.13]{caso07}.
+    \item \textbf{Aplicación Móvil Android 10'' (Modo Cubierta):} Diseñada para marinería, escuela de vela y varadero, con autonomía offline de 12 horas en pantalanes y 8 horas en inspección de boyas en Bahía Ilque.
+    \item \textbf{Portales Web y PWA de Autoatención:} Consola de operaciones para torre de control y portal de autogestión de socios y visitantes bilingüe (español e inglés), con pasarela de pagos integrada.
+    \item \textbf{Servicio Gestionado (MSP) por 36 Meses:} Mesa de ayuda estacional (L1/L2), guardia crítica 24/7/365 para incidentes P1/P2, observabilidad, mantención preventiva y correctiva, y cumplimiento del SLA global mensual ($\ge 99,95\,\text{\%}$).
+    \item \textbf{Migración y Conciliación Histórica:} Extracción, perfilado y carga de 6 años de pagos y saldos contables, tres años de matrículas escolares y foliación digital inalterable de los 14 expedientes de abandono en PDF/A \parencite[cap.~15, RT-05.15]{caso07}.
+    \item \textbf{Cinco Innovaciones Contractuales:} Incorporación de IN-01 a IN-05 desarrolladas en SD13 y reguladas bajo el Formulario T-19.
 \end{itemize}
 
-\subsection{Restricciones No Negociables y Matriz de Supuestos}
-
-La solución reconoce un conjunto de restricciones obligatorias derivadas de las bases y del entorno físico del puerto, complementadas por supuestos técnicos de trabajo que delimitan la responsabilidad del proponente:
-
+\subsubsection{Pilar Derecho: Suministros del Mandante (Supuestos y Compras)}
+Bajo los supuestos de colaboración SUP-01 a SUP-05 de A2.3, corresponden al cliente las siguientes adquisiciones y obras civiles previas:
 \begin{itemize}
-    \item \textbf{Momento Seguro y Radio (RES-01/04):} No se exige interacción durante amarre o izaje; los antecedentes se preparan antes y el resultado se confirma cuando la maniobra es segura. VHF permanece como medio de coordinación operacional y los registros informan quién comunica y quién digita.
-    \item \textbf{Privacidad (RES-02/03/14):} La declaración del plan y los datos de posición compartidos por el armador son voluntarios, con consentimiento revocable; los registros operacionales y contractuales conservan su finalidad y permisos propios. No se instalan cámaras dirigidas a alumnos ni dispositivos en embarcaciones menores. Escuela náutica muestra al monitor asignado el mínimo autorizado de emergencia y registra la consulta.
-    \item \textbf{Continuidad (RES-08):} El recinto conserva 24 horas sin enlace exterior; los terminales de pantalán, varadero y escuela, 12 horas fuera de cobertura; la inspección de boyas, 8 horas. La sincronización automática concluye dentro de 30 minutos desde la reconexión efectiva tras 24 horas aislado, incluyendo los registros operacionales, documentos, bitácoras y evidencias obligatorios \parencite[cap.~15, RT-03.10/13]{caso07}.
-    \item \textbf{Calendario (RES-11/12):} Se respetan el congelamiento de 15 de diciembre a 15 de marzo, los 14 eventos y las campañas de abril--mayo y septiembre--noviembre en lo que afecta al varadero. Los avisos oficiales suspenden las actividades programadas; el plan reserva holguras fundamentadas sin desplazar los hitos de BA artículo 17 \parencite[cap.~10; cap.~15, RT-10.05]{caso07}.
-    \item \textbf{Servicio y Atribuciones (RES-05/06/07/15):} Synaptix asume las tareas especializadas; autoridad y contabilidad conservan sus competencias. Una medida de cobranza que afecte el acceso a la nave exige decisión formal de la compañía con fundamento; no se activa automáticamente por deuda.
-    \item \textbf{Terreno e Idioma (RES-09/10/13):} Equipos y cableado de pantalán acreditan intemperie marina, flotación y flexión; el equipamiento del surtidor acredita idoneidad para su clasificación efectiva. Las interfaces de clientes y visitantes se entregan en español e inglés, con reposición e integración consideradas en el servicio.
+    \item \textbf{Obras Civiles y Dragado:} Mantención del fondo marino y calados de dársena, edificio administrativo, torre de control y explanada de varadero.
+    \item \textbf{Canalizaciones y Redes Físicas:} Ductos protegidos en pantalanes para cableado marino, enlaces de fibra óptica de recinto y grupo electrógeno automático de respaldo.
+    \item \textbf{168 Torretas con 640 Medidores (SUP-04):} Adquisición de torretas de servicio y medidores de agua y energía homologados Modbus-RTU / RS-485 con certificación marina IP66, cuyas especificaciones técnicas son provistas oportunamente por Synaptix.
+    \item \textbf{Tablets Rugerizadas IP68 (SUP-04):} Suministro de hardware móvil Android de 10'' con grado de protección IP68 y pedestales de recarga rápida para marineros y operarios.
+    \item \textbf{Dotación Operativa Propia:} Disponibilidad de los 39 trabajadores en régimen de invierno (marineros, personal de torre, operarios de cunas y chofer calificado de travelift).
+    \item \textbf{Gobernanza y Contraparte Técnica:} Aprobación de tarifas comerciales y medidas de cobranza (SUP-05), y designación de una contraparte técnica formal con una dedicación unificada de 4 horas-persona/mes (SUP-01) para revisiones y actas.
 \end{itemize}
 
-\begin{supuesto}
-La planificación utiliza los cinco supuestos SUP-01 a SUP-05 y las 22 decisiones DEC-01 a DEC-22 de A2.3. Las decisiones son criterios formulados por el proponente y no autorizaciones ya obtenidas del cliente. Los supuestos de colaboración se refieren a:
-\begin{enumerate}[label=(\alph*)]
-    \item Disponibilidad programada de representantes funcionales, sin dedicación exclusiva presumida (SUP-01).
-    \item Acceso autorizado a las fuentes, sin presumir integridad, calidad ni exportación directa del software de 2014 (SUP-02).
-    \item Volumetría del caso como referencia de estimación, con hipótesis propias de simultaneidad y transacciones (SUP-03).
-    \item Disponibilidad de compras y obras del cliente en los hitos acordados a partir de especificaciones oportunas (SUP-04).
-    \item Designación de quienes aprueban reglas comerciales y decisiones operacionales (SUP-05).
-\end{enumerate}
-Una desviación exige identificar sus efectos, responsables, alternativas y reservas en el control de dependencias; no habilita una extensión automática del contrato. A2.3 del \ReferenciaAnexo{Anexo del Subdocumento 2}{SYNAPTIX-Subdocumento2-Anexos.pdf} conserva fundamento, impacto e instancia de validación. La integración contable, la licitud de imputar consumos y la instrumentación de campo se verifican por sus responsables antes de habilitar esos efectos. DEC-22 exige dimensionar servicio, cargas y suplencias sin atribuir personal TI al cliente \parencite[cap.~16, secc.~16.1; cap.~17, secc.~17.1]{caso07}.
-\end{supuesto}
+\subsubsection{Pilar Izquierdo: Frontera Externa, Exclusiones y Restricciones (OUT-OF-SCOPE)}
+Conforme al capítulo 11 del Caso 07 y a las restricciones innegociables del proyecto:
+\begin{itemize}
+    \item \textbf{DIRECTEMAR / Capitanía de Puerto (EXC-02, RST-INS-01):} El otorgamiento formal de zarpe es potestad administrativa exclusiva e indelegable de la Autoridad Marítima. Synaptix prepara, valida y custodia el legajo digital previo, pero jamás usurpa la autorización legal del zarpe. Las operaciones de Búsqueda y Salvamento Marítimo (SAR) corresponden privativamente a las Fuerzas Armadas.
+    \item \textbf{Sistema ERP Contable Vigente (EXC-01, RST-INS-02):} La emisión de facturas y boletas electrónicas timbradas (DTE) y los libros oficiales tributarios permanecen bajo la competencia exclusiva del software contable del cliente. Synaptix liquida y exporta lotes de hechos facturables conciliados.
+    \item \textbf{Concesión y Punto de Venta del Restaurante (EXC-05):} La explotación gastronómica, comandas y recaudación del restaurante están excluidas; la plataforma únicamente audita sus consumos de agua y energía eléctrica en torreta.
+    \item \textbf{Mantenimiento Físico de Boyas y Fondeos (EXC-09):} Las maniobras submarinas de reposición de cadenas, grilletes y muertos corresponden a contratistas marítimos; Synaptix registra la bitácora de inspección offline.
+    \item \textbf{Restricciones Operacionales Innegociables:}
+    \begin{enumerate}[label=(\alph*)]
+        \item \emph{Prohibición de Bloqueo en Agua (RST-COB-01):} Se prohíbe taxativamente bloquear físicamente o restringir por software el acceso a naves o amarras por deudas comerciales; el cobro coactivo y la cobranza judicial (EXC-04) son privativos del mandante.
+        \item \emph{Uso de Radio VHF (RST-INS-03):} La comunicación VHF continúa como medio primario durante maniobras de atraque e izaje; el sistema no impone digitación manual en momentos de riesgo físico.
+    \end{enumerate}
+    \item \textbf{Delimitación Geográfica:} La cobertura abarca la dársena principal, los cinco pantalanes de atraque, muelle de espera, explanada de varadero, bodega RESPEL, surtidor de combustible y el campo de boyas exterior en Bahía Ilque (a 6 millas náuticas).
+\end{itemize}
 
-\subsection{Resumen y Análisis de Requerimientos Funcionales y No Funcionales}
+\subsection{Catálogo de Requerimientos y Cobertura}
 
-El catálogo comprende 146 requerimientos funcionales (RF) y 56 no funcionales (RNF), detallados en A2.1 y A2.2 del Subdocumento 2. Este resumen relaciona sus prioridades con las capacidades y etapas de entrega. Las Bases Técnicas Transversales añaden 374 requisitos RT codificados. T-12 registra la trazabilidad y la declaración de cumplimiento por código; la aceptación requiere la evidencia correspondiente \parencite[secc.~1.5, p.~4; resumen de requisitos, pp.~46--47]{bases-transversales}.
+La propuesta comprende 146 requerimientos funcionales (RF) y 56 requerimientos no funcionales (RNF), originados en el Subdocumento 2 (A2.1 y A2.2). Complementariamente, las Bases Técnicas Transversales incorporan 374 requisitos técnicos (RT) codificados en sus capítulos 2 al 26. La totalidad de los 576 requisitos se encuentra individualizada y declarada formalmente en el \textbf{Formulario T-12}, que certifica 146 RF con cumplimiento total (SÍ), 56 RNF con cumplimiento total (SÍ), 342 RT con cumplimiento total (SÍ) y 32 RT con justificación técnica y contractual de no aplicación (NO), en estricta observancia del diseño acordado.
 
-La Tabla~\ref{tab:sintesis_requerimientos} resume los doce grupos del catálogo y sus prioridades Alta, Media y Baja condicionada. Esta clasificación no es una distribución por etapa ni permite excluir un requisito obligatorio; la secuencia de entrega se justifica en la sección anterior por criticidad y dependencias.
+La Tabla~\ref{tab:sintesis_requerimientos} desglosa los 146 requerimientos funcionales organizados por grupo modular y nivel de prioridad técnica.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \small
 \begin{tabularx}{\linewidth}{|X|r|r|r|r|}
@@ -198,217 +262,328 @@ Portales y autoatención (AUT) & 11 & 2 & 9 & 0 \\ \hline
 \end{tabularx}
 \caption{Conteo de requerimientos funcionales por grupo y prioridad}
 \label{tab:sintesis_requerimientos}
-\FuenteTabla{Elaboración propia; conteo de identificadores únicos y prioridades del SD2, A2.1.}
+
 \end{table}
 
-La suma de los grupos es $13+12+14+12+8+7+7+9+7+9+37+11=146$; por prioridad, $127+18+1=146$. ADM reúne funciones comunes de identidad, reglas y documentación, por eso no equivale a un único dominio de despliegue. NAV se relaciona con Operación marítima; AMA distribuye responsabilidades entre ese dominio, Clientes y contratos e Infraestructura; ESC corresponde a Escuela náutica; VAR y CTR a Varadero y contratistas; CON a Combustible y Ambiente y consumos; AMB a Ambiente y consumos; BOY a Infraestructura y Operación marítima; FAC a Finanzas y cobranza. ALE utiliza Notificaciones y AUT los canales de Presentación, mientras ADM se distribuye por función y propiedad del dato. Los doce grupos funcionales se distribuyen entre nueve dominios según la función que realizan y la responsabilidad sobre sus datos.
+Del universo funcional, 127 requerimientos revisten prioridad Alta por constituir el núcleo irrenunciable de operación, seguridad y soporte normativo. Los 18 de prioridad Media corresponden a facilidades de autoatención y reportes gerenciales complementarios, mientras que el único requerimiento de Baja condicionada corresponde al piloto sensórico exterior RF-BOY-04 en Bahía Ilque, cuya activación queda supeditada a factibilidad técnica de comunicaciones y reposición física (DEC-19).
 
-La contribución de los RF al alcance se evalúa por el resultado que habilitan. NAV, ALE, ESC y AMA sostienen la custodia y seguridad que debe entregar E1; CON y BOY aportan captura e inspección inicial, y AMB comienza la historia ambiental antes de completar residuos en E2. VAR, CTR y FAC completan coordinación de faenas y administración en E2. ADM y AUT se distribuyen según esas dependencias: identidad, contactos, documentos, búsqueda, reglas y canales se reutilizan entre tareas. Una función común se implementa como capacidad compartida y conserva la trazabilidad de cada requisito que satisface.
-
-La prioridad ordena la construcción y las pruebas; una prioridad Media no autoriza a omitir un resultado exigido. Se distingue el resultado obligatorio del mecanismo propuesto para lograrlo: por ejemplo, identificar a un contratista habilitado exige verificar identidad y vigencia, mientras QR es una elección de implementación. El piloto de sensorización RF-BOY-04 es una ampliación condicionada y no sustituye la inspección incluida. Las metas complementarias de desempeño o mejora se identifican como propuestas en los criterios de aceptación. Esta distinción permite dimensionar el trabajo sin eliminar funciones solo por su cantidad ni convertir todas las elecciones técnicas en exigencias de las bases.
-
-Los 56 RNF se aplican por su escenario: tiempos críticos, 24/12/8 horas de desconexión, seguridad, accesibilidad, conservación y servicio. Se prioriza la verificación de continuidad, identidad, protección de menores y tiempos de terreno para habilitar las capacidades de E1. La interoperabilidad, accesibilidad, conservación y atención se verifican en la primera etapa que utiliza cada capacidad y se mantienen durante la operación; E2 conserva los controles del alcance ya recibido. Esta prioridad de verificación no posterga ni rebaja una condición obligatoria. A2.2 conserva el umbral, escenario, método de verificación, carácter y fuente de cada RNF.
-
-La solución propone una disponibilidad de componentes críticos de al menos 99,95\,\% y de transacción crítica de extremo a extremo de al menos 99,9\,\%. Son métricas distintas y la prueba debe recorrer el proceso completo, no inferirlo de la disponibilidad de una máquina.
-
-Complementariamente, la Tabla~\ref{tab:cobertura_rt} agrupa los 374 códigos RT de los capítulos 2 a 26 por materia. Localiza el desarrollo de cada familia en la oferta. Su aceptación requiere los diseños, planes, pruebas y registros que correspondan a la materia y al hito contractual.
-
-\begin{table}[htbp]
-\centering
-\small
-\begin{tabularx}{\linewidth}{|l|l|c|X|}
-\hline
-\EncabezadoTabla{Materia} & \EncabezadoTabla{Capítulos BT} & \EncabezadoTabla{RT} & \EncabezadoTabla{Instrumentos de desarrollo} \\
-\hline
-Arquitectura híbrida & 2 y 3 & 38 & SD3, SD4 y T-12 \\ \hline
-Entrega continua y datos & 4 y 5 & 44 & SD4, SD5 y SD6 \\ \hline
-Sitios, recuperación y equipos & 6, 7 y 8 & 67 & SD4, T-11 y T-12 \\ \hline
-Desempeño, continuidad y seguridad & 9, 10 y 11 & 47 & SD4, SD5 y pruebas de SD9 \\ \hline
-Identidad y observabilidad & 12 y 14 & 22 & SD4 y operación de SD10 \\ \hline
-Usabilidad, módulos y canales & 13, 16 y 17 & 54 & SD3, SD4 y prototipo exigido \\ \hline
-Sostenibilidad, IA e innovaciones & 15, 18 y 26 & 27 & SD1, SD4, SD13 y T-19 \\ \hline
-Gobierno, implantación y servicio & 19, 20, 21 y 22 & 49 & SD6, SD7, SD9, SD10 y sus formularios \\ \hline
-Presencia, video y prototipo & 23, 24 y 25 & 26 & SD1 e instrumentos digitales exigidos \\ \hline
-\hline
-\textbf{Total} & \textbf{Capítulos 2--26} & \textbf{374} & \textbf{T-12: registro código por código} \\ \hline
-\end{tabularx}
-\caption{Distribución de los requisitos transversales e instrumentos asociados}
-\label{tab:cobertura_rt}
-\FuenteTabla{\parencite[resumen de requisitos, pp.~46--47]{bases-transversales}; agrupación propia.}
-\end{table}
-
-La suma $38+44+67+47+22+54+27+49+26=374$ corresponde al universo transversal. La descripción, actor, precondición, prioridad, fuente y resultado de RF/RNF se conservan en A2.1/A2.2. El \ReferenciaAnexo{Formulario T-12}{SYNAPTIX-Formulario-T-12.pdf} vincula los identificadores con los componentes y secciones de la propuesta. Cada paquete de trabajo, prueba y acta debe identificar los requisitos que entrega o verifica. Las obligaciones y los resultados de recepción se comprueban en su hito contractual; los requisitos deseables y condicionados mantienen el tratamiento que establece su fuente.
-
-\subsection{Criterios de Aceptación y Compromisos del Caso}
-
-La aceptación técnica y contractual de la plataforma no se basará únicamente en demostraciones en ambientes controlados de laboratorio, sino en la acreditación objetiva y verificable de su comportamiento bajo las condiciones reales de operación en el Seno de Reloncaví. Cada entregable sometido a recepción deberá contar con su protocolo formal suscrito por la Contraparte Técnica del cliente conforme a los Artículos 17° y 18° de las Bases Administrativas y al Formulario T-17.
-
-\subsubsection{Criterios Generales de Entrada y Aceptación Técnica}
-
-Para autorizar el paso a producción y el cierre de cada marcha blanca deben concurrir todas las condiciones de aceptación de BA artículo 17.3. Las siguientes compuertas de calidad técnica incorporan esas condiciones y las verificaciones del alcance comprometido \parencite[arts.~17.3 y 18, p.~13]{bases-admin}:
-
+Por su parte, los 56 RNF garantizan el estándar operacional de la plataforma en escenarios reales:
 \begin{itemize}
-    \item \textbf{Ausencia de Incidentes Críticos o Altos Abiertos:} No se autorizará el cierre de ninguna marcha blanca mientras existan incidentes abiertos de severidad crítica o alta atribuibles a la solución, clasificados conforme a BA artículo 78.1. Toda observación menor deberá contar con plan de tratamiento documentado \parencite[art.~78.1, p.~40]{bases-admin}.
-    \item \textbf{Operación Sostenida y Conciliada:} Durante cada marcha blanca se miden diariamente los indicadores del alcance de la etapa. Para su cierre, el volumen de operación real comprometido debe haberse alcanzado durante al menos las cuatro últimas semanas del período, y los indicadores de disponibilidad y tiempo de respuesta deben haberse cumplido de forma sostenida durante esas mismas semanas. La convivencia con los registros vigentes se concilia diariamente, sin diferencias no explicadas; los datos compartidos entre E1 en producción y E2 en marcha blanca mantienen una única fuente de verdad, sin doble digitación. Los tiempos de respuesta se evalúan en el percentil 95 (P95) de la experiencia real del usuario final, salvo que la fuente exija expresamente otra medición. El protocolo mantiene los umbrales críticos de A2.2 y registra por separado las excedencias, las incidencias y su tratamiento, sin sustituir el P95 por una media o una prueba sintética \parencites[arts.~17.2--17.3, p.~13]{bases-admin}[secc.~1.7, p.~5; cap.~20, RT-20.03/04, p.~35]{bases-transversales}.
-    \item \textbf{Reversibilidad Comprobada y Cronometrada:} Antes de autorizar el corte definitivo a producción, deberá ejecutarse y documentarse en ambiente de Preproducción el procedimiento de retorno (\emph{rollback}), demostrando que la reversión no genera pérdida de datos, estados transaccionales inconsistentes ni afectación a la ventana protegida del calendario náutico.
-    \item \textbf{Capacitación y Certificación Administrativa:} Constituye condición previa y excluyente de recepción que el personal del cliente comprendido en el alcance de la etapa haya sido capacitado y certificado conforme al plan aprobado, incluidos el responsable funcional y los usuarios administradores designados por la marina.
-    \item \textbf{Continuidad y Permisos:} Prueba de 24 horas sin WAN, 12 horas de terminales y 8 horas de inspección de boyas, con reconciliación automática dentro de 30 minutos desde la reconexión efectiva y sin perder registros o evidencia obligatoria. Cada permiso nominativo, firmado y cifrado vence como máximo 24 horas desde su emisión; su validez residual al corte depende de su antigüedad. Una nueva emisión requiere reautenticación y consulta a una fuente laboral y de acceso actual y autoritativa disponible por LAN; no se basa en una copia cloud antigua ni reinicia el plazo desde el corte. El flujo local debe recibir toda baja antes o al efecto laboral y aplicar bloqueo automático, incluidos contratistas y decisiones externas. Su cobertura organizacional es una condición de habilitación que debe individualizarse con los responsables competentes. Se ensayan antigüedades de 0, 12, 16 y 23 horas, expiración, bajas locales y externas, reloj y reinicio, verificando el límite desde la desvinculación real. La radio y el registro manual preservan la seguridad, pero no se cuentan como continuidad electrónica cumplida ni habilitan a personas desvinculadas \parencites[cap.~15, RT-03.10/13]{caso07}[cap.~12, RT-12.10, p.~26]{bases-transversales}.
+    \item \textbf{Rendimiento y Experiencia de Usuario:} Tiempos de respuesta evaluados estrictamente en el percentil 95 (P95) de la interacción del usuario final.
+    \item \textbf{Disponibilidad y Confiabilidad:} Disponibilidad mensual de componentes de plataforma $\ge 99,95\,\%$, y disponibilidad transaccional de extremo a extremo $\ge 99,9\,\%$.
+    \item \textbf{Resiliencia y Operación Desconectada:} Autonomía operativa demostrada de 24 horas sin WAN en el NBR, 12 horas en terminales móviles de pantalán y 8 horas en inspecciones fuera de línea de boyas.
 \end{itemize}
 
-La Contraparte Técnica debe suscribir el acta de aceptación de la etapa una vez satisfechas todas las condiciones anteriores. Si no se cumplen al término de la marcha blanca, Synaptix la extiende a su cargo, sin cobro adicional, sin desplazar las fechas contractuales de las fases siguientes y sujeto a las multas por atraso aplicables \parencite[art.~17.3, p.~13]{bases-admin}.
+La Tabla~\ref{tab:cumplimiento-rt} resume el cumplimiento declarado
+de los 374 requisitos técnicos transversales en el Formulario T-12.
+Se identifican 344 requisitos con respuesta \textbf{Sí} y 30 con
+respuesta \textbf{No}. Los códigos declarados como no cumplidos se
+individualizan por grupo; los restantes requisitos de cada grupo
+se encuentran declarados como cumplidos. Las justificaciones y
+referencias de trazabilidad se presentan en el Formulario T-12.
 
-\subsubsection{Compromiso con los Veinticinco Criterios de Aceptación del Caso}
+\begin{longtable}{@{}L{.32\textwidth}
+                    L{.08\textwidth}
+                    L{.08\textwidth}
+                    L{.08\textwidth}
+                    L{.34\textwidth}@{}}
+    \caption{Cumplimiento declarado de requisitos transversales
+    en el Formulario T-12}
+    \label{tab:cumplimiento-rt} \\
+    \hline
+    \EncabezadoTabla{Materia técnica / capítulos} &
+    \EncabezadoTabla{Total RT} &
+    \EncabezadoTabla{Sí} &
+    \EncabezadoTabla{No} &
+    \EncabezadoTabla{RT declarados No} \\
+    \hline
+    \endfirsthead
 
-Bajo estas condiciones, CA-01 a CA-25 identifican los 25 resultados del capítulo 18 del Caso 07. Los límites de 45, 10, 90 y 60 segundos, diez minutos para el último envío de emergencia y quince minutos desde el vencimiento del plan proceden de C07 RT-09.01. Las metas complementarias que se indican como \emph{propuestas} son compromisos de Synaptix para esos resultados, no cifras exigidas por la fuente ni resultados ya medidos \parencite[cap.~15, RT-09.01; cap.~18]{caso07}.
+    \hline
+    \EncabezadoTabla{Materia técnica / capítulos} &
+    \EncabezadoTabla{Total RT} &
+    \EncabezadoTabla{Sí} &
+    \EncabezadoTabla{No} &
+    \EncabezadoTabla{RT declarados No} \\
+    \hline
+    \endhead
 
-Para porcentajes de cobertura se usa $100\times N_{\mathrm{cubiertos}}/N_{\mathrm{exigibles}}$, identificando el universo y las excepciones sin excluir registros defectuosos del denominador. Para error se usa $100\times N_{\mathrm{errores}}/N_{\mathrm{evaluados}}$; para duración, hora del resultado menos hora del evento que la origina. Cada cierre de marcha blanca conserva el período, la muestra o el censo, las marcas temporales y el responsable que comprueba el resultado. La contraparte de operaciones revisa CA-01 a CA-13 y CA-20; escuela, CA-06/07/23; varadero y ambiente, CA-14 a CA-19/24; administración, CA-21/22; y gerencia y responsable de servicio, CA-25. Estos roles se concretan en el protocolo T-17.
+    Arquitectura híbrida (2 y 3) &
+    38 & 34 & 4 &
+    RT-02.14; RT-03.08; RT-03.09; RT-03.19. \\
+    \hline
 
+    Entrega continua y datos (4 y 5) &
+    44 & 41 & 3 &
+    RT-04.14; RT-05.24; RT-05.30. \\
+    \hline
+
+    Sitios, recuperación y equipos (6, 7 y 8) &
+    67 & 62 & 5 &
+    RT-06.12; RT-06.15; RT-06.34;
+    RT-08.15; RT-08.19. \\
+    \hline
+
+    Desempeño, continuidad y seguridad (9, 10 y 11) &
+    47 & 45 & 2 &
+    RT-09.10; RT-11.21. \\
+    \hline
+
+    Identidad y observabilidad (12 y 14) &
+    22 & 21 & 1 &
+    RT-14.09. \\
+    \hline
+
+    Usabilidad, módulos y canales (13, 16 y 17) &
+    54 & 51 & 3 &
+    RT-16.05; RT-16.26; RT-17.08. \\
+    \hline
+
+    Sostenibilidad, IA e innovaciones (15, 18 y 26) &
+    27 & 23 & 4 &
+    RT-15.05; RT-15.06; RT-18.10. ; RT-26.08 \\
+    \hline
+
+    Gobierno, implantación y servicio (19, 20, 21 y 22) &
+    49 & 47 & 2 &
+    RT-21.12; RT-22.09. \\
+    \hline
+
+    Presencia, video y prototipo (23, 24 y 25) &
+    26 & 20 & 6 &
+    RT-23.07; RT-23.08; RT-23.09; RT-23.10;
+    RT-24.03; RT-25.10. \\
+    \hline
+
+    \textbf{Total} &
+    \textbf{373} &
+    \textbf{344} &
+    \textbf{30} &
+    \textbf{Detalle y justificaciones en el Formulario T-12.} \\
+    \hline
+\end{longtable}
+
+La cobertura declarada se concentra en los ámbitos de desempeño,
+continuidad y seguridad, con 45 de 47 requisitos cumplidos; identidad
+y observabilidad, con 21 de 22; y gobierno, implantación y servicio,
+con 47 de 49. Estos resultados reflejan el énfasis de la propuesta
+en sostener la operación de la marina, controlar los accesos y
+establecer condiciones de implementación y soporte.
+
+La mayor proporción de respuestas negativas corresponde al grupo
+de presencia, video y prototipo, con 6 de 26 requisitos. En términos
+absolutos, también destacan sitios, recuperación y equipos, con
+5 requisitos no cumplidos, y arquitectura híbrida, con 4. Las
+justificaciones particulares de estas respuestas se encuentran
+individualizadas en el Formulario T-12.
+
+Los porcentajes expresan la cobertura declarada de la oferta y
+no sustituyen la verificación técnica ni los criterios de aceptación.
+Cada respuesta negativa debe evaluarse según la obligatoriedad
+y aplicabilidad del requisito; su justificación no constituye por
+sí sola una exención contractual. Asimismo, los requisitos declarados
+como cumplidos deberán acreditarse mediante los entregables,
+pruebas y evidencias previstos en la propuesta.
+
+\subsection{Criterios de Aceptación del Caso (Compromiso con CA-01 a CA-25)}
+
+La recepción técnica y formal de los entregables se rige por los Artículos 17° y 18° de las Bases Administrativas, requiriendo actas suscritas por la Contraparte Técnica del mandante según el Formulario T-17.
+
+\subsubsection{Compuertas Técnicas de Calidad (Quality Gates)}
+Para autorizar el corte definitivo a producción en cada etapa, se exige el cumplimiento obligatorio de cuatro condiciones técnicas:
 \begin{itemize}
-    \item \textbf{Operación Náutica y Atraque (Mes 16 - Etapa 1):}
-    \begin{itemize}
-        \item \emph{CA-01 (Estado de Amarras):} Las 320 amarras tienen estado consultable con fuente, antigüedad y discrepancias; la actualización analítica cumple $\le 60$ segundos desde el evento conforme a C07 RT-05.29. Se propone exactitud de al menos 98\,\%, medida como estados concordantes entre los evaluados por ronda física identificada. Un estado indeterminado permanece visible y no autoriza una asignación automática.
-        \item \emph{CA-02 (Regreso y Alerta):} Todas las salidas conservan su regreso confirmado o su seguimiento identificado; cada plan vencido sin cierre genera alerta en $\le 15$ minutos desde el vencimiento. No se suma una gracia de 30 minutos. Se prueban cierre voluntario, regreso físico, discrepancia y mensaje tardío como hechos diferentes.
-        \item \emph{CA-03 (Planes Voluntarios):} Declaración, modificación y cierre con consentimiento revocable disponibles al mes 16. Se propone como objetivo de adopción 50\,\% de las salidas al mes 16 y 80\,\% al mes 21, medido como salidas con plan voluntario entre salidas elegibles. Una negativa a compartir no impide la recepción segura ni elimina el registro operacional; el indicador no convierte la participación en obligatoria.
-        \item \emph{CA-08 (Compatibilidad):} La recepción exige que cada amarra ocupada sea compatible con la embarcación, el puesto y el tramo contratado; no pueden quedar incompatibilidades físicas o comerciales activas sin corregir al cierre. La ronda de comprobación identifica y resuelve cada discrepancia. Como indicador secundario de mejora se propone reducir la proporción histórica de asignaciones incompatibles del 22\,\% del caso a menos del 2\,\% durante el período evaluado; esa meta no sustituye la condición de recepción. Toda excepción conserva atribución y fundamento, y ninguna autorización permite vulnerar límites físicos de seguridad.
-        \item \emph{CA-10 (Asignación Rápida a Visitas):} Asignación y confirmación de puesto compatible a naves que consultan por radio VHF en $\le 45$ segundos (línea base: 11 minutos).
-        \item \emph{CA-13 (Legajo de Zarpe):} Conformación de antecedentes en $\le 90$ segundos, incluyendo la interacción en mostrador y reutilización de documentos vigentes. Se propone reducir correcciones manuales del 34\,\% a no más del 5\,\% de trámites evaluados. La medición no incluye ni atribuye al sistema el otorgamiento de la autoridad.
-    \end{itemize}
-
-    \item \textbf{Seguridad Masiva y Protección de Menores (Mes 16 - Etapa 1):}
-    \begin{itemize}
-        \item \emph{CA-04 (Marejada):} Envío inicial a los 296 armadores por al menos tres canales simultáneos, SMS, mensajería instantánea y correo, en $\le 10$ minutos hasta el último envío. La campaña distingue intento, entrega y acuse; las personas sin acuse generan llamada registrada. El protocolo de operaciones fija el escalamiento sin confundir silencio con recepción ni esperar una hora como tolerancia universal.
-        \item \emph{CA-05 (Contactos):} Se propone reducir contratos con algún contacto obsoleto del 47\,\% a no más del 5\,\%, medido sobre contratos activos revisados con evidencia de comprobación. La actualización y los avisos de entrega fallida mantienen el control después de la recepción inicial.
-        \item \emph{CA-06 (Escuela):} Registro de una clase de hasta 18 embarcaciones en $\le 60$ segundos y consulta en tiempo real de alumno, bote, monitor y retorno. Los 40 minutos del episodio del caso correspondieron a determinar el paradero, no al tiempo normal de registrar una salida; la prueba comprueba ambas necesidades sin confundirlas.
-        \item \emph{CA-07 (Retiro):} Todo retiro confirmado actualiza la misma participación consultada por escuela y portería y evita una nueva salida del alumno. Se comprueba disponibilidad inmediata en tiempo real, identidad y autorización de entrega, incluyendo fallas de comunicación. Una copia antigua no acredita entrega ni habilita salida; la coordinación por radio y el procedimiento seguro mantienen el control hasta conciliar la evidencia.
-        \item \emph{CA-23 (Aviso al Apoderado):} Se propone envío del aviso de salida y retorno a cada apoderado autorizado dentro de cinco minutos del hecho confirmado, medido separadamente de entrega y acuse. El cierre de clase comprueba a todos los participantes. No se exponen ubicaciones continuas ni se emplean cámaras dirigidas a alumnos o dispositivos en embarcaciones menores.
-    \end{itemize}
-
-    \item \textbf{Varadero, Logística y Medio Ambiente (Mes 21 - Etapa 2):}
-    \begin{itemize}
-        \item \emph{CA-09 (Espera):} Se propone que toda vacante permanente genere candidatos compatibles y ofrecimiento en $\le 24$ horas desde su confirmación. La prueba recorre antigüedad, desempate, rechazo y vencimiento bajo la política aprobada; una salida temporal no libera un puesto contractual.
-        \item \emph{CA-11 (Visitas Facturables):} Toda recalada de visitante se vincula con su estadía, responsable de pago y hecho facturable o excepción comercial autorizada. Se propone cero omisiones de recaladas facturables al conciliar torre, visitas y contabilidad, frente al 9\,\% omitido del caso. El pago previo no es condición para ejecutar una recepción segura.
-        \item \emph{CA-12 (Registro Único):} Toda solicitud se incorpora al mismo registro con canal y referencia de origen, evitando duplicados y registros de gestión paralelos. Correo, teléfono y papel de contingencia pueden aportar antecedentes, pero se concilian con ese registro común.
-        \item \emph{CA-14 y CA-24 (Plan de Izaje):} Cada nave a izar tiene plan disponible y validado por un operador calificado antes de la maniobra. El censo inicial del caso comprende 296 naves; se comprueban cobertura, autor, versión y lectura por operador nuevo y experimentado. No se exige captura durante carga suspendida ni se confunde una ficha visible con autorización física de la maniobra.
-        \item \emph{CA-15 (Reprogramación):} La suspensión por aviso oficial es inmediata. Se propone notificar la reprogramación validada a los afectados dentro de quince minutos desde la confirmación de la nueva agenda, comprobando posiciones, recursos y dependencias; la meta informática no autoriza a continuar faenas suspendidas.
-        \item \emph{CA-16 (RESPEL):} Todos los lotes se vinculan con origen, embarcación, orden, acopio, transportista, destinatario autorizado y certificado. La conciliación reconstruye la cadena completa; una recepción asistida registra origen declarado y revisión, y no elimina el lote del control si faltan antecedentes. SIDREP es una interfaz de declaración sanitaria, no el gestor receptor.
-        \item \emph{CA-17 (Contratistas):} Las 62 empresas mantienen su acreditación y cada trabajador externo, incluidos los 140 del caso, conserva un registro nominativo de capacitación ambiental, evaluación y vigencia, con evidencia del impartidor competente, contenido, fecha y resultado. El servicio de impartición y renovación se incorpora al alcance de adopción. Todo acceso a faena comprueba trabajador, empresa, documentación e intervención autorizada; las emergencias siguen su procedimiento identificado. La acreditación se mide sobre empresas evaluadas, partiendo del 41\,\% del caso, y la cobertura de formación vigente se calcula separadamente sobre los trabajadores exigibles.
-    \end{itemize}
-
-    \item \textbf{Telemetría, Finanzas y Sustentabilidad (Meses 16 a 21):}
-    \begin{itemize}
-        \item \emph{CA-18 (Submedición):} Las 320 amarras cuentan con medición atribuible de agua y energía desde el mes 16: $320\times2=640$ puntos iniciales, dimensionados para $380\times2=760$ si se ejecuta la ampliación. La misma serie conciliada sirve a indicadores y cobro desde E2, con asociación temporal a contrato y fundamento del traspaso. El objetivo propuesto de costo no recuperado por falta de imputación es no más del 5\,\%, frente al 38\,\% del caso; se calcula sobre el costo de servicios imputable del período y se separa de la mora de cobro.
-        \item \emph{CA-19 (Evidencia Ambiental):} Synaptix entrega la evidencia para cerrar las tres no conformidades antes de la temporada 2029: residuos, medición e inducción ambiental, con serie suficiente y trazable. La comprobación registra el período efectivo y la conformidad del auditor competente; no se presupone un mínimo de 24 meses ni que el software otorgue la certificación.
-        \item \emph{CA-20 (Boyas):} Las 40 boyas mantienen identificación, última ocupación observada e historial de inspección por componente de fondeo. E1 inicia el registro; E2 verifica su integración completa. La prueba de ocho horas sin cobertura comprueba conservación y conciliación al retornar. La antigüedad y discrepancia de la observación permanecen visibles; no se afirma estado físico en tiempo real sin una fuente que lo acredite.
-        \item \emph{CA-21 (Facturación):} Se propone reducir el esfuerzo mensual de diez a dos días-persona, una reducción objetivo de $(10-2)/10\times100=80\,\%$, mediante captura única y lotes conciliados, con notas de crédito por error inferiores al 1\,\% de documentos emitidos. Administración registra dedicaciones efectivas durante el cierre de E2 y los cierres mensuales posteriores; se verifica también la aceptación contable de los lotes y se distingue error de otras causas de nota de crédito.
-        \item \emph{CA-22 (Expediente Embarcaciones Abandonadas):} 14 de 14 naves en abandono con expediente probatorio digital foliado, inalterable y exportable bajo estándar PDF/A para la asesoría jurídica.
-    \end{itemize}
-
-    \item \textbf{Sostenibilidad Operacional (Meses 21 a 56):}
-    \begin{itemize}
-        \item \emph{CA-25 (Servicio Sostenible):} Operación por 36 meses, del mes 21 al 56, sin contratar un área TI del cliente. El responsable de servicio registra cobertura, dedicaciones, suplencias, incidentes, cambios, respaldos y pruebas de continuidad; se comprueba mensualmente el cumplimiento de los SLA y la atención de las tareas especializadas. Las decisiones comerciales del cliente se distinguen del soporte funcional y técnico de Synaptix, sin un supuesto de cuatro horas mensuales.
-    \end{itemize}
+    \item \textbf{Cero Defectos Críticos o Altos Abiertos:} Ningún pase a producción se autoriza con defectos de severidad crítica (interrupción operacional, pérdida de datos o brechas de seguridad) ni alta (degradación severa de servicio).
+    \item \textbf{Rendimiento Real en Percentil 95:} Los tiempos de transacción se miden en el P95 de usuarios reales en terreno bajo condiciones climáticas y de red efectivas, rechazando promedios que enmascaren colas de degradación.
+    \item \textbf{Reversibilidad Cronometrada (\emph{Rollback}):} Demostración en Preproducción de que el procedimiento de retorno a la versión estable previa opera sin pérdida transaccional ni afectación a la ventana protegida náutica.
+    \item \textbf{Capacitación Certificada:} Aprobación formal de evaluaciones prácticas de competencia por el personal del puerto antes de la entrega operacional.
+    \item \textbf{Prueba de Desconexión y Reconciliación:} Acreditación de 24 horas sin enlace exterior en el NBR con sincronización bidireccional automática en $\le 30$ minutos tras la reconexión \parencite[cap.~15, RT-03.13]{caso07}.
 \end{itemize}
 
-\section{Esquema de solución}
-
-Esta sección presenta dos vistas complementarias de la solución. El diagrama de contexto muestra quién utiliza el sistema, qué sistemas externos intercambian información con él y cuál es su frontera de responsabilidad. El modelo de módulos explica las capacidades internas y la función de cada dominio. Ambas vistas describen la operación y el negocio; el diseño de interfaces y el despliegue técnico se detallan en la arquitectura.
-
-\subsection{Diagrama de Contexto y Frontera del Sistema}
-
-La Figura~\ref{fig:contexto-solucion} representa la solución como una sola caja. Sus usuarios y los sistemas externos quedan fuera de ella. Las flechas indican el sentido del intercambio, cuyo contenido se resume en cada bloque externo; no representan una conexión física ni presuponen que exista una API.
-
-\input{figuras/diagrama_contexto_coherente.tex}
-
-El contexto se interpreta mediante tres relaciones:
+\subsubsection{Compromiso Detallado con los 25 Criterios de Aceptación (CA-01 a CA-25)}
+Los 25 criterios del capítulo 18 del Caso 07 se estructuran por ámbito operativo:
 
 \begin{enumerate}
-    \item \textbf{Usuarios:} El personal registra y valida hechos, consulta estados y atiende alertas. Armadores, apoderados, contratistas y visitantes presentan antecedentes o solicitudes y reciben información según su perfil. Acceden por consola, portal o aplicación de terreno. La radio VHF mantiene la coordinación humana durante las maniobras; cuando comunica un hecho al sistema, el registro identifica a informante y registrador.
-    \item \textbf{Sistemas Externos:} Contabilidad recibe hechos facturables y devuelve emisión, pago y saldo para conciliación, conservando la autoridad tributaria. Medidores, surtidor, meteorología y accesos aportan evidencia según su capacidad verificada. Los servicios de comunicación reciben avisos y devuelven resultados de entrega; los de pago reciben solicitudes autorizadas y devuelven el resultado de la transacción. Los canales y proveedores efectivos se verifican antes de habilitar sus interfaces.
-    \item \textbf{Competencias Externas:} La Autoridad Marítima recibe antecedentes y emite avisos mediante canales autorizados; conserva el otorgamiento del zarpe y no se presume una integración automática. SIDREP soporta la declaración sanitaria, mientras los gestores autorizados reciben residuos y aportan certificados según su competencia. La plataforma conserva la evidencia y su relación con la operación, sin asumir esas actuaciones externas.
+    \item \textbf{Operación Náutica y Tráfico de Amarras (Etapa 1):}
+    \begin{itemize}
+        \item \emph{CA-01 (Estado de Amarras):} 320 amarras con estado consultable en tiempo real ($\le 60$\,s desde el evento, C07 RT-05.29) y exactitud $\ge 98\,\%$ en ronda física de marinería.
+        \item \emph{CA-02 (Alerta de Regreso):} Alerta automática emitida en $\le 15$ minutos desde el vencimiento del plan de navegación sin arribo confirmado. \textbf{No se adiciona gracia ficticia de 30 minutos}, garantizando la activación inmediata de los protocolos de seguridad marítima.
+        \item \emph{CA-03 (Planes Voluntarios):} Sistema de declaración voluntaria de plan de zarpe con consentimiento explícito y revocable (meta de adopción: 50\,\% al mes 16 y 80\,\% al mes 21).
+        \item \emph{CA-08 (Compatibilidad Físico-Comercial):} Cero incompatibilidades activas de manga, eslora y calado en amarras ocupadas, reduciendo la tasa histórica del 22\,\% a menos del 2\,\%.
+        \item \emph{CA-10 (Asignación Rápida a Visitas):} Asignación y confirmación de puesto compatible por radio VHF en $\le 45$ segundos (frente a la línea base de 11 minutos).
+        \item \emph{CA-13 (Legajo Digital de Zarpe):} Consolidación de antecedentes de zarpe en $\le 90$ segundos en mostrador, reduciendo correcciones manuales del 34\,\% a $\le 5\,\%$.
+    \end{itemize}
+
+    \item \textbf{Seguridad Masiva y Protección de Menores (Etapa 1):}
+    \begin{itemize}
+        \item \emph{CA-04 (Alertas de Marejada):} Notificación masiva a los 296 armadores en $\le 10$ minutos mediante tres canales simultáneos (SMS, mensajería instantánea y correo electrónico), con escalamiento telefónico auditado a quienes no acusen recibo.
+        \item \emph{CA-05 (Actualización de Contactos):} Contratos activos con datos de contacto obsoletos reducidos del 47\,\% histórico a $\le 5\,\%$.
+        \item \emph{CA-06 (Control de Escuela Náutica):} Registro de salida de flota escolar (hasta 18 embarcaciones) en $\le 60$ segundos, con trazabilidad de alumno, monitor y bote.
+        \item \emph{CA-07 (Retiro Coordinado de Alumnos):} Registro de entrega de menores sincronizado en tiempo real entre escuela y portería para impedir salidas no autorizadas.
+        \item \emph{CA-23 (Avisos a Apoderados):} Envío de notificación de zarpe y retorno seguro a apoderados en $\le 5$ minutos, sin emplear cámaras hacia alumnos ni dispositivos intrusivos a bordo.
+    \end{itemize}
+
+    \item \textbf{Varadero, Logística Terrestre y Gestión Ambiental (Etapa 2):}
+    \begin{itemize}
+        \item \emph{CA-09 (Reasignación de Vacantes):} Asignación de amarra vacante permanente en $\le 24$ horas según lista de espera estricta y compatibilidad náutica.
+        \item \emph{CA-11 (Conciliación de Recaladas):} Cero recaladas omitidas de facturación de visitas al cruzar torre, estancias y contabilidad (línea base: 9\,\% de omisión).
+        \item \emph{CA-12 (Registro Único de Solicitudes):} Captura centralizada de solicitudes omnicanal con trazabilidad completa de origen.
+        \item \emph{CA-14 y CA-24 (Planes de Izaje):} 100\,\% de maniobras de travelift respaldadas por plan de izaje técnico validado antes del movimiento de carga suspendida.
+        \item \emph{CA-15 (Reprogramación ante Suspensión):} Suspensión inmediata ante aviso de autoridad y notificación de nueva agenda reprogramada en $\le 15$ minutos.
+        \item \emph{CA-16 (Trazabilidad RESPEL):} 100\,\% de lotes de residuos peligrosos trazados con manifiesto, generador, pesaje y precarga interoperable a SIDREP.
+        \item \emph{CA-17 (Acreditación y Formación de Contratistas):} 62 empresas acreditadas y 140 operarios con capacitación ambiental y de seguridad vigente y certificada.
+    \end{itemize}
+
+    \item \textbf{Telemetría, Finanzas y Sustentabilidad (Etapas 1 y 2):}
+    \begin{itemize}
+        \item \emph{CA-18 (Submedición Individual):} 320 amarras con medición individual de agua y energía (640 medidores); costo de servicios no imputado reducido del 38\,\% histórico a $\le 5\,\%$.
+        \item \emph{CA-19 (Evidencia Ambiental antes de 2029):} Generación de serie ambiental continua y trazable para cerrar las tres no conformidades de la auditoría antes de la temporada 2029.
+        \item \emph{CA-20 (Inspección de Boyas):} 40 boyas en Bahía Ilque con historial de inspección y conservación offline de 8 horas en tablets rugerizadas.
+        \item \emph{CA-21 (Eficiencia en Facturación):} Reducción del esfuerzo administrativo de 10 a 2 días-persona al mes (reducción del 80\,\%), con notas de crédito por error inferiores al 1\,\%.
+        \item \emph{CA-22 (Expedientes de Naves Abandonadas):} 14 de 14 expedientes de abandono digitalizados, indexados y foliados en estándar PDF/A para acciones legales.
+    \end{itemize}
+
+    \item \textbf{Sostenibilidad Operacional y Gobernanza (Meses 21 al 56):}
+    \begin{itemize}
+        \item \emph{CA-25 (Servicio Sostenible sin TI Propio):} Operación ininterrumpida por 36 meses con cumplimiento mensual de SLAs ($\ge 99,95\,\%$), liderada por el Gerente de Servicio de Synaptix y sin requerir contratación de personal informático por la marina.
+    \end{itemize}
 \end{enumerate}
 
-Las cámaras existentes permanecen en su plataforma y no se orientan a alumnos. El campo de boyas inicia sin energía ni cobertura garantizadas y conserva la inspección desconectada. Las compras, obras y mantenimiento físico excluidos mantienen las responsabilidades indicadas en 3.2; las interfaces representadas no amplían esas obligaciones.
+\newpage
+\section{Esquema de solución}
 
-\subsection{Organización Conceptual por Dominios y Módulos Operacionales}
+La Figura~\ref{fig:esquema-solucion} presenta una vista conceptual
+de la solución de Synaptix, relacionando los actores con las tres
+interfaces de acceso: portal web interno, portal de autoatención
+y aplicación Android de terreno. Estas interfaces permiten utilizar
+los doce servicios funcionales de la plataforma según el perfil
+y los permisos de cada usuario. La figura también identifica las
+integraciones externas que aportan datos o prestan servicios
+complementarios que debe conectarse la aplicación, como el procesamiento de pagos, el envío de
+notificaciones y la lectura inteligente de documentos.
 
-Un \textbf{dominio} representa un área funcional con responsabilidad sobre sus datos, reglas y decisiones. Un \textbf{núcleo} agrupa dominios que colaboran en una parte de la operación. La solución comprende nueve dominios: ocho se distribuyen entre Núcleo Operacional, Núcleo de Servicios y Núcleo Administrativo; el noveno, Auditoría y seguridad, tiene responsabilidad propia y actúa transversalmente sobre los tres. La Tabla~\ref{tab:nucleos-dominios} muestra esta distribución.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figuras/esquema-solucion.png}
+    \caption{Modelo conceptual de la solución Synaptix.}
+    \label{fig:esquema-solucion}
+\end{figure}
 
-\begin{table}[htbp]
-\centering
-\small
-\begin{tabularx}{\linewidth}{|p{.25\linewidth}|X|p{.27\linewidth}|}
-\hline
-\EncabezadoTabla{Agrupación} & \EncabezadoTabla{Dominios} & \EncabezadoTabla{Propósito} \\ \hline
-Núcleo Operacional & Operación marítima; Escuela náutica; Infraestructura. & Custodia, seguridad de personas y condiciones de operación. \\ \hline
-Núcleo de Servicios & Varadero y contratistas; Combustible; Ambiente y consumos. & Coordinación de faenas, prestaciones y evidencia ambiental. \\ \hline
-Núcleo Administrativo & Clientes y contratos; Finanzas y cobranza. & Gestión contractual y consecuencias administrativas de la operación. \\ \hline
-Dominio transversal & Auditoría y seguridad. & Protección del acceso, consentimientos, decisiones y evidencia. \\ \hline
-\end{tabularx}
-\caption{Tres núcleos y distribución de los nueve dominios}
-\label{tab:nucleos-dominios}
-\FuenteTabla{Elaboración de Synaptix a partir de las responsabilidades de la solución.}
-\end{table}
+Se agruparon todos los usuarios de la app de terreno y del partal web para simplificar la lectura del diagrama, los servicios como tal se especifican por color en qué servicios accede cada interfaz. Los servicios externos que se utilizarían se colocan en el diagrama de contexto.
 
-Los cinco procesos especializados realizan funciones compartidas entre dominios. La Célula Operacional Local ejecuta el subconjunto necesario para la continuidad del recinto; no constituye un núcleo funcional adicional. La arquitectura lógica desarrolla estos componentes con los mismos nombres y responsabilidades. Los grupos NAV, ALE, ESC, AMA, VAR, CTR, AMB, CON, BOY, FAC, ADM y AUT identifican requerimientos; su relación con los dominios se explica en 3.2.
+La figura \ref{fig:diagrama-contexto} muestra el diagrama de contexto a mayor detalle de todos los actores con las tareas que realizan en el sistema y las unidades que agrupan la lógica dentro del dentro del sistema junto a los servicios que solicitan cada una de estas unidades, se toman en cuenta las operaciones de la innovación 1 y 3.
 
-La Figura~\ref{fig:modulos-solucion} abre la caja del contexto y presenta los módulos con una frase de responsabilidad para cada uno. Los tres núcleos agrupan las capacidades de operación, servicios y administración; Auditoría y seguridad protege sus actuaciones. Los cinco procesos compartidos relacionan los dominios con terceros, dispositivos y evidencia. La Célula Operacional Local ejecuta el subconjunto crítico incluso con enlace disponible y permite continuar sin enlace exterior; la información guardada en un terminal se distingue de la confirmación por la autoridad local.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{figuras/diagrama-contexto.png}
+    \caption{Diagrama de contexto (me falta completar) }
+    \label{fig:diagrama-contexto}
+\end{figure}
 
-\input{figuras/diagrama_modulos_conceptual.tex}
 
-Las relaciones se comprueban mediante hechos de negocio: Operación marítima consulta las características de Infraestructura y las asignaciones de Clientes y contratos para autorizar una amarra; Escuela náutica coordina la participación y el retiro; Combustible, Varadero y contratistas y Ambiente y consumos aportan hechos que Finanzas y cobranza concilia para su tratamiento administrativo. Cada dominio conserva autoridad sobre sus datos. La sincronización transporta hechos y confirmaciones sin sobrescribir una actuación válida por una edición posterior.
 
-Las extensiones de 3.2 se incorporan a esas responsabilidades. Las solicitudes y el mantenimiento preventivo en invernada se sitúan en Varadero y contratistas; el Pasaporte Ambiental Náutico utiliza Ambiente y consumos. La lectura asistida propone antecedentes que confirma el responsable de cada expediente. El Servicio Gestionado por Resultados relaciona la evidencia de atención de mantenimiento con la evaluación contractual del incentivo adicional. Sus pilotos y condiciones de aceptación se mantienen; ninguna extensión sustituye el mínimo operacional.
 
-\subsubsection{Núcleo Operacional}
 
-Esta unidad relaciona el estado de embarcaciones y personas con el inventario físico que permite operar con seguridad. La Célula Local ejecuta el subconjunto crítico y conserva las copias de consulta necesarias; no replica íntegramente el núcleo cloud:
+% Introducir y citar la Figura 3.4 antes de insertarla.
+% Figura 3.4: Diagrama de Contexto del Sistema Synaptix (C4 Nivel 1).
+% Mostrar actores, sistema central y seis sistemas o entornos externos.
+% Cada relación debe indicar dirección e información intercambiada.
 
-\begin{itemize}
-    \item \textbf{Operación marítima:} Conserva salidas, regresos, planes, discrepancias y ocupación basada en evidencias. La confirmación de puesto se serializa en la autoridad local por puesto e intervalo. Una declaración del armador o un sensor es una evidencia que se concilia; no sustituye por sí sola la confirmación del regreso seguro.
-    \item \textbf{Escuela náutica:} Mantiene clase, nómina, participación por intervalo alumno--bote--monitor, cambios durante la actividad, retorno y retiro confirmado. Su vista mínima de salud utiliza la relación efectiva del monitor con los alumnos y no distribuye la ficha completa.
-    \item \textbf{Infraestructura:} Mantiene amarras, boyas, trenes de fondeo, medidores, condiciones e inspecciones. El inventario físico pertenece a este dominio; el contrato del puesto pertenece a Clientes y contratos y la conclusión operacional a Operación marítima.
-\end{itemize}
 
-\subsubsection{Núcleo de Servicios}
 
-Agrupa las capacidades de soporte a las operaciones industriales y de conservación ambiental del recinto, interactuando con dispositivos de acceso y sistemas de fiscalización sanitaria:
 
-\begin{itemize}
-    \item \textbf{Varadero y contratistas:} Mantiene agenda, plan de izaje, orden, acreditación, formación y ejecución de faenas. Los 180 puestos de invernada son inventario de Infraestructura y su utilización se coordina con esta agenda. El control de acceso comprueba identidad, vigencia e intervención autorizada; QR es un mecanismo de identificación sujeto a compatibilidad, no una autorización autónoma.
-    \item \textbf{Combustible:} Registra despacho, operador, nave, producto, volumen y evidencia en momento seguro. La Célula Local conserva el hecho sin depender de contabilidad ni Internet; Finanzas y cobranza lo transforma en cargo cuando corresponda.
-    \item \textbf{Ambiente y consumos:} Mantiene lecturas originales y conciliadas, residuos, entregas e indicadores. La asociación temporal de medidor a contrato permite usar una sola serie para cobro y gestión ambiental. Los registros sanitarios y certificados conservan el plazo de retención de su categoría, no un plazo genérico elegido para todo documento.
-\end{itemize}
+\subsection{Sistemas y entornos externos}
 
-\subsubsection{Núcleo Administrativo}
+La plataforma intercambia información con el sistema contable, los
+equipos y sistemas del recinto, los canales de la Autoridad Marítima,
+los servicios de comunicación, los servicios de pago y el entorno de
+declaración y gestión de residuos.
+    
+% Recorrer las seis relaciones de la Figura 3.4.
+% Precisar qué recibe y qué entrega Synaptix en cada intercambio.
+% Distinguir intercambio automático de actuación humana autorizada.
+% Referenciar las dependencias de integración del Anexo A2.6.
 
-Esta unidad administra maestros contractuales y consecuencias financieras en nube. El recinto conserva copias de consulta, hechos y responsables de pago, pero los cambios contractuales y la nueva facturación se difieren cuando no está disponible su autoridad:
+\subsection{Frontera y responsabilidades del sistema}
 
-\begin{itemize}
-    \item \textbf{Clientes y contratos:} Mantiene personas, organizaciones, embarcaciones, contratos, asignaciones, contactos y lista de espera. Una reserva comercial cloud necesita autorización operacional local antes de confirmar el mismo puesto; una copia atrasada no resuelve exclusividad.
-    \item \textbf{Finanzas y cobranza:} Mantiene hechos facturables, exportaciones, conciliación, saldo importado y expediente de abandono. Contabilidad conserva la emisión y el saldo fuente. Una medida sobre el acceso por deuda exige atribución, fundamento y decisión formal, y no se dispara automáticamente por un tramo de mora.
-\end{itemize}
+Synaptix conserva los registros operacionales y relaciona sus
+evidencias con las actuaciones administrativas. La Autoridad Marítima
+mantiene el otorgamiento del zarpe; el sistema contable conserva la
+emisión tributaria; y los gestores autorizados realizan las actuaciones
+materiales de recepción y tratamiento de residuos. Las interfaces
+se habilitan según su disponibilidad, autorización y verificación.
 
-\subsubsection{Auditoría y seguridad}
+\subsection{Descomposición Funcional por Unidades Operacionales}
 
-El noveno dominio, \textbf{Auditoría y seguridad}, conserva consentimientos, decisiones sensibles, accesos y modificaciones, relacionando evidencia con persona o dispositivo. Protege los datos según su finalidad y mantiene identidad individual, permisos y autenticación multifactor para todo acceso privilegiado y desde fuera de la red corporativa. La auditoría de un hecho no cambia su responsable funcional. La entrega incluye gestión de identidad, cifrado y custodia de claves, con pruebas de protección previas a su habilitación; su diseño técnico se detalla en SD4 y SD5 \parencite[cap.~12, RT-12.03, p.~25]{bases-transversales}.
+Las capacidades se organizan en Marina-Ops, Marina-Log y Marina-Admin.
+Estas unidades agrupan módulos para explicar su colaboración funcional.
+Sus nombres y responsabilidades deben mantener correspondencia con
+la arquitectura lógica del Subdocumento 4.
 
-Auditoría y seguridad incorpora en el Runtime la Autoridad local de acceso y el estado de habilitación de identidades. Su alcance comprende permisos operacionales y conserva la exclusión de remuneraciones y administración general de personal. Las decisiones laborales proceden de la fuente de negocio competente y Synaptix administra su aplicación técnica automática. La emisión exige estado vigente, trazabilidad de origen y fecha efectiva, custodia de firma y denegación prioritaria ante una baja. La continuidad de acceso durante una pérdida exterior completa depende de que esa fuente sea realmente autoritativa y reciba a tiempo las decisiones de todos los empleadores cubiertos; una fuente incompleta deja abierta la comprobación conjunta de continuidad y baja. Antes de habilitar la continuidad deben individualizarse la fuente, los responsables y la cobertura de esas decisiones, y comprobarse en conjunto continuidad y denegación por baja. El diseño de acceso y sus registros se detallan en SD4, sección 4.1, y SD5, sección 5.2.5 \parencites[art.~22, p.~16]{bases-admin}[RT-12.10/13, p.~26]{bases-transversales}.
+% Introducir y citar la Figura 3.5 antes de insertarla.
+% Figura 3.5: Descomposición del Esquema de Solución por
+% Unidades Operacionales y Canales de Interacción.
+% Mostrar módulos, canales, intercambios entre unidades y NBR.
+% Explicar la figura mediante las subsecciones siguientes.
 
-\subsubsection{Procesos Especializados Compartidos}
+\subsection{Marina-Ops: operación náutica y de terreno}
 
-Estos procesos prestan funciones comunes a los dominios. Auditoría y seguridad define las responsabilidades de protección y conserva las decisiones sensibles; el proceso Auditoría transporta y protege los registros de actuación.
+Marina-Ops reúne NAV, AMA, ESC, CON y BOY. Atiende movimientos de
+embarcaciones, asignación de amarras, participación escolar, combustible,
+medición de consumos e inspección de boyas.
 
-Los cinco procesos especializados mantienen límites explícitos: \textbf{Integración externa} adapta contratos y concilia terceros; \textbf{Notificaciones} conserva campaña, destinatarios, intentos, entregas, acuses y llamadas; \textbf{Telemetría} conserva origen, secuencia y calidad de las lecturas; \textbf{Sincronización} entrega hechos y confirmaciones con idempotencia y reglas de conflicto; \textbf{Auditoría} transporta y protege la evidencia de actuación. Los canales AUT y las campañas ALE utilizan estos procesos para consultar, registrar y comunicar los hechos de cada dominio.
+% Identificar los actores que utilizan cada módulo.
+% Explicar un recorrido desde la preparación hasta la confirmación.
+% Mostrar los hechos que se entregan a Marina-Admin.
+% Precisar las funciones ejecutadas localmente en el NBR.
 
-Cada hecho tiene un dominio responsable de registrarlo y validarlo, y se comparte con los demás mediante interfaces autorizadas. Esta separación permite relacionar la operación con su evidencia y sus consecuencias administrativas \parencite[cap.~2, RT-02.01/02, p.~6]{bases-transversales}.
+\subsection{Marina-Log: faenas, contratistas y gestión ambiental}
 
-\subsubsection{Célula Operacional Local}
+Marina-Log reúne VAR, CTR y AMB. Relaciona la programación del varadero,
+los planes de izaje, la habilitación de contratistas y la trazabilidad
+de residuos generados durante las faenas.
 
-La Célula Operacional Local ejecuta el Runtime Operacional de Borde, que mantiene las funciones críticas del recinto incluso con enlace disponible. Conserva movimientos de embarcaciones y autorización de amarra, participación escolar, ejecución de faenas, combustible, mediciones, inspecciones y sus evidencias. Durante una pérdida del enlace exterior sostiene ese subconjunto por al menos 24 horas y, al reconectar, concilia los registros y evidencias obligatorios dentro de 30 minutos.
+% Recorrer autorización, acreditación, ejecución y cierre de una faena.
+% Explicar la relación con portería y el control de acceso.
+% Mostrar el intercambio de antecedentes con SIDREP y gestores.
+% Identificar prestaciones y evidencias remitidas a Marina-Admin.
 
-La continuidad local utiliza las responsabilidades de los dominios ya descritos. Los nuevos contratos comerciales, la configuración global y la facturación completa permanecen en nube. Un registro conservado en el terminal no equivale a una asignación de amarra ni a un retiro escolar confirmados; esas actuaciones requieren la validación de su autoridad competente.
+\subsection{Marina-Admin: gestión comercial y atención}
 
-Auditoría y seguridad incorpora el Registro Laboral y de Habilitación (RLH) y la Autoridad local de acceso en el Runtime Operacional de Borde. Gerencia conserva la decisión del personal propio y Administración su registro titular/suplente; las empresas contratistas conservan la competencia mediante representantes registrados, cuya facultad comprueba Varadero. Synaptix opera claves, integración y aplicación automática de altas y bajas, sin ticket técnico previo. El RLH separa decisión, efecto laboral real, recepción y aplicación y da prioridad a la denegación. La habilitación debe comprobar la vigencia de sesiones, la renovación de permisos y el acceso de emergencia, con registros de su origen y aplicación. Antes de recibir la continuidad electrónica debe verificarse la recepción oportuna de decisiones exteriores durante el aislamiento total y el tratamiento de permisos antiguos en terminales incomunicados.
+Marina-Admin reúne FAC, ADM y AUT. Mantiene datos maestros, contratos,
+perfiles, reglas administrativas y portales. Recibe hechos operacionales
+para su tratamiento comercial y conciliación con el sistema contable.
+
+% Explicar cómo una solicitud del portal llega al módulo responsable.
+% Recorrer generación de hechos facturables y conciliación contable.
+% Precisar consultas, respuestas y expedientes disponibles por perfil.
+% Relacionar identidades y datos maestros con las otras unidades.
+
+\subsection{Alertas y canales de interacción}
+
+ALE gestiona avisos y su seguimiento para las tres unidades.
+La consola permite coordinar la operación y administrar antecedentes;
+los portales ofrecen autoatención; y la aplicación de terreno permite
+consultar y registrar actuaciones en condiciones seguras.
+
+% Explicar alertas de marejada, planes vencidos y avisos escolares.
+% Relacionar cada canal con sus usuarios y tareas.
+% Mantener la coordinación por radio durante las maniobras.
+% Distinguir envío, entrega y acuse de una notificación.
+
+\subsection{Continuidad local y conciliación}
+
+El Nodo de Borde en Recinto (NBR) ejecuta el subconjunto crítico
+necesario para sostener al menos 24 horas sin enlace exterior.
+Las aplicaciones de terreno conservan registros durante 12 horas
+en pantalán y 8 horas en inspecciones de boyas. Tras la reconexión,
+los registros y evidencias obligatorios se concilian dentro de
+30 minutos.
+
+% Identificar funciones locales de las tres unidades.
+% Distinguir registro guardado, solicitud pendiente y acto confirmado.
+% Explicar controles de identidad y vigencia de permisos.
+% Describir la contingencia cuando no puede obtenerse una
+% confirmación válida, especialmente en amarras y retiros escolares.
 
 \section{Explicación de la Solución}
 

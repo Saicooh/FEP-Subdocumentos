@@ -1,0 +1,72 @@
+\clearpage
+\chapter*{A4.2 Catálogo y dimensionamiento de integraciones}
+\addcontentsline{toc}{chapter}{A4.2 Catálogo y dimensionamiento de integraciones}
+\label{anexo:integraciones-dimensionadas}
+
+Este catálogo individualiza las diez interfaces de negocio de SD4. Un mensaje lógico es una solicitud, respuesta, evento de estado o acuse de aplicación; no es una transacción de negocio ni un paquete de red. Las cifras mensuales emplean treinta días. Los peaks son cargas simultáneas de aceptación, no tasas observadas ni límites publicados del tercero. Arquitectura conserva contratos y el Líder de Integración ejecuta los ensayos con Seguridad y el propietario del dominio. El CLIENTE facilita acceso autorizado a las interfaces existentes. Synaptix entrega los adaptadores y conserva la compatibilidad sin sustituir las autoridades del caso \parencites[art.~19, p.~13]{pucv-admin}[cap.~14, sec.~14.2; cap.~15, RT-05.23]{caso07}.
+
+La Tabla~\ref{tab:integraciones-volumen} permite reconstruir la demanda y el inventario. Las fichas siguientes desarrollan contratos y contingencias fuera del cuerpo principal del capítulo.
+
+\begin{longtable}{|L{\dimexpr.09\linewidth-2\tabcolsep-1.2\arrayrulewidth\relax}|L{\dimexpr.20\linewidth-2\tabcolsep-1.2\arrayrulewidth\relax}|L{\dimexpr.35\linewidth-2\tabcolsep-1.2\arrayrulewidth\relax}|L{\dimexpr.19\linewidth-2\tabcolsep-1.2\arrayrulewidth\relax}|L{\dimexpr.17\linewidth-2\tabcolsep-1.2\arrayrulewidth\relax}|}
+\caption{Demanda mensual y peak por interfaz}\label{tab:integraciones-volumen}\\
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Interfaz} & \EncabezadoTabla{Supuesto y cálculo} & \EncabezadoTabla{Mensajes/mes} & \EncabezadoTabla{Peak, msg/s}\\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Interfaz} & \EncabezadoTabla{Supuesto y cálculo} & \EncabezadoTabla{Mensajes/mes} & \EncabezadoTabla{Peak, msg/s}\\ \hline
+\endhead
+I-01 & Contabilidad & $2.300\times4+296\times2\times30$ & 26.960 & 40\\ \hline
+I-02 & Acceso & $4.000\times2\times2$ & 16.000 & 40\\ \hline
+I-03 & CCTV & $38\times4\times30\times2$ & 9.120 & 10\\ \hline
+I-04 & Meteorología & $1.440\times30\times2$ & 86.400 & 1\\ \hline
+I-05 & Surtidor & $20\times30\times2$ & 1.200 & 20\\ \hline
+I-06 & SMS & $296\times30\times4$ & 35.520 & 20\\ \hline
+I-07 & WhatsApp & $296\times30\times4$ & 35.520 & 20\\ \hline
+I-08 & Correo & $296\times30\times4$ & 35.520 & 20\\ \hline
+I-09 & Baja capacidad & $296\times16\times30$ & 142.080 & 20\\ \hline
+I-10 & Lectura documental & $2.300\times6$ & 13.800 & 10\\ \hline
+Total & Diez interfaces & Suma, sin campañas adicionales & 402.120 & 201\\ \hline
+\end{longtable}
+\FuenteTabla{C07, cap.~14, sec.~14.1, para documentos, personas, cámaras y armadores; coeficientes y peaks de Synaptix.}
+
+El total medio es $402.120/(30\times86.400)=0,1551$ mensajes/s, que no gobierna la capacidad de peak. Los 201 mensajes/s de la última columna son una mezcla de prueba distribuida entre workers: 111 para contabilidad, acceso, CCTV, meteorología y surtidor; 60 para los tres canales; 20 para baja capacidad y 10 para lectura documental. OCR no comparte ejecutor con comandos críticos; su trabajo se limita para no aumentar el tiempo de interacción. El factor de crecimiento de tres eleva el ensayo a 603 mensajes/s, distribuidos según esas mismas clases, y a 1.206.360 mensajes/mes. Las campañas de emergencia se suman una sola vez: una campaña con un reintento añade 7.104 mensajes lógicos de los tres canales, por cuatro mensajes de control por intento. Una reserva de un reintento para todo el mes duplicaría 402.120 a 804.240; es sensibilidad de transporte, no una nueva población de operaciones.
+
+\section*{I-01 Contabilidad y estados de cuenta}
+\addcontentsline{toc}{section}{I-01 Contabilidad y estados de cuenta}
+El Núcleo Administrativo entrega hechos facturables y recibe resultados, pagos y saldos del sistema vigente. Se selecciona para el adaptador un contrato REST/JSON sobre HTTPS, autenticación de servicio con certificado o credencial individual rotatoria y firma de callbacks; el contrato propio es OpenAPI 3.1. Cuatro mensajes por documento representan envío, aceptación, resultado y acuse; dos por consulta representan solicitud y respuesta. La hipótesis de una consulta diaria por cada uno de 296 armadores dimensiona 17.760 mensajes mensuales adicionales; no obliga a enviarles una comunicación diaria. Los cambios de pago y saldo ingresan por evento y la consulta crítica confirma con su autoridad, sin sustituir tiempo real por una copia de consulta periódica.
+
+El software legado no se declara compatible por esta selección. Synaptix verifica su interfaz y habilita, si necesita adaptación, un conector junto al sistema autorizado que publique esos contratos y eventos con su auditoría. Un intercambio SFTP con claves propias, manifiesto, huella y cifrado puede conciliar lotes en contingencia, pero no satisface por sí solo los cambios en tiempo real. Sin disponibilidad efectiva del evento y consulta no se libera esa función como cumplida. Se usan plazo asíncrono de quince segundos, cortacircuito y consulta de resultado antes de reenviar; ninguna transacción local espera al tercero. La aceptación prueba cambios, rechazo, respuesta perdida y un solo efecto contable con veinte consultas/s, cuarenta mensajes/s, duplicados y caída de interfaz.
+
+\section*{I-02 Acceso e I-03 CCTV}
+\addcontentsline{toc}{section}{I-02 Acceso e I-03 CCTV}
+Acceso recibe una autorización limitada y devuelve su evento; la hipótesis de entrada y salida para 4.000 personas/mes produce 8.000 actuaciones y 16.000 mensajes. CCTV entrega eventos permitidos y referencias a evidencia, con una hipótesis de cuatro eventos diarios por cada una de las 38 cámaras y un acuse por evento. No incluye video continuo ni modifica su retención en la plataforma vigente. Se seleccionan adaptadores locales con REST/JSON sobre HTTPS hacia el Runtime, credenciales de servicio independientes y registro de dispositivo. El enlace físico al producto se individualiza mediante su interfaz documentada; no se escribe directamente en esquemas ajenos ni se presume un protocolo de cámara por su sola existencia.
+
+Ante falla, acceso aplica la política vigente y registra la contingencia autorizada; CCTV conserva la evidencia en su plataforma. La consulta exige permiso y propósito. Se ensayan cuarenta mensajes/s de acceso y diez de CCTV, versión de autorización, denegación, duplicados, pérdida de canal y consulta de un objeto permitido, sin cargar las 38 transmisiones de video a la nube. La compatibilidad real y la segregación de red son condiciones de recepción del adaptador.
+
+\section*{I-04 Meteorología e I-05 Surtidor}
+\addcontentsline{toc}{section}{I-04 Meteorología e I-05 Surtidor}
+La fuente meteorológica entrega una observación por minuto y recibe su acuse: 86.400 mensajes/mes. El gateway local publica un contrato JSON firmado sobre MQTT 5 con TLS e identidad de dispositivo, conservando origen, unidad, calidad e instante. Una señal ausente o antigua se identifica como tal; no genera un pronóstico ni un aviso oficial. Los avisos de autoridad se registran por el operador desde el canal oficialmente autorizado, con origen y fecha, sin API supuesta. Se ensayan atraso, dato inválido, duplicación y una publicación por segundo como ráfaga.
+
+Para surtidor se adoptan veinte despachos/día como hipótesis de utilización, con hecho y acuse: 1.200 mensajes/mes. Pulsos o datos certificados ingresan a un gateway fuera de la zona clasificada; este publica el mismo contrato MQTT protegido, con equipo, época del contador, producto, volumen, operador y embarcación. No se declara aptitud de una variante física sin su clasificación y certificado. Se prueban veinte mensajes/s de ráfaga, reinicio del contador, doble entrega, corte de enlace y conciliación del único despacho, sin perder evidencia durante 24 horas. La diferencia entre esta hipótesis y el volumen observado se incorpora al plan de capacidad.
+
+\section*{I-06 SMS, I-07 WhatsApp e I-08 Correo}
+\addcontentsline{toc}{section}{I-06 SMS, I-07 WhatsApp e I-08 Correo}
+Se seleccionan Twilio Programmable Messaging, Meta WhatsApp Cloud API y Amazon SES API v2, respectivamente. SMS utiliza REST/HTTPS con credenciales de cuenta/API custodiadas y validación de firma del callback. WhatsApp utiliza Graph API/HTTPS con token de servicio, permisos de negocio, plantilla autorizada y verificación del webhook. SES usa API HTTPS y firma AWS SigV4, con identidad de correo verificada y eventos de entrega, rebote y rechazo. En todos los casos la API y sus claves se mantienen versionadas en el catálogo; la actualización de una API obliga a pruebas de contrato. La cuenta de canal, sus cuotas, residencia y condiciones se habilitan en las regiones de producción y recuperación conforme al gobierno de transferencias; no se supone traslado de una autorización regional por copiar infraestructura \parencites{c8-twilio-mensajes,c8-meta-mensajes,c8-ses-eventos}.
+
+La hipótesis mensual por canal reserva hasta una notificación ordinaria por armador/día, con solicitud, respuesta, estado y acuse: 35.520 mensajes. Es capacidad agregada para hechos de negocio, no una campaña diaria obligatoria. Emergencia dispone de cinco envíos/s por canal, ejecutores separados y un reintento dentro de la campaña; el total de 888 primeros envíos y hasta 1.776 intentos se mide hasta el último envío en diez minutos. Se registra entrega técnica separadamente del acuse humano; a quien no acusa se lo escala a llamada registrada. Los reintentos adicionales de conciliación mantienen el ID y no se usan para aparentar haber concluido la campaña en plazo.
+
+Cada persona verifica sus tres destinos antes de habilitar el servicio; se registran autorización, plantilla, estado y mecanismo de acuse. La caída de un canal se declara y no se sustituye su obligación por dos canales. La cola conserva destinatarios pendientes y permite operación humana de emergencia; el ensayo prueba los tres canales, cuotas contratadas, callbacks repetidos, rechazo y fallo de un proveedor. El SLA publicado del proveedor, su contratación y el resultado de entrega se individualizan en la recepción; esta selección y las tasas de diseño no los acreditan. La valorización del tráfico ordinario, campañas y reintentos queda en la Oferta Económica bajo I-06/07/08.
+
+\section*{I-09 Navegación de baja capacidad}
+\addcontentsline{toc}{section}{I-09 Navegación de baja capacidad}
+El canal seleccionado es el endpoint HTTPS de intercambio de Synaptix con cola local en Kotlin; consume IP celular intermitente o IP satelital mediante equipo voluntariamente enrolado. Iridium GO! exec/Certus 100 es la referencia satelital, con Wi-Fi y conexión IP; no se afirma que envíe SMS o que cualquier terminal Iridium anterior soporte esta ruta. Se autentica al transmitir, se consulta consentimiento y se vincula el hecho con su autor, plan y secuencia. La antigüedad del transporte no se convierte en vigencia de una credencial. No se instala baliza ni se comparte posición por defecto \parencites{c8-iridium-exec,c8-iridium-faq}.
+
+Cada mensaje tiene como máximo 1 KiB de datos y envolvente, y cada intercambio reserva 16 KiB incluyendo transporte y autenticación. Para ocho mensajes por sentido/día y 296 embarcaciones se obtiene 4.736 mensajes/día y 142.080/mes. La envolvente equivale a $4.736\times16.384=77.594.624$ bytes/día; un reintento completo la eleva a 155.189.248. Se comprueba consumo real del enlace, que también puede incluir tráfico de apertura de sesión; esas reservas no son una tarifa del proveedor ni volumen medido. Los planes completos y personas se precargan con enlace adecuado; los mensajes de navegación solo llevan referencias y cambios mínimos. Una partición de ruta conserva ID y manifiesto para reconstrucción íntegra.
+
+El terminal intenta al actuar y cada seis horas mientras se utiliza el modo; si hace falta, el armador abre su conexión satelital. A las seis horas sin acuse se declara demora, a las doce no entrega, con conservación íntegra del hecho y escalamiento. Los plazos no garantizan recepción si no existe enlace. La emergencia permanece sujeta a radio y procedimientos de autoridad; un plan vencido escala en quince minutos sin esperar cierre remoto. Reintentos a 1/5/15/60 minutos y luego horarios conservan IDs, secuencias y expiración; no renuevan una instrucción vencida. Se ensayan veinte mensajes/s agregados en cloud, demora de doce horas, pérdida, desorden, duplicado, revocación y reautenticación, además del equipo IP satelital efectivo y su perfil HTTPS. Sin ese ensayo no se atribuye compatibilidad al equipo del armador.
+
+\section*{I-10 Extracción documental}
+\addcontentsline{toc}{section}{I-10 Extracción documental}
+El adaptador Amazon Textract utiliza API HTTPS con AWS SigV4 y permisos limitados a la recepción S3, solicitud de análisis, respuesta y salida. Se reserva una hipótesis de 2.300 documentos/mes y seis mensajes de control por documento: solicitud/identificador, aviso/acuse y lectura/resultado, 13.800 mensajes/mes. El peak de diez mensajes/s describe el trabajo del adaptador, no diez documentos completados por segundo ni una cuota del servicio. Se fija un máximo de veinte trabajos documentales en vuelo, con admisión por cuota regional efectiva. Los límites de tamaño, páginas, idioma y función de OCR/formularios se mantienen conforme al diseño de la innovación 3 de SD13.
+
+La región y función de procesamiento deben superar el control de transferencia, residencia, no entrenamiento y permisos antes de habilitarse. Si falla, permanece ingreso manual y original, sin alterar maestros o aprobaciones y sin consumir los ejecutores críticos. Se prueba original/salida, doble aviso, rechazo, recuperación y decisión humana. La estimación no acredita soporte regional ni condiciones contractuales de IA que continúan sujetas al control específico de SD13 y RT-18.

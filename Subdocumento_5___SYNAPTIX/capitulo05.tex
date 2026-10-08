@@ -1038,7 +1038,7 @@ Para hacer reproducible la tasa de negocio, se adopta en régimen normal una act
 \lambda_{\mathrm{maxima}}=\frac{50}{5}+\frac{150}{15}=20
 \quad\mbox{transacciones/s}.
 \]
-Los intervalos son supuestos de actividad de Synaptix para construir una carga simultánea superior al promedio del puerto. Los flujos de la mañana crítica formarán parte de esa mezcla; no se sumarán nuevamente como si fueran otra población independiente. Las consultas, notificaciones y sincronización se identificarán como cargas adicionales.
+Los intervalos son supuestos de actividad de Synaptix para construir una carga simultánea superior al promedio del puerto. Los flujos de la mañana crítica formarán parte de esa mezcla; no se sumarán nuevamente como si fueran otra población independiente. Las consultas, notificaciones y sincronización se identificarán como cargas adicionales. El catálogo A4.2 de SD4 selecciona diez interfaces externas y deriva 402.120 mensajes/mes, con peak conjunto de 201 mensajes/s distribuido entre workers y crecimiento a 603. Se distinguen esos mensajes de las solicitudes interactivas y de la telemetría interna para no contarlos dos veces. Los recursos y límites por unidad/ambiente se fijan en el plan de capacidad de SD4 y T-11; la prueba conjunta no extrapola el resultado de un worker aislado.
 
 Como supuesto de prueba se consideran cuatro llamadas de servicio por actuación, con cinco consultas adicionales por segundo en régimen normal y veinte en carga máxima. Así, \(5 \times 4 + 5 = 25\) solicitudes/s para régimen normal y \(20 \times 4 + 20 = 100\) solicitudes/s para carga máxima reproducen la capacidad inicial de referencia de SD4. El número real de llamadas por flujo se obtendrá de las trazas de la aplicación y sustituirá ese coeficiente antes de aceptar la capacidad.
 
@@ -1065,7 +1065,7 @@ Crecimiento de \(3\times\) & 150 / 450 & 60 & 300 \\ \addlinespace \hline
 
 La carga de \(1{,}5\times\) aumenta también las consultas adicionales, de veinte a treinta por segundo. El estrés de portal duplica únicamente las sesiones externas y mantiene las cincuenta internas y las veinte consultas adicionales; por eso su resultado es 140 solicitudes/s y no 150. Son pruebas diferentes y no intercambiables.
 
-Las 100 solicitudes/s iniciales no demuestran cobertura del escenario de crecimiento de 300 solicitudes/s. La aplicación y la integración deberán escalar conforme a SD4 y verificarse con los mismos controles funcionales. La base de datos y el borde tendrán su propia medición de capacidad, porque ampliar tareas de aplicación no elimina una limitación de escritura o de almacenamiento.
+Las 100 solicitudes/s iniciales no demuestran cobertura del escenario de crecimiento de 300 solicitudes/s. La aplicación y la integración deberán escalar conforme a la línea base de SD4: dieciséis tareas normales, veintiocho peak y cuarenta y seis de crecimiento, con techo de sesenta y cuatro tareas estables para las ocho unidades; incluyen los cinco procesos especializados. Se verifican los mismos controles funcionales y la pérdida de una zona. Las 100/300 HTTP/s de esta tabla son solicitudes interactivas; la admisión adicional de callbacks se mide aparte, sin consumir silenciosamente esa capacidad. La base de datos y el borde tendrán su propia medición de capacidad, porque ampliar tareas de aplicación no elimina una limitación de escritura o de almacenamiento.
 
 \textbf{Captura y consolidación de telemetría:} la adquisición local se realizará cada minuto y la publicación de acumulados centrales cada quince minutos, conforme a SD4 DA-09 y 5.2.5. Cada registro conservará punto, instante, secuencia, calidad, época del contador y asociación vigente. Las muestras por minuto y los acumulados de quince minutos son poblaciones distintas.
 
@@ -1102,7 +1102,9 @@ La captura media de 12,67 muestras/s para 760 puntos no debe confundirse con la 
 
 Se escalonará la lectura entre concentradores y se conservará la secuencia de cada punto. Si todos los puntos producen su lectura al mismo instante, el borde puede recibir 760 muestras en una ráfaga local, aunque su promedio por minuto sea bajo. Esa ráfaga se probará separadamente; el límite de cien eventos/s del servicio central no es una explicación suficiente de la captura local. La adquisición no dependerá de que cada lectura se envíe inmediatamente a la nube.
 
-El consumo por intervalo se reconstruirá desde acumulados, asociaciones y reglas de validación. Se probarán cambio de medidor, reinicio de contador, lecturas tardías y cambio de ocupante. La consolidación de quince minutos permite actualizar el consumo al menos cada hora, pero no acredita por sí sola que la atribución por amarra y contrato sea correcta.
+El consumo por intervalo se reconstruirá desde acumulados, asociaciones y reglas de validación. Se probarán cambio de medidor, reinicio de contador, lecturas tardías y cambio de ocupante. El canal de navegación conserva 1 KiB máximo por mensaje, hasta 16 KiB de envolvente, ventana de seis horas y declaración de no entrega a doce horas, conforme a SD4 I-09/EST-13. Los planes y detalles sensibles se precargan; el mensaje conserva referencia, autor, ID y secuencia. Un cierre tardío no borra la alerta de vencimiento ni adquiere autoridad sobre un regreso operacional. La aceptación simula demora, pérdida, desorden, duplicados, revocación y autenticación al reconectar.
+
+La consolidación de quince minutos permite actualizar el consumo al menos cada hora, pero no acredita por sí sola que la atribución por amarra y contrato sea correcta.
 
 \textbf{Reservas de almacenamiento:} se utilizarán GB decimales (\(10^9\) bytes), MB decimales (\(10^6\) bytes) y Mb/s para bits por segundo. Se separarán el dato lógico, los índices, la holgura, las proyecciones, las réplicas y los respaldos. Un recurso local redundante no duplicará la capacidad útil por el solo hecho de tener dos discos.
 
@@ -1112,7 +1114,7 @@ V_{\mathrm{negocio}}=
 \frac{1.000.000\times4\times1.000\times2}{10^9}
 =8\ \mbox{GB/año}.
 \]
-Esta estimación incluye la auditoría básica de esas actuaciones. Se reservan 20~GB/año para incorporar maestros, versiones, rectificaciones y margen. El millón de operaciones es una hipótesis anual independiente de las tasas máximas de rendimiento; multiplicar veinte transacciones/s por todo el año sobrestimaría el volumen al suponer una carga máxima sostenida durante todo el año.
+Esta estimación incluye la auditoría básica de esas actuaciones. Para el control de transporte de las diez interfaces de A4.2 se reservan 1.000 bytes por mensaje lógico y factor dos de índices/sobrecarga: $402.120\times12\times1.000\times2/10^9=9,65088$ GB/año. Ese registro conserva IDs, estado y referencias, sin duplicar el contenido de negocio ya contado. Negocio y control de transporte suman 17,65088 GB/año dentro de la reserva inicial de 20 GB; con factor tres alcanzan 52,95264 GB/año y requieren ampliar esa reserva antes de habilitar crecimiento. Los reintentos se miden aparte y ajustan el consumo de transporte. Se reservan 20~GB/año para incorporar maestros, versiones, rectificaciones y margen. El millón de operaciones es una hipótesis anual independiente de las tasas máximas de rendimiento; multiplicar veinte transacciones/s por todo el año sobrestimaría el volumen al suponer una carga máxima sostenida durante todo el año.
 
 La Tabla~\ref{tab:sd5_reservas_datos} resume las reservas y sus límites. Las consultas sensibles adicionales y los eventos de seguridad se separan de la auditoría básica ya incluida. Para estimarlos se adopta un millón de consultas sensibles y 500.000 eventos de seguridad al año, de 1.000 bytes y factor de dos; son supuestos iniciales que se sustituirán por mediciones, sin omitir su retención.
 
@@ -1126,7 +1128,7 @@ La Tabla~\ref{tab:sd5_reservas_datos} resume las reservas y sus límites. Las co
 \hline
 \EncabezadoTabla{Familia} & \EncabezadoTabla{Derivación o referencia} & \EncabezadoTabla{Reserva inicial} & \EncabezadoTabla{Límite del cálculo} \\ \hline
 \endhead
-Negocio y auditoría básica & 8 GB/año calculados & 20 GB/año & Sin telemetría ni accesos adicionales \\ \addlinespace \hline
+Negocio, auditoría básica y transporte & 17,65 GB/año calculados & 20 GB/año & Sin telemetría ni accesos adicionales \\ \addlinespace \hline
 Serie central & 7,99 GB/año; 760 puntos & 25 GB/año & Índices efectivos incluidos en 300 bytes \\ \addlinespace \hline
 Documentos y versiones & 50.000 objetos/año de 2 MB & 100 GB/año & Sin video continuo \\ \addlinespace \hline
 Consultas sensibles adicionales & 1 millón/año; 1.000 bytes; factor 2 & 2 GB/año & No incluye modificación ya contada \\ \addlinespace \hline
