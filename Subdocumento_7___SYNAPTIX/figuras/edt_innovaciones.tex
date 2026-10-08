@@ -1,0 +1,16 @@
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}[font=\scriptsize,
+ raiz/.style={draw=SynNavy,fill=SynSurface,rounded corners=2pt,text width=54mm,align=center,minimum height=10mm},
+ hijo/.style={draw=SynBlue,fill=SynSurface,rounded corners=2pt,text width=27mm,align=center,minimum height=17mm}]
+\node[raiz] (root) at (0,0) {1.9 Innovaciones incorporadas y evaluadas};
+\node[hijo] (a) at (-6.4,-2) {1.9.1\newline Solicitudes de mantenimiento};
+\node[hijo] (b) at (-3.2,-2) {1.9.2\newline Mantenimiento preventivo en invernada};
+\node[hijo] (c) at (0,-2) {1.9.3\newline Lectura asistida};
+\node[hijo] (d) at (3.2,-2) {1.9.4\newline Servicio gestionado por resultados};
+\node[hijo] (e) at (6.4,-2) {1.9.5\newline Pasaporte Ambiental Náutico};
+\foreach \n in {a,b,c,d,e}{\draw[SynNavy] (root.south) -- (0,-0.8) -| (\n.north);}
+\end{tikzpicture}
+\caption{Descomposición por entregables de la rama de innovación}
+\label{fig:sd7-edt-innovaciones}
+\FuenteFigura{Synaptix; correspondencia con las cinco innovaciones de SD13. Las líneas expresan pertenencia; las precedencias se registran aparte.}
+\end{figure}

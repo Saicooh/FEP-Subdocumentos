@@ -1,0 +1,378 @@
+﻿Paquete,Dependencia,Tipo,Responsable_paquete,Fecha_requerida,Evidencia
+1.1.1.1,Inicio,Puerta/condición por definir,Ignacio Silva,"(1, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.1.2.2,H1,Puerta/condición por definir,Ignacio Silva,"(4, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.1.2.2,H2,Puerta/condición por definir,Ignacio Silva,"(4, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.1.1,H3,Puerta/condición por definir,José Lara Arce,"(18, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.1.1,H2,Puerta/condición por definir,Davor Serey,"(9, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.1.2,VERSION-E1,Puerta/condición por definir,Davor Serey,"(10, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.1.3,VERSION-E1,Puerta/condición por definir,Davor Serey,"(11, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.1.4,VERSION-E1,Puerta/condición por definir,Davor Serey,"(11, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.1.5,VERSION-E1,Puerta/condición por definir,Davor Serey,"(11, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.1.6,VERSION-E1,Puerta/condición por definir,José Lara Arce,"(11, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.1.7,VERSION-E1,Puerta/condición por definir,José Lara Arce,"(11, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.1.8,VERSION-E1,Puerta/condición por definir,Bruno Toro,"(11, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.1.9,VERSION-E1,Puerta/condición por definir,Davor Serey,"(11, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.1.10,ENSAYOS-E1,Puerta/condición por definir,Davor Serey,"(12, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.11.2.1.1,VERSION-E1,Puerta/condición por definir,José Lara Arce,"(11, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.11.2.1.2,VERSION-E1,Puerta/condición por definir,José Lara Arce,"(11, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.11.2.1.3,VERSION-E1,Puerta/condición por definir,José Lara Arce,"(11, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.11.2.1.4,VERSION-E1,Puerta/condición por definir,José Lara Arce,"(11, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.11.2.1.5,VERSION-E1,Puerta/condición por definir,José Lara Arce,"(11, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.11.3.1.2,FORMACION-E1,Puerta/condición por definir,José Lara Arce,"(15, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.11.5.1.1,MARCHA-E1,Puerta/condición por definir,Ignacio Silva,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.2.1,H8,Puerta/condición por definir,Davor Serey,"(15, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.2.2,VERSION-E2,Puerta/condición por definir,Davor Serey,"(17, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.2.3,VERSION-E2,Puerta/condición por definir,Davor Serey,"(17, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.2.4,VERSION-E2,Puerta/condición por definir,Davor Serey,"(17, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.2.5,VERSION-E2,Puerta/condición por definir,Davor Serey,"(17, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.2.6,VERSION-E2,Puerta/condición por definir,José Lara Arce,"(17, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.2.7,VERSION-E2,Puerta/condición por definir,José Lara Arce,"(17, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.2.8,VERSION-E2,Puerta/condición por definir,Bruno Toro,"(17, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.2.9,VERSION-E2,Puerta/condición por definir,Davor Serey,"(17, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.10.2.2.10,ENSAYOS-E2,Puerta/condición por definir,Davor Serey,"(18, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.11.2.2.1,VERSION-E2,Puerta/condición por definir,José Lara Arce,"(17, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.11.2.2.2,VERSION-E2,Puerta/condición por definir,José Lara Arce,"(17, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.11.2.2.3,VERSION-E2,Puerta/condición por definir,José Lara Arce,"(17, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.11.2.2.4,VERSION-E2,Puerta/condición por definir,José Lara Arce,"(17, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.11.2.2.5,VERSION-E2,Puerta/condición por definir,José Lara Arce,"(17, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.11.3.2.2,FORMACION-E2,Puerta/condición por definir,José Lara Arce,"(20, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.11.5.2.1,MARCHA-E2,Puerta/condición por definir,Ignacio Silva,"(20, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.21,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(21, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.21,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(21, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.21,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(21, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.21,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(21, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.21,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(21, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.22,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(22, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.22,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(22, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.22,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(22, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.22,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(22, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.22,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(22, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.23,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(23, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.23,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(23, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.23,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(23, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.23,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(23, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.23,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(23, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.24,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(24, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.24,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(24, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.24,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(24, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.24,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(24, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.24,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(24, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.25,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(25, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.25,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(25, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.25,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(25, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.25,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(25, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.25,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(25, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.26,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(26, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.26,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(26, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.26,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(26, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.26,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(26, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.26,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(26, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.27,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(27, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.27,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(27, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.27,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(27, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.27,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(27, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.27,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(27, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.28,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(28, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.28,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(28, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.28,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(28, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.28,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(28, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.28,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(28, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.29,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(29, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.29,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(29, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.29,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(29, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.29,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(29, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.29,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(29, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.30,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(30, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.30,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(30, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.30,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(30, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.30,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(30, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.30,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(30, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.31,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(31, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.31,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(31, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.31,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(31, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.31,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(31, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.31,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(31, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.32,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(32, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.32,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(32, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.32,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(32, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.32,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(32, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.32,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(32, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.33,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(33, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.33,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(33, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.33,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(33, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.33,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(33, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.33,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(33, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.34,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(34, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.34,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(34, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.34,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(34, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.34,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(34, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.34,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(34, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.35,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(35, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.35,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(35, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.35,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(35, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.35,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(35, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.35,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(35, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.36,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(36, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.36,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(36, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.36,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(36, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.36,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(36, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.36,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(36, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.37,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(37, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.37,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(37, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.37,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(37, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.37,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(37, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.37,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(37, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.38,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(38, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.38,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(38, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.38,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(38, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.38,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(38, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.38,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(38, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.39,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(39, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.39,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(39, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.39,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(39, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.39,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(39, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.39,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(39, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.40,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(40, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.40,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(40, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.40,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(40, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.40,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(40, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.40,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(40, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.41,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(41, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.41,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(41, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.41,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(41, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.41,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(41, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.41,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(41, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.42,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(42, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.42,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(42, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.42,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(42, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.42,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(42, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.42,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(42, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.43,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(43, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.43,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(43, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.43,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(43, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.43,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(43, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.43,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(43, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.44,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(44, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.44,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(44, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.44,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(44, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.44,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(44, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.44,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(44, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.45,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(45, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.45,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(45, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.45,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(45, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.45,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(45, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.45,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(45, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.46,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(46, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.46,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(46, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.46,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(46, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.46,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(46, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.46,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(46, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.47,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(47, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.47,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(47, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.47,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(47, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.47,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(47, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.47,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(47, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.48,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(48, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.48,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(48, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.48,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(48, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.48,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(48, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.48,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(48, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.49,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(49, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.49,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(49, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.49,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(49, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.49,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(49, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.49,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(49, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.50,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(50, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.50,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(50, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.50,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(50, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.50,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(50, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.50,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(50, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.51,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(51, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.51,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(51, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.51,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(51, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.51,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(51, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.51,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(51, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.52,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(52, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.52,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(52, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.52,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(52, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.52,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(52, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.52,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(52, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.53,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(53, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.53,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(53, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.53,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(53, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.53,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(53, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.53,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(53, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.54,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(54, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.54,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(54, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.54,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(54, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.54,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(54, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.54,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(54, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.55,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(55, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.55,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(55, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.55,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(55, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.55,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(55, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.55,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(55, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.1.56,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(56, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.2.56,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(56, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.3.56,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(56, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.4.56,SERVICIO-ACTIVO,Puerta/condición por definir,Nikolai Navea,"(56, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.3.5.56,SERVICIO-ACTIVO,Puerta/condición por definir,Fernando Guerrero,"(56, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.4.1.6,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(26, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.4.1.7,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(26, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.4.2.6,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(32, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.4.2.7,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(32, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.4.3.6,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(38, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.4.3.7,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(38, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.4.4.6,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(44, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.4.4.7,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(44, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.4.5.6,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(50, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.4.5.7,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(50, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.4.6.6,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(56, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.4.6.7,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(56, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.5.1,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(32, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.5.2,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(44, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.5.3,SERVICIO-ACTIVO,Puerta/condición por definir,Bruno Toro,"(56, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.6.1,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(24, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.6.2,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(30, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.6.3,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(36, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.6.4,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(42, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.6.5,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(48, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.6.6,SERVICIO-ACTIVO,Puerta/condición por definir,José Lara Arce,"(54, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.8.1,PLAN-SALIDA,Puerta/condición por definir,Ignacio Silva,"(53, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.8.2,PLAN-SALIDA,Puerta/condición por definir,Nicolás Torfan,"(53, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.8.3,PLAN-SALIDA,Puerta/condición por definir,Fernando Guerrero,"(54, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.8.4,PLAN-SALIDA,Puerta/condición por definir,Bruno Toro,"(54, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.8.5,PLAN-SALIDA,Puerta/condición por definir,Ignacio Silva,"(54, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.9.53.1,PLAN-SALIDA,Puerta/condición por definir,José Lara Arce,"(53, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.9.53.2,PLAN-SALIDA,Puerta/condición por definir,José Lara Arce,"(53, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.9.54.1,PLAN-SALIDA,Puerta/condición por definir,José Lara Arce,"(54, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.9.54.2,PLAN-SALIDA,Puerta/condición por definir,José Lara Arce,"(54, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.9.55.1,PLAN-SALIDA,Puerta/condición por definir,José Lara Arce,"(55, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.9.55.2,PLAN-SALIDA,Puerta/condición por definir,José Lara Arce,"(55, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.9.56.1,PLAN-SALIDA,Puerta/condición por definir,José Lara Arce,"(56, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.12.9.56.2,PLAN-SALIDA,Puerta/condición por definir,José Lara Arce,"(56, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.1.1.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.1.1.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.1.1.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.1.2.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.1.2.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.1.2.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.1.3.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.1.3.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.1.3.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.1.4.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.1.4.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.1.4.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.2.1.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.2.1.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.2.1.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.2.2.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.2.2.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.2.2.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.2.3.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.2.3.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.2.3.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.3.1.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.3.1.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.3.1.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.3.2.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.3.2.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.3.2.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.3.3.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.3.3.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.4.3.3.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.1.1.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.1.1.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.1.1.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.1.2.1,BASE-E1,Puerta/condición por definir,Ulysses Barreto,"(13, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.1.2.2,H2,Puerta/condición por definir,Nikolai Navea,"(15, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.1.2.2,H8,Puerta/condición por definir,Nikolai Navea,"(15, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.1.3.1,BASE-E1,Puerta/condición por definir,Ulysses Barreto,"(13, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.1.3.2,H2,Puerta/condición por definir,Nikolai Navea,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.1.3.2,H8,Puerta/condición por definir,Nikolai Navea,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.1.4.1,BASE-E1,Puerta/condición por definir,Ulysses Barreto,"(13, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.1.4.2,H2,Puerta/condición por definir,Nikolai Navea,"(15, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.1.4.2,H8,Puerta/condición por definir,Nikolai Navea,"(15, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.1.5.1,BASE-E1,Puerta/condición por definir,Ulysses Barreto,"(13, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.1.5.2,H2,Puerta/condición por definir,Nikolai Navea,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.1.5.2,H8,Puerta/condición por definir,Nikolai Navea,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.2.1.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.2.1.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.2.1.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.2.2.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.2.2.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.2.2.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.3.1.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.3.1.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.3.1.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.3.2.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.3.2.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.3.2.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.3.3.1,BASE-E1,Puerta/condición por definir,Ulysses Barreto,"(13, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.3.3.2,H2,Puerta/condición por definir,Nikolai Navea,"(15, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.3.3.2,H8,Puerta/condición por definir,Nikolai Navea,"(15, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.3.4.1,BASE-E1,Puerta/condición por definir,Ulysses Barreto,"(13, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.3.4.2,H2,Puerta/condición por definir,Nikolai Navea,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.3.4.2,H8,Puerta/condición por definir,Nikolai Navea,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.3.5.1,BASE-E1,Puerta/condición por definir,Ulysses Barreto,"(13, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.3.5.2,H2,Puerta/condición por definir,Nikolai Navea,"(15, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.5.3.5.2,H8,Puerta/condición por definir,Nikolai Navea,"(15, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.1.1.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.1.1.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.1.1.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.1.2.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.1.2.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.1.2.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.1.3.1,H1,Puerta/condición por definir,Ulysses Barreto,"(3, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.1.3.2,H2,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.1.3.2,H3,Puerta/condición por definir,Nikolai Navea,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.1.4.1,BASE-E1,Puerta/condición por definir,Ulysses Barreto,"(13, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.1.4.2,H2,Puerta/condición por definir,Nikolai Navea,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.1.4.2,H8,Puerta/condición por definir,Nikolai Navea,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.2.1.1,BASE-E1,Puerta/condición por definir,Ulysses Barreto,"(13, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.2.1.2,H2,Puerta/condición por definir,Nikolai Navea,"(15, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.2.1.2,H8,Puerta/condición por definir,Nikolai Navea,"(15, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.2.2.1,BASE-E1,Puerta/condición por definir,Ulysses Barreto,"(13, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.2.2.2,H2,Puerta/condición por definir,Nikolai Navea,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.2.2.2,H8,Puerta/condición por definir,Nikolai Navea,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.2.3.1,BASE-E1,Puerta/condición por definir,Ulysses Barreto,"(13, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.2.3.2,H2,Puerta/condición por definir,Nikolai Navea,"(15, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.2.3.2,H8,Puerta/condición por definir,Nikolai Navea,"(15, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.2.4.1,BASE-E1,Puerta/condición por definir,Ulysses Barreto,"(13, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.2.4.2,H2,Puerta/condición por definir,Nikolai Navea,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.6.2.4.2,H8,Puerta/condición por definir,Nikolai Navea,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.2.1.1,H1,Puerta/condición por definir,Fernando Guerrero,"(3, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.2.1.3,H2,Puerta/condición por definir,Nicolás Torfan,"(5, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.2.3.1,H2,Puerta/condición por definir,Fernando Guerrero,"(4, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.2.3.1,EXT-RECINTO,Puerta/condición por definir,Fernando Guerrero,"(4, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.2.3.2,EXT-EQUIPOS,Puerta/condición por definir,José Lara Arce,"(5, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.2.3.3,EXT-RED,Puerta/condición por definir,Fernando Guerrero,"(5, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.2.3.4,EXT-LICENCIAS,Puerta/condición por definir,Bruno Toro,"(6, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.2.3.5,EXT-TELEMETRIA,Puerta/condición por definir,Fernando Guerrero,"(6, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.3.1.2,EXT-IDENTIDAD,Puerta/condición por definir,Bruno Toro,"(5, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.3.1.3,H1,Puerta/condición por definir,Bruno Toro,"(4, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.3.2.2,EXT-IDENTIDAD,Puerta/condición por definir,Bruno Toro,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.3.3.2,H2,Puerta/condición por definir,Bruno Toro,"(9, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.3.4.1,H1,Puerta/condición por definir,Bruno Toro,"(4, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.3.4.2,EXT-LICENCIAS,Puerta/condición por definir,Bruno Toro,"(6, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.3.4.3,H2,Puerta/condición por definir,Bruno Toro,"(6, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.7.1.1,H2,Puerta/condición por definir,Fernando Guerrero,"(4, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.7.2.2,H2,Puerta/condición por definir,Nicolás Torfan,"(9, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.7.2.3,H2,Puerta/condición por definir,Fernando Guerrero,"(8, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.7.4.2,EXT-IDENTIDAD,Puerta/condición por definir,Fernando Guerrero,"(9, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.7.4.3,BASE-ADM,Puerta/condición por definir,Fernando Guerrero,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.7.4.3,EXT-CONTABLE,Puerta/condición por definir,Fernando Guerrero,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.7.4.4,BASE-ADM,Puerta/condición por definir,Fernando Guerrero,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.7.4.4,EXT-PAGOS,Puerta/condición por definir,Fernando Guerrero,"(15, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.9.1.1.1,BASE-CTR,Puerta/condición por definir,Fernando Guerrero,"(14, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.9.2.1.1,BASE-VAR,Puerta/condición por definir,Ulysses Barreto,"(14, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.9.2.5.5.3.1,IN2.5.4.*,Familia variable por instanciar,Davor Serey,Mes estacional por fijar,Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.9.2.5.5.3.2,IN2.5.4.*,Familia variable por instanciar,Davor Serey,Mes estacional por fijar,Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.9.2.5.5.4.1,IN2.5.4.*,Familia variable por instanciar,Davor Serey,Mes estacional por fijar,Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.9.2.5.5.4.2,IN2.5.4.*,Familia variable por instanciar,Davor Serey,Mes estacional por fijar,Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.9.2.5.5.5.1,IN2.5.4.*,Familia variable por instanciar,Davor Serey,Mes estacional por fijar,Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.9.2.5.5.5.2,IN2.5.4.*,Familia variable por instanciar,Davor Serey,Mes estacional por fijar,Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.9.2.5.6,IN2.5.4.*,Familia variable por instanciar,Davor Serey,Mes estacional por fijar,Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.9.3.1.1,BASE-NAV,Puerta/condición por definir,Nicolás Torfan,"(14, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.9.4.1.1,BASE-VAR,Puerta/condición por definir,Ulysses Barreto,"(2, 2)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad
+1.9.5.1.1,BASE-AMB,Puerta/condición por definir,Ulysses Barreto,"(14, 1)",Recepción de la condición o de los paquetes variables aplicables antes de liberar la actividad

@@ -1,0 +1,26 @@
+\subsection{Red global, ruta crítica y holguras}
+La red seleccionada contiene 2279 nodos y 5075 enlaces. Las asignaciones incluyen los lotes UCP, habilitaciones, ventanas, reservas y actos de recepción requeridos. Los cuadrantes conservan fechas naturales exactas; los índices hábiles son controles de precedencia y no convierten turnos nocturnos o fines de semana en ingeniería diurna.
+Con duración $d_i$ y liberación $r_i$, $IT_i=\max(r_i,\max FT_j)$ y $FT_i=IT_i+d_i$. En retroceso, $FL_i=\min IL_s$ y $IL_i=FL_i-d_i$; $HT_i=IL_i-IT_i$ y $HL_i=\min IT_s-FT_i$. El CPM de precedencias y la asignación con capacidad son cálculos distintos. Las holguras de \path{componentes/cpm_implementacion.csv} se refieren al cierre calculado de implementación, mientras la tabla muestra el margen hacia cada obligación contractual.
+El CPM hacia el cierre calculado de implementación contiene cuatro ramas críticas simultáneas: observación e informe de IN1, IN3, IN4 e IN5. Convergen en \texttt{PILOTOS-REV} y \texttt{PILOTOS-SUB}; el tramo común continúa por \texttt{1.9.1.6.1}, \texttt{1.9.4.4.1}, H12 y \texttt{FIN-IMPLEMENTACION}. La Tabla~\ref{tab:t15-ramas-cpm} identifica los nodos con holgura cero. Esas holguras se refieren al cierre calculado de esta red; no constituyen autorización para desplazar los hitos intermedios ni el acta/corte E2. El corte E2 tiene además una puerta rígida: cierre natural de observación, acta expresa de marcha blanca y habilitación lógica al inicio de 21, sin holgura. La aceptación final H12 conserva su ventana dentro del mes 21; el acta de marcha blanca es requisito previo del corte y no se sustituye por el acta posterior de cierre del proyecto.
+\begingroup\small\begin{longtable}{L{25mm}L{26mm}L{26mm}R{26mm}}
+\caption{Programación seleccionada y márgenes}\label{tab:sd7-hitos-globales}\\\hline
+Hito/puerta & Programado & Límite & Margen hábil\\\hline\endfirsthead
+\hline Hito/puerta & Programado & Límite & Margen hábil\\\hline\endhead
+H1 & 2027-01-20 & 2027-01-29 & 7,67\\\hline
+H2 & 2027-03-01 & 2027-03-31 & 21,44\\\hline
+H3 & 2027-05-27 & 2027-05-31 & 2,33\\\hline
+H4 & 2027-09-23 & 2027-09-30 & 5,22\\\hline
+H5 & 2027-11-08 & 2027-11-30 & 16,01\\\hline
+H6 & 2027-12-01 & 2027-12-31 & 22\\\hline
+H7 & 2028-03-29 & 2028-03-31 & 2,44\\\hline
+H8 & 2028-01-17 & 2028-01-31 & 10,78\\\hline
+H9 & 2028-04-18 & 2028-04-28 & 8,22\\\hline
+H10 & 2028-05-11 & 2028-05-31 & 14,67\\\hline
+H11 & 2028-06-01 & 2028-06-30 & 20\\\hline
+ACTA-MB-E2 & 2028-08-01 & 2028-08-01 & 0\\\hline
+H12 & 2028-08-16 & 2028-08-31 & 11,67\\\hline
+CORTE-E1 & 2028-03-30 & 2028-03-31 & 1,44\\\hline
+CORTE-E2 & 2028-08-01 & 2028-08-01 & 0\\\hline
+\end{longtable}\endgroup
+La revisión continua es el procedimiento seleccionado para el acta de marcha blanca E2: el calendario demuestra capacidad propia y precedencias bajo el supuesto adoptado de participación de la Contraparte en la revisión continua y firma expresa al cierre de la evidencia. La selección de la línea base queda cerrada bajo ese supuesto; el acto futuro sigue siendo una puerta obligatoria y no se presume obtenido. Una revisión íntegra posterior al cierre natural produce atraso y se conserva como contraste, sin cambiar la fecha ofrecida. Las reservas de diez días marinos se imputan una sola vez antes de habilitar cada marcha blanca; no son holgura del corte ni presupuesto automático de retrabajo.\parencite[arts.~17--18]{bases-admin}
+\input{componentes/rutas_criticas_t15.tex}

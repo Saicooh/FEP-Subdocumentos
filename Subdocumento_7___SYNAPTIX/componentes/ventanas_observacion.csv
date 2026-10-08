@@ -1,0 +1,8 @@
+﻿Id,Paquetes,Inicio,Fin,Regla
+OBS-IN1-BASE,1.9.1.5.2/3,2028-06-01,2028-06-28,Solicitudes días 1--21; seguimiento siete días; cierre día 28
+OBS-IN1-PILOTO,1.9.1.5.4/5,2028-07-01,2028-07-28,Misma ventana y cohorte comparable; incluye solicitudes sin respuesta
+OBS-IN4-BASE,1.9.4.3.1.*,2028-06-01,2028-06-28,Tiempo activo de las solicitudes de IN1; universos e indicadores separados
+OBS-IN4-PILOTO,1.9.4.3.2.*,2028-07-01,2028-07-28,"Misma cohorte IN1, con evidencia de atribución y exclusiones"
+OBS-IN5-BASE,1.9.5.3.2.*,2028-06-01,2028-06-28,28 días naturales de consumo normalizado y permanencia
+OBS-IN5-ACCION,1.9.5.3.1 y evidencia de acción,2028-06-29,2028-06-30,Acción documentada entre las ventanas; habilitación y acceso permitidos
+OBS-IN5-EVALUACION,1.9.5.3.3.*,2028-07-01,2028-07-28,28 días naturales comparables; cobertura válida y faltantes explícitos

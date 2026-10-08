@@ -1,0 +1,17 @@
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
+\input{componentes/cierre.tex}
+\graphicspath{{figuras/}}
+
+\begin{document}
+\setcounter{chapter}{7}
+\PortadaPropuesta{8}{Introducción a los Riesgos}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\tableofcontents
+\clearpage
+\input{capitulo08.tex}
+\CierreSubdocumento
+\end{document}

@@ -1,0 +1,31 @@
+\subsection{Puertas de versión y secuencia de recepción}
+La disponibilidad de una versión para migración se distingue de la certificación de la solución completa. Se establecen las puertas VM-E1 y VM-E2 para los ensayos de datos; VS-E1 y VS-E2 para pruebas integrales; y las recepciones H5/H10 y H7/H12 para certificación y producción. Esta separación precisa el alcance de cada evidencia y no reduce los dos ensayos completos exigidos por RT-05.13 ni sustituye la aceptación contractual \parencite[RT-05.13]{bases-transversales}\parencite[art.~18; Formulario~E-25]{bases-admin}.
+
+\begin{longtable}{L{21mm}L{23mm}L{107mm}}
+\caption{Puertas de disponibilidad y dependencias}\label{tab:sd7-puertas-version}\\\hline
+Puerta & Objetivo relativo & Condición de liberación\\\hline\endfirsthead
+\hline Puerta & Objetivo relativo & Condición de liberación\\\hline\endhead
+VM-E1 & Antes del primer ensayo en 10 & PREPROD recibido; modelos y contratos de todo el universo a migrar E1; cargadores, archivo, delta y retorno; conciliación reproducible y mecanismos funcionales de verificación de datos. La programación actual ocupa hasta el cierre de 9 y debe anticiparse para absorber incertidumbre.\\\hline
+VM-E2 & Antes del primer ensayo en 16 & Modelos y contratos del universo E2, incluidas extensiones de innovaciones que afecten sus datos; transformaciones y conciliación; retorno compatible con E1 en producción. No basta con una entrega parcial de lógica en 15.\\\hline
+VS-E1 & Antes de QA y pruebas integrales E1 & Núcleos E1, servicios comunes, canales e interfaces integrados y versionados; protocolo integral, datos y recursos de prueba disponibles. Su liberación se acredita por sus paquetes terminados, sin usar VM-E1 como sustituto.\\\hline
+VS-E2 & Antes de QA y pruebas integrales E2 & Núcleos E2, adaptador contable, canales y funcionalidades de innovación aplicables a certificación integrados. Vistas previstas en 16 e interfaces de innovación en 17 impiden presumir esta puerta al cierre de 15.\\\hline
+H5/H10 & Meses 12/18 & Pruebas integrales y UAT recibidas sobre versión identificada, ensayos completos válidos, observaciones subsanadas y revisión contractual concluida. Las pruebas propias de innovación de 18 requieren integración y revisión dentro de H10.\\\hline
+H7/H12 & Meses 16/21 & Marcha blanca concluida conforme a las bases, capacitación y presencia disponibles, corte autorizado fuera de congelamientos, conciliación y reversión válidas para la versión que se activa.\\\hline
+\end{longtable}
+\FuenteTabla{Puertas internas de Synaptix; hitos obligatorios de Bases Administrativas E-25 y controles de migración de Bases Técnicas Transversales.}
+
+Las dependencias \texttt{VERSION-E1} y \texttt{VERSION-E2} de los registros de pruebas y capacitación corresponden a VS-E1 y VS-E2, respectivamente. Los nodos E y L de la subred CPM corresponden a VM-E1 y VM-E2. Arquitectura/Integración registrará para cada puerta el manifiesto de componentes, esquemas, contratos, configuración y versiones. Datos firmará la correspondencia entre universo, transformación y conciliación; Calidad registrará qué pruebas cubren ese manifiesto. El responsable de Proyecto comprobará fechas de entrega, revisión y subsanación. Se incorpora al seguimiento de los paquetes existentes; cualquier trabajo adicional se estimará y asignará sin presumir que está cubierto por la reserva.
+
+\paragraph{Tratamiento de cambios posteriores al ensayo.}
+Toda modificación de esquema, interpretación de campos, autoridad, interfaz de escritura, conciliación o retorno obliga a analizar su impacto en los ensayos. Si invalida sus resultados, se repetirá el ensayo completo afectado sobre la nueva versión y se conservarán al menos dos ensayos completos válidos antes de la migración definitiva. Un cambio de vista sin impacto demostrado en esos elementos puede conservar el ensayo de datos, pero requiere su prueba funcional y regresión. Calidad documentará la decisión; no se presume compatibilidad por el nombre del componente. No se acortan las revisiones de diez días hábiles ni se desplaza la migración a una ventana protegida para absorber la repetición.
+
+\paragraph{Orden de pruebas sobre ambientes independientes.}
+Carga/estrés, continuidad desconectada, resiliencia y conmutación real no se ejecutarán simultáneamente sobre el mismo ambiente si una altera la condición de otra. Arquitectura reservará instancias aisladas o las programará en secuencia, con restauración de línea base entre pruebas. La prueba ofensiva y sus correcciones preceden a la regresión final y a UAT. UAT recibe los resultados de las demás pruebas y ensayos, sin validarse con una versión distinta ni tratar la disponibilidad de refuerzos como disponibilidad automática del ambiente o de la contraparte.
+
+La secuencia corregida conserva 25 enlaces resueltos entre paquetes de una misma quincena y los ordena mediante tiempos de ejecución directa. Las dependencias externas y las puertas simbólicas conservan responsable, fecha requerida y evidencia; no se eliminan de la ruta por carecer todavía de un código de actividad.
+
+El registro \path{dependencias_paquetes.csv} identifica 453 enlaces resueltos entre los 813 paquetes fijos: 400 unen quincenas anteriores, 25 comparten quincena y 28 dependen de meses estacionales pendientes. No hay ciclos en este conjunto resuelto; esto no acredita la red completa mientras falten sus condiciones. \path{condiciones_programacion.csv} conserva 377 referencias a condiciones sin actividad instanciada, con responsable de paquete y fecha requerida; siete corresponden a la familia variable \texttt{IN2.5.4.*}. Esas revisiones previas a botaduras se materializarán por lotes y se enlazarán sólo con sus embarcaciones y períodos aplicables; no se exige esperar a botaduras futuras para cerrar un registro anterior. Su esfuerzo se conserva mediante la fórmula de T-14 y se agregará a T-15 antes de programarlas.
+
+\input{componentes/secuencia_recursos.tex}
+
+\input{componentes/observacion_recepcion.tex}

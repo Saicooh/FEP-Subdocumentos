@@ -1,0 +1,12 @@
+﻿Paquete,Mes,Quincena,Duracion_minima_dias,Inicio_temprano,Fin_temprano,Fin_quincena,Exceso_minimo_dias,Estado
+1.7.4.1,9,1,4.8,166.4,171.2,170,1.2,"Diagnóstico del reparto anterior, sustituido por secuencia_fija_recursos.csv"
+1.7.3.1,8,1,5.2,146.4,151.6,150,1.6,"Diagnóstico del reparto anterior, sustituido por secuencia_fija_recursos.csv"
+1.6.1.2.2,8,1,9.2,147.2,156.4,150,6.4,"Diagnóstico del reparto anterior, sustituido por secuencia_fija_recursos.csv"
+1.5.3.2.2,8,1,9.6,147.2,156.8,150,6.8,"Diagnóstico del reparto anterior, sustituido por secuencia_fija_recursos.csv"
+1.5.2.2.2,8,1,9.6,147.2,156.8,150,6.8,"Diagnóstico del reparto anterior, sustituido por secuencia_fija_recursos.csv"
+1.5.1.1.2,8,1,9.2,147.2,156.4,150,6.4,"Diagnóstico del reparto anterior, sustituido por secuencia_fija_recursos.csv"
+1.4.3.2.2,8,1,8.8,147.2,156.0,150,6.0,"Diagnóstico del reparto anterior, sustituido por secuencia_fija_recursos.csv"
+1.4.2.3.2,8,1,8.4,147.2,155.6,150,5.6,"Diagnóstico del reparto anterior, sustituido por secuencia_fija_recursos.csv"
+1.4.2.1.2,8,1,8.0,147.2,155.2,150,5.2,"Diagnóstico del reparto anterior, sustituido por secuencia_fija_recursos.csv"
+1.4.1.3.2,8,1,7.6,147.2,154.8,150,4.8,"Diagnóstico del reparto anterior, sustituido por secuencia_fija_recursos.csv"
+1.4.1.1.2,8,1,7.2,147.2,154.4,150,4.4,"Diagnóstico del reparto anterior, sustituido por secuencia_fija_recursos.csv"

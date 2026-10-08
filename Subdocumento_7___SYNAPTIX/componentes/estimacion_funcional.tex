@@ -1,0 +1,37 @@
+\subsection{Contraste funcional independiente de los núcleos}
+El modelo de estimación delimita los treinta componentes de los núcleos Operacional, Servicios y Administrativo. Un caso representa un objetivo observable del actor; las transacciones son intercambios completos de solicitud y respuesta. Las validaciones internas, clics y sentencias de persistencia no reciben puntos propios. Salida y regreso, preparación y participación de clase, consulta de salud y retorno, espera y cambio contractual se cuentan por objetivos distintos. Las alternativas de rechazo, duplicación o desconexión pertenecen al mismo objetivo. El modelo conserva actor, flujo, fuente y correspondencia con los noventa paquetes iniciales en \path{componentes/ucp_casos_nucleos.csv}.
+
+La frontera incluye reglas y vistas propias de 1.4--1.6. Excluye construcción de identidad, canales, adaptadores y sincronización comunes, infraestructura, migración histórica, pilotos, formación y operación; estas partidas conservan su imputación ascendente. Los sistemas contables y dispositivos quedan fuera de la frontera de este conteo: sus adaptadores se estiman en 1.7. Los roles humanos se cuentan una sola vez aunque utilicen varios canales. El modelo es una descomposición de diseño de la oferta, no un levantamiento validado ni productividad observada.
+
+Se aplica el método de puntos de casos de uso: actores simples/medios/complejos con pesos 1/2/3; casos con hasta tres, cuatro a siete y más de siete transacciones con pesos 5/10/15. $UUCP=UAW+UUCW$, $TCF=0,6+0,01\sum w_iT_i$ y $EF=1,4-0,03\sum w_iE_i$. Los trece factores técnicos y ocho de ambiente tienen valoración y justificación individual en \path{componentes/ucp_factores_nucleos.csv}. Las capacidades de ambiente son condiciones de provisión propuestas; no acreditan experiencia de personas ni contratos ya ejecutados.
+
+El conteo contiene 34 casos y 12 roles complejos: $UAW=36$, $UUCW=180$ y $UUCP=216$. Se obtiene $TCF=1,165$, $EF=1,01$ y $UCP=254,16$. Con 1 factor de ambiente desfavorable se usa $CF=20$ HH/punto como referencia no calibrada.
+
+Se declara la interpretación de esfuerzo de programación: $E_P=UCP\,CF$, y el esfuerzo total de referencia es $E_T=E_P/0,40$. La distribución de referencia es análisis 10\,\%, diseño 20\,\%, programación 40\,\%, pruebas 15\,\% y sobrecarga 15\,\%. Es una comparación independiente; no se agrega ese total al de la EDT ni se vuelven a sumar gestión y pruebas ya imputadas. Para evitar duplicar actores entre etapas, su peso se distribuye proporcionalmente al peso funcional de E1 y E2; los dos subtotales conservan exactamente el conteo global.
+
+\begin{tabularx}{\linewidth}{Y R{29mm} R{29mm}}\hline
+Magnitud & EDT directa & Referencia UCP\\\hline
+Programación/Desarrollo de los núcleos & 2.400 HH & 5.083,13 HH\\\hline
+Esfuerzo de los noventa paquetes / total de referencia & 4.200 HH & 12.707,82 HH\\\hline
+\end{tabularx}\par\smallskip
+El contraste de programación alcanza 2,12 veces las HH de Desarrollo iniciales. La comparación de totales requiere además imputar análisis, diseño, pruebas y gobierno compartidos del mismo alcance; no se atribuye toda esa diferencia a subestimación porque la EDT directa excluye trabajos comunes. Aun así, la diferencia de programación no queda explicada por la mera existencia de bibliotecas reutilizables: no se dispone de un factor de productividad medido que permita reducir $CF$ hasta coincidir con la EDT.
+
+La sensibilidad deteriora E1 y E3 de 3 a 2 y E7 de 3 a 4, manteniendo las restantes valoraciones. Con cuatro factores desfavorables, $EF=1,115$ y $CF=28$, la programación asciende a 7.856,20 HH y el total de referencia a 19.640,50 HH. Los registros de contraste por etapa y sensibilidad permiten reproducir estos resultados.
+
+\paragraph{Modelo de interacción y regla de conteo.} El conteo se basa en el modelo de interacción propuesto para la oferta. Cada transacción identifica una entrada del actor y la respuesta que devuelve el sistema antes de esperar otro estímulo. Validar permisos, comprobar restricciones, calcular resultados y persistir datos son procesamiento de esa respuesta, salvo que se identifique otra entrada independiente. Una confirmación sólo se cuenta cuando el flujo requiere una decisión posterior del actor; no se añade una petición de validación para elevar el peso. El detalle de los 34 objetivos se conserva en \path{componentes/ucp_transacciones_nucleos.csv} y en la tabla siguiente. Son decisiones de diseño propuestas, sujetas a validación con los usuarios, no interacciones ya observadas. Los rechazos dentro de una respuesta no reciben puntos adicionales; las resoluciones que exigen otra entrada están identificadas en el flujo.
+\input{componentes/ucp_transacciones_nucleos.tex}
+
+\paragraph{Esfuerzo seleccionado y conciliación.} Synaptix adopta la referencia UCP sin reducir el factor de conversión por reutilización no medida: 7.766 HH en E1 y 4.942 HH en E2, 12.708 HH en total. El redondeo por etapa deja la programación en 3.107 y 1.977 HH, respectivamente, por encima de los 3.106,36 y 1.976,77 HH de referencia. Las 4.200 HH originales se acreditan una sola vez y se añaden 8.508 HH en 216 paquetes de 8--80 HH, identificados en \path{componentes/paquetes_conciliacion_ucp.csv}. Cada lote tiene resultado, responsable y aceptación; sus precedencias completan especificación/diseño, construcción, verificación y documentación antes del manifiesto de versión.
+
+La imputación por componente es proporcional a su peso funcional; el peso de los actores conserva el reparto E1/E2 del modelo. Análisis acredita las HH Funcional existentes; diseño acredita Datos, Integración y Seguridad propios del núcleo; programación acredita Desarrollo; pruebas acredita Calidad; sobrecarga cubre coordinación y documentación propias del componente. La matriz \path{componentes/conciliacion_ucp_actividades.csv} concilia exactamente el esfuerzo seleccionado. La seguridad compartida, los canales, adaptadores, migración, UAT integral, formación y operación permanecen fuera de esta frontera; las comprobaciones del núcleo no se presupuestan otra vez como UAT integral.
+
+\begin{tabularx}{\linewidth}{Y R{21mm}R{21mm}R{22mm}}\hline
+Actividad & E1 HH & E2 HH & Total HH\\\hline
+Análisis & 777 & 494 & 1.271\\\hline
+Diseño & 1.553 & 988 & 2.541\\\hline
+Programación & 3.107 & 1.977 & 5.084\\\hline
+Pruebas & 1.165 & 741 & 1.906\\\hline
+Sobrecarga & 1.164 & 742 & 1.906\\\hline
+Total & 7.766 & 4.942 & 12.708\\\hline
+\end{tabularx}\par\smallskip
+La decisión fija el esfuerzo de diseño de la oferta y sus recursos recalculados; no acredita productividad histórica ni aprobación humana o contractual. La sensibilidad de 19.640,50 HH es un escenario de deterioro, separado del esfuerzo seleccionado: si cambian los factores de provisión, Proyecto recalculará esfuerzo, perfiles y calendario antes de comprometer los puestos afectados. El modelo delimita los núcleos, y no se presenta como conteo UCP de todo el software de las cuentas 1.3, 1.7 y 1.9.

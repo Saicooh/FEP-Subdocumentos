@@ -1,0 +1,27 @@
+\subsection{Precedencias y condiciones de disponibilidad}
+La red relaciona los paquetes de migración con la recepción previa a cada corte. H2 debe aprobar arquitectura, seguridad y modelo en el mes 4; H3 habilita DEV, QA, PREPROD, PROD y DR al cierre del 6, incorporando la condición RT-04.01. El saneamiento se programa en el 7, los cargadores en el 8 y el archivo, delta y retorno en el 9. Archivo y retorno avanzan en paralelo después de los cargadores, compartiendo las 96 horas de Datos del mes 9 ya contabilizadas en T-15. Las versiones de migración VM-E1 y VM-E2 se requieren al cierre del 9 y del 15, respectivamente, como objetivos internos por demostrar. Incluyen todos los modelos, contratos, interfaces y mecanismos funcionales necesarios para verificar el universo migrado. Las versiones de sistema VS-E1 y VS-E2 tienen sus propias dependencias; las vistas E2 previstas en 16 y las innovaciones construidas hasta 17 impiden presentar VM-E2 como solución completa disponible en 15. El ensayo de datos no reemplaza UAT, carga, resiliencia ni seguridad ofensiva de la solución completa \parencite[Formulario~E-25; art.~18]{bases-admin}\parencite[RT-04.01]{bases-transversales}.
+
+Los enlaces son fin a inicio. La secuencia E1 es $A\to B\to\{C,D\}\to E\to F\to G\to H\to I\to J\to K$; E2 es $L\to M\to N\to O\to P\to Q\to R$. Cada ensayo agrupa sus cinco paquetes y entrega un expediente; la revisión corresponde a la contraparte y la subsanación a Synaptix. Las esperas y reservas de corrección son actividades temporales, no paquetes con nuevas horas implícitas. La disponibilidad inicial de A depende de H3; E y L representan la liberación de VM-E1 y VM-E2 con manifiesto y evidencia; su fecha mínima no acredita que sus dependencias estén terminadas. Un cambio que invalide un ensayo exige repetirlo antes de aceptar el corte.
+
+\subsection{Cálculo CPM y holguras de la subred}
+Se usa una escala de veinte días hábiles por mes únicamente para comparar precedencias: el origen es cero, el cierre del mes 6 es el día 120, el del 12 es 240 y el del 18 es 360. El calendario contractual sustituirá esta escala con feriados, ausencias y ventanas de intervención. Las duraciones de veinte días para construcción agrupan paquetes con recursos compartidos; cada ensayo ocupa diez días, coherentes con las 60 horas de Calidad y dedicación suficiente de los demás perfiles. T-15 deberá comprobar esa disponibilidad junto a las pruebas generales.
+
+Con duración $d_i$ y fecha mínima de disponibilidad $r_i$, se calcula:
+\[
+ IT_i=\max\left(r_i,\max_{j\in\mathrm{Pred}(i)}FT_j\right),\qquad FT_i=IT_i+d_i.
+\]
+El recorrido hacia atrás usa los cierres 240 para K y 360 para R: $FL_i=\min IL_j$ entre sucesoras, $IL_i=FL_i-d_i$, $HT_i=IL_i-IT_i$ y $HL_i=\min IT_j-FT_i$. Las liberaciones son 120 para A, 180 para E y 300 para L; las demás actividades dependen de sus predecesoras.
+
+\input{componentes/red_cpm_tabla.tex}
+
+Las dos ramas $A\to B\to C\to E\to F\to G\to H\to I\to J\to K$ y $A\to B\to D\to E\to F\to G\to H\to I\to J\to K$ tienen 120 días desde H3. La cadena E2 tiene 60 desde la disponibilidad VM-E2 del nodo L. Ambas terminan en su límite y tienen holgura cero. Son rutas críticas de esta subred, condicionadas por las entregas internas; la ruta crítica del contrato se determinará al integrar todas las cuentas de la EDT, recursos y ventanas. No se identifica la barra contractual de 56 meses como resultado del cálculo CPM.
+
+\subsection{Tres valores, incertidumbre y reserva}
+Synaptix adopta como estimación inicial $(t_O,t_M,t_P)=(20,20,32)$ días para cada grupo de construcción y $(10,10,16)$ para cada ensayo. El optimista conserva el mínimo de la asignación prevista; el pesimista representa dificultades de calidad del origen, conciliación o retorno. Son supuestos de diseño que se contrastarán con el diagnóstico y los primeros resultados, sin atribuirlos a mediciones ejecutadas. Revisión y subsanación se modelan como ventanas fijas $(10,10,10)$: no se aplica PERT para reducir los plazos del artículo 18 ni se supone resuelta una observación por consumir su reserva.
+
+\[
+ t_E=\frac{t_O+4t_M+t_P}{6},\qquad \sigma^2=\left(\frac{t_P-t_O}{6}\right)^2.
+\]
+La construcción tiene $t_E=22$ días y varianza 4; el ensayo, $t_E=11$ y varianza 1. Sustituir duraciones por esos valores en el recorrido produce cierre E1 en el día 248 y E2 en el 362: ocho y dos días después de sus límites respectivos. No se suman las varianzas de C y D como si fueran actividades sucesivas, ni se atribuye una probabilidad de cumplimiento sin analizar sus dependencias.
+
+El escenario más probable cabe, pero carece de holgura para esa incertidumbre. La reserva marina de diez días tampoco cabe automáticamente en estas cadenas. Antes de fijar la línea base, Synaptix deberá demostrar mediante la programación completa una anticipación adicional de al menos ocho días en E1 y dos en E2 para este escenario esperado, y cuantificar aparte marejada, repeticiones, revisión documental y correcciones. La anticipación no se obtendrá acortando la revisión contractual ni trasladando H5 o H10. El tiempo de revisión de otros entregables se incorporará en sus propias cadenas, sin considerar que estos ciclos reciben también la solución completa.

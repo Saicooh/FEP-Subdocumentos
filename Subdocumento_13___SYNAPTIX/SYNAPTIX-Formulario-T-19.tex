@@ -2,6 +2,10 @@
 \input{config/metadatos.tex}
 \usepackage{estilo/propuesta-tecnica}
 \input{componentes/portada.tex}
+\input{componentes/cierre.tex}
+\renewcommand{\DeclaracionesIA}{%
+\FilaDeclaracionIA{T-19, concordancia con SD7/SD13, 2026-10-07}{OpenAI Codex}{Reconciliación de calendarios, línea base y pilotos, invernada y correspondencia de EDT; preservación de nombres, cinco fichas y sus campos obligatorios.}{Medio}{Ninguno}{José Lara: responsable del control humano técnico y editorial previo a emisión; revisión pendiente. Alcance: fechas, códigos, fuentes, indicadores, coherencia con SD7/SD13 y PDF.}}
+
 
 \newcommand{\CampoFicha}[2]{#1 & #2 \\ \hline}
 \newcommand{\FichaInnovacion}[3]{%
@@ -91,9 +95,9 @@ Desglose en la tabla 13.1 del SD13 y correspondencia con SD7/T-15.
 }
 
 \CampoFicha{Mes de materialización}{%
-Mes 21, después de la aceptación. Diseño: 14--15; desarrollo
-e integración: 16--17; pruebas: 18; línea base y capacitación:
-19; piloto y evaluación: 20. Operación durante los meses 21--56.
+Mes 21, después de la aceptación. Diseño: 13--14; desarrollo
+e integración: 14--15; pruebas: 16; línea base y capacitación:
+18; piloto: 19; consolidación y revisión: 20. Operación durante los meses 21--56.
 }
 
 \CampoFicha{Inversión requerida}{%
@@ -123,14 +127,14 @@ El beneficio no se duplicará con la innovación 4.
 \CampoFicha{Indicador, línea base y meta}{%
 Mediana de horas entre envío y primera respuesta explícita del
 contratista, sea aceptación o rechazo. Base: solicitudes
-comparables del mes 19. Meta propuesta: reducción del 20\,\%
-en el mes 20, sin disminuir la proporción respondida en siete
+comparables del mes 18. Meta propuesta: reducción del 20\,\%
+en el mes 19, sin disminuir la proporción respondida en siete
 días. Indicador complementario: 100\,\% de transiciones con
 estado anterior y nuevo, fecha y responsable.
 }
 
 \CampoFicha{Momento de medición}{%
-Línea base en el mes 19 y piloto en el mes 20. Se incluirán
+Línea base en el mes 18 y piloto en el mes 19. Se incluirán
 solicitudes ingresadas durante los primeros 21 días de cada
 mes, observadas por siete días, con un mínimo operativo de
 30 solicitudes por condición. Se informarán casos sin respuesta,
@@ -164,7 +168,7 @@ R-IN1-02: reforzar la convocatoria con menos de 15 solicitudes
 a mitad del piloto; si al cierre no se alcanzan 30, informar
 beneficio no demostrado y proponer ampliar la observación.
 R-IN1-03: postergar el piloto afectado y mantener la solución
-base si falla una interfaz crítica al cierre del mes 18.
+base si falla una interfaz crítica al cierre del mes 16.
 R-IN1-04: suspender la función ante acceso indebido confirmado,
 preservar evidencia y corregir y repetir pruebas antes de
 reactivarla. Los ajustes de calendario se tramitarán mediante
@@ -182,13 +186,13 @@ control de cambios.
   \CampoFicha{Madurez y escala}{TRL 2 preliminar aplicado al proceso integrado para esta marina; no existe evidencia de un ciclo implantado en el caso \parencite{nasa-trl}.}
   \CampoFicha{Fuentes APA 7}{Caso 07: cifras, calendario y restricciones; UNE-EN 13306:2018: terminología de mantenimiento \parencite{une13306}; NASA: escala TRL \parencite{nasa-trl}.}
   \CampoFicha{Inserción en arquitectura}{VAR aporta posición y secuencia de la explanada; CTR, acreditación de empresas; AUT, ficha y aceptación; ALE, avisos; ADM, catálogo configurable. Integración con la innovación 1. Interfaces por conciliar con SD4.}
-  \CampoFicha{Paquetes de la EDT}{IN2.1 diseño, meses 14--15; IN2.2 ficha y propuestas, 16--17; IN2.3 calendario e integración, 17--18; IN2.4 pruebas y aceptación técnica, 19--20; IN2.5 piloto y evaluación, de \(M_{\mathrm{inv}}\) a \(M_{\mathrm{inv}}+5\); IN2.6 transferencia, \(M_{\mathrm{inv}}+5\); IN2.7 operación incremental, de \(M_{\mathrm{inv}}\) a 56. Paquetes terminales en la tabla 13.3 del SD13; correspondencia de códigos y cargas por conciliar en SD7/T-15.}
-  \CampoFicha{Mes de materialización}{\(M_{\mathrm{inv}}\) será el primer junio disponible con IN1 y las interfaces aceptadas, no anterior al mes 21. Piloto en junio--agosto, de \(M_{\mathrm{inv}}\) a \(M_{\mathrm{inv}}+2\); evaluación de botaduras y transferencia hasta \(M_{\mathrm{inv}}+5\). Ciclo completo desde abril--mayo siguiente, \(M_{\mathrm{inv}}+10\), si el plazo permite completar la evaluación. SD7 fijará el número contractual a partir de la fecha de inicio y las restricciones del varadero.}
+  \CampoFicha{Paquetes de la EDT}{IN2.1 diseño, meses 13--14; IN2.2 ficha y propuestas, 14--15; IN2.3 calendario e integración, 15--16; IN2.4 pruebas y aceptación técnica, 16--17; IN2.5 inscripción, piloto y evaluación, 30--37; IN2.6 transferencia, 37; IN2.7 operación incremental, de \(M_{\mathrm{inv}}\) a 56. Paquetes terminales en la tabla 13.3 del SD13; correspondencia de códigos y cargas enlazados al catálogo integrado SD7/T-15.}
+  \CampoFicha{Mes de materialización}{\(M_{\mathrm{inv}}\) será el primer junio disponible con IN1 y las interfaces aceptadas, no anterior al mes 21. Piloto en junio--agosto, de \(M_{\mathrm{inv}}\) a \(M_{\mathrm{inv}}+2\); botaduras hasta \(M_{\mathrm{inv}}+5\) y evaluación/transferencia en \(M_{\mathrm{inv}}+6\). Ciclo completo desde abril--mayo siguiente, \(M_{\mathrm{inv}}+10\), si el plazo permite completar la evaluación. El escenario de SD7 fija \(M_{\mathrm{inv}}=31\), junio de 2029: inscripción y planes en 30, botaduras en 34--36 y cierre en 37 antes del 15 de diciembre. La fecha de inicio contractual obliga a recalcular estas ventanas.}
   \CampoFicha{Inversión requerida}{Levantamiento, diseño, calendario, integración, pruebas, capacitación y piloto. Estimación monetaria por desarrollar en la Oferta Económica.}
   \CampoFicha{Costo operacional}{Actualización del catálogo, seguimiento de planes, soporte y notificaciones desde el inicio del piloto hasta el término del servicio. Incluir únicamente sus costos incrementales en el flujo de caja.}
   \CampoFicha{Beneficio y cuantificación}{Reprogramaciones de botadura efectivamente evitadas por trabajos pendientes y costos unitarios respaldados de coordinación y movimientos adicionales, descontando costos incrementales de implementación y operación. Una reducción de pendientes no constituye por sí sola ahorro monetario. Separar inversión, costos recurrentes y ahorros verificables; no duplicar beneficios de IN1 ni atribuir ingresos de charter o derechos de trabajo sin evidencia.}
   \CampoFicha{Indicador, línea base y meta}{Embarcaciones con trabajos pendientes en su fecha originalmente prevista de botadura / embarcaciones con al menos un trabajo contratado. Conservar esa fecha aunque se reprograme. Base: grupo comparable sin programa de la misma campaña y, cuando exista, historial propio. Meta preliminar: reducir a la mitad la proporción respecto del grupo sin programa; registrar diferencias de alcance, clima, retiros y exclusiones.}
-  \CampoFicha{Momento de medición}{Cierre de la campaña de botadura posterior al piloto, en \(M_{\mathrm{inv}}+5\). Complementos: proporción de trabajos ejecutados en junio--agosto y trazabilidad del 100\,\% de trabajos aceptados mediante IN1 con estado y fecha. Sin referencia positiva o evidencia suficiente, no declarar demostrada la reducción relativa.}
+  \CampoFicha{Momento de medición}{Cierre de la campaña de botadura posterior al piloto, en \(M_{\mathrm{inv}}+5\), con consolidación del informe en \(M_{\mathrm{inv}}+6\). Complementos: proporción de trabajos ejecutados en junio--agosto y trazabilidad del 100\,\% de trabajos aceptados mediante IN1 con estado y fecha. Sin referencia positiva o evidencia suficiente, no declarar demostrada la reducción relativa.}
   \CampoFicha{Riesgo, probabilidad e impacto}{Valoraciones iniciales: R-IN2-01, baja participación de armadores, probabilidad media e impacto alto; R-IN2-02, incumplimiento de fechas por contratistas, alta/alto; R-IN2-03, suspensión por meteorología, alta/alto; R-IN2-04, indisponibilidad de IN1 o sus interfaces, media/alto. Se revisarán con el piloto y se incorporarán al plan de riesgos.}
   \CampoFicha{Mitigación}{Participación voluntaria y capacitación a cargo de Implantación; confirmación de disponibilidad y fechas por el Líder Funcional y la administración del varadero; reserva de planificación y alertas marítimas por el Jefe de Proyecto y la marina; verificación de IN1 e interfaces por Arquitectura. El armador conserva la elección de trabajos y contratista.}
   \CampoFicha{Contingencia}{Sin grupo evaluable, ampliar convocatoria o ajustar alcance sin declarar beneficio; ante atraso, reprogramar o proponer otro contratista con aceptación del armador; ante meteorología insegura, suspender y reprogramar, acordando el tratamiento de pendientes si se agota la reserva. Sin IN1 o interfaces aceptadas, no iniciar el piloto; ante interrupción, usar el procedimiento vigente con registro controlado y conciliación posterior. No exigir contratación ni alterar maniobras durante izaje.}
@@ -227,11 +231,11 @@ AUT recibe documentos; ADM presenta la revisión al funcionario autorizado y adm
 }
 
 \CampoFicha{Paquetes de la EDT}{%
-IN3.1 diseño, meses 14--15; IN3.2 extracción, 16; IN3.3 revisión e integración, 17; IN3.4 pruebas y matriz de controles de IA, 18; IN3.5 preparación y piloto, 18--20; IN3.6 transferencia, 21; IN3.7 operación incremental, 21--56. Paquetes terminales en la tabla 13.6 del SD13; correspondencia y cargas por conciliar con SD7/T-15.
+IN3.1 diseño, meses 13--14; IN3.2 extracción, 14; IN3.3 revisión e integración, 15; IN3.4 pruebas y matriz de controles de IA, 16; IN3.5 preparación, piloto y consolidación, 16--20; IN3.6 transferencia, 21; IN3.7 operación incremental, 21--56. Paquetes terminales en la tabla 13.6 del SD13; correspondencia y cargas enlazadas al catálogo integrado SD7/T-15.
 }
 
 \CampoFicha{Mes de materialización}{%
-Mes 21, tras piloto de los meses 19--20 y aceptación. Diseño: 14--15; implementación: 16--17; pruebas y preparación: 18. Requiere interfaces de AUT, ADM, NAV, repositorio y auditoría disponibles, y controles de IA aceptados. SD7 deberá confirmar perfiles compartidos y dependencias; los despliegues respetarán las ventanas protegidas.
+Mes 21, tras piloto de los meses 18--19 y aceptación. Diseño: 13--14; implementación: 14--15; pruebas y preparación: 16. Requiere interfaces de AUT, ADM, NAV, repositorio y auditoría disponibles, y controles de IA aceptados. SD7 declara perfiles compartidos y dependencias con asignación integrada; los despliegues respetarán las ventanas protegidas.
 }
 
 \CampoFicha{Inversión requerida}{%
@@ -239,7 +243,7 @@ Levantamiento documental, configuración del extractor, integraciones, interfaz 
 }
 
 \CampoFicha{Costo operacional}{%
-Procesamiento de páginas, almacenamiento adicional, monitoreo y mantenimiento de reglas. Consumo del piloto en meses 19--20 y operación recurrente desde el 21. Valorización según volumen medido y condiciones comerciales aplicables.
+Procesamiento de páginas, almacenamiento adicional, monitoreo y mantenimiento de reglas. Consumo del piloto en meses 18--19 y operación recurrente desde el 21. Valorización según volumen medido y condiciones comerciales aplicables.
 }
 
 \CampoFicha{Beneficio y cuantificación}{%
@@ -251,7 +255,7 @@ Reducción de la mediana del tiempo total de ingreso y revisión, incluidas corr
 }
 
 \CampoFicha{Momento de medición}{%
-Ocho semanas consecutivas dentro de los meses 19--20; evaluación al cierre del mes 20. Muestra de 120 pólizas distintas: 60 con ingreso manual y 60 asistido, comparables por formato, páginas y legibilidad, alternando métodos entre funcionarios. Pueden utilizarse pólizas históricas autorizadas en pruebas sin modificar expedientes vigentes. Los documentos de configuración quedan fuera de la evaluación. QA contrastará los 120 registros con el original. Sin muestra suficiente, informar resultado inconcluso y actualizar calendario para cualquier ampliación.
+Ocho semanas consecutivas dentro de los meses 18--19; evaluación al cierre del mes 19. Muestra de 120 pólizas distintas: 60 con ingreso manual y 60 asistido, comparables por formato, páginas y legibilidad, alternando métodos entre funcionarios. Pueden utilizarse pólizas históricas autorizadas en pruebas sin modificar expedientes vigentes. Los documentos de configuración quedan fuera de la evaluación. QA contrastará los 120 registros con el original. Sin muestra suficiente, informar resultado inconcluso y actualizar calendario para cualquier ampliación.
 }
 
 \CampoFicha{Riesgo, probabilidad e impacto}{%
@@ -275,13 +279,13 @@ Suspender formatos con errores críticos o recurrentes y usar ingreso manual; an
   \CampoFicha{Madurez y escala}{Diseño conceptual del modelo. Hitos de validación: diseño, piloto sin efectos de pago, aceptación de evidencia y condiciones, y conciliación en operación. No se declaran los últimos tres como realizados.}
   \CampoFicha{Fuentes APA 7}{Bases Administrativas: artículos 28--30, 50.2 y E-25; Caso 07: operación; Cabinet Office: indicadores objetivos y controlables por el proveedor \parencite[sec.~5.1.5]{uk-outcomes}.}
   \CampoFicha{Inserción en arquitectura}{Se propone IN4-MET en Varadero y contratistas/Núcleo de Servicios e IN4-CON en Finanzas y cobranza/Núcleo Administrativo, sobre ECS/Fargate según SD4, DA-04 y tabla 4-10. Enlace con solicitudes y faenas de SD5; tiempos activos con captura propia. REST/OpenAPI 3.1, escrituras idempotentes y eventos versionados conforme a DA-06; PostgreSQL y evidencia S3 conforme a DA-08. AUT ofrece el canal; ADM separa preparación y aprobación. Conciliación diferida hasta sincronización y validación, sin cobro automático. SD4 recoge la ubicación de IN4-MET e IN4-CON. Contratos, entidades y retención detallados siguen pendientes en SD4/SD5 y A5.1/A5.2.}
-  \CampoFicha{Paquetes de la EDT}{IN4.1 regla y medición, meses 2--4; IN4.2 instrumentación y pruebas, 14--18; IN4.3 piloto, 19--20; IN4.4 conciliación, 21--56. Incorporar identificadores y cargas a SD7/T-15.}
-  \CampoFicha{Mes de materialización}{Mes 21, tras piloto de meses 19--20 y aceptación de evidencia. Requiere disponible el flujo adicional de mantenimiento.}
+  \CampoFicha{Paquetes de la EDT}{IN4.1 regla y medición, meses 2--4; IN4.2 instrumentación y pruebas, 13--16; IN4.3 piloto, 18--19; IN4.4 conciliación, 21--56. Incorporar identificadores y cargas a SD7/T-15.}
+  \CampoFicha{Mes de materialización}{Mes 21, tras piloto de meses 18--19 y aceptación de evidencia. Requiere disponible el flujo adicional de mantenimiento.}
   \CampoFicha{Inversión requerida}{Definición de la regla, instrumentación, expediente y pruebas, representadas por \(I_4\). Valorización en la Oferta Económica.}
   \CampoFicha{Costo operacional}{\(O_{4,m}\): medición, revisión y conciliación mensual. El proveedor lo considera aun en el escenario de incentivo cero.}
   \CampoFicha{Beneficio y cuantificación}{\(H_{4,m}=N_m\max(0,\bar T_0-\bar T_m)/60\) horas estimadas recuperadas. La valorización del beneficio corresponde a la innovación que lo produce; la 4 añade costos de medición y transferencia variable, sin sumar un segundo ahorro bruto. Las horas no constituyen automáticamente ahorro de caja.}
   \CampoFicha{Indicador, línea base y meta}{Reducción de tiempo medio activo de seguimiento frente a base prospectiva con las funciones obligatorias del SD2, incluidas RF-CTR-04, RF-AUT-06 y RF-AUT-10. Registrar tarea, responsable e intervalos; excluir esperas y ejecución del mantenimiento. Comparar composición equivalente y conservar faltantes y casos abiertos. Meta propuesta: 20\,\%, sin aumentar tasa de errores ni reducir cierres en el mismo plazo. Fijar protocolo y meta antes de medir. Factor \(F_4=\min(1,\max(0,R_4/0{,}20))\); resultado no evaluable o calidad insuficiente implica cero. El reconocimiento económico requiere además beneficio neto aceptado y tope de la Oferta Económica.}
-  \CampoFicha{Momento de medición}{Base al inicio del mes 19; cierre del piloto en el 20; conciliación mensual desde el 21. Mínimo propuesto: 30 solicitudes comparables por condición, con igual plazo de observación. Synaptix prepara evidencia, la Contraparte Técnica la verifica y el Administrador del Contrato tramita el estado de pago. Sin evidencia suficiente, el variable del período es cero.}
+  \CampoFicha{Momento de medición}{Base al inicio del mes 18; cierre del piloto en el 19; conciliación mensual desde el 21. Mínimo propuesto: 30 solicitudes comparables por condición, con igual plazo de observación. Synaptix prepara evidencia, la Contraparte Técnica la verifica y el Administrador del Contrato tramita el estado de pago. Sin evidencia suficiente, el variable del período es cero.}
   \CampoFicha{Riesgo, probabilidad e impacto}{Atribución incorrecta o incentivos a omitir casos difíciles. Valoración preliminar: probabilidad media, impacto alto.}
   \CampoFicha{Mitigación}{Muestra y exclusiones acordadas antes de medir; revisión de cambios externos; control de errores, cierres y reaperturas; auditoría y acta del cliente. Multas contractuales independientes.}
   \CampoFicha{Contingencia}{Suspender el reconocimiento variable, corregir la medición y reevaluar. Mantener la operación y componente fijo obligatorios; incentivo cero si no se demuestra beneficio económico aceptable.}
@@ -297,13 +301,13 @@ La mejora contractual depende de un resultado aceptado y no de la disponibilidad
   \CampoFicha{Madurez y escala}{TRL 2 preliminar para la incorporación local, aún sin prototipo ni piloto ejecutados \parencite{nasa-trl}.}
   \CampoFicha{Fuentes APA 7}{Caso 07: ambiente y charter; EPA: WaterSense at Work; NASA: TRL; Transversales: integración, indicadores y riesgos del capítulo 26 \parencite[pp.~44--45]{bases-transversales}.}
   \CampoFicha{Inserción en arquitectura}{IN5-PLAN se propone en Ambiente y consumos/Núcleo de Servicios sobre ECS/Fargate, con PostgreSQL; IN5-HIS utiliza historia derivada Parquet/S3/Athena según SD4 y SD5. AUT presenta la vista React. Consume MediciónConsolidada y referencias de Infraestructura, Operación marítima y Clientes y contratos; ConsentimientoModificado restringe usos. REST/OpenAPI y eventos idempotentes conforme a DA-06. Reutiliza captura local y sincronización de DA-09, sin acceso directo a MQTT ni modificación de cobros. Evaluaciones pendientes durante desconexión o con evidencia incompleta. Códigos, entidades, contratos y retención aún por detallar en SD4 y A5.1/A5.2.}
-  \CampoFicha{Paquetes de la EDT}{IN5.1 diseño y consentimiento, meses 14--15; IN5.2 historial, portal y pruebas, 16--18; IN5.3 piloto, 19--20; IN5.4 seguimiento, 21--56. Incorporar correspondencia y cargas a SD7/T-15.}
-  \CampoFicha{Mes de materialización}{Mes 21, tras evaluación del piloto 19--20. Requiere medición y permanencias validadas, adquisición de medidores y obras del cliente conforme a SUP-04/EXC-06/EXC-10. VAC-03 y VAC-14 siguen por validar. Conciliar con SD7/T-15, inicio contractual, congelamientos RES-11, marejadas RES-12 y serie previa a temporada 2029.}
+  \CampoFicha{Paquetes de la EDT}{IN5.1 diseño y consentimiento, meses 13--14; IN5.2 historial, portal y pruebas, 14--16; IN5.3 piloto, 18--19; IN5.4 seguimiento, 21--56. Incorporar correspondencia y cargas a SD7/T-15.}
+  \CampoFicha{Mes de materialización}{Mes 21, tras evaluación del piloto 18--19. Requiere medición y permanencias validadas, adquisición de medidores y obras del cliente conforme a SUP-04/EXC-06/EXC-10. VAC-03 y VAC-14 siguen por validar. Conciliar con SD7/T-15, inicio contractual, congelamientos RES-11, marejadas RES-12 y serie previa a temporada 2029.}
   \CampoFicha{Inversión requerida}{\(I_5\): historial, planes, vistas, consentimiento e integración y pruebas. Valorización en la Oferta Económica.}
   \CampoFicha{Costo operacional}{\(O_{5,t}\): almacenamiento, soporte, revisión de acciones y conciliación de discrepancias. Registrar sólo costo incremental.}
   \CampoFicha{Beneficio y cuantificación}{Volumen evitado estimado \(V_t=D_t(w_0-w_t)\). Escenario objetivo: \(0{,}10w_0D_t\), sin presentarlo como medición. Valorar con costo documentado del recurso y descontar operación incremental e inversión. Asignar ahorro al actor que paga el recurso, sin duplicarlo ni atribuir el ingreso completo del charter.}
-  \CampoFicha{Indicador, línea base y meta}{Agua suministrada en la marina y atribuible a la embarcación, en metros cúbicos por día efectivo de permanencia. Se reutiliza la serie obligatoria de RF-CON-01 a 06 y la consulta de RF-AUT-03 del SD2; no representa consumo total durante navegación. Base propia de 28 días del mes 19; comparar 28 días del 20. Metas propuestas y fijadas antes del piloto: reducción del 10\,\% y, por separado, acción ejecutada con evidencia en el 50\,\% de inscritos. Informar datos válidos, exclusiones y resultados desfavorables; una acción no demuestra por sí sola ahorro.}
-  \CampoFicha{Momento de medición}{Evaluación en mes 20 y seguimiento mensual desde el 21, con informe previo a temporada 2029. Iniciar sólo con lecturas, permanencias y accesos validados; ejecutar acciones entre las ventanas comparadas. El responsable de la marina revisa contexto, Synaptix prepara el cálculo y la Contraparte Técnica acepta evidencia. Sin base positiva, permanencia o comparación defendible, no declarar reducción.}
+  \CampoFicha{Indicador, línea base y meta}{Agua suministrada en la marina y atribuible a la embarcación, en metros cúbicos por día efectivo de permanencia. Se reutiliza la serie obligatoria de RF-CON-01 a 06 y la consulta de RF-AUT-03 del SD2; no representa consumo total durante navegación. Base propia de 28 días del mes 18; comparar 28 días del 19. Metas propuestas y fijadas antes del piloto: reducción del 10\,\% y, por separado, acción ejecutada con evidencia en el 50\,\% de inscritos. Informar datos válidos, exclusiones y resultados desfavorables; una acción no demuestra por sí sola ahorro.}
+  \CampoFicha{Momento de medición}{Evaluación en mes 19 y seguimiento mensual desde el 21, con informe previo a temporada 2029. Iniciar sólo con lecturas, permanencias y accesos validados; ejecutar acciones entre las ventanas comparadas. El responsable de la marina revisa contexto, Synaptix prepara el cálculo y la Contraparte Técnica acepta evidencia. Sin base positiva, permanencia o comparación defendible, no declarar reducción.}
   \CampoFicha{Riesgo, probabilidad e impacto}{Sesgo voluntario o datos incompletos: probabilidad media, impacto alto. Baja participación: media/medio. Acceso indebido entre flotas: baja/alto. Valoraciones preliminares.}
   \CampoFicha{Mitigación}{Criterios fijados antes del piloto; comparación propia; trazabilidad y conservación de resultados desfavorables; acciones breves y voluntarias; permisos por embarcación, pruebas de aislamiento y auditoría.}
   \CampoFicha{Contingencia}{No publicar reducciones no evaluables; ampliar observación y ajustar o desactivar el plan si no demuestra utilidad. Suspender vista afectada ante incidente de privacidad y conservar medición, residuos y capacitación obligatorios.}
@@ -312,5 +316,6 @@ La mejora contractual depende de un resultado aceptado y no de la disponibilidad
 La ficha mide una reducción de agua adicional al registro y la facturación obligatorios. El porcentaje de adopción informa sobre el uso del plan; el resultado ambiental requiere consumo comparable y no acredita una certificación.
 
 \clearpage
-\printbibliography[heading=referenciassynaptix,title={Referencias}]
+\CierreSubdocumento
 \end{document}
+

@@ -1,0 +1,19 @@
+\paragraph{Secuencia corregida y recursos de ejecución directa.}
+Synaptix sustituye el reparto que dejaba once paquetes fuera de quincena por una secuencia que traslada esos consumidores a la segunda quincena de su mismo mes. Los servicios comunes y controles se ejecutan primero; la lógica funcional espera su liberación y termina antes de las vistas de 9. Notificaciones espera a consentimiento. Se conservan los códigos, meses, entregables, responsables y HH de cada paquete. La Tabla~\ref{tab:sd7-cambios-quincena} identifica las modificaciones; el diccionario y las actividades correspondientes adoptan esas ventanas.
+
+\input{componentes/cambios_quincena.tex}
+
+El registro \path{secuencia_fija_recursos.csv} programa los 797 paquetes con mes asignado en una escala de diez días hábiles por quincena. Cada contribución no nula de perfil tiene un ejecutor identificado en \path{asignacion_fija_recursos.csv}; las funciones de una misma persona se suman. Se mantiene un máximo de 50 HH directas por quincena y 100 por mes, con máximo diario de 7,2 HH, equivalente a la referencia de 144 HH productivas en veinte días. Este límite diario permite concentrar esfuerzo en parte de la quincena sin aumentar su capacidad total ni considerar la reserva íntegra disponible en una jornada ocupada.
+
+Para desarrollar esta secuencia, las contribuciones de ejecución se realizan en paralelo conforme a las actividades del paquete, y Calidad revisa después de su finalización. Con $h_{k,p}$ horas por perfil y $v=7{,}2$ HH/día, la duración directa adoptada es
+\[
+d_k=\max_{p\ne Q}\left(\frac{h_{k,p}}{v}\right)+\frac{h_{k,Q}}{v}.
+\]
+Se omite el primer término cuando sólo interviene Calidad. Las contribuciones de una misma persona no pueden superar el límite diario conjunto; si coinciden funciones O/L, se asigna refuerzo para evitar esa superposición. La duración expresa ejecución y revisión interna, sin añadir implícitamente recepción de la contraparte ni intervalos completos de observación. No se divide una contribución funcional entre personas para reducir artificialmente su duración.
+
+La asignación busca reutilizar los puestos compatibles con la ventana y su capacidad, y agrega puestos especializados cuando no puede hacerlo. No acredita dotación mínima. Los resultados conservan 20.820 HH en 2.680 contribuciones, comprueban los 425 enlaces fin a inicio entre paquetes con mes fijo y mantienen cada contribución dentro de su quincena, sin sobreasignación diaria en el modelo. La dotación mensual resultante se presenta en T-15 y sustituye la del reparto anterior. Los 28 enlaces estacionales restantes mantienen fecha por definir.
+
+\paragraph{Límites temporales que deben incorporarse a la red.}
+La secuencia directa no reduce una observación quincenal a las horas necesarias para redactar su registro. Los cierres de datos de pilotos y los informes que dependen de ellos requieren sus ventanas reales y revisión final posterior al cierre; la red completa incorporará ese evento temporal y recalculará cualquier contribución que deba cambiar de quincena. También se incorporarán recepción y subsanación contractual, ciclos completos de ensayo, capacitación por turnos, reservas, disponibilidad del origen, ambientes y fechas externas. Las 328 HH estacionales y trabajos variables deben recibir sus propios recursos.
+
+Los enlaces a VM/VS y las demás condiciones de liberación conservan la evidencia exigida. La programación directa no se presenta como cumplimiento de esas puertas ni de los hitos hasta integrarlas con el calendario protegido. Proyecto consolidará esa red, comprobará el paralelismo de las actividades y actualizará dotación, equipos y costos antes de aprobar la línea base. La suficiencia de la oferta se evalúa con todos esos elementos, no sólo con el balance de trabajo fijo.

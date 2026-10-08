@@ -1,0 +1,61 @@
+\subsection{Componentes de migración y frontera con pruebas e implantación}
+La rama 1.8 entregará datos interpretables, conciliados y consultables, conforme al alcance de SD5. El diagnóstico 1.8.1 será la entrada para especificar los componentes de la Tabla~\ref{tab:sd7-componentes-migracion}. Estos códigos identifican resultados superiores; T-14 desarrolla sus paquetes de ingeniería por conjunto y sus lotes de revisión documental. Las 120 horas de diagnóstico no incluyen la ejecución de los componentes posteriores.
+
+\begin{table}[htbp]
+\centering
+\begin{tabularx}{\linewidth}{L{13mm}L{35mm}Y}
+\hline
+\EncabezadoTabla{Código} & \EncabezadoTabla{Resultado} & \EncabezadoTabla{Condición de recepción}\\\hline
+1.8.2 & Correspondencias y transformaciones especificadas & Cada conjunto tiene origen, destino, claves, reglas, tratamiento de ausencias y validador; no se convierten antecedentes antiguos en autorizaciones vigentes.\\\hline
+1.8.3 & Datos saneados con decisiones trazables & Cada defecto conserva origen, decisión, responsable y resultado; los cambios se aplican a copias controladas sin fabricar pagos ni evidencia histórica.\\\hline
+1.8.4 & Herramientas de carga y conciliación reproducibles & Cargas por lote con manifiestos, correspondencias, recuentos y controles monetarios; la reejecución no duplica efectos y conserva evidencia de cada ejecución.\\\hline
+1.8.5 & Archivo histórico independiente consultable & Índice, relaciones, permisos, integridad, retención y exportación verificables; la consulta no depende del software de 2014 como única vía.\\\hline
+1.8.6 & Herramientas de delta y retorno disponibles & Detección de altas, cambios y bajas; preservación del diario y tratamiento de respuestas externas. Incluye herramientas para retorno previo y posterior a la nueva escritura.\\\hline
+\end{tabularx}
+\caption{Componentes posteriores al diagnóstico de migración}
+\label{tab:sd7-componentes-migracion}
+\FuenteTabla{SD5, secciones 5.3.1--5.3.3; SD2, RNF-MIG-01 y DEC-02.}
+\end{table}
+
+El Líder de Datos responderá por los componentes 1.8.1--1.8.6. Los dos ensayos completos se imputarán a \texttt{1.10.1}, como componente de verificación de migración a cargo del Líder de Calidad y Pruebas, con ejecución de Datos y participación de Seguridad y los validadores funcionales. La producción de herramientas se contabilizará en 1.8 y su empleo en ensayos integrales en 1.10.1; una misma actividad no se cargará a ambas ramas.
+
+El componente \texttt{1.11.1} reunirá la implantación de los grupos de datos, el corte, la convivencia y la estabilización bajo el Líder de Implantación y Gestión del Cambio. Los grupos de SD5 ---maestros e inventario; antecedentes operacionales por zona o proceso; y contratos, saldos y sustitución administrativa--- ordenan esas activaciones. La consulta de los contratos necesarios para E1 no transfiere anticipadamente la autoridad de escritura administrativa del legado. Cada activación conservará su recepción, su alcance y su responsable de negocio.
+
+Antes de programar las cargas se medirán las fuentes y se revisará la hipótesis de volumen de EST-10 y el vacío VAC-07 del SD2. El saneamiento documental, la digitalización que resulte necesaria y la comprobación semántica completa de los 14 expedientes y de las autorizaciones escolares vigentes tendrán paquetes y esfuerzos propios. El perfilado automatizado del diagnóstico no absorbe esas revisiones.
+
+\subsection{Trazabilidad de requisitos y condiciones de recepción de migración}
+La Tabla~\ref{tab:sd7-trazabilidad-migracion} vincula la rama de datos con las obligaciones de migración y los controles que habilitan el cambio de servicio. Un requisito puede necesitar varios componentes; cada uno aportará una evidencia distinta. La recepción se decidirá sobre el conjunto de evidencias y no por el solo término de un paquete de diagnóstico.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr.20\linewidth-2\tabcolsep\relax}L{\dimexpr.23\linewidth-2\tabcolsep\relax}L{\dimexpr.22\linewidth-2\tabcolsep\relax}L{\dimexpr.35\linewidth-2\tabcolsep\relax}}
+\caption{Trazabilidad de obligaciones de migración}\label{tab:sd7-trazabilidad-migracion}\\
+\hline
+\EncabezadoTabla{Origen} & \EncabezadoTabla{Resultado exigido} & \EncabezadoTabla{Componentes} & \EncabezadoTabla{Evidencia de recepción}\\\hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Origen} & \EncabezadoTabla{Resultado exigido} & \EncabezadoTabla{Componentes} & \EncabezadoTabla{Evidencia de recepción}\\\hline
+\endhead
+C07 RT-05.15; SD2 RNF-MIG-01 & Seis conjuntos obligatorios y sus períodos & 1.8.1--1.8.5; 1.10.1 & Catálogo, matriz de cobertura, manifiestos y conciliación por conjunto.\\\hline
+BT RT-05.11; SD2 DEC-02 & Plan de migración y retorno & 1.8.1--1.8.6; 1.11.1 & Plan versionado con origen, volumen medido, reglas, calidad, ejecución y reversión.\\\hline
+BT RT-05.12 & Perfilado y saneamiento previo & 1.8.1.3; 1.8.2--1.8.3 & Informe de defectos y registro de decisiones y correcciones por lote.\\\hline
+BT RT-05.13 & Dos ensayos completos en PREPROD & 1.8.4--1.8.6; 1.10.1 & Dos expedientes de ejecución con todos los conjuntos, duración total, conciliación y retorno.\\\hline
+BT RT-05.14; SD5 5.3.2 & Conciliación cuantitativa & 1.8.4; 1.10.1; 1.11.1 & Recuentos, claves, sumas, revisión dirigida y diferencias explicadas; cero diferencias críticas de carga.\\\hline
+BT RT-05.15; SD2 DEC-02 & Consulta histórica protegida & 1.8.5; 1.10.1 & Consulta y exportación con índice, relaciones, permisos e integridad independientes del legado.\\\hline
+SD3 CA-22; SD5 5.3 & 14 expedientes completos & 1.8.2--1.8.5; 1.10.1 & Índice de cada pieza, revisión completa, legibilidad, folio, integridad y exportación PDF/A.\\\hline
+SD5 5.3.2 & Autorizaciones escolares vigentes & 1.8.2--1.8.4; 1.10.1 & Revisión completa de vínculos, vigencia y destino de las autorizaciones que se utilizarán al corte.\\\hline
+BT RT-20.02--04; SD5 5.3.3 & Cambio gradual, reversible y conciliado & 1.8.6; 1.10.1; 1.11.1 & Ensayos, decisión de avance, actas por grupo y conciliación diaria de marcha blanca.\\\hline
+\end{longtable}
+\FuenteTabla{Bases Técnicas Transversales, RT-05.11--RT-05.15 y RT-20.02--RT-20.04; Caso 07, RT-05.15; SD2, SD3 y SD5.}
+\endgroup
+
+Los ensayos comprobarán los umbrales del SD5: cero omisiones inexplicadas del manifiesto, cero diferencias monetarias de carga, cero referencias críticas inválidas y cero efectos duplicados. Para atributos no críticos se conservará la revisión de todos los registros anómalos y la muestra reproducible del mayor entre 30 registros y el 5\,\% de cada fuente y categoría, limitada a su población. Los expedientes y las autorizaciones vigentes tendrán revisión completa, sin sustituirla por esa muestra \parencite[cap.~5, RT-05.12--RT-05.14]{bases-transversales}.
+
+La implantación conservará la ventana administrativa propuesta de 22:00 a 02:00, hora de America/Santiago. La decisión de continuar se registrará antes de las 00:30 y mantendrá una reserva exclusiva de 90 minutos para retorno previo a nuevas escrituras. El escenario posterior a nuevas operaciones conserva la estimación inicial de 120 minutos de SD5 y su obligación de ensayo; no amplía esa reserva ni autoriza a descartar operaciones. Los resultados de PREPROD determinarán si es necesario ajustar precarga y herramientas antes de fijar una fecha habilitada de corte.
+
+Esta trazabilidad corresponde a migración. Las demás ramas se vincularán con sus propios requisitos, pruebas y criterios de recepción; la matriz general del contrato no se dará por completa con estas filas.
+
+\subsection{Síntesis de estimación de ingeniería de migración}
+El T-14 descompone los componentes anteriores en 28 paquetes de ingeniería de 24--40 horas-persona, incluidos los cuatro paquetes de diagnóstico. Su subtotal propuesto es 936 horas: Análisis Funcional 96, Datos 552, Seguridad 32, Calidad 112 y Desarrollo 144. La construcción de las herramientas reutiliza los componentes base de SD4; las cifras son estimaciones ascendentes bajo supuestos de formatos y clases de defecto, no productividad medida.
+
+La revisión completa de los expedientes y autorizaciones escolares se estima por lotes separados, según el inventario real, y no se da por cubierta por las 936 horas. Tampoco se incluyen los dos ensayos completos, la ejecución de los cortes, la marcha blanca ni los 36 meses de operación. El archivo independiente \path{SYNAPTIX-Formulario-T-15.pdf} registra las cargas y su distribución mensual inicial para comprobarlas junto con las demás ramas.

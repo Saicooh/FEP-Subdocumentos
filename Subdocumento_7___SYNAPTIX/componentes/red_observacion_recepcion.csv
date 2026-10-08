@@ -1,0 +1,27 @@
+﻿Nodo,Predecesoras,Tipo,Inicio,Fin,HH_adicionales,Vinculo_paquetes
+OBS-IN1-BASE,Protocolo/cohorte/habilitaciones recibidos,Observación/acción,2028-06-01,2028-06-28,0,1.9.1.5.2/3
+OBS-IN1-PILOTO,Protocolo/cohorte/habilitaciones recibidos,Observación/acción,2028-07-01,2028-07-28,0,1.9.1.5.4/5
+OBS-IN4-BASE,Protocolo/cohorte/habilitaciones recibidos,Observación/acción,2028-06-01,2028-06-28,0,1.9.4.3.1.*
+OBS-IN4-PILOTO,Protocolo/cohorte/habilitaciones recibidos,Observación/acción,2028-07-01,2028-07-28,0,1.9.4.3.2.*
+OBS-IN5-BASE,Protocolo/cohorte/habilitaciones recibidos,Observación/acción,2028-06-01,2028-06-28,0,1.9.5.3.2.*
+OBS-IN5-ACCION,Protocolo/cohorte/habilitaciones recibidos,Observación/acción,2028-06-29,2028-06-30,0,1.9.5.3.1 y evidencia de acción
+OBS-IN5-EVALUACION,Protocolo/cohorte/habilitaciones recibidos,Observación/acción,2028-07-01,2028-07-28,0,1.9.5.3.3.*
+OBS-IN1-BASE-ANTICIPO,Protocolo/cohorte/habilitaciones recibidos,Observación/acción,2028-05-01,2028-05-28,0,1.9.1.5.2/3
+OBS-IN1-PILOTO-ANTICIPO,Protocolo/cohorte/habilitaciones recibidos,Observación/acción,2028-06-01,2028-06-28,0,1.9.1.5.4/5
+OBS-IN4-BASE-ANTICIPO,Protocolo/cohorte/habilitaciones recibidos,Observación/acción,2028-05-01,2028-05-28,0,1.9.4.3.1.*
+OBS-IN4-PILOTO-ANTICIPO,Protocolo/cohorte/habilitaciones recibidos,Observación/acción,2028-06-01,2028-06-28,0,1.9.4.3.2.*
+OBS-IN5-BASE-ANTICIPO,Protocolo/cohorte/habilitaciones recibidos,Observación/acción,2028-05-01,2028-05-28,0,1.9.5.3.2.*
+OBS-IN5-ACCION-ANTICIPO,Protocolo/cohorte/habilitaciones recibidos,Observación/acción,2028-05-29,2028-05-30,0,1.9.5.3.1 y evidencia de acción
+OBS-IN5-EVALUACION-ANTICIPO,Protocolo/cohorte/habilitaciones recibidos,Observación/acción,2028-06-01,2028-06-28,0,1.9.5.3.3.*
+TEMP-1-INFORME,OBS-IN1-PILOTO/OBS-IN4-PILOTO/OBS-IN5-EVALUACION,Trabajo ya estimado,Según predecesora,2028-08-03,0,Informes IN1/IN4/IN5 y transferencia; correcciones por estimar si ocurren
+TEMP-1-REVISION,TEMP-1-INFORME,Espera contraparte,Según predecesora,2028-08-18,0,Informes IN1/IN4/IN5 y transferencia; correcciones por estimar si ocurren
+TEMP-1-SUBSANACION,TEMP-1-REVISION,Ventana de corrección,Según predecesora,2028-09-01,Por estimar según observaciones,Informes IN1/IN4/IN5 y transferencia; correcciones por estimar si ocurren
+TEMP-1-TRANSFERENCIA,TEMP-1-SUBSANACION,Trabajo ya estimado,Según predecesora,2028-09-07,0,Informes IN1/IN4/IN5 y transferencia; correcciones por estimar si ocurren
+TEMP-2-INFORME,OBS-IN1-PILOTO/OBS-IN4-PILOTO/OBS-IN5-EVALUACION,Trabajo ya estimado,Según predecesora,2028-07-30,0,Informes IN1/IN4/IN5 y transferencia; correcciones por estimar si ocurren
+TEMP-2-REVISION,TEMP-2-INFORME,Espera contraparte,Según predecesora,2028-08-11,0,Informes IN1/IN4/IN5 y transferencia; correcciones por estimar si ocurren
+TEMP-2-SUBSANACION,TEMP-2-REVISION,Ventana de corrección,Según predecesora,2028-08-28,Por estimar según observaciones,Informes IN1/IN4/IN5 y transferencia; correcciones por estimar si ocurren
+TEMP-2-TRANSFERENCIA,TEMP-2-SUBSANACION,Trabajo ya estimado,Según predecesora,2028-08-30,0,Informes IN1/IN4/IN5 y transferencia; correcciones por estimar si ocurren
+TEMP-3-INFORME,OBS-IN1-PILOTO-ANTICIPO/OBS-IN4-PILOTO-ANTICIPO/OBS-IN5-EVALUACION-ANTICIPO,Trabajo ya estimado,Según predecesora,2028-07-04,0,Informes IN1/IN4/IN5 y transferencia; correcciones por estimar si ocurren
+TEMP-3-REVISION,TEMP-3-INFORME,Espera contraparte,Según predecesora,2028-07-18,0,Informes IN1/IN4/IN5 y transferencia; correcciones por estimar si ocurren
+TEMP-3-SUBSANACION,TEMP-3-REVISION,Ventana de corrección,Según predecesora,2028-08-01,Por estimar según observaciones,Informes IN1/IN4/IN5 y transferencia; correcciones por estimar si ocurren
+TEMP-3-TRANSFERENCIA,TEMP-3-SUBSANACION,Trabajo ya estimado,Según predecesora,2028-08-03,0,Informes IN1/IN4/IN5 y transferencia; correcciones por estimar si ocurren

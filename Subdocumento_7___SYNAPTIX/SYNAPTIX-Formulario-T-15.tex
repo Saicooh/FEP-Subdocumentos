@@ -1,0 +1,36 @@
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
+\input{componentes/cierre.tex}
+\begin{document}
+\pagenumbering{arabic}
+\PortadaFormulario{T-15}{Nivelación de recursos}
+\tableofcontents\clearpage\setcounter{chapter}{6}
+\chapter{Nivelación de recursos}
+Synaptix presenta esfuerzo por paquete, actividades, fases, curvas separadas, dotación y frentes simultáneos. Este formulario utiliza el mismo catálogo y calendario de T-14/T-18. Las cifras dimensionan la oferta y no acreditan personal contratado o trabajo ejecutado.\parencite[Formulario T-15; art.~17]{bases-admin}
+\section{Estimación, cantidades y alcance}
+\input{componentes/metodo_planificacion.tex}
+\input{componentes/estimacion_funcional.tex}
+\input{componentes/resumen_integral.tex}
+\input{componentes/mentoria_tecnica.tex}
+\input{componentes/alcance_dimensionado.tex}
+\section{Resumen de fases y frentes}
+\input{componentes/resumen_fases_t15.tex}
+Los frentes de E2 durante 13--15 disponen de ingeniería separada del acompañamiento E1. En 19--20, E1 mantiene sus procedimientos y autoridad de datos; los equipos de prueba/piloto E2 no reutilizan un turno de atención como jornada adicional. La construcción compartida, la recepción de datos, el soporte de incidentes y el acompañamiento conservan imputación única.
+\section{Curvas y nivelación}
+Cada contribución de \path{asignacion_integral_recursos.csv} identifica paquete, perfil, ejecutor, HH e intervalo. Sus sumas reproducen las fichas; las actividades de Calidad dependen del trabajo previo, salvo las dos verificaciones independientes de cierre. Los límites se controlan por persona y día/quincena reales, incluso cuando una contribución cruza la quincena. Los cuadrantes NOC/SOC/mesa y terreno conservan ejecutores distintos, descanso y suplencia. Una reserva no ejecutada permanece como capacidad comprometida y no se factura como una corrección realizada.
+\input{componentes/curvas_integrales_por_etapa.tex}
+\input{componentes/curva_integral.tex}
+\input{componentes/resumen_perfiles_t15.tex}
+\section{Dotación y continuidad}
+La provisión de recursos distingue ingeniería, formación y cobertura del servicio, con capacidad, suplencias y condiciones de continuidad propias.
+\input{componentes/tarifas_planificacion.tex}
+\input{componentes/dimensionamiento_servicio.tex}
+\section{Ruta crítica, holguras y condiciones de programación}
+\input{componentes/red_global.tex}
+\input{componentes/pert_nivelado.tex}
+\input{componentes/fundamento_pert_reservas.tex}
+\input{componentes/recepcion_continua.tex}
+\input{componentes/recepcion_e2_contraste.tex}
+\CierreSubdocumento\end{document}

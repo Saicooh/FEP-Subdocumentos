@@ -1,14 +1,32 @@
-% Estructura obligatoria: no renombre, omita ni reordene estos títulos.
-% Puede agregar únicamente subsecciones de nivel inferior bajo el título correspondiente.
+% Estructura obligatoria conservada.
 \setcounter{chapter}{6}
 \chapter{Introducción al Plan de trabajo}
-Este capítulo convierte la solución en una secuencia ejecutable de trabajo. Debe mantener consistencia entre la EDT, el cronograma, los recursos, los riesgos y los criterios de aceptación.
+Synaptix organiza los entregables, actividades y recursos para implantar y operar la solución de la Marina y Club Náutico Bahía Panitao S.A. El alcance de SD3, la arquitectura e inventario de SD4/T-11, los datos de SD5 y las cinco innovaciones de SD13 comparten códigos, responsables y recepción. SD2 delimita restricciones y habilitaciones. T-14 contiene diccionario, trazabilidad y red; T-15, esfuerzo, capacidad y nivelación; T-18, implantación, convivencia y reversión.
+
+El horizonte conserva desarrollo E1 en 1--12, marcha blanca en 13--15 y producción en 16; desarrollo E2 en 13--18, marcha blanca en 19--20 y producción en 21; Operación durante 21--56. Los solapamientos disponen de frentes y recursos distintos, con funciones compartidas sumadas una sola vez.\parencite[art.~17; Formularios T-14/T-15/T-18]{bases-admin}
 
 \section{EDT}
-Esta sección debe presentar la estructura de desglose del trabajo, su lógica de descomposición, entregables, responsables y criterios de término.
+\input{componentes/edt_inicial.tex}
+El catálogo consolidado contiene 2.175 paquetes terminales, cada uno con resultado, aceptación, responsable único y 8--80 HH. El diccionario integrado enlaza las fichas específicas y las instanciaciones periódicas. La trazabilidad incluye los 576 IDs de T-12, los 27 complementos C07 y las 29 exclusiones Deseables; ninguna obligación de base se reduce por prioridad funcional. Cada prueba recibe el enunciado completo, sus cláusulas y el componente ofrecido. La existencia del cruce no se presenta como prueba ya ejecutada ni modifica las declaraciones de T-12.
+
+Los padres no reciben horas, y los paquetes compartidos se imputan una vez. Los nueve dominios mantienen sus autoridades de SD3/SD4/SD5; las innovaciones aportan capacidades incrementales. Plataforma incluye DEV, QA, PREPROD, PROD y DR; la medición individual y su recepción se anticipan para disponer de serie previa a 2029. Las obligaciones corporativas de oferta se distinguen del alcance del contrato.
 
 \section{Plan de trabajo}
-Esta sección debe articular actividades, dependencias, recursos, hitos, controles y productos en coherencia con los Formularios T-14 y T-15.
+\input{componentes/metodo_planificacion.tex}
+\input{componentes/estimacion_funcional.tex}
+\input{componentes/resumen_integral.tex}
+\input{componentes/alcance_dimensionado.tex}
+\input{componentes/implantacion_formacion_adopcion.tex}
+\input{componentes/mentoria_tecnica.tex}
+\input{componentes/tarifas_planificacion.tex}
+\input{componentes/dimensionamiento_servicio.tex}
 
 \section{Cronograma e implantación}
-Esta sección debe explicar la secuencia temporal, ruta crítica, hitos de implantación, transición y validación vinculadas al Formulario T-18.
+\input{componentes/red_global.tex}
+\input{componentes/pert_nivelado.tex}
+\input{componentes/fundamento_pert_reservas.tex}
+\input{componentes/recepcion_continua.tex}
+\input{componentes/recepcion_e2_contraste.tex}
+\input{componentes/calendario_integrado.tex}
+\input{componentes/implantacion_controles.tex}
+\input{componentes/programacion_economica.tex}

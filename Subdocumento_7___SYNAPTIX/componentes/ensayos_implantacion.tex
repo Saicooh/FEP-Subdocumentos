@@ -1,0 +1,51 @@
+\subsection{Ensayos completos y recepción previa a los cortes}
+Synaptix realizará dos ensayos completos de migración en PREPROD antes del corte definitivo de cada etapa. E1 comprobará los seis conjuntos de SD5 distinguiendo datos activos y preparados para E2. Antes del corte E2 se repetirán los dos ensayos con versiones y delta efectivos; la evidencia E1 no sustituirá los cambios posteriores \parencite[cap.~5, RT-05.13--RT-05.14; cap.~20, secc.~20.1]{bases-transversales}.
+
+Se define \texttt{1.10.1.e.j.k}: $e$ es la etapa, $j$ el ensayo 1 o 2 y $k$ uno de los cinco paquetes de la Tabla~\ref{tab:sd7-ensayo-paquetes}. El Líder de Calidad y Pruebas responde por evidencias y Datos ejecuta procedimientos. Todos los ensayos recorren extracción, transformación, carga, conciliación y retorno completos.
+\begin{table}[htbp]
+\centering
+\begin{tabularx}{\linewidth}{L{9mm}YL{48mm}R{12mm}}
+\hline
+\EncabezadoTabla{$k$} & \EncabezadoTabla{Entregable} & \EncabezadoTabla{Esfuerzo por perfil} & \EncabezadoTabla{HH}\\\hline
+1 & PREPROD, origen y protocolo preparados & Datos 4; Calidad 8; Seguridad 4 & 16\\\hline
+2 & Ejecución, manifiestos y tiempos & Datos 16; Calidad 16; Integración 8; Operación 8 & 48\\\hline
+3 & Conciliación y revisión funcional & Funcional 12; Datos 12; Calidad 16; Seguridad 8 & 48\\\hline
+4 & Retorno previo y posterior comprobados & Datos 12; Calidad 12; Operación 8; Seguridad 8 & 40\\\hline
+5 & Expediente presentado a recepción & Funcional 4; Calidad 8; Proyecto 4 & 16\\\hline
+\textbf{Total} & \textbf{Un ensayo} & & \textbf{168}\\\hline
+\end{tabularx}
+\caption{Paquetes de cada ensayo completo}\label{tab:sd7-ensayo-paquetes}
+\FuenteTabla{Estimación de Synaptix; SD5, sección 5.3, y BT RT-05.13--RT-05.14.}
+\end{table}
+
+Dos ensayos por etapa suman 336 horas; cuatro, 672. Por ensayo: Funcional 16, Datos 44, Calidad 60, Seguridad 20, Integración 8, Operación 16 y Proyecto 4. Se supone una ejecución y revisión con herramientas recibidas y fuentes accesibles. Correcciones de herramientas se imputarán a construcción y reensayos adicionales se estimarán aparte, sin reducir los obligatorios. 
+
+La línea base utiliza inicio el 1 de diciembre de 2026. Los ensayos E1 se ejecutarán del 12 al 26 de agosto y del 24 de septiembre al 8 de octubre de 2027; revisión y subsanación cierran el 9 de noviembre. Los ensayos E2 se ejecutarán del 24 de enero al 7 de febrero y del 6 al 20 de marzo de 2028; revisión y subsanación cierran el 18 de abril. Cada ensayo reserva diez días hábiles de ejecución, diez de revisión y diez de subsanación, calculados con el calendario de feriados del escenario, sin convertir todo mes en veinte días hábiles. VM-E1 se libera el 12 de agosto de 2027 y VM-E2 el 24 de enero de 2028 para migración; VS-E1 se libera el 18 de agosto y VS-E2 el 6 de marzo para pruebas integrales. Son puertas internas de distinta cobertura, no recepciones contractuales anticipadas. H4/H9 conservan entrega para pruebas y H5/H10 certificación en sus meses E-25. Los ensayos de PREPROD durante congelamiento no intervendrán producción, maniobras ni usuarios del sitio. Toda modificación que invalide migración obliga a repetir integralmente la evidencia afectada; los cambios restantes requieren regresión. La reserva temporal no acredita HH ejecutadas ni permite aceptar observaciones pendientes. Las fechas y predecesoras se conservan en \path{componentes/red_global.csv} y se contrastan con los recursos de T-15.\parencite[arts.~17--18; Formulario~E-25]{bases-admin}
+
+Cada paquete se recibirá con: protocolo y origen identificados; manifiestos y tiempos completos; diferencias explicadas y controles aceptados; retorno sin pérdida demostrado; y expediente trazable con observaciones y decisión. Los umbrales serán los de SD5, incluyendo expedientes y autorizaciones íntegros. El segundo ensayo incluirá suplentes técnico y funcional. Recursos: PREPROD aislado, copia protegida, herramientas, perfiles de prueba y validadores. El cliente autoriza el corte; las 168 horas no demuestran previamente los tiempos de retorno.
+
+\subsection{Activación de grupos, convivencia y estabilización}
+Se define \texttt{1.11.1.g.k}, con grupos $g=1,2,3$: maestros e inventario; antecedentes operacionales; contratos, saldos y sustitución administrativa. La Tabla~\ref{tab:sd7-implantacion-paquetes} estima una activación consolidada por grupo, bajo el Líder de Implantación y Gestión del Cambio. Activaciones adicionales por zona serán paquetes hijos con esfuerzo propio.
+\begin{table}[htbp]
+\centering
+\begin{tabularx}{\linewidth}{L{9mm}YL{48mm}R{12mm}}
+\hline
+\EncabezadoTabla{$k$} & \EncabezadoTabla{Entregable} & \EncabezadoTabla{Esfuerzo por perfil} & \EncabezadoTabla{HH}\\\hline
+1 & Lista de habilitación y formación & Funcional 8; Datos 8; Calidad 8; Implantación 8 & 32\\\hline
+2 & Activación y decisión documentadas & Datos 12; Calidad 8; Seguridad 4; Implantación 8; Proyecto 4 & 36\\\hline
+3 & Conciliación inicial del grupo & Funcional 8; Datos 8; Calidad 8; Implantación 8 & 32\\\hline
+\textbf{Total} & \textbf{Una activación} & & \textbf{100}\\\hline
+\end{tabularx}
+\caption{Paquetes por grupo de implantación}\label{tab:sd7-implantacion-paquetes}
+\FuenteTabla{SD5, sección 5.3; BT RT-20.01--RT-20.05; estimación de Synaptix.}
+\end{table}
+
+Las tres activaciones suman 300 horas. La habilitación se recibirá con datos conciliados, permisos, usuarios preparados y ventana autorizada; la activación, con versión, tiempos y decisión; la conciliación inicial, con autoridad y diferencias comprobadas. Recursos: operadores, copia recuperable y contingencia. La formación corresponde al cambio de datos y excluye la capacitación de todos los procesos. Se proponen preparación de grupos 1 y 2 en el mes 12 y activación en 13; preparación del grupo 3 en 18 y activación en 19, sujetas a aceptación y ventanas. Producción oficial conserva meses 16 y 21. La precarga y las escrituras supervisadas de marcha blanca no anticipan la autoridad administrativa oficial. El legado seguirá siendo el registro oficial del alcance E2 hasta el acta de cierre y habilitación del mes 21; los efectos externos se ejecutarán una sola vez por la autoridad vigente y se contrastarán en la solución supervisada. El corte de activación del mes 19 y el paso oficial del mes 21 son actuaciones diferentes.
+
+Se define \texttt{1.11.1.MB.e.m.q} por quincena de marcha blanca: seis paquetes E1 y cuatro E2. Cada uno comprende Funcional 8, Datos 8, Calidad 8 y Operación 24 horas, total 48; diez suman 480. Se recibirá con registros diarios, incidencias, denominadores, indicadores y conciliación. Las comprobaciones particulares del corte pertenecen a 1.11.1.g.3; MB incluye las revisiones diarias posteriores, sin doble conteo. Las horas son esfuerzo de tareas, no cobertura presencial continua ni guardia técnica.
+
+La estabilización de datos será \texttt{1.11.1.EST.e.q}, dos paquetes quincenales por etapa durante las cuatro semanas siguientes al paso oficial: inicio E1 al cierre de marzo de 2028 y continuidad en abril; E2 desde el 1 de agosto de 2028. La fecha de cada contribución será la de la asignación integrada, aunque su código conserve la quincena de origen. Cada uno comprende Datos 8, Calidad 8 y Operación 32, total 48; cuatro suman 192. Se recibirá con incidentes, correcciones, estabilidad diaria y traspaso al servicio ordinario. Recursos: telemetría, soporte y responsables de cada conjunto. Esta dotación de datos es parcial: pantalanes, varadero y fines de semana requieren turnos adicionales del plan general.
+
+El responsable de MB y estabilización será Operación/SRE. Operación e Implantación comparten titular de SD1 y se sumarán por persona. El costo de cada paquete será horas por tarifas de sus perfiles, sin repetir gestión. Referencias: BA artículo 17.3, BT RT-20.03--RT-20.06 y SD5 5.3. El acta firmada no se sustituye por un informe quincenal.
+
+Ensayos, activaciones, convivencia y estabilización suman 1.644 horas: 672, 300, 480 y 192. Con las 936 de ingeniería, el subtotal es 2.580, más revisión documental y correcciones adicionales. Las 96 de estabilización E2 del mes 21 pertenecen a Operación y no se sumarán nuevamente al servicio ordinario.

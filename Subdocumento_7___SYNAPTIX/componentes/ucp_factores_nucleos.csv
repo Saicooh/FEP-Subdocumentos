@@ -1,0 +1,22 @@
+﻿Factor,Tipo,Peso,Valor,Producto,Justificacion
+T1,Técnico,2,5,10,"Distribución cloud y autoridad local, con operación desconectada"
+T2,Técnico,1,4,4,Umbrales de registro y consulta y continuidad de operación
+T3,Técnico,1,4,4,"Tareas breves en cubierta, sin interacción en maniobra"
+T4,Técnico,1,4,4,"Autoridades, exclusividad temporal y conciliación por moneda"
+T5,Técnico,1,4,4,"Reutilización de identidad, contratos y canales de 1.3/1.7"
+T6,Técnico,0.5,3,1.5,Despliegue automatizado con recepción y retorno
+T7,Técnico,0.5,4,2.0,Perfiles heterogéneos y accesibilidad
+T8,Técnico,2,3,6,"Android, web y ejecución local; portabilidad delimitada"
+T9,Técnico,1,4,4,Reglas versionadas y ampliación progresiva E2
+T10,Técnico,1,5,5,Concurrencia sobre amarra e intervalos de participación
+T11,Técnico,1,5,5,"Salud, consentimientos, permisos y evidencia probatoria"
+T12,Técnico,1,4,4,Intercambio con contabilidad y servicios externos por contratos
+T13,Técnico,1,3,3,Formación por perfil y comprobación de tarea
+E1,Ambiente,1.5,3,4.5,Competencia media como condición de provisión; no histórico acreditado
+E2,Ambiente,0.5,2,1.0,Experiencia náutica no acreditada; valoración prudente
+E3,Ambiente,1,3,3,Competencia media exigida en contratación; no medición del equipo
+E4,Ambiente,0.5,3,1.5,Capacidad media del analista como objetivo de provisión
+E5,Ambiente,1,3,3,Escenario neutral; no atribuye motivación medida a personas
+E6,Ambiente,2,3,6,Alcance de bases conocido con decisiones de interfaces pendientes
+E7,Ambiente,-1,3,-3,Escenario de dedicación parcial entre frentes; sensibilidad explícita
+E8,Ambiente,-1,3,-3,Complejidad media de herramientas; sin curva de aprendizaje medida
