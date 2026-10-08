@@ -1,4 +1,4 @@
-﻿\begin{figure}[htbp]
+\begin{figure}[htbp]
 \centering
 \setstretch{1}
 \begin{tikzpicture}[x=1.35cm,y=1.35cm,
@@ -6,19 +6,31 @@
   texto/.style={font=\fontsize{9.5}{11.5}\selectfont,align=center},
   cota/.style={{Latex}-{Latex},thin,draw=SynNavyLight}]
   \draw[zona] (0,0) rectangle (10,7);
-  \draw[zona] (0,0) rectangle (2.5,3.8);
-  \draw[zona] (0,3.8) rectangle (2.5,7);
-  \draw[zona] (7.5,0) rectangle (10,3.8);
-  \draw[zona] (7.5,3.8) rectangle (10,7);
+  \draw[zona] (0,0) rectangle (2.5,2.2);
+  \draw[zona] (0,2.2) rectangle (2.5,7);
+  \draw[zona] (7.5,0) rectangle (10,2.2);
+  \draw[zona] (7.5,2.2) rectangle (10,7);
   \draw[zona] (2.5,1.5) rectangle (7.5,7);
+  \draw[white,line width=4pt] (4.4,1.5)--(5.6,1.5);
+  \draw[draw=SynNavyLight,thick] (4.4,1.5)--(5.6,1.5);
   \draw[dashed,draw=SynNavyLight] (5,1.5)--(5,4.1);
   \draw[dashed,draw=SynNavyLight] (2.5,5)--(7.5,5);
-  \node[texto,text width=29mm] at (1.25,5.4) {Baterías A\\2 cadenas\\40 bloques/cadena\\Aire separado de TI};
-  \node[texto,text width=29mm] at (8.75,5.4) {Baterías B\\2 cadenas\\40 bloques/cadena\\Aire separado de TI};
-  \node[texto,text width=28mm] at (1.25,1.9) {UPS A\\93T60\\Distribución A};
-  \node[texto,text width=28mm] at (8.75,1.9) {UPS B\\93T60\\Distribución B};
-  \node[texto,text width=28mm] at (3.75,2.9) {Cómputo\\24 U\\8 U ocupadas};
-  \node[texto,text width=28mm] at (6.25,2.9) {Comunicaciones\\12 U\\10 U ocupadas};
+  \draw[fill=white,draw=SynNavyLight] (.2,2.5) rectangle (1,4.5);
+  \draw[fill=white,draw=SynNavyLight] (.2,4.7) rectangle (1,6.7);
+  \draw[fill=white,draw=SynNavyLight] (9,2.5) rectangle (9.8,4.5);
+  \draw[fill=white,draw=SynNavyLight] (9,4.7) rectangle (9.8,6.7);
+  \node[texto,rotate=90] at (.6,3.5) {Cadena A1};
+  \node[texto,rotate=90] at (.6,5.7) {Cadena A2};
+  \node[texto,rotate=90] at (9.4,3.5) {Cadena B1};
+  \node[texto,rotate=90] at (9.4,5.7) {Cadena B2};
+  \node[texto,text width=16mm] at (1.75,5.25) {Baterías A\\Pasillo\\1,30 m\\Aire propio};
+  \node[texto,text width=16mm] at (8.25,5.25) {Baterías B\\Pasillo\\1,30 m\\Aire propio};
+  \node[texto,text width=28mm] at (1.25,1.1) {UPS A\\93T60\\Distribución A};
+  \node[texto,text width=28mm] at (8.75,1.1) {UPS B\\93T60\\Distribución B};
+  \draw[draw=SynNavyLight,fill=white,thick] (3.45,2.70) rectangle (4.05,3.77);
+  \draw[draw=SynNavyLight,fill=white,thick] (5.95,2.70) rectangle (6.55,3.77);
+  \node[texto,text width=28mm] at (3.75,2.1) {Cómputo\\24 U\\8 U ocupadas};
+  \node[texto,text width=28mm] at (6.25,2.1) {Comunicaciones\\24 U\\10 U ocupadas};
   \draw[draw=SynNavyLight,fill=white,thick] (3.4,5.95) rectangle (4.6,6.65);
   \draw[draw=SynNavyLight,fill=white,thick] (5.4,5.95) rectangle (6.6,6.65);
   \node[texto] at (4,6.3) {Clima A};
@@ -29,17 +41,30 @@
   \draw[-{Latex},thick,dashed,draw=SynNavyLight] (7,4.2) |- (6.6,6.3);
   \node[texto,fill=SynSurface,text width=60mm] at (5,4.75) {Recinto común: 27,5 m$^2$\\TI y unidades interiores; sin muro entre zonas};
   \node[texto,fill=SynSurface,text width=55mm] at (5,3.9) {Suministro continuo / retorno discontinuo};
-  \node[texto,text width=61mm] at (5,.75) {Circulación, acceso independiente\\frente útil $\geq1,20$ m};
+  \node[texto,text width=61mm] at (5,.75) {Circulación cerrada INC-4, acceso independiente\\frente útil $\geq1,20$ m};
+  \draw[white,line width=4pt] (4.4,0)--(5.6,0);
+  \draw[-{Latex},thick] (5,.5)--(5,-.3);
+  \draw[white,line width=4pt] (1.2,7)--(2.4,7);
+  \draw[white,line width=4pt] (7.6,7)--(8.8,7);
+  \draw[-{Latex},thick] (1.8,6.85)--(1.8,7.2);
+  \draw[-{Latex},thick] (8.2,6.85)--(8.2,7.2);
+  \draw[white,line width=4pt] (0,.3)--(0,1.5);
+  \draw[white,line width=4pt] (10,.3)--(10,1.5);
+  \draw[-{Latex},thick] (.15,.9)--(-.25,.9);
+  \draw[-{Latex},thick] (9.85,.9)--(10.25,.9);
+  \foreach \px/\py/\pid in {5.85/1.6/01,-.35/1.9/02,10.35/1.9/03,1.8/7.25/04,8.2/7.25/05,5.85/.2/06,4.15/1.6/07,-.35/2.7/08,10.35/2.7/09}{
+   \node[circle,draw=SynNavyLight,fill=white,inner sep=.6mm,font=\fontsize{7}{8}\selectfont] at (\px,\py) {P\pid};
+  }
   \draw[cota] (0,7.3)--(10,7.3);
   \node[texto,fill=white,inner sep=1pt] at (5,7.3) {10,0 m interiores};
   \draw[cota] (-.3,0)--(-.3,7);
   \node[texto,rotate=90,fill=white,inner sep=1pt] at (-.3,3.5) {7,0 m interiores};
   \node[texto,draw=SynNavyLight,fill=SynSurface,text width=65mm,anchor=north west,inner sep=2mm] at (0,-.45)
-    {\textbf{Exterior A/B segregado}\\Cada grupo: zona $\geq6,0\times4,0$ m.\\Depósito propio: 1.500 L nominales.\\Volumen útil $\geq1.190$ L; contención neta $\geq1.650$ L.};
+    {\textbf{Exterior A/B segregado}\\Cada grupo: zona $\geq6,0\times4,0$ m.\\Depósito propio: 2.000 L nominales.\\Volumen útil $\geq1.500$ L; contención neta $\geq2.200$ L.};
   \node[texto,draw=SynNavyLight,fill=SynSurface,text width=55mm,anchor=north east,inner sep=2mm] at (10,-.45)
     {\textbf{Trabajo y respaldo separados}\\Área de trabajo externa $\geq3,0\times2,0$ m.\\Stock local apagado en espacio $\geq2,0\times1,5$ m.\\Bancada y ensayos fuera de sala.};
 \end{tikzpicture}
 \caption{Plano de distribución proyectada del recinto técnico y zonas asociadas}
 \label{fig:plano-recinto-proyectado}
-\FuenteFigura{Elaboración de Synaptix: cotas y condiciones de obra nueva según \parencite[RT-06.03, p.~14]{pucv-transversal} y área de instalación según \parencite[secc.~2.2.6, p.~21]{p9-mext-manual-2024}. Las divisiones discontinuas delimitan usos dentro del recinto común; las flechas representan circulación de aire. El plano ejecutivo desarrolla holguras, seguridad de refrigerante y tratamiento de los recintos energéticos separados.}
+\FuenteFigura{Elaboración de Synaptix: cotas y condiciones de obra nueva según \parencite[RT-06.03, p.~14]{pucv-transversal} y área de instalación según \parencite[secc.~2.2.6, p.~21]{p9-mext-manual-2024}. Las divisiones discontinuas delimitan usos dentro del recinto común; las flechas representan circulación de aire. Las cadenas se representan con huella girada de 0,8$\times$2,0 m; flechas negras: salidas de 1,20 m libres. El tabique sur de TI incorpora puerta de 1,20 m con cierre supervisado; resistencia y estanqueidad por recepción INC-4. PORT-21 identifica nueve estaciones interiores o junto a sus salidas, fuera del barrido; su inventario y la cobertura exterior se desarrollan en 4.2.1. El plano ejecutivo verifica servicio frontal de los bancos, seguridad de refrigerante y tratamiento de aire de los recintos energéticos separados.}
 \end{figure}

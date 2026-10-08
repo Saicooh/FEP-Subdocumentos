@@ -71,9 +71,16 @@ PL-R03 & R-12 & Repetición de ensayo y esfuerzo de corrección separados de las
 PL-R04 & R-04 & Recepción continua condicionada a participación y acta expresa.\\\hline
 PL-R05 & R-05 & Sensibilidad UCP, capacidad real y refuerzo propio.\\\hline
 \end{tabularx}
-\FuenteTabla{Integración de T-16 con riesgos_reservas_planificacion.csv y las fichas de SD7.}
+\FuenteTabla{Integración de T-16 con \path{riesgos_reservas_planificacion.csv} y las fichas de SD7.}
 \end{table}
 Un mismo evento puede relacionarse con varias fichas, pero conserva una sola incidencia, respuesta, consumo y cuenta de costo. Los IDs T-12 y complementos del caso permanecen íntegros; el tratamiento no elimina una cláusula ni cambia su estado automáticamente.
+
+\subsection{Consolidación de innovaciones y registro complementario}\label{sec:sd8-innovaciones}
+Las dieciséis fichas generales se conservan. El complemento \path{componentes/registro_riesgos_innovaciones.csv}, desarrollado dentro del T-16 en la sección ``Consolidación de los riesgos de IN1--IN5'', aplica la misma escala a dieciocho mecanismos de SD13. Reúne adopción, integración y acceso de IN1 (R-IN1-01--04); cohorte, atrasos, marejadas y dependencia de IN1 para invernada de IN2 (R-IN2-01--04); extracción, revisión humana, tratamiento autorizado, continuidad y beneficio de IN3 (R-IN3-01--05); atribución y omisión de casos difíciles por el incentivo de IN4 (R-IN4-01/02); y validez ambiental, participación y privacidad entre flotas de IN5 (R-IN5-01--03).
+
+Cada mecanismo mantiene causa, consecuencia, valoración inicial, objetivo residual, titular, disparador, mitigación, contingencia, hito, evidencia, paquetes y estado. El vínculo con R-01/02/03/10/14/15 permite gestionar dependencias sin sumar puntuaciones ordinales ni duplicar una reserva. Los responsables de control coordinan las funciones de SD13; no reemplazan las atribuciones de sus autores, revisores o receptores. Proyecto revisa ambos registros en cada Comité de Proyecto y ante el disparador. Una omisión de solicitudes difíciles, un cierre no sustentado o un deterioro de calidad en IN4 suspende el reconocimiento variable y exige conciliar el universo completo, incluidas abiertas y reaperturas, manteniendo servicio fijo y SLA.
+
+Los residuales son objetivos aún no observados; sólo evidencia de eficacia y decisión competente permiten adoptarlos. Los hitos conservan el calendario de SD13/SD7, la incorporación operativa del mes 21 y la ventana estacional IN2 de 2029. No se afirma evaluación de beneficio ni madurez ya alcanzada; el registro atiende la obligación general RT-19.04 aunque un criterio de innovación sea deseable. Las acciones y refuerzos se nivelan en T-15 y se valorizan exclusivamente en OE, sin reserva monetaria creada por esta consolidación. \parencite[RT-19.04, p.~33]{sd8-bt}
 
 \subsection{Ciclo de revisión, seguimiento y comunicación}
 Proyecto incorpora el riesgo en el arranque y lo revisa en cada Comité de Proyecto, además de cambios de diseño, avisos, incidentes y cercanía de ventanas críticas. El titular revisa el disparador al seleccionar trabajo, antes de promover una versión y al preparar una campaña. Publica estado, acción próxima y evidencia en el espacio colaborativo de T-9, con datos sensibles restringidos por perfil.
@@ -96,7 +103,7 @@ Organizacional & R-04/14 & 20 & Referente/suplente, recepción expresa y compete
 Seguridad & R-09/10 & 15 & Procedencia, intrusión y rechazo de acceso indebido.\\\hline
 Operación & R-02/11/13 & 15 & Autonomía/DR real, seguridad física y cobertura efectiva.\\\hline
 \end{tabularx}
-\FuenteTabla{Evaluaciones iniciales de registro_riesgos.csv; puntuaciones ordinales de oferta.}
+\FuenteTabla{Evaluaciones iniciales de \path{registro_riesgos.csv}; puntuaciones ordinales de oferta.}
 \end{table}
 R-01 y R-04 alcanzan 20 por suspensión y aceptación sin holgura; requieren atención antes de cada ventana, no sólo respuesta posterior. R-14 alcanza 16 por renovación estacional y capacitación protegida. Otros seis riesgos tienen 15 y siete tienen 12. La prioridad de una falla de permisos o integridad permanece alta por su impacto aunque una valoración residual futura reduzca su exposición.
 

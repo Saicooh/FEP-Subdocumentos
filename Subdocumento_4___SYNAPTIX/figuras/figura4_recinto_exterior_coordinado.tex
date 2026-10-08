@@ -1,0 +1,91 @@
+\begin{figure}[htbp]
+\centering
+\setstretch{1}
+\begin{tikzpicture}[x=.42cm,y=.42cm,
+ zona/.style={draw=SynNavyLight,fill=SynSurface,thick},
+ texto/.style={font=\fontsize{8.5}{10}\selectfont,align=center},
+ ruta/.style={draw=SynBlue,thick,dashed},
+ cota/.style={{Latex}-{Latex},thin}]
+\draw[draw=SynNavyLight,dashed] (0,0) rectangle (30,33);
+\draw[zona] (10,8) rectangle (20,15);
+\node[texto,text width=39mm] at (15,11.5) {Módulo TI/energía\\10$\times$7 m interiores\\Plano interno ampliado};
+\draw[zona] (0,18) rectangle (6,22);
+\node[texto,text width=23mm] at (3,20) {Grupo A\\6$\times$4 m};
+\draw[zona] (24,18) rectangle (30,22);
+\node[texto,text width=23mm] at (27,20) {Grupo B\\6$\times$4 m};
+\draw[zona] (0,10) rectangle (4,13);
+\node[texto,text width=17mm] at (2,11.5) {Tanque A\\y cubeto};
+\draw[zona] (26,10) rectangle (30,13);
+\node[texto,text width=17mm] at (28,11.5) {Tanque B\\y cubeto};
+\draw[zona] (12,19) rectangle (14,21);
+\node[texto,anchor=south] at (13,21.1) {Clima A};
+\draw[zona] (16,19) rectangle (18,21);
+\node[texto,anchor=south] at (17,21.1) {Clima B};
+\draw[zona] (12,1) rectangle (15,3);
+\node[texto,anchor=north] at (13.5,.9) {Trabajo\\3$\times$2 m};
+\draw[zona] (17,1) rectangle (19,2.5);
+\node[texto,anchor=north] at (18,.9) {Respaldo\\2$\times$1,5 m};
+\draw[-{Latex},thick] (15,8)--(15,5);
+\draw[-{Latex},thick] (11.8,15)--(11.8,17);
+\draw[-{Latex},thick] (18.2,15)--(18.2,17);
+\draw[-{Latex},thick] (10,9.1)--(7,9.1);
+\draw[-{Latex},thick] (20,9.1)--(23,9.1);
+\node[texto,text width=39mm] at (15,4.7) {Escape sur / pasos laterales\\libres $\geq1,50$ m};
+\node[texto,text width=39mm] at (15,17.3) {Escape bancos al norte\\extracción propia elevada};
+\draw[ruta] (3,18)--(7,18)--(7,10)--(10,10);
+\draw[ruta] (27,18)--(23,18)--(23,10)--(20,10);
+\node[texto,rotate=90,fill=white] at (7,13) {Ruta A};
+\node[texto,rotate=90,fill=white] at (23,13) {Ruta B};
+\draw[cota] (0,34)--(30,34);
+\node[texto,fill=white] at (15,34) {Reserva de proyecto: 30 m};
+\draw[cota] (-.7,0)--(-.7,33);
+\node[texto,rotate=90,fill=white] at (-.7,16.5) {33 m};
+% Huellas de variante y reservas de obra coordinadas ENV-19/PORT-21.
+\draw[zona] (0,0) rectangle (4,7);
+\draw[zona] (26,0) rectangle (30,7);
+\node[texto,text width=16mm] at (2,3.5) {Bancada A\\4$\times$7 m};
+\node[texto,text width=16mm] at (28,3.5) {Bancada B\\4$\times$7 m};
+\draw[zona] (6.5,24) rectangle (11.5,28);
+\draw[zona] (18.5,24) rectangle (23.5,28);
+\draw[fill=white,draw=SynNavyLight] (7.88,25.42) rectangle (10.12,26.57);
+\draw[fill=white,draw=SynNavyLight] (19.88,25.42) rectangle (22.12,26.57);
+\node[texto,text width=20mm] at (9,27.3) {Frío A\\30RB065-SS};
+\node[texto,text width=20mm] at (21,27.3) {Frío B\\30RB065-SS};
+\draw[zona] (6.5,20) rectangle (9.5,22);
+\draw[zona] (7,29) rectangle (10,31);
+\draw[zona] (20.5,20) rectangle (23.5,22);
+\draw[zona] (20,29) rectangle (23,31);
+\node[texto] at (8,21) {UTA A1};
+\node[texto] at (8.5,30) {UTA A2};
+\node[texto] at (22,21) {UTA B1};
+\node[texto] at (21.5,30) {UTA B2};
+\draw[zona] (5,5) rectangle (7,7);
+\draw[zona] (23,5) rectangle (25,7);
+\node[texto,text width=12mm] at (6,6) {Agua A};
+\node[texto,text width=12mm] at (24,6) {Agua B};
+\draw[zona] (12,29) rectangle (15,31);
+\draw[zona] (16,29) rectangle (19,31);
+\node[texto,text width=12mm] at (13.5,30) {Cilindros\\TI/bancos};
+\node[texto,text width=12mm] at (17.5,30) {Reserva\\pequeños};
+\draw[draw=SynTeal,dash dot] (9,24)--(8,23)--(8,16)--(10,12);
+\draw[draw=SynTeal,dash dot] (21,24)--(22,23)--(22,16)--(20,12);
+\node[texto,fill=white,inner sep=.5mm] at (8,16.4) {Agua A};
+\node[texto,fill=white,inner sep=.5mm] at (22,16.4) {Agua B};
+\draw[draw=SynNavyLight,fill=white] (10.2,11.2) rectangle (11.4,12);
+\draw[draw=SynNavyLight,fill=white] (10.2,13.2) rectangle (11.4,14);
+\draw[draw=SynNavyLight,fill=white] (18.6,11.2) rectangle (19.8,12);
+\draw[draw=SynNavyLight,fill=white] (18.6,13.2) rectangle (19.8,14);
+\node[texto,anchor=east] at (10.1,13.6) {EX A};
+\node[texto,anchor=west] at (19.9,13.6) {EX B};
+% Bastidores en cubierta, no sobre los pasos de salida norte.
+\foreach \px/\py/\pid in {3/17.5/10,27/17.5/11,4.5/11.5/12,25.5/11.5/13,4.5/3.5/14,25.5/3.5/15,12/26/16,18/26/17,16/3.5/18}{
+ \node[circle,draw=SynNavyLight,fill=white,inner sep=.7mm,font=\fontsize{7}{8}\selectfont] at (\px,\py) {P\pid};
+}
+\node[texto,text width=102mm] at (15,32) {P10--P18: portátiles exteriores; P01--P09: plano interno.\\UTA y agua: reservas de obra, conjuntos a medida pendientes.};
+\draw[-{Latex},thick] (29,2)--(29,5);
+\node[texto] at (29,5.6) {N};
+\end{tikzpicture}
+\caption{Reserva exterior y separación de zonas del módulo técnico nuevo}
+\label{fig:recinto-exterior-coordinado}
+\FuenteFigura{Elaboración de Synaptix: coordenadas de proyecto, sin levantamiento ejecutado. Rectángulos: reservas de equipos; flechas: escape; discontinuas: familias de ruta A/B, con datos y electricidad en canalizaciones separadas. Las holguras finales se miden desde caras exteriores, y la selección ambiental, combustible e incendio puede ampliar estas reservas. ENV-19 amplía la reserva a 30 por 33 m; las huellas interiores de frío son de catálogo, las UTA/agua y recipientes pequeños son reservas de proyecto. EX A/B son bastidores en cubierta, fuera de salidas. Verde: familia hidráulica segregada; el trazado ejecutivo verifica drenaje, apoyos, cruces, gas y distancias, sin considerar estas líneas tuberías recibidas. PORT-21 identifica las estaciones exteriores sin invadir las huellas del riesgo.}
+\end{figure}

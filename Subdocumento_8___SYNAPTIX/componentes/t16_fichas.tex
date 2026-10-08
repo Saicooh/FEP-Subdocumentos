@@ -112,3 +112,174 @@ Depósito por liberación omitido, titularidad incorrecta o custodia sin habilit
 Ignacio Silva (Proyecto) responde por el riesgo. Disparador: Manifiesto/fuentes ausentes, licencia no compatible o comprobante semestral faltante. Repositorio del CLIENTE, verificación de depósito en cada liberación y contrato de custodia independiente con condiciones de liberación. Contingencia: Bloquear promoción incompleta, reconstruir paquete desde commit verificado y subsanar custodia/licencia antes de declarar recepción. Plazo: Cada liberación; custodia inicial y actualización semestral; revisión antes de salida.
 
 Se exige la evidencia siguiente: Titularidad, acceso, fuentes/digest, licencia y comprobante del custodio. Paquetes vinculados: 1.2.1.1; 1.1.3.2/3; 1.12.11; 1.12.8.3. Reserva: Custodia de SD7 y puerta de liberación T-10; sin doble depósito presupuestado como nueva construcción. Fundamento: BA art. 84, p. 43; SD6 T-10; SD7 custodia. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. \parencite[art.~84, p.~43]{sd8-ba}
+
+\section{Consolidación de los riesgos de IN1--IN5}\label{sec:t16-innovaciones}
+Este complemento conserva R-01 a R-16 y reúne dieciocho mecanismos específicos, con los códigos R-IN1 a R-IN5. Cada mecanismo se vincula a un riesgo padre sin sustituir su titular ni valoración; su causa, disparador y acción se revisan por separado. La fuente versionada es \path{componentes/registro_riesgos_innovaciones.csv}. La exposición del padre no se recalcula sumando productos ordinales. Si varios mecanismos materializan el mismo evento, Proyecto conserva una incidencia, una imputación y un consumo de reserva.
+
+Se aplica la escala de SD8: probabilidad alta/media/baja preliminar corresponde a 4/3/2; impacto medio/alto/muy alto, a 3/4/5. Esta correspondencia sirve para la evaluación de oferta, no para asignar frecuencias. El impacto toma el mayor efecto: R-IN2-03 se eleva a 5 por seguridad de personas y R-IN3-03/R-IN4-01/02/R-IN5-03 por privacidad o aceptación contractual, según la causa desarrollada. Los objetivos residuales son metas; el residual observado, su fecha y evaluador competente se incorporarán sólo con evidencia de eficacia.
+
+Todos los mecanismos tienen estado identificado y tratamiento comprometido, sin pruebas ni aceptación ya ejecutadas. Sus plazos son hitos futuros del calendario vigente de SD13/SD7. Proyecto revisará cada ficha en todos los Comités de Proyecto y al disparador, registrando versión, fecha real de revisión, exposición, acción siguiente y aceptación competente. Las condiciones impeditivas bloquean la función o el reconocimiento económico; una puntuación menor no autoriza una excepción obligatoria. La identificación de estos riesgos cumple el alcance general de RT-19.04 y no declara cumplidos los criterios de beneficio o madurez de RT-26.
+
+Las acciones usan paquetes existentes y se nivelan por persona en T-15 antes de seleccionar trabajo. No se crea una reserva de dinero ni se imputa de nuevo un ahorro de IN1 a IN4. Una respuesta que requiera esfuerzo adicional se dimensiona y financia según SD8 y OE; sólo CC-6 autoriza un cambio contractual. La retirada de una extensión conserva las prestaciones obligatorias.
+\subsection{R-IN1-01: Actualización insuficiente por contratistas}
+Enlace T-16: R-14. Causa: Se conserva la coordinación telefónica sin ingresar sus cambios. Evento: Actualización insuficiente por contratistas. Consecuencia: El historial queda incompleto y el armador recibe un estado obsoleto.
+
+Evaluación inicial: $P=4$, $I=4$ y $E=16$. Objetivo residual: $P_o=3$, $I_o=3$ y $E_o=9$, sin residual observado acreditado. Titular: José Lara Arce (Implantación).
+
+Disparador: Cambio comunicado sin registro durante más de un día hábil. Tratamiento: Formar contratistas y marina; comprobar tareas y recordatorios con fuente de cada cambio. Contingencia: Activar registro asistido de la marina, conservando autor, fuente e instante del hecho; conciliar con el contratista.
+
+Hito o plazo: Formación al término del mes 18; control diario del piloto 19 y seguimiento 21--56. Evidencia exigida: Comunicaciones, cambios pendientes, registro asistido y comprobación de concordancia. Paquetes: IN1.1.1; IN1.3.3; IN1.5.1. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN1-02: Participación insuficiente de armadores}
+Enlace T-16: R-15. Causa: Adhesión voluntaria y pocas solicitudes elegibles. Evento: Participación insuficiente de armadores. Consecuencia: No se forma una comparación evaluable del beneficio.
+
+Evaluación inicial: $P=3$, $I=3$ y $E=9$. Objetivo residual: $P_o=2$, $I_o=3$ y $E_o=6$, sin residual observado acreditado. Titular: José Lara Arce (Implantación).
+
+Disparador: Menos de quince solicitudes elegibles al terminar la primera quincena del piloto o menos de treinta al cierre. Tratamiento: Orientar e ingresar solicitudes de forma asistida sin crear demanda artificial; conservar excluidas y no respondidas. Contingencia: Reforzar convocatoria; declarar beneficio no demostrado si falta muestra; cualquier extensión seguirá CC-6 y ventana autorizada.
+
+Hito o plazo: Primera quincena y cierre del piloto del mes 19. Evidencia exigida: Listado completo, elegibilidad, motivos de exclusión y acta de resultado, incluidos resultados nulos. Paquetes: IN1.5.1; IN1.5.4; IN1.5.6. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN1-03: Integración incompatible de solicitudes y órdenes}
+Enlace T-16: R-03. Causa: Contratos, identidades o versiones difieren entre IN1, CTR y VAR. Evento: Integración incompatible de solicitudes y órdenes. Consecuencia: Solicitud no vinculada, orden duplicada o transición incoherente.
+
+Evaluación inicial: $P=3$, $I=4$ y $E=12$. Objetivo residual: $P_o=2$, $I_o=4$ y $E_o=8$, sin residual observado acreditado. Titular: Fernando Guerrero (Arquitectura).
+
+Disparador: Interfaz crítica no supera pruebas al cierre del mes 16; duplicado o rechazo de versión no controlado. Tratamiento: Probar contratos, idempotencia, concurrencia, habilitación y recuperación de avisos; validar vínculo con orden autorizada. Contingencia: Bloquear flujo adicional afectado; conservar solución base y diario, corregir y repetir pruebas; gestionar ajuste de piloto mediante CC-6.
+
+Hito o plazo: Aceptación técnica en mes 16; comprobación previa a piloto 19 y materialización 21. Evidencia exigida: Versiones de contrato, casos negativos, historial y conciliación sin órdenes duplicadas. Paquetes: IN1.1.2; IN1.3.1--3; IN1.4.1. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN1-04: Acceso a solicitudes de otra embarcación}
+Enlace T-16: R-10. Causa: Autorización insuficiente de armador o contratista asignado. Evento: Acceso a solicitudes de otra embarcación. Consecuencia: Divulgación o modificación ajena a la finalidad autorizada.
+
+Evaluación inicial: $P=2$, $I=5$ y $E=10$. Objetivo residual: $P_o=1$, $I_o=5$ y $E_o=5$, sin residual observado acreditado. Titular: Bruno Toro (Seguridad).
+
+Disparador: Cualquier acceso indebido confirmado o prueba negativa fallida. Tratamiento: Validar vínculo vigente y ámbito en servidor; ensayar separación entre armadores y contratistas con auditoría. Contingencia: Suspender función afectada, conservar evidencia y activar incidente; revisar alcance, corregir y repetir pruebas antes de reactivar.
+
+Hito o plazo: Antes del piloto y de cada liberación; contención inmediata. Evidencia exigida: Matriz de roles, pruebas positivas/negativas, auditoría e informe de reexamen. Paquetes: IN1.3.2; IN1.4.2. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN2-01: Cohorte de invernada insuficiente}
+Enlace T-16: R-15. Causa: Adhesión voluntaria o convocatoria sin grupo estable. Evento: Cohorte de invernada insuficiente. Consecuencia: No se demuestra coordinación preventiva ni beneficio estacional.
+
+Evaluación inicial: $P=3$, $I=4$ y $E=12$. Objetivo residual: $P_o=2$, $I_o=4$ y $E_o=8$, sin residual observado acreditado. Titular: José Lara Arce (Implantación).
+
+Disparador: Al cierre de inscripción del mes 30 no se reúnen las veinte embarcaciones planificadas con plan y consentimiento. Tratamiento: Convocar y formar armadores; confirmar planes y disponibilidad sin imponer contratista ni trabajos. Contingencia: Proponer convocatoria adicional o alcance evaluable mediante CC-6; documentar limitación y no declarar alcanzada la evaluación de veinte barcos.
+
+Hito o plazo: Inscripción y planes en mes 30, antes de invernada del 31. Evidencia exigida: Cohorte, consentimientos, planes, bajas y acta de decisión sobre evaluación. Paquetes: IN2.1.2; IN2.5.1. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN2-02: Atraso del contratista respecto de botadura}
+Enlace T-16: R-15. Causa: Trabajo o disponibilidad no confirmado antes de la ventana. Evento: Atraso del contratista respecto de botadura. Consecuencia: Se llega a botadura con mantenimiento pendiente.
+
+Evaluación inicial: $P=4$, $I=4$ y $E=16$. Objetivo residual: $P_o=3$, $I_o=3$ y $E_o=9$, sin residual observado acreditado. Titular: José Lara Arce (Implantación).
+
+Disparador: Revisión a tres semanas de cada botadura detecta trabajo pendiente sin fecha viable. Tratamiento: Coordinar líder funcional y administración de varadero; confirmar disponibilidad y los cinco lotes de cuatro embarcaciones. Contingencia: Proponer reprogramación o sustitución del contratista con aceptación del armador; preservar habilitación y seguridad, sin prometer trabajos ajenos ejecutados.
+
+Hito o plazo: Cinco revisiones al menos tres semanas antes de botaduras septiembre--noviembre de 2029. Evidencia exigida: Confirmaciones, avance, acuerdos del armador y calendario de pendientes por barco. Paquetes: IN2.3.1; IN2.5.2; IN2.5.3. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN2-03: Suspensión meteorológica durante invernada}
+Enlace T-16: R-01. Causa: Aviso marítimo o condición insegura coincidente con trabajos programados. Evento: Suspensión meteorológica durante invernada. Consecuencia: Suspensión obligatoria y pérdida de ventana; exposición de personas si se continúa.
+
+Evaluación inicial: $P=4$, $I=5$ y $E=20$. Objetivo residual: $P_o=4$, $I_o=3$ y $E_o=12$, sin residual observado acreditado. Titular: Ignacio Silva (Proyecto).
+
+Disparador: Aviso oficial de marejadas o condición insegura; reserva disponible insuficiente para reprogramar. Tratamiento: Integrar ventana y aviso con R-01; comprobar reserva por campaña y red de todos los frentes antes de seleccionar trabajo. Contingencia: Suspender todo trabajo programado; consumir reserva una sola vez; decidir refuerzo y pendientes tras cese y autorización, sin extender piloto automáticamente.
+
+Hito o plazo: Control previo a cada campaña y revisión inmediata al aviso en meses 31--36. Evidencia exigida: Aviso, bloqueo, saldo de reserva, agenda revisada y autorización de reanudación. Paquetes: IN2.5.2; IN2.5.3; PL-R01. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN2-04: IN1 o interfaces no disponibles para IN2}
+Enlace T-16: R-03. Causa: La coordinación preventiva depende de un servicio o contrato aún no recibido. Evento: IN1 o interfaces no disponibles para IN2. Consecuencia: No se enlazan planes, solicitudes o avance de la invernada.
+
+Evaluación inicial: $P=3$, $I=4$ y $E=12$. Objetivo residual: $P_o=2$, $I_o=4$ y $E_o=8$, sin residual observado acreditado. Titular: Fernando Guerrero (Arquitectura).
+
+Disparador: Prueba IN2/IN1 fallida o dependencia no recibida antes de iniciar invernada. Tratamiento: Verificar contrato, estados y disponibilidad de IN1 antes de habilitar el plan preventivo. Contingencia: Mantener coordinación controlada por marina y solución base; conciliar referencias; bloquear extensión no verificada hasta repetir prueba.
+
+Hito o plazo: Antes del piloto estacional del mes 31 y ante cambios de IN1. Evidencia exigida: Contrato recibido, prueba de enlace y conciliación del registro alternativo. Paquetes: IN2.3.2; IN2.4.1. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN3-01: Campos OCR incorrectos por formato o calidad}
+Enlace T-16: R-03. Causa: Documento ilegible o formato cambiado; extractor propone valores erróneos. Evento: Campos OCR incorrectos por formato o calidad. Consecuencia: Póliza queda asociada con vigencia, monto o embarcación incorrectos.
+
+Evaluación inicial: $P=4$, $I=4$ y $E=16$. Objetivo residual: $P_o=3$, $I_o=3$ y $E_o=9$, sin residual observado acreditado. Titular: Fernando Guerrero (Arquitectura; coordinación con Líder de Datos).
+
+Disparador: Error crítico de campo o recurrencia por formato en prueba o piloto. Tratamiento: Líder de Datos aplica reglas, fragmentos de origen y evaluación por formato; conservar original y propuesta separada del dato aprobado. Contingencia: Suspender extracción del formato afectado y usar ingreso manual revisado; corregir y repetir pruebas antes de rehabilitar.
+
+Hito o plazo: Pruebas del mes 16; evaluación intercalada manual/asistida en meses 18--19 y cada cambio de formato. Evidencia exigida: Original, propuesta, corrección, validación de campos y métricas desagregadas por formato. Paquetes: IN3.2.2; IN3.4.1. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN3-02: Revisión humana insuficiente de extracción}
+Enlace T-16: R-14. Causa: Sesgo de automatización, formación incompleta o revisión apresurada. Evento: Revisión humana insuficiente de extracción. Consecuencia: Se aprueban datos incorrectos y se toman decisiones con antecedentes defectuosos.
+
+Evaluación inicial: $P=3$, $I=4$ y $E=12$. Objetivo residual: $P_o=2$, $I_o=4$ y $E_o=8$, sin residual observado acreditado. Titular: José Lara Arce (Implantación; con verificación de Calidad).
+
+Disparador: Un error crítico supera la revisión humana o revisor no acredita competencia de tarea. Tratamiento: Capacitar revisores con casos erróneos; exigir confirmación de campos y comprobar registros aprobados por QA. Contingencia: Pausar flujo afectado, revisar registros potencialmente comprometidos y reforzar revisión antes de reanudar; mantener ingreso manual.
+
+Hito o plazo: Antes de habilitar revisores y durante piloto 18--19 y operación 21--56. Evidencia exigida: Ejercicio individual, revisión de campos, errores aprobados y reexamen de registros afectados. Paquetes: IN3.5.1; IN3.5.3. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN3-03: Tratamiento documental no autorizado}
+Enlace T-16: R-10. Causa: Proveedor, ubicación, retención o permiso difieren de condiciones aprobadas. Evento: Tratamiento documental no autorizado. Consecuencia: Exposición de pólizas o tratamiento fuera de finalidad autorizada.
+
+Evaluación inicial: $P=3$, $I=5$ y $E=15$. Objetivo residual: $P_o=2$, $I_o=5$ y $E_o=10$, sin residual observado acreditado. Titular: Bruno Toro (Seguridad).
+
+Disparador: Condición de proveedor incompatible, permiso fallido o incidente documental. Tratamiento: Comprobar ubicación, retención, permisos y condiciones de procesamiento antes de enviar; conservar trazabilidad y acceso mínimo. Contingencia: Bloquear envío, activar respuesta de incidente y utilizar ingreso manual; rehabilitar sólo con condiciones y controles conformes.
+
+Hito o plazo: Antes de contratar/habilitar procesamiento y ante cambios del proveedor o liberación. Evidencia exigida: Condiciones aprobadas, configuración, accesos positivos/negativos y evidencia de retención/borrado aplicable. Paquetes: IN3.1.2; IN3.4.2. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN3-04: Extractor o conectividad interrumpidos}
+Enlace T-16: R-02. Causa: Dependencia remota no disponible durante ingreso. Evento: Extractor o conectividad interrumpidos. Consecuencia: Se acumulan pólizas pendientes o se duplica ingreso al recuperar.
+
+Evaluación inicial: $P=3$, $I=3$ y $E=9$. Objetivo residual: $P_o=2$, $I_o=3$ y $E_o=6$, sin residual observado acreditado. Titular: José Lara Arce (Operación/SRE).
+
+Disparador: Fallo del extractor, agotamiento de reintentos o enlace indisponible. Tratamiento: Supervisar fallos y ensayar alternativa manual, reintentos e idempotencia; separar pendientes de antecedentes aprobados. Contingencia: Ingresar manualmente con original y fuente; al recuperar, conciliar resultados pendientes sin duplicar ni sobrescribir aprobados.
+
+Hito o plazo: Prueba previa a piloto y operación; actuación al fallo. Evidencia exigida: Registro de fallo, cola pendiente, ingreso manual y conciliación tras recuperación. Paquetes: IN3.3.3; IN3.4.1. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN3-05: Beneficio de extracción insuficiente}
+Enlace T-16: R-15. Causa: Volumen bajo o revisión consume el ahorro de captura. Evento: Beneficio de extracción insuficiente. Consecuencia: Costos incrementales superan el beneficio justificable.
+
+Evaluación inicial: $P=3$, $I=3$ y $E=9$. Objetivo residual: $P_o=2$, $I_o=3$ y $E_o=6$, sin residual observado acreditado. Titular: Ignacio Silva (Proyecto).
+
+Disparador: Muestra de 120 pólizas distintas incompleta o tiempo/volumen observado no sustenta beneficio neto. Tratamiento: Medir manual/asistido con revisión incluida, por formato; registrar esfuerzo y contrastar costos incrementales exclusivamente en OE. Contingencia: Declarar beneficio no demostrado y mantener ingreso manual; ajustar o deshabilitar extensión sin ampliar alcance automáticamente.
+
+Hito o plazo: Cierre del piloto 18--19 y revisión previa a materialización 21. Evidencia exigida: Muestra y tiempos con revisión, resultados adversos y referencia a evaluación económica autorizada. Paquetes: IN3.1.1; IN3.5.3. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN4-01: Atribución inválida o pago por comparación no equivalente}
+Enlace T-16: R-15. Causa: Mezcla, dotación o mejoras ajenas cambian respecto de la base; medición no aprobada. Evento: Atribución inválida o pago por comparación no equivalente. Consecuencia: Reconocimiento variable indebido o desacuerdo contractual.
+
+Evaluación inicial: $P=3$, $I=5$ y $E=15$. Objetivo residual: $P_o=2$, $I_o=5$ y $E_o=10$, sin residual observado acreditado. Titular: Ignacio Silva (Proyecto).
+
+Disparador: Base cero, menos de treinta solicitudes por condición, datos no comparables o discrepancia de cálculo/atribución. Tratamiento: Fijar ficha y composición antes de medir; conservar intervalos activos, fuentes, exclusiones y cálculo; separar preparación Synaptix de verificación cliente. Contingencia: Asignar factor cero hasta disponer de evidencia aceptada; corregir prospectivamente y repetir evaluación autorizada; mantener servicio fijo y SLA.
+
+Hito o plazo: Ficha antes de base del mes 18; evaluación 19; conciliación mensual 21--56. Evidencia exigida: Ficha aprobada, tiempos por persona, cálculos versionados, conciliación y decisión del cliente; valorización sólo OE. Paquetes: IN4.1; IN4.3; IN4.4. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN4-02: Omisión de casos difíciles o cierre apresurado por incentivo}
+Enlace T-16: R-15. Causa: Selección de tareas fáciles o presión para aparentar menor esfuerzo. Evento: Omisión de casos difíciles o cierre apresurado por incentivo. Consecuencia: Se ocultan errores/abiertas, empeora el servicio y se reclama incentivo sin resultado válido.
+
+Evaluación inicial: $P=3$, $I=5$ y $E=15$. Objetivo residual: $P_o=2$, $I_o=5$ y $E_o=10$, sin residual observado acreditado. Titular: Ignacio Silva (Proyecto; con verificación de Calidad).
+
+Disparador: Solicitud elegible ausente sin motivo, cierre no sustentado, aumento de errores/reaperturas o caída de proporción de cierre. Tratamiento: Calidad contrasta universo elegible con AUT/VAR/CTR, incluidas abiertas y excluidas; fija complejidad y plazo antes de resultados; compara calidad por condición. Contingencia: Suspender reconocimiento y aplicar factor cero; revisar universo y cierres, corregir y repetir evaluación sin borrar versión; sostener operación y obligaciones de atención.
+
+Hito o plazo: Antes de cerrar piloto 19 y cada conciliación mensual 21--56. Evidencia exigida: Universo conciliado, motivos de exclusión, abiertas, errores, reaperturas y control de cierre por condición. Paquetes: IN4.2; IN4.3; IN4.4. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN5-01: Reducción ambiental aparente por datos o selección sesgados}
+Enlace T-16: R-15. Causa: Adhesión voluntaria, lecturas faltantes o cambios de ocupación, clima y lavado. Evento: Reducción ambiental aparente por datos o selección sesgados. Consecuencia: Se publica ahorro no atribuible al plan o sustentado en consumo/permanencia incorrectos.
+
+Evaluación inicial: $P=3$, $I=4$ y $E=12$. Objetivo residual: $P_o=2$, $I_o=4$ y $E_o=8$, sin residual observado acreditado. Titular: Ignacio Silva (Proyecto; con verificación de Calidad).
+
+Disparador: Lectura/permanencia no confiable, base o denominador cero, composición distinta o período sin evidencia. Tratamiento: Comparar mismas embarcaciones, conservar asociación histórica de medidor y permanencia validada; fijar criterios y registrar faenas, clima y resultados adversos. Contingencia: No publicar reducción; declarar período no evaluable y corregir/capturar en ventana válida sin imputar cero ni atribuir causalidad por simple diferencia.
+
+Hito o plazo: Base del mes 18, piloto 19; antes de publicación y preparación de evidencia ambiental 2029. Evidencia exigida: Series conciliadas, asociaciones históricas, permanencia, exclusiones, contexto y cálculo reproducible. Paquetes: IN5.1; IN5.3; IN5.4. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN5-02: Participación o continuidad insuficientes en planes ambientales}
+Enlace T-16: R-14. Causa: Plan poco comprensible o abandono voluntario de armador/charter. Evento: Participación o continuidad insuficientes en planes ambientales. Consecuencia: No se ejecutan acciones ni se evalúa utilidad del plan.
+
+Evaluación inicial: $P=3$, $I=3$ y $E=9$. Objetivo residual: $P_o=2$, $I_o=3$ y $E_o=6$, sin residual observado acreditado. Titular: José Lara Arce (Implantación).
+
+Disparador: Cohorte no evaluable, retiro o acción sin responsable/plazo/evidencia. Tratamiento: Validar acciones breves con armadores y charter; explicar responsabilidades y retiro sin pérdida de servicio básico. Contingencia: Ajustar o desactivar plan adicional y registrar resultado no demostrado; preservar registros obligatorios y cierre de no conformidades.
+
+Hito o plazo: Antes de acciones del piloto 19 y en seguimiento 21--56. Evidencia exigida: Adhesiones/retiros, comprensión de tarea, acciones, plazos y evaluación de utilidad. Paquetes: IN5.1; IN5.3; IN5.4. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
+\subsection{R-IN5-03: Acceso entre flotas o uso fuera de finalidad ambiental}
+Enlace T-16: R-10. Causa: Vínculo histórico/consentimiento o autorización por embarcación no se comprueba. Evento: Acceso entre flotas o uso fuera de finalidad ambiental. Consecuencia: Se expone historial de otra flota o se habilita finalidad no autorizada.
+
+Evaluación inicial: $P=2$, $I=5$ y $E=10$. Objetivo residual: $P_o=1$, $I_o=5$ y $E_o=5$, sin residual observado acreditado. Titular: Bruno Toro (Seguridad).
+
+Disparador: Prueba de aislamiento fallida, consentimiento modificado no aplicado o acceso indebido. Tratamiento: Verificar vínculo vigente, finalidad y autorización por embarcación; ensayar flotas separadas y propagación de restricciones con auditoría. Contingencia: Suspender vista afectada, conservar evidencia y activar incidente; corregir acceso y repetir aislamiento antes de rehabilitar.
+
+Hito o plazo: Antes del piloto, cada liberación y al cambio de vínculo/consentimiento. Evidencia exigida: Casos de separación entre flotas, auditoría de consultas/cambios y prueba de restricción propagada. Paquetes: IN5.2; IN5.3; IN5.4. Estado: Identificado; tratamiento comprometido; residual objetivo no verificado. Reserva y capacidad: Acciones en paquete vinculado y T-15; sin HH libres ni reserva económica adicional; costo y refuerzo se concilian en OE con autorización. Para R-IN2-03 rige R-01, con consumo único por campaña.
+
