@@ -1,0 +1,59 @@
+% Actualice estas filas en cada subdocumento para reflejar el uso real.
+\NewDocumentCommand{\FilaDeclaracionIA}{m m m m m m}{%
+  #1 & #2 & #3 & #4 & #5 & #6 \\
+  \hline
+}
+
+\providecommand{\DeclaracionesIA}{%
+  \FilaDeclaracionIA
+    {Plantilla base}
+    {OpenAI Codex}
+    {Diseño y generación inicial de la plantilla LaTeX}
+    {Medio}
+    {Alto}
+    {Equipo proponente: revisar, verificar y actualizar antes de la entrega}%
+}
+
+\newenvironment{declaracionia}{%
+  \begingroup
+  \setlength{\tabcolsep}{3pt}
+  \begin{longtable}{@{}L{.09\textwidth}L{.12\textwidth}L{.18\textwidth}L{.10\textwidth}L{.12\textwidth}L{.25\textwidth}@{}}
+    \hline
+    \EncabezadoTabla{Sección} &
+    \EncabezadoTabla{Herramienta} &
+    \EncabezadoTabla{Finalidad del uso} &
+    \EncabezadoTabla{Nivel en texto} &
+    \EncabezadoTabla{Nivel en diagramas} &
+    \EncabezadoTabla{Revisión humana: responsable y verificación} \\
+    \hline
+    \endfirsthead
+    \hline
+    \EncabezadoTabla{Sección} &
+    \EncabezadoTabla{Herramienta} &
+    \EncabezadoTabla{Finalidad del uso} &
+    \EncabezadoTabla{Nivel en texto} &
+    \EncabezadoTabla{Nivel en diagramas} &
+    \EncabezadoTabla{Revisión humana: responsable y verificación} \\
+    \hline
+    \endhead
+}{%
+  \end{longtable}
+  \endgroup
+}
+
+\newcommand{\CierreSubdocumento}{%
+  \clearpage
+  \chapter*{Referencias}
+  \addcontentsline{toc}{chapter}{Referencias}
+  \markboth{Referencias}{Referencias}
+  \printbibliography[heading=none]
+  \clearpage
+  \chapter*{Declaración de uso de IA}
+  \addcontentsline{toc}{chapter}{Declaración de uso de IA}
+  \markboth{Declaración de uso de IA}{Declaración de uso de IA}
+  Esta declaración identifica las herramientas de inteligencia artificial utilizadas, su finalidad y la revisión humana aplicada. Los niveles admitidos son Ninguno, Bajo, Medio y Alto. El equipo proponente debe actualizarla conforme al uso efectivo y consolidarla en el Formulario A-6.
+
+  \begin{declaracionia}
+    \DeclaracionesIA
+  \end{declaracionia}
+}

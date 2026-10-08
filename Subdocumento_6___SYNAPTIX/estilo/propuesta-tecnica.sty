@@ -1,0 +1,166 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{propuesta-tecnica}[2026/09/25 Synaptix technical proposal]
+
+\RequirePackage{fontspec}
+\RequirePackage{xcolor}
+\input{config/identidad.tex}
+\RequirePackage[spanish,es-nodecimaldot]{babel}
+\RequirePackage{csquotes}
+\RequirePackage[letterpaper,top=26mm,bottom=24mm,left=27mm,right=24mm,headheight=18pt]{geometry}
+\RequirePackage{microtype}
+\RequirePackage{setspace}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
+\RequirePackage{booktabs}
+\RequirePackage{array}
+\RequirePackage{tabularx}
+\RequirePackage{longtable}
+\RequirePackage{colortbl}
+\RequirePackage{ragged2e}
+\RequirePackage{caption}
+\RequirePackage{pdflscape}
+\RequirePackage{enumitem}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xparse}
+\RequirePackage{etoolbox}
+\RequirePackage[
+  backend=biber,
+  style=apa,
+  sorting=nyt,
+  language=spanish
+]{biblatex}
+\DeclareLanguageMapping{spanish}{spanish-apa}
+\addbibresource{config/referencias.bib}
+\RequirePackage[
+  unicode=true,
+  colorlinks=true,
+  linkcolor=SynBlue,
+  citecolor=SynNavyLight,
+  urlcolor=SynBlue,
+  bookmarksopen=true,
+  bookmarksnumbered=true,
+  pdfborder={0 0 0}
+]{hyperref}
+\RequirePackage{bookmark}
+
+\providecommand{\Empresa}{Synaptix}
+\providecommand{\EmpresaArchivo}{SYNAPTIX}
+\providecommand{\NombreOferta}{Nombre de la licitación}
+\providecommand{\VersionDocumento}{0.1}
+\providecommand{\FechaDocumento}{\today}
+\providecommand{\ClasificacionDocumento}{Confidencial}
+\providecommand{\FirmanteDocumento}{Firmante autorizado}
+
+\color{SynInk}
+\setstretch{1.12}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.62em}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setlist{topsep=0.35em,itemsep=0.2em,parsep=0pt,leftmargin=1.7em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textbf{\textcolor{SynNavy}{\Empresa}}}
+\fancyhead[R]{\small\textcolor{SynMuted}{\nouppercase{\leftmark}}}
+\fancyfoot[L]{\fontsize{9}{11}\selectfont\textcolor{SynMuted}{Versión \VersionDocumento\enspace·\enspace\ClasificacionDocumento}}
+\fancyfoot[R]{\fontsize{9}{11}\selectfont\textbf{\textcolor{SynNavy}{\thepage}}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{\pagestyle{fancy}}
+
+\titleformat{\chapter}[display]
+  {\bfseries\color{SynNavy}}
+  {\fontsize{12}{14}\selectfont\textcolor{SynCyan}{CAPÍTULO \thechapter}}
+  {0.35em}
+  {\fontsize{27}{31}\selectfont}
+  [\vspace{0.45em}\textcolor{SynCyan}{\rule{36mm}{2.3pt}}]
+\titlespacing*{\chapter}{0pt}{-12pt}{24pt}
+\titleformat{\section}
+  {\Large\bfseries\color{SynNavy}}
+  {\textcolor{SynCyan}{\thesection}}{0.7em}{}
+\titleformat{\subsection}
+  {\large\bfseries\color{SynNavyLight}}
+  {\textcolor{SynCyan}{\thesubsection}}{0.65em}{}
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\color{SynInk}}
+  {\textcolor{SynCyan}{\thesubsubsection}}{0.6em}{}
+
+\captionsetup{
+  font={small},
+  labelfont={bf,color=SynNavy},
+  textfont={color=SynInk},
+  labelsep=period,
+  justification=raggedright,
+  singlelinecheck=false,
+  skip=7pt
+}
+\AtBeginEnvironment{tabular}{\fontsize{9}{11}\selectfont}
+\AtBeginEnvironment{tabularx}{\fontsize{9}{11}\selectfont}
+\AtBeginEnvironment{longtable}{\fontsize{9}{11}\selectfont}
+\arrayrulecolor{SynLine}
+\setlength{\arrayrulewidth}{0.45pt}
+\renewcommand{\arraystretch}{1.28}
+
+\newtcolorbox{resumenejecutivo}{
+  enhanced,breakable,colback=SynSurface,colframe=SynCyan,boxrule=0pt,
+  borderline west={3pt}{0pt}{SynCyan},arc=1.5mm,
+  title=Resumen ejecutivo,coltitle=SynNavy,fonttitle=\bfseries
+}
+\newtcolorbox{decisionarquitectura}{
+  enhanced,breakable,colback=SynWhite,colframe=SynBlue,boxrule=0.7pt,arc=1.5mm,
+  title=Decisión de arquitectura,coltitle=SynNavy,fonttitle=\bfseries
+}
+\newtcolorbox{supuesto}{
+  enhanced,breakable,colback=SynSurface,colframe=SynLine,boxrule=0.7pt,arc=1.5mm,
+  title=Supuesto,attach boxed title to top left={xshift=3mm,yshift*=-2mm},
+  boxed title style={colback=SynNavyLight,colframe=SynNavyLight},coltitle=SynWhite,fonttitle=\bfseries
+}
+\newtcolorbox{riesgo}{
+  enhanced,breakable,colback=SynWhite,colframe=SynNavyLight,boxrule=0.7pt,arc=1.5mm,
+  title=Riesgo y mitigación,coltitle=SynNavy,fonttitle=\bfseries
+}
+\newtcolorbox{metrica}{
+  enhanced,breakable,colback=SynCyan!8,colframe=SynCyan,boxrule=0.7pt,arc=1.5mm,
+  title=Métrica,coltitle=SynNavy,fonttitle=\bfseries
+}
+\newtcolorbox{pasometodologico}[2]{
+  enhanced,breakable,colback=SynWhite,colframe=SynLine,boxrule=0.7pt,arc=1.5mm,
+  title={\textcolor{SynCyan}{\LARGE #1}\quad #2},coltitle=SynNavy,fonttitle=\bfseries
+}
+
+\NewDocumentCommand{\FuenteFigura}{m}{%
+  \par\vspace{2pt}{\fontsize{9}{11}\selectfont\textcolor{SynMuted}{\textbf{Fuente:} #1}}%
+}
+\NewDocumentCommand{\FiguraTecnica}{O{width=\linewidth} m m m m}{%
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[#1]{#2}
+    \caption{#3}
+    \label{#5}
+    \FuenteFigura{#4}
+  \end{figure}
+}
+\NewDocumentCommand{\ReferenciaAnexo}{m m}{%
+  \textcolor{SynNavy}{\textbf{#1}} (archivo independiente: \texttt{#2})%
+}
+\newcommand{\TextoCaidaPendiente}{%
+  \begin{tcolorbox}[colback=SynCyan!7,colframe=SynCyan,boxrule=0.6pt]
+    \textbf{Texto de apertura por completar.} Redacte análisis antes de agregar listas, figuras, tablas o subtítulos.
+  \end{tcolorbox}%
+}
+
+\newcommand{\EncabezadoTabla}[1]{\cellcolor{SynNavy}\textcolor{SynWhite}{\textbf{#1}}}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+
+\AtBeginDocument{%
+  \hypersetup{
+    pdftitle={\NombreOferta},
+    pdfauthor={\Empresa},
+    pdfsubject={Propuesta técnica}
+  }%
+}

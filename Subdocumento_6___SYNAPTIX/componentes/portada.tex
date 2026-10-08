@@ -1,8 +1,6 @@
 % Portada vectorial reutilizable. No requiere una imagen de fondo.
-\NewDocumentCommand{\PortadaDocumento}{m m}{%
-  % La portada consume un folio sin reiniciar el contador de páginas.
-  \clearpage
-  \begingroup
+\NewDocumentCommand{\PortadaPropuesta}{m m}{%
+  \begin{titlepage}
     \thispagestyle{empty}
     \begin{tikzpicture}[remember picture,overlay]
       \fill[SynNavy] (current page.south west) rectangle (current page.north east);
@@ -53,49 +51,22 @@
 
       \node[anchor=west,align=left,text width=.68\paperwidth]
         at ($(current page.west)+(1.55cm,-1.0cm)$) {%
-          {\fontsize{11}{14}\selectfont\bfseries\textcolor{SynCyan}{#1}}\\[2mm]
+          {\fontsize{10}{12}\selectfont\bfseries\textcolor{SynCyan}{SUBDOCUMENTO #1}}\\[2mm]
           {\fontsize{19}{23}\selectfont\bfseries\textcolor{SynWhite}{#2}}
-        };
-
-      \node[anchor=west,align=left,text width=.68\paperwidth]
-        at ($(current page.west)+(1.55cm,-4.5cm)$) {%
-          {\fontsize{11}{14}\selectfont\bfseries\textcolor{SynWhite}{\RazonSocial}}\\[2mm]
-          {\fontsize{11}{14}\selectfont\textcolor{SynWhite!82}{RUT \RUTEmpresa\quad Licitación N\textsuperscript{o} \CodigoLicitacion}}
         };
 
       \draw[SynCyan,line width=1.5pt]
         ($(current page.south west)+(1.55cm,3.25cm)$) -- ++(3.2cm,0);
-      \node[anchor=south west,align=left,text width=.54\paperwidth,text=SynWhite!74]
+      \node[anchor=south west,align=left,text=SynWhite!74]
         at ($(current page.south west)+(1.55cm,1.35cm)$) {%
-          \fontsize{11}{14}\selectfont
+          \fontsize{9}{12}\selectfont
           \textbf{Versión} \VersionDocumento\quad
-          \textbf{Fecha} \FechaDocumento\\[1mm]
-          \textbf{Clasificación} \ClasificacionDocumento
-        };
-
-      \node[anchor=south east,text=SynWhite!84]
-        at ($(current page.south east)+(-1.45cm,2.65cm)$) {%
-          \FirmaCompletaRepresentante
-        };
-
-      % Media firma y folio propios de la portada sobre el fondo oscuro.
-      \node[anchor=south east,text=SynWhite!78]
-        at ($(current page.south east)+(-1.45cm,0.72cm)$) {%
-          \fontsize{8}{10}\selectfont
-          \MediaFirmaRepresentante\hspace{5mm}%
-          Página\enspace\textbf{\textcolor{SynCyan}{\thepage}}
+          \textbf{Fecha} \FechaDocumento\quad
+          \textbf{Clasificación} \ClasificacionDocumento\\[2mm]
+          \textbf{Firmante autorizado:} \FirmanteDocumento
         };
     \end{tikzpicture}
     \null
+  \end{titlepage}
   \clearpage
-  \endgroup
-}
-
-\NewDocumentCommand{\PortadaPropuesta}{m m}{%
-  \PortadaDocumento{SUBDOCUMENTO #1}{#2}%
-}
-
-% Cada formulario abre con una portada independiente de su índice.
-\NewDocumentCommand{\PortadaFormulario}{m m}{%
-  \PortadaDocumento{FORMULARIO #1}{#2}%
 }
