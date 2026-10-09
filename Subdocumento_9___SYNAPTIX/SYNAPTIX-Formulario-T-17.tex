@@ -1,0 +1,20 @@
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
+\input{componentes/cierre.tex}
+\newcommand{\FormularioCalidad}{T-17}
+\input{componentes/declaraciones_formularios.tex}
+\renewcommand{\thesection}{T-17.\arabic{section}}
+\renewcommand{\thetable}{T-17.\arabic{table}}
+\setlength{\cftsecnumwidth}{4.5em}
+\begin{document}
+\pagenumbering{arabic}
+\PortadaFormulario{T-17}{PROTOCOLO DE ACEPTACIÓN}
+\tableofcontents\clearpage
+\chapter*{Protocolo de aceptación}
+\addcontentsline{toc}{chapter}{Protocolo de aceptación}
+Synaptix propone la recepción de cada hito y del producto final mediante criterios objetivos, evidencia trazable, revisión y subsanación, y acta expresa de la Contraparte Técnica. La propuesta define actuaciones futuras; no incorpora actas suscritas ni sustituye las decisiones del CLIENTE. \parencite[Formulario T-17, p.~64; art.~18, p.~13]{sd9-ba}
+\input{componentes/t17_protocolo.tex}
+\CierreSubdocumento
+\end{document}

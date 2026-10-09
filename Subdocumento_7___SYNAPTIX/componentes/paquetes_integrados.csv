@@ -60,7 +60,7 @@
 1.10.2.1.7,Conmutación real de desastre y retorno E1,11,1,Implementación,,VERSION-E1,BT20.1; SD3 CA; SD4/SD5,José Lara Arce,64,,.atl\SD7_gobierno_servicio_2026-10-07\paquetes.csv,0,8,8,8,0,16,24,0,0
 1.10.2.1.8,Prueba ofensiva y cierre de hallazgos E1,11,1,Implementación,,VERSION-E1,BT20.1; SD3 CA; SD4/SD5,Bruno Toro,56,,.atl\SD7_gobierno_servicio_2026-10-07\paquetes.csv,0,0,32,16,0,8,0,0,0
 1.10.2.1.9,Verificación de accesibilidad WCAG 2.2 AA E1,11,1,Implementación,,VERSION-E1,BT20.1; SD3 CA; SD4/SD5,Davor Serey,40,,.atl\SD7_gobierno_servicio_2026-10-07\paquetes.csv,8,0,0,24,8,0,0,0,0
-1.10.2.1.10,Aceptación de usuario y expediente T-17 E1,12,1,Implementación,,"1.10.2.1.1,1.10.2.1.2,1.10.2.1.3,1.10.2.1.4,1.10.2.1.5,1.10.2.1.6,1.10.2.1.7,1.10.2.1.8,1.10.2.1.9,ENSAYOS-E1",BT20.1; SD3 CA; SD4/SD5,Davor Serey,48,,.atl\SD7_gobierno_servicio_2026-10-07\paquetes.csv,16,0,0,24,0,0,0,0,8
+1.10.2.1.10,Aceptación de usuario y expediente T-17 E1,12,1,Implementación,,"1.10.2.1.1,1.10.2.1.2,1.10.2.1.3,1.10.2.1.4,1.10.2.1.5,1.10.2.1.6,1.10.2.1.7,1.10.2.1.8,1.10.2.1.9,ENS-VENT-1-2",BT20.1; SD3 CA; SD4/SD5,Davor Serey,48,,.atl\SD7_gobierno_servicio_2026-10-07\paquetes.csv,16,0,0,24,0,0,0,0,8
 1.11.2.1.1,Materiales y ejercicios perfil 1 E1,11,2,Implementación,,VERSION-E1,RT-22.01--03,José Lara Arce,32,,.atl\SD7_gobierno_servicio_2026-10-07\paquetes.csv,8,0,0,8,0,0,0,16,0
 1.11.2.1.2,Materiales y ejercicios perfil 2 E1,11,2,Implementación,,VERSION-E1,RT-22.01--03,José Lara Arce,32,,.atl\SD7_gobierno_servicio_2026-10-07\paquetes.csv,8,0,0,8,0,0,0,16,0
 1.11.2.1.3,Materiales y ejercicios perfil 3 E1,11,2,Implementación,,VERSION-E1,RT-22.01--03,José Lara Arce,32,,.atl\SD7_gobierno_servicio_2026-10-07\paquetes.csv,8,0,0,8,0,0,0,16,0

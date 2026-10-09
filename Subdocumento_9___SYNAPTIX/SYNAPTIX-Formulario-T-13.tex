@@ -1,0 +1,20 @@
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
+\input{componentes/cierre.tex}
+\newcommand{\FormularioCalidad}{T-13}
+\input{componentes/declaraciones_formularios.tex}
+\renewcommand{\thesection}{T-13.\arabic{section}}
+\renewcommand{\thetable}{T-13.\arabic{table}}
+\setlength{\cftsecnumwidth}{4.5em}
+\begin{document}
+\pagenumbering{arabic}
+\PortadaFormulario{T-13}{PLAN DE PRUEBAS Y VALIDACIÓN}
+\tableofcontents\clearpage
+\chapter*{Plan de pruebas y validación}
+\addcontentsline{toc}{chapter}{Plan de pruebas y validación}
+Synaptix presenta el plan de pruebas asociado al Subdocumento 9, con niveles, tipos, ambientes, datos, entradas, salidas, automatización y calendario. Los resultados se obtendrán durante la ejecución contractual y se vincularán a la versión evaluada; este plan no acredita pruebas ya realizadas. \parencite[Formulario T-13, p.~62]{sd9-ba}
+\input{componentes/t13_plan.tex}
+\CierreSubdocumento
+\end{document}

@@ -1,0 +1,21 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont,
+ caja/.style={draw=SynLine,fill=SynSurface,text width=37mm,minimum height=16mm,align=center,inner sep=2mm},
+ flecha/.style={-{Stealth},draw=SynBlue,thick}]
+\node[caja] (requisito) at (0,0) {T-12\\ID y cláusula aplicable};
+\node[caja] (diseno) at (4.8,0) {SD4--SD5\\Diseño y contrato};
+\node[caja] (codigo) at (9.6,0) {SD6\\Cambio y revisión};
+\node[caja] (prueba) at (9.6,-2.4) {T-13\\Caso, ejecución y resultado};
+\node[caja] (artefacto) at (4.8,-2.4) {LIB-6\\Digest y configuración};
+\node[caja] (despliegue) at (0,-2.4) {T-17 y registro\\Aceptación y despliegue};
+\draw[flecha] (requisito) -- (diseno);
+\draw[flecha] (diseno) -- (codigo);
+\draw[flecha] (codigo) -- (prueba);
+\draw[flecha] (prueba) -- (artefacto);
+\draw[flecha] (artefacto) -- (despliegue);
+\end{tikzpicture}
+\caption{Trazabilidad de una entrega de la marina por requisito y versión}
+\label{fig:sd9-trazabilidad}
+\FuenteFigura{Elaboración propia de Synaptix.}
+\end{figure}

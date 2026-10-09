@@ -1,0 +1,61 @@
+\section{Reglas comunes de recepción}
+Cada hito se entenderá cumplido únicamente con acta de aceptación suscrita por la Contraparte Técnica. Proyecto presentará el entregable o artefacto identificado, evidencia objetiva de verificación, trazabilidad hacia los requisitos y registro de observaciones previas resueltas. Calidad comprobará integridad del expediente antes de su presentación; esa comprobación interna no sustituirá la decisión del CLIENTE. El protocolo conserva los meses y entregables de E-25 y los umbrales completos de SD9. \parencite[art.~18.1--18.2, p.~13; Formulario E-25, p.~74]{sd9-ba}
+
+La solicitud identificará hito, alcance, versión, artefactos, requisitos y cláusulas aplicables, casos ejecutados, resultados, responsables y fecha real de entrega. Las evidencias deberán corresponder a la versión presentada y a las condiciones del ensayo. Se exigirá cierre de bloqueos y reporte de todos los resultados obligatorios; una prueba omitida o sin resultado no se contabilizará como aprobada. Una aceptación parcial del trabajo no se denominará cierre del hito completo.
+
+\section{Protocolo por hito contractual}
+La Tabla~\ref{tab:t17-hitos} define el alcance de recepción de los doce hitos de implementación. Los criterios comunes del artículo 18 se aplican a cada fila, además de los controles particulares. La evidencia incluirá el expediente de T-13 cuando corresponda y los resultados de implantación de T-18. Se conservarán las observaciones de recepciones anteriores. \parencites[Formulario E-25, p.~74]{sd9-ba}[sec.~9.1--9.3]{sd9-sd9}
+\begin{longtable}{L{.09\textwidth}L{.24\textwidth}L{.32\textwidth}L{.24\textwidth}}
+\caption{Entregables, criterios y evidencia por hito}\label{tab:t17-hitos}\\\hline
+\EncabezadoTabla{Hito / mes} & \EncabezadoTabla{Entregable} & \EncabezadoTabla{Criterio objetivo} & \EncabezadoTabla{Evidencia requerida}\\\hline\endfirsthead
+\hline\EncabezadoTabla{Hito / mes} & \EncabezadoTabla{Entregable} & \EncabezadoTabla{Criterio objetivo} & \EncabezadoTabla{Evidencia requerida}\\\hline\endhead
+H1 / 2 & Alcance y matriz de trazabilidad. & Requisitos aplicables, cláusulas, etapas y aceptación identificados. & SD3, T-12 y decisiones de alcance aprobadas.\\\hline
+H2 / 4 & Arquitectura, seguridad y modelo de datos. & Correspondencia lógica/física/datos íntegra y controles aplicables definidos. & SD4--SD5, diagramas, cálculos y decisiones verificables.\\\hline
+H3 / 6 & Infraestructura y ambientes con observabilidad. & Ambientes de E-25 y DR comprometido habilitados; EQ-4 y aislamiento comprobados. & Inventario T-11, despliegue reproducible y verificaciones por ambiente.\\\hline
+H4 / 10 & Software E1 para pruebas. & QA sin fallas; cobertura de negocio $\geq70\,\%$ y contratos conformes. & Manifiesto E1, reportes por commit y trazabilidad.\\\hline
+H5 / 12 & Certificación E1. & UAT, carga, resiliencia y seguridad conformes; demás controles aplicables de T-13 aprobados. & Expediente integral de la misma versión y ensayos válidos.\\\hline
+H6 / 13 & Inicio de marcha blanca E1. & Reversión activa, usuarios capacitados y ola autorizada fuera de ventanas protegidas. & Plan/ensayo de retorno, formación y registro de habilitación.\\\hline
+H7 / 16 & Producción E1 y cierre de marcha blanca. & Todas las condiciones copulativas del art.~17.3 cumplidas. & Cuatro semanas de registros reales, conciliación, capacitación y acta previa al corte.\\\hline
+H8 / 14 & Alcance E2 y diseño detallado. & Alcance y contratos E2 trazados sin contradicción con E1 operativa. & Línea base E2, análisis de impacto y diseño aprobado.\\\hline
+H9 / 17 & Software E2 para pruebas. & QA E2 sin fallas y protección de flujos E1 demostrada. & Manifiesto E2, contratos, cobertura y regresión.\\\hline
+H10 / 18 & Certificación E2 y cierre de desarrollo. & Pruebas obligatorias E2 conformes y bloqueos cerrados. & UAT, expediente técnico integral y ensayos válidos.\\\hline
+H11 / 19 & Marcha blanca E2 con E1 productiva. & Convivencia, autoridades, retorno y personal preparados. & Habilitación de olas, conciliación inicial y cobertura de atención.\\\hline
+H12 / 21 & Producción E2 y aceptación final de implementación. & Cierre de marcha blanca y entregas finales completos, incluidas innovaciones aplicables. & Acta previa al corte y expediente final de implementación.\\\hline
+\end{longtable}
+\FuenteTabla{Bases Administrativas, E-25 y arts.~17--18; compromisos adicionales de Synaptix en SD9 y SD7.}
+
+H1 y H2 reciben definiciones y diseño; no acreditan ejecución futura. H3 comprobará los cinco ambientes comprometidos por SD4/SD6, aunque E-25 enumera cuatro. H5/H10 conservarán la comprobación de recuperación real, accesibilidad, continuidad desconectada, despliegue/retorno y dos ensayos completos válidos de migración según su alcance. La aprobación de QA no sustituye esos resultados. La certificación recibirá el universo completo de la etapa y el control de todas las cláusulas aplicables. \parencites[20.1, pp.~34--35]{sd9-bt}[sec.~6.2]{sd9-sd6}
+
+Para H7 y el corte E2, se verificará conjuntamente: cero incidentes críticos/altos abiertos atribuibles a la solución; volumen real comprometido durante las cuatro semanas finales; disponibilidad y respuesta sostenidas en ese período; conciliación sin diferencias no explicadas; capacitación y certificación del personal conforme al plan; y acta de la Contraparte. Si falta una condición, Synaptix extenderá la marcha blanca a su cargo sin desplazar las fases siguientes, bajo el régimen contractual de atraso. No se reemplazará el volumen real por carga sintética. \parencite[art.~17.3, p.~13]{sd9-ba}
+
+El acta de marcha blanca E2 deberá preceder al corte previsto al inicio del mes 21. H12 conserva la aceptación final de implementación dentro de ese mes y no autoriza activar sin el acta previa. La recepción continua de SD7 permitirá revisar evidencia ya producida, manteniendo el derecho a examinar los últimos registros y observaciones. Se coordinarán agenda, referente y suplente sin presumir aceptación por silencio. \parencite[sec.~7.3, Recepción continua seleccionada de E2]{sd9-sd7}
+
+\section{Revisión, observaciones y nueva presentación}
+El CLIENTE dispondrá de diez días hábiles para revisar cada entregable y pronunciarse. Formuladas observaciones, Synaptix dispondrá de diez días hábiles para subsanarlas. El registro conservará fechas reales de recepción y notificación y el cómputo sobre el calendario hábil aplicable. La segunda presentación con observaciones de la misma naturaleza constituirá atraso imputable a Synaptix conforme al artículo 18.3; el protocolo no concederá sucesivas ampliaciones automáticas. \parencite[art.~18.3, p.~13]{sd9-ba}
+
+Cada observación tendrá ID, hito, requisito/cláusula, versión, evidencia, naturaleza e impacto. Proyecto asignará responsable y plazo; el perfil competente analizará causa y corrección. La nueva presentación incorporará el cambio, revisión independiente, repetición del caso afectado y regresión por impacto, además de respuesta razonada a cada observación. El expediente preservará el resultado anterior y la evidencia nueva para verificar si la causa fue resuelta, sin borrar incidencias ni convertir una reclasificación en corrección.
+
+El CLIENTE podrá decidir conformidad o formular observaciones según la evidencia. Un defecto menor sólo podrá tratarse sin bloquear el hito si el régimen contractual y su protocolo lo permiten, sin dispensar ninguna cláusula obligatoria. Todo incumplimiento de umbral o requisito impedirá la conformidad del alcance afectado. La aceptación no liberará a Synaptix de responsabilidad por defectos posteriores ni convalidará incumplimientos descubiertos después. \parencite[art.~18.4, p.~13]{sd9-ba}
+
+\section{Registro del acta de conformidad}
+El acta se producirá tras la revisión efectiva y consignará la decisión expresa de la Contraparte Técnica. La Tabla~\ref{tab:t17-acta} fija su contenido obligatorio de registro; la propuesta no completa campos de aceptación ni incorpora firmas anticipadas.
+\begin{longtable}{L{.28\textwidth}L{.62\textwidth}}
+\caption{Contenido del acta y expediente de conformidad}\label{tab:t17-acta}\\\hline
+\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido a registrar al ejecutar la recepción}\\\hline\endfirsthead
+\hline\EncabezadoTabla{Campo} & \EncabezadoTabla{Contenido a registrar al ejecutar la recepción}\\\hline\endhead
+Identificación & Contrato, hito, etapa, fecha y partes intervinientes.\\\hline
+Alcance recibido & Entregables, versión, digest/configuración y universo de requisitos/cláusulas.\\\hline
+Evidencia & Índice del expediente, casos/resultados, pruebas, mediciones y documentos recibidos.\\\hline
+Observaciones & Historial, respuesta, corrección y evidencia de cierre por ID.\\\hline
+Decisión & Conformidad o pronunciamiento de observaciones con fundamento y alcance.\\\hline
+Autoridad y firma & Identidad y suscripción efectiva de la Contraparte Técnica autorizada.\\\hline
+Transición & Corte, transferencia o habilitación autorizados y condiciones de retorno.\\\hline
+\end{longtable}
+\FuenteTabla{Propuesta de Synaptix conforme a Bases Administrativas, arts.~17.3 y 18.}
+
+El registro de Calidad y la firma de Synaptix documentarán preparación y presentación; no sustituirán la firma exigida del CLIENTE. El acta identificará el conjunto de evidencias efectivamente recibido y conservará su integridad y acceso autorizado. Las decisiones quedarán vinculadas al repositorio y al manifiesto de la versión desplegada según LIB-6.
+
+\section{Producto final, servicio y cierre contractual}
+La aceptación final de implementación H12 recibirá el alcance E1/E2, documentación y fuentes, configuración, resultados, capacitación, condiciones de operación y entregables de innovación exigibles. Se comprobará la transferencia al servicio con procedimientos reproducibles, accesos, responsables y pendientes permitidos sin requisitos incumplidos. Las fuentes y formatos mantendrán las obligaciones de propiedad, custodia y reversibilidad de las Bases; la entrega de un archivo no acreditará por sí sola que el cliente pueda reconstruir o operar el producto. \parencites[Formulario E-25, p.~74]{sd9-ba}[sec.~7.3]{sd9-sd7}
+
+Durante los meses 21--56, cada liberación mantendrá el expediente de T-13, las puertas SD9 y aceptación aplicable al cambio. El cierre del contrato incorporará los resultados del servicio, transferencia de conocimiento, fuentes y datos, y las obligaciones de reversibilidad exigibles. Se identificará por separado la aceptación de implementación y el cierre del servicio, conservando el régimen contractual sin crear un hito adicional de E-25. Las obligaciones de protección y custodia que sobrevivan al cierre se mantendrán documentadas.

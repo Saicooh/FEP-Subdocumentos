@@ -1,0 +1,82 @@
+\section{Alcance, organización y trazabilidad}
+El plan cubre E1, E2, sus marchas blancas y las liberaciones de los 36 meses de Operación. Calidad coordinará el expediente; Desarrollo ejecutará y corregirá pruebas de construcción; Datos comprobará migración y conciliación; Seguridad verificará controles e intrusión independiente; Operación comprobará despliegue, continuidad y retorno. La Contraparte Técnica validará escenarios de negocio y decidirá aceptación conforme a T-17. Se conservan responsables y capacidad de T-14/T-15, sin agregar una estimación duplicada. \parencites[sec.~9.1--9.3]{sd9-sd9}[Diccionario de gobierno, pruebas, formación y servicio]{sd9-t14}
+
+Cada caso conservará ID propio, ID y cláusula de T-12, etapa, hito, paquete EDT, diseño/contrato, condición inicial, datos, acciones, resultado esperado, umbral, ambiente, automatización y responsable. Al ejecutarse añadirá fecha efectiva, commit/digest, configuración, resultado observado, evidencia y defectos. Los casos se versionarán con el requisito y el artefacto; una modificación invalidará los resultados afectados. La matriz conservará los 576 IDs/enunciados y los 27 complementos específicos. Antes de aceptar un alcance se exigirá cobertura del 100\,\% de requisitos aplicables con todas sus cláusulas verificadas; una prueba sin ejecutar sólo acredita planificación.
+
+El expediente aplicará ISO/IEC/IEEE 29119-2:2021 a la organización y ejecución de pruebas, 29119-3:2021 a sus registros y 29119-4:2021 al diseño de casos. Calidad conservará la correspondencia entre procesos, documentos y técnicas seleccionadas, con responsable y evidencia por versión. Incluirá plan, diseño y datos, preparación del ambiente, registro de ejecución, incidencias, estado de avance e informe de cierre; una ficha de caso aislada no acreditará la conformidad de todo el proceso. \parencite{sd9-29119-2,sd9-29119-3,sd9-29119-4}
+
+\section{Niveles, entradas y salidas}
+La Tabla~\ref{tab:t13-niveles} fija las condiciones de entrada y salida por nivel. Las salidas incorporan los umbrales completos de SD9 9.1, no sólo el indicador resumido aquí. Un control ausente, fallido o correspondiente a otra versión bloqueará la promoción. \parencites[20.1, pp.~34--35]{sd9-bt}[sec.~9.1--9.2]{sd9-sd9}
+\begin{longtable}{L{.19\textwidth}L{.36\textwidth}L{.36\textwidth}}
+\caption{Condiciones por nivel de prueba}\label{tab:t13-niveles}\\\hline
+\EncabezadoTabla{Nivel} & \EncabezadoTabla{Entrada} & \EncabezadoTabla{Salida}\\\hline\endfirsthead
+\hline\EncabezadoTabla{Nivel} & \EncabezadoTabla{Entrada} & \EncabezadoTabla{Salida}\\\hline\endhead
+Unidad/componente & Regla, cambio y datos identificados. & Cero fallas; cobertura de negocio $\geq70\,\%$ por componente.\\\hline
+Integración & Artefacto recibido en QA y contratos versionados. & Todos los flujos exigibles sin error ni efecto duplicado.\\\hline
+Sistema/regresión & Versión integral, perfiles y dependencias disponibles. & Batería obligatoria completa sin regresiones.\\\hline
+Aceptación de usuario & Ejecuciones técnicas completas y conformes; usuarios preparados. & Casos obligatorios aprobados y firmados por la Contraparte.\\\hline
+\end{longtable}
+\FuenteTabla{Bases Técnicas Transversales, 20.1; criterios de Synaptix en SD9.}
+
+Las pruebas aplicarán particiones, límites, decisiones y transiciones de estado según la regla evaluada. Procesos, registros y técnicas siguen ISO/IEC/IEEE 29119-2/3/4:2021. El resultado esperado procederá del requisito y contrato, sin copiar el resultado del programa como patrón de corrección. \parencite{sd9-29119-2,sd9-29119-3,sd9-29119-4}
+
+\section{Tipos y escenarios obligatorios}
+La Tabla~\ref{tab:t13-tipos} identifica controles especiales. Cada tipo se ejecutará sobre el alcance completo aplicable a la versión y dejará protocolo, registros brutos, informe y decisión. Las pruebas que cambien carga, topología o datos se separarán en ambientes aislados o se secuenciarán con restauración verificada. \parencite[20.1, pp.~34--35]{sd9-bt}
+\begin{longtable}{L{.20\textwidth}L{.36\textwidth}L{.35\textwidth}}
+\caption{Escenarios especiales y criterio de salida}\label{tab:t13-tipos}\\\hline
+\EncabezadoTabla{Tipo} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Salida}\\\hline\endfirsthead
+\hline\EncabezadoTabla{Tipo} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Salida}\\\hline\endhead
+Carga/rendimiento & Mezcla conjunta a $1,5$ veces peak, con historia y retención representativas. & Todos los umbrales P95 y máximos propios de SD9 cumplidos.\\\hline
+Estrés & Aumento progresivo hasta saturación y posterior reducción. & Punto de quiebre documentado y recuperación sin pérdida silenciosa.\\\hline
+Resiliencia & Fallas de nodo, enlace, zona, dependencia y almacenamiento. & Degradación controlada y recuperación sin intervención, según escenario.\\\hline
+Desastre & Conmutación regional real, identidad, datos y retorno DR-4. & RTO $\leq4$ h y RPO $\leq15$ min, con conciliación.\\\hline
+Desconexión & Recinto 24 h; terreno 12 h; boyas 8 h; reconexión con registros nuevos. & Funciones exigibles completas; reconexión $\leq30$ min sin pérdida ni duplicados.\\\hline
+Seguridad ofensiva & Intrusión independiente sobre superficie y perfiles completos. & Cero hallazgos críticos/altos abiertos y correcciones verificadas.\\\hline
+Accesibilidad & Comprobación automática y manual por tarea, teclado y dispositivo. & Conformidad WCAG 2.2 AA documentada.\\\hline
+Migración & Dos ensayos completos válidos de extracción a retorno por etapa. & Conciliación sin diferencias no explicadas y controles críticos de SD5 conformes.\\\hline
+Despliegue/retorno & Versiones N/N+1, conexiones en vuelo y hechos nuevos. & Sin interrupción ni pérdida, reversa automatizada y autoridad íntegra.\\\hline
+Usabilidad & Tareas por perfil con usuarios y dispositivos representativos. & Tiempos, interacciones, error y aprendizaje de SD9 9.1.4 cumplidos.\\\hline
+\end{longtable}
+\FuenteTabla{Bases Técnicas Transversales, cap.~20; C07, cap.~15; SD4 DR-4; SD5 y SD9.}
+
+Los escenarios funcionales recorrerán navegación y zarpes, amarras, escuela, combustible y consumos, inspección de boyas, varadero, contratistas, administración y hechos facturables, y gestión ambiental, con los portales, avisos y servicios comunes de SD3--SD5. Se probarán permisos cruzados denegados, autorizaciones vencidas/revocadas, pagos de resultado incierto, despachos repetidos, mensajes fuera de orden y continuidad de la autoridad local. La situación escolar compartida y el saldo no se validarán con una copia periódica como sustituto de tiempo real. Las innovaciones conservarán además sus pruebas específicas y la integración del conjunto. \parencites[cap.~15, pp.~34--37]{sd9-c07}[sec.~5.2--5.4]{sd9-sd5}
+
+Los controles de seguridad operacional de SD9 se ejecutarán en CP-04, CP-06 y CP-07 con fallas, restricciones y alertas identificadas. CP-08 incluirá reglas de captura y saneamiento, indicadores de completitud y exactitud, contraste con fuentes autorizadas y registro de correcciones; CP-17 comprobará actualidad. Datos conservará los denominadores y la cobertura de contraste del universo exigible. La recepción aplicará los criterios completos de SD9, con evidencia independiente de las pruebas de código. \parencites{sd9-25012}[sec.~9.1.4]{sd9-sd9}
+
+\section{Ambientes, datos y automatización}
+Desarrollo y QA comprobarán código e integración; Preproducción sostendrá las pruebas completas con EQ-4; Producción y Recuperación ante Desastres conservarán aislamiento y autoridades para las comprobaciones reales autorizadas. La preparación verificará topología, versiones, configuración, capacidad, cuotas y disponibilidad de los equipos. Se ensayará crecimiento con datos y almacenamiento representativos, no sólo con sesiones adicionales. \parencite[sec.~6.2]{sd9-sd6}
+
+Los datos no productivos serán sintéticos o anonimizados/seudonimizados verificablemente, con origen autorizado, manifiesto, integridad, versión y regla de conservación/eliminación. Los secretos serán propios del ambiente. Los avisos, cargos y otros efectos externos usarán destinos de ensayo autorizados; una simulación no acreditará la disponibilidad efectiva de la integración. Se conservarán registros fallidos, sin descartar abandonos o tiempos agotados del análisis. \parencites[RT-11.25, p.~24]{sd9-bt}[sec.~9.2.3]{sd9-sd9}
+
+GitHub Actions ejecutará pruebas y controles versionados con SonarQube, Trivy, Gitleaks y ZAP conforme a SD6, conservando reportes, SBOM, firma y procedencia verificadas con el digest promovido. La promoción será del mismo artefacto sin recompilar y el retorno estará automatizado. Las pruebas manuales y la intrusión independiente conservarán resultados propios; una etapa omitida no se tratará como aprobada. \parencite[sec.~6.2]{sd9-sd6}
+
+\section{Calendario y dependencias de aceptación}
+UAT E1 ocupará del 12 al 15 de octubre de 2027, revisión del 18 al 29 y subsanación del 2 al 15 de noviembre. H5 se programará el 16 de noviembre, después del cierre de observaciones de los ensayos; la reserva marina será del 16 al 29 antes de activar el 1 de diciembre. Se conservan 48 HH y los cuatro recursos de la asignación integral T-15. La programación obliga a repetir evidencia invalidada por cambios y no anticipa actas de conformidad. \parencites{sd9-t15}[arts.~17--18]{sd9-ba}
+
+El calendario adopta inicio el 1 de diciembre de 2026 y las asignaciones de T-15. La Tabla~\ref{tab:t13-calendario-inicial} conserva las ventanas iniciales de construcción y certificación de cada etapa. Las pruebas iniciales no sustituyen las verificaciones antes de cada paso a producción, incluidas las nuevas liberaciones durante Operación; una versión o perfil cambiado repetirá las pruebas afectadas. \parencites[sec.~7.3]{sd9-sd7}{sd9-t15}[20.1, p.~34]{sd9-bt}
+\begin{longtable}{L{.28\textwidth}L{.31\textwidth}L{.31\textwidth}}
+\caption{Ventanas iniciales de pruebas integrales}\label{tab:t13-calendario-inicial}\\\hline
+\EncabezadoTabla{Tipo / paquete} & \EncabezadoTabla{E1} & \EncabezadoTabla{E2}\\\hline\endfirsthead
+\hline\EncabezadoTabla{Tipo / paquete} & \EncabezadoTabla{E1} & \EncabezadoTabla{E2}\\\hline\endhead
+Carga/estrés, \texttt{1.10.2.e.4} & 24--26 agosto 2027 & 16--20 marzo 2028\\\hline
+Resiliencia, \texttt{1.10.2.e.6} & 1--8 septiembre 2027 & 24--31 marzo 2028\\\hline
+DR, \texttt{1.10.2.e.7} & 8--13 septiembre 2027 & 31 marzo--5 abril 2028\\\hline
+Ofensiva, \texttt{1.10.2.e.8} & 24--30 agosto 2027 & 16--22 marzo 2028\\\hline
+\end{longtable}
+\FuenteTabla{Synaptix, programación integrada de T-15 y SD7.}
+
+Carga y seguridad con fechas coincidentes requerirán instancias aisladas y recursos autorizados; en caso contrario deberán secuenciarse. Las fechas no dispensan la restauración ni la independencia del ensayo. UAT exigirá ejecuciones técnicas completas y resultados conformes de la misma versión; la revisión contractual de sus expedientes podrá continuar en paralelo. La certificación esperará el cierre de todas las observaciones impeditivas, conservando revisión y subsanación del artículo 18. Un cambio derivado de esa revisión obligará a repetir la verificación afectada, incluida UAT cuando corresponda. H5/H10 y H7/H12 mantendrán sus meses contractuales, por lo que Proyecto comprobará capacidad y cabida antes de liberar la agenda final. \parencite[art.~18, p.~13]{sd9-ba}
+
+Los ensayos completos de migración conservarán las ventanas y puertas VM/VS de SD9 9.3 y T-14; cada ensayo reserva diez días hábiles de ejecución, diez de revisión y diez de subsanación. La marcha blanca conserva observación real e indicadores diarios de T-18. Durante Operación se aplicará el calendario periódico de la Tabla~\ref{tab:t13-periodico}; los controles antes de cada producción se añadirán al cambio correspondiente, sin quedar absorbidos por una fecha periódica. \parencites[Ensayos completos y recepción previa a los cortes]{sd9-t14}[sec.~9.3]{sd9-sd9}
+\input{componentes/t13_calendario_operacion.tex}
+
+\section{Fichas de escenarios críticos y datos}
+Las fichas siguientes fijan condiciones iniciales, acciones y resultados verificables para los principales riesgos de la marina. Sus IDs identifican casos de T-13 y no reemplazan los IDs ni enunciados de T-12. La aplicación a E1/E2 dependerá del alcance habilitado de cada requisito; antes de ejecutar se cerrará el manifiesto de datos, versión y cláusulas cubiertas. Los resultados y actas se producirán al realizar cada prueba. \parencites[cap.~15, pp.~34--37]{sd9-c07}[cap.~5, RT-05.13/14, pp.~11--13; cap.~20, pp.~34--35]{sd9-bt}[sec.~9.1--9.2]{sd9-sd9}
+\input{componentes/t13_fichas_criticas.tex}
+
+La Tabla~\ref{tab:t13-complementos} permite localizar las fichas que comprobarán los 27 complementos específicos del capítulo 15 del caso. Su correspondencia registra planificación de verificaciones; no demuestra pruebas ejecutadas ni reemplaza las cláusulas generales del requisito transversal. La recepción exigirá el resultado de cada condición aplicable, con datos, versión y evidencia completos. \parencite[cap.~15, pp.~34--37]{sd9-c07}
+\input{componentes/t13_complementos.tex}
+Los requisitos que combinan varias condiciones requieren varias comprobaciones. Por ejemplo, RT-16.21 incluye emergencia multicanal y también los avisos operacionales y el canal de baja capacidad; aprobar sólo la emergencia no cierra el requisito. Calidad conservará el desglose por cláusula y sus resultados antes de emitir una decisión global de conformidad.
+
+\section{Defectos, expediente y decisión}
+Los defectos conservarán ID, requisito/cláusula, versión, reproducción, severidad, responsable y evidencia. Un crítico/alto o incumplimiento contractual bloqueará promoción; cierre requiere corrección, revisión independiente y repetición del caso y su regresión. El expediente incluirá protocolos, manifiestos, resultados brutos, informes, limitaciones, defectos y decisiones. Se entregará a la Contraparte con T-17, sin convertir cobertura de diseño o existencia de un informe en aceptación. \parencites[sec.~9.2.5--9.2.6]{sd9-sd9}[art.~18.2--18.4, p.~13]{sd9-ba}
