@@ -1,0 +1,24 @@
+\subsection{Volumen real comprometido para el cierre}
+Synaptix fija mínimos de oferta para los 28 días finales de cada marcha blanca. La Tabla~\ref{tab:sd7-volumen-real} los deriva de la volumetría actual del CLIENTE. Para zarpes, recaladas, escuela y combustible se adopta $N_{28}=\lceil V_a(28/365)f\rceil$, con $f=0,5$: es un supuesto conservador de actividad estacional, no un dato medido ni una estacionalidad acreditada. Se aplica a ambas ventanas del escenario, febrero de E1 y julio de E2, y no sustituye el dimensionamiento de peak ni sus pruebas a $1,5$ veces.\parencite[cap.~14, numeral~14.1, p.~31]{caso07}
+
+\begingroup\small
+\begin{longtable}{L{35mm}L{62mm}L{47mm}}
+\caption{Mínimos de operación real durante los 28 días finales}\label{tab:sd7-volumen-real}\\\hline
+\EncabezadoTabla{Proceso y etapa} & \EncabezadoTabla{Derivación y mínimo} & \EncabezadoTabla{Unidad y evidencia}\\\hline\endfirsthead
+\hline\EncabezadoTabla{Proceso y etapa} & \EncabezadoTabla{Derivación y mínimo} & \EncabezadoTabla{Unidad y evidencia}\\\hline\endhead
+Zarpes, E1/E2 & $\lceil4.800(28/365)(0,5)\rceil=185$ & Trámites reales distintos; folio de autoridad y registro de torre.\\\hline
+Recaladas, E1/E2 & $\lceil1.900(28/365)(0,5)\rceil=73$ & Arribos reales distintos; embarcación, fecha y recepción.\\\hline
+Escuela, E1/E2 & $\lceil1.100(28/365)(0,5)\rceil=43$ & Salidas de clase; nómina, autorización, salida y retorno.\\\hline
+Combustible, E1/E2 & $\lceil1.900.000(28/365)(0,5)\rceil=72.877$ & Litros reales conciliados; cada despacho conserva documento y totalizador.\\\hline
+Medición, E1/E2 & $640\times28=17.920$ & Punto-días de agua/energía; 640 puntos iniciales con serie íntegra a la frecuencia de SD4/SD5.\\\hline
+Varadero, E2 & $\lceil1.150(0,38)(28/281)\rceil=44$ & Movimientos reales de travelift; orden, maniobra y recepción.\\\hline
+Cobranza, E2 & $\lceil1.950(28/30)\rceil=1.820$ & Documentos reales del ciclo mensual; documento e intercambio contable conciliados.\\\hline
+\end{longtable}
+\FuenteTabla{Cálculo de oferta: Caso 07, numeral 14.1, p. 31; concentración del 62\,\% de movimientos en dos campañas de seis semanas, numeral 4.6, p. 11; hipótesis estacional $f=0,5$ y mes de cálculo de 30 días.}
+\endgroup
+
+Los 281 días de varadero resultan de $365-2(6\times7)$; el 38\,\% corresponde al resto del volumen anual fuera de campaña. Es una aproximación uniforme para la ventana de julio, sin autorizar intervenciones en períodos protegidos. En cobranza se observará un ciclo completo de emisión, intercambio y conciliación, aunque el prorrateo defina el mínimo. Se registrarán también las cantidades reales por subtipo, zona, moneda y turno; una suma global no sustituye la cobertura de cada proceso.
+
+La cobertura del 100\,\% se exigirá además para todos los hechos reales del alcance completo: salidas y regresos, permisos, asignaciones, inspecciones, contratistas, residuos, pagos y demás procesos aplicables. Los procesos sin volumen anual entregado conservarán un mínimo de un ciclo real completo por variante crítica aplicable en los 28 días finales, con evidencia de origen y trazabilidad; una variante sin hecho exigible se identificará separadamente, nunca como una operación ejecutada. Las pruebas de la variante se exigirán igualmente, pero no se sumarán al volumen real. Los ensayos de fallas y la certificación funcional no se sustituyen por estos mínimos.
+
+Antes de H5 y H10, Datos e Implantación contrastarán agenda, registros de origen, estacionalidad y ciclo de cobro; Proyecto presentará a la Contraparte el cuadro por proceso y la mezcla comprometida. La aprobación del plan podrá elevar cantidades y ajustar distribución, sin rebajar estos mínimos ni reducir alcance. La marina conserva su operación ordinaria: no se generan zarpes, clases, despachos o documentos para llenar una cuota. Si la actividad segura real no alcanza un mínimo, si no se completa un ciclo exigible o si falta cobertura, no se declara cierre; se activa PL-R04/R-04 y la extensión de marcha blanca a costo de Synaptix, sin aceptación tácita ni desplazamiento de las fases contractuales. Cada día sin actividad conserva justificación, origen y efecto en la suficiencia de evidencia.\parencite[arts.~17.3 y 18, p.~13]{bases-admin}

@@ -1,10 +1,10 @@
 \subsection{Puertas de versión y secuencia de recepción}
-La disponibilidad de una versión para migración se distingue de la certificación de la solución completa. Se establecen las puertas VM-E1 y VM-E2 para los ensayos de datos; VS-E1 y VS-E2 para pruebas integrales; y las recepciones H5/H10 y H7/H12 para certificación y producción. Esta separación precisa el alcance de cada evidencia y no reduce los dos ensayos completos exigidos por RT-05.13 ni sustituye la aceptación contractual \parencite[RT-05.13]{bases-transversales}\parencite[art.~18; Formulario~E-25]{bases-admin}.
+La disponibilidad de una versión para migración se distingue de la certificación de la solución completa. Se establecen las puertas VM-E1 y VM-E2 para los ensayos de datos; VS-E1 y VS-E2 para pruebas integrales; y las recepciones H5/H10 y H7/H12 para certificación y producción. Esta separación precisa el alcance de cada evidencia y no reduce los dos ensayos completos exigidos por RT-05.13 ni sustituye la aceptación contractual \parencite[RT-05.13; pp.~11--13]{bases-transversales}~\parencite[art.~18; Formulario~E-25; pp.~13--74]{bases-admin}.
 
 \begin{longtable}{L{21mm}L{23mm}L{107mm}}
 \caption{Puertas de disponibilidad y dependencias}\label{tab:sd7-puertas-version}\\\hline
-Puerta & Objetivo relativo & Condición de liberación\\\hline\endfirsthead
-\hline Puerta & Objetivo relativo & Condición de liberación\\\hline\endhead
+ \EncabezadoTabla{Puerta} & \EncabezadoTabla{Objetivo relativo} & \EncabezadoTabla{Condición de liberación}\\\hline\endfirsthead
+\hline \EncabezadoTabla{Puerta} & \EncabezadoTabla{Objetivo relativo} & \EncabezadoTabla{Condición de liberación}\\\hline\endhead
 VM-E1 & Antes del primer ensayo en 10 & PREPROD recibido; modelos y contratos de todo el universo a migrar E1; cargadores, archivo, delta y retorno; conciliación reproducible y mecanismos funcionales de verificación de datos. La programación actual ocupa hasta el cierre de 9 y debe anticiparse para absorber incertidumbre.\\\hline
 VM-E2 & Antes del primer ensayo en 16 & Modelos y contratos del universo E2, incluidas extensiones de innovaciones que afecten sus datos; transformaciones y conciliación; retorno compatible con E1 en producción. No basta con una entrega parcial de lógica en 15.\\\hline
 VS-E1 & Antes de QA y pruebas integrales E1 & Núcleos E1, servicios comunes, canales e interfaces integrados y versionados; protocolo integral, datos y recursos de prueba disponibles. Su liberación se acredita por sus paquetes terminados, sin usar VM-E1 como sustituto.\\\hline

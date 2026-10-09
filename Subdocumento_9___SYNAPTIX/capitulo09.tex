@@ -1,10 +1,51 @@
 % Estructura obligatoria: no renombre, omita ni reordene estos títulos.
 % Puede agregar únicamente subsecciones de nivel inferior bajo el título correspondiente.
 \chapter{Introducción al Plan de calidad}
-Este capítulo establece cómo se planificará, asegurará y controlará la calidad. Debe conectar criterios, evidencias y responsables con cada etapa del plan de trabajo.
+Synaptix establece un plan de calidad para verificar que la solución de la marina satisface el alcance comprometido y puede implantarse y mantenerse con evidencias reproducibles. El plan cubre las dos etapas de implementación, sus marchas blancas y los 36 meses de operación. Vincula los requisitos y criterios de aceptación de SD3 y T-12 con la arquitectura de SD4, la gestión de datos de SD5, el desarrollo de SD6 y las actividades programadas en SD7. El Formulario T-13 corresponde al detalle del plan de calidad y pruebas; el Formulario T-17, al protocolo de aceptación por hito. Ambos deben acompañar este subdocumento como archivos independientes. Los controles descritos son obligaciones de ejecución y recepción: sus resultados se registrarán al realizar las verificaciones, sin atribuir mediciones anticipadas a la solución.
 
 \section{Plan de Calidad}
-Esta sección debe definir objetivos, estándares, responsabilidades, controles, registros y criterios de aceptación del plan de calidad.
+La política de calidad exige que cada entrega conserve la relación entre requisito, decisión de diseño, cambio de código, prueba y versión desplegada. Una entrega sólo podrá avanzar si cumple los criterios aplicables y dispone de evidencia correspondiente a la versión evaluada. La conformidad automática habilita la revisión del hito; su aceptación requiere la actuación de la Contraparte Técnica según el protocolo contractual. El plan aplica el marco de calidad de producto ISO/IEC 25010 exigido por las Bases y mantiene los controles de integración continua seleccionados en SD6. \parencites[art.~24, pp.~16--17]{sd9-ba}[cap.~20, pp.~34--35]{sd9-bt}
+
+\subsection{Modelo de calidad y responsabilidades}
+El modelo relaciona las dimensiones exigidas por el artículo 24 con la operación de la marina. La funcionalidad se comprobará sobre los casos de negocio y sus permisos; el desempeño, sobre las transacciones y volúmenes del caso; y la compatibilidad, sobre los contratos de integración y la convivencia de versiones. La usabilidad incluirá los perfiles de oficina y terreno, accesibilidad y operación desconectada. La fiabilidad abarcará continuidad, recuperación y conciliación de hechos. La seguridad exigirá controles de identidad, autorización, protección de datos y pruebas adversas. La mantenibilidad se verificará mediante revisión de código, cobertura, complejidad y dependencias; la portabilidad, mediante instalación y despliegue reproducibles en los ambientes y plataformas comprometidos. Cada dimensión tendrá casos y evidencias propios; aprobar cobertura no demuestra seguridad ni continuidad. \parencite[art.~24, pp.~16--17]{sd9-ba}
+
+El Líder de Calidad y Pruebas mantendrá los criterios, el registro de defectos y el expediente de verificación. Desarrollo corregirá y ejecutará los controles de construcción; Arquitectura comprobará los límites de módulos y contratos; Seguridad verificará los controles y hallazgos; Datos comprobará transformación y conciliación; y Operación verificará despliegue, observabilidad y retorno. Estas responsabilidades se asignan a los roles de la propuesta, sin inventar personas nominadas. La revisión por pares será independiente de la autoría del cambio. La Contraparte Técnica revisará y aceptará los hitos conforme a T-17; el Líder de Calidad no sustituirá esa aceptación.
+
+La Figura~\ref{fig:sd9-control-calidad} muestra cómo un incumplimiento impide promover una entrega y obliga a corregir y volver a verificar la versión afectada.
+\input{figuras/control_calidad.tex}
+La evidencia acompaña a una versión identificada de código, configuración, contratos y datos de prueba. Si un cambio invalida un resultado, se repetirá la verificación afectada antes de solicitar aceptación. Este circuito conserva la trazabilidad de SD6 y evita que una aprobación de una versión anterior habilite cambios posteriores sin control.
+
+\subsection{Métricas de construcción y umbrales bloqueantes}
+Synaptix conservará el mínimo contractual de cobertura de lógica de negocio y establecerá límites de complejidad y acoplamiento para impedir que los cambios incorporen funciones difíciles de verificar o dependencias incompatibles con los límites de SD4. Los límites de complejidad y ciclos son decisiones de diseño de Synaptix, no resultados medidos ni valores impuestos por ISO/IEC 25010. La Tabla~\ref{tab:sd9-construccion} presenta las condiciones de salida de construcción. \parencites[art.~24, pp.~16--17]{sd9-ba}[20.1, p.~34]{sd9-bt}
+
+\begin{table}[htbp]
+\centering
+\caption{Umbrales bloqueantes de construcción}
+\label{tab:sd9-construccion}
+\small
+\begin{tabularx}{\textwidth}{L{.27\textwidth}X R{.22\textwidth}}
+\hline
+\EncabezadoTabla{Métrica} & \EncabezadoTabla{Unidad de evaluación} & \EncabezadoTabla{Condición de salida} \\\hline
+Cobertura automatizada & Líneas ejecutables de lógica de negocio de cada componente & $\geq 70\,\%$ \\\hline
+Pruebas fallidas & Pruebas obligatorias del cambio y su regresión & $0$ \\\hline
+Complejidad ciclomática & Cada función nueva o modificada & $\leq 10$ \\\hline
+Ciclos entre módulos & Grafo de dependencias de módulos de SD4 & $0$ \\\hline
+Hallazgos críticos o altos & Seguridad del artefacto y sus dependencias & $0$ abiertos \\\hline
+Secretos detectados & Código, configuración y artefactos del cambio & $0$ \\\hline
+\end{tabularx}
+\FuenteTabla{Bases Administrativas, art.~24; Bases Técnicas Transversales, cap.~20; límites de complejidad y ciclos definidos por Synaptix.}
+\end{table}
+
+Los criterios se aplican conjuntamente. Un reporte ausente, una herramienta fallida o evidencia de otro commit bloquean la entrega aunque los demás valores sean conformes. La cobertura se calculará como $C=100L_e/L_t$, donde $L_e$ son las líneas ejecutables de negocio ejercitadas por pruebas automatizadas y $L_t$ el total de líneas ejecutables de negocio del componente. Se identificarán y justificarán las exclusiones de código generado o ajeno a la lógica de negocio; no se excluirán funciones de negocio para elevar el porcentaje. Si $L_t=0$, Calidad verificará y registrará esa condición en vez de declarar cobertura de 100\,\%.
+
+La complejidad ciclomática se medirá con el analizador correspondiente al lenguaje seleccionado en SD4, conservando su versión y reglas. El límite de diez caminos independientes por función busca mantener acotados los casos necesarios para verificar decisiones; si se supera, Desarrollo simplificará la función y repetirá sus pruebas. El acoplamiento se controlará sobre un grafo dirigido: una arista representa una dependencia de un módulo hacia otro. No se permitirán ciclos ni acceso directo a datos de otro dominio fuera de las interfaces autorizadas. Las dependencias compartidas admitidas deberán corresponder a decisiones de SD4 y conservar pruebas de contrato.
+
+SonarQube verificará calidad estática; Trivy, dependencias e imágenes; Gitleaks, secretos; y ZAP, análisis dinámico de seguridad, dentro de la cadena GitHub Actions definida en SD6. Las reglas y reportes se conservarán junto al identificador del cambio. La revisión humana comprobará además aspectos que un analizador no resuelve: autorización por perfil, idempotencia, autoridad de datos, tratamiento de errores y comportamiento desconectado. La presión de un hito no elimina un criterio bloqueante; se registrará el defecto, se estimará su corrección y se coordinará la recuperación del plan.
+
+\subsection{Madurez y mejora del aseguramiento}
+Synaptix utilizará OWASP SAMM para evaluar la madurez del desarrollo seguro, en continuidad con SD6. SAMM complementa el modelo de calidad del producto; no acredita por sí solo funcionalidad, desempeño ni aceptación. La evaluación inicial identificará prácticas, evidencia disponible y brechas; la reevaluación anual comprobará las mejoras realmente implantadas. No se declara un nivel de madurez obtenido ni una certificación anticipada. \parencite{sd9-samm}
+
+Cada acción de mejora tendrá responsable, evidencia de cierre y esfuerzo asignado dentro de la capacidad de SD7. La revisión quincenal utilizará los defectos y fallas de controles para decidir acciones concretas, como incorporar una prueba de regresión o eliminar una dependencia cíclica. El cierre exigirá volver a comprobar el comportamiento afectado sobre una versión identificada. Los expedientes conservarán resultados satisfactorios y fallidos para que el cliente pueda seguir la decisión y sus correcciones.
 
 \section{Estrategia de Aseguramiento de Calidad}
 Esta sección debe describir revisiones, pruebas, auditorías, métricas, tratamiento de hallazgos y mejora continua.

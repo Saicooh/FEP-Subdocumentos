@@ -10,8 +10,8 @@
       CloudFront, WAF/Shield, HTTPS y API Gateway REST Regional; Cognito OIDC/SAML y MFA.
       VPC Link V2 hacia ALB interno; aplicación y datos privados.};
     \node[bloque,below=7mm of entrada.south west,anchor=north west] (aza)
-      {\textbf{Zona de disponibilidad A}\\ECS/Fargate: núcleos Operacional,
-       de Servicios y Administrativo; procesos especializados.};
+      {\textbf{Zona de disponibilidad A}\\ECS/Fargate: núcleos Marina-Ops,
+       Marina-Log y Marina-Admin; procesos especializados.};
     \node[bloque,below=7mm of entrada.south east,anchor=north east] (azb)
       {\textbf{Zona de disponibilidad B}\\Tareas redundantes de los mismos
        núcleos; escalado y reemplazo por comprobaciones de salud.};

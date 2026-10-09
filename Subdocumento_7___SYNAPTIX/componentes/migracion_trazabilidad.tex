@@ -5,7 +5,7 @@ La rama 1.8 entregará datos interpretables, conciliados y consultables, conform
 \centering
 \begin{tabularx}{\linewidth}{L{13mm}L{35mm}Y}
 \hline
-\EncabezadoTabla{Código} & \EncabezadoTabla{Resultado} & \EncabezadoTabla{Condición de recepción}\\\hline
+ \EncabezadoTabla{Código} & \EncabezadoTabla{Resultado} & \EncabezadoTabla{Condición de recepción}\\\hline
 1.8.2 & Correspondencias y transformaciones especificadas & Cada conjunto tiene origen, destino, claves, reglas, tratamiento de ausencias y validador; no se convierten antecedentes antiguos en autorizaciones vigentes.\\\hline
 1.8.3 & Datos saneados con decisiones trazables & Cada defecto conserva origen, decisión, responsable y resultado; los cambios se aplican a copias controladas sin fabricar pagos ni evidencia histórica.\\\hline
 1.8.4 & Herramientas de carga y conciliación reproducibles & Cargas por lote con manifiestos, correspondencias, recuentos y controles monetarios; la reejecución no duplica efectos y conserva evidencia de cada ejecución.\\\hline
@@ -31,10 +31,10 @@ La Tabla~\ref{tab:sd7-trazabilidad-migracion} vincula la rama de datos con las o
 \begin{longtable}{L{\dimexpr.20\linewidth-2\tabcolsep\relax}L{\dimexpr.23\linewidth-2\tabcolsep\relax}L{\dimexpr.22\linewidth-2\tabcolsep\relax}L{\dimexpr.35\linewidth-2\tabcolsep\relax}}
 \caption{Trazabilidad de obligaciones de migración}\label{tab:sd7-trazabilidad-migracion}\\
 \hline
-\EncabezadoTabla{Origen} & \EncabezadoTabla{Resultado exigido} & \EncabezadoTabla{Componentes} & \EncabezadoTabla{Evidencia de recepción}\\\hline
+ \EncabezadoTabla{Origen} & \EncabezadoTabla{Resultado exigido} & \EncabezadoTabla{Componentes} & \EncabezadoTabla{Evidencia de recepción}\\\hline
 \endfirsthead
 \hline
-\EncabezadoTabla{Origen} & \EncabezadoTabla{Resultado exigido} & \EncabezadoTabla{Componentes} & \EncabezadoTabla{Evidencia de recepción}\\\hline
+ \EncabezadoTabla{Origen} & \EncabezadoTabla{Resultado exigido} & \EncabezadoTabla{Componentes} & \EncabezadoTabla{Evidencia de recepción}\\\hline
 \endhead
 C07 RT-05.15; SD2 RNF-MIG-01 & Seis conjuntos obligatorios y sus períodos & 1.8.1--1.8.5; 1.10.1 & Catálogo, matriz de cobertura, manifiestos y conciliación por conjunto.\\\hline
 BT RT-05.11; SD2 DEC-02 & Plan de migración y retorno & 1.8.1--1.8.6; 1.11.1 & Plan versionado con origen, volumen medido, reglas, calidad, ejecución y reversión.\\\hline
@@ -49,7 +49,7 @@ BT RT-20.02--04; SD5 5.3.3 & Cambio gradual, reversible y conciliado & 1.8.6; 1.
 \FuenteTabla{Bases Técnicas Transversales, RT-05.11--RT-05.15 y RT-20.02--RT-20.04; Caso 07, RT-05.15; SD2, SD3 y SD5.}
 \endgroup
 
-Los ensayos comprobarán los umbrales del SD5: cero omisiones inexplicadas del manifiesto, cero diferencias monetarias de carga, cero referencias críticas inválidas y cero efectos duplicados. Para atributos no críticos se conservará la revisión de todos los registros anómalos y la muestra reproducible del mayor entre 30 registros y el 5\,\% de cada fuente y categoría, limitada a su población. Los expedientes y las autorizaciones vigentes tendrán revisión completa, sin sustituirla por esa muestra \parencite[cap.~5, RT-05.12--RT-05.14]{bases-transversales}.
+Los ensayos comprobarán los umbrales del SD5: cero omisiones inexplicadas del manifiesto, cero diferencias monetarias de carga, cero referencias críticas inválidas y cero efectos duplicados. Para atributos no críticos se conservará la revisión de todos los registros anómalos y la muestra reproducible del mayor entre 30 registros y el 5\,\% de cada fuente y categoría, limitada a su población. Los expedientes y las autorizaciones vigentes tendrán revisión completa, sin sustituirla por esa muestra \parencite[cap.~5, RT-05.12--RT-05.14; pp.~11--13]{bases-transversales}.
 
 La implantación conservará la ventana administrativa propuesta de 22:00 a 02:00, hora de America/Santiago. La decisión de continuar se registrará antes de las 00:30 y mantendrá una reserva exclusiva de 90 minutos para retorno previo a nuevas escrituras. El escenario posterior a nuevas operaciones conserva la estimación inicial de 120 minutos de SD5 y su obligación de ensayo; no amplía esa reserva ni autoriza a descartar operaciones. Los resultados de PREPROD determinarán si es necesario ajustar precarga y herramientas antes de fijar una fecha habilitada de corte.
 

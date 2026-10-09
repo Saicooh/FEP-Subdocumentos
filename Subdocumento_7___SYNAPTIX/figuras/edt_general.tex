@@ -1,0 +1,41 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont,
+ caja/.style={draw=SynLine,fill=SynSurface,text width=42mm,minimum height=12mm,align=center,inner sep=2mm}]
+\node[caja,fill=SynNavy,text=SynWhite,text width=132mm] (raiz) at (0,1.5) {\textbf{1 · Contrato de solución y servicio de la marina}};
+\node[caja] (c0) at (-5.0,0.0) {\textbf{1.1}\\Dirección y control};
+\node[caja] (c1) at (0,0.0) {\textbf{1.2}\\Plataforma híbrida};
+\node[caja] (c2) at (5.0,0.0) {\textbf{1.3}\\Auditoría y seguridad};
+\node[caja] (c3) at (-5.0,-1.6) {\textbf{1.4}\\Núcleo Operacional};
+\node[caja] (c4) at (0,-1.6) {\textbf{1.5}\\Núcleo de Servicios};
+\node[caja] (c5) at (5.0,-1.6) {\textbf{1.6}\\Núcleo Administrativo};
+\node[caja] (c6) at (-5.0,-3.2) {\textbf{1.7}\\Canales e integración};
+\node[caja] (c7) at (0,-3.2) {\textbf{1.8}\\Migración e historia};
+\node[caja] (c8) at (5.0,-3.2) {\textbf{1.9}\\Innovaciones};
+\node[caja] (c9) at (-5.0,-4.800000000000001) {\textbf{1.10}\\Verificación y aceptación};
+\node[caja] (c10) at (0,-4.800000000000001) {\textbf{1.11}\\Formación e implantación};
+\node[caja] (c11) at (5.0,-4.800000000000001) {\textbf{1.12}\\Servicio y salida};
+\draw[SynBlue] (raiz.south) -- (0,.8);
+\draw[SynBlue] (-7.5,.8) -- (2.5,.8);
+\draw[SynBlue] (-7.5,.8) -- (-7.5,-4.8);
+\draw[SynBlue] (-7.5,0.0) -- (c0.west);
+\draw[SynBlue] (-7.5,-1.6) -- (c3.west);
+\draw[SynBlue] (-7.5,-3.2) -- (c6.west);
+\draw[SynBlue] (-7.5,-4.8) -- (c9.west);
+\draw[SynBlue] (-2.5,.8) -- (-2.5,-4.8);
+\draw[SynBlue] (-2.5,0.0) -- (c1.west);
+\draw[SynBlue] (-2.5,-1.6) -- (c4.west);
+\draw[SynBlue] (-2.5,-3.2) -- (c7.west);
+\draw[SynBlue] (-2.5,-4.8) -- (c10.west);
+\draw[SynBlue] (2.5,.8) -- (2.5,-4.8);
+\draw[SynBlue] (2.5,0.0) -- (c2.west);
+\draw[SynBlue] (2.5,-1.6) -- (c5.west);
+\draw[SynBlue] (2.5,-3.2) -- (c8.west);
+\draw[SynBlue] (2.5,-4.8) -- (c11.west);
+\end{tikzpicture}
+\caption{Vista general de las doce cuentas de entregables de la EDT}
+\label{fig:sd7-edt-general}
+\FuenteFigura{Elaboración propia de Synaptix a partir del catálogo integrado de T-14.}
+\end{figure}
+
+Las doce cajas pertenecen directamente a la raíz 1; las líneas enlazan cada cuenta a esa raíz y su posición en columnas no establece precedencias entre cuentas. Cada rama se descompone hasta sus paquetes en T-14; 7.3 desarrolla la red temporal.

@@ -1,9 +1,10 @@
 \subsection{Escenario PERT nuevamente nivelado}
 Se recalcula la asignación con $t_E=1,1d$ para ingeniería y once días para ensayos de diez, manteniendo las HH seleccionadas y las capacidades. Los actos de revisión, observación natural, turnos y corte no se multiplican. Es una sensibilidad determinista, sin probabilidad de entrega ni presupuesto implícito de corrección.
+La Tabla~\ref{tab:sd7-pert-nivelado} compara fechas calculadas y márgenes hacia las obligaciones contractuales.
 \begin{longtable}{L{25mm}L{26mm}L{26mm}R{26mm}}
 \caption{PERT con recursos recalculados}\label{tab:sd7-pert-nivelado}\\\hline
-Hito/puerta & Directo & PERT recursos & Margen PERT\\\hline\endfirsthead
-\hline Hito/puerta & Directo & PERT recursos & Margen PERT\\\hline\endhead
+ \EncabezadoTabla{Hito/puerta} & \EncabezadoTabla{Directo} & \EncabezadoTabla{PERT recursos} & \EncabezadoTabla{Margen PERT}\\\hline\endfirsthead
+\hline \EncabezadoTabla{Hito/puerta} & \EncabezadoTabla{Directo} & \EncabezadoTabla{PERT recursos} & \EncabezadoTabla{Margen PERT}\\\hline\endhead
 H1 & 2027-01-20 & 2027-01-20 & 7,33\\\hline
 H2 & 2027-03-01 & 2027-03-02 & 20,89\\\hline
 H3 & 2027-05-27 & 2027-05-26 & 3,44\\\hline
@@ -20,4 +21,5 @@ H12 & 2028-08-16 & 2028-08-17 & 10,33\\\hline
 CORTE-E1 & 2028-03-30 & 2028-03-30 & 1,39\\\hline
 CORTE-E2 & 2028-08-01 & 2028-08-01 & 0\\\hline
 \end{longtable}
+\FuenteTabla{Elaboración propia: nivelación de sensibilidad PERT con los mismos esfuerzos y capacidades de T-15.}
 El margen cero del acta/corte E2 permanece bajo PERT y la línea base conserva el supuesto de recepción continua y firma expresa programada. PL-R04 controla su incumplimiento; más recursos propios no reemplazan el acto de aceptación. La capacidad máxima del escenario PERT se contrasta por persona en su registro independiente antes de adoptar un cambio de duración.

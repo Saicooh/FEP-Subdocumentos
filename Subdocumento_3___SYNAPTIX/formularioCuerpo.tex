@@ -2493,14 +2493,14 @@ SD4, sec. 4.3 \newline\textit{Evidencia prevista:} Certificados de materiales y 
 RT-\allowbreak{}06.\allowbreak{}03 &
 El PROPONENTE entregará el plano de distribución interna del recinto, con la separación de las zonas de generadores, baterías, climatización, servidores, comunicaciones, trabajo y respaldo.\newline\textit{BT; Obligatorio.} &
 Sí &
-ENV-16/\allowbreak{}ENV-19; implantación coordinada &
-SD4, sec. 4.2.1; T-11 \newline\textit{Evidencia prevista:} Plano ejecutivo de distribución, equipos, rutas, holguras y zonas exteriores. \\ \hline
+ENV-40 &
+SD4, sec. 4.2.1 (ENV-40/INT-40) y 4.3; T-11 \newline\textit{Evidencia prevista:} plano ejecutivo y recepción integrada del tratamiento. \\ \hline
 
 RT-\allowbreak{}06.\allowbreak{}04 &
 El piso técnico, la canalización, el cableado estructurado y el etiquetado se ejecutarán conforme a norma, con documentación de la certificación de cada enlace.\newline\textit{BT; Obligatorio.} &
 Sí &
-CER-4 1.0: canalizaciones A/\allowbreak{}B, cableado, administración por ID y certificación individual. &
-SD4, sec. 4.3; T-11 \newline\textit{Evidencia prevista:} Plano y listado de enlaces identificados; certificados individuales de cobre, fibra y buses. \\ \hline
+CER-4/\allowbreak{}PEN-42 &
+SD4, sec. 4.2.1 (INC-42/INT-40) y 4.3; T-11 \newline\textit{Evidencia prevista:} certificado de pasos y lista de empaquetado por servicio. \\ \hline
 
 RT-\allowbreak{}06.\allowbreak{}05 &
 Los racks de servidores serán independientes de los racks de equipos de comunicación. Se declarará la ocupación proyectada de cada rack y su margen de crecimiento.\newline\textit{BT; Obligatorio.} &
@@ -2517,20 +2517,20 @@ SD4, sec. 4.3 \newline\textit{Evidencia prevista:} Expediente ejecutivo y matriz
 RT-\allowbreak{}06.\allowbreak{}07 &
 El suministro eléctrico de los equipos será ininterrumpido, con sistema de alimentación ininterrumpida dimensionado para una autonomía mínima de 30 minutos a plena carga.\newline\textit{BT; Obligatorio.} &
 Sí &
-Continuidad, cadenas y recarga CEN-4/\allowbreak{}CEN-20 &
-SD4, sec. 4.2.1; T-11 \newline\textit{Evidencia prevista:} Informe de ensayo de cada UPS a plena carga, autonomía, transferencia y recuperación. \\ \hline
+CEN/\allowbreak{}ECI-41; GCI-38 &
+SD4, sec. 4.2.1 (CEN-41/INT-40); T-11 \newline\textit{Evidencia prevista:} Informe de alimentación de medida, autonomía y recarga. \\ \hline
 
 RT-\allowbreak{}06.\allowbreak{}08 &
 La capacidad de generación autónoma asegurará un rango mínimo de 24 horas continuas de operación, con estanque de combustible dimensionado y contrato de reabastecimiento declarado.\newline\textit{BT; Obligatorio.} &
 Sí &
-Generación, bancada y recuperación GCI-4/\allowbreak{}GCI-20 &
-SD4, sec. 4.2.1; T-11 \newline\textit{Evidencia prevista:} Memoria de generación y combustible; contrato de reabastecimiento e informe de ensayo de autonomía. \\ \hline
+CEN/\allowbreak{}ECI-41; GCI-38 &
+SD4, sec. 4.2.1 (CEN-41/INT-40); T-11 \newline\textit{Evidencia prevista:} Informe de protección bipolar, arranque y transferencia del grupo. \\ \hline
 
 RT-\allowbreak{}06.\allowbreak{}09 &
 La instalación eléctrica del recinto será independiente de la del resto del edificio y cumplirá la normativa eléctrica chilena vigente, incluida la NCh Elec. 2777 sobre sistemas de puesta a tierra.\newline\textit{BT; Obligatorio.} &
 Sí &
-ELE-4/\allowbreak{}ELE-19 &
-SD4, sec. 4.2.1; T-11 \newline\textit{Evidencia prevista:} Memoria y unifilar eléctricos; informe de mediciones, protecciones, tierra y recepción legal. \\ \hline
+ENV-40 &
+SD4, sec. 4.2.1 (ENV-40/INT-40); T-11 \newline\textit{Evidencia prevista:} memoria DC y ensayo de retirada A/B en receptores. \\ \hline
 
 RT-\allowbreak{}06.\allowbreak{}10 &
 Se efectuará revisión y medición semestral de las instalaciones eléctricas del recinto, con informe entregable al CLIENTE.\newline\textit{BT; Obligatorio.} &
@@ -2541,8 +2541,8 @@ SD4, sec. 4.2 \newline\textit{Evidencia prevista:} Recepción del recinto. \\ \h
 RT-\allowbreak{}06.\allowbreak{}11 &
 El PROPONENTE declarará la carga eléctrica proyectada en kW, el factor de potencia y la eficiencia en el uso de la energía (PUE) estimada del recinto.\newline\textit{BT; Obligatorio.} &
 Sí &
-Balance por estados y energía ECI-4/\allowbreak{}ECI-20 &
-SD4, sec. 4.2.1; T-11 \newline\textit{Evidencia prevista:} Memoria de kW, factor de potencia y PUE; informe de medición por frontera energética. \\ \hline
+CEN/\allowbreak{}ECI-41; GCI-38 &
+SD4, sec. 4.2.1 (CEN-41/INT-40); T-11 \newline\textit{Evidencia prevista:} Informe de balance energético por fase y estado de operación. \\ \hline
 
 RT-\allowbreak{}06.\allowbreak{}12 &
 Se valorará la redundancia de alimentación en configuración 2N o N+1 con doble acometida y transferencia automática.\newline\textit{BT; Deseable.} &
@@ -2553,8 +2553,8 @@ SD3, sec. 3.2.2 \\ \hline
 RT-\allowbreak{}06.\allowbreak{}13 &
 El recinto contará con climatización de precisión para operación continua, redundante en configuración N+1, con control de temperatura y de humedad relativa dentro de los rangos que recomienda el fabricante del equipamiento.\newline\textit{BT; Obligatorio.} &
 Sí &
-ENV-16/\allowbreak{}ENV-19 &
-SD4, sec. 4.2.1; T-11 \newline\textit{Evidencia prevista:} Memoria de selección térmica por estado; informe de pruebas N+1, temperatura, humedad y ventilación. \\ \hline
+ENV-40 &
+SD4, sec. 4.2.1 (ENV-40/INT-40); T-11 \newline\textit{Evidencia prevista:} informe de operación térmica e hidráulica en transferencia. \\ \hline
 
 RT-\allowbreak{}06.\allowbreak{}14 &
 Se monitorearán en línea la temperatura, la humedad y la presencia de agua, con alertamiento integrado a la plataforma de observabilidad.\newline\textit{BT; Obligatorio.} &
@@ -2571,19 +2571,19 @@ SD3, sec. 3.2.2; SD4, sec. 4.2 \\ \hline
 RT-\allowbreak{}06.\allowbreak{}16 &
 El recinto contará con detección temprana por aspiración de aire con tecnología láser, tipo AnaLASER o equivalente de prestaciones iguales o superiores.\newline\textit{BT; Obligatorio.} &
 Sí &
-INC-4; PCI-4; INC-21 &
-SD4, sec. 4.2.1; T-11 \newline\textit{Evidencia prevista:} Ficha de detector y memoria de aspiración; informe de sensibilidad, transporte y fallas por zona. \\ \hline
+INC-4/\allowbreak{}INC-42 &
+SD4, sec. 4.2.1 (INC-42/INT-40); T-11 \newline\textit{Evidencia prevista:} informe de supervisión y tensión en aspirantes. \\ \hline
 
 RT-\allowbreak{}06.\allowbreak{}17 &
 La extinción será automática mediante agente limpio tipo FM-200 o equivalente, con aprobación UL e instalación conforme a norma NFPA.\newline\textit{BT; Obligatorio.} &
 Sí &
-EXT-4; EXT-21 &
-SD4, sec. 4.2.1; T-11 \newline\textit{Evidencia prevista:} Expediente UL y memoria NFPA; informe de integridad, retención e interbloqueos por zona. \\ \hline
+EXT-4/\allowbreak{}EXT-42 &
+SD4, sec. 4.2.1 (INC-42/INT-40); T-11 \newline\textit{Evidencia prevista:} informe de autonomía y tensión final de liberación. \\ \hline
 
 RT-\allowbreak{}06.\allowbreak{}18 &
 Se proveerá un sistema secundario de extintores portátiles habilitados, con mantención y certificación vigentes.\newline\textit{BT; Obligatorio.} &
 Sí &
-PORT-21; extintores B441/\allowbreak{}398/\allowbreak{}322 &
+PORT-24; Amerex B441/\allowbreak{}398/\allowbreak{}322 &
 SD4, sec. 4.2.1/4.3; T-11 \newline\textit{Evidencia prevista:} Plano de extintores, certificados vigentes e informe de cobertura y mantenimiento. \\ \hline
 
 RT-\allowbreak{}06.\allowbreak{}19 &

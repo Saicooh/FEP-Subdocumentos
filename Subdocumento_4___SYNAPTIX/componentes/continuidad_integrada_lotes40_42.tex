@@ -1,0 +1,35 @@
+\section{Balance por función y frontera de continuidad: INT-40}
+\label{sec:sd4-continuidad-int40}
+El dimensionamiento distingue la continuidad de mando de la continuidad de tratamiento. Se conserva un nodo de control ordinario por banco: alimentar ese nodo desde dos caminos no duplica CPU, bus ni señales. La pérdida del nodo retira la regulación de sus dos rutas; la protección independiente debe retirar recarga y conservar la extracción segura según la causa. No se atribuye redundancia funcional al control por añadir una fuente o un módulo de desacoplamiento.
+
+La base anterior de 352,7552 W DC se descompone por función, antes de incorporar las selecciones nuevas. Son reservas de proyecto, con máximos pendientes expresamente identificados en sus memorias:
+\begin{center}
+\begin{tabular}{p{0.67\linewidth}r}
+\hline
+Función y frontera & Reserva global W \\
+\hline
+Permisos independientes, SEL y sus protecciones CEN-26/ECI-29 & 72,8000 \\
+Cuatro transmisores de presión diferencial de aire & 4,8000 \\
+Cuatro actuadores de agua ENV-31 & 24,0000 \\
+Dos nodos con bus, cuatro sondas de rocío y DI ENV-34 & 51,9552 \\
+Cuatro TEN y sus cuatro protecciones ECI-35 & 195,2000 \\
+Cuatro interfaces de estado de diagnóstico GCI-38 & 4,0000 \\
+\hline
+Total de la base previa & 352,7552 \\
+\hline
+\end{tabular}
+\end{center}
+Los LEM, burdens, pérdidas LDO y nuevos dispositivos aguas abajo de TEN no se contabilizan como una segunda entrada de fuente. Los 2,160 W del bus por nodo ya pertenecen a su reserva de 24 W. Se conserva la distinción entre señales DI reservadas y entradas adicionales efectivamente seleccionadas.
+
+La parte ambiental de esa base suma $4,8+24+51,9552=80,7552$ W: 40,3776 W por banco. La parte restante suma 272 W; no se traslada automáticamente con la alimentación del mando. Una sola fuente previa de 240 W no podría sostener todos los receptores de la base: faltan 112,7552 W y la relación carga/placa es 1,469813. El margen nominal de 63,6224 W por fuente en reparto normal no demuestra capacidad de supervivencia. La alimentación redundante se calcula para las funciones que realmente migren, incluyendo desacoplamiento, protecciones, arranque y temperatura, sin usar potencia de refuerzo temporal como capacidad permanente.
+
+ENV-40 selecciona dos ORING 2320173, uno por banco, para trasladar únicamente los 80,7552 W ambientales; conserva las dos QUINT existentes. La reserva propia de pérdida es 2 W por ORING: base revisada 356,7552 W, reparto normal 178,3776 W por fuente bajo reparto simétrico. Al perder una fuente, la superviviente conserva sus 136 W no ambientales, alimenta 80,7552 W ambientales y reserva 4 W de los dos ORING: 220,7552 W. El margen nominal es 19,2448 W, distinto del margen normal 61,6224 W. No se resta la pérdida del ORING sólo porque una entrada falle. El extremo de 65 grados C reduce a 210 W la capacidad de la fuente según su curva y no sostiene esa demanda; se fija armario de proyecto a 24 grados C y límite de operación de esta selección no mayor de 60 grados C, pendiente demostrar el acondicionamiento y arranque. La supervivencia del riel ambiental no alimenta los 136 W no ambientales del camino perdido ni habilita recarga de ese camino.
+
+
+Los ocho detectores de hidrógeno de T-11, ítem 47D, tienen reserva independiente de 27,84 W y extremo de arranque publicado de 67,2 W durante 140 ms. No están incluidos en la tabla anterior: sumarlos como cribado de cargas DC conocidas daría 380,5952 W de régimen y 419,9552 W al sustituir régimen de detección por arranque. Al añadir la reserva propia de 4 W de ENV-40, esos cribados actualizados son 384,5952 W y 423,9552 W, respectivamente. No son un balance de una fuente única ni una orden de conectar esos detectores al control ordinario. Controlador de gas, contactores, interfaces, alarmas de drenaje y demás receptores pendientes deben conservar su propia alimentación y supervisión; la reserva de un lazo diagnóstico no sostiene esas funciones por deducción.
+
+\textbf{Estados de capacidad conjunta.} Con dos rutas de tratamiento activas, la demanda ideal de frío de contraste es 47,033856 kW; incorporando la cota de una bomba secundaria alcanza 48,473856 kW, antes de primaria, ganancias y selección húmeda. Con cuatro rutas a demanda completa de contraste, el proceso exige 94,067712 kW: excede en 31,067712 kW los 63 kW nominales de una fuente. La relación 1,493138 no queda corregida por disponer de caudal de bomba. Las dos fuentes no se suman como capacidad N+1; la fuente superviviente debe sostener la demanda autorizada. El solape de cuatro rutas a plena demanda húmeda queda excluido de la envolvente operativa. No se autoriza un reparto térmico intermedio sin curva de serpentín y secuencia desarrolladas.
+
+La base AC parcial conserva 75,108815 kW en régimen y 78,137615 kW en solape antes de frío, primario y restantes receptores. Respecto a 60 kW de UPS, los excesos son 15,108815 y 18,137615 kW. Esta comparación impide asignar conformidad de capacidad o autonomía al UPS precedente; no calcula energía de batería ni convierte reservas DC en cargas AC duplicadas. El balance final identifica carga, camino, fases, kW/kVA simultáneos y conversión en cada estado.
+
+\textbf{Aplicación de la frontera.} La retirada de A o B se comprueba por separado sobre fuente DC, mando, actuadores, ventiladores, recalentamiento, bombeo, fuente de frío, detección y liberación de incendio. El estado de un contacto de fuente no acredita tensión mínima de un detector, caudal real ni tratamiento del banco. Cada recepción registra los valores en bornes y las funciones que permanecen disponibles; pérdida de señal, corto de rama, fallo de CPU y fallo de fuente son causas distintas. Las selecciones ENV-40, CEN-41 e INC-42 se integran con esa matriz, sin sustituir el análisis de seguridad por la vigilancia ordinaria.

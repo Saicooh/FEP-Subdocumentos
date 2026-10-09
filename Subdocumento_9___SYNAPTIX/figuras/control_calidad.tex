@@ -1,0 +1,18 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont,
+ caja/.style={draw=SynLine,fill=SynSurface,text width=35mm,minimum height=15mm,align=center,inner sep=2mm},
+ flecha/.style={-{Stealth},draw=SynBlue,thick}]
+\node[caja] (criterios) at (0,0) {Requisito T-12\\y criterio de aceptación};
+\node[caja] (control) at (4.8,0) {Versión identificada\\Controles y pruebas};
+\node[caja] (expediente) at (9.6,0) {Evidencia conforme\\Revisión del hito T-17};
+\node[caja] (correccion) at (4.8,-2.4) {Defecto registrado\\Corrección y nueva versión};
+\draw[flecha] (criterios) -- (control);
+\draw[flecha] (control) -- node[above]{Cumple} (expediente);
+\draw[flecha] (control.south) -- node[right]{Incumple} (correccion.north);
+\draw[flecha] (correccion.west) -- ++(-.7,0) |- (control.west);
+\end{tikzpicture}
+\caption{Control de calidad y corrección por versión de la solución de la marina}
+\label{fig:sd9-control-calidad}
+\FuenteFigura{Elaboración propia de Synaptix.}
+\end{figure}

@@ -1,8 +1,53 @@
 \documentclass[11pt,letterpaper]{report}
 \input{config/metadatos.tex}
 \usepackage{estilo/propuesta-tecnica}
+\addbibresource{config/referencias_lote13.bib}
+\addbibresource{config/referencias_lote14.bib}
+\addbibresource{config/referencias_lote15.bib}
+\addbibresource{config/referencias_lote16.bib}
+\addbibresource{config/referencias_lote17.bib}
+\addbibresource{config/referencias_lote18.bib}
+\addbibresource{config/referencias_lote19.bib}
+\addbibresource{config/referencias_lote21.bib}
+\addbibresource{config/ref_lote23.bib}
+\addbibresource{config/referencias_lote24.bib}
+\addbibresource{config/referencias_lote25.bib}
+\addbibresource{config/referencias_lote27.bib}
+\addbibresource{config/referencias_lote29.bib}
+\addbibresource{config/referencias_lote30.bib}
+\addbibresource{config/referencias_lote31.bib}
+\addbibresource{config/referencias_lote32.bib}
+\addbibresource{config/referencias_lote33.bib}
+\addbibresource{config/referencias_lote34.bib}
+\addbibresource{config/referencias_lote35.bib}
+\addbibresource{config/referencias_lote36.bib}
+\addbibresource{config/referencias_lote37.bib}
+\addbibresource{config/referencias_lote38.bib}
+\addbibresource{config/referencias_lote39.bib}
+\addbibresource{config/referencias_lote40.bib}
+\addbibresource{config/referencias_lote41.bib}
+\addbibresource{config/referencias_lote42.bib}
+\addbibresource{config/referencias_integracion37_39.bib}
+\addbibresource{config/referencias_lote28.bib}
+\addbibresource{config/referencias_lote26.bib}
+\addbibresource{config/referencias_lote22.bib}
 \input{componentes/portada.tex}
 \input{componentes/cierre.tex}
+% El índice debe reservar espacio para números de anexo como A4.3.10.
+\setlength{\cftchapnumwidth}{4em}
+\setlength{\cftsecnumwidth}{5em}
+\setlength{\cftsubsecnumwidth}{6em}
+\setlength{\cftsubsubsecnumwidth}{7em}
+\renewcommand{\DeclaracionesIA}{%
+  \FilaDeclaracionIA{Formato del índice, 2026-10-09}{OpenAI Codex}{Ampliación del espacio de numeración para separar los identificadores de anexos y sus títulos}{Bajo}{Ninguno}{José Lara: responsable del control humano previo a emisión; esta intervención no acredita revisión visual humana del PDF.}%
+  \FilaDeclaracionIA{A4.1}{OpenAI Codex}{Registro de decisiones y alternativas de arquitectura; concordancia de Marina-Ops, Marina-Log y Marina-Admin con SD3 el 9 de octubre de 2026}{Alto}{Ninguno}{José Lara: responsable del control humano previo a emisión; esta intervención no acredita revisión técnica humana.}%
+  \FilaDeclaracionIA{A4.2}{OpenAI Codex}{Catálogo de contratos, cuotas, integraciones y dimensionamiento; concordancia del nombre Marina-Admin con SD3 el 9 de octubre de 2026}{Alto}{Ninguno}{José Lara: responsable del control humano previo a emisión; esta intervención no acredita revisión técnica humana.}%
+  \FilaDeclaracionIA{A4.3}{OpenAI Codex; asistencia de subagentes en las intervenciones previas}{Desarrollo previo de memorias eléctricas, ambientales y de protección; traslado y remisiones del 9 de octubre de 2026}{Alto}{Medio}{José Lara: responsable del control humano previo a emisión. Debe verificar fuentes, cálculos, variantes, compatibilidad, cantidades y presentación; el control realizado se registrará al confirmarse.}%
+  \FilaDeclaracionIA{A4.4}{OpenAI Codex}{Desarrollo previo de implantación, plano exterior y gabinetes; traslado y remisiones}{Alto}{Alto}{José Lara: responsable del control humano previo a emisión. Revisión técnica y visual no acreditada por esta reorganización.}%
+  \FilaDeclaracionIA{A4.5}{OpenAI Codex}{Desarrollo previo de configuración, gestión, energía, ergonomía y recepción de puestos; traslado}{Alto}{Ninguno}{José Lara: responsable del control humano previo a emisión. Revisión técnica y visual no acreditada por esta reorganización.}%
+  \FilaDeclaracionIA{A4.6}{OpenAI Codex}{Desarrollo previo de capacidad y equivalencia de ambientes; traslado de fórmulas y tablas; concordancia de las tres unidades con SD3 el 9 de octubre de 2026}{Alto}{Ninguno}{José Lara: responsable del control humano previo a emisión. Esta intervención no acredita revisión técnica ni visual humana.}%
+}
+
 \begin{document}
 \pagenumbering{arabic}
 \PortadaPropuesta{4}{Anexos de arquitectura}
@@ -64,13 +109,13 @@ Este registro desarrolla las decisiones DA-01 a DA-20 de SD4, sección 4.1.1, co
 
 \textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda independencia donde cambian carga, falla o permisos. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
 
-\textbf{Elección.} Tres núcleos y cinco procesos especializados.
+\textbf{Elección.} Tres núcleos, Marina-Ops, Marina-Log y Marina-Admin, y cinco procesos especializados. La correspondencia funcional conserva NAV, AMA, ESC, CON y BOY en Marina-Ops; VAR, CTR y AMB en Marina-Log; y FAC, ADM y AUT en Marina-Admin, conforme a SD3, 3.3. ALE corresponde a Notificaciones y sirve a las tres unidades. El NBR corresponde a la Célula Operacional Local y ejecuta el subconjunto crítico mediante el Runtime Operacional de Borde.
 
 \textbf{Alternativas examinadas.} Un despliegue total; servicio por dominio.
 
 \textbf{Fundamento.} Independencia donde cambian carga, falla o permisos.
 
-\textbf{Consecuencias y comprobación.} Cada unidad mantiene su pipeline, identidad y recursos. Los procesos especializados aíslan fallas y no asumen autoridad de los dominios. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+\textbf{Consecuencias y comprobación.} Cada unidad mantiene su pipeline, identidad y recursos. CON conserva combustible y consumos en Marina-Ops; AMB conserva residuos y gestión ambiental en Marina-Log. Los contextos de consumos y ambiente conservan agregados y contratos separados dentro del dominio Ambiente y consumos de SD5. ADM consume identidad y evidencia protegida del dominio Auditoría y seguridad; AUT delega al módulo propietario y AMA conserva la autoridad operacional de puesto en Marina-Ops. Los procesos especializados aíslan fallas y no asumen autoridad de los dominios. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
 
 \textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
 
@@ -315,6 +360,11 @@ Este registro desarrolla las decisiones DA-01 a DA-20 de SD4, sección 4.1.1, co
 \textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
 
 \input{anexos/a4_2_integraciones.tex}
+
+\input{anexos/a4_3_infraestructura.tex}
+\input{anexos/a4_4_implantacion.tex}
+\input{anexos/a4_5_puestos.tex}
+\input{anexos/a4_6_capacidad.tex}
 
 \CierreSubdocumento
 \end{document}

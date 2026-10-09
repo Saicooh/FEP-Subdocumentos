@@ -6,9 +6,9 @@
  texto/.style={font=\fontsize{8.5}{10}\selectfont,align=center},
  ruta/.style={draw=SynBlue,thick,dashed},
  cota/.style={{Latex}-{Latex},thin}]
-\draw[draw=SynNavyLight,dashed] (0,0) rectangle (30,33);
-\draw[zona] (10,8) rectangle (20,15);
-\node[texto,text width=39mm] at (15,11.5) {Módulo TI/energía\\10$\times$7 m interiores\\Plano interno ampliado};
+\draw[draw=SynNavyLight,dashed] (-2,-2) rectangle (32,37);
+\draw[zona] (9.5,7.5) rectangle (20.5,15.5);
+\node[texto,text width=39mm] at (15,11.5) {Módulo TI/energía\\10$\times$7 m interiores\\11$\times$8 m exteriores\\Plano interno ampliado};
 \draw[zona] (0,18) rectangle (6,22);
 \node[texto,text width=23mm] at (3,20) {Grupo A\\6$\times$4 m};
 \draw[zona] (24,18) rectangle (30,22);
@@ -36,10 +36,10 @@
 \draw[ruta] (27,18)--(23,18)--(23,10)--(20,10);
 \node[texto,rotate=90,fill=white] at (7,13) {Ruta A};
 \node[texto,rotate=90,fill=white] at (23,13) {Ruta B};
-\draw[cota] (0,34)--(30,34);
-\node[texto,fill=white] at (15,34) {Reserva de proyecto: 30 m};
-\draw[cota] (-.7,0)--(-.7,33);
-\node[texto,rotate=90,fill=white] at (-.7,16.5) {33 m};
+\draw[cota] (-2,36)--(32,36);
+\node[texto,fill=white] at (15,36) {Reserva de proyecto: 34 m};
+\draw[cota] (-2.7,-2)--(-2.7,35);
+\node[texto,rotate=90,fill=white] at (-2.7,16.5) {37 m};
 % Huellas de variante y reservas de obra coordinadas ENV-19/PORT-21.
 \draw[zona] (0,0) rectangle (4,7);
 \draw[zona] (26,0) rectangle (30,7);
@@ -51,22 +51,22 @@
 \draw[fill=white,draw=SynNavyLight] (19.88,25.42) rectangle (22.12,26.57);
 \node[texto,text width=20mm] at (9,27.3) {Frío A\\30RB065-SS};
 \node[texto,text width=20mm] at (21,27.3) {Frío B\\30RB065-SS};
-\draw[zona] (6.5,20) rectangle (9.5,22);
-\draw[zona] (7,29) rectangle (10,31);
-\draw[zona] (20.5,20) rectangle (23.5,22);
-\draw[zona] (20,29) rectangle (23,31);
-\node[texto] at (8,21) {UTA A1};
-\node[texto] at (8.5,30) {UTA A2};
-\node[texto] at (22,21) {UTA B1};
-\node[texto] at (21.5,30) {UTA B2};
-\draw[zona] (5,5) rectangle (7,7);
-\draw[zona] (23,5) rectangle (25,7);
-\node[texto,text width=12mm] at (6,6) {Agua A};
-\node[texto,text width=12mm] at (24,6) {Agua B};
-\draw[zona] (12,29) rectangle (15,31);
-\draw[zona] (16,29) rectangle (19,31);
-\node[texto,text width=12mm] at (13.5,30) {Cilindros\\TI/bancos};
-\node[texto,text width=12mm] at (17.5,30) {Reserva\\pequeños};
+\draw[zona] (7.5,20) rectangle (10.5,22);
+\draw[zona] (6,31) rectangle (9,33);
+\draw[zona] (19.5,20) rectangle (22.5,22);
+\draw[zona] (21,31) rectangle (24,33);
+\node[texto] at (9,21) {UTA A1};
+\node[texto] at (7.5,32) {UTA A2};
+\node[texto] at (21,21) {UTA B1};
+\node[texto] at (22.5,32) {UTA B2};
+\draw[zona] (7.5,4) rectangle (9.5,6);
+\draw[zona] (20.5,4) rectangle (22.5,6);
+\node[texto,text width=12mm] at (8.5,5) {Agua A};
+\node[texto,text width=12mm] at (21.5,5) {Agua B};
+\draw[zona] (11,31) rectangle (14,33);
+\draw[zona] (16,31) rectangle (19,33);
+\node[texto,text width=12mm] at (12.5,32) {Cilindros\\TI/bancos};
+\node[texto,text width=12mm] at (17.5,32) {Reserva\\pequeños};
 \draw[draw=SynTeal,dash dot] (9,24)--(8,23)--(8,16)--(10,12);
 \draw[draw=SynTeal,dash dot] (21,24)--(22,23)--(22,16)--(20,12);
 \node[texto,fill=white,inner sep=.5mm] at (8,16.4) {Agua A};
@@ -78,14 +78,46 @@
 \node[texto,anchor=east] at (10.1,13.6) {EX A};
 \node[texto,anchor=west] at (19.9,13.6) {EX B};
 % Bastidores en cubierta, no sobre los pasos de salida norte.
-\foreach \px/\py/\pid in {3/17.5/10,27/17.5/11,4.5/11.5/12,25.5/11.5/13,4.5/3.5/14,25.5/3.5/15,12/26/16,18/26/17,16/3.5/18}{
+\draw[zona] (7.75,17) rectangle (10.25,18);
+\node[texto,font=\fontsize{7}{8}\selectfont] at (9.0,17.5) {IMP A1};
+\draw[zona] (19.75,17) rectangle (22.25,18);
+\node[texto,font=\fontsize{7}{8}\selectfont] at (21.0,17.5) {IMP B1};
+\draw[zona] (6.25,34.5) rectangle (8.75,35.5);
+\node[texto,font=\fontsize{7}{8}\selectfont] at (7.5,35.0) {IMP A2};
+\draw[zona] (21.25,34.5) rectangle (23.75,35.5);
+\node[texto,font=\fontsize{7}{8}\selectfont] at (22.5,35.0) {IMP B2};
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (3.0,17.25)--(-0.75,17.25)--(-0.75,20.0); % PORT28 grupoA
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (27.0,17.25)--(30.75,17.25)--(30.75,20.0); % PORT28 grupoB
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (-0.75,3.5)--(-0.75,12.25); % PORT28 tanqueA
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (30.75,3.5)--(30.75,12.25); % PORT28 tanqueB
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (-0.75,3.5)--(-0.75,-0.75)--(2.0,-0.75); % PORT28 bancadaA
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (25.25,3.5)--(25.25,-0.75)--(28.0,-0.75); % PORT28 bancadaB
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (11.25,20.0)--(11.25,18.25)--(14.75,18.25)--(14.75,20.0); % PORT28 frioTI_A
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (18.75,20.0)--(18.75,18.25)--(15.25,18.25)--(15.25,20.0); % PORT28 frioTI_B
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (3.0,22.75)--(3.0,23.25)--(8.5,23.25); % PORT28 frioA
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (18.75,20.0)--(18.75,23.25)--(21.5,23.25); % PORT28 frioB
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (11.25,20.0)--(11.25,19.25)--(6.75,19.25)--(6.75,20.25); % PORT28 UTA_A1
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (18.75,20.0)--(18.75,19.25)--(23.25,19.25)--(23.25,20.25); % PORT28 UTA_B1
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (7.5,36.25)--(5.5,36.25)--(5.5,33.75)--(7.5,33.75); % PORT28 UTA_A2
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (22.5,36.25)--(20.5,36.25)--(20.5,33.75)--(22.5,33.75); % PORT28 UTA_B2
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (4.75,3.5)--(4.75,6.75)--(10.25,6.75); % PORT28 aguaA
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (16.0,3.75)--(16.0,6.75)--(20.75,6.75); % PORT28 aguaB
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (7.5,36.25)--(9.5,36.25)--(9.5,33.75)--(10.75,33.75); % PORT28 cilTI
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (15.0,32.0)--(15.0,33.75)--(19.0,33.75); % PORT28 cilPeq
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (3.0,17.25)--(3.0,16.25)--(8.5,16.25); % PORT28 imp_A1
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (18.75,20.0)--(18.75,16.25)--(21.5,16.25); % PORT28 imp_B1
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (7.5,36.25)--(5.5,36.25)--(5.5,33.75)--(7.5,33.75); % PORT28 imp_A2
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (22.5,36.25)--(20.5,36.25)--(20.5,33.75)--(22.5,33.75); % PORT28 imp_B2
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (16.0,3.75)--(12.0,3.75)--(12.0,1.0); % PORT28 trabajo
+\draw[draw=SynBlue,densely dotted,line width=.5pt] (16.0,3.75)--(16.0,1.0)--(19.0,1.0); % PORT28 stock
+\foreach \px/\py/\pid in {3/17.25/10,27/17.25/11,4.75/11.5/12,25.25/11.5/13,4.75/3.5/14,25.25/3.5/15,12.25/26/16,17.75/26/17,16/3.75/18,3/22.75/19,27/22.75/20,-0.75/3.5/21,30.75/3.5/22,7.5/30.25/23,22.5/30.25/24,15/32/25,11.25/20/26,18.75/20/27,7.5/36.25/28,22.5/36.25/29}{
  \node[circle,draw=SynNavyLight,fill=white,inner sep=.7mm,font=\fontsize{7}{8}\selectfont] at (\px,\py) {P\pid};
 }
-\node[texto,text width=102mm] at (15,32) {P10--P18: portátiles exteriores; P01--P09: plano interno.\\UTA y agua: reservas de obra, conjuntos a medida pendientes.};
+\node[texto,text width=64mm] at (15,36.3) {P10--P29: portátiles exteriores; P01--P09: plano interno.\\UTA y agua: reservas de obra, conjuntos a medida pendientes.};
 \draw[-{Latex},thick] (29,2)--(29,5);
 \node[texto] at (29,5.6) {N};
 \end{tikzpicture}
 \caption{Reserva exterior y separación de zonas del módulo técnico nuevo}
 \label{fig:recinto-exterior-coordinado}
-\FuenteFigura{Elaboración de Synaptix: coordenadas de proyecto, sin levantamiento ejecutado. Rectángulos: reservas de equipos; flechas: escape; discontinuas: familias de ruta A/B, con datos y electricidad en canalizaciones separadas. Las holguras finales se miden desde caras exteriores, y la selección ambiental, combustible e incendio puede ampliar estas reservas. ENV-19 amplía la reserva a 30 por 33 m; las huellas interiores de frío son de catálogo, las UTA/agua y recipientes pequeños son reservas de proyecto. EX A/B son bastidores en cubierta, fuera de salidas. Verde: familia hidráulica segregada; el trazado ejecutivo verifica drenaje, apoyos, cruces, gas y distancias, sin considerar estas líneas tuberías recibidas. PORT-21 identifica las estaciones exteriores sin invadir las huellas del riesgo.}
+\FuenteFigura{Elaboración de Synaptix: coordenadas de proyecto, sin levantamiento ejecutado. Rectángulos: reservas de equipos; flechas: escape; discontinuas: familias de ruta A/B, con datos y electricidad en canalizaciones separadas. Las holguras finales se miden desde caras exteriores, y la selección ambiental, combustible e incendio puede ampliar estas reservas. PORT-24 amplía la reserva a 34 por 39 m, desde $x=-2$ hasta 32 y $y=-2$ hasta 37; las huellas interiores de frío son de catálogo, las UTA/agua y recipientes pequeños son reservas de proyecto. EX A/B son bastidores en cubierta, fuera de salidas. Verde: familia hidráulica segregada; el trazado ejecutivo verifica drenaje, apoyos, cruces, gas y distancias, sin considerar estas líneas tuberías recibidas. La reserva de muro de 0,50 m por lado concilia blindaje, bastidor y aislamiento; la reproducción de rutas conserva máximo 8,875 m. PORT-24 representa las estaciones y rutas críticas con ejes a 0,75 m de las reservas; las reservas de máquina incluyen holguras y no se cruzan para recuperar un portátil.}
 \end{figure}

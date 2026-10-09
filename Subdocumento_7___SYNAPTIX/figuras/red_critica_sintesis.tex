@@ -1,0 +1,26 @@
+\par
+La Figura~\ref{fig:sd7-red-critica} separa las cuatro ramas críticas del cierre de implementación de la puerta contractual de marcha blanca E2. Las flechas representan precedencias de la red; los paquetes completos y sus recursos se conservan en T-14/T-15.
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont,
+ nodo/.style={draw=SynLine,fill=SynSurface,text width=31mm,minimum height=12mm,inner sep=2mm,align=center},
+ enlace/.style={-Latex,draw=SynBlue}]
+\node[nodo] (a) at (-5.7,0) {Observación\\IN1 / IN3 / IN4 / IN5};
+\node[nodo] (b) at (-1.9,0) {Informes por\\innovación};
+\node[nodo] (c) at (1.9,0) {PILOTOS-REV\\Revisión común};
+\node[nodo] (d) at (5.7,0) {PILOTOS-SUB\\Subsanación};
+\node[nodo,text width=51mm] (e) at (3.8,-2) {1.9.1.6.1 y 1.9.4.4.1\\Entregas finales};
+\node[nodo] (f) at (-1.9,-2) {H12\\Cierre implementación};
+\draw[enlace] (a)--(b);\draw[enlace] (b)--(c);\draw[enlace] (c)--(d);
+\draw[enlace] (d.south) |- (e.east);\draw[enlace] (e.west)--(f.east);
+\node[nodo,text width=39mm] (g) at (-5,-4) {28 días finales\\Evidencia real E2};
+\node[nodo,text width=39mm] (h) at (0,-4) {Acta expresa\\de marcha blanca E2};
+\node[nodo,text width=39mm] (i) at (5,-4) {Habilitación oficial E2\\Inicio del mes 21};
+\draw[enlace] (g)--(h);\draw[enlace] (h)--(i);
+\end{tikzpicture}
+\caption{Ramas críticas de implementación y puerta independiente de producción E2}
+\label{fig:sd7-red-critica}
+\FuenteFigura{Elaboración propia: síntesis de precedencias de la red integrada de T-14/T-15 y condiciones del artículo 17.3 de las Bases Administrativas, p. 13.}
+\end{figure}
+
+El tramo superior representa cuatro informes distintos que convergen en revisión y subsanación comunes antes de H12. El inferior conserva el orden evidencia--acta--habilitación: H12 posterior no sustituye el acta requerida para iniciar producción. Su holgura cero exige coordinar aceptación y ensayar el corte; aumentar recursos de elaboración de informes no elimina el pronunciamiento de la Contraparte.

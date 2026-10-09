@@ -23,7 +23,7 @@
     VPC Link V2 hacia ALB interno; aplicaciones y datos privados.};
   \node[banda,below=7mm of ingreso.south west,anchor=north west] (nube)
     {\textbf{AWS São Paulo: carga principal, Multi-AZ}\\
-    Tres núcleos: Operacional, de Servicios y Administrativo.
+    Tres núcleos: Marina-Ops, Marina-Log y Marina-Admin.
     Cinco procesos: integración externa, notificaciones, telemetría,
     sincronización y auditoría. PostgreSQL por dominio y evidencia en S3.};
   \node[bloque,below=9mm of nube.south west,anchor=north west] (local)

@@ -15,8 +15,8 @@ Las fichas de la Tabla~\ref{tab:dic-compacto-plataforma} presentan resultado, re
 \begingroup\small\setlength{\tabcolsep}{3pt}
 \begin{longtable}{L{52mm}L{91mm}}
 \caption{Diccionario de plataforma y seguridad}\label{tab:dic-compacto-plataforma}\\\hline
-Paquete, resultado y responsable & Contenido y criterio de aceptación\\\hline\endfirsthead
-\hline Paquete, resultado y responsable & Contenido y criterio de aceptación\\\hline\endhead
+ \EncabezadoTabla{Paquete, resultado y responsable} & \EncabezadoTabla{Contenido y criterio de aceptación}\\\hline\endfirsthead
+\hline \EncabezadoTabla{Paquete, resultado y responsable} & \EncabezadoTabla{Contenido y criterio de aceptación}\\\hline\endhead
 \texttt{1.\allowbreak{}2.\allowbreak{}1.\allowbreak{}1}\newline Repositorio e infraestructura como código gobernados\newline Fernando Guerrero; 40 HH. & Repositorio del cliente, cuenta raíz documentada, módulos OpenTofu, estado cifrado y bloqueo; excluye módulos de aplicación. Titularidad, MFA, revisión independiente, estado recuperable y ausencia de secretos en Git quedan comprobados. Responsable: Fernando Guerrero (Arquitectura/Integración).\\\hline
 \texttt{1.\allowbreak{}2.\allowbreak{}1.\allowbreak{}2}\newline Red cloud primaria reproducible\newline Fernando Guerrero; 48 HH. & VPC, subredes privadas en dos zonas, rutas, endpoints y acceso de administración por código. Se reproduce la red y se comprueba acceso permitido, bloqueo de exposición de datos y diferencias del plan IaC. Responsable: Fernando Guerrero (Arquitectura/Integración).\\\hline
 \texttt{1.\allowbreak{}2.\allowbreak{}1.\allowbreak{}3}\newline Servicios de persistencia y objetos habilitados\newline Nicolás Torfan; 48 HH. & RDS PostgreSQL, almacén de proyecciones y S3 con políticas; excluye modelo funcional, migración y cargas de negocio. Se identifican autoridades y recursos separados; conectividad TLS, políticas, respaldo y prohibición de acceso directo entre dominios se comprueban. Nicolás Torfan, Datos, responde por el resultado y presenta la evidencia; la contraparte mantiene la recepción contractual.\\\hline

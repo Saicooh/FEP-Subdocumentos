@@ -15,20 +15,20 @@ Se declara una separación geográfica orientativa de 7.614 km entre las referen
 \]
 Las coordenadas son referencias públicas de ciudades, no direcciones o coordenadas de centros de datos AWS. São Paulo denomina la región primaria y la comunicación oficial del lanzamiento de México vincula la infraestructura regional con Querétaro; el proveedor no publica en esas fuentes las posiciones de cada zona. El resultado es 7.613,84 km antes del redondeo y no representa distancia de cable ni latencia. La separación intercontinental impide que un incendio, inundación local, corte de distribución eléctrica o evacuación de un único recinto afecte físicamente ambos sitios por ese mismo evento. No se deriva independencia absoluta de fallas por multiplicar kilómetros \parencites{l14-geonames-sp,l14-geonames-qro,l14-aws-mexico}.
 
-\begingroup\setlength{\tabcolsep}{3pt}
-\begin{longtable}{L{\dimexpr.24\textwidth-2\tabcolsep\relax}L{\dimexpr.38\textwidth-2\tabcolsep\relax}L{\dimexpr.38\textwidth-2\tabcolsep\relax}}
-\caption{Amenazas comunes consideradas en los dos sitios regionales}\label{tab:sd4-dr-amenazas}\\\hline
-\EncabezadoTabla{Amenaza} & \EncabezadoTabla{Separación y riesgo residual} & \EncabezadoTabla{Control y comprobación prevista}\\\hline\endfirsthead
-\hline\EncabezadoTabla{Amenaza} & \EncabezadoTabla{Separación y riesgo residual} & \EncabezadoTabla{Control y comprobación prevista}\\\hline\endhead
-Incendio, inundación, sismo y energía & La distancia separa fenómenos físicos locales; no certifica resistencia de las instalaciones mexicanas o brasileñas. Un fenómeno amplio puede afectar rutas y logística. & Dos zonas por región; confirmar alcance de continuidad del proveedor y retirar región completa en ensayo, incluyendo la conectividad hacia el recinto.\\\hline
-Operador cloud y organización & Ambas regiones comparten AWS, políticas de organización y posibilidad de un fallo global o suspensión de cuenta. & Cuentas productiva/DR y de custodia segregadas, permisos de operación regional separados, doble control de cambios de organización y recuperación bajo custodia independiente. No se promete supervivencia de DR a una indisponibilidad total de AWS.\\\hline
-Identidad, DNS y certificados & IAM/organización, Route 53/CloudFront, proveedor federado y emisores pueden constituir dependencia común, aunque los pools sean regionales. & Credenciales de emergencia nominativas y custodia fuera del pool primario; certificados preparados en DR y prueba desde redes externas con resolución/caché. La caída común de federación o canal de recuperación sigue siendo una limitación de identidad que se registra.\\\hline
-Claves, secretos y configuración & Borrar una clave, distribuir un secreto inválido o desplegar la misma falla puede inutilizar ambas regiones. & Claves de cifrado regionales, política y custodia separadas; conservar versiones recuperables y artefacto anterior. Cambios primero ensayados, promoción bloqueada por comprobación de descifrado y correspondencia de manifiestos.\\\hline
-Corrupción y ataque lógico & La réplica propaga borrados, corrupción y cambios maliciosos; distancia no los filtra. & Copias protegidas y restauración aislada conforme a RT-07.09--14; detener réplica o promoción por incidente de integridad, conservar versiones y reaplicar restricciones válidas.\\\hline
-Telecomunicaciones y marina & Dos operadores pueden compartir ducto, mayorista o salida internacional; ambos enlaces del recinto pueden caer aunque México funcione. & Matriz de rutas/fallas con los operadores, túneles a ambas regiones y ensayo de ambos WAN retirados. Autonomía local mantiene su diseño propio; DR no sustituye la cobertura de terreno ni resuelve todos los permisos offline.\\\hline
-\end{longtable}
-\FuenteTabla{Análisis de Synaptix de los sitios y dependencias seleccionados; RT-07.02.}
-\endgroup
+\textbf{Amenazas comunes y controles de recuperación.} La separación regional limita fenómenos físicos locales, pero conserva dependencias comunes que se deben evaluar conforme a RT-07.02.
+
+Un incendio, inundación, sismo o corte de energía local queda separado geográficamente; la distancia no certifica resistencia de las instalaciones brasileñas o mexicanas. Un fenómeno amplio puede afectar rutas y logística. Se utilizan dos zonas por región y se comprobará el alcance de continuidad del proveedor mediante retirada de una región completa en el ensayo, incluyendo la conectividad con el recinto.
+
+Ambas regiones comparten AWS y políticas de organización, con riesgo de fallo global o suspensión de cuenta. Se segregan cuentas productiva/DR y de custodia, permisos de operación regional, doble control de cambios de organización y recuperación bajo custodia independiente. No se promete supervivencia de DR a una indisponibilidad total de AWS.
+
+IAM/organización, Route 53/CloudFront, el proveedor federado y los emisores pueden ser dependencias comunes aunque los pools sean regionales. Las credenciales de emergencia son nominativas y se custodian fuera del pool primario; los certificados se preparan en DR y se prueba desde redes externas con resolución y caché. Una caída común de federación o del canal de recuperación conserva su limitación de identidad registrada.
+
+Borrar una clave, distribuir un secreto inválido o desplegar la misma falla puede inutilizar ambas regiones. Las claves de cifrado regionales, políticas y custodias separadas conservan versiones recuperables y el artefacto anterior. Los cambios se ensayan antes de promover y la promoción se bloquea si falla el descifrado o la correspondencia de manifiestos.
+
+La réplica propaga borrados, corrupción y cambios maliciosos; la distancia no los filtra. Se mantienen copias protegidas y restauración aislada conforme a RT-07.09--14. Un incidente de integridad exige detener réplica o promoción, conservar versiones y reaplicar las restricciones válidas.
+
+Dos operadores pueden compartir ducto, mayorista o salida internacional; ambos enlaces de la marina pueden caer aunque México funcione. La matriz de rutas y fallas se verifica con los operadores; se mantienen túneles a ambas regiones y se ensaya con las dos WAN retiradas. La autonomía local conserva su diseño propio: DR no sustituye cobertura de terreno ni resuelve todos los permisos offline.
+
 
 \textbf{REG-REP-4: población íntegra de réplica.}
 \label{sec:sd4-dr-replicacion}

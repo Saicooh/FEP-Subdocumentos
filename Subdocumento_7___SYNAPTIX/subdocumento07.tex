@@ -5,10 +5,16 @@
 \input{componentes/cierre.tex}
 \graphicspath{{figuras/}}
 
+\newcommand{\EnCuerpoSD}{}
 \begin{document}
 \pagenumbering{arabic}
 \PortadaPropuesta{7}{Introducción al Plan de trabajo}
+\begingroup
+\setlength{\cftbeforechapskip}{8pt}
+\setlength{\cftbeforesecskip}{4pt}
+\setlength{\cftbeforesubsecskip}{0pt}
 \tableofcontents
+\endgroup
 \clearpage
 \input{capitulo07.tex}
 \CierreSubdocumento
