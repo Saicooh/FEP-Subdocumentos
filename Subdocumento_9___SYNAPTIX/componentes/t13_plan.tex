@@ -27,8 +27,8 @@ La Tabla~\ref{tab:t13-tipos} identifica controles especiales. Cada tipo se ejecu
 \EncabezadoTabla{Tipo} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Salida}\\\hline\endfirsthead
 \hline\EncabezadoTabla{Tipo} & \EncabezadoTabla{Escenario} & \EncabezadoTabla{Salida}\\\hline\endhead
 Carga/rendimiento & Mezcla conjunta a $1,5$ veces peak, con historia y retención representativas. & Todos los umbrales P95 y máximos propios de SD9 cumplidos.\\\hline
-Estrés & Aumento progresivo hasta saturación y posterior reducción. & Punto de quiebre documentado y recuperación sin pérdida silenciosa.\\\hline
-Resiliencia & Fallas de nodo, enlace, zona, dependencia y almacenamiento. & Degradación controlada y recuperación sin intervención, según escenario.\\\hline
+Estrés & Aumento progresivo hasta saturación y posterior reducción. & Curva respuesta/carga, recursos, saturación/quiebre, degradación controlada y recuperación sin pérdida silenciosa.\\\hline
+Resiliencia & Caída de instancia/zona, enlace o dependencia externa; latencia elevada y saturación de disco. & Degradación controlada y recuperación sin intervención, según escenario.\\\hline
 Desastre & Conmutación regional real, identidad, datos y retorno DR-4. & RTO $\leq4$ h y RPO $\leq15$ min, con conciliación.\\\hline
 Desconexión & Recinto 24 h; terreno 12 h; boyas 8 h; reconexión con registros nuevos. & Funciones exigibles completas; reconexión $\leq30$ min sin pérdida ni duplicados.\\\hline
 Seguridad ofensiva & Intrusión independiente sobre superficie y perfiles completos. & Cero hallazgos críticos/altos abiertos y correcciones verificadas.\\\hline
@@ -49,6 +49,28 @@ Desarrollo y QA comprobarán código e integración; Preproducción sostendrá l
 Los datos no productivos serán sintéticos o anonimizados/seudonimizados verificablemente, con origen autorizado, manifiesto, integridad, versión y regla de conservación/eliminación. Los secretos serán propios del ambiente. Los avisos, cargos y otros efectos externos usarán destinos de ensayo autorizados; una simulación no acreditará la disponibilidad efectiva de la integración. Se conservarán registros fallidos, sin descartar abandonos o tiempos agotados del análisis. \parencites[RT-11.25, p.~24]{sd9-bt}[sec.~9.2.3]{sd9-sd9}
 
 GitHub Actions ejecutará pruebas y controles versionados con SonarQube, Trivy, Gitleaks y ZAP conforme a SD6, conservando reportes, SBOM, firma y procedencia verificadas con el digest promovido. La promoción será del mismo artefacto sin recompilar y el retorno estará automatizado. Las pruebas manuales y la intrusión independiente conservarán resultados propios; una etapa omitida no se tratará como aprobada. \parencite[sec.~6.2]{sd9-sd6}
+
+La Tabla~\ref{tab:t13-ejecucion} integra ambientes, datos y automatización por nivel y tipo; sus entradas y salidas se completan con las Tablas~\ref{tab:t13-niveles} y \ref{tab:t13-tipos}. En todos los casos la entrada exige requisito, protocolo, versión, datos y ambiente disponibles; la salida exige resultado conforme, evidencia íntegra y bloqueos cerrados.
+\begin{longtable}{L{.22\textwidth}L{.22\textwidth}L{.22\textwidth}L{.24\textwidth}}
+\caption{Matriz de ejecución, datos y automatización}\label{tab:t13-ejecucion}\\\hline
+\EncabezadoTabla{Nivel/tipo} & \EncabezadoTabla{Ambiente} & \EncabezadoTabla{Datos} & \EncabezadoTabla{Automatización}\\\hline\endfirsthead
+\hline\EncabezadoTabla{Nivel/tipo} & \EncabezadoTabla{Ambiente} & \EncabezadoTabla{Datos} & \EncabezadoTabla{Automatización}\\\hline\endhead
+Unidad/componente & DEV y CI & Sintéticos y límites & GitHub Actions, cada cambio; cobertura y cero fallas.\\\hline
+Integración & QA, cada despliegue & Sintéticos; terceros de ensayo & Contratos OpenAPI/AsyncAPI y todos los flujos automatizados.\\\hline
+Sistema/regresión & QA, antes de PREPROD & Conjuntos sintéticos o anonimizados & Batería completa en GitHub Actions.\\\hline
+UAT y usabilidad & PREPROD & Casos por perfil protegidos & Ejecución asistida y medición; firma real del CLIENTE.\\\hline
+Carga/estrés & PREPROD equivalente & Mezcla y volumen de SD5 & Generador y métricas versionados; informe de curva, recursos y saturación.\\\hline
+Resiliencia & PREPROD; PROD autorizado en Operación & Hechos controlados y dependencias & Inyección y comprobaciones repetibles; supervisión de Operación.\\\hline
+DRP & Primario/DR reales, con autorización & Hechos identificados, réplicas y conciliación & Conmutación, medición y retorno; validación funcional supervisada.\\\hline
+Seguridad & CI, QA y PREPROD & Identidades por rol y datos protegidos & SonarQube/Trivy/Gitleaks/ZAP; intrusión por tercero independiente.\\\hline
+Accesibilidad & QA y PREPROD & Tareas de todas las interfaces & Comprobación automática y manual WCAG 2.2 AA.\\\hline
+Migración & PREPROD & Universo exigible protegido de SD5 & Dos ensayos completos; extracción a retorno, conciliación automatizada y revisión de Datos.\\\hline
+\end{longtable}
+\FuenteTabla{Synaptix, síntesis de SD6, SD9 y Bases Técnicas Transversales, caps.~4 y 20.}
+
+Cada contrato OpenAPI/AsyncAPI se vinculará con sus operaciones, esquemas, mensajes y casos positivos/negativos; QA ejecutará el 100\,\% de flujos aplicables sin error tras cada despliegue. La matriz de trazabilidad registrará ID y cláusula de T-12, etapa/hito, decisión y ubicación de diseño en SD4/SD5, módulo/ruta/commit de código, ID de caso, conjunto de datos, ejecución/resultado/evidencia, defecto y versión/digest/ambiente/fecha de despliegue LIB-6. Permitirá buscar en ambos sentidos y distinguir caso diseñado de caso ejecutado conforme. Se conservan los 576 IDs/enunciados y los 27 complementos. \parencite[sec.~9.2.4]{sd9-sd9}
+
+La seguridad conservará el mapa de controles OWASP ASVS 4.0 nivel 2 como mínimo, con identificadores de la revisión 4.0.3, evidencias y exclusiones justificadas. La intrusión independiente se ejecutará antes de cada paso a producción y anualmente en Operación. No se permitirá promoción con críticos/altos abiertos; remediación máxima de siete/quince/treinta días corridos para críticas/altas/medias desde publicación o detección. \parencites{sd9-asvs}[RT-11.04/20; sec.~11.5]{sd9-bt}
 
 \section{Calendario y dependencias de aceptación}
 UAT E1 ocupará del 12 al 15 de octubre de 2027, revisión del 18 al 29 y subsanación del 2 al 15 de noviembre. H5 se programará el 16 de noviembre, después del cierre de observaciones de los ensayos; la reserva marina será del 16 al 29 antes de activar el 1 de diciembre. Se conservan 48 HH y los cuatro recursos de la asignación integral T-15. La programación obliga a repetir evidencia invalidada por cambios y no anticipa actas de conformidad. \parencites{sd9-t15}[arts.~17--18]{sd9-ba}

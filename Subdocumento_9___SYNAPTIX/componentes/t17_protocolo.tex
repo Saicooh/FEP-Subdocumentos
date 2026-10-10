@@ -3,6 +3,23 @@ Cada hito se entenderá cumplido únicamente con acta de aceptación suscrita po
 
 La solicitud identificará hito, alcance, versión, artefactos, requisitos y cláusulas aplicables, casos ejecutados, resultados, responsables y fecha real de entrega. Las evidencias deberán corresponder a la versión presentada y a las condiciones del ensayo. Se exigirá cierre de bloqueos y reporte de todos los resultados obligatorios; una prueba omitida o sin resultado no se contabilizará como aprobada. Una aceptación parcial del trabajo no se denominará cierre del hito completo.
 
+\subsection{Definición de terminado (Definition of Done)}
+La definición se acordará con el CLIENTE y se aplicará al 100\,\% de entregables del hito, según su alcance. Para documentos de diseño se comprobarán los controles documentales y trazabilidad; los de código, pruebas y despliegue serán exigibles cuando el entregable los incluya. Calidad documentará la aplicabilidad por entregable con fundamento, sin eximir controles de una certificación o paso a producción. La Tabla~\ref{tab:t17-dod} fija las condiciones acumulativas. \parencites[RT-20.07/08, p.~35]{sd9-bt}[sec.~6.2]{sd9-sd6}
+\begin{longtable}{L{.18\textwidth}L{.45\textwidth}L{.27\textwidth}}
+\caption{Definición de terminado y evidencia exigible}\label{tab:t17-dod}\\\hline
+\EncabezadoTabla{Ámbito} & \EncabezadoTabla{Condición objetiva} & \EncabezadoTabla{Evidencia}\\\hline\endfirsthead
+\hline\EncabezadoTabla{Ámbito} & \EncabezadoTabla{Condición objetiva} & \EncabezadoTabla{Evidencia}\\\hline\endhead
+Código & Todos los cambios revisados por pares; métricas de SD9 9.1.2 conformes. & Commit, revisión independiente y reportes CI.\\\hline
+Pruebas & Cero pruebas obligatorias fallidas u omitidas; cobertura de negocio $\geq70\,\%$; todas las cláusulas del alcance conformes. & Matriz por cláusula, ejecuciones y expediente T-13.\\\hline
+Seguridad & Cero críticos/altos abiertos y secretos; controles ASVS aplicables verificados; intrusión independiente cuando corresponda. & Informes, mapa de controles y evidencia de remediación.\\\hline
+Documentación y datos & Todos los documentos del entregable vigentes, trazados y coherentes; conciliación sin diferencias no explicadas. & Diseño, contratos, manuales, reglas, manifiestos y registros de conciliación.\\\hline
+Despliegue & Artefacto reproducible e identificado, firma/procedencia verificadas, promoción y retorno ensayados conforme a SD6. & Digest, SBOM, configuración, logs y prueba de retorno.\\\hline
+Recepción & Todos los criterios de la fila del hito conformes, observaciones impeditivas cerradas y aceptación expresa del CLIENTE. & Expediente íntegro y acta suscrita por la Contraparte.\\\hline
+\end{longtable}
+\FuenteTabla{Synaptix, SD6/SD9 y Bases Técnicas Transversales RT-20.07/08.}
+
+Terminado técnicamente tras QA no equivale a hito aceptado: la certificación agrega las pruebas integrales, UAT firmada y la recepción contractual. El cumplimiento de una fila no compensa la falla de otra.
+
 \section{Protocolo por hito contractual}
 La Tabla~\ref{tab:t17-hitos} define el alcance de recepción de los doce hitos de implementación. Los criterios comunes del artículo 18 se aplican a cada fila, además de los controles particulares. La evidencia incluirá el expediente de T-13 cuando corresponda y los resultados de implantación de T-18. Se conservarán las observaciones de recepciones anteriores. \parencites[Formulario E-25, p.~74]{sd9-ba}[sec.~9.1--9.3]{sd9-sd9}
 \begin{longtable}{L{.09\textwidth}L{.24\textwidth}L{.32\textwidth}L{.24\textwidth}}
