@@ -1,0 +1,218 @@
+\section*{A5.2 Gobierno y ciclo de vida de los datos}
+
+\label{anx:sd5_gobierno_ciclo_vida}
+
+Este anexo concreta las políticas de 5.2 para las entidades y atributos de A5.1. Los mínimos de las bases, las decisiones de SD4 y las políticas propuestas mantienen esa distinción; los responsables se indican por función, con designación y suplencia pendientes \parencites[RT-05.01--RT-05.10]{pucv-bases-transversales}{synaptix-sd4}.
+
+\subsection*{A5.2.1 Propiedad, autoridad y custodia}
+
+Cada entidad declara su propietario y código de retención en A5.1; sus atributos heredan esa responsabilidad salvo excepción expresa. La autoridad de escritura se rige por 5.2.1: maestros y versiones contractuales en nube, confirmaciones exclusivas del recinto bajo autoridad local, incluso con enlace. El propietario valida significado, calidad, acceso y conservación; Synaptix mantiene la custodia y operación técnica.
+
+Las funciones responsables son Administración comercial (CC), Jefatura de Operaciones (OM), Coordinación de Escuela (EN), Jefatura de Varadero (VC), encargado de suministro (CO), responsable ambiental y de consumos (AC), Administración financiera (FC), Mantenimiento (INF) y responsable de Seguridad (AS). NOT conserva el propietario del aviso y la coordinación de comunicaciones; COM, el propietario del hecho y su custodio técnico. Los roles operacionales actúan según la facultad del acto.
+
+NOT y COM identifican el propietario por registro o contexto. En Documento y Versión documental, AS custodia y el dominio del contenido decide conservación y acceso; en exportación, retención y eliminación globales, AS gobierna el control y cada propietario valida sus datos. Portales, dispositivos y proyecciones tramitan solicitudes o muestran versiones autorizadas sin adquirir autoridad para confirmar disponibilidad, entrega, regreso o pago.
+
+\subsection*{A5.2.2 Confirmaciones y tratamiento de conflictos}
+
+La secuencia de captura y sincronización de 5.2.2 conserva UUID, versión, actor, dispositivo, regla y tiempos de ocurrencia y registro. El dato, la auditoría y outbox se guardan en una transacción local; inbox y efecto se aplican atómicamente en el receptor. El Sobre de evento conserva los doce campos de SD4 \parencites[RT-05.03]{pucv-bases-transversales}{synaptix-sd4}.
+
+Cada lote identifica productor, esquema, rango, cantidades y huella. El reintento conserva \texttt{eventId}; un duplicado exacto devuelve el resultado anterior y una misma identidad con contenido distinto abre Discrepancia. Se verifican autoridad, versión y causalidad; referencias faltantes y conflictos conservan ambos antecedentes hasta resolución del propietario, con motivo y auditoría.
+
+Recepción durable, aplicación de negocio y archivo íntegro son confirmaciones distintas. Los binarios permanecen en origen hasta confirmar integridad y vínculo documental; un acuse de metadatos no permite borrarlos. La conciliación compara IDs, secuencias, referencias, archivos y efectos, conservando pendientes y antigüedad. El plazo de convergencia y las condiciones de enlace se evalúan en A5.4.
+
+Las confirmaciones críticas se aplican según A5.1: escuela y portería comparten Participación; la coordinación por radio permite registrar en la autoridad local cuando el dispositivo no llega a ella. Un equipo aislado conserva observación o solicitud pendiente. El regreso marítimo requiere observación operacional y la permanencia de invernada, hitos efectivos vinculados a Orden de trabajo. La resolución no sustituye estas evidencias por el último mensaje recibido.
+
+\subsection*{A5.2.3 Calidad y evidencias de control}
+
+Se aplican los indicadores y universos de 5.2.4: Q-01 completitud, Q-02 exactitud, Q-03 consistencia, Q-04 unicidad de efectos, Q-05 oportunidad y Q-06 integridad de sincronización. Las reglas particulares se conservan en A5.1. Se validan en captura, recepción y antes de publicar; el consolidado se revisa diariamente y antes del cierre contable o ambiental \parencite[RT-05.04]{pucv-bases-transversales}.
+
+Cada Regla de calidad conserva característica, universo, fórmula, meta, período, responsable y evidencia. Incidencia de calidad identifica registros afectados, severidad, plazo y tratamiento. El propietario decide la corrección y Synaptix ejecuta el reproceso; la verificación funcional conserva antes y después, regla y consumidores afectados. Si cambia un indicador o una exportación, se publica una revisión identificable.
+
+Una población vacía se informa no aplica; los pendientes elegibles permanecen en el denominador. El formato válido no demuestra exactitud. La oportunidad registra demora máxima y antigüedad, y la sincronización comprueba conjuntos completos además de cero pérdida y cero efectos duplicados. Un defecto crítico bloquea la decisión afectada, conservando el hecho y su evidencia. Las metas de diseño no sustituyen los plazos exigidos ni constituyen certificación de ISO/IEC 25012.
+
+\subsection*{A5.2.4 Protección, consentimiento y auditoría}
+
+La clasificación se aplica al atributo y al contenido de cada versión documental. El cifrado de campo exigido por C07 RT-11.10 se mantiene en autoridades y copias necesarias. Algoritmo, versión y rotación de claves, custodia, recuperación y provisión offline requieren especificación verificable en SD4 \parencites[RT-11.10 y RT-16.09]{pucv-caso07}[DA-16]{synaptix-sd4}.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.230\textwidth-4.5pt\relax}L{\dimexpr0.340\textwidth-4.5pt\relax}L{\dimexpr0.240\textwidth-4.5pt\relax}@{}}
+\caption{Protección y acceso por categoría}\label{tab:a52_proteccion} \\
+\hline
+\EncabezadoTabla{Categoría} & \EncabezadoTabla{Campos/contenido} & \EncabezadoTabla{Regla de protección y acceso} & \EncabezadoTabla{Auditoría / límite} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Categoría} & \EncabezadoTabla{Campos/contenido} & \EncabezadoTabla{Regla de protección y acceso} & \EncabezadoTabla{Auditoría / límite} \\ \hline
+\endhead
+\hline\endfoot
+Personas y vínculos (CC, EN, VC, OM) & Identificación/contactos/datos del menor, armador, tripulante o trabajador & Cifrado por campo en cada autoridad/copia necesaria; permisos por relación; minimizar payload/log/nombre de archivo & Autor, finalidad, objeto, resultado y política; no mostrar identidad en tablero general \\ \hline
+Salud y emergencia (EN) & Antecedente de salud, versión, consentimiento y vista mínima & Monitor autorizado por clase; vista de emergencia mínima y auditada; portería sin ficha completa & Cada lectura auditada; la vista no crea nueva historia médica ni asistencia \\ \hline
+Posición voluntaria (OM) & Ubicación de nave compartida con consentimiento & Finalidad y consentimiento específicos; no hacer plan/posición requisito para todos; copia offline general no basta & Retiro detiene tratamientos futuros dependientes; conserva evidencia exigible \\ \hline
+Deuda/contabilidad/custodia (FC) & Cuenta, saldo, gestión y documentos económicos & Acceso por función y vínculo; diseño cifra campos restringidos; sistema externo mantiene autoridad & Toda consulta de deuda auditada; respuesta externa y fecha visibles \\ \hline
+Documentos y eventos (AS/NOT/COM) & Contenido y referencias sensibles heredados & Versiones y mensajes protegen el contenido; enlaces temporales autorizados; paquete exportado cifrado para cliente & Huellas/acuse no prueban firma; firma exigible con método y evidencia de validación \\ \hline
+Dispositivo y permiso offline & Subconjunto mínimo cifrado; permiso firmado & Renovación diaria, vigencia máxima 72 h; revocación conocida se aplica antes de reabrir acceso al reconectar & No prometer revocación instantánea incomunicado; registrar acciones/emergencias nominativas \\ \hline
+\end{longtable}
+\endgroup
+
+Consentimiento conserva titular, representante y facultad, finalidad, alcance, versión informada, fechas, canal y evidencia de otorgamiento o retiro. La revocación restringe nuevos tratamientos y se propaga a consumidores y proyecciones; sin enlace rigen alcance mínimo y caducidad, y se aplica al reconectar antes de reabrir acceso. La obligación de conservación mantiene su fundamento.
+
+Auditoría conserva quién, qué, cuándo, dispositivo, motivo y finalidad, valores anteriores y posteriores protegidos, resultado, política, versión y correlación. Cada consulta de salud, menores, posición consentida o deuda se registra. Las correcciones agregan evidencia sin alterar el historial; los registros técnicos generales no exponen contenido sensible. Desarrollo y pruebas utilizan datos sintéticos o tratados conforme a BT RT-11.25.
+
+El sellado de lotes y manifiestos de auditoría es una propuesta de integridad del SD5. Object Lock se aplica a versiones con plazo aprobado; la firma exigida en contratos, renovaciones, autorización náutica de menores, custodia, izaje y residuos peligrosos conserva método y evidencia de validación según el acto \parencites{aws-object-lock}[RT-16.14]{pucv-caso07}.
+
+\subsection*{A5.2.5 Retención y vencimiento}
+
+La categoría declarada por cada entidad de A5.1 remite a la matriz siguiente. Datos, documentos, versiones y eventos conservan el plazo mayor aplicable y sus bloqueos. Los respaldos mantienen su rotación de recuperación, con copias residuales confinadas y reaplicación de eliminaciones y revocaciones antes de restablecer acceso. Los plazos expresos son mínimos; inicios no fijados por la base y extensiones de alcance son políticas propuestas, que requieren aprobación antes de purgar \parencites[RT-05.10]{pucv-caso07}[RT-11.14 y RT-16.10]{pucv-bases-transversales}.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.230\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}L{\dimexpr0.230\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}@{}}
+\caption{Políticas de retención por categoría}\label{tab:a52_retencion} \\
+\hline
+\EncabezadoTabla{Código / categoría} & \EncabezadoTabla{Plazo y vencimiento} & \EncabezadoTabla{Evento de inicio} & \EncabezadoTabla{Fundamento / condición} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Código / categoría} & \EncabezadoTabla{Plazo y vencimiento} & \EncabezadoTabla{Evento de inicio} & \EncabezadoTabla{Fundamento / condición} \\ \hline
+\endhead
+\hline\endfoot
+MAE — Maestros, contactos y vínculos vigentes & Vigencia y máximo plazo de los hechos relacionados & Término de finalidad y cierre del último hecho que respalda & Decisión de política de SD5; si faltan dependencias/plazo, no purgar \\ \hline
+CTR — Contrato de amarra y custodia & 6 años mínimo & Término contractual / cierre de custodia, propuestos & C07 RT-05.10; inicio propuesto \\ \hline
+NAV — Salida, regreso, zarpe y sus antecedentes; planes/ocupación vinculados & 5 años mínimo & Cierre del episodio confirmado, propuesto & C07 RT-05.10 para salida/regreso/zarpe; extensión propuesta a evidencia relacionada \\ \hline
+CAL — Calendario náutico y decisiones vinculadas & 5 años propuestos; plazo mayor si respalda expediente & Cierre de actividad/período del calendario & Política propuesta; no plazo literal de base \\ \hline
+ESC — Participación, autorización y salud de menor & Posterior entre cumpleaños 23 y cierre+10 años & Fecha de nacimiento y cierre de cada expediente/documento & C07 RT-05.10; fórmula conservadora propuesta; adulto: cierre+5 años propuestos \\ \hline
+VAR — Faenas, izaje, acceso, acreditación e inducción & 6 años propuestos; custodia: mínimo contractual de 6 & Cierre de faena o término de vigencia; aplicar mayor & SD5 política propuesta; C07 RT-05.10/16.14 cuando integra custodia \\ \hline
+COMB — Despacho y evidencia instrumental & 5 años mínimo & Fecha del despacho, propuesta & C07 RT-05.10; inicio propuesto \\ \hline
+CONS — Serie por amarra y bases que permiten reconstruirla & 5 años mínimo; detalle local 30 días condicionado & Fin del período de consumo, propuesto & C07 RT-05.10; propuesta de detalle local de SD5 \\ \hline
+RES — Residuos peligrosos y actas de derrame & 6 años mínimo; misma política propuesta para cadena ambiental restante & Cierre del registro/entrega/incidente, propuesto & C07 RT-05.10 para categorías expresas; extensión de cadena propuesta \\ \hline
+FIN — Estado de cuenta y antecedentes financieros asociados & 6 años mínimo; conservar mayor plazo aplicable & Fecha del estado/cierre administrativo, propuestos & C07 RT-05.10 para estado de cuenta; antecedentes adoptan política del expediente \\ \hline
+FON — Tren/componentes/inspección de fondeo & Vida útil completa+5 años mínimo & Retiro definitivo documentado del elemento & C07 RT-05.10; no purgar si vida útil/término no están acreditados \\ \hline
+ACT — Activos, ubicación e inspecciones restantes & Vigencia y plazo de los hechos; fondeo pasa a FON & Baja efectiva y cierre de dependencias & Política propuesta; categoría sin plazo derivable queda bloqueada \\ \hline
+AUD — Auditoría, consentimiento, políticas y decisiones & Al menos 5 años o plazo mayor del expediente & Acto/fin de vigencia/cierre del hecho que respalda & BT RT-16.10 para auditoría; extensión a evidencias propuesta \\ \hline
+SEG — Identidades, roles y permiso offline & Vigencia del permiso/rol y evidencia de control por AUD; evento de seguridad 12 meses en línea+24 archivo & Emisión/fin de vigencia para uso; ocurrencia para eventos técnicos & DA-16: renovación diaria, máximo 72 h de permiso; BT RT-11.14 para seguridad \\ \hline
+NOT — Avisos e intentos/acuses/escalamiento & 5 años propuestos; plazo mayor del hecho asociado & Cierre de aviso/campaña, propuesto & SD5 política propuesta; vínculos a salud/menor/custodia conservan plazo mayor \\ \hline
+HER — Documento, versión, evento, linaje o incidencia con expediente & Hereda máximo de categorías del hecho & Evento de inicio del expediente/hecho respaldado & No nueva retención uniforme; AS/COM no rebajan el plazo del propietario \\ \hline
+TEC — Outbox/inbox y resultados idempotentes & Hasta confirmar recepción, aplicación y archivos; después evidencia por plazo del hecho & Última confirmación requerida y cierre de dependencias & Propuesta operativa; mantener identificador/resultado deduplicable mientras pueda reenviarse el hecho \\ \hline
+DER — Proyección/indicador derivado & Vista vigente y ventana de hasta 12 meses, propuesta; definición por AUD & Fin de necesidad operacional/cambio de versión & Recreable; eliminación de fuente se propaga; no sustituye maestro/archivo \\ \hline
+EXP — Paquete temporal de exportación & 7 días propuestos; manifiesto por AUD/expediente & Disponibilidad del paquete & SD5 propuesta; entrega descargada pasa a custodia del cliente \\ \hline
+VID — Videovigilancia en plataforma existente & 6 meses mínimo; extracto por plazo del expediente & Fecha de captura; extracto hereda cierre de expediente & C07 RT-05.10; no trasladar video continuo al volumen de documentos \\ \hline
+\end{longtable}
+\endgroup
+
+Para menores, \(F_e=\max(F_n+23\ \mathrm{años},F_c+10\ \mathrm{años})\), donde \(F_n\) es nacimiento y \(F_c\), cierre efectivo del expediente o versión. Se comprueban también obligaciones y bloqueos adicionales; nacimiento o cierre no acreditado impide eliminación automática. Los cinco años para adultos son propuesta. En fondeo, el adicional comienza solo con retiro definitivo acreditado. Los 14 expedientes de abandono conservan íntegramente antecedentes de actuaciones o controversias pendientes.
+
+Se propone acceso operacional a registros activos y los últimos doce meses de cerrados, y archivo consultable hasta vencimiento con permisos e integridad. El objetivo ordinario de recuperación de archivo es hasta cuatro horas; expedientes activos o críticos mantienen acceso inmediato. Las muestras por minuto se depuran tras treinta días solo con extremos, época, secuencia, asociación y regla central confirmados; las que sostengan incidencias se conservan por la categoría del consumo o expediente.
+
+\subsection*{A5.2.6 Repositorios, archivo y eliminación}
+
+La política alcanza cada representación administrada. El inventario de copias y la Orden de eliminación identifican alcance y versión; durante propagación se suspende acceso al dato vencido y se informa el confinamiento y vencimiento de copias residuales.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.230\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}L{\dimexpr0.310\textwidth-4.5pt\relax}@{}}
+\caption{Cobertura de la política en repositorios y copias}\label{tab:a52_repositorios} \\
+\hline
+\EncabezadoTabla{Repositorio} & \EncabezadoTabla{Contenido} & \EncabezadoTabla{Conservación} & \EncabezadoTabla{Control de archivo/eliminación} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Repositorio} & \EncabezadoTabla{Contenido} & \EncabezadoTabla{Conservación} & \EncabezadoTabla{Control de archivo/eliminación} \\ \hline
+\endhead
+\hline\endfoot
+Nube PostgreSQL transaccional & Maestros, estados autorizados, eventos/auditoría/outbox/inbox & Plazo de categoría; exportación completa por corte; archivo conserva relaciones & Eliminar elegibles y dependencias autorizadas; mantener manifiesto/orden sin contenido eliminado \\ \hline
+Recinto PostgreSQL & Hechos/autoridad operacional y subconjunto maestro & Misma política y versiones; fuera de línea no habilita purga de no sincronizado & Orden pendiente se aplica antes de acceso al reconectar; no borrar evidencia por acuse de metadatos \\ \hline
+Android Room/SQLite & Subconjunto mínimo y cola durable & Hasta necesidad operativa y confirmaciones requeridas; permiso ≤72 h & Caducidad de permiso bloquea uso, no borra hechos pendientes; limpieza comprobada y cifrado definido por SD4 \\ \hline
+S3 documental/versiones/DR & Objetos originales y todas las versiones & Hereda expediente y bloqueos; copia regional conserva mismos permisos/plazos & Object Lock/bloqueo vigente impide borrado; eliminar todas las versiones elegibles y registrar residuos \\ \hline
+Proyecciones PostgreSQL separadas & Lectura autorizada/vista vigente & Ventana hasta 12 meses propuesta; desfase visible y reconstrucción & Propagar revocación/eliminación e invalidar; no usar para decisiones exclusivas \\ \hline
+S3/Parquet/Athena & Conjuntos derivados y archivo & Política por fuente/columna/cohorte; seguridad en conjunto segregado & Reconstruir partición/versiones elegibles; eliminar identificadores/dimensiones en todas las copias \\ \hline
+Exportaciones administradas & CSV/JSON/Parquet/originales y manifiesto & 7 días desde disponibilidad, propuesto; entrega descargada registrada & Eliminar copia temporal/claves propias del paquete si aplica, sin afectar claves compartidas de maestros \\ \hline
+Cachés y pantalla & Catálogos/versiones y subconjuntos & Máximo 5 min solo no críticos; invalidación por versión/finalidad & No tolerancia para saldo/escuela; limpiar e invalidar con orden de revocación \\ \hline
+PITR y diarios en nube & Base+registros de recuperación & 35 días por SD4; copia diaria propuesta & Copia aislada solo para recuperar; reaplicar eliminaciones y revocaciones antes de habilitar \\ \hline
+Copias mensuales fuera de sitio & Cortes recuperables cifrados & 12 copias mensuales, propuesta distinta del archivo de largo plazo & Expiración propia y manifiesto; residual confinado hasta vencimiento \\ \hline
+Respaldo local & Subconjunto operativo cifrado & Diario con 30 días propuestos y envío fuera del sitio al disponer de enlace & No sobrescribir único punto recuperable por falta de enlace; registrar atraso y ajustar espacio \\ \hline
+CCTV existente / extractos & Video continuo en sistema existente; extractos autorizados en expediente & 6 meses video; extracto por categoría del expediente & Custodio confirma borrado en plataforma; no declarar control de copias externas no administradas \\ \hline
+\end{longtable}
+\endgroup
+
+El responsable funcional revisa candidatos, bloqueos y dependencias y autoriza el alcance; Synaptix ejecuta y registra regla, cantidades, fecha, responsable y resultado por repositorio. Un fallo abre incidencia y mantiene el dato confinado. Los bloqueos tienen motivo, objetos, responsable, revisión y levantamiento; no se destruye una clave compartida que haga ilegible evidencia todavía exigible.
+
+La eliminación completa se declara al vencer o destruir verificablemente las copias residuales. Una exportación descargada pasa a custodia del cliente. Una restauración se realiza aislada y reaplica eliminaciones y revocaciones antes de habilitar acceso. El inventario físico de SD4 debe acreditar 3-2-1-1-0 y la prueba mensual de recuperación; las réplicas HA/DR no acreditan por sí solas diversidad de medios. A5.4 conserva el cálculo de copias y recuperación \parencite[RT-07.09 y RT-07.12--RT-07.13]{pucv-bases-transversales}.
+
+\subsection*{A5.2.7 Exportación, analítica e integraciones}
+
+El perfil autorizado del cliente obtiene toda su información en cualquier momento contractual, sin intervención obligatoria de Synaptix ni cobro adicional. El paquete completo incluye dominios, avisos, eventos, historia, versiones, documentos, evidencia y pendientes declarados, con acceso controlado y cifrado para el cliente; excluye credenciales y claves de infraestructura \parencite[RT-05.06]{pucv-bases-transversales}.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.0pt\relax}L{\dimexpr0.260\textwidth-4.0pt\relax}L{\dimexpr0.550\textwidth-4.0pt\relax}@{}}
+\caption{Contenido del paquete de portabilidad}\label{tab:a52_exportacion} \\
+\hline
+\EncabezadoTabla{Familia} & \EncabezadoTabla{Formato} & \EncabezadoTabla{Cobertura} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Familia} & \EncabezadoTabla{Formato} & \EncabezadoTabla{Cobertura} \\ \hline
+\endhead
+\hline\endfoot
+Datos tabulares & CSV UTF-8, encabezados documentados & Todas las filas y relaciones por corte, identificadores externos, catálogo, unidades, estados y versión \\ \hline
+Eventos/estructuras & JSON / JSON Lines, esquema versionado & Sobre vigente, payload protegido, secuencias y causación; resultados y discrepancias \\ \hline
+Conjuntos analíticos & Parquet cuando corresponda & Hechos/dimensiones, fórmulas, lotes y transformaciones; no sustituye exportación operacional \\ \hline
+Documentos & Formatos originales y versiones & Contenido, índice, evidencia de firma, tamaño/huella, relación al expediente y política \\ \hline
+Control de cobertura & Diccionario, manifiesto y documentación abierta & Cantidad por entidad/objeto, corte por autoridad, huecos/pendientes, restricciones y validación de lectura independiente \\ \hline
+\end{longtable}
+\endgroup
+
+La exportación autentica y autoriza, fija cortes por autoridad, genera archivos, esquemas y manifiesto, contrasta cantidades, relaciones y huellas, entrega y registra, y caduca la copia administrada. La partición de red se refleja mediante cortes y pendientes; el paquete se completa al reconectar. La prueba reconstruye cantidades y relaciones con herramientas independientes.
+
+La analítica recibe lotes por contratos de dominio y conserva cantidades, identificadores, reglas, revisiones y linaje. La explotación usa recursos, permisos y concurrencia separados de la escritura operacional, conforme a 5.2.3. El catálogo automatizado integral de BT RT-05.10 es deseable; los controles de calidad y la trazabilidad documentada mantienen su exigencia.
+
+Las integraciones siguientes conservan sus responsabilidades y límites de SD4; protocolo, versión y disponibilidad se verifican antes de considerar cumplida la interfaz.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.240\textwidth-4.0pt\relax}L{\dimexpr0.390\textwidth-4.0pt\relax}L{\dimexpr0.370\textwidth-4.0pt\relax}@{}}
+\caption{Integraciones identificadas y límites verificables}\label{tab:a52_integraciones} \\
+\hline
+\EncabezadoTabla{Familia} & \EncabezadoTabla{Correspondencia con SD4} & \EncabezadoTabla{Pendiente concreto} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Familia} & \EncabezadoTabla{Correspondencia con SD4} & \EncabezadoTabla{Pendiente concreto} \\ \hline
+\endhead
+\hline\endfoot
+Contabilidad/fiscal y pagos & Autoridad externa para documento, pago y saldo; intercambio de hechos/respuestas & Protocolo y versión reales pendientes; no CSV periódico como prueba de saldo en tiempo real \\ \hline
+Control de acceso/cámaras & Intercambio autorizado de autorizaciones/eventos; video en plataforma vigente & Contrato real, retención e identificación por verificar; no incorporar video continuo a S3 documental \\ \hline
+Meteorología/avisos oficiales/VHF & Observación de estación, aviso por canal autorizado y coordinación operacional & No asumir API de DIRECTEMAR; identificar formatos/versiones disponibles antes de declarar estándar sectorial \\ \hline
+Combustible/instrumentación & Evidencia del equipo, acumulados, época, unidad y calidad & SD4 define equipo, certificación, protocolo y versión; SD5 conserva datos de identificación \\ \hline
+Correo/SMS/mensajería & Proveedores autorizados, intento/acuse/escalamiento por canal & Contrato, límites, retornos y semántica del acuse por verificar; no confundir aceptación con recepción humana \\ \hline
+APIs internas y eventos & REST/OpenAPI 3.1 y eventos versionados descritos por SD4; MQTT terreno-borde & Documentar esquema/adaptador y pruebas; un estándar interno no satisface por sí solo los estándares sectoriales pendientes \\ \hline
+\end{longtable}
+\endgroup
+
+Las cuatro familias sectoriales de C07 RT-05.23 requieren identificación, justificación y disponibilidad verificable. Su correspondencia de datos se mantiene a continuación \parencites[RT-05.23]{pucv-caso07}[RT-05.23]{pucv-bases-transversales}{synaptix-sd4}.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.280\textwidth-4.0pt\relax}L{\dimexpr0.300\textwidth-4.0pt\relax}L{\dimexpr0.420\textwidth-4.0pt\relax}@{}}
+\caption{Familias sectoriales exigidas y correspondencia de datos}\label{tab:a52_sectoriales} \\
+\hline
+\EncabezadoTabla{Familia de C07 RT-05.23} & \EncabezadoTabla{Datos del modelo} & \EncabezadoTabla{Verificación pendiente en SD4} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Familia de C07 RT-05.23} & \EncabezadoTabla{Datos del modelo} & \EncabezadoTabla{Verificación pendiente en SD4} \\ \hline
+\endhead
+\hline\endfoot
+Autoridad marítima: zarpe/avisos & OM.Legajo de zarpe; NOT.Aviso y antecedente oficial & Formato y canal real, versión y acceso autorizados; no API DIRECTEMAR presupuesta; conservar documento/canal original \\ \hline
+Residuos peligrosos: autoridad sanitaria & AC.Registro/Movimiento/Entrega/Detalle/Certificado & Estándar de declaración/trazabilidad aplicable y versión; disponibilidad del canal y semántica de aceptación; gestor identificado y evidencia de autorización \\ \hline
+Certificación ambiental de marinas & COM.Indicador versionado/Lote analítico sobre AC & Esquema/marco de indicadores y versión realmente aplicable; fórmula, unidad, universo y evidencia; no atribuir certificación obtenida \\ \hline
+Mensajería de baja capacidad en navegación & NOT.Aviso/Intento/Acuse/Tarea de escalamiento & Estándar y canal efectivamente disponibles por nave, versión, límites/orden/latencia y acuse; no SMS terrestre como sustituto no justificado \\ \hline
+\end{longtable}
+\endgroup

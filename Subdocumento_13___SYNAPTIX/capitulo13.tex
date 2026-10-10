@@ -1325,7 +1325,112 @@ La integración reutilizará HTTPS y REST/JSON documentados con OpenAPI 3.1, con
 
 Los dos componentes se proponen dentro de los contenedores cloud de sus núcleos en ECS/Fargate, según el emplazamiento de la tabla 4-10. Durante una desconexión continuará la captura obligatoria de faena en la Célula Operacional Local; la conciliación del incentivo esperará la sincronización y validación de su evidencia. El tiempo activo deberá conservarse con el método aprobado, incluso si la captura se realiza en un registro controlado; si queda incompleto, el período no habilitará reconocimiento variable. La instrumentación OpenTelemetry del SD4 no sustituye esa medición de trabajo humano. El enlace de solicitudes, los tiempos y el expediente aún requieren atributos, estados, responsables, retención y contratos detallados en A5.1/A5.2 y SD4. La propuesta debe contrastarse también con DEC-22 y VAC-12 del SD2: la aprobación de negocio corresponde al cliente y la cobertura técnica a Synaptix, con dedicaciones y suplencias todavía por consolidar.
 
-Los paquetes propuestos son \texttt{IN4.1}, definición de medición y regla comercial en meses 2--4; \texttt{IN4.2}, instrumentación y expediente en meses 13--15 y pruebas de certificación en el 16; \texttt{IN4.3}, piloto sin pagos variables en meses 18--19; e \texttt{IN4.4}, conciliación y seguimiento durante los meses 21--56. El piloto requiere que el flujo adicional de mantenimiento esté disponible. Estos identificadores y sus cargas se incorporarán al SD7/T-15; son paquetes definidos para esta propuesta, cuya correspondencia con la EDT consolidada debe verificarse. La materialización contractual se propone para el mes 21, después de la aceptación del piloto.
+La siguiente tabla presenta los entregables asociados a los paquetes
+de la innovación, manteniendo el calendario propuesto. Los responsables
+indicados corresponden a la preparación y coordinación de cada
+entregable; la aceptación de la evidencia y del reconocimiento económico
+corresponde al cliente.
+\begin{longtable}{
+L{\dimexpr0.14\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.46\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.16\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.24\linewidth-2\tabcolsep\relax}
+}
+\caption{EDT de incorporación de la innovación 4}
+\label{tab:edt-in4}\\
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Entregable / paquete de trabajo} &
+\EncabezadoTabla{Mes} &
+\EncabezadoTabla{Responsable} \\
+\hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Entregable / paquete de trabajo} &
+\EncabezadoTabla{Mes} &
+\EncabezadoTabla{Responsable} \\
+\hline
+\endhead
+
+\rowcolor{SynSurface}
+\textbf{IN4.1} &
+\textbf{Medición y regla comercial definidas} &
+\textbf{2--4} &
+\textbf{Jefe de Proyecto} \\
+\hline
+IN4.1.1 & Ficha de tareas comparables, muestra y exclusiones &
+2--3 & QA \\
+\hline
+IN4.1.2 & Regla de reconocimiento, condiciones de calidad
+y procedimiento de aprobación &
+3--4 & Jefe de Proyecto \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN4.2} &
+\textbf{Instrumentación y expediente implementados y probados} &
+\textbf{13--16} &
+\textbf{Desarrollo / QA} \\
+\hline
+IN4.2.1 & Captura del tiempo activo integrada
+con solicitudes de mantenimiento &
+13--14 & Desarrollo \\
+\hline
+IN4.2.2 & Expediente de conciliación, cálculo versionado
+y separación de permisos &
+14--15 & Desarrollo / Seguridad \\
+\hline
+IN4.2.3 & Informe de pruebas de cálculo, integración
+y trazabilidad &
+16 & QA \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN4.3} &
+\textbf{Piloto sin pagos variables ejecutado y evaluado} &
+\textbf{18--19} &
+\textbf{QA / Implantación} \\
+\hline
+IN4.3.1 & Línea base y registros de tiempo activo
+con la solución obligatoria &
+18 & QA / Implantación \\
+\hline
+IN4.3.2 & Registros de evaluación del servicio adicional,
+errores, cierres y reaperturas &
+18--19 & QA / Implantación \\
+\hline
+IN4.3.3 & Informe comparativo y evidencia
+del beneficio económico atribuible &
+19 & QA / Jefe de Proyecto \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN4.4} &
+\textbf{Conciliación y seguimiento en operación} &
+\textbf{21--56} &
+\textbf{Jefe de Proyecto / Operación} \\
+\hline
+IN4.4.1 & Mecanismo contractual formalizado
+tras la aceptación del piloto &
+21 & Jefe de Proyecto \\
+\hline
+IN4.4.2 & Expedientes y actas de conciliación mensual
+con controles de calidad y reconocimiento variable &
+21--56 & Jefe de Proyecto / Operación \\
+\hline
+\end{longtable}
+
+\FuenteTabla{Elaboración propia; programación propuesta para
+conciliación con SD7.} 
+
+El piloto requiere que el flujo adicional de mantenimiento esté
+disponible y que el cliente haya aprobado la ficha de medición antes
+de levantar la línea base. IN4.2 comprende implementación en los meses
+13--15 y pruebas de certificación en el mes 16. Los identificadores y
+sus cargas se incorporarán a SD7/T-15, verificando su correspondencia
+con la EDT consolidada. La materialización contractual se propone
+para el mes 21, después de la aceptación del piloto.
 
 \subsection{Impacto económico estimado}
 
@@ -1354,9 +1459,69 @@ La ficha distinguirá tipos de solicitud y nivel de complejidad, con criterios f
 
 \subsection{Riesgo de adopción}
 
-SD8/T-16 consolida R-IN4-01 (atribución) y R-IN4-02 (omisión de casos difíciles o cierre apresurado), con control del universo elegible, errores, abiertas y reaperturas antes de cada reconocimiento. Se valora preliminarmente una \textbf{probabilidad media e impacto alto} para desacuerdos de atribución o comparación de tareas distintas: podrían provocar pagos indebidos. La mitigación es aprobar previamente la muestra y las exclusiones, registrar todas las tareas y auditar el cálculo con el cliente. Los cambios de dotación, mezcla de solicitudes y mejoras ajenas al servicio se analizarán antes de reconocer el resultado.
+Los riesgos se valoran inicialmente mediante probabilidad e impacto
+cualitativos. SD8/T-16 consolida R-IN4-01 y R-IN4-02, con titulares,
+disparadores, hitos y evidencias de seguimiento. Las valoraciones
+se revisarán con los resultados del piloto; los niveles residuales
+objetivo permanecen pendientes de comprobación.
 
-El incentivo también puede inducir a omitir casos difíciles o apresurar cierres. La evidencia incluirá errores, solicitudes abiertas y reaperturas, además del tiempo. Si los controles fallan, se suspenderá el reconocimiento variable, se corregirá la medición y se repetirá la evaluación. La contingencia conserva la operación contratada y el componente fijo. Si el piloto no demuestra un beneficio económico aceptable, el variable permanecerá en cero; no se declara como conseguido un cambio comercial sólo por disponer del tablero.
+\begin{longtable}{
+L{\dimexpr0.14\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.46\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.16\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.24\linewidth-2\tabcolsep\relax}
+}
+\caption{Riesgos de adopción de la innovación 4}
+\label{tab:riesgos-in4}\\
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Evento de riesgo} &
+\EncabezadoTabla{Probabilidad} &
+\EncabezadoTabla{Impacto} \\
+\hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Evento de riesgo} &
+\EncabezadoTabla{Probabilidad} &
+\EncabezadoTabla{Impacto} \\
+\hline
+\endhead
+
+R-IN4-01 & Reconocimiento de una mejora no atribuible
+al servicio o basada en tareas y muestras no comparables. &
+Media & Alto \\
+\hline
+
+R-IN4-02 & Omisión de casos difíciles o cierre apresurado
+de solicitudes para favorecer el indicador
+y habilitar el incentivo. &
+Media & Alto \\
+\hline
+\end{longtable}
+
+\medskip
+\noindent\textbf{R-IN4-01.}
+El Jefe de Proyecto coordinará con el cliente la aprobación previa
+de tareas, muestra y exclusiones mediante IN4.1. QA verificará la
+comparabilidad y el cálculo en IN4.3, considerando cambios de dotación,
+composición de solicitudes y mejoras ajenas al servicio. Durante IN4.4,
+cada expediente conservará los registros y la versión del cálculo.
+Si la atribución o la evidencia resultan insuficientes, el factor
+variable será cero y se corregirá la medición antes de repetir
+la evaluación.
+
+\medskip
+\noindent\textbf{R-IN4-02.}
+QA comprobará el universo completo de solicitudes, incluidos los
+casos abiertos, excluidos y reabiertos, mediante IN4.2 e IN4.3.
+El Jefe de Proyecto incorporará esos controles a la conciliación
+mensual de IN4.4, con verificación del cliente. Ante omisiones,
+cierres injustificados o deterioro de la calidad, se suspenderá
+el reconocimiento variable, se revisarán los registros afectados
+y se repetirá la evaluación. La operación contratada y el componente
+fijo se mantendrán; si el piloto no demuestra un beneficio económico
+aceptable, el variable permanecerá en cero.
 
 \section{Innovación 5}
 
@@ -1408,17 +1573,192 @@ La integración específica se clasifica preliminarmente en \textbf{TRL 2}: el c
 
 \subsection{Diseño de la incorporación}
 
-En la capa de Servicios de negocio, \texttt{IN5-PLAN} se propone como extensión de Ambiente y consumos dentro del Núcleo de Servicios, según SD4, sección 4.1 y DA-04. Administrará adhesiones, planes, acciones y evaluaciones, con registros estructurados en PostgreSQL de su dominio. \texttt{IN5-HIS} será la proyección histórica en la capa de Datos, manteniendo referencias y versiones de los períodos comparados mediante la ruta Parquet/S3/Athena prevista en SD4, tabla 4-5, y SD5, sección 5.2.3. El modelo de SD5, sección 5.1.2, precisa sus fuentes: Intervalo de consumo y Serie conciliada de Ambiente y consumos, con Soporte de consumo para reconstruir el cálculo. Sólo los resultados validados que ese dominio publique como \texttt{MediciónConsolidada} alimentarán la evaluación.
+En la capa de Servicios de negocio, \texttt{IN5-PLAN} se propone
+como extensión de Ambiente y consumos dentro del Núcleo de Servicios,
+según SD4, sección 4.1 y DA-04. Administrará adhesiones, planes,
+acciones y evaluaciones, con registros estructurados en PostgreSQL
+de su dominio. \texttt{IN5-HIS} será la proyección histórica en la
+capa de Datos, manteniendo referencias y versiones de los períodos
+comparados mediante la ruta Parquet/S3/Athena prevista en SD4,
+tabla 4-5, y SD5, sección 5.2.3. El modelo de SD5, sección 5.1.2,
+precisa sus fuentes: Intervalo de consumo y Serie conciliada de
+Ambiente y consumos, con Soporte de consumo para reconstruir el
+cálculo. Sólo los resultados validados que ese dominio publique
+como \texttt{MediciónConsolidada} alimentarán la evaluación.
 
-Infraestructura aportará Medidor y Asociación de medidor para verificar servicio, amarra y vigencia. Operación marítima aportará Recalada, Movimiento y el sustento del estado operacional para reconstruir la permanencia efectiva. Clientes y contratos mantendrá la identidad de Embarcación, Vínculo de armador y Asignación: la asignación contractual no acredita por sí sola la presencia física. Los residuos se referenciarán desde Ambiente y consumos y las inducciones de contratistas desde Varadero y contratistas, sin atribuirles una reducción de agua no medida.
+Infraestructura aportará Medidor y Asociación de medidor para
+verificar servicio, amarra y vigencia. Operación marítima aportará
+Recalada, Movimiento y el sustento del estado operacional para
+reconstruir la permanencia efectiva. Clientes y contratos mantendrá
+la identidad de Embarcación, Vínculo de armador y Asignación:
+la asignación contractual no acredita por sí sola la presencia
+física. Los residuos se referenciarán desde Ambiente y consumos
+y las inducciones de contratistas desde Varadero y contratistas,
+sin atribuirles una reducción de agua no medida.
 
-AUT presentará la vista en el portal React previsto en SD4, tabla 4-4; las operaciones utilizarán los contratos REST/OpenAPI y la autorización del dominio propietario definidos en DA-06 y DA-16. El historial recibirá \texttt{MediciónConsolidada}, \texttt{MedidorAsociado}, \texttt{OcupaciónActualizada} y \texttt{AsignaciónModificada} del catálogo de la tabla 4-2, y consultará sus fuentes autorizadas para reconstruir asociaciones históricas. La deduplicación por \texttt{eventId}, la secuencia del agregado y las versiones de corrección impedirán sumar dos veces un intervalo o alterar silenciosamente un informe emitido. \texttt{ConsentimientoModificado} propagará las restricciones de finalidad y acceso. ADM ofrecerá su gestión bajo Auditoría y seguridad; Finanzas y cobranza conservará los hechos facturables, sin cambios de lecturas ni cobros desde el pasaporte.
+AUT presentará la vista en el portal React previsto en SD4,
+tabla 4-4; las operaciones utilizarán los contratos REST/OpenAPI
+y la autorización del dominio propietario definidos en DA-06
+y DA-16. El historial recibirá \texttt{MediciónConsolidada},
+\texttt{MedidorAsociado}, \texttt{OcupaciónActualizada} y
+\texttt{AsignaciónModificada} del catálogo de la tabla 4-2,
+y consultará sus fuentes autorizadas para reconstruir asociaciones
+históricas. La deduplicación por \texttt{eventId}, la secuencia
+del agregado y las versiones de corrección impedirán sumar dos
+veces un intervalo o alterar silenciosamente un informe emitido.
+\texttt{ConsentimientoModificado} propagará las restricciones
+de finalidad y acceso. ADM ofrecerá su gestión bajo Auditoría
+y seguridad; Finanzas y cobranza conservará los hechos facturables,
+sin cambios de lecturas ni cobros desde el pasaporte.
 
-\texttt{IN5-PLAN} se propone en el Núcleo de Servicios cloud sobre ECS/Fargate, con el emplazamiento de la tabla 4-10. El pasaporte reutilizará la captura obligatoria de medidores, concentradores, telemetría local y sincronización descrita en SD4, sección 4.2 y DA-09, sin consumir directamente el broker MQTT. Ante pérdida de WAN continuará esa captura; las adhesiones y evaluaciones adicionales que requieran la autoridad cloud quedarán pendientes. La vista identificará el último corte validado y su cobertura y no publicará una reducción con evidencia incompleta. SD4 ya recoge la ubicación de IN5-PLAN e IN5-HIS como extensiones de Ambiente y consumos. Queda por detallar en SD4/SD5 y A5.1/A5.2 las entidades de adhesión, plan, acción y evaluación, sus contratos, estados y reglas de conservación.
+\texttt{IN5-PLAN} se propone en el Núcleo de Servicios cloud sobre
+ECS/Fargate, con el emplazamiento de la tabla 4-10. El pasaporte
+reutilizará la captura obligatoria de medidores, concentradores,
+telemetría local y sincronización descrita en SD4, sección 4.2
+y DA-09, sin consumir directamente el broker MQTT. Ante pérdida
+de WAN continuará esa captura; las adhesiones y evaluaciones
+adicionales que requieran la autoridad cloud quedarán pendientes.
+La vista identificará el último corte validado y su cobertura
+y no publicará una reducción con evidencia incompleta.
 
-Se proponen \texttt{IN5.1}, diseño del plan, consentimiento y reglas en meses 13--14; \texttt{IN5.2}, historial y portal en meses 14--15 y pruebas funcionales y de seguridad en el 16; \texttt{IN5.3}, piloto y evaluación en meses 18--19; e \texttt{IN5.4}, despliegue aceptado y seguimiento en meses 21--56. El piloto depende de la medición individual validada, la asociación entre amarra y embarcación y las permanencias conciliadas. El cliente adquiere los medidores y ejecuta las obras previstas en EXC-06/EXC-10 y SUP-04 del SD2; Synaptix especifica, integra y verifica. La descripción de SD4 no acredita su recepción ni cierra VAC-03 sobre precisión e imputación. Se incorporarán paquetes y cargas al SD7/T-15 y se resolverá VAC-14 sobre calendario y habilitaciones. Los meses relativos se cruzarán con la fecha de inicio y las restricciones RES-11/RES-12 para disponer de una serie previa a la temporada 2029; los congelamientos y suspensiones por marejada deberán absorberse sin asumir desplazamientos de hitos contractuales \parencite[cap.~10 y cap.~13]{caso07}.
+SD4 ya recoge la ubicación de \texttt{IN5-PLAN} e
+\texttt{IN5-HIS} como extensiones de Ambiente y consumos.
+Queda por detallar en SD4/SD5 y A5.1/A5.2 las entidades de
+adhesión, plan, acción y evaluación, sus contratos, estados
+y reglas de conservación.
 
-La participación será voluntaria. Se invitará primero a la operadora con sus 14 embarcaciones y a armadores interesados, sin declarar que ya aceptaron. Cada armador verá sus datos; la operadora consultará sólo embarcaciones para las que tenga autorización. Se reutilizarán Consentimiento y Evento de consentimiento de Auditoría y seguridad, con finalidad específica para el plan ambiental; la revocación detendrá nuevos usos dependientes de esa autorización y conservará la evidencia sujeta a otra obligación, conforme al diseño de SD5, sección 5.2.5. El portal reutilizará las condiciones obligatorias de idioma, accesibilidad y seguridad. El modelo de amenazas revisará específicamente el acceso entre flotas, la modificación de evidencia y las exportaciones; el resultado se integrará al plan de seguridad del proyecto \parencite[cap.~26, RT-26.07, p.~45]{bases-transversales}.
+La siguiente tabla presenta los entregables y paquetes de trabajo
+de la innovación. Los meses corresponden a la programación
+contractual propuesta y deberán conciliarse con SD7/T-15.
+Los responsables indicados prepararán y coordinarán los
+entregables; la aceptación de la evidencia corresponderá al cliente.
+
+\begin{longtable}{
+L{\dimexpr0.14\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.46\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.16\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.24\linewidth-2\tabcolsep\relax}
+}
+\caption{EDT de incorporación de la innovación 5}
+\label{tab:edt-in5}\\
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Entregable / paquete de trabajo} &
+\EncabezadoTabla{Mes} &
+\EncabezadoTabla{Responsable} \\
+\hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Entregable / paquete de trabajo} &
+\EncabezadoTabla{Mes} &
+\EncabezadoTabla{Responsable} \\
+\hline
+\endhead
+
+\rowcolor{SynSurface}
+\textbf{IN5.1} &
+\textbf{Diseño del plan y reglas aprobado} &
+\textbf{13--14} &
+\textbf{Arquitectura / Datos / Seguridad} \\
+\hline
+IN5.1.1 & Ficha del plan, acciones y reglas
+de comparación definidas &
+13 & Líder de Datos / Implantación \\
+\hline
+IN5.1.2 & Interfaces, consentimiento y autorización
+por embarcación especificados &
+14 & Arquitectura / Seguridad \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN5.2} &
+\textbf{Historial y portal integrados y probados} &
+\textbf{14--16} &
+\textbf{Desarrollo / QA / Seguridad} \\
+\hline
+IN5.2.1 & Historial integrado con consumos validados,
+asociaciones y permanencias &
+14--15 & Desarrollo / Líder de Datos \\
+\hline
+IN5.2.2 & Portal de adhesión, planes, acciones
+y evaluación implementado &
+15 & Desarrollo \\
+\hline
+IN5.2.3 & Informes de pruebas funcionales, seguridad,
+aislamiento entre flotas y calidad de datos &
+16 & QA / Seguridad \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN5.3} &
+\textbf{Piloto ejecutado y evaluado} &
+\textbf{18--19} &
+\textbf{Implantación / Datos / QA} \\
+\hline
+IN5.3.1 & Participantes autorizados y línea base
+de 28 días con datos validados &
+18 & Implantación / Líder de Datos \\
+\hline
+IN5.3.2 & Acciones ejecutadas con evidencia
+y registros de evaluación de 28 días &
+18--19 & Implantación / Líder de Datos \\
+\hline
+IN5.3.3 & Informe de reducción, adopción,
+cobertura de datos y exclusiones &
+19 & QA / Líder de Datos \\
+\hline
+
+\rowcolor{SynSurface}
+\textbf{IN5.4} &
+\textbf{Despliegue aceptado y seguimiento en operación} &
+\textbf{21--56} &
+\textbf{Operación / Datos} \\
+\hline
+IN5.4.1 & Configuración aceptada, manuales
+y acta de transferencia &
+21 & Operación/SRE \\
+\hline
+IN5.4.2 & Informes mensuales de seguimiento
+y evaluación previa a la temporada 2029 &
+21--56 & Operación / Líder de Datos \\
+\hline
+\end{longtable}
+\FuenteFigura{Fuente: elaboración propia; programación propuesta para conciliación con SD7.}
+
+
+El piloto depende de la medición individual validada, la asociación
+entre amarra y embarcación y las permanencias conciliadas.
+El cliente adquiere los medidores y ejecuta las obras previstas
+en EXC-06/EXC-10 y SUP-04 del SD2; Synaptix especifica, integra
+y verifica. La descripción de SD4 no acredita su recepción
+ni cierra VAC-03 sobre precisión e imputación.
+
+Se incorporarán los paquetes y sus cargas a SD7/T-15 y se resolverá
+VAC-14 sobre calendario y habilitaciones. Los meses relativos
+se cruzarán con la fecha de inicio y las restricciones RES-11/RES-12
+para disponer de una serie previa a la temporada 2029.
+Los congelamientos y las suspensiones por marejada deberán
+absorberse sin asumir desplazamientos de hitos contractuales
+(Pontificia Universidad Católica de Valparaíso, 2026c,
+caps. 10 y 13).
+
+La participación será voluntaria. Se invitará primero a la
+operadora con sus 14 embarcaciones y a armadores interesados,
+sin declarar que ya aceptaron. Cada armador verá sus datos;
+la operadora consultará sólo embarcaciones para las que tenga
+autorización. Se reutilizarán Consentimiento y Evento de
+consentimiento de Auditoría y seguridad, con finalidad específica
+para el plan ambiental; la revocación detendrá nuevos usos
+dependientes de esa autorización y conservará la evidencia
+sujeta a otra obligación, conforme al diseño de SD5, sección 5.2.5.
+
+El portal reutilizará las condiciones obligatorias de idioma,
+accesibilidad y seguridad. El modelo de amenazas revisará
+específicamente el acceso entre flotas, la modificación de
+evidencia y las exportaciones; el resultado se integrará al
+plan de seguridad del proyecto (Pontificia Universidad Católica
+de Valparaíso, 2026b, cap. 26, RT-26.07, p. 45).
 
 \subsection{Impacto económico estimado}
 
@@ -1453,7 +1793,92 @@ Como indicador complementario se propone que al menos el 50\,\% de las embarcaci
 
 \subsection{Riesgo de adopción}
 
-SD8/T-16 consolida R-IN5-01 (validez de la reducción), R-IN5-02 (participación) y R-IN5-03 (acceso entre flotas), con titulares, hitos y evidencia; las puntuaciones residuales son objetivos pendientes de comprobación. La selección voluntaria y las lecturas incompletas tienen \textbf{probabilidad media e impacto alto}: podrían mostrar un ahorro aparente. Se mitigarán con comparación de la misma embarcación, registro de períodos excluidos, análisis de faenas y conservación de resultados desfavorables. La línea base y los criterios se aprobarán antes de ejecutar acciones.
+\subsection{Riesgo de adopción}
 
-La baja participación tiene \textbf{probabilidad media e impacto medio}. El plan se validará con armadores y charter, mediante acciones breves y posibilidad de retirarse sin perder servicios básicos. Un acceso indebido entre flotas tiene \textbf{probabilidad baja e impacto alto}; se mitigará con autorización por embarcación, pruebas de aislamiento y auditoría de consultas y cambios. Si falla la calidad de datos, no se publicarán reducciones; si falla la privacidad, se suspenderá la vista afectada y se aplicará el procedimiento de incidentes. Si el piloto no demuestra utilidad, se ajustará o desactivará el plan adicional, conservando los registros obligatorios y el trabajo de cierre de las no conformidades.
+Los riesgos se valoran inicialmente mediante probabilidad e impacto
+cualitativos. SD8/T-16 consolida R-IN5-01, R-IN5-02 y R-IN5-03,
+con titulares, hitos y evidencias de seguimiento. Las valoraciones
+se revisarán durante el piloto y la operación; las puntuaciones
+residuales son objetivos pendientes de comprobación.
+
+\begin{longtable}{
+L{\dimexpr0.14\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.46\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.16\linewidth-2\tabcolsep\relax}
+L{\dimexpr0.24\linewidth-2\tabcolsep\relax}
+}
+\caption{Riesgos de adopción de la innovación 5}
+\label{tab:riesgos-in5}\\
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Evento de riesgo} &
+\EncabezadoTabla{Probabilidad} &
+\EncabezadoTabla{Impacto} \\
+\hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Código} &
+\EncabezadoTabla{Evento de riesgo} &
+\EncabezadoTabla{Probabilidad} &
+\EncabezadoTabla{Impacto} \\
+\hline
+\endhead
+
+R-IN5-01 & Declaración de una reducción aparente
+por selección de casos, lecturas incompletas
+o períodos no comparables. &
+Media & Alto \\
+\hline
+
+R-IN5-02 & Participación o ejecución de acciones
+insuficiente para evaluar la utilidad
+del plan ambiental. &
+Media & Medio \\
+\hline
+
+R-IN5-03 & Acceso indebido a historiales
+de embarcaciones de otras flotas o fuera
+de las autorizaciones vigentes. &
+Baja & Alto \\
+\hline
+\end{longtable}
+
+\FuenteFigura{ Fuente: elaboración propia; valoración inicial
+para planificación.}
+
+\medskip
+\noindent\textbf{R-IN5-01.}
+El Líder de Datos definirá en IN5.1 las reglas de comparación
+y comprobará en IN5.2 la vinculación de consumos, embarcaciones
+y permanencias. La línea base y los criterios se aprobarán antes
+de ejecutar las acciones. QA revisará en IN5.3 la comparación
+de las mismas embarcaciones, los períodos excluidos y los cambios
+de ocupación, clima y faenas, conservando también aumentos
+de consumo y resultados nulos. Si los datos o períodos no permiten
+una comparación defendible, no se publicará una reducción
+ni se declarará alcanzada la meta; se corregirán las discrepancias
+o se ampliará la observación dentro de las ventanas permitidas.
+
+\medskip
+\noindent\textbf{R-IN5-02.}
+Implantación validará el plan con armadores y la operadora
+de charter mediante IN5.1 e IN5.3, proponiendo acciones breves,
+comprensibles y con evidencia de ejecución. La participación
+será voluntaria y el retiro no afectará los servicios básicos.
+Si no existe participación suficiente o el piloto no demuestra
+utilidad, se ajustará la convocatoria y el plan, o se desactivará
+el componente adicional. No se declarará un beneficio ambiental
+sólo por registrar adhesiones o acciones.
+
+\medskip
+\noindent\textbf{R-IN5-03.}
+Seguridad verificará la autorización por embarcación,
+el consentimiento y las restricciones de finalidad mediante
+IN5.1. En IN5.2 comprobará el aislamiento entre flotas
+y la auditoría de consultas, cambios y exportaciones;
+Operación mantendrá esos controles durante IN5.4.
+Ante un acceso indebido, se suspenderá la vista afectada
+y se aplicará el procedimiento de incidentes antes de
+restablecerla. Se conservarán los registros obligatorios
+y se documentará el cierre de las no conformidades.
 

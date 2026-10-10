@@ -1,0 +1,261 @@
+\section{Plan de trabajo} %7.2
+El plan convierte los paquetes en actividades, estimaciones y asignaciones compatibles con los procedimientos de gestión y desarrollo de SD6. El esfuerzo se contrasta con el modelo funcional y se nivela por persona, calendario y frente; T-15 conserva las contribuciones individuales y demuestra la capacidad para los solapamientos 13--15 y 19--20.
+
+
+
+
+\subsection{Método de estimación, secuenciamiento y control} %7.2.1
+Synaptix utiliza estimación ascendente por resultado: el diccionario fija contenido, exclusiones, recepción, responsable último, HH por perfil, recursos y supuestos; sus actividades asignan ejecutor, dedicación, lugar, calendario y predecesoras. La descomposición se detiene en resultados estimables, asignables y verificables. Las familias repetitivas comparten su ficha, mientras cada período o lote conserva código, responsable, esfuerzo y programación; el rango observado de 8--80 HH no es una obligación normativa. Un código identifica pertenencia a la EDT y no una fecha: se conservan los códigos históricos aunque cambie la ventana de ejecución. La etapa y el mes son atributos separados.
+
+La ingeniería separa trabajo técnico y consolidación de Calidad; una aportación grande puede repartirse en subtareas entre personas competentes, sin sumar otra vez las HH. Lógica, persistencia e interfaz tienen integración asignada en la ficha. La consolidación de Calidad recibe los aportes previos; la validación final de marcha blanca permite en paralelo la verificación de datos por Calidad y la lista contractual por Proyecto, porque son resultados independientes. Las actividades y contribuciones individuales se identifican en \path{actividades_integradas.csv}.
+
+La programación pasa por cinco controles: cobertura requisito--entregable--paquete; precedencias completas sin ciclos y puertas con responsable; CPM de avance/retroceso con holgura total y libre; escenario PERT de tres duraciones; y nivelación con calendario y capacidad. No se suma un porcentaje general de gestión o pruebas a trabajos ya estimados. Los servicios por turnos, las reservas y las esperas se muestran por separado. PERT no equivale a una probabilidad de entrega mientras no se sustenten distribuciones e independencia.
+
+El calendario usa un escenario de inicio el 1 de diciembre de 2026 y feriados chilenos. La fecha contractual, los decretos de feriados, los catorce eventos náuticos y las campañas efectivas se incorporarán al control de cambios antes de aprobar la línea base. SD6, procedimientos ITEM-6 y de programación de T-9, aplica la misma selección por paquete, control quincenal, contraste UCP y cálculo reproducible de red y recursos. T-10 conserva las puertas de pruebas y liberación que preceden a cada recepción. Las decisiones contractuales se registrarán en las actas de línea base y de cambios correspondientes.
+
+El esfuerzo de los núcleos se selecciona mediante UCP y se distribuye entre paquetes identificados, conservando una sola imputación del trabajo original. Las asignaciones y curvas corresponden a este alcance conciliado. La fecha de inicio sigue siendo una hipótesis explícita de calendario; la aprobación contractual de la línea base y la revisión humana técnica son controles futuros separados de estos cálculos.
+
+
+
+
+\subsection{Contraste funcional independiente de los núcleos} %7.2.2
+El modelo de estimación delimita los treinta componentes de los núcleos Operacional, Servicios y Administrativo. Un caso representa un objetivo observable del actor; las transacciones son intercambios completos de solicitud y respuesta. Las validaciones internas, clics y sentencias de persistencia no reciben puntos propios. Salida y regreso, preparación y participación de clase, consulta de salud y retorno, espera y cambio contractual se cuentan por objetivos distintos. Las alternativas de rechazo, duplicación o desconexión pertenecen al mismo objetivo. El modelo conserva actor, flujo, fuente y correspondencia con los noventa paquetes iniciales en \path{componentes/ucp_casos_nucleos.csv}.
+
+La frontera incluye reglas y vistas propias de 1.4--1.6. Excluye construcción de identidad, canales, adaptadores y sincronización comunes, infraestructura, migración histórica, pilotos, formación y operación; estas partidas conservan su imputación ascendente. Los sistemas contables y dispositivos quedan fuera de la frontera de este conteo: sus adaptadores se estiman en 1.7. Los roles humanos se cuentan una sola vez aunque utilicen varios canales. El modelo es una descomposición de diseño de la oferta, no un levantamiento validado ni productividad observada.
+
+La clasificación de casos y actores y los ajustes técnicos y ambientales siguen el método UCP descrito por Cohn; sus factores se aplican al modelo particular de la marina.~\parencite{cohn-ucp} Se aplica el método de puntos de casos de uso: actores simples/medios/complejos con pesos 1/2/3; casos con hasta tres, cuatro a siete y más de siete transacciones con pesos 5/10/15. $UUCP=UAW+UUCW$, $TCF=0,6+0,01\sum w_iT_i$ y $EF=1,4-0,03\sum w_iE_i$. Los trece factores técnicos y ocho de ambiente tienen valoración y justificación individual en \path{componentes/ucp_factores_nucleos.csv}. Las capacidades de ambiente son condiciones de provisión propuestas; no acreditan experiencia de personas ni contratos ya ejecutados.
+
+El conteo contiene 34 casos y 12 roles complejos: $UAW=36$, $UUCW=180$ y $UUCP=216$. Se obtiene $TCF=1,165$, $EF=1,01$ y $UCP=254,16$. Con 1 factor de ambiente desfavorable se usa $CF=20$ HH/punto como referencia no calibrada.
+
+Se declara la interpretación de esfuerzo de programación: $E_P=UCP\,CF$, y el esfuerzo total de referencia es $E_T=E_P/0,40$. Como supuesto de planificación de Synaptix, la distribución de referencia es análisis 10\,\%, diseño 20\,\%, programación 40\,\%, pruebas 15\,\% y sobrecarga 15\,\%. El reparto 10/20/40/15/15 y la lectura de programación son decisiones explícitas de esta estimación; no se atribuyen a una productividad histórica de Synaptix ni a una distribución universal del método UCP. Es una comparación independiente; no se agrega ese total al de la EDT ni se vuelven a sumar gestión y pruebas ya imputadas. Para evitar duplicar actores entre etapas, su peso se distribuye proporcionalmente al peso funcional de E1 y E2; los dos subtotales conservan exactamente el conteo global.
+
+La Tabla~\ref{tab:sd7-ucp-contraste} presenta contraste de esfuerzo directo y referencia UCP.
+\begin{table}[H]
+\centering
+\begin{tabularx}{\linewidth}{Y R{29mm} R{29mm}}\hline
+ \EncabezadoTabla{Magnitud} & \EncabezadoTabla{EDT directa} & \EncabezadoTabla{Referencia UCP}\\\hline
+Programación/Desarrollo de los núcleos & 2.400 HH & 5.083,13 HH\\\hline
+Esfuerzo de los noventa paquetes / total de referencia & 4.200 HH & 12.707,82 HH\\\hline
+\end{tabularx}
+\caption{Contraste de esfuerzo directo y referencia UCP}
+\label{tab:sd7-ucp-contraste}
+\FuenteTabla{Elaboración propia: conteo de actores y casos, factores técnicos y ambientales y EDT inicial de los núcleos.}
+\end{table}\par\smallskip
+
+El contraste de programación alcanza 2,12 veces las HH de Desarrollo iniciales. La comparación de totales requiere además imputar análisis, diseño, pruebas y gobierno compartidos del mismo alcance; no se atribuye toda esa diferencia a subestimación porque la EDT directa excluye trabajos comunes. Aun así, la diferencia de programación no queda explicada por la mera existencia de bibliotecas reutilizables: no se dispone de un factor de productividad medido que permita reducir $CF$ hasta coincidir con la EDT.
+
+La sensibilidad deteriora E1 y E3 de 3 a 2 y E7 de 3 a 4, manteniendo las restantes valoraciones. Con cuatro factores desfavorables, $EF=1,115$ y $CF=28$, la programación asciende a 7.856,20 HH y el total de referencia a 19.640,50 HH. Los registros de contraste por etapa y sensibilidad permiten reproducir estos resultados.
+
+\paragraph{Modelo de interacción y regla de conteo.} El conteo se basa en el modelo de interacción propuesto para la oferta. Cada transacción identifica una entrada del actor y la respuesta que devuelve el sistema antes de esperar otro estímulo. Validar permisos, comprobar restricciones, calcular resultados y persistir datos son procesamiento de esa respuesta, salvo que se identifique otra entrada independiente. Una confirmación sólo se cuenta cuando el flujo requiere una decisión posterior del actor; no se añade una petición de validación para elevar el peso. El detalle de los 34 objetivos se conserva en \path{componentes/ucp_transacciones_nucleos.csv} y en su desarrollo detallado del Formulario T-15. Son decisiones de diseño propuestas, sujetas a validación con los usuarios, no interacciones ya observadas. Los rechazos dentro de una respuesta no reciben puntos adicionales; las resoluciones que exigen otra entrada están identificadas en el flujo.
+
+\ifdefined\EnCuerpoSD
+El detalle de las 34 transacciones por objetivo se presenta en el Formulario T-15, Tabla~\textit{Transacciones del modelo funcional propuesto}; T-14 conserva su correspondencia con los paquetes. En el capítulo, el conteo y las tablas de esfuerzo permiten seguir el cálculo sin repetir el listado completo.
+\else
+La Tabla~\ref{tab:t15-ucp-transacciones} documenta las entradas y respuestas que sustentan el peso de cada objetivo.
+
+\input{tablas/ucp_transacciones_nucleos.tex}
+
+El peso se asigna por intercambios independientes, sin sumar validaciones internas; los registros preservan la correspondencia con componentes y paquetes del mismo alcance.
+\fi
+
+\paragraph{Esfuerzo seleccionado y conciliación.} Synaptix adopta la referencia UCP sin reducir el factor de conversión por reutilización no medida: 7.766 HH en E1 y 4.942 HH en E2, 12.708 HH en total. El redondeo por etapa deja la programación en 3.107 y 1.977 HH, respectivamente, por encima de los 3.106,36 y 1.976,77 HH de referencia. Las 4.200 HH originales se acreditan una sola vez y se añaden 8.508 HH en 216 paquetes de 8--80 HH. Cada lote tiene resultado, responsable y aceptación; sus precedencias completan especificación/diseño, construcción, verificación y documentación antes del manifiesto de versión.
+
+La imputación por componente es proporcional a su peso funcional; el peso de los actores conserva el reparto E1/E2 del modelo. Análisis acredita las HH Funcional existentes; diseño acredita Datos, Integración y Seguridad propios del núcleo; programación acredita Desarrollo; pruebas acredita Calidad; sobrecarga cubre coordinación y documentación propias del componente. La matriz \path{componentes/conciliacion_ucp_actividades.csv} concilia exactamente el esfuerzo seleccionado. La seguridad compartida, los canales, adaptadores, migración, UAT integral, formación y operación permanecen fuera de esta frontera; las comprobaciones del núcleo no se presupuestan otra vez como UAT integral.
+
+La Tabla~\ref{tab:sd7-ucp-seleccion} presenta distribución del esfuerzo seleccionado por actividad y etapa.
+\begin{table}[H]
+\centering
+\begin{tabularx}{\linewidth}{Y R{21mm}R{21mm}R{22mm}}\hline
+ \EncabezadoTabla{Actividad} & \EncabezadoTabla{E1 HH} & \EncabezadoTabla{E2 HH} & \EncabezadoTabla{Total HH}\\\hline
+Análisis & 777 & 494 & 1.271\\\hline
+Diseño & 1.553 & 988 & 2.541\\\hline
+Programación & 3.107 & 1.977 & 5.084\\\hline
+Pruebas & 1.165 & 741 & 1.906\\\hline
+Sobrecarga & 1.164 & 742 & 1.906\\\hline
+Total & 7.766 & 4.942 & 12.708\\\hline
+\end{tabularx}
+\caption{Distribución del esfuerzo seleccionado por actividad y etapa}
+\label{tab:sd7-ucp-seleccion}
+\FuenteTabla{Conciliación UCP y redondeo por etapa, sin duplicar esfuerzo compartido.}
+\end{table}\par\smallskip
+La decisión fija el esfuerzo de diseño de la oferta y sus recursos recalculados; no acredita productividad histórica ni aprobación humana o contractual. La sensibilidad de 19.640,50 HH es un escenario de deterioro, separado del esfuerzo seleccionado: si cambian los factores de provisión, Proyecto recalculará esfuerzo, perfiles y calendario antes de comprometer los puestos afectados. El modelo delimita los núcleos, y no se presenta como conteo UCP de todo el software de las cuentas 1.3, 1.7 y 1.9.
+
+
+
+
+\subsection{Resumen integrado de esfuerzo y capacidad} %7.2.3
+Synaptix selecciona 49.396 HH en 2181 paquetes y 122.070 HH de cobertura propia: 171.466 HH profesionales. Los 1.959 paquetes de origen y sus 40.744 HH se conservan; 216 paquetes de conciliación funcional añaden 8.508 HH. Se añaden seis paquetes mensuales de mentoría, 144 HH, con dos puestos parciales propios e independientes de cobertura. Los padres no reciben horas. Los códigos enlazan resultado, responsable, perfiles, actividades, red y recepción; las reservas representan capacidad futura y no trabajos ejecutados.
+La Tabla~\ref{tab:sd7-esfuerzo-integral} presenta esfuerzo de entregables y cobertura por fase.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\linewidth}{Y R{25mm}}\hline \EncabezadoTabla{Concepto} & \EncabezadoTabla{HH}\\\hline
+Implementación: entregables e ingeniería & 30.872\\\hline
+Cobertura inicial y marchas blancas (13--20) & 22.692\\\hline
+Operación: entregables e ingeniería & 18.524\\\hline
+Operación: NOC/SOC y mesa (21--56) & 99.378\\\hline
+Total profesional programado & 171.466\\\hline
+\end{tabularx}
+\caption{Esfuerzo de entregables y cobertura por fase}
+\label{tab:sd7-esfuerzo-integral}
+\FuenteTabla{Diccionario y asignaciones integradas de T-14/T-15.}
+\end{table}\par\smallskip
+
+La suma distingue 49.396 HH de entregables e ingeniería de 122.070 HH de cobertura; ambas partidas concilian las 171.466 HH sin duplicar turnos. Ingeniería dispone de 7,2 HH productivas por día y un máximo de 50 HH de paquetes por persona y quincena. Los turnos y el control natural final disponen de ejecutores propios distintos, con máximo de 144 HH al mes, 40 HH por siete días y doce horas de descanso. El máximo mensual de dotación comprometida es 106 puestos, incluidos los ocho titulares; el máximo de refuerzos de ingeniería es 98. Es el resultado de esta asignación, sin atribuir contratación ni optimización global. Synaptix proveerá estaciones, accesos, entornos, incorporación y suplencias para cada puesto antes de su intervención; los ocho equipos de los titulares no cubren la dotación adicional.
+
+La habilitación común inicial se imputa a E1 y el gobierno posterior al mes 12 al desarrollo/cierre E2. La estabilización, aceptación final y cobertura de E1 en producción se mantienen como partidas adicionales identificadas. Los máximos por fase no se suman como personas diferentes. La valoración profesional se desarrolla exclusivamente en la Oferta Económica.
+
+
+
+
+\subsection{Cantidades adoptadas para la oferta} %7.2.4
+La revisión documental reserva un lote por cada uno de los catorce expedientes de abandono, 112 HH; la revisión escolar considera tres años de hasta 590 autorizaciones por año, 1.770 documentos: 56 lotes de hasta 32, con 8 HH por lote, 448 HH. El dimensionamiento escolar usa la proyección como capacidad de oferta, no como inventario observado. El enrolamiento reserva diez lotes de cuatro para 16 Android y 21 PC, 160 HH. La recepción de medición reserva dieciséis lotes de cuarenta puntos, 384 HH para los 640 puntos iniciales, complementando la integración del broker sin volver a presupuestarla. El CLIENTE adquiere y ejecuta las obras; Synaptix especifica, integra y recibe evidencia de calibración, precisión, asociación temporal y comportamiento del cableado.
+
+Cada etapa reserva 107 cohortes de hasta doce asistentes: cien para usuarios finales (1.200 plazas), dos para avanzados (24), una para administradores (12), una para responsables técnicos designados (12) y tres para soporte (36). Son plazas por rol, no personas distintas: una persona que ejerce dos roles requiere las dos evaluaciones. Los 1.198 contactos potenciales del pronóstico se cubren con las 1.200 plazas finales; las categorías profesionales se añaden explícitamente, sin suponer un área TI del CLIENTE. Cada cohorte requiere 12 HH, 1.284 por etapa, más los materiales ya estimados. Las sesiones se reparten por turnos y sitios; el universo definitivo nominaliza personas y horarios dentro de esa capacidad. Se reservan 25 cohortes/300 HH en noviembre de cada uno de los tres ciclos operacionales para incorporación estacional y recuperación, adicionales a las dos jornadas anuales ya estimadas. La capacidad es ampliable por Synaptix si el universo real obligatorio lo exige y no se convierte en una exclusión de capacitación.
+
+Se seleccionan cuatro olas por etapa, dos zonas coordinadas por ola: pantalanes/torre y zarpes; escuela/administración; varadero/combustible; portal/coordinación transversal. Durante 28 días, cada ola reserva 448 HH, 1.792 por etapa. En E1 se inicia el 1 de diciembre y toda habilitación o sesión nueva finaliza antes del día 15; desde esa fecha continúa sólo acompañamiento de los procedimientos ya activos, observación y preparación fuera de maniobras, sin capacitación o despliegue nuevo durante el congelamiento. E2 comienza en junio. La estabilización posterior reserva dos puestos diarios durante 28 días, 448 HH por etapa, adicionales a los informes técnicos de datos: en la programación seleccionada, abril de 2028 para E1 y agosto de 2028 para E2. Los cuadrantes usan catorce personas de acompañamiento y cuatro de estabilización, distintas de ingeniería y de la mesa; incluyen fines de semana y relevo.
+
+IN2 selecciona veinte embarcaciones para el piloto, cinco lotes de revisión previa y 80 HH; su primera invernada admisible es junio de 2029 (mes 31), con inscripción y planes en mayo, tres meses de observación y botaduras en septiembre--noviembre. Los lotes se revisan al menos tres semanas antes de sus botaduras; los registros sólo dependen de los lotes aplicables ya revisados. Su evaluación y transferencia se preparan en diciembre antes del congelamiento. El seguimiento incremental 31--56 reserva 416 HH. IN1/IN4/IN5 levantan base en mayo de 2028 y evaluación en junio; IN1 imparte sus dos cohortes incrementales con dos formadores simultáneos del 29 al 31 de mayo, conservando las HH existentes. IN3 mantiene 120 pólizas y ejecución manual/asistida intercalada durante mayo--junio. Muestra insuficiente o datos inválidos impiden afirmar beneficio.
+
+Las observaciones de recepción cuentan con ocho bloques de 80 HH, 640 HH de reserva de corrección/reensayo por etapas, asociados a sus ventanas de subsanación. No son correcciones ya realizadas ni sustituyen los diez días contractuales. Si el trabajo obligatorio excede la reserva, Synaptix incorporará capacidad a su costo y conservará los hitos y criterios de calidad. Se evita cargar el mismo cierre a la reserva y al paquete de construcción.
+
+
+
+
+\subsection{Olas, perfiles y reglas de habilitación} %7.2.5
+La Tabla~\ref{tab:t18-olas-perfiles} vincula las cuatro olas de cada etapa con procesos, zonas y perfiles. E1 se habilitará del 1 al 14 de diciembre de 2027; E2, en junio de 2028. En E1 el varadero sólo recibe preparación y acompañamiento del procedimiento vigente: su alcance nuevo se habilita en E2. La habilitación del alcance obligatorio completo precede a sus cuatro semanas finales de observación. Cada acta de ola identificará zona, versión, perfiles habilitados, fecha, autorizador y controles CA aplicables; una ola no autoriza activar una función de otra etapa.
+
+\begin{longtable}{L{10mm}L{42mm}L{60mm}L{37mm}}
+\caption{Olas, zonas y perfiles de implantación}\label{tab:t18-olas-perfiles}\\\hline
+ \EncabezadoTabla{Ola} & \EncabezadoTabla{Procesos y zonas} & \EncabezadoTabla{Perfiles} & \EncabezadoTabla{Responsabilidad}\\\hline\endfirsthead
+\hline \EncabezadoTabla{Ola} & \EncabezadoTabla{Procesos y zonas} & \EncabezadoTabla{Perfiles} & \EncabezadoTabla{Responsabilidad}\\\hline\endhead
+1 & Pantalanes, torre y zarpes & Marineros, torre, portería; avanzados y soporte & Implantación; validan Operaciones y Calidad\\\hline
+2 & Escuela y administración & Monitores, administración y referentes técnicos; apoderados en su portal & Implantación; validan Escuela y Administración\\\hline
+3 & Varadero, combustible y medición & Operadores de izaje, surtidor y contratistas; soporte & Implantación; validan responsables operacionales\\\hline
+4 & Portal y coordinación transversal & Armadores, apoderados, contratistas, administradores y soporte & Implantación; validan propietarios de proceso\\\hline
+\end{longtable}
+\FuenteTabla{Elaboración propia: plan de implantación por procesos, etapas y criterios CA de SD3; condiciones de cierre del artículo 17.3 de las Bases Administrativas, p. 13.}
+
+José Lara Arce coordinará implantación y referentes; Davor Serey verificará evidencia y preparación; Ignacio Silva coordinará la decisión con la Contraparte. El CLIENTE designará por proceso un referente y un suplente antes de habilitar la ola. No se supone área TI interna ni formador propio: Synaptix ejecutará formación, soporte y mentoría; los referentes de la marina validarán tareas, decisiones y prioridades de negocio.
+
+
+
+
+\subsection{Capacitación, evaluación y preparación por sitio} %7.2.6
+Cada etapa mantiene 107 cohortes de hasta doce plazas por rol y 1.284 HH de proveedor: cien de usuarios finales, dos de avanzados, una de administradores, una de responsables técnicos designados y tres de soporte N1/N2. Cada cohorte incluye preparación, dos sesiones de dos horas, ejercicio, evaluación individual y recuperación; se imputan Implantación 8, Funcional 2 y Calidad 2 HH. Las cuatro horas de sesión por participante no se confunden con las doce HH del proveedor. Los registros \texttt{1.11.7.e.p.s.b} identifican sitio, turno y cohorte; la lista nominal asignará cada persona a sus roles antes de las sesiones.
+
+Se combinarán presencialidad en cada sitio operativo, sesiones sincrónicas, autoformación en línea con avance registrado y acompañamiento en puesto durante marcha blanca. Los materiales por perfil incluirán manual editable, guía rápida, FAQ, video tutorial en español y base de conocimiento, de propiedad del CLIENTE y vinculados a versión. Las familias \texttt{1.11.2.e.p} producen materiales; \texttt{1.11.3.e.1} fija el plan por turno/sitio y \texttt{1.11.3.e.2} el expediente de evaluación y certificación. La asistencia sin ejercicio aprobado no acredita certificación; administradores y referentes técnicos deben estar certificados antes de cerrar cada marcha blanca.
+
+La formación E1 termina el 24 de noviembre de 2027 y la E2 el 11 de mayo de 2028, conforme a las puertas FORMACION-E1/E2. Las recuperaciones obligatorias se completarán antes de habilitar el perfil y fuera de congelamiento; Synaptix añadirá capacidad si resultara necesaria. La incorporación estacional reserva 25 cohortes en noviembre de cada ciclo, además de dos jornadas anuales de actualización y de la formación sin recargo del personal nuevo. Monitores nuevos y suplentes se incluirán expresamente, sin depender de un instructor interno.~\parencite[arts.~89--90; p.~45]{bases-admin}~\parencite[RT-22.01--06; p.~38]{bases-transversales}
+
+
+
+
+\subsection{Adopción y acompañamiento decreciente} %7.2.7
+El plan \texttt{1.11.3.e.1} incorporará diagnóstico por área/perfil, resistencias, agentes de cambio designados y suplentes, calendario/canales de comunicación y procedimientos actualizados. Los ejercicios de pantalán se realizarán con guantes y condiciones seguras de humedad; varadero ensayará el registro antes y después de la maniobra, nunca con carga suspendida. El canal voluntario de armador mantendrá consentimiento, revocación y alternativa funcional sin adhesión. La formación no sustituye la comprobación de estas condiciones de uso.
+
+Por ola y zona se reserva un puesto de ocho horas de presencia durante los primeros catorce días. En los siguientes catorce, se propone cuatro horas presenciales más cuatro de preparación, seguimiento y evidencia: 448 HH por ola, 1.792 por etapa. La reducción sólo se autorizará tras siete días consecutivos con al menos 90\,\% de usuarios activos sobre usuarios con tarea exigible, 95\,\% de ejercicios/tareas sin asistencia y 100\,\% de actuaciones críticas correctas, sin incidente crítico/alto abierto. Son metas de oferta; denominadores excluyen personas sin turno o sin tarea en el período, con exclusión justificada. No se equiparan las plazas de formación a usuarios activos.
+
+Calidad medirá diariamente cobertura, uso por función, abandono de mecanismos manuales no exigidos, necesidad de ayuda y resultados críticos; Implantación recogerá satisfacción semanal, con meta de 80\,\% favorable entre respuestas válidas y tasa de respuesta declarada. Ante rechazo, dificultad o meta incumplida, se mantiene o refuerza presencia, se adapta el procedimiento y se programa recuperación permitida; Synaptix financia la capacidad adicional sin detraer la cobertura de servicio. La permanencia del legado durante marcha blanca no se contabiliza como fracaso de adopción. La Contraparte autorizará reducción y avance con el expediente de ola.~\parencite[art.~89; p.~45]{bases-admin}~\parencite[RT-20.01/05; p.~35]{bases-transversales}
+
+
+
+
+\subsection{Cuadro diario de control y cierre} %7.2.8
+La Tabla~\ref{tab:t18-indicadores} vincula los indicadores diarios con su evidencia y acción de control. Cada proceso conservará su denominador de hechos reales, cantidades absolutas, mezcla y períodos sin actividad. El cuadro aprobado por proceso conservará como piso los mínimos absolutos y las fórmulas de la Tabla~\ref{tab:sd7-volumen-real}, con mezcla y calendario real; no basta cumplir un porcentaje sobre un volumen insuficiente. Ninguna carga sintética ni porcentaje sobre procesos parcialmente habilitados sustituirá el alcance completo exigible de la etapa.
+
+\ifdefined\EnCuerpoSD
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\linewidth}{L{38mm}Y L{32mm}}
+\hline
+ \EncabezadoTabla{Indicador} & \EncabezadoTabla{Umbral de cierre} & \EncabezadoTabla{Responsable de control}\\\hline
+Cobertura de hechos reales & 100\,\% durante 28 días finales & Datos y Calidad\\\hline
+Conciliación & Cero diferencias no explicadas, pérdidas o duplicados & Datos y Funcional\\\hline
+Disponibilidad y tiempos & Umbrales CA/SLA de SD3--SD5 durante 28 días & Operación y Calidad\\\hline
+Incidentes y formación & Cero críticos/altos abiertos; perfiles preparados y certificación exigida & Calidad e Implantación\\\hline
+Acta y autoridad & Firma expresa anterior al cambio oficial & Proyecto\\\hline
+\end{tabularx}
+\caption{Síntesis de indicadores diarios y condiciones de cierre}
+\label{tab:t18-indicadores}
+\FuenteTabla{Elaboración propia: plan de implantación por procesos, etapas y criterios CA de SD3; condiciones de cierre del artículo 17.3 de las Bases Administrativas, p. 13.}
+\end{table}
+
+\else
+
+\begin{longtable}{L{35mm}L{69mm}L{45mm}}
+\caption{Indicadores de avance y cierre}\label{tab:t18-indicadores}\\\hline
+ \EncabezadoTabla{Indicador} & \EncabezadoTabla{Fuente, denominador y umbral} & \EncabezadoTabla{Control y acción}\\\hline\endfirsthead
+\hline \EncabezadoTabla{Indicador} & \EncabezadoTabla{Fuente, denominador y umbral} & \EncabezadoTabla{Control y acción}\\\hline\endhead
+Volumen y cobertura & Diario del registro vigente frente a manifiestos; 100\,\% de hechos exigibles de todos los procesos de la etapa durante 28 días finales; cantidades aprobadas por proceso & Datos y Calidad; una omisión impide cerrar\\\hline
+Conciliación & Recuentos, sumas por moneda/período, documentos y muestreo dirigido de SD5; cero diferencias no explicadas, cero pérdidas o efectos duplicados & Datos y validador funcional; detener grupo afectado y corregir/retornar\\\hline
+Disponibilidad y tiempos & Telemetría y transacciones completas, intervalos y exclusiones declarados; umbrales CA de SD3 y SLA de SD4/SD5 sostenidos los mismos 28 días & Operación y Calidad; incumplimiento impide cierre\\\hline
+Incidentes y formación & Registro de severidad; cero críticos/altos abiertos atribuibles; 100\,\% de perfiles obligatorios preparados y certificación de administradores/técnicos & Calidad e Implantación; recuperar evidencia antes del acta\\\hline
+Acta y autoridad & Expediente con versión, evidencia y observaciones resueltas; firma expresa de Contraparte previa al cambio oficial & Proyecto; sin acta no habilitar registro oficial\\\hline
+\end{longtable}
+\FuenteTabla{Elaboración propia: plan de implantación por procesos, etapas y criterios CA de SD3; condiciones de cierre del artículo 17.3 de las Bases Administrativas, p. 13.}
+\fi
+
+Los criterios CA se aplican por proceso y etapa, sin sustituir umbrales por promedios de toda la solución. Las actas y protocolos se formalizarán en T-17; la definición de terminado incluye resultado/código, pruebas, documentación, seguridad y despliegue. Durante marcha blanca el registro oficial vigente conserva autoridad; la nueva solución se usa con usuarios/datos reales y escrituras supervisadas para conciliación. La habilitación oficial E1 será en mes 16; E2, desde el primer día de 21 con acta previa.~\parencite[arts.~17--18; pp.~12--13]{bases-admin}~\parencite[RT-20.04/07/08; p.~35]{bases-transversales}
+
+
+
+
+\subsection{Mentoría técnica posterior a producción E2} %7.2.9
+Synaptix acompañará a los referentes técnicos y sus suplentes designados por la marina durante los seis meses 21--26, agosto de 2028 a enero de 2029. Este servicio es diferente de la estabilización de 28 días, la mesa ordinaria y el acompañamiento de salida. José Lara Arce responde por coordinación y transferencia; el refuerzo MEN-IL-01 ejecutará integración e implantación y MEN-Q-01 verificará evidencia, con capacidades independientes de turnos y de ingeniería ya asignada. Son puestos previstos, sin atribuir contratación ni aceptación ejecutadas.
+
+Cada paquete \texttt{1.12.13.m} reserva 24 HH mensuales: Implantación 16, Integración 4 y Calidad 4. Comprende cuatro contactos de acompañamiento de hasta tres horas, cuatro horas de preparación/documentación, cuatro de resolución técnica y cuatro de revisión independiente. Son HH de proveedor; no incluyen como esfuerzo propio las horas del CLIENTE. El total es 144 HH adicionales de Operación, incluidas sin cargo adicional y valorables por los perfiles en la Oferta Económica. La cobertura NOC/SOC/mesa y las bolsas de ingeniería no se reducen ni vuelven a contarse.
+Durante agosto--noviembre y hasta el 14 de diciembre los casos podrán incluir ejercicio supervisado en entorno seguro. Durante el congelamiento, en particular enero, la mentoría se limitará a acompañamiento remoto de procedimientos ya operativos, revisión de casos y documentación, sin capacitación formal nueva, cambios de producción ni interferencia con maniobras. Si hace falta formación nueva, se preparará antes del congelamiento o en la siguiente ventana permitida, conservando la atención a los referentes durante los seis meses.
+
+La Tabla~\ref{tab:sd7-mentoria} presenta resultados y esfuerzo de los seis meses de mentoría.
+\begin{table}[H]
+\centering
+\begin{tabularx}{\linewidth}{L{15mm}Y R{15mm}}\hline
+ \EncabezadoTabla{Mes} & \EncabezadoTabla{Resultado mensual} & \EncabezadoTabla{HH}\\\hline
+21 & Referentes/suplentes habilitados, accesos y protocolo de escalamiento & 24\\\hline
+22 & Casos de incidentes, recuperación y conciliación acompañados & 24\\\hline
+23 & Solicitudes, cambios y lectura de indicadores practicados & 24\\\hline
+24 & Preparación estacional y transferencia de procedimientos vigentes & 24\\\hline
+25 & Revisión de casos y continuidad de responsables durante congelamiento & 24\\\hline
+26 & Cierre de transferencia, suplencia y plan de continuidad del conocimiento & 24\\\hline
+\end{tabularx}
+\caption{Resultados y esfuerzo de los seis meses de mentoría}
+\label{tab:sd7-mentoria}
+\FuenteTabla{Elaboración propia: seis paquetes 1.12.13.m de 24 HH, registrados en T-14/T-15.}
+\end{table}
+
+Cada recepción exige agenda, participantes y suplentes, casos, acta, documentación actualizada, resultado de verificación y pendientes con responsable/plazo. El CLIENTE valida las decisiones de negocio; Synaptix conserva la administración técnica del servicio. Ausencia del referente activa suplente y reprogramación dentro del mes, sin interrupción de atención. Capacidad adicional necesaria para cumplir el servicio será provista por Synaptix, sin usar esas HH como límite excluyente.~\parencite[RT-22.07--08; p.~38]{bases-transversales}~\parencite[arts.~89--90; p.~45]{bases-admin}
+
+
+
+
+\subsection{Provisión de recursos} %7.2.10
+La mentoría 1.12.13 añade 144 HH de Operación (L96, I24, Q24), con MEN-IL-01 y MEN-Q-01 parciales en 21--26; el costo se integra en la Oferta Económica por tarifa de perfil, sin deducirlo de mesa, estabilización o bolsas de ingeniería. No genera cargo adicional al CLIENTE ni atribuye contratación ejecutada.
+
+Synaptix selecciona provisión propia para desarrollo, integración, pruebas, formación y servicio: los refuerzos son puestos que incorporará bajo su dirección, con validación de competencias, suplencias y dedicación al contrato. Se trata de un compromiso de dotación futura. No se delega el desarrollo de aplicaciones ni el tratamiento de datos a un tercero sin autorización. Los servicios de nube, fabricantes y custodia independiente se contratarán con las condiciones de seguridad y auditoría aplicables; una eventual subcontratación requerirá autorización escrita y no excederá el 40\,\% del valor contractual conforme al artículo 73, comprobado por valor y no por número de personas.
+
+La provisión técnica se controla por perfil, dedicación y período, con separación de las horas de ingeniería y de cobertura. La valoración y las condiciones económicas se presentan exclusivamente en la Oferta Económica.
+
+La ingeniería de operación reserva cada mes 80 HH correctivas, 48 normativas, 80 evolutivas y 32 de reducción de deuda: 240 HH adicionales a informes y controles ya estimados. La bolsa evolutiva compromete 960 HH por año contractual (2.880 HH en 36 meses), con saldo acumulable; su composición mensual es V40/A16/D8/Q8/S4/I4. La capacidad de deuda equivale al 13,33\,\% de esa reserva de ingeniería. Correctivos y adecuación normativa están incluidos sin recargo: la reserva dimensiona capacidad y no limita la obligación; Synaptix reforzará a su costo si la demanda la supera. El excedente evolutivo requiere estimación y autorización previa conforme a las condiciones de la Oferta Económica.~\parencite[RT-21.19--22; pp.~35--38]{bases-transversales}~\parencite[art.~73; Formulario E-26; pp.~38--76]{bases-admin}
+
+
+
+
+\subsection{Cobertura propia y dimensionamiento de atención} %7.2.11
+Desde el mes 13 hasta el 56 se reservan un puesto NOC y un puesto SOC continuamente, con escalamiento N2/N3 de ingeniería y reemplazo sin abandonar el resto de los sitios. La mesa bilingüe contará con tres agentes simultáneos de 06:00 a 24:00 en temporada alta (15 de noviembre--31 de marzo) y de 08:00 a 20:00 el resto del año. Fuera de esa franja, NOC recibe inmediatamente emergencias y alertas de navegación vencida por un canal separado 24$\times$7$\times$365, con guardia N2/N3 y prohibición de diferirlas al día siguiente. El dimensionamiento incorpora seis personas NOC, seis SOC y doce de mesa, 24 puestos propios adicionales; los ocho titulares y los refuerzos de ingeniería no cubren esos turnos como una segunda jornada.
+
+El universo de diseño utiliza la proyección del caso: 88 empleados, 170 contratistas, 350 armadores y 590 menores. Para la mesa se reserva una plaza de contacto adulto por menor: 1.198 plazas de contacto de diseño, sin afirmar que existan 590 apoderados distintos. Se supone un 2\,\% de contactos diarios y se concentra conservadoramente ese total en tres horas: $\lambda=1.198(0,02)/3=7,987$ contactos/h; TMA 6 minutos, carga $a=0,799$ Erlang. Son supuestos de oferta, no demanda medida. Erlang C da con tres agentes un 95,42\,\% aproximado antes de 20 segundos; el registro asociado calcula el valor exacto y la sensibilidad a dos y tres veces la demanda. Se validará el pronóstico en marcha blanca mediante llegadas, TMA, abandono y resolución; 80\,\% antes de 20 s, abandono $\leq5$\,\% y resolución inicial $\geq70$\,\% son compromisos, no resultados derivados del modelo. Si el pronóstico exige cuatro agentes, se añadirá ese puesto y su relevo antes de degradar el SLA.~\parencite[RT-21.06/14; pp.~35--38]{bases-transversales}~\parencite[cap.~14, p.~31; cap.~15, RT-21.06, p.~36]{caso07}
+
+El cálculo de espera utiliza las expresiones siguientes:
+\[
+C(a,c)=\frac{a^c/[c!(1-a/c)]}{\sum_{k=0}^{c-1}a^k/k!+a^c/[c!(1-a/c)]},
+\qquad P(W\leq t)=1-C(a,c)e^{-(c\mu-\lambda)t}.
+\]
+Se dimensiona la cola con llegadas Poisson, servicio exponencial y cola estable $a<c$. Para $c=3$, $\mu=10$ contactos/h y $t=20/3.600$ h, $C\approx0,0518$ y $P(W\leq t)\approx0,9542$. Estas hipótesis dimensionan una cola sin abandono; abandono y resolución inicial se medirán por separado. El total proyectado deriva de $88+170+350+590=1.198$ plazas; no representa personas únicas ni contactos observados.
+
+Por mes, la cobertura registra $24D_m$ HH NOC y $24D_m$ SOC, más $3(18D_{a,m}+12D_{b,m})$ de mesa. El pico mensual de 31 días de temporada alta es 744/744/1.674 HH; las capacidades de seis/seis/doce personas a 144 HH son 864/864/1.728. Las diferencias permiten relevo y ausencias, y se contrastan con el cuadrante efectivo; no se imputan los mismos trabajadores a ingeniería o terreno. La jornada y descansos se ajustarán a normativa y calendario, con sustitución por ausencia. Los viajes a boyas dispondrán de embarcación y ventana segura, especialista y suplente; los costos de traslado están incluidos y ninguna salida deja un turno sin cobertura.
+
+La cobertura continua de 13--20 agrega 22.692 HH antes de la fase contractual de Operación; 21--56 conserva 99.378 HH. Son 122.070 HH de turnos en total. Los centros se habilitarán en la sede de Valparaíso antes de 13 y la asistencia de campo se coordinará desde Puerto Montt; su ubicación y disponibilidad se recibirán antes de activar el servicio. Las suplencias cubrirán permisos, vacaciones y enfermedad antes de la ausencia: los 24 puestos son la dotación de rotación mínima y toda ausencia que exceda su capacidad libre se cubrirá con reemplazo propio adicional, sin recargar los turnos. El costo de esa sustitución queda a cargo de Synaptix.~\parencite[RT-21.01/03/05/16; pp.~35--38]{bases-transversales}
+
+La sensibilidad exige cuatro agentes simultáneos con el doble de llegadas y cinco con el triple para mantener al menos 80\,\% antes de 20 segundos. En un mes alto de 31 días, corresponden 2.232 y 2.790 HH de mesa y una rotación mínima por capacidad mensual de dieciséis y veinte personas, respectivamente; el cuadrante deberá confirmar además descansos y ausencias. Esos refuerzos son escenarios de respuesta al pronóstico, separados de la dotación base de doce personas y sin atribuir contratación. Un cuarto agente no basta para el escenario triple. La decisión de aumentar capacidad se tomará con la evidencia de marcha blanca antes de activar la franja de atención y se sostendrá durante el contrato si la demanda lo exige.

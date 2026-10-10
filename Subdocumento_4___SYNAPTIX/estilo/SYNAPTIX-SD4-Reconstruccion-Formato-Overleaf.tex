@@ -1,0 +1,408 @@
+% SD4 reconstruido, adaptado a la plantilla vigente de Overleaf.
+% Archivo independiente de revisión; contenido técnico importado del ZIP.
+% Compilar con XeLaTeX, como el proyecto existente.
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
+\newcolumntype{Q}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\usetikzlibrary{fit,backgrounds}
+\colorlet{synblue}{SynNavyLight}
+\colorlet{synsky}{SynSurface}
+\colorlet{syngreen}{SynTeal}
+\colorlet{synorange}{SynBlue}
+\colorlet{syngray}{SynMuted}
+\providecommand{\Fuente}[1]{\FuenteFigura{#1}}
+\providecommand{\RTO}{RTO $\leq$ 4 h}
+\providecommand{\RPO}{RPO $\leq$ 15 min}
+\providecommand{\control}[1]{\textbf{#1}}
+\providecommand{\estado}[1]{\textsf{#1}}
+\renewcommand{\VersionDocumento}{0.8-R1 (revisión)}
+\renewcommand{\FechaDocumento}{9 de octubre de 2026}
+\begin{document}
+\pagenumbering{arabic}
+\PortadaPropuesta{4}{Arquitectura lógica y física de la solución}
+\tableofcontents
+\clearpage
+\setcounter{chapter}{3}
+\chapter{Introducción a la Arquitectura lógica y física de la solución}
+
+\section{Arquitectura lógica}
+
+La arquitectura lógica transforma la solución conceptual del Subdocumento 3 en responsabilidades implementables, contratos verificables y propietarios de datos. Se adopta un monolito modular para evitar la complejidad operacional de una malla de microservicios que no se justifica por el volumen del puerto, pero se conservan fronteras de dominio, contratos explícitos y eventos que permiten separar módulos en el futuro. La operación crítica no depende de una conexión permanente: una célula local conserva autoridad acotada sobre los hechos del recinto y sincroniza con la nube mediante intercambio durable.
+
+Los principios que gobiernan la solución son: autoridad única para cada decisión, aislamiento entre dominios, contratos compatibles hacia atrás, seguridad Zero Trust, observabilidad de extremo a extremo, degradación explícita y recuperación ensayable. Ninguna proyección, caché o réplica adquiere autoridad por estar disponible; la interfaz siempre muestra vigencia y origen del dato.
+
+La Figura~\ref{fig:dominios-logicos} presenta la descomposición lógica alineada con los códigos funcionales de SD3.
+% Figura incorporada desde figuras/01_dominios_logicos.tex
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\small,node distance=7mm,
+  caja/.style={draw=synblue,rounded corners,fill=synsky,align=center,minimum height=10mm,text width=37mm},
+  transversal/.style={draw=syngreen,rounded corners,fill=green!8,align=center,minimum height=9mm,text width=126mm},
+  flecha/.style={-{Latex[length=2mm]},thick,synblue}]
+\node[caja] (ops) {\textbf{Marina-Ops}\\NAV, AMA, ESC, CON y BOY};
+\node[caja,right=8mm of ops] (log) {\textbf{Marina-Log}\\VAR, CTR y AMB};
+\node[caja,right=8mm of log] (adm) {\textbf{Marina-Admin}\\FAC, ADM y AUT};
+\node[transversal,below=10mm of log] (ale) {\textbf{Alertas y comunicaciones (ALE)}: reglas, campañas, preferencias, acuses y escalamiento};
+\node[transversal,below=7mm of ale,draw=synorange,fill=orange!7] (platform) {\textbf{Capacidades transversales}: identidad, auditoría, documentos, integración, observabilidad, configuración y sincronización};
+\draw[flecha] (ops) -- (ale);
+\draw[flecha] (log) -- (ale);
+\draw[flecha] (adm) -- (ale);
+\draw[flecha] (ale) -- (platform);
+\end{tikzpicture}
+\caption{Descomposición lógica por núcleos y capacidades transversales}
+\label{fig:dominios-logicos}
+\Fuente{Elaboración propia a partir de SD3, secciones 3.3 y 3.4.}
+\end{figure}
+
+La separación conserva los doce dominios originales: NAV navegación y recalada; AMA amarras; ESC escuela; CON consumos; BOY boyas; VAR varadero; CTR contratistas; AMB ambiente; FAC facturación; ADM administración; AUT autorizaciones; y ALE alertas. Los dominios comparten plataforma técnica, no tablas de negocio. Toda interacción entre ellos ocurre mediante una API interna o un evento de integración documentado.
+
+\subsubsection*{Núcleo Marina-Ops}
+
+Marina-Ops reúne procesos que afectan seguridad de personas, naves y maniobras. NAV administra recalada, zarpe, presencia y coordinación con canales marítimos. AMA gestiona disponibilidad, asignación temporal y estado operativo de amarras. ESC conserva matrículas, asistencia, autorizaciones de retiro y contactos responsables. CON captura lecturas y hechos de consumo sin convertirlos directamente en cobros. BOY mantiene inspecciones, posición, condición y órdenes de intervención de boyas.
+
+La autoridad local se limita a confirmaciones que deben continuar sin WAN: presencia y movimiento en recinto, asignación operacional confirmada por torre, retiro escolar validado, despacho de combustible autorizado, captura de lecturas y ejecución de listas de seguridad vigentes. Los cambios comerciales, contratos, tarifas, identidad maestra y consolidación financiera permanecen en la nube. Un terminal aislado puede conservar una solicitud, pero no inventa una autorización ni extiende la vigencia de credenciales.
+
+\subsubsection*{Núcleo Marina-Log}
+
+Marina-Log contiene VAR para agenda y ejecución de varadero y travelift; CTR para empresas, personas, credenciales, seguros y permisos de trabajo; y AMB para medición, incidentes y evidencias ambientales. Comparte con Marina-Ops las identidades de recursos y ubicaciones mediante identificadores estables, sin acceso directo a sus tablas. Una orden de varadero publica eventos de programación y ejecución; una habilitación de contratista publica su estado y vigencia; una medición ambiental publica valor, unidad, calidad, instrumento y sello temporal.
+
+\subsubsection*{Núcleo Marina-Admin}
+
+Marina-Admin contiene FAC para hechos facturables, documentos de cobro y conciliación; ADM para parámetros, catálogos, expedientes y gobierno; y AUT para políticas, roles, delegaciones y decisiones de acceso de negocio. FAC recibe hechos inmutables desde los dominios operacionales y aplica reglas versionadas; nunca consulta directamente un dispositivo de terreno para calcular un cobro. AUT distingue identidad técnica de autorización de negocio y conserva quién, bajo qué política y con qué vigencia tomó cada decisión.
+
+\subsubsection*{Alertas y capacidades transversales}
+
+ALE recibe señales de dominio, evalúa reglas parametrizadas y genera campañas con destinatarios, prioridad, canal, acuse y escalamiento. Email, SMS, mensajería instantánea y notificación móvil se implementan como adaptadores reemplazables. La falta de un canal no bloquea la transacción que originó la señal; la campaña queda pendiente, cambia de canal o escala según su política.
+
+Identidad, auditoría, documentos, configuración, integración y observabilidad son capacidades transversales. No contienen reglas exclusivas de un dominio. La auditoría usa identificadores correlacionados y un almacén protegido contra alteración; documentos almacena binarios cifrados y metadatos de relación; configuración distribuye versiones firmadas hacia la célula local; observabilidad recopila métricas, registros y trazas sin incluir datos personales innecesarios.
+
+La Tabla~\ref{tab:trazabilidad-dominios} demuestra la correspondencia entre los doce grupos de SD3, el componente lógico, su contrato, el emplazamiento físico y los implementos de T-11. El archivo complementario \textit{TRAZABILIDAD\_T12\_ARQUITECTURA.csv} individualiza además los 146 RF, 56 RNF y 374 RT: 576 identificadores únicos con ubicación fuente y cobertura arquitectónica.
+
+\small
+\begin{longtable}{Q{13mm}Q{29mm}Q{38mm}Q{33mm}Q{23mm}}
+\caption{Trazabilidad de dominios SD3 hacia arquitectura física y T-11}\label{tab:trazabilidad-dominios}\\
+\toprule
+\textbf{SD3} & \textbf{Componente lógico} & \textbf{Contrato y datos} & \textbf{Emplazamiento} & \textbf{T-11}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{SD3} & \textbf{Componente lógico} & \textbf{Contrato y datos} & \textbf{Emplazamiento} & \textbf{T-11}\\
+\midrule
+\endhead
+NAV & Marina-Ops/\allowbreak{}Navegación & Recalada, zarpe y presencia; REST y eventos NAV. & Cloud Run; célula local para hechos críticos. & 04--09, 22, 24--27\\
+ALE & Alertas & Campañas, destinatarios, acuses y escalamiento; eventos ALE. & Trabajador cloud; cola local para alertas críticas. & 06, 09, 15, 31--32, 50\\
+ESC & Marina-Ops/\allowbreak{}Escuela & Matrícula, asistencia y retiro autorizado; REST y eventos ESC. & Cloud Run; autorización vigente en célula local. & 04--09, 12, 22, 24--27\\
+AMA & Marina-Ops/\allowbreak{}Amarras & Disponibilidad, reserva y confirmación local; eventos AMA. & Cloud Run y autoridad operacional local. & 05--09, 24--27, 31--33\\
+VAR & Marina-Log/\allowbreak{}Varadero & Agenda, orden y ejecución de maniobra; eventos VAR. & Cloud Run; captura local de ejecución. & 05--09, 22, 24--27\\
+CTR & Marina-Log/\allowbreak{}Contratistas & Empresa, persona, seguro y permiso; REST CTR/AUT. & Cloud Run, identidad cloud y copia firmada local. & 04--07A, 12--14, 24--27\\
+AMB & Marina-Log/\allowbreak{}Ambiente & Medición, calidad, incidente y evidencia; MQTT/eventos AMB. & Ingesta local; consolidación y objetos cloud. & 09--10A, 24--28, 46--47\\
+CON & Marina-Ops/\allowbreak{}Consumos & Lectura, totalizador y hecho de consumo; MQTT/eventos CON. & Medidores y broker local; PostgreSQL cloud. & 07--10A, 24--28, 46\\
+BOY & Marina-Ops/\allowbreak{}Boyas & Inspección, posición, condición y evidencia; eventos BOY. & Terminal offline 8 h; sincronización cloud. & 09--10, 22--23, 27, 47\\
+FAC & Marina-Admin\newline Facturación & Hechos facturables, cobro y conciliación; REST/eventos FAC. & Cloud Run y Cloud SQL; sin autoridad local de cobro. & 04--10A, 12--18\\
+ADM & Marina-Admin\newline Administración & Catálogos, expedientes y parámetros versionados. & Cloud Run/Cloud SQL; copias firmadas locales. & 04--18, 24--28\\
+AUT & Marina-Admin\newline Autorización & Políticas, roles, delegación y decisión auditable. & Identity Platform y aplicación; caché local vigente. & 04--08, 12--16, 24--27\\
+\bottomrule
+\end{longtable}
+\normalsize
+\Fuente{Elaboración propia a partir de SD3, T-12 y el inventario del Formulario T-11 reconstruido.}
+
+\subsubsection*{Integración, contratos y gobierno}
+
+La Figura~\ref{fig:integracion-seguridad} muestra las fronteras de integración y los controles que se aplican antes de alcanzar la lógica de negocio.
+% Figura incorporada desde figuras/02_integracion_seguridad.tex
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\small,node distance=6mm,
+  caja/.style={draw=synblue,rounded corners,fill=synsky,align=center,minimum height=9mm,text width=33mm},
+  bus/.style={draw=syngreen,rounded corners,fill=green!8,align=center,minimum height=8mm,text width=112mm},
+  flecha/.style={-{Latex[length=2mm]},thick,synblue}]
+\node[caja] (web) {Portal interno y autoservicio\\HTTPS + OIDC};
+\node[caja,right=7mm of web] (mobile) {Aplicación Android\\HTTPS + OIDC};
+\node[caja,right=7mm of mobile] (third) {Sistemas externos\\API o archivos};
+\node[bus,below=8mm of mobile] (edge) {Balanceo global + protección DDoS/WAF + API Gateway\\TLS, validación de esquema, cuota, autorización y correlación};
+\node[bus,below=7mm of edge] (core) {Aplicación modular: comandos REST OpenAPI 3.1 + eventos AsyncAPI 3.0\\outbox/inbox, idempotencia, DLQ y contratos versionados};
+\node[bus,below=7mm of core,draw=synorange,fill=orange!7] (zero) {Zero Trust: identidad explícita, MFA, privilegio mínimo, mTLS recinto-nube, cifrado KMS, secretos administrados y auditoría inmutable};
+\draw[flecha] (web) -- (edge);
+\draw[flecha] (mobile) -- (edge);
+\draw[flecha] (third) -- (edge);
+\draw[flecha] (edge) -- (core);
+\draw[flecha] (core) -- (zero);
+\end{tikzpicture}
+\caption{Contratos de integración y controles de seguridad por frontera}
+\label{fig:integracion-seguridad}
+\Fuente{Elaboración propia con OpenAPI 3.1, AsyncAPI 3.0 y NIST SP 800-207.}
+\end{figure}
+
+Las operaciones sincrónicas se publican como REST/JSON y se describen con OpenAPI 3.1. Cada operación declara identidad, autorización, esquema, errores, idempotencia, cuota, tiempo máximo y política de reintento. Los hechos asíncronos se describen con AsyncAPI 3.0 y contienen identificador, tipo, versión, productor, instante UTC, sujeto de negocio y referencia de correlación. Los cambios incompatibles requieren una versión paralela y un período de retiro comunicado; agregar un campo opcional no permite cambiar el significado de los existentes.
+
+El patrón outbox registra el cambio de negocio y el evento en la misma transacción. El publicador entrega el evento a Pub/Sub y el consumidor lo registra en su inbox antes de aplicar efectos. La clave idempotente impide duplicar zarpes, movimientos, retiros, lecturas o hechos facturables. Los mensajes agotados pasan a una cola de errores con alerta, diagnóstico y reproceso controlado. No se emplea doble escritura entre base de datos y mensajería.
+
+Las integraciones externas se aíslan mediante adaptadores: sistema contable, pagos, DIRECTEMAR/SIDREP, control de acceso, medidores, proveedores de notificación y lectura documental. Si la contraparte no ofrece API, el adaptador acepta archivos firmados, valida esquema y checksum, conserva el original y produce un resultado conciliable. Ningún proveedor externo recibe credenciales de base de datos ni acceso directo al broker MQTT local.
+
+El gobierno de contratos corresponde al Comité de Arquitectura. Cada contrato tiene propietario, consumidores conocidos, clasificación de datos, SLO, versión vigente, historial de cambios y prueba automatizada. La promoción a PREPROD y PROD se bloquea cuando una implementación rompe un contrato publicado o elimina un campo aún consumido.
+
+\subsubsection*{Seguridad lógica}
+
+La identidad se gestiona con OIDC; el acceso humano exige MFA y sesiones de duración acotada. Los roles representan funciones laborales y las políticas incorporan recinto, turno, estado contractual y sensibilidad de la acción. Las cuentas compartidas están prohibidas. Los servicios usan identidades de carga de trabajo de vida corta; no se almacenan claves estáticas dentro de imágenes ni repositorios.
+
+El ingreso público aplica protección DDoS, WAF, TLS, cuota y validación antes del API Gateway. El tráfico recinto-nube usa túneles VPN redundantes y mTLS a nivel de aplicación. Los datos se cifran en tránsito y reposo mediante claves administradas, con separación de funciones entre custodia, operación y auditoría. Secret Manager conserva secretos y rota los que admiten rotación; las copias de respaldo tienen política de retención y acceso independiente.
+
+Cada acción sensible genera auditoría con actor, rol efectivo, dispositivo, objeto, resultado, motivo, política y correlación. Los registros de seguridad se exportan a un proyecto separado y se protegen contra modificación por los operadores de la aplicación. El principio Zero Trust se aplica igualmente en nube, recinto y administración remota.
+
+\subsubsection*{Datos, autoridad y operación desconectada}
+
+La Figura~\ref{fig:flujo-datos} identifica la autoridad de escritura y evita que una réplica atrasada confirme una decisión exclusiva.
+% Figura incorporada desde figuras/03_flujo_datos.tex
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\small,node distance=9mm,
+  caja/.style={draw=synblue,rounded corners,fill=synsky,align=center,minimum height=11mm,text width=38mm},
+  flecha/.style={-{Latex[length=2mm]},thick,synblue},
+  sync/.style={{Latex[length=2mm]}-{Latex[length=2mm]},thick,dashed,syngreen}]
+\node[caja] (cloud) {\textbf{PostgreSQL cloud}\\maestros, contratos, estados consolidados y auditoría};
+\node[caja,below left=12mm and 10mm of cloud] (local) {\textbf{PostgreSQL local}\\autoridad de hechos críticos del recinto};
+\node[caja,below right=12mm and 10mm of cloud] (objects) {\textbf{Objetos cifrados}\\documentos, evidencias, respaldos y exportaciones};
+\node[caja,below=15mm of cloud] (events) {\textbf{Intercambio durable}\\outbox, Pub/Sub, inbox y DLQ};
+\draw[sync] (cloud) -- node[left,align=center,font=\small]{maestros firmados\\hechos idempotentes} (local);
+\draw[flecha] (local) -- (events);
+\draw[flecha] (events) -- (cloud);
+\draw[flecha] (cloud) -- (objects);
+\draw[flecha] (local) -- (objects);
+\end{tikzpicture}
+\caption{Autoridad de datos y sincronización entre nube y recinto}
+\label{fig:flujo-datos}
+\Fuente{Elaboración propia a partir de los flujos offline de las Bases y SD3.}
+\end{figure}
+
+PostgreSQL cloud conserva maestros, contratos, tarifas, expedientes, estados consolidados y auditoría de negocio. PostgreSQL local conserva el subconjunto firmado necesario para operar y los hechos nacidos durante la desconexión. Los documentos y evidencias se almacenan como objetos cifrados; las bases guardan su identificador, huella criptográfica, clasificación y retención.
+
+La célula local recibe versiones firmadas de personas habilitadas, recursos, reglas críticas y asignaciones. Durante una desconexión de hasta 24 horas continúa los flujos definidos; los dispositivos de terreno operan 12 horas y las actividades de boyas 8 horas con paquetes previamente descargados. Al retornar la comunicación, la cola transmite hechos en orden causal, valida duplicados y concilia conflictos. El objetivo es completar la resincronización dentro de 30 minutos después de una desconexión de 24 horas con la carga contractual.
+
+Un conflicto no se resuelve con ``última escritura gana''. La autoridad del tipo de dato determina el resultado: el hecho operacional confirmado en el recinto se preserva; el maestro contractual cloud conserva su versión; una referencia inválida queda en conciliación humana. La interfaz informa estado pendiente, confirmado, rechazado o conciliación requerida.
+
+\subsection{Especificaciones Tecnologías de Software a utilizar}
+
+La selección privilegia operación administrada, residencia del núcleo transaccional en Chile, portabilidad de la aplicación y disponibilidad de servicios en la región. Se compararon Google Cloud, Microsoft Azure y AWS. Google Cloud se selecciona técnicamente porque Cloud Run, Cloud SQL for PostgreSQL y Pub/Sub están disponibles en Santiago y permiten mantener contenedores, SQL estándar y contratos abiertos. Azure constituye una alternativa equivalente con Container Apps y PostgreSQL en Chile Central. AWS se descarta para el diseño nuevo porque su región chilena aún figura anunciada al corte documental, aunque la decisión crea una contradicción habilitante con SD1 que se registra por separado. La Tabla~\ref{tab:comparacion-cloud} resume la comparación antes de formalizar la selección.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Evaluación cualitativa de plataforma cloud}
+\label{tab:comparacion-cloud}
+\begin{tabularx}{\textwidth}{Q{29mm}YYY}
+\toprule
+\textbf{Criterio} & \textbf{Google Cloud} & \textbf{Azure} & \textbf{AWS}\\
+\midrule
+Región chilena operativa & Santiago, tres zonas & Chile Central, tres zonas & Región anunciada al corte\\
+Ejecución administrada & Cloud Run & Container Apps & ECS/Fargate fuera de región chilena\\
+PostgreSQL administrado & Cloud SQL HA & Flexible Server HA & RDS en región extranjera\\
+Mensajería & Pub/Sub & Service Bus/Event Grid & SQS/EventBridge\\
+Portabilidad & Contenedores, PostgreSQL y contratos abiertos & Contenedores, PostgreSQL y contratos abiertos & Contenedores, PostgreSQL y contratos abiertos\\
+Resultado & Seleccionado & Alternativa técnica & Alternativa condicionada por región\\
+\bottomrule
+\end{tabularx}
+\Fuente{Elaboración propia con catálogos regionales oficiales consultados al 8 de octubre de 2026.}
+\end{table}
+
+El backend utiliza Java 21 LTS, Spring Boot 4 y Spring Modulith 2, con módulos compilables y dependencias verificadas. La permanencia en Java 21 reduce riesgo de compatibilidad frente a adoptar inmediatamente una versión LTS más reciente. Las migraciones se gestionan con Flyway; las pruebas usan JUnit, Testcontainers y validación de contratos. Las imágenes se construyen con base mínima, usuario no privilegiado, SBOM, firma y digest inmutable.
+
+El portal usa TypeScript y React, diseño accesible y componentes reutilizables. La aplicación móvil Android se implementa en Kotlin, almacena paquetes cifrados, exige bloqueo del dispositivo y conserva una cola local idempotente. La aplicación no incrusta decisiones maestras ni secretos. Las versiones menores se fijan en una lista de materiales al iniciar construcción y se actualizan mediante el procedimiento de vulnerabilidades, evitando promesas de números futuros no verificados.
+
+PostgreSQL 18 es el motor relacional de referencia en nube y recinto. Se selecciona por transacciones, restricciones, JSON controlado, particionamiento, replicación y portabilidad. No se usa una base NoSQL como fuente de verdad porque las asignaciones, contratos, autorizaciones y conciliaciones requieren integridad relacional. Redis o una caché administrada solo puede acelerar lecturas reconstruibles; su pérdida no elimina un estado de negocio.
+
+Google Cloud Run ejecuta el contenedor del monolito modular y trabajadores independientes de sincronización, notificación y documentos. Cloud SQL usa alta disponibilidad zonal en Santiago. Pub/Sub transporta eventos; Cloud Storage conserva documentos y copias; External Application Load Balancer y Cloud Armor protegen el ingreso; Identity Platform implementa OIDC; Cloud KMS y Secret Manager protegen claves y secretos; Cloud Monitoring, Logging, Trace y Audit Logs forman la observabilidad. Terraform describe proyectos, redes, cuentas, políticas, servicios y alertas.
+
+La lectura documental es una innovación asistida, no una dependencia crítica. Cuando el procesador especializado opere fuera de Chile, se requiere autorización escrita, minimización, cifrado, retención acotada y registro de transferencia. Si esas condiciones no se cumplen, se emplea captura manual o OCR local sin impedir la operación.
+
+\section{Arquitectura física}
+
+La arquitectura física asigna cada responsabilidad lógica a un ambiente, región, red y activo. La nube entrega elasticidad y servicios administrados; la sala secundaria del puerto preserva las funciones críticas desconectadas; la región de recuperación permite restituir el servicio ante pérdida completa de Santiago. Ninguna capa se presenta como disponible si depende de un único enlace, equipo o zona no mitigada.
+
+La Figura~\ref{fig:despliegue-fisico} muestra los cinco ambientes obligatorios y las tres ubicaciones operacionales.
+% Figura incorporada desde figuras/04_despliegue_fisico.tex
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\small,node distance=7mm,
+  zona/.style={draw=synblue,rounded corners,fill=synsky,align=left,minimum height=17mm,text width=54mm},
+  flecha/.style={{Latex[length=2mm]}-{Latex[length=2mm]},thick,syngreen}]
+\node[zona] (prod) {\textbf{GCP Santiago - PROD}\\Cloud Run multizona; Cloud SQL HA; Pub/Sub; objetos; identidad; seguridad y observabilidad};
+\node[zona,right=11mm of prod] (dr) {\textbf{GCP São Paulo - DR}\\infraestructura reproducible; imágenes verificadas; réplica; copias aisladas y capacidad mínima activa};
+\node[zona,below=12mm of prod] (nonprod) {\textbf{Proyectos no productivos}\\DEV, QA y PREPROD aislados; datos sintéticos; PREPROD replica controles};
+\node[zona,below=12mm of dr] (site) {\textbf{Puerto - célula local}\\dos nodos; PostgreSQL; cola; MQTT; almacenamiento cifrado; firewall y red redundantes};
+\draw[flecha] (prod) -- node[above,font=\small]{replicación y copias} (dr);
+\draw[flecha] (prod) -- node[left,font=\small]{promoción controlada} (nonprod);
+\draw[flecha] (prod) -- node[right,align=center,font=\small]{HTTPS/mTLS\\sobre VPN} (site);
+\end{tikzpicture}
+\caption{Despliegue físico en ambientes, regiones y recinto}
+\label{fig:despliegue-fisico}
+\Fuente{Elaboración propia con ubicaciones oficiales de Google Cloud al 8 de octubre de 2026.}
+\end{figure}
+
+DEV, QA y PREPROD se implementan en proyectos separados de PROD. DEV prioriza integración temprana; QA ejecuta pruebas funcionales, seguridad y carga; PREPROD replica topología, configuración, controles, migraciones y proceso de despliegue de PROD. Los datos no productivos son sintéticos o anonimizados. DR se ubica en São Paulo, mantiene infraestructura reproducible, imágenes verificadas, secretos recuperables por procedimiento y capacidad mínima activa.
+
+PROD se despliega en \texttt{southamerica-west1} con ingreso global y cargas repartidas entre zonas. Cloud Run mantiene instancias mínimas para los flujos críticos y escala por concurrencia. Cloud SQL opera en alta disponibilidad regional con réplica síncrona entre zonas. Los eventos, objetos y registros se configuran con ubicación explícita; cualquier servicio global documenta dónde procesa y almacena datos.
+
+El objetivo de continuidad es \RTO{} y \RPO{}. Una réplica interregional continua de Cloud SQL transmite registros desde Santiago hacia São Paulo y mantiene un retraso máximo monitoreado de 15 minutos; superar ese umbral genera alerta y bloquea cualquier afirmación de cumplimiento del RPO. Cloud SQL Enterprise Plus conserva recuperación a un punto en el tiempo por 35 días y las copias diarias se exportan a un proyecto de respaldo con retención protegida. Terraform, imágenes firmadas y procedimientos recrean la plataforma en São Paulo. La conmutación no es automática: el responsable declara desastre, verifica el retraso y la consistencia, promueve la réplica, activa endpoints y ejecuta pruebas de integridad antes de abrir tráfico. El retorno crea una réplica nueva hacia Santiago, concilia el corte y solo entonces restituye la región primaria.
+
+\subsubsection*{Capacidad inicial y crecimiento}
+
+El dimensionamiento parte de 320 amarras, 296 contratos, 180 espacios de invernaje, 40 boyas, 1.900 visitantes anuales, 4.800 zarpes anuales, 1.150 movimientos de travelift, 1,9 millones de litros de combustible, 1.240 socios, 640 alumnos y hasta 760 puntos de medición. La carga de diseño incorpora ráfagas estacionales, una reserva de 30\% y crecimiento durante los 56 meses.
+
+La admisión inicial se fija en 100 solicitudes por segundo con ráfagas de 200 para el conjunto, muy por encima de la media anual pero verificable con pruebas de carga. La base productiva inicia con 4 vCPU, 16 GB de memoria y 500 GB de almacenamiento ampliable; estos valores son unidades de diseño, no mediciones ejecutadas. Cloud Run reserva tres instancias de 2 vCPU y 4 GB para la API y una para trabajadores críticos, con escalado hasta diez instancias sujeto a cuota y prueba.
+
+La telemetría de 760 puntos, a un registro cada 15 minutos, produce aproximadamente 73.000 lecturas diarias antes de reintentos y calidad. Se conserva el dato operacional en PostgreSQL y se exportan series históricas a almacenamiento analítico por política. Los documentos se estiman separadamente y se monitorean por volumen real; la ampliación de objetos no exige detener la aplicación.
+
+\subsubsection*{Red y comunicaciones}
+
+La Figura~\ref{fig:red-recinto} presenta la segmentación física y los caminos redundantes entre el puerto y la nube.
+% Figura incorporada desde figuras/05_red_recinto.tex
+\begin{figure}[htbp]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[font=\normalsize,node distance=7mm,
+  caja/.style={draw=synblue,rounded corners,fill=synsky,align=center,minimum height=9mm,text width=31mm},
+  red/.style={draw=syngreen,rounded corners,fill=green!8,align=center,minimum height=8mm,text width=105mm},
+  flecha/.style={-{Latex[length=2mm]},thick,synblue}]
+\node[caja] (isp1) {ISP 1\\fibra};
+\node[caja,right=7mm of isp1] (isp2) {ISP 2\\medio diverso};
+\node[caja,right=7mm of isp2] (gcp) {GCP\\VPN HA};
+\node[red,below=8mm of isp2] (fw) {Par de firewalls: terminación VPN, inspección, filtrado, NAT y registro};
+\node[red,below=7mm of fw] (switch) {Dos switches: VLAN servidores, gestión, usuarios, IoT/OT, CCTV y visitantes};
+\node[caja,below left=8mm and 5mm of switch] (servers) {Célula local\\dos nodos};
+\node[caja,below=8mm of switch] (ops) {Puestos críticos\\y Wi-Fi operacional};
+\node[caja,below right=8mm and 5mm of switch] (iot) {Medidores, control\\y sensores};
+\draw[flecha] (isp1) -- (fw);
+\draw[flecha] (isp2) -- (fw);
+\draw[flecha] (gcp) -- (fw);
+\draw[flecha] (fw) -- (switch);
+\draw[flecha] (switch) -- (servers);
+\draw[flecha] (switch) -- (ops);
+\draw[flecha] (switch) -- (iot);
+\end{tikzpicture}
+}
+\caption{Segmentación y conectividad redundante del recinto}
+\label{fig:red-recinto}
+\Fuente{Elaboración propia a partir de FEP01.26 y los requisitos de continuidad del caso.}
+\end{figure}
+
+Dos proveedores con último tramo diverso terminan en un par de firewalls. Dos túneles por proveedor forman VPN de alta disponibilidad hacia Google Cloud. La conmutación se prueba trimestralmente y no depende de una sesión administrativa externa. El tráfico se limita por lista de redes, identidad y puerto; la administración requiere bastión, MFA y registro.
+
+La red del recinto separa servidores, gestión, usuarios, IoT/OT, CCTV, visitantes y voz. Los medidores y controles no inician conexiones hacia estaciones de usuario. El Wi-Fi operacional usa autenticación empresarial y perfiles administrados; visitantes solo acceden a Internet. Dos switches apilables y enlaces dobles conectan la célula, firewalls, puntos críticos y almacenamiento. Los recorridos entre edificios usan fibra cuando la exposición eléctrica o distancia lo exige.
+
+\subsubsection*{Célula operacional local}
+
+La célula contiene dos nodos de cómputo equivalentes con 16 núcleos, 64 GB de memoria y almacenamiento empresarial cifrado por nodo. Los contenedores se ejecutan mediante Podman y systemd; no se instala Kubernetes. PostgreSQL mantiene réplica síncrona cuando ambos nodos están sanos. La conmutación es controlada y utiliza fencing para evitar dos primarios; una pérdida de quórum no autoriza escrituras simultáneas.
+
+La célula ejecuta API local, sincronización, autorización acotada, colas, MQTT, captura de telemetría, auditoría y observabilidad esencial. Conserva 60 días de colas y respuestas idempotentes y capacidad para 30 días de operación degradada sin depuración destructiva, aunque el objetivo contractual de desconexión sea 24 horas. La vuelta del enlace no habilita acceso cloud hasta validar reloj, certificados, espacio, retraso y conciliación.
+
+\subsection{Especificaciones Implementos a proveer (Hardware y Software)}
+
+Los implementos se resumen en el Formulario T-11 reconstruido. Cada unidad tiene función, cantidad, capacidad mínima, ubicación, redundancia, soporte y criterio de aceptación; una marca mencionada como referencia no sustituye la comprobación de ficha técnica. El inventario incluye servicios cloud, licencias, nodos, red, energía, climatización, seguridad física, puestos, terminales, medidores, repuestos y soporte por 56 meses.
+
+La capacidad cloud se expresa en unidades técnicas: instancias mínimas y máximas, vCPU, memoria, almacenamiento, retención, mensajes y ambientes. El hardware local se dimensiona por carga crítica y crecimiento, no como réplica de todos los servicios cloud. Los equipos compatibles con rack usan doble fuente y conexión A/B cuando el mercado lo permite; los elementos con fuente única se conectan mediante transferencia estática o se duplican.
+
+La recepción exige inventario con número de serie, firmware aprobado, garantía, licencias, configuración respaldada y prueba. Los repuestos se mantienen actualizados y no se consideran capacidad productiva simultánea. El soporte cubre reemplazo, parches, renovación y escalamiento de fabricante; el detalle se encuentra en el documento local \textit{Formulario-T11-Reconstruccion.tex}.
+
+El balance físico ocupa 17 U del rack: 4 U para dos nodos, 2 U para almacenamiento, 2 U para firewalls, 2 U para switches, 2 U para paneles, 6 U para dos UPS y 1 U para gestión ambiental; quedan 7 U libres de 24 U. La red proporciona 96 puertos de acceso mediante dos switches de 48 puertos, suficientes para 18 puestos, 14 puntos Wi-Fi, dos cámaras, servidores, firewalls, control de acceso, gestión y enlaces IoT, conservando al menos 30\% de reserva. La carga protegida es 5 kW; dos UPS de 10 kVA/9 kW trabajan N+1, el generador es de 25 kVA con al menos 200 litros útiles y cada unidad de climatización entrega 24.000 BTU/h, superior a la carga térmica de diseño con reserva.
+
+\section{Data center}
+
+La solución distingue el centro de datos primario administrado por el proveedor cloud, el centro de recuperación regional y la sala secundaria del puerto. Synaptix no atribuye certificaciones físicas no verificadas: para la nube se heredan controles acreditados del proveedor mediante contrato y reportes; para el recinto se especifican controles diseñables y pruebas de recepción.
+
+La sala local no se denomina centro de datos de nivel Tier. Es una sala secundaria proporcional para continuidad de un puerto sin personal TI interno. Su diseño aplica separación de energía y datos, redundancia N+1 donde una falla detendría la célula, monitoreo remoto y mantenimiento seguro. La Figura~\ref{fig:sala-servidores} muestra su zonificación funcional.
+% Figura incorporada desde figuras/06_sala_servidores.tex
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\small,
+  area/.style={draw=synblue,rounded corners,fill=synsky,align=center,minimum height=15mm,text width=38mm},
+  flujo/.style={-{Latex[length=2mm]},thick,syngreen}]
+\draw[thick,synblue,rounded corners] (0,0) rectangle (13.2,6.2);
+\node[anchor=north west,font=\bfseries\color{synblue}] at (0.2,6.0) {Sala secundaria proporcional - zonificación conceptual};
+\node[area] (rack) at (2.4,3.7) {Rack 24U\\nodos, switches, firewall, PDU y paneles};
+\node[area] (ups) at (6.6,3.7) {Zona eléctrica\\UPS N+1, bypass y tableros};
+\node[area] (cool) at (10.7,3.7) {Climatización\\dos unidades N+1};
+\node[area] (access) at (2.4,1.3) {Acceso controlado\\registro y CCTV};
+\node[area] (fire) at (6.6,1.3) {Detección temprana\\y extinción limpia};
+\node[area] (monitor) at (10.7,1.3) {Sensores\\temperatura, humedad, agua y humo};
+\draw[flujo] (cool) -- (rack);
+\draw[flujo] (ups) -- (rack);
+\draw[flujo] (monitor) -- (rack);
+\end{tikzpicture}
+\caption{Zonificación funcional de la sala secundaria}
+\label{fig:sala-servidores}
+\Fuente{Elaboración propia a partir de FEP05.26, Sala de Servidores.}
+\end{figure}
+
+El rack se ubica fuera de zonas inundables, tuberías de agua, ventanas y tránsito público. Se mantienen espacios de servicio frontal y posterior, bandejas separadas para energía y datos, etiquetado en ambos extremos y reserva de unidades. UPS y baterías se separan térmica y físicamente según instrucciones del fabricante. Las unidades de climatización evitan descargar condensado sobre equipos.
+
+\subsection{Especificaciones Data Center Primaria}
+
+El centro primario corresponde a Google Cloud Santiago (\texttt{southamerica-west1}). La aplicación distribuye capacidad entre zonas y evita afinidades que concentren todas las instancias. La base de datos usa alta disponibilidad zonal; los objetos y eventos declaran ubicación; la red se define por código con subredes privadas, conectividad controlada y registros de flujo.
+
+La responsabilidad compartida se documenta por servicio. Google protege instalaciones, hardware y plataforma administrada; Synaptix conserva responsabilidad sobre identidades, configuración, cifrado, clasificación, aplicación, datos, copias y respuesta a incidentes. Los informes de cumplimiento, condiciones de subencargados y ubicación efectiva se revisan antes de contratación y anualmente.
+
+Los límites de cuota, capacidad y disponibilidad por región se comprueban antes de cada hito. La cuenta de respaldo está separada de producción y restringe borrado. La observabilidad genera alertas por disponibilidad técnica y por síntomas de negocio, como amarras sin confirmación, retiros no difundidos, colas atrasadas o pérdida de auditoría.
+
+El despliegue usa imágenes por digest y estrategia gradual. PREPROD ejecuta migración, despliegue, retorno e integridad antes de PROD. Un error crítico, SLO incumplido o verificación de datos fallida revierte a la imagen anterior; una migración irreversible requiere respaldo y procedimiento de avance, no una promesa de reversión imposible.
+
+\subsection{Especificaciones Data Center Secundario}
+
+El centro secundario combina dos capacidades distintas. Google Cloud São Paulo (\texttt{southamerica-east1}) recupera los servicios cloud ante desastre regional. La sala del puerto mantiene operación crítica durante pérdida de WAN o nube. Ninguna de las dos sustituye a la otra: São Paulo requiere conectividad, mientras la célula local tiene alcance funcional limitado.
+
+La Figura~\ref{fig:energia-continuidad} presenta la cadena eléctrica de la sala y su relación con la autonomía operativa.
+% Figura incorporada desde figuras/07_energia_continuidad.tex
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\small,node distance=6mm,
+  caja/.style={draw=synblue,rounded corners,fill=synsky,align=center,minimum height=9mm,text width=26mm},
+  crit/.style={draw=synorange,rounded corners,fill=orange!7,align=center,minimum height=9mm,text width=28mm},
+  flecha/.style={-{Latex[length=2mm]},thick,synblue}]
+\node[caja] (grid) {Red eléctrica};
+\node[caja,right=6mm of grid] (ats) {ATS y tablero protegido};
+\node[caja,right=6mm of ats] (ups) {Dos UPS N+1\\30 min};
+\node[crit,right=6mm of ups] (load) {Carga crítica\\TI, red y control};
+\node[caja,below=9mm of ats] (gen) {Generador\\combustible 24 h};
+\node[caja,below=9mm of ups] (pdu) {PDU A/B y medición};
+\node[crit,below=9mm of load] (ops) {Operación offline\\24 h recinto};
+\draw[flecha] (grid) -- (ats);
+\draw[flecha] (ats) -- (ups);
+\draw[flecha] (ups) -- (load);
+\draw[flecha] (gen) -- (ats);
+\draw[flecha] (ups) -- (pdu);
+\draw[flecha] (load) -- (ops);
+\end{tikzpicture}
+\caption{Cadena eléctrica y continuidad de la operación local}
+\label{fig:energia-continuidad}
+\Fuente{Elaboración propia a partir de FEP05.26 y la autonomía exigida por las Bases.}
+\end{figure}
+
+La alimentación usa tablero dedicado, protección contra sobretensión, transferencia automática y grupo electrógeno. Dos UPS en N+1 entregan al menos 30 minutos a la carga crítica, suficientes para arranque del generador o apagado controlado. El combustible sostiene 24 horas a la carga medida, con contrato de reposición y prueba mensual bajo carga.
+
+Dos unidades de climatización operan N+1 y mantienen temperatura y humedad dentro del rango del fabricante. Sensores independientes detectan temperatura, humedad, humo, apertura, agua y pérdida de energía. Las alertas llegan al servicio gestionado por dos canales. La detección temprana y la extinción mediante agente apropiado para equipos eléctricos se diseñan con especialista autorizado, junto con señalización, corte y evacuación.
+
+El acceso físico es nominal, con MFA o credencial más segundo factor, registro, CCTV y revisión mensual. Proveedores ingresan acompañados y con orden. El rack, BMC, UPS, climatización y sensores usan una red de gestión separada, sin exposición directa a Internet. El inventario relaciona activo, posición, puertos, circuito, garantía y responsable.
+
+Las pruebas de aceptación incluyen pérdida de cada ISP, firewall, switch, nodo, fuente, UPS y unidad de climatización; arranque del generador; operación desconectada por 24 horas mediante simulación controlada; resincronización; recuperación de copia; activación regional; y retorno. Los resultados reales reemplazarán los parámetros de diseño sin ocultar desviaciones. El ejercicio de DR se repite al menos una vez al año y después de cambios mayores.
+
+\section*{Referencias}
+\addcontentsline{toc}{section}{Referencias}
+
+\begin{enumerate}
+\item Pontificia Universidad Católica de Valparaíso. \textit{Bases técnicas del caso Puerto Deportivo Bahía Panitao}, artículos y requisitos transversales citados por la propuesta.
+\item Pontificia Universidad Católica de Valparaíso. \textit{Comunicado 10: estructura obligatoria de la propuesta preparada}, pauta para SD4 y T-11.
+\item FEP01.26. \textit{Introducción a la Arquitectura de Software}, vistas lógica, física, integración, seguridad, continuidad y nube.
+\item FEP05.26. \textit{Sala de Servidores}, energía, climatización, racks, protección, redundancia y dimensionamiento.
+\item Google Cloud. \textit{Regions and zones; Cloud Run locations; Cloud SQL locations}, consultado el 8 de octubre de 2026. \url{https://cloud.google.com/docs/geography-and-regions}
+\item Microsoft. \textit{Azure regions and availability zones}, consultado el 8 de octubre de 2026. \url{https://learn.microsoft.com/azure/reliability/availability-zones-region-support}
+\item Amazon Web Services. \textit{Región AWS América del Sur (Chile)}, consultado el 8 de octubre de 2026. \url{https://aws.amazon.com/es/local/chile/}
+\item ISO/IEC/IEEE 42010:2022. \textit{Software, systems and enterprise -- Architecture description}.
+\item NIST SP 800-207. \textit{Zero Trust Architecture}.
+\end{enumerate}
+
+\section*{Declaración de uso de inteligencia artificial}
+\addcontentsline{toc}{section}{Declaración de uso de inteligencia artificial}
+
+Se utilizó OpenAI Codex como apoyo para organizar la trazabilidad, comparar alternativas tecnológicas, redactar una primera versión y generar diagramas TikZ. Las decisiones de arquitectura, cantidades, afirmaciones contractuales, fuentes y riesgos requieren revisión y aprobación humana antes de incorporar este material a una oferta. El documento no declara como ejecutadas pruebas que solo han sido diseñadas.
+
+\end{document}

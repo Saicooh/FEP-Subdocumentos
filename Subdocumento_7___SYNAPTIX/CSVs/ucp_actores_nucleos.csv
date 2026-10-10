@@ -1,0 +1,13 @@
+﻿Actor,Tipo,Peso,Interfaz
+Administración,Complejo,3,"Consola, portal o aplicación; mismo rol contado una vez para todos los canales"
+Ambiente,Complejo,3,"Consola, portal o aplicación; mismo rol contado una vez para todos los canales"
+Apoderado,Complejo,3,"Consola, portal o aplicación; mismo rol contado una vez para todos los canales"
+Armador,Complejo,3,"Consola, portal o aplicación; mismo rol contado una vez para todos los canales"
+Combustible,Complejo,3,"Consola, portal o aplicación; mismo rol contado una vez para todos los canales"
+Contratista,Complejo,3,"Consola, portal o aplicación; mismo rol contado una vez para todos los canales"
+Escuela,Complejo,3,"Consola, portal o aplicación; mismo rol contado una vez para todos los canales"
+Finanzas,Complejo,3,"Consola, portal o aplicación; mismo rol contado una vez para todos los canales"
+Infraestructura,Complejo,3,"Consola, portal o aplicación; mismo rol contado una vez para todos los canales"
+Portería,Complejo,3,"Consola, portal o aplicación; mismo rol contado una vez para todos los canales"
+Torre y marinería,Complejo,3,"Consola, portal o aplicación; mismo rol contado una vez para todos los canales"
+Varadero,Complejo,3,"Consola, portal o aplicación; mismo rol contado una vez para todos los canales"

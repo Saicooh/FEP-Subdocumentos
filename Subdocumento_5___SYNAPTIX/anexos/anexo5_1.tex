@@ -1,0 +1,1475 @@
+\section*{A5.1 Diccionario de datos}
+
+\label{anx:sd5_diccionario}
+
+Este diccionario especifica los nueve dominios de 5.1 y las estructuras compartidas de 5.2. Los nombres técnicos, tipos, precisiones y catálogos no fijados en el SD5 son propuestas de especificación lógica de Synaptix, sujetas a revisión antes del esquema físico \parencites[RT-05.01]{pucv-bases-transversales}{synaptix-sd4}.
+
+\subsection*{A5.1.1 Convenciones y alcance}
+
+Cada atributo conserva nombre, tipo, dominio de valores, obligatoriedad y sensibilidad. Su propietario es el declarado en la fila de entidad, regla que se aplica también a los atributos transversales, salvo excepción expresa. S significa obligatorio; N, opcional; y C, obligatorio bajo la condición indicada. En sensibilidad, I es interna, R restringida y S sensible; prevalecen el contenido y el contexto, incluidos los identificadores que permitan vincular personas.
+
+El propietario identifica responsabilidad funcional. En NOT y COM, el dominio de origen conserva sus hechos; en Documento y Versión documental, el dominio del contenido decide su uso y AS mantiene la custodia técnica. En los controles globales de exportación, retención y eliminación, AS gobierna el control y cada propietario valida el alcance de sus datos. Acceso, autoridad, cifrado y retención se aplican según A5.2 y la Tabla~\ref{tab:a52_retencion}; un plazo mayor o un bloqueo del expediente prevalece.
+
+UUID v4 es estable y las claves externas conservan emisor y valor original. Los instantes se almacenan en UTC y se muestran en America/Santiago, distinguiendo ocurrencia y recepción. Los intervalos incluyen inicio y excluyen fin; fin nulo indica intervalo abierto. Las cantidades usan precisión decimal y unidad explícita. NULL expresa ausencia documentada; cero, cantidad conocida; y no aplica, una condición funcional explícita. No se sustituyen ausencias por fechas, unidades o cantidades ficticias.
+
+Las referencias conservan integridad en su autoridad y un pendiente explícito cuando falta el antecedente durante sincronización. Una referencia obligatoria identifica un objeto; los vínculos N:M utilizan entidades puente y las unicidades se indican por entidad. Los datos JSON mantienen esquema versionado y referencias verificables. El origen es captura o importación del dominio correspondiente, salvo derivación indicada. Los IDs D son referencias internas y no renumeran RF, RNF, RN, DEC ni DA.
+
+Los seis atributos transversales siguientes corresponden a registros persistentes; en vistas derivadas describen el materializado o corte. El Sobre de evento conserva exclusivamente sus doce campos de SD4 y no incorpora esos metadatos adicionales al mensaje. La Vista de emergencia autorizada utiliza el mismo alumno y participación, sin crear asistencia paralela.
+
+En Amarra, Boya, Medidor, Tren de fondeo, Componente de fondeo, Punto de suministro e Instrumento de suministro, \texttt{id} coincide con \texttt{activo\_id}: una identidad de activo con extensión 1:0..1 por tipo. Ubicación y configuración conservan historia mediante intervalos y actuaciones.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}L{\dimexpr0.140\textwidth-4.5pt\relax}L{\dimexpr0.400\textwidth-4.5pt\relax}@{}}
+\caption{Atributos transversales de registros persistentes}\label{tab:a51_comunes} \\
+\hline
+\EncabezadoTabla{Atributo} & \EncabezadoTabla{Tipo / dominio} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Atributo} & \EncabezadoTabla{Tipo / dominio} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición} \\ \hline
+\endhead
+\hline\endfoot
+\texttt{id} & uuid; UUID v4 global estable; clave primaria & S / R & Identidad lógica invariable en reenvíos, migración y cambio de ubicación. \\ \hline
+\texttt{version} & bigint; Entero >= 1, por registro/agregado & S / R & Control de modificación; versión esperada impide sobrescritura silenciosa. \\ \hline
+\texttt{registrado\_\allowbreak{}en} & timestamptz; UTC; presentación America/Santiago & S / R & Instante de persistencia; no reemplaza instante del hecho. \\ \hline
+\texttt{registrado\_\allowbreak{}por} & uuid; ref AS.Identidad de acceso & S / S & Autor humano o servicio; conservar actor original al importar. \\ \hline
+\texttt{fuente\_\allowbreak{}registro} & varchar(150); Productor/canal/legado identificado & S / R & Procedencia; recepción posterior no reatribuye la autoría funcional. \\ \hline
+\texttt{motivo\_\allowbreak{}cambio} & varchar(1000); Justificación o referencia protegida a decisión & C: cambio relevante / S & Conservar motivo, responsable y versión; ausencia en legado queda incidencia, no motivo ficticio. \\ \hline
+\end{longtable}
+\endgroup
+
+
+La cobertura define el universo de esta versión. NOT y COM son conjuntos auxiliares; la trazabilidad completa de requerimientos permanece en SD2/T-12.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.080\textwidth-4.5pt\relax}L{\dimexpr0.290\textwidth-4.5pt\relax}L{\dimexpr0.100\textwidth-4.5pt\relax}L{\dimexpr0.530\textwidth-4.5pt\relax}@{}}
+\caption{Universo del diccionario}\label{tab:a51_cobertura} \\
+\hline
+\EncabezadoTabla{Código} & \EncabezadoTabla{Ámbito} & \EncabezadoTabla{Entidades} & \EncabezadoTabla{Trazabilidad funcional} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Código} & \EncabezadoTabla{Ámbito} & \EncabezadoTabla{Entidades} & \EncabezadoTabla{Trazabilidad funcional} \\ \hline
+\endhead
+\hline\endfoot
+CC & Clientes y contratos & 13 & SD5 5.1.2.1; RF-ADM-01/04; RF-AUT-02/03; DEC-09--11; RN-07--09 \\ \hline
+OM & Operación marítima & 14 & SD5 5.1.2.2; NAV/AMA/BOY; DEC-01/04/05/11/19/21; RN-01--05 y RN-23/26 \\ \hline
+EN & Escuela náutica & 11 & SD5 5.1.2.3; RF-ESC-02--14; RF-AUT-05; DEC-06--08/21; RN-10--14 \\ \hline
+VC & Varadero y contratistas & 12 & SD5 5.1.2.4; VAR/CTR; RF-AUT-06; DEC-12/13/15/16; RN-15--18 \\ \hline
+CO & Combustible & 4 & SD5 5.1.2.5; CON (combustible); DEC-21; C07 RT-03.10 y RT-05.10 \\ \hline
+AC & Ambiente y consumos & 11 & SD5 5.1.2.6; AMB/CON; DEC-03/14; RN-19--21; C07 RT-05.10/29 \\ \hline
+FC & Finanzas y cobranza & 12 & SD5 5.1.2.7; FAC; RF-AUT-03; DEC-02/11/17/18; CON/VAR/AMA \\ \hline
+INF & Infraestructura & 14 & SD5 5.1.2.8; BOY/AMA/CON; DEC-03/19/20/21; DA-19 \\ \hline
+AS & Auditoría y seguridad & 11 & SD5 5.1.2.9; RF-ADM-03/05/09/11--19; RF-ESC-11/12; DEC-08/17/22 \\ \hline
+NOT & Servicio compartido de notificaciones & 6 & SD5 5.1.2, servicios compartidos; ALE; RN-06; C07 RT-09.01/RT-16.21; SD4 servicio compartido \\ \hline
+COM & Estructuras comunes de intercambio y control & 13 & SD5 5.2; BT RT-03.12/RT-05.03--09; DA-05/06; SD5 5.2 \\ \hline
+\end{longtable}
+\endgroup
+
+\subsection*{A5.1.2 Clientes y contratos}
+
+\label{dicdom:cc}
+
+El detalle siguiente conserva las entidades, sus atributos y restricciones. La correspondencia funcional se indica en la Tabla~\ref{tab:a51_cobertura} y en el apartado 5.1.2.1 del SD5 \parencites[anexos A2.1, A2.3 y A2.5]{synaptix-sd2-anexos}{synaptix-sd4}.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}L{\dimexpr0.140\textwidth-4.5pt\relax}L{\dimexpr0.400\textwidth-4.5pt\relax}@{}}
+\caption{Diccionario de Clientes y contratos}\label{tab:a51_cc} \\
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endhead
+\hline\endfoot
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:cc_persona}\label{tab:dic_cc_persona}\textbf{D-CC-01 Persona}. Propietario: Clientes y contratos. Retención: MAE. Identifica al individuo una sola vez; sus roles se representan por vínculos.} \\* \hline
+\texttt{nombre} & varchar(200); Texto no vacío & S / S & Nombre declarado; una coincidencia no permite fusionar identidades. \\ \hline
+\texttt{documento\_\allowbreak{}tipo} & varchar(30); Tipo y país emisor & C: documento acreditado / S & No imponer documento verificado para registrar un hecho seguro. \\ \hline
+\texttt{documento\_\allowbreak{}numero} & varchar(60); Identificador con emisor & C: documento acreditado / S & Clave alternativa; no sustituye al UUID. \\ \hline
+\texttt{documento\_\allowbreak{}emisor} & varchar(80); Sistema o autoridad emisora & C: número disponible / R & Ámbito de unicidad del número. \\ \hline
+\texttt{verificacion} & varchar(30); declarada; acreditada; provisional & S / R & Especificación de estado de identidad; provisional no concede facultades. \\ \hline
+\texttt{contacto} & varchar(250); Dato y canal declarado & N / S & Contacto mínimo; mantener procedencia y consentimiento aplicable. \\ \hline
+\texttt{fecha\_\allowbreak{}nacimiento} & date; Fecha anterior o igual al registro & C: menor/retención escolar / S & Permite cálculo de retención; ausencia bloquea purga automática. \\ \hline
+\texttt{condicion\_\allowbreak{}socio} & jsonb; Estado, origen e intervalo de vigencia & C: socio del padrón / S & Condición verificable, sin inferirla de ser armador. \\ \hline
+\texttt{contacto\_\allowbreak{}vigencia} & jsonb; Inicio, fin y origen por canal & C: contacto informado / S & Conserva versiones y evidencia del dato de contacto. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Una identidad técnica; no fusión automática por nombre/contacto. Documento y emisor se contrastan; roles en vínculos, no en personas duplicadas.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:cc_organizacion}\label{tab:dic_cc_organizacion}\textbf{D-CC-02 Organización}. Propietario: Clientes y contratos. Retención: MAE. Identifica a la entidad jurídica o institucional sin confundirla con Persona.} \\* \hline
+\texttt{nombre} & varchar(200); Denominación no vacía & S / R & Nombre declarado de empresa, institución o gestor. \\ \hline
+\texttt{identificador} & varchar(60); Código con emisor & N / S & Registro jurídico cuando exista; conservar ámbito. \\ \hline
+\texttt{emisor} & varchar(80); Autoridad/sistema emisor & C: identificador disponible / R & Desambigua códigos de distinto origen. \\ \hline
+\texttt{tipo} & varchar(40); Empresa; institución; gestor; otra declarada & S / R & Clasificación propuesta; no acredita autorización sectorial. \\ \hline
+\texttt{contacto} & varchar(250); Canal declarado & N / S & Contacto institucional; dato personal protegido si identifica individuo. \\ \hline
+\texttt{verificacion} & varchar(30); declarada; acreditada; provisional & S / R & Evidencia de comprobación, distinta de habilitación para una faena. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Organización mantiene su identidad al cambiar representantes. Ser gestor registrado no acredita su autorización; comprobar evidencia en Entrega a gestor.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:cc_parte_contractual}\label{tab:dic_cc_parte_contractual}\textbf{D-CC-03 Parte contractual}. Propietario: Clientes y contratos. Retención: CTR. Selecciona exactamente una identidad de Persona u Organización.} \\* \hline
+\texttt{persona\_\allowbreak{}id} & uuid; ref CC.Persona & C: parte persona / S & Una alternativa de titularidad. \\ \hline
+\texttt{organizacion\_\allowbreak{}id} & uuid; ref CC.Organización & C: parte organización / R & Alternativa excluyente con persona. \\ \hline
+\texttt{tipo\_\allowbreak{}parte} & varchar(20); persona; organización & S / R & Discriminador coherente con la referencia elegida. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Exactamente una referencia informada: persona XOR organización. La parte puede participar en varios contratos con roles distintos.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:cc_participacion_contractual}\label{tab:dic_cc_participacion_contractual}\textbf{D-CC-04 Participación contractual}. Propietario: Clientes y contratos. Retención: CTR. Vincula una parte con un contrato y su rol temporal.} \\* \hline
+\texttt{contrato\_\allowbreak{}id} & uuid; ref CC.Contrato & S / R & Contrato en que participa. \\ \hline
+\texttt{parte\_\allowbreak{}id} & uuid; ref CC.Parte contractual & S / S & Titular, representante u otra función admitida. \\ \hline
+\texttt{rol} & varchar(40); Catálogo funcional versionado & S / R & Función aceptada por la versión contractual. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio incluido de la participación. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & N / R & Término excluido; nulo mientras esté vigente. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & C: función exige respaldo / S & Documento/autorización utilizados. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Par contrato-parte-rol-intervalo sin duplicados incompatibles; comprobar facultades al instante del acto.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:cc_representacion}\label{tab:dic_cc_representacion}\textbf{D-CC-05 Representación}. Propietario: Clientes y contratos. Retención: CTR. Conserva las facultades de una persona para actuar por otra parte.} \\* \hline
+\texttt{representante\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Individuo autorizado. \\ \hline
+\texttt{representada\_\allowbreak{}id} & uuid; ref CC.Parte contractual & S / S & Persona u organización representada. \\ \hline
+\texttt{facultades} & jsonb; Lista de acciones y límites documentados & S / S & No convertir parentesco o contacto en facultad. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio de validez. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & N / R & Fin excluido. \\ \hline
+\texttt{documento\_\allowbreak{}id} & uuid; ref AS.Versión documental & S / S & Versión que respalda la representación. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Validar representación, alcance y vigencia antes de modificar contratos; revocación conserva historia.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:cc_vinculo_de_armador}\label{tab:dic_cc_vinculo_de_armador}\textbf{D-CC-06 Vínculo de armador}. Propietario: Clientes y contratos. Retención: CTR. Relaciona una embarcación con la parte que ejerce el rol de armador.} \\* \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & S / R & Nave a la que se aplica. \\ \hline
+\texttt{persona\_\allowbreak{}id} & uuid; ref CC.Persona & C: armador persona / S & Alternativa excluyente. \\ \hline
+\texttt{organizacion\_\allowbreak{}id} & uuid; ref CC.Organización & C: armador organización / R & Alternativa excluyente. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio incluido del rol. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & N / R & Fin excluido. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & S / S & Respaldo de titularidad o facultad declarada. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Persona XOR organización; conservar períodos y antecedentes al cambiar el armador, sin reemplazar identidad de la nave.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:cc_embarcacion}\label{tab:dic_cc_embarcacion}\textbf{D-CC-07 Embarcación}. Propietario: Clientes y contratos. Retención: MAE. Mantiene identidad estable, características y códigos de una nave.} \\* \hline
+\texttt{nombre} & varchar(150); Texto declarado & S / R & Nombre; no utilizarlo como clave única. \\ \hline
+\texttt{matricula} & varchar(60); Código con emisor & N / R & Identificador externo acreditado cuando exista. \\ \hline
+\texttt{matricula\_\allowbreak{}emisor} & varchar(80); Autoridad/sistema & C: matrícula disponible / R & Ámbito de unicidad. \\ \hline
+\texttt{eslora} & numeric(10,3); Metros > 0 & C: asignación de puesto / R & Dimensión usada por compatibilidad. \\ \hline
+\texttt{manga} & numeric(10,3); Metros > 0 & C: compatibilidad requiere / R & Dimensión declarada con origen. \\ \hline
+\texttt{calado} & numeric(10,3); Metros >= 0 & C: compatibilidad requiere / R & No inferirlo desde eslora. \\ \hline
+\texttt{tipo} & varchar(40); Catálogo de embarcaciones & S / R & Clasificación funcional. \\ \hline
+\texttt{verificacion} & varchar(30); declarada; acreditada; provisional & S / R & Estado de comprobación de identidad/dimensiones. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Una nave conserva UUID al cambiar armador, contrato o lugar. Ubicación efectiva proviene de OM; puesto/cuna de VC e INF.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:cc_contrato}\label{tab:dic_cc_contrato}\textbf{D-CC-08 Contrato}. Propietario: Clientes y contratos. Retención: CTR. Identifica el acuerdo y sus versiones, separado de la presencia física.} \\* \hline
+\texttt{numero} & varchar(60); Código interno con ámbito & S / R & Identificador alternativo. \\ \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & C: contrato de amarra/custodia / R & Objeto del servicio. \\ \hline
+\texttt{tipo} & varchar(40); Catálogo contractual versionado & S / R & Tipo de servicio autorizado. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio contractual. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & N / R & Fin del intervalo. \\ \hline
+\texttt{estado} & varchar(40); Catálogo contractual aprobado & S / R & Dominio propuesto: se valida con condiciones de negocio. \\ \hline
+\texttt{version\_\allowbreak{}vigente\_\allowbreak{}id} & uuid; ref CC.Versión de contrato & C: contrato confirmado / S & No sobrescribir versiones aceptadas. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Contrato no prueba ocupación. Partes por Participación contractual; obligaciones y firma en versión documental.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:cc_version_de_contrato}\label{tab:dic_cc_version_de_contrato}\textbf{D-CC-09 Versión de contrato}. Propietario: Clientes y contratos. Retención: CTR. Conserva texto, aceptación y evidencia de cada modificación contractual.} \\* \hline
+\texttt{contrato\_\allowbreak{}id} & uuid; ref CC.Contrato & S / R & Contrato estable. \\ \hline
+\texttt{numero\_\allowbreak{}version} & integer; Entero > 0 & S / R & Único por contrato. \\ \hline
+\texttt{documento\_\allowbreak{}id} & uuid; ref AS.Versión documental & S / S & Contenido y evidencia de firma. \\ \hline
+\texttt{aceptado\_\allowbreak{}en} & timestamptz; UTC & C: versión aceptada / R & Instante de aceptación. \\ \hline
+\texttt{aceptado\_\allowbreak{}por} & uuid; ref CC.Parte contractual & C: versión aceptada / S & Parte y facultad comprobadas. \\ \hline
+\texttt{vigente\_\allowbreak{}desde} & timestamptz; UTC & S / R & Fecha efectiva; no equivale al registro. \\ \hline
+\texttt{firma\_\allowbreak{}estado} & varchar(40); pendiente; comprobada; observada & S / R & Resultado técnico/funcional; modalidad según acto. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Único (contrato, número\_\allowbreak{}version); versiones firmadas inmutables. C07 RT-16.14 exige firma en contrato y renovaciones, sin fijar aquí modalidad legal.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:cc_asignacion}\label{tab:dic_cc_asignacion}\textbf{D-CC-10 Asignación}. Propietario: Clientes y contratos. Retención: CTR. Vincula contrato, nave y amarra durante el intervalo contractual autorizado.} \\* \hline
+\texttt{contrato\_\allowbreak{}id} & uuid; ref CC.Contrato & S / R & Antecedente del derecho de uso. \\ \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & S / R & Nave autorizada. \\ \hline
+\texttt{amarra\_\allowbreak{}id} & uuid; ref INF.Amarra & S / R & Recurso físico. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio incluido. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & N / R & Fin excluido. \\ \hline
+\texttt{autorizacion\_\allowbreak{}puesto\_\allowbreak{}id} & uuid; ref OM.Reserva operacional de puesto & C: confirmación / R & La autoridad local confirma compatibilidad y exclusividad. \\ \hline
+\texttt{estado} & varchar(40); Catálogo de asignación versionado & S / R & Estado de derecho, distinto de ocupación. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} No solapamientos incompatibles en recurso/intervalo confirmado; no inferir ocupación física desde asignación.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:cc_reserva}\label{tab:dic_cc_reserva}\textbf{D-CC-11 Reserva}. Propietario: Clientes y contratos. Retención: CTR. Conserva la solicitud comercial de puesto y su autorización operacional.} \\* \hline
+\texttt{solicitante\_\allowbreak{}id} & uuid; ref CC.Parte contractual & S / S & Quién solicita. \\ \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & S / R & Identidad declarada o provisional. \\ \hline
+\texttt{amarra\_\allowbreak{}id} & uuid; ref INF.Amarra & C: confirmada / R & Puesto autorizado. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Intervalo solicitado. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & S / R & Fin excluido. \\ \hline
+\texttt{estado} & varchar(40); solicitada; confirmada; atendida; cancelada; vencida & S / R & Estados conservados del cuerpo. \\ \hline
+\texttt{autorizacion\_\allowbreak{}id} & uuid; ref OM.Reserva operacional de puesto & C: confirmada / R & Confirmación de autoridad del recinto. \\ \hline
+\texttt{tarifa\_\allowbreak{}id} & uuid; ref CC.Tarifa versionada & C: efecto económico / R & Versión comercial utilizada. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Portal no confirma sobre copia antigua. Reserva solicitada no garantiza puesto; llegada puede generar Recalada sin reserva/prepago.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:cc_solicitud_de_espera}\label{tab:dic_cc_solicitud_de_espera}\textbf{D-CC-12 Solicitud de espera}. Propietario: Clientes y contratos. Retención: CTR. Conserva prioridad, oferta y respuesta de la lista de espera.} \\* \hline
+\texttt{solicitante\_\allowbreak{}id} & uuid; ref CC.Parte contractual & S / S & Persona/organización solicitante. \\ \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & S / R & Características de compatibilidad. \\ \hline
+\texttt{ingreso\_\allowbreak{}en} & timestamptz; UTC & S / R & Orden temporal de ingreso. \\ \hline
+\texttt{politica\_\allowbreak{}version} & varchar(60); Versión de regla publicada & S / R & Criterio aplicado a prioridad/oferta. \\ \hline
+\texttt{oferta\_\allowbreak{}puesto\_\allowbreak{}id} & uuid; ref INF.Amarra & N / R & Puesto ofrecido, aún no confirmado. \\ \hline
+\texttt{oferta\_\allowbreak{}en} & timestamptz; UTC & C: oferta emitida / R & Instante de comunicación. \\ \hline
+\texttt{respuesta} & varchar(40); pendiente; acepta; rechaza; expira & S / R & Estados propuestos para el registro descrito. \\ \hline
+\texttt{vence\_\allowbreak{}en} & timestamptz; UTC & C: oferta emitida / R & Caducidad de oferta. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Conservar política y comunicaciones; aceptación comercial requiere autorización local del puesto.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:cc_tarifa_versionada}\label{tab:dic_cc_tarifa_versionada}\textbf{D-CC-13 Tarifa versionada}. Propietario: Clientes y contratos. Retención: CTR. Conserva la regla económica usada por contratos y hechos facturables.} \\* \hline
+\texttt{codigo} & varchar(60); Código de tarifa con ámbito & S / R & Identificador funcional. \\ \hline
+\texttt{numero\_\allowbreak{}version} & integer; Entero > 0 & S / R & Versión de cálculo. \\ \hline
+\texttt{concepto} & varchar(80); Catálogo comercial & S / R & Servicio/concepto. \\ \hline
+\texttt{unidad} & varchar(30); Unidad explícita & S / R & Tiempo, litros u otra unidad admitida. \\ \hline
+\texttt{moneda} & char(3); Código de moneda contractual & S / R & No mezclar monedas. \\ \hline
+\texttt{regla\_\allowbreak{}calculo} & jsonb; Parámetros y fórmula versionados & S / R & Definición lógica sin publicar precios de oferta. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio de aplicación. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & N / R & Fin excluido. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} No publicar importes en estos anexos técnicos. Mantener versión usada por cada operación y aprobación de cambios operacionales.} \\ \hline
+\end{longtable}
+\endgroup
+
+\subsection*{A5.1.3 Operación marítima}
+
+\label{dicdom:om}
+
+El detalle siguiente conserva las entidades, sus atributos y restricciones. La correspondencia funcional se indica en la Tabla~\ref{tab:a51_cobertura} y en el apartado 5.1.2.2 del SD5 \parencites[anexos A2.1, A2.3 y A2.5]{synaptix-sd2-anexos}{synaptix-sd4}.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}L{\dimexpr0.140\textwidth-4.5pt\relax}L{\dimexpr0.400\textwidth-4.5pt\relax}@{}}
+\caption{Diccionario de Operación marítima}\label{tab:a51_om} \\
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endhead
+\hline\endfoot
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:om_recalada}\label{tab:dic_om_recalada}\textbf{D-OM-01 Recalada}. Propietario: Operación marítima. Retención: NAV. Identifica una permanencia de la nave en el recinto.} \\* \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & C: identidad conciliada / R & Puede estar pendiente sin borrar la llegada. \\ \hline
+\texttt{referencia\_\allowbreak{}provisional} & varchar(80); Identificador local estable & C: nave no conciliada / R & Corresponde a un hecho identificado. \\ \hline
+\texttt{llegada\_\allowbreak{}en} & timestamptz; UTC & S / R & Ocurrencia informada. \\ \hline
+\texttt{salida\_\allowbreak{}en} & timestamptz; UTC posterior a llegada & N / R & No cerrar hasta comprobar el hecho. \\ \hline
+\texttt{responsable\_\allowbreak{}pago\_\allowbreak{}id} & uuid; ref CC.Parte contractual & N / S & Vinculación administrativa posterior. \\ \hline
+\texttt{puesto\_\allowbreak{}id} & uuid; ref INF.Activo & N / R & Amarra/boya observada. \\ \hline
+\texttt{confirmacion\_\allowbreak{}id} & uuid; ref OM.Confirmación operacional & N / R & Comprobación de recepción/llegada. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Una nave puede tener varias recaladas históricas; identificación pendiente no acredita persona/puesto. Intervalos efectivos se reconstruyen con movimientos confirmados.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:om_salida}\label{tab:dic_om_salida}\textbf{D-OM-02 Salida}. Propietario: Operación marítima. Retención: NAV. Conserva un episodio de navegación independiente del plan voluntario.} \\* \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & S / R & Nave del episodio. \\ \hline
+\texttt{plan\_\allowbreak{}id} & uuid; ref OM.Plan de navegación & N / S & Un plan es opcional. \\ \hline
+\texttt{salida\_\allowbreak{}en} & timestamptz; UTC & S / R & Instante de ocurrencia. \\ \hline
+\texttt{regreso\_\allowbreak{}previsto} & timestamptz; UTC posterior a salida & N / S & Antecedente declarado; puede venir del plan. \\ \hline
+\texttt{regreso\_\allowbreak{}confirmado\_\allowbreak{}en} & timestamptz; UTC posterior a salida & C: regreso confirmado / R & No se completa por cierre voluntario. \\ \hline
+\texttt{confirmacion\_\allowbreak{}id} & uuid; ref OM.Confirmación operacional & C: regreso confirmado / R & Informante, registrador y evidencia. \\ \hline
+\texttt{estado} & varchar(40); salida confirmada; regreso pendiente; regreso confirmado; discrepancia & S / R & Estado del episodio propuesto desde reglas del cuerpo. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Relación Salida--Plan opcional. Regreso requiere confirmación operacional, no un mensaje de cierre comercial.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:om_movimiento}\label{tab:dic_om_movimiento}\textbf{D-OM-03 Movimiento}. Propietario: Operación marítima. Retención: NAV. Registra salida, regreso u otro hecho de una embarcación.} \\* \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & C: identificada / R & Referencia puede estar en conciliación. \\ \hline
+\texttt{recalada\_\allowbreak{}id} & uuid; ref OM.Recalada & N / R & Permanencia relacionada. \\ \hline
+\texttt{salida\_\allowbreak{}id} & uuid; ref OM.Salida & N / R & Episodio de navegación relacionado. \\ \hline
+\texttt{tipo} & varchar(40); salida; regreso; traslado; otro identificado & S / R & Tipo con semántica de la operación. \\ \hline
+\texttt{ocurrido\_\allowbreak{}en} & timestamptz; UTC & S / R & Hora de ocurrencia, distinta de recepción. \\ \hline
+\texttt{lugar\_\allowbreak{}id} & uuid; ref INF.Activo & N / R & Puesto observado. \\ \hline
+\texttt{informante\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Quién observó/informó; registrador puede diferir. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & N / S & Radio/acta/fotografía o vínculo de evidencia. \\ \hline
+\texttt{confirmado} & boolean; true; false & S / R & Solo true al existir comprobación autorizada. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} No modificar contrato por movimiento. Retener contenido original; la confirmación es actuación separada.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:om_confirmacion_operacional}\label{tab:dic_om_confirmacion_operacional}\textbf{D-OM-04 Confirmación operacional}. Propietario: Operación marítima. Retención: NAV. Conserva la comprobación autorizada de un hecho observado.} \\* \hline
+\texttt{movimiento\_\allowbreak{}id} & uuid; ref OM.Movimiento & S / R & Hecho que se comprueba. \\ \hline
+\texttt{responsable\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Personal que comprobó. \\ \hline
+\texttt{instante} & timestamptz; UTC & S / R & Hora de comprobación. \\ \hline
+\texttt{metodo} & varchar(60); observación; radio con observador; otra evidencia admitida & S / R & Radio identifica a quien observó y a quien registró. \\ \hline
+\texttt{resultado} & varchar(40); confirmado; pendiente; discrepancia & S / R & Resultado que no oculta contradicciones. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & N / S & Respaldo complementario. \\ \hline
+\texttt{lugar\_\allowbreak{}id} & uuid; ref INF.Activo & N / R & Ubicación comprobada. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Regreso: marinero observa amarre seguro; guardia puede registrar información por radio. Una declaración del armador no equivale a esta confirmación.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:om_plan_de_navegacion}\label{tab:dic_om_plan_de_navegacion}\textbf{D-OM-05 Plan de navegación}. Propietario: Operación marítima. Retención: NAV. Conserva el plan voluntario y su cierre declarado.} \\* \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & S / R & Nave declarada. \\ \hline
+\texttt{patron\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Responsable declarado de navegación. \\ \hline
+\texttt{itinerario} & jsonb; Tramos y destinos declarados & S / S & No imponer precisión desconocida. \\ \hline
+\texttt{retorno\_\allowbreak{}previsto} & timestamptz; UTC & S / S & Base del vencimiento. \\ \hline
+\texttt{contactos} & jsonb; Contactos autorizados y canales & S / S & Mínimo necesario para atención. \\ \hline
+\texttt{consentimiento\_\allowbreak{}id} & uuid; ref AS.Consentimiento & C: tratamiento voluntario / S & Finalidad vigente. \\ \hline
+\texttt{estado} & varchar(40); borrador; declarado; vencido sin cierre; cierre declarado; cerrado conciliado; cancelado & S / R & Estados del cuerpo. \\ \hline
+\texttt{version\_\allowbreak{}vigente\_\allowbreak{}id} & uuid; ref OM.Versión de plan & S / S & Versión declarada. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Plan voluntario no es condición para toda salida. Cierre declarado no confirma regreso; alerta máximo 15 min desde vencimiento.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:om_version_de_plan}\label{tab:dic_om_version_de_plan}\textbf{D-OM-06 Versión de plan}. Propietario: Operación marítima. Retención: NAV. Conserva el contenido histórico de cada plan de navegación.} \\* \hline
+\texttt{plan\_\allowbreak{}id} & uuid; ref OM.Plan de navegación & S / S & Plan estable. \\ \hline
+\texttt{numero\_\allowbreak{}version} & integer; Entero > 0 & S / R & Único por plan. \\ \hline
+\texttt{contenido} & jsonb; Itinerario, retorno y contactos declarados & S / S & Instantánea del contenido. \\ \hline
+\texttt{efectiva\_\allowbreak{}en} & timestamptz; UTC & S / R & Momento de vigencia. \\ \hline
+\texttt{motivo} & varchar(250); Justificación declarada & C: modificación / R & No sobrescribir antecedente anterior. \\ \hline
+\texttt{documento\_\allowbreak{}id} & uuid; ref AS.Versión documental & N / S & Documento si existe. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} No registrar esta versión como participación contractual. Mensajes tardíos se ordenan por versión y causalidad, no solo por reloj.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:om_persona_a_bordo}\label{tab:dic_om_persona_a_bordo}\textbf{D-OM-07 Persona a bordo}. Propietario: Operación marítima. Retención: NAV. Relaciona persona y episodio/plan utilizado para el zarpe.} \\* \hline
+\texttt{persona\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Tripulante o patrón. \\ \hline
+\texttt{salida\_\allowbreak{}id} & uuid; ref OM.Salida & C: episodio existente / R & Vincula al hecho real. \\ \hline
+\texttt{plan\_\allowbreak{}id} & uuid; ref OM.Plan de navegación & N / S & Antecedente declarado. \\ \hline
+\texttt{rol} & varchar(40); patrón; tripulante; pasajero; otro admitido & S / S & Rol de la nómina. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Participación temporal. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & N / R & Fin excluido. \\ \hline
+\texttt{documento\_\allowbreak{}id} & uuid; ref AS.Versión documental & N / S & Versión de identidad utilizada. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Persona--Salida única por función/intervalo compatible; nómina no sustituye autorización de la autoridad marítima.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:om_legajo_de_zarpe}\label{tab:dic_om_legajo_de_zarpe}\textbf{D-OM-08 Legajo de zarpe}. Propietario: Operación marítima. Retención: NAV. Conserva los antecedentes preparados para el trámite de zarpe.} \\* \hline
+\texttt{salida\_\allowbreak{}id} & uuid; ref OM.Salida & S / R & Episodio asociado. \\ \hline
+\texttt{version\_\allowbreak{}nomina} & integer; Entero > 0 & S / R & Nómina que se preparó. \\ \hline
+\texttt{documentos} & jsonb; Lista de AS.Versión documental & S / S & Referencias identificadas; no duplicar binarios. \\ \hline
+\texttt{preparado\_\allowbreak{}en} & timestamptz; UTC & S / R & Instante de preparación. \\ \hline
+\texttt{responsable\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Preparador autorizado. \\ \hline
+\texttt{estado} & varchar(40); preparado; observado; remitido & S / R & Estados propuestos de preparación, no otorgamiento. \\ \hline
+\texttt{referencia\_\allowbreak{}externa} & varchar(120); Folio/canal autorizado & N / R & No presupone API de autoridad. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Conservar versión documental utilizada y resultado de preparación; no presentar legajo como zarpe concedido.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:om_evidencia_de_ocupacion}\label{tab:dic_om_evidencia_de_ocupacion}\textbf{D-OM-09 Evidencia de ocupación}. Propietario: Operación marítima. Retención: NAV. Registra observación de puesto, movimiento, declaración o señal.} \\* \hline
+\texttt{activo\_\allowbreak{}id} & uuid; ref INF.Activo de tipo Amarra o Boya & S / R & No se crea una entidad Amarra--Boya. \\ \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & N / R & Puede estar pendiente. \\ \hline
+\texttt{tipo} & varchar(40); observación; movimiento; declaración; señal instrumental & S / R & Origen semántico. \\ \hline
+\texttt{ocurrido\_\allowbreak{}en} & timestamptz; UTC & S / R & Momento observado. \\ \hline
+\texttt{valida\_\allowbreak{}hasta} & timestamptz; UTC & N / R & Vigencia de evidencia según regla. \\ \hline
+\texttt{calidad} & varchar(40); Catálogo versionado de evidencia & S / R & No convierte señal en verdad exclusiva. \\ \hline
+\texttt{informante\_\allowbreak{}id} & uuid; ref CC.Persona & C: observación humana / S & Autor original. \\ \hline
+\texttt{respaldo\_\allowbreak{}id} & uuid; ref AS.Versión documental & N / S & Prueba documental vinculada. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Una visita de boya no acredita ocupación entre visitas. Contradicción o evidencia vencida produce estado indeterminado y verificación.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:om_estado_operacional}\label{tab:dic_om_estado_operacional}\textbf{D-OM-10 Estado operacional}. Propietario: Operación marítima. Retención: NAV. Conserva una conclusión versionada sobre nave o puesto.} \\* \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & C: conclusión de nave / R & Objeto de conclusión. \\ \hline
+\texttt{activo\_\allowbreak{}id} & uuid; ref INF.Activo & C: conclusión de puesto / R & Objeto de conclusión. \\ \hline
+\texttt{estado\_\allowbreak{}nave} & varchar(40); en recinto confirmado; salida confirmada; regreso pendiente; discrepancia & C: nave / R & Estados del cuerpo. \\ \hline
+\texttt{estado\_\allowbreak{}puesto} & varchar(40); libre verificado; ocupado identificado; ocupado no identificado; indeterminado & C: puesto / R & Estado diferente de disponibilidad contractual. \\ \hline
+\texttt{calculado\_\allowbreak{}en} & timestamptz; UTC & S / R & Momento de conclusión. \\ \hline
+\texttt{regla\_\allowbreak{}version} & varchar(60); Versión de regla publicada & S / R & Regla aplicada. \\ \hline
+\texttt{vigente\_\allowbreak{}hasta} & timestamptz; UTC & N / R & Caducidad; no garantiza actualidad sin flujo. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Exactamente un objeto de conclusión. Todo estado referencia sustento; proyección indica fecha/versión y no confirma puesto por sí sola.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:om_sustento_de_estado}\label{tab:dic_om_sustento_de_estado}\textbf{D-OM-11 Sustento de estado}. Propietario: Operación marítima. Retención: NAV. Vincula una conclusión con sus evidencias y regla.} \\* \hline
+\texttt{estado\_\allowbreak{}id} & uuid; ref OM.Estado operacional & S / R & Conclusión. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref OM.Evidencia de ocupación & S / R & Antecedente utilizado. \\ \hline
+\texttt{regla\_\allowbreak{}version} & varchar(60); Versión aplicada & S / R & Método reproducible. \\ \hline
+\texttt{uso} & varchar(40); incluida; descartada con causa; contradictoria & S / R & No ocultar antecedentes adversos. \\ \hline
+\texttt{motivo} & varchar(250); Explicación de uso & S / R & Fundamento de la conclusión. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Par estado-evidencia único; reconstrucción llega hasta datos originales y descartes justificados.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:om_alerta_operacional}\label{tab:dic_om_alerta_operacional}\textbf{D-OM-12 Alerta operacional}. Propietario: Operación marítima. Retención: NAV. Registra vencimiento de plan, aviso y resolución.} \\* \hline
+\texttt{plan\_\allowbreak{}id} & uuid; ref OM.Plan de navegación & S / S & Plan cuyo retorno venció. \\ \hline
+\texttt{vencimiento} & timestamptz; UTC & S / R & Origen del plazo, sin gracia adicional. \\ \hline
+\texttt{generada\_\allowbreak{}en} & timestamptz; UTC & S / R & Demora máxima 15 min respecto al vencimiento. \\ \hline
+\texttt{estado} & varchar(40); generada; atendida; resuelta & S / R & Estados propuestos de seguimiento. \\ \hline
+\texttt{responsable\_\allowbreak{}id} & uuid; ref CC.Persona & C: atención / S & Quien atiende. \\ \hline
+\texttt{resuelta\_\allowbreak{}en} & timestamptz; UTC posterior a generación & N / R & Momento de resolución. \\ \hline
+\texttt{aviso\_\allowbreak{}id} & uuid; ref NOT.Aviso & N / R & Cadena de notificación. \\ \hline
+\texttt{confirmacion\_\allowbreak{}id} & uuid; ref OM.Confirmación operacional & C: resolución por regreso / R & No cerrar por silencio. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Generación independiente de que un proveedor entregue el mensaje. Conservar aviso, acuses y actuación funcional.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:om_reserva_operacional_de_puesto}\label{tab:dic_om_reserva_operacional_de_puesto}\textbf{D-OM-13 Reserva operacional de puesto}. Propietario: Operación marítima. Retención: CTR. Registra la autorización exclusiva emitida por el recinto.} \\* \hline
+\texttt{amarra\_\allowbreak{}id} & uuid; ref INF.Amarra & S / R & Puesto solicitado. \\ \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & S / R & Nave compatible. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio incluido. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & S / R & Fin excluido. \\ \hline
+\texttt{resultado} & varchar(40); solicitada; autorizada; rechazada; pendiente & S / R & Propuesta de códigos para resultado descrito. \\ \hline
+\texttt{regla\_\allowbreak{}version} & varchar(60); Regla de compatibilidad & S / R & Dimensiones/restricciones aplicadas. \\ \hline
+\texttt{autoridad} & varchar(80); Identidad del recinto/agregado & S / R & Una autoridad activa. \\ \hline
+\texttt{solicitud\_\allowbreak{}origen\_\allowbreak{}id} & uuid; ID de solicitud comercial/operacional & S / R & Clave idempotente del solicitante. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Excluir autorizaciones incompatibles en amarra/intervalo. Dispositivo aislado captura solicitud, no concede exclusividad sin coordinación.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:om_calendario_nautico}\label{tab:dic_om_calendario_nautico}\textbf{D-OM-14 Calendario náutico}. Propietario: Operación marítima. Retención: CAL. Conserva regatas/eventos y congelamientos con historia.} \\* \hline
+\texttt{nombre} & varchar(200); Nombre de regata/evento & S / R & Actividad que condiciona agenda. \\ \hline
+\texttt{fecha} & date; Fecha local del evento & S / R & No inventar fechas del caso. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Intervalo convertido desde zona conocida. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & S / R & Fin excluido. \\ \hline
+\texttt{zonas} & jsonb; Lista de ubicaciones INF & S / R & Alcance del congelamiento local. \\ \hline
+\texttt{congelamiento\_\allowbreak{}inicio} & timestamptz; UTC & S / R & Inicio de restricción. \\ \hline
+\texttt{congelamiento\_\allowbreak{}fin} & timestamptz; UTC posterior a inicio & S / R & Término de restricción. \\ \hline
+\texttt{fuente\_\allowbreak{}calendario} & varchar(250); Antecedente y versión & S / R & Origen de la fecha. \\ \hline
+\texttt{responsable\_\allowbreak{}actualizacion\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Responsable que registra. \\ \hline
+\texttt{validador\_\allowbreak{}id} & uuid; ref CC.Persona & C: fecha validada / S & Jefatura de Operaciones según propuesta de SD5. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Conservar versión anterior en reprogramaciones; segundo perfil para parámetro operacional. No anula congelamientos generales ni suspensión por marejada.} \\ \hline
+\end{longtable}
+\endgroup
+
+\subsection*{A5.1.4 Escuela náutica}
+
+\label{dicdom:en}
+
+El detalle siguiente conserva las entidades, sus atributos y restricciones. La correspondencia funcional se indica en la Tabla~\ref{tab:a51_cobertura} y en el apartado 5.1.2.3 del SD5 \parencites[anexos A2.1, A2.3 y A2.5]{synaptix-sd2-anexos}{synaptix-sd4}.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}L{\dimexpr0.140\textwidth-4.5pt\relax}L{\dimexpr0.400\textwidth-4.5pt\relax}@{}}
+\caption{Diccionario de Escuela náutica}\label{tab:a51_en} \\
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endhead
+\hline\endfoot
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:en_matricula}\label{tab:dic_en_matricula}\textbf{D-EN-01 Matrícula}. Propietario: Escuela náutica. Retención: ESC. Vincula alumno con la inscripción que inicia seguimiento.} \\* \hline
+\texttt{persona\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Alumno. \\ \hline
+\texttt{periodo} & varchar(40); Temporada/período identificable & S / R & No reemplaza fecha real. \\ \hline
+\texttt{inscrita\_\allowbreak{}en} & timestamptz; UTC & S / R & Inicio del seguimiento. \\ \hline
+\texttt{estado} & varchar(40); inscrita; vigente; cerrada; anulada con motivo & S / R & Estados propuestos de matrícula. \\ \hline
+\texttt{consentimiento\_\allowbreak{}id} & uuid; ref AS.Consentimiento & C: tratamiento depende de consentimiento / S & Finalidad específica. \\ \hline
+\texttt{documentos} & jsonb; Lista de AS.Versión documental & N / S & Antecedentes de inscripción. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Persona puede tener varias matrículas históricas; Participación única por matrícula/clase.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:en_clase}\label{tab:dic_en_clase}\textbf{D-EN-02 Clase}. Propietario: Escuela náutica. Retención: ESC. Identifica la actividad y sus intervalos de seguimiento.} \\* \hline
+\texttt{codigo} & varchar(60); Código de clase con ámbito & S / R & Identificador funcional. \\ \hline
+\texttt{inicio\_\allowbreak{}previsto} & timestamptz; UTC & S / R & Planificación. \\ \hline
+\texttt{fin\_\allowbreak{}previsto} & timestamptz; UTC posterior a inicio & S / R & Retorno esperado. \\ \hline
+\texttt{inicio\_\allowbreak{}real} & timestamptz; UTC & C: actividad iniciada / R & Hecho confirmado. \\ \hline
+\texttt{cierre\_\allowbreak{}real} & timestamptz; UTC & C: clase cerrada / R & Solo con regreso confirmado de todos. \\ \hline
+\texttt{politica\_\allowbreak{}tecnica\_\allowbreak{}version} & varchar(60); Política de actividad versionada & S / R & Ratio/condiciones verificables. \\ \hline
+\texttt{estado} & varchar(40); prevista; iniciada; cerrada; cancelada & S / R & Propuesta de estados de clase. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} La clase no se cierra por terminar horario; todos los participantes deben tener regreso confirmado, conservando entrega posterior.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:en_participacion}\label{tab:dic_en_participacion}\textbf{D-EN-03 Participación}. Propietario: Escuela náutica. Retención: ESC. Es la misma unidad de seguimiento usada por escuela y retiro.} \\* \hline
+\texttt{matricula\_\allowbreak{}id} & uuid; ref EN.Matrícula & S / S & Inscripción del alumno. \\ \hline
+\texttt{clase\_\allowbreak{}id} & uuid; ref EN.Clase & S / R & Actividad. \\ \hline
+\texttt{estado} & varchar(40); prevista; presente en tierra; en el agua; regreso confirmado; retirada; ausente & S / S & Estados del cuerpo. \\ \hline
+\texttt{ultima\_\allowbreak{}ocurrencia} & timestamptz; UTC & S / R & Hora del último cambio observado. \\ \hline
+\texttt{autorizacion\_\allowbreak{}id} & uuid; ref EN.Autorización de actividad & C: salida al agua / S & Autorización vigente. \\ \hline
+\texttt{regreso\_\allowbreak{}confirmado\_\allowbreak{}en} & timestamptz; UTC & C: regreso confirmado / S & No inferir de solicitud de retiro. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Único (matrícula, clase). Retirada no puede volver a en el agua en la misma participación; historial en Evento de participación.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:en_asignacion_de_clase}\label{tab:dic_en_asignacion_de_clase}\textbf{D-EN-04 Asignación de clase}. Propietario: Escuela náutica. Retención: ESC. Relaciona participación, embarcación y monitor por intervalo.} \\* \hline
+\texttt{participacion\_\allowbreak{}id} & uuid; ref EN.Participación & S / S & Alumno y clase. \\ \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & S / R & Bote asignado. \\ \hline
+\texttt{monitor\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Responsable durante el intervalo. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio incluido. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & N / R & Cambio de bote/monitor cierra intervalo. \\ \hline
+\texttt{informante\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Quien informó el cambio. \\ \hline
+\texttt{politica\_\allowbreak{}version} & varchar(60); Política técnica de la actividad & S / R & Proporción de alumnos/monitor. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Sin asignaciones simultáneas incompatibles por participación; ratio se comprueba contra política vigente, sin inventar uno único.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:en_evento_de_participacion}\label{tab:dic_en_evento_de_participacion}\textbf{D-EN-05 Evento de participación}. Propietario: Escuela náutica. Retención: ESC. Conserva cambios de situación y sus responsables.} \\* \hline
+\texttt{participacion\_\allowbreak{}id} & uuid; ref EN.Participación & S / S & Unidad seguida por escuela/portería. \\ \hline
+\texttt{tipo} & varchar(40); presencia; salida; regreso; cambio; entrega; incidente & S / S & Registro observado; incidente no altera estado por sí solo. \\ \hline
+\texttt{estado\_\allowbreak{}anterior} & varchar(40); Estado de EN.Participación & N / S & Versión previa. \\ \hline
+\texttt{estado\_\allowbreak{}resultante} & varchar(40); Estado de EN.Participación & S / S & Cambio confirmado según regla. \\ \hline
+\texttt{ocurrido\_\allowbreak{}en} & timestamptz; UTC & S / R & Ocurrencia. \\ \hline
+\texttt{informante\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Quien observó. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & N / S & Antecedente de comprobación. \\ \hline
+\texttt{descripcion} & varchar(2000); Hecho observado y actuación & C: incidente u observación adicional / S & Un incidente se registra sin cambiar por sí solo el estado efectivo del alumno. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} No pérdida del original; interpretación causal/versionada. Eventos tardíos no reabren una entrega ya confirmada.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:en_vinculo_de_apoderado}\label{tab:dic_en_vinculo_de_apoderado}\textbf{D-EN-06 Vínculo de apoderado}. Propietario: Escuela náutica. Retención: ESC. Establece representación y facultades temporales para un alumno.} \\* \hline
+\texttt{alumno\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Representado. \\ \hline
+\texttt{adulto\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Representante/autorizado. \\ \hline
+\texttt{facultades} & jsonb; Actividad; retiro; otras explícitas & S / S & Contacto no implica permiso de retiro. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio de validez. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & N / R & Fin excluido. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & S / S & Documento de representación/facultad. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Relación N:M alumno-adulto; verificar alcance y vigencia al acto. No atribuir facultades por parentesco declarado.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:en_autorizacion_de_actividad}\label{tab:dic_en_autorizacion_de_actividad}\textbf{D-EN-07 Autorización de actividad}. Propietario: Escuela náutica. Retención: ESC. Conserva alcance, otorgante, evidencia y vigencia para navegar.} \\* \hline
+\texttt{matricula\_\allowbreak{}id} & uuid; ref EN.Matrícula & S / S & Alumno inscrito. \\ \hline
+\texttt{vinculo\_\allowbreak{}id} & uuid; ref EN.Vínculo de apoderado & C: alumno menor / S & Facultad de otorgar. \\ \hline
+\texttt{actividad} & varchar(120); Clase/actividad y alcance & S / S & No autorización universal implícita. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio de validez. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & S / R & Vigencia finita declarada. \\ \hline
+\texttt{otorgante\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Quién autoriza. \\ \hline
+\texttt{documento\_\allowbreak{}id} & uuid; ref AS.Versión documental & S / S & Conformidad/firma exigible. \\ \hline
+\texttt{revocada\_\allowbreak{}en} & timestamptz; UTC & N / R & Conserva acto de revocación. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} No mezclar consentimiento de datos, facultad de retiro y permiso de navegar; firma exigible por C07 RT-16.14.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:en_solicitud_de_retiro}\label{tab:dic_en_solicitud_de_retiro}\textbf{D-EN-08 Solicitud de retiro}. Propietario: Escuela náutica. Retención: ESC. Registra la petición y la verificación de identidad/facultades.} \\* \hline
+\texttt{participacion\_\allowbreak{}id} & uuid; ref EN.Participación & S / S & Misma unidad de escuela. \\ \hline
+\texttt{solicitante\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Adulto que pide retiro. \\ \hline
+\texttt{vinculo\_\allowbreak{}id} & uuid; ref EN.Vínculo de apoderado & S / S & Facultad vigente comprobada. \\ \hline
+\texttt{solicitada\_\allowbreak{}en} & timestamptz; UTC & S / R & Hora de solicitud. \\ \hline
+\texttt{estado} & varchar(40); solicitud; verificación de identidad; entrega pendiente; confirmación; rechazada; cancelada & S / S & Estados del cuerpo. \\ \hline
+\texttt{verificada\_\allowbreak{}por} & uuid; ref CC.Persona & C: identidad comprobada / S & Portería. \\ \hline
+\texttt{motivo} & varchar(250); Justificación & C: rechazo/cancelación / S & No ocultar solicitud fallida. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} En el agua permanece pendiente; escuela comprueba ubicación y entrega segura. Captura aislada no constituye confirmación compartida.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:en_confirmacion_de_entrega}\label{tab:dic_en_confirmacion_de_entrega}\textbf{D-EN-09 Confirmación de entrega}. Propietario: Escuela náutica. Retención: ESC. Conserva entrega segura y única para una participación.} \\* \hline
+\texttt{solicitud\_\allowbreak{}id} & uuid; ref EN.Solicitud de retiro & S / S & Solicitud aceptada. \\ \hline
+\texttt{participacion\_\allowbreak{}id} & uuid; ref EN.Participación & S / S & Unidad que queda retirada. \\ \hline
+\texttt{receptor\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Persona que recibe. \\ \hline
+\texttt{escuela\_\allowbreak{}responsable\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Quien comprobó situación y entrega. \\ \hline
+\texttt{porteria\_\allowbreak{}responsable\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Quien verificó identidad/facultad. \\ \hline
+\texttt{entregada\_\allowbreak{}en} & timestamptz; UTC & S / R & Hecho efectivo. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & N / S & Conformidad o registro exigible. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Una confirmación efectiva por participación; conservar ambas verificaciones y coordinación por radio durante interrupciones.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:en_antecedente_de_salud}\label{tab:dic_en_antecedente_de_salud}\textbf{D-EN-10 Antecedente de salud}. Propietario: Escuela náutica. Retención: ESC. Conserva información declarada y su versión restringida.} \\* \hline
+\texttt{matricula\_\allowbreak{}id} & uuid; ref EN.Matrícula & S / S & Titular. \\ \hline
+\texttt{numero\_\allowbreak{}version} & integer; Entero > 0 & S / R & Historia de declaraciones. \\ \hline
+\texttt{declarado\_\allowbreak{}por} & uuid; ref CC.Persona & S / S & Alumno/representante autorizado. \\ \hline
+\texttt{declarado\_\allowbreak{}en} & timestamptz; UTC & S / R & Momento de declaración. \\ \hline
+\texttt{contenido} & jsonb; Antecedentes declarados de salud & S / S & No convertir declaración en diagnóstico. \\ \hline
+\texttt{documento\_\allowbreak{}id} & uuid; ref AS.Versión documental & N / S & Ficha original. \\ \hline
+\texttt{vigente\_\allowbreak{}desde} & timestamptz; UTC & S / R & Inicio de uso de la versión. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Cifrado de campo y auditoría de consulta. Monitor no recibe ficha completa; información declarada permanece versionada.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:en_vista_de_emergencia_autorizada}\label{tab:dic_en_vista_de_emergencia_autorizada}\textbf{D-EN-11 Vista de emergencia autorizada}. Propietario: Escuela náutica. Retención: ESC. Vista derivada del modelo. Expone únicamente información indispensable para atender al alumno.} \\* \hline
+\texttt{antecedente\_\allowbreak{}id} & uuid; ref EN.Antecedente de salud & S / S & Versión de origen. \\ \hline
+\texttt{participacion\_\allowbreak{}id} & uuid; ref EN.Participación & C: vista de clase / S & Contexto de autorización. \\ \hline
+\texttt{alertas\_\allowbreak{}pautas} & jsonb; Contenido mínimo autorizado & S / S & No copiar historia clínica completa. \\ \hline
+\texttt{contacto\_\allowbreak{}emergencia} & varchar(250); Contacto vigente & S / S & No concede facultad de retiro. \\ \hline
+\texttt{aprobada\_\allowbreak{}por} & uuid; ref CC.Persona & S / S & Responsable de alcance. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio autorizado. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & S / R & Caducidad. \\ \hline
+\texttt{politica\_\allowbreak{}version} & varchar(60); Regla de acceso & S / R & Se comprueba relación monitor/clase. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Proyección protegida, no nueva ficha maestra. Limitar acceso, versión y vigencia; registrar todas las consultas.} \\ \hline
+\end{longtable}
+\endgroup
+
+\subsection*{A5.1.5 Varadero y contratistas}
+
+\label{dicdom:vc}
+
+El detalle siguiente conserva las entidades, sus atributos y restricciones. La correspondencia funcional se indica en la Tabla~\ref{tab:a51_cobertura} y en el apartado 5.1.2.4 del SD5 \parencites[anexos A2.1, A2.3 y A2.5]{synaptix-sd2-anexos}{synaptix-sd4}.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}L{\dimexpr0.140\textwidth-4.5pt\relax}L{\dimexpr0.400\textwidth-4.5pt\relax}@{}}
+\caption{Diccionario de Varadero y contratistas}\label{tab:a51_vc} \\
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endhead
+\hline\endfoot
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:vc_orden_de_trabajo}\label{tab:dic_vc_orden_de_trabajo}\textbf{D-VC-01 Orden de trabajo}. Propietario: Varadero y contratistas. Retención: VAR. Identifica faena y conserva relación de permanencia/custodia de la nave.} \\* \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & S / R & Nave intervenida. \\ \hline
+\texttt{solicitante\_\allowbreak{}id} & uuid; ref CC.Parte contractual & S / S & Solicitante. \\ \hline
+\texttt{empresa\_\allowbreak{}id} & uuid; ref CC.Organización & N / R & Contratista cuando corresponda. \\ \hline
+\texttt{actividades} & jsonb; Lista de actividades identificadas & S / R & Alcance de la orden. \\ \hline
+\texttt{estado} & varchar(40); Catálogo de orden versionado & S / R & No equivale a entrega física. \\ \hline
+\texttt{puesto\_\allowbreak{}cuna\_\allowbreak{}id} & uuid; ref INF.Activo & C: invernada / R & Puesto/cuna previsto. \\ \hline
+\texttt{inicio\_\allowbreak{}previsto} & timestamptz; UTC & S / R & Inicio previsto. \\ \hline
+\texttt{fin\_\allowbreak{}previsto} & timestamptz; UTC posterior a inicio & S / R & Fin previsto. \\ \hline
+\texttt{contrato\_\allowbreak{}id} & uuid; ref CC.Contrato & N / S & Antecedente contractual. \\ \hline
+\texttt{expediente\_\allowbreak{}id} & uuid; ref FC.Expediente de custodia & C: custodia requiere / S & Referencia de custodia. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Invernada es nave--recurso--período. Reserva prevista y cierre de maniobra no acreditan entrega; permanencia real desde confirmaciones vinculadas.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:vc_maniobra}\label{tab:dic_vc_maniobra}\textbf{D-VC-02 Maniobra}. Propietario: Varadero y contratistas. Retención: VAR. Registra una maniobra de varadero y la versión de plan utilizada.} \\* \hline
+\texttt{orden\_\allowbreak{}id} & uuid; ref VC.Orden de trabajo & S / R & Faena. \\ \hline
+\texttt{tipo} & varchar(40); Catálogo de maniobras & S / R & Izaje/botadura/traslado según servicio. \\ \hline
+\texttt{inicio\_\allowbreak{}previsto} & timestamptz; UTC & S / R & Agenda. \\ \hline
+\texttt{fin\_\allowbreak{}previsto} & timestamptz; UTC posterior a inicio & S / R & Intervalo de recursos. \\ \hline
+\texttt{posicion\_\allowbreak{}origen\_\allowbreak{}id} & uuid; ref INF.Activo & N / R & Ubicación inicial. \\ \hline
+\texttt{posicion\_\allowbreak{}destino\_\allowbreak{}id} & uuid; ref INF.Activo & N / R & Ubicación destino. \\ \hline
+\texttt{plan\_\allowbreak{}version\_\allowbreak{}id} & uuid; ref VC.Versión de plan & C: habilitada/iniciada / R & Versión válida utilizada. \\ \hline
+\texttt{estado} & varchar(40); planificada; habilitada; en ejecución; finalizada; suspendida; cancelada & S / R & Estados del cuerpo. \\ \hline
+\texttt{inicio\_\allowbreak{}real} & timestamptz; UTC & C: ejecutada / R & Ocurrencia. \\ \hline
+\texttt{fin\_\allowbreak{}real} & timestamptz; UTC posterior a inicio & C: finalizada / R & Cierre de maniobra, no entrega de nave. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Habilitación/inicio con plan válido; registrar suspensión climática y dependencias. No exigir interacción con carga suspendida.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:vc_plan_de_izaje}\label{tab:dic_vc_plan_de_izaje}\textbf{D-VC-03 Plan de izaje}. Propietario: Varadero y contratistas. Retención: VAR. Identifica la preparación y revisiones de una maniobra.} \\* \hline
+\texttt{maniobra\_\allowbreak{}id} & uuid; ref VC.Maniobra & S / R & Actividad preparada. \\ \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & S / R & Aplicabilidad a la nave. \\ \hline
+\texttt{version\_\allowbreak{}vigente\_\allowbreak{}id} & uuid; ref VC.Versión de plan & S / R & Versión seleccionada. \\ \hline
+\texttt{estado} & varchar(40); preparación; revisión; aprobado; observado & S / R & Códigos propuestos para el plan. \\ \hline
+\texttt{responsable\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Preparador competente. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Plan tiene versiones y validaciones; una modificación posterior no reemplaza la versión usada en faena.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:vc_version_de_plan}\label{tab:dic_vc_version_de_plan}\textbf{D-VC-04 Versión de plan}. Propietario: Varadero y contratistas. Retención: VAR. Conserva antecedentes y restricciones del plan de izaje.} \\* \hline
+\texttt{plan\_\allowbreak{}id} & uuid; ref VC.Plan de izaje & S / R & Plan estable. \\ \hline
+\texttt{numero\_\allowbreak{}version} & integer; Entero > 0 & S / R & Único por plan. \\ \hline
+\texttt{contenido} & jsonb; Carga, puntos y restricciones declaradas & S / R & Datos técnicos de preparación. \\ \hline
+\texttt{documento\_\allowbreak{}id} & uuid; ref AS.Versión documental & S / R & Plan original. \\ \hline
+\texttt{emitida\_\allowbreak{}en} & timestamptz; UTC & S / R & Momento de emisión. \\ \hline
+\texttt{motivo} & varchar(250); Justificación & C: revisión / R & Causa de cambio. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Único plan-versión; mantener evidencia, aplicabilidad y revisión antes de carga suspendida.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:vc_validacion_de_plan}\label{tab:dic_vc_validacion_de_plan}\textbf{D-VC-05 Validación de plan}. Propietario: Varadero y contratistas. Retención: VAR. Conserva revisión funcional de una versión de izaje.} \\* \hline
+\texttt{plan\_\allowbreak{}version\_\allowbreak{}id} & uuid; ref VC.Versión de plan & S / R & Versión revisada. \\ \hline
+\texttt{validador\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Responsable competente. \\ \hline
+\texttt{validada\_\allowbreak{}en} & timestamptz; UTC & S / R & Hora de revisión. \\ \hline
+\texttt{resultado} & varchar(40); aprobado; observado; rechazado & S / R & Resultado documentado. \\ \hline
+\texttt{observaciones} & varchar(500); Texto de revisión & C: observado/rechazado / R & Condiciones o reparos. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & S / R & Registro de conformidad. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Aprobar versión aplicable antes de habilitar; no inferir aprobación desde reserva de travelift.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:vc_reserva_de_recurso}\label{tab:dic_vc_reserva_de_recurso}\textbf{D-VC-06 Reserva de recurso}. Propietario: Varadero y contratistas. Retención: VAR. Relaciona actividad con intervalo de travelift, puesto, cuna o personal.} \\* \hline
+\texttt{maniobra\_\allowbreak{}id} & uuid; ref VC.Maniobra & N / R & Actividad de maniobra. \\ \hline
+\texttt{orden\_\allowbreak{}id} & uuid; ref VC.Orden de trabajo & S / R & Orden/invernada. \\ \hline
+\texttt{activo\_\allowbreak{}id} & uuid; ref INF.Activo & C: recurso físico / R & Travelift, puesto o cuna. \\ \hline
+\texttt{persona\_\allowbreak{}id} & uuid; ref CC.Persona & C: recurso humano / S & Personal asignado. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio incluido. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & S / R & Fin excluido. \\ \hline
+\texttt{estado} & varchar(40); prevista; confirmada; liberada; cancelada & S / R & Especificación de reserva de agenda. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Activo XOR persona; no solapamientos incompatibles. Intervalo previsto no acredita permanencia efectiva.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:vc_reprogramacion}\label{tab:dic_vc_reprogramacion}\textbf{D-VC-07 Reprogramación}. Propietario: Varadero y contratistas. Retención: VAR. Conserva cambios de agenda y causa.} \\* \hline
+\texttt{maniobra\_\allowbreak{}id} & uuid; ref VC.Maniobra & S / R & Actividad afectada. \\ \hline
+\texttt{inicio\_\allowbreak{}anterior} & timestamptz; UTC & S / R & Agenda previa. \\ \hline
+\texttt{fin\_\allowbreak{}anterior} & timestamptz; UTC & S / R & Fin previo. \\ \hline
+\texttt{inicio\_\allowbreak{}nuevo} & timestamptz; UTC & S / R & Nueva agenda. \\ \hline
+\texttt{fin\_\allowbreak{}nuevo} & timestamptz; UTC posterior a inicio & S / R & Fin nuevo. \\ \hline
+\texttt{causa} & varchar(250); Motivo comprobable & S / R & Clima, recurso u otra causa. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & N / R & Respaldo de causa. \\ \hline
+\texttt{aviso\_\allowbreak{}id} & uuid; ref NOT.Aviso & N / R & Comunicaciones realizadas. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} No borrar agenda anterior; preservar dependencias de botadura y congelamientos del calendario náutico.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:vc_acreditacion}\label{tab:dic_vc_acreditacion}\textbf{D-VC-08 Acreditación}. Propietario: Varadero y contratistas. Retención: VAR. Registra antecedentes revisados de empresa/trabajador.} \\* \hline
+\texttt{empresa\_\allowbreak{}id} & uuid; ref CC.Organización & S / R & Empresa contratista. \\ \hline
+\texttt{trabajador\_\allowbreak{}id} & uuid; ref CC.Persona & C: acreditación individual / S & Trabajador. \\ \hline
+\texttt{documentos} & jsonb; Lista de AS.Versión documental & S / S & Documentos revisados. \\ \hline
+\texttt{revisada\_\allowbreak{}por} & uuid; ref CC.Persona & S / S & Responsable de comprobación. \\ \hline
+\texttt{resultado} & varchar(40); vigente; observada; vencida; rechazada & S / R & Códigos propuestos de acreditación. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio de validez. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & S / R & Vencimiento. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Documentos completos y vigentes antes de autorizar acceso; no publicar expediente íntegro en control de acceso.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:vc_induccion}\label{tab:dic_vc_induccion}\textbf{D-VC-09 Inducción}. Propietario: Varadero y contratistas. Retención: VAR. Conserva formación, asistencia y evaluación de trabajador.} \\* \hline
+\texttt{trabajador\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Persona que recibe formación. \\ \hline
+\texttt{acreditacion\_\allowbreak{}id} & uuid; ref VC.Acreditación & S / S & Contexto. \\ \hline
+\texttt{contenido\_\allowbreak{}version} & varchar(60); Programa versionado & S / R & Formación utilizada. \\ \hline
+\texttt{realizada\_\allowbreak{}en} & timestamptz; UTC & S / R & Fecha real. \\ \hline
+\texttt{instructor\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Responsable. \\ \hline
+\texttt{resultado} & varchar(40); aprobada; pendiente; no aprobada & S / S & Resultado de evaluación. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & S / S & Asistencia/evaluación. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Inducción registra hecho formativo; no concede habilitación por sí sola sin resultado y vigencia aplicables.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:vc_habilitacion_de_trabajador}\label{tab:dic_vc_habilitacion_de_trabajador}\textbf{D-VC-10 Habilitación de trabajador}. Propietario: Varadero y contratistas. Retención: VAR. Define funciones autorizadas y período de validez.} \\* \hline
+\texttt{trabajador\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Persona habilitada. \\ \hline
+\texttt{acreditacion\_\allowbreak{}id} & uuid; ref VC.Acreditación & S / S & Documentación revisada. \\ \hline
+\texttt{induccion\_\allowbreak{}id} & uuid; ref VC.Inducción & S / S & Formación y evaluación. \\ \hline
+\texttt{funciones} & jsonb; Lista de tareas permitidas & S / R & Alcance por función/faena. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio de vigencia. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & S / R & Vencimiento. \\ \hline
+\texttt{aprobador\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Quién autorizó. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} No habilitar con evaluación no aprobada o antecedentes vencidos; acceso consulta resultado mínimo y no ficha completa.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:vc_acceso_de_faena}\label{tab:dic_vc_acceso_de_faena}\textbf{D-VC-11 Acceso de faena}. Propietario: Varadero y contratistas. Retención: VAR. Conserva ingreso/salida y resultado de los controles.} \\* \hline
+\texttt{trabajador\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Persona que ingresa. \\ \hline
+\texttt{empresa\_\allowbreak{}id} & uuid; ref CC.Organización & S / R & Empresa responsable. \\ \hline
+\texttt{orden\_\allowbreak{}id} & uuid; ref VC.Orden de trabajo & S / R & Faena. \\ \hline
+\texttt{habilitacion\_\allowbreak{}id} & uuid; ref VC.Habilitación de trabajador & S / S & Vigencia y función. \\ \hline
+\texttt{entrada} & timestamptz; UTC & S / R & Hecho de acceso. \\ \hline
+\texttt{salida} & timestamptz; UTC posterior a entrada & N / R & Cierre real. \\ \hline
+\texttt{resultado} & varchar(40); permitido; denegado; excepción autorizada & S / R & Resultado de control. \\ \hline
+\texttt{motivo} & varchar(250); Justificación & C: excepción/denegado / R & No saltar procedimiento de emergencia. \\ \hline
+\texttt{aprobador\_\allowbreak{}id} & uuid; ref CC.Persona & C: excepción / S & Responsable competente. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Captura asistida: no imponer aplicación a contratistas. Excepción motivada y autorizada, sin eliminar la evidencia del control.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:vc_confirmaciones_de_recepcion_traslado_y_entrega}\label{tab:dic_vc_confirmaciones_de_recepcion_traslado_y_entrega}\textbf{D-VC-12 Confirmaciones de recepción, traslado y entrega}. Propietario: Varadero y contratistas. Retención: VAR. Registro funcional descrito en el texto. Registra la permanencia efectiva y conformidades vinculadas a la orden.} \\* \hline
+\texttt{orden\_\allowbreak{}id} & uuid; ref VC.Orden de trabajo & S / R & Orden de invernada/custodia. \\ \hline
+\texttt{tipo} & varchar(40); recepción; traslado; entrega & S / R & Hechos diferenciados. \\ \hline
+\texttt{instante} & timestamptz; UTC & S / R & Ocurrencia efectiva. \\ \hline
+\texttt{responsable\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Quien confirma. \\ \hline
+\texttt{ubicacion\_\allowbreak{}id} & uuid; ref INF.Activo & S / R & Puesto/cuna comprobado. \\ \hline
+\texttt{ubicacion\_\allowbreak{}anterior\_\allowbreak{}id} & uuid; ref INF.Activo & C: traslado / R & Conserva historia de cambio. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & S / S & Acta/conformidad original. \\ \hline
+\texttt{firma\_\allowbreak{}estado} & varchar(40); pendiente; comprobada; observada & C: recepción/entrega / R & Firma exigible sin fijar modalidad. \\ \hline
+\texttt{secuencia} & bigint; Entero > 0 por orden & S / R & Reconstrucción de intervalos reales. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Especifica los registros ya descritos en SD5; no crea un dominio o servicio adicional. Entrega exige conformidad/firma; traslado respeta posiciones y secuencia de botadura.} \\ \hline
+\end{longtable}
+\endgroup
+
+\subsection*{A5.1.6 Combustible}
+
+\label{dicdom:co}
+
+El detalle siguiente conserva las entidades, sus atributos y restricciones. La correspondencia funcional se indica en la Tabla~\ref{tab:a51_cobertura} y en el apartado 5.1.2.5 del SD5 \parencites[anexos A2.1, A2.3 y A2.5]{synaptix-sd2-anexos}{synaptix-sd4}.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}L{\dimexpr0.140\textwidth-4.5pt\relax}L{\dimexpr0.400\textwidth-4.5pt\relax}@{}}
+\caption{Diccionario de Combustible}\label{tab:a51_co} \\
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endhead
+\hline\endfoot
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:co_despacho}\label{tab:dic_co_despacho}\textbf{D-CO-01 Despacho}. Propietario: Combustible. Retención: COMB. Conserva el hecho identificado de un expendio de combustible.} \\* \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & S / R & Nave abastecida. \\ \hline
+\texttt{operador\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Personal que registra. \\ \hline
+\texttt{punto\_\allowbreak{}id} & uuid; ref INF.Punto de suministro & S / R & Identidad física. \\ \hline
+\texttt{producto} & varchar(60); Catálogo de combustible & S / R & Producto expendido. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio real. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & C: cierre / R & Fin real. \\ \hline
+\texttt{unidad} & varchar(30); Unidad de volumen declarada & S / R & Conservada junto a la cantidad. \\ \hline
+\texttt{volumen\_\allowbreak{}validado} & numeric(18,6); Cantidad >= 0 en unidad declarada & C: validado / R & Suma de tramos verificados. \\ \hline
+\texttt{estado} & varchar(40); preparado; en curso; pendiente de conciliación; validado; anulado con motivo & S / R & Estados del cuerpo. \\ \hline
+\texttt{operacion\_\allowbreak{}instrumental\_\allowbreak{}id} & varchar(100); ID con origen instrumental & S / R & Clave de reenvíos con instrumento y unidad. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Identificador de operación+origen instrumental+unidad reconoce reenvío; emitir CombustibleDespachado solo tras validar hecho.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:co_tramo_de_medicion}\label{tab:dic_co_tramo_de_medicion}\textbf{D-CO-02 Tramo de medición}. Propietario: Combustible. Retención: COMB. Vincula despacho y acumulados compatibles del mismo instrumento/época.} \\* \hline
+\texttt{despacho\_\allowbreak{}id} & uuid; ref CO.Despacho & S / R & Hecho medido. \\ \hline
+\texttt{instrumento\_\allowbreak{}id} & uuid; ref INF.Instrumento de suministro & S / R & Instrumento de origen. \\ \hline
+\texttt{epoca\_\allowbreak{}contador} & bigint; Entero >= 0 & S / R & Cambia al reiniciar/sustituir contador. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Hora inicial. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & S / R & Hora final. \\ \hline
+\texttt{acumulado\_\allowbreak{}inicio} & numeric(18,6); Cantidad >= 0 & S / R & Lectura original inicial. \\ \hline
+\texttt{acumulado\_\allowbreak{}fin} & numeric(18,6); Cantidad >= acumulado\_\allowbreak{}inicio en misma época & S / R & Lectura original final. \\ \hline
+\texttt{unidad} & varchar(30); Unidad compatible & S / R & No mezclar escalas. \\ \hline
+\texttt{cantidad} & numeric(18,6); Diferencia verificada >= 0 & C: tramo válido / R & No interpretar diferencias negativas como consumo. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Cambio de contador/escala o reinicio abre otro tramo y registra anomalía; volumen total suma solo tramos verificados.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:co_evidencia_de_despacho}\label{tab:dic_co_evidencia_de_despacho}\textbf{D-CO-03 Evidencia de despacho}. Propietario: Combustible. Retención: COMB. Conserva respaldo original e integridad del expendio.} \\* \hline
+\texttt{despacho\_\allowbreak{}id} & uuid; ref CO.Despacho & S / R & Hecho respaldado. \\ \hline
+\texttt{origen\_\allowbreak{}instrumental} & varchar(120); Instrumento/canal identificado & S / R & Cadena de origen. \\ \hline
+\texttt{capturada\_\allowbreak{}en} & timestamptz; UTC & S / R & Ocurrencia. \\ \hline
+\texttt{documento\_\allowbreak{}id} & uuid; ref AS.Versión documental & N / R & Imagen/archivo original si existe. \\ \hline
+\texttt{contenido\_\allowbreak{}original} & jsonb; Valores recibidos sin sobrescribir & S / R & Dato instrumental original. \\ \hline
+\texttt{calidad} & varchar(40); válida; observada; insuficiente & S / R & Código propuesto de evidencia. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Equipo físico y certificación corresponden a SD4; registrar evidencia de instrumento sin afirmar certificación no aportada.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:co_rectificacion}\label{tab:dic_co_rectificacion}\textbf{D-CO-04 Rectificación}. Propietario: Combustible. Retención: COMB. Añade la corrección autorizada sin sustituir el dato original.} \\* \hline
+\texttt{despacho\_\allowbreak{}id} & uuid; ref CO.Despacho & S / R & Hecho que se rectifica. \\ \hline
+\texttt{campo} & varchar(80); Atributo existente & S / R & Dato afectado. \\ \hline
+\texttt{valor\_\allowbreak{}original} & jsonb; Valor preservado & S / R & Antecedente inalterado. \\ \hline
+\texttt{valor\_\allowbreak{}rectificado} & jsonb; Valor con unidad y regla & S / R & Nueva interpretación autorizada. \\ \hline
+\texttt{motivo} & varchar(500); Justificación comprobable & S / R & Causa. \\ \hline
+\texttt{autorizador\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Responsable funcional. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & S / R & Soporte de autorización. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Corrección versionada y autorizada; efectos financieros conservan referencia al despacho y responden a integración externa.} \\ \hline
+\end{longtable}
+\endgroup
+
+\subsection*{A5.1.7 Ambiente y consumos}
+
+\label{dicdom:ac}
+
+El detalle siguiente conserva las entidades, sus atributos y restricciones. La correspondencia funcional se indica en la Tabla~\ref{tab:a51_cobertura} y en el apartado 5.1.2.6 del SD5 \parencites[anexos A2.1, A2.3 y A2.5]{synaptix-sd2-anexos}{synaptix-sd4}.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}L{\dimexpr0.140\textwidth-4.5pt\relax}L{\dimexpr0.400\textwidth-4.5pt\relax}@{}}
+\caption{Diccionario de Ambiente y consumos}\label{tab:a51_ac} \\
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endhead
+\hline\endfoot
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:ac_lectura_original}\label{tab:dic_ac_lectura_original}\textbf{D-AC-01 Lectura original}. Propietario: Ambiente y consumos. Retención: CONS. Preserva la muestra recibida antes de conciliación.} \\* \hline
+\texttt{medidor\_\allowbreak{}id} & uuid; ref INF.Medidor & S / R & Instrumento que originó la lectura. \\ \hline
+\texttt{secuencia} & bigint; Entero >= 0 & S / R & Orden del instrumento; repetición no genera otra muestra. \\ \hline
+\texttt{epoca\_\allowbreak{}contador} & bigint; Entero >= 0 & S / R & Separa reinicios o sustituciones. \\ \hline
+\texttt{instante} & timestamptz; UTC & S / R & Momento de medición, distinto de recepción. \\ \hline
+\texttt{acumulado} & numeric(18,6); Cantidad >= 0 & S / R & Valor original sin rectificación destructiva. \\ \hline
+\texttt{unidad} & varchar(30); m3; kWh u otra escala documentada & S / R & Escala declarada del contador. \\ \hline
+\texttt{calidad} & varchar(40); válida; provisional; observada; inválida & S / R & Código propuesto; no ocultar lecturas rechazadas. \\ \hline
+\texttt{origen} & varchar(120); Instrumento/canal identificado & S / R & Procedencia instrumental. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Único (medidor, época, secuencia); mismo identificador con contenido distinto abre discrepancia. No facturar muestra provisional.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:ac_intervalo_de_consumo}\label{tab:dic_ac_intervalo_de_consumo}\textbf{D-AC-02 Intervalo de consumo}. Propietario: Ambiente y consumos. Retención: CONS. Identifica el período y sujeto temporal del consumo conciliable.} \\* \hline
+\texttt{medidor\_\allowbreak{}id} & uuid; ref INF.Medidor & S / R & Instrumento del intervalo. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Comienzo incluido. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & S / R & Término excluido. \\ \hline
+\texttt{asociacion\_\allowbreak{}id} & uuid; ref INF.Asociación de medidor & S / R & Asignación temporal utilizada. \\ \hline
+\texttt{cantidad} & numeric(18,6); Cantidad >= 0 & C: conciliado / R & Nulo si no puede calcularse; cero si comprobado. \\ \hline
+\texttt{unidad} & varchar(30); Escala compatible con lecturas & S / R & Unidad de la cantidad. \\ \hline
+\texttt{estado} & varchar(40); recibido; observado; conciliado; rectificado & S / R & Estados del cuerpo; conservar transiciones y su justificación. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Dividir al cambiar asociación, época o unidad; no atribuir todo el intervalo al titular actual. Solo conciliado origina hecho facturable.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:ac_soporte_de_consumo}\label{tab:dic_ac_soporte_de_consumo}\textbf{D-AC-03 Soporte de consumo}. Propietario: Ambiente y consumos. Retención: CONS. Documenta las lecturas y regla que explican un intervalo.} \\* \hline
+\texttt{intervalo\_\allowbreak{}id} & uuid; ref AC.Intervalo de consumo & S / R & Resultado sustentado. \\ \hline
+\texttt{lectura\_\allowbreak{}inicio\_\allowbreak{}id} & uuid; ref AC.Lectura original & S / R & Muestra inicial. \\ \hline
+\texttt{lectura\_\allowbreak{}fin\_\allowbreak{}id} & uuid; ref AC.Lectura original & S / R & Muestra final. \\ \hline
+\texttt{regla\_\allowbreak{}version} & varchar(80); Regla de cálculo identificada & S / R & Fórmula, escala y versión utilizadas. \\ \hline
+\texttt{ajustes} & jsonb; Correcciones autorizadas o lista vacía & S / R & No reemplazan los datos originales. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Ambas lecturas deben corresponder al instrumento, época y escala del intervalo; toda corrección enlaza su autorización.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:ac_incidencia_de_medicion}\label{tab:dic_ac_incidencia_de_medicion}\textbf{D-AC-04 Incidencia de medición}. Propietario: Ambiente y consumos. Retención: CONS. Conserva anomalías de lectura, cálculo o atribución.} \\* \hline
+\texttt{medidor\_\allowbreak{}id} & uuid; ref INF.Medidor & S / R & Instrumento afectado. \\ \hline
+\texttt{lectura\_\allowbreak{}id} & uuid; ref AC.Lectura original & N / R & Lectura relacionada si existe. \\ \hline
+\texttt{intervalo\_\allowbreak{}id} & uuid; ref AC.Intervalo de consumo & N / R & Intervalo afectado si existe. \\ \hline
+\texttt{tipo} & varchar(60); reinicio; duplicado; desfase; salto; asociación; otro motivado & S / R & Catálogo propuesto de defectos. \\ \hline
+\texttt{descripcion} & varchar(1000); Observación comprobable & S / R & Problema y contexto. \\ \hline
+\texttt{estado} & varchar(30); abierta; en revisión; resuelta & S / R & Resolución no borra el defecto. \\ \hline
+\texttt{resolucion} & jsonb; Acción, autor y evidencia & C: resuelta / R & Justifica aceptación o rectificación. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Lectura o intervalo debe informar el objeto afectado cuando exista; una incidencia abierta bloquea facturación del intervalo dudoso.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:ac_serie_conciliada}\label{tab:dic_ac_serie_conciliada}\textbf{D-AC-05 Serie conciliada}. Propietario: Ambiente y consumos. Retención: CONS. Versiona el resultado calculado y sus rectificaciones.} \\* \hline
+\texttt{medidor\_\allowbreak{}id} & uuid; ref INF.Medidor & S / R & Serie por instrumento. \\ \hline
+\texttt{intervalo\_\allowbreak{}id} & uuid; ref AC.Intervalo de consumo & S / R & Período calculado. \\ \hline
+\texttt{revision} & integer; Entero > 0 & S / R & Única por intervalo. \\ \hline
+\texttt{cantidad} & numeric(18,6); Cantidad >= 0 & S / R & Resultado conciliado. \\ \hline
+\texttt{unidad} & varchar(30); Escala del intervalo & S / R & Unidad explícita. \\ \hline
+\texttt{soporte\_\allowbreak{}id} & uuid; ref AC.Soporte de consumo & S / R & Linaje al origen. \\ \hline
+\texttt{rectifica\_\allowbreak{}id} & uuid; ref AC.Serie conciliada & N / R & Versión anterior si hay corrección. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Único (intervalo, revisión); nuevo resultado agrega versión y conserva el anterior. Proyección informa vigencia y procedencia.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:ac_registro_de_residuo}\label{tab:dic_ac_registro_de_residuo}\textbf{D-AC-06 Registro de residuo}. Propietario: Ambiente y consumos. Retención: RES. Identifica un lote o aporte de residuo y su origen declarado.} \\* \hline
+\texttt{tipo} & varchar(80); Catálogo de residuo documentado & S / R & Incluye condición peligrosa cuando corresponda. \\ \hline
+\texttt{cantidad} & numeric(18,6); Cantidad >= 0 & S / R & No confundir estimación con pesaje. \\ \hline
+\texttt{unidad} & varchar(30); Unidad de masa/volumen/contador declarada & S / R & No sumar unidades incompatibles. \\ \hline
+\texttt{metodo} & varchar(60); medido; estimado; declarado & S / R & Calidad/origen de la cantidad. \\ \hline
+\texttt{recipiente} & varchar(100); Identificador físico & S / R & Contenedor que permite seguir el lote. \\ \hline
+\texttt{ubicacion\_\allowbreak{}id} & uuid; ref INF.Ubicación & S / R & Ubicación del registro. \\ \hline
+\texttt{generador\_\allowbreak{}parte\_\allowbreak{}id} & uuid; ref CC.Parte contractual & N / S & Generador declarado; ausencia explícita y motivada. \\ \hline
+\texttt{registrador\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Responsable de registrar el residuo. \\ \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & N / R & Nave de origen cuando esté comprobada. \\ \hline
+\texttt{orden\_\allowbreak{}trabajo\_\allowbreak{}id} & uuid; ref VC.Orden de trabajo & N / R & Faena de origen cuando esté comprobada. \\ \hline
+\texttt{discrepancia\_\allowbreak{}id} & uuid; ref COM.Discrepancia & C: origen desconocido / R & Investigación abierta; la entrega física no elimina esta condición. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Mantener unidades y vínculo de origen al fraccionar o reunir cantidades; generador desconocido no se inventa ni impide registrar el hecho.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:ac_movimiento_de_residuo}\label{tab:dic_ac_movimiento_de_residuo}\textbf{D-AC-07 Movimiento de residuo}. Propietario: Ambiente y consumos. Retención: RES. Conserva cada traslado interno de un residuo.} \\* \hline
+\texttt{registro\_\allowbreak{}id} & uuid; ref AC.Registro de residuo & S / R & Origen trazable. \\ \hline
+\texttt{desde\_\allowbreak{}id} & uuid; ref INF.Ubicación & S / R & Ubicación previa. \\ \hline
+\texttt{hacia\_\allowbreak{}id} & uuid; ref INF.Ubicación & S / R & Destino. \\ \hline
+\texttt{instante} & timestamptz; UTC & S / R & Momento efectivo. \\ \hline
+\texttt{cantidad} & numeric(18,6); Cantidad > 0 & S / R & Cantidad trasladada. \\ \hline
+\texttt{unidad} & varchar(30); Unidad compatible con registro & S / R & No cambiar escala sin conversión documentada. \\ \hline
+\texttt{responsable\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Ejecutor u observador. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & N / R & Respaldo disponible. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} El traslado no acredita entrega al gestor; conservar saldos por origen y ubicación, sin cantidades transferidas negativas.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:ac_entrega_a_gestor}\label{tab:dic_ac_entrega_a_gestor}\textbf{D-AC-08 Entrega a gestor}. Propietario: Ambiente y consumos. Retención: RES. Identifica receptor, acto de entrega y conformidad.} \\* \hline
+\texttt{gestor\_\allowbreak{}id} & uuid; ref CC.Organización & S / R & Receptor identificado. \\ \hline
+\texttt{gestor\_\allowbreak{}evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & C: habilitación exigible / R & Antecedente de autorización y vigencia; no asumirla por nombre. \\ \hline
+\texttt{entregada\_\allowbreak{}en} & timestamptz; UTC & S / R & Instante efectivo. \\ \hline
+\texttt{receptor\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Persona que recibe por el gestor. \\ \hline
+\texttt{responsable\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Responsable de la marina. \\ \hline
+\texttt{conformidad} & varchar(40); pendiente; aceptada; observada & S / R & No declarar conforme sin evidencia. \\ \hline
+\texttt{firma\_\allowbreak{}evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & C: residuo peligroso / S & Firma exigida por C07 RT-16.14. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Un acto posee uno o varios detalles; firma y certificado son evidencias distintas. Restricción de firma según tipo del residuo.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:ac_detalle_de_entrega}\label{tab:dic_ac_detalle_de_entrega}\textbf{D-AC-09 Detalle de entrega}. Propietario: Ambiente y consumos. Retención: RES. Relaciona cantidades transferidas con registros de origen.} \\* \hline
+\texttt{entrega\_\allowbreak{}id} & uuid; ref AC.Entrega a gestor & S / R & Acto receptor. \\ \hline
+\texttt{registro\_\allowbreak{}id} & uuid; ref AC.Registro de residuo & S / R & Lote originario. \\ \hline
+\texttt{cantidad} & numeric(18,6); Cantidad > 0 & S / R & Porción entregada. \\ \hline
+\texttt{unidad} & varchar(30); Unidad compatible con origen & S / R & Conversión explícita si corresponde. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Relación N:M entrega-registro mediante detalle; suma por origen no excede disponibilidad, salvo rectificación autorizada y trazable.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:ac_certificado}\label{tab:dic_ac_certificado}\textbf{D-AC-10 Certificado}. Propietario: Ambiente y consumos. Retención: RES. Conserva evidencia documental recibida por una entrega.} \\* \hline
+\texttt{entrega\_\allowbreak{}id} & uuid; ref AC.Entrega a gestor & S / R & Acto respaldado. \\ \hline
+\texttt{documento\_\allowbreak{}id} & uuid; ref AS.Versión documental & S / R & Archivo original y huella. \\ \hline
+\texttt{emisor\_\allowbreak{}id} & uuid; ref CC.Organización & S / R & Gestor/entidad emisora. \\ \hline
+\texttt{numero} & varchar(80); Código con emisor & N / R & No generar uno externo ficticio. \\ \hline
+\texttt{emitido\_\allowbreak{}en} & timestamptz; UTC & N / R & Fecha declarada en el certificado. \\ \hline
+\texttt{recibido\_\allowbreak{}en} & timestamptz; UTC & S / R & Ingreso de la evidencia. \\ \hline
+\texttt{verificacion} & varchar(40); pendiente; comprobada; observada & S / R & Resultado de revisión. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Cada entrega puede tener varios certificados/versiones; conservar originales observados y rectificaciones, sin afirmar validez no revisada.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:ac_incidente_ambiental}\label{tab:dic_ac_incidente_ambiental}\textbf{D-AC-11 Incidente ambiental}. Propietario: Ambiente y consumos. Retención: RES. Reúne derrame, respuesta, participantes y antecedentes.} \\* \hline
+\texttt{tipo} & varchar(80); Catálogo ambiental & S / R & Derrame u otro incidente descrito. \\ \hline
+\texttt{ocurrido\_\allowbreak{}en} & timestamptz; UTC & S / R & Inicio observado. \\ \hline
+\texttt{ubicacion\_\allowbreak{}id} & uuid; ref INF.Ubicación & S / R & Lugar del evento. \\ \hline
+\texttt{descripcion} & varchar(2000); Hecho y alcance observado & S / R & Sin sustituir observación por causa supuesta. \\ \hline
+\texttt{respuesta} & jsonb; Actuaciones ordenadas con instantes & S / R & Medidas ejecutadas y su evidencia. \\ \hline
+\texttt{participantes} & jsonb; Referencias CC.Persona y funciones & S / S & Observadores, responsables y ejecutores. \\ \hline
+\texttt{antecedentes} & jsonb; Referencias AS.Versión documental & S / R & Lista vacía si no hay adjuntos, con motivo. \\ \hline
+\texttt{estado} & varchar(40); abierto; contenido; seguimiento; cerrado & S / R & Catálogo propuesto; cierre justificado. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Distinguir ocurrencia, detección y registro; conservar todos los cambios y evidencia de cierre. Un reporte diario no sustituye respuesta inmediata.} \\ \hline
+\end{longtable}
+\endgroup
+
+\subsection*{A5.1.8 Finanzas y cobranza}
+
+\label{dicdom:fc}
+
+El detalle siguiente conserva las entidades, sus atributos y restricciones. La correspondencia funcional se indica en la Tabla~\ref{tab:a51_cobertura} y en el apartado 5.1.2.7 del SD5 \parencites[anexos A2.1, A2.3 y A2.5]{synaptix-sd2-anexos}{synaptix-sd4}.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}L{\dimexpr0.140\textwidth-4.5pt\relax}L{\dimexpr0.400\textwidth-4.5pt\relax}@{}}
+\caption{Diccionario de Finanzas y cobranza}\label{tab:a51_fc} \\
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endhead
+\hline\endfoot
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:fc_hecho_facturable}\label{tab:dic_fc_hecho_facturable}\textbf{D-FC-01 Hecho facturable}. Propietario: Finanzas y cobranza. Retención: FIN. Conserva el hecho operativo validado que origina una obligación administrativa.} \\* \hline
+\texttt{dominio\_\allowbreak{}origen} & varchar(20); Dominio canónico & S / R & Propietario del hecho operativo. \\ \hline
+\texttt{origen\_\allowbreak{}id} & uuid; Identificador estable del hecho & S / R & Vínculo a despacho, consumo, maniobra u otro hecho aprobado. \\ \hline
+\texttt{evento\_\allowbreak{}id} & uuid; ref COM.Sobre de evento & S / R & Evidencia de publicación validada. \\ \hline
+\texttt{parte\_\allowbreak{}id} & uuid; ref CC.Parte contractual & S / S & Destinatario contractual. \\ \hline
+\texttt{contrato\_\allowbreak{}id} & uuid; ref CC.Contrato & C: servicio contractual / R & Antecedente de la obligación. \\ \hline
+\texttt{ocurrido\_\allowbreak{}en} & timestamptz; UTC & S / R & Fecha efectiva del hecho. \\ \hline
+\texttt{moneda} & char(3); Código documentado por integración & C: importe disponible / R & No presuponer moneda del legado. \\ \hline
+\texttt{importe} & numeric(18,2); Importe con moneda & N / S & Importe calculado con tarifa versionada; no es saldo externo. \\ \hline
+\texttt{estado} & varchar(40); preparado; observado; validado; enviado; aceptado; rechazado por contabilidad; rectificado & S / R & Estados del cuerpo; aceptación externa no confirma pago. \\ \hline
+\texttt{concepto\_\allowbreak{}clave} & varchar(100); Concepto funcional facturable & S / R & Participa en clave de negocio junto al origen y versión. \\ \hline
+\texttt{version\_\allowbreak{}origen} & bigint; Entero >= 1 & S / R & Versión del hecho que produce el cargo. \\ \hline
+\texttt{periodo} & jsonb; Inicio/fin y precisión documentados & S / R & Período facturable con unidad/regla; no inventar fechas del legado. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Clave de negocio única (dominio/origen, versión\_\allowbreak{}origen, concepto\_\allowbreak{}clave); reenvío no crea otro cargo. Correlacionar respuesta contable y conservar relaciones cuando contabilidad agrupa/divide documentos. Aceptación y pago son confirmaciones distintas.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:fc_detalle_de_hecho}\label{tab:dic_fc_detalle_de_hecho}\textbf{D-FC-02 Detalle de hecho}. Propietario: Finanzas y cobranza. Retención: FIN. Desglosa cantidad, tarifa y regla de un hecho facturable.} \\* \hline
+\texttt{hecho\_\allowbreak{}id} & uuid; ref FC.Hecho facturable & S / R & Cabecera administrativa. \\ \hline
+\texttt{concepto} & varchar(100); Concepto facturable documentado & S / R & Servicio, consumo o maniobra. \\ \hline
+\texttt{cantidad} & numeric(18,6); Cantidad >= 0 & S / R & Magnitud facturable validada. \\ \hline
+\texttt{unidad} & varchar(30); Unidad documentada & S / R & Permite interpretar la cantidad. \\ \hline
+\texttt{tarifa\_\allowbreak{}id} & uuid; ref CC.Tarifa versionada & C: cálculo tarifario / R & Versión aplicada al instante del hecho. \\ \hline
+\texttt{regla\_\allowbreak{}calculo} & varchar(120); Regla versionada & S / R & Explica el importe, redondeo y condiciones. \\ \hline
+\texttt{importe} & numeric(18,2); Importe en moneda del hecho & C: cálculo disponible / S & No sumar distintas monedas. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Detalle pertenece a un hecho; suma conciliada con cabecera, conservando redondeos y ajustes autorizados.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:fc_lote_de_envio}\label{tab:dic_fc_lote_de_envio}\textbf{D-FC-03 Lote de envío}. Propietario: Finanzas y cobranza. Retención: FIN. Agrupa transmisiones administrativas a la integración externa identificada.} \\* \hline
+\texttt{destino} & varchar(120); Integración de SD4 confirmada & S / R & Sin inventar interfaz del sistema contable. \\ \hline
+\texttt{correlacion} & varchar(120); Identificador de intercambio & S / R & Clave de seguimiento compartida. \\ \hline
+\texttt{creado\_\allowbreak{}en} & timestamptz; UTC & S / R & Preparación del lote. \\ \hline
+\texttt{enviado\_\allowbreak{}en} & timestamptz; UTC & N / R & Primer envío registrado. \\ \hline
+\texttt{estado} & varchar(40); preparado; enviado; parcial; aceptado; rechazado & S / R & Aceptación requiere respuesta externa. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & N / S & Contenido y constancia de intercambio. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Lote no sustituye unicidad de cada hecho; recepción durable del mensaje no demuestra contabilización.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:fc_inclusion_en_lote}\label{tab:dic_fc_inclusion_en_lote}\textbf{D-FC-04 Inclusión en lote}. Propietario: Finanzas y cobranza. Retención: FIN. Vincula cada hecho transmitido con su lote y estado individual.} \\* \hline
+\texttt{lote\_\allowbreak{}id} & uuid; ref FC.Lote de envío & S / R & Contenedor de intercambio. \\ \hline
+\texttt{hecho\_\allowbreak{}id} & uuid; ref FC.Hecho facturable & S / R & Hecho incluido. \\ \hline
+\texttt{clave\_\allowbreak{}idempotencia} & varchar(160); Origen y operación estables & S / R & Reintento conserva la clave. \\ \hline
+\texttt{posicion} & integer; Entero > 0 & S / R & Orden dentro del lote. \\ \hline
+\texttt{resultado} & varchar(40); pendiente; aceptado; rechazado; observado & S / R & Estado por elemento. \\ \hline
+\texttt{respuesta\_\allowbreak{}id} & uuid; ref FC.Respuesta contable & N / S & Confirmación externa relacionada. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Único (lote, hecho) y (lote, posición); evitar doble emisión aun si se reagrupa en otro lote.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:fc_respuesta_contable}\label{tab:dic_fc_respuesta_contable}\textbf{D-FC-05 Respuesta contable}. Propietario: Finanzas y cobranza. Retención: FIN. Mantiene resultado externo y referencia al documento/pago cuando existan.} \\* \hline
+\texttt{correlacion} & varchar(120); Identificador de intercambio & S / R & Relaciona petición y respuesta. \\ \hline
+\texttt{hecho\_\allowbreak{}id} & uuid; ref FC.Hecho facturable & N / R & Hecho respondido, si el protocolo lo informa. \\ \hline
+\texttt{identificador\_\allowbreak{}externo} & varchar(120); Código con emisor & N / S & Referencia externa sin imponer forma de folio. \\ \hline
+\texttt{emisor} & varchar(120); Sistema externo identificado & S / R & Autoridad contable. \\ \hline
+\texttt{tipo} & varchar(40); aceptación; rechazo; documento; pago; otro confirmado & S / R & Catálogo se ajusta al contrato real de interfaz. \\ \hline
+\texttt{contenido} & jsonb; Mensaje original con esquema identificado & S / S & No inventar datos ausentes. \\ \hline
+\texttt{informado\_\allowbreak{}en} & timestamptz; UTC & S / R & Instante de la respuesta. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Estados contables/pagos se conocen por integración; el hecho facturable no permite inferirlos. Preservar mensaje original y versión del esquema.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:fc_cuenta_externa}\label{tab:dic_fc_cuenta_externa}\textbf{D-FC-06 Cuenta externa}. Propietario: Finanzas y cobranza. Retención: FIN. Identifica la cuenta de una parte en el sistema contable.} \\* \hline
+\texttt{parte\_\allowbreak{}id} & uuid; ref CC.Parte contractual & S / S & Titular relacionado. \\ \hline
+\texttt{identificador\_\allowbreak{}externo} & varchar(120); Código con emisor & S / S & Cuenta reconocida externamente. \\ \hline
+\texttt{emisor} & varchar(120); Sistema contable & S / R & Ámbito de unicidad. \\ \hline
+\texttt{estado} & varchar(40); Estado informado por origen & S / R & No traducir sin tabla de correspondencias. \\ \hline
+\texttt{verificada\_\allowbreak{}en} & timestamptz; UTC & N / R & Última comprobación externa. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Único (emisor, identificador externo); una parte puede tener varias cuentas válidas. No consolidar distintas monedas o emisores sin regla.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:fc_movimiento_contable_importado}\label{tab:dic_fc_movimiento_contable_importado}\textbf{D-FC-07 Movimiento contable importado}. Propietario: Finanzas y cobranza. Retención: FIN. Preserva el antecedente recibido sin reasignar autoridad contable.} \\* \hline
+\texttt{cuenta\_\allowbreak{}id} & uuid; ref FC.Cuenta externa & S / S & Cuenta de origen. \\ \hline
+\texttt{identificador\_\allowbreak{}externo} & varchar(120); Código con emisor & S / R & Clave del movimiento importado. \\ \hline
+\texttt{tipo} & varchar(60); Catálogo del origen con correspondencia & S / R & Cargo, abono u otro concepto informado. \\ \hline
+\texttt{fecha\_\allowbreak{}efectiva} & timestamptz; UTC o fecha original documentada & S / R & Conservar zona/precisión originales en contenido. \\ \hline
+\texttt{importe} & numeric(18,2); Importe con signo según origen & S / S & No imponer signo sin regla de transformación. \\ \hline
+\texttt{moneda} & char(3); Código del origen & S / R & Unidad monetaria. \\ \hline
+\texttt{contenido\_\allowbreak{}original} & jsonb; Registro recibido & S / S & Permite conciliación y reconstrucción. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Clave externa y emisor únicos; corrección externa agrega revisión. No emitir documentos contables a partir de un registro de importación.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:fc_saldo_informado}\label{tab:dic_fc_saldo_informado}\textbf{D-FC-08 Saldo informado}. Propietario: Finanzas y cobranza. Retención: FIN. Representa la última posición de deuda conocida y su vigencia explícita.} \\* \hline
+\texttt{cuenta\_\allowbreak{}id} & uuid; ref FC.Cuenta externa & S / S & Cuenta consultada. \\ \hline
+\texttt{importe} & numeric(18,2); Importe y moneda del origen & S / S & Saldo informado; cero es valor conocido. \\ \hline
+\texttt{moneda} & char(3); Código del origen & S / R & No agregar monedas distintas. \\ \hline
+\texttt{informado\_\allowbreak{}en} & timestamptz; UTC & S / R & Instante del dato externo. \\ \hline
+\texttt{recibido\_\allowbreak{}en} & timestamptz; UTC & S / R & Instante de recepción. \\ \hline
+\texttt{estado\_\allowbreak{}frescura} & varchar(30); vigente; desactualizado; no disponible & S / R & Mostrar ausencia/desfase, no presentarlo como saldo actual. \\ \hline
+\texttt{respuesta\_\allowbreak{}id} & uuid; ref FC.Respuesta contable & S / S & Antecedente del origen. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} RT-05.29 requiere saldo en tiempo real; una copia periódica no demuestra cumplirlo. La interfaz vigente debe verificarse antes de fijar presupuesto de latencia.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:fc_gestion_de_cobranza}\label{tab:dic_fc_gestion_de_cobranza}\textbf{D-FC-09 Gestión de cobranza}. Propietario: Finanzas y cobranza. Retención: FIN. Registra actuaciones sobre obligaciones externas conocidas.} \\* \hline
+\texttt{cuenta\_\allowbreak{}id} & uuid; ref FC.Cuenta externa & S / S & Cuenta tratada. \\ \hline
+\texttt{saldo\_\allowbreak{}id} & uuid; ref FC.Saldo informado & S / S & Antecedente utilizado y su fecha. \\ \hline
+\texttt{accion} & varchar(100); Catálogo funcional autorizado & S / R & Aviso, contacto o gestión documentada. \\ \hline
+\texttt{instante} & timestamptz; UTC & S / R & Momento de la gestión. \\ \hline
+\texttt{responsable\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Funcionario responsable. \\ \hline
+\texttt{resultado} & varchar(1000); Resultado observado & S / S & No afirmar pago sin respuesta contable. \\ \hline
+\texttt{aviso\_\allowbreak{}id} & uuid; ref NOT.Aviso & N / S & Notificación derivada si existe. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Gestionar según facultades; consultas de deuda auditadas. Conserva antecedentes y no transforma falta de acuse en incumplimiento contractual.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:fc_decision_de_medida}\label{tab:dic_fc_decision_de_medida}\textbf{D-FC-10 Decisión de medida}. Propietario: Finanzas y cobranza. Retención: FIN. Conserva fundamento y autorización de una medida sensible de cobranza/custodia.} \\* \hline
+\texttt{cuenta\_\allowbreak{}id} & uuid; ref FC.Cuenta externa & N / S & Cuenta relacionada cuando corresponda. \\ \hline
+\texttt{expediente\_\allowbreak{}id} & uuid; ref FC.Expediente de custodia & N / S & Expediente relacionado si existe. \\ \hline
+\texttt{medida} & varchar(120); Acción prevista en alcance y contrato & S / R & Sin inventar potestades legales. \\ \hline
+\texttt{fundamento} & varchar(2000); Antecedentes comprobables & S / S & Motivo y referencias. \\ \hline
+\texttt{solicitante\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Primer perfil. \\ \hline
+\texttt{aprobador\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Segundo perfil cuando la política lo exige. \\ \hline
+\texttt{decision\_\allowbreak{}en} & timestamptz; UTC & S / R & Instante autorizado. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & S / S & Respaldo de la decisión. \\ \hline
+\texttt{ejecutada\_\allowbreak{}en} & timestamptz; UTC & C: medida ejecutada / R & Momento efectivo separado de autorización. \\ \hline
+\texttt{resultado\_\allowbreak{}ejecucion} & jsonb; Actuación, ejecutor y evidencia & C: medida ejecutada / S & No activar restricción física por mero tramo de deuda. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Solicitante distinto de aprobador en decisiones de doble control; validar contrato, facultad y normativa aplicable sin atribuir decisiones no aprobadas.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:fc_expediente_de_custodia}\label{tab:dic_fc_expediente_de_custodia}\textbf{D-FC-11 Expediente de custodia}. Propietario: Finanzas y cobranza. Retención: CTR. Reúne situación, inventario y antecedentes de embarcación bajo custodia.} \\* \hline
+\texttt{embarcacion\_\allowbreak{}id} & uuid; ref CC.Embarcación & S / R & Nave del expediente. \\ \hline
+\texttt{contrato\_\allowbreak{}id} & uuid; ref CC.Contrato & N / S & Antecedente contractual disponible. \\ \hline
+\texttt{orden\_\allowbreak{}trabajo\_\allowbreak{}id} & uuid; ref VC.Orden de trabajo & N / R & Invernada o actuaciones de varadero. \\ \hline
+\texttt{apertura\_\allowbreak{}en} & timestamptz; UTC & S / R & Comienzo del expediente. \\ \hline
+\texttt{cierre\_\allowbreak{}en} & timestamptz; UTC posterior a apertura & N / R & Cierre documentado. \\ \hline
+\texttt{situacion} & varchar(100); Situación acreditada, no presumida & S / S & Abandono, custodia u otra condición documentada. \\ \hline
+\texttt{inventario} & jsonb; Elementos y estado con evidencia & S / R & Cobertura completa del expediente. \\ \hline
+\texttt{estado} & varchar(40); abierto; seguimiento; cerrado & S / R & Catálogo propuesto. \\ \hline
+\texttt{folio} & varchar(100); Código de expediente con emisor & S / R & Identificador legible; UUID permanece como identidad técnica. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Migrar íntegros los 14 expedientes del caso; recepción/entrega con firma en VC y enlace documental. Custodia no se presume por deuda o reserva.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:fc_antecedente_de_expediente}\label{tab:dic_fc_antecedente_de_expediente}\textbf{D-FC-12 Antecedente de expediente}. Propietario: Finanzas y cobranza. Retención: CTR. Enlaza documentos y actuaciones sin perder procedencia.} \\* \hline
+\texttt{expediente\_\allowbreak{}id} & uuid; ref FC.Expediente de custodia & S / S & Unidad de custodia. \\ \hline
+\texttt{tipo} & varchar(80); Documento; actuación; notificación; inventario; otro motivado & S / R & Clase funcional. \\ \hline
+\texttt{documento\_\allowbreak{}id} & uuid; ref AS.Versión documental & N / S & Respaldo original cuando existe. \\ \hline
+\texttt{origen\_\allowbreak{}id} & uuid; Identificador de actuación del dominio & N / R & Referencia al hecho, no copia paralela. \\ \hline
+\texttt{dominio\_\allowbreak{}origen} & varchar(20); Dominio canónico & C: origen\_\allowbreak{}id disponible / R & Resuelve la referencia. \\ \hline
+\texttt{instante} & timestamptz; UTC & S / R & Fecha del antecedente. \\ \hline
+\texttt{descripcion} & varchar(1000); Descripción comprobable & S / S & Contenido mínimo y procedencia. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Todo antecedente pertenece a un expediente; preservar secuencia, integridad y vínculos. Un archivo faltante se registra como defecto, no como conformidad.} \\ \hline
+\end{longtable}
+\endgroup
+
+\subsection*{A5.1.9 Infraestructura}
+
+\label{dicdom:inf}
+
+El detalle siguiente conserva las entidades, sus atributos y restricciones. La correspondencia funcional se indica en la Tabla~\ref{tab:a51_cobertura} y en el apartado 5.1.2.8 del SD5 \parencites[anexos A2.1, A2.3 y A2.5]{synaptix-sd2-anexos}{synaptix-sd4}.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}L{\dimexpr0.140\textwidth-4.5pt\relax}L{\dimexpr0.400\textwidth-4.5pt\relax}@{}}
+\caption{Diccionario de Infraestructura}\label{tab:a51_inf} \\
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endhead
+\hline\endfoot
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:inf_activo}\label{tab:dic_inf_activo}\textbf{D-INF-01 Activo}. Propietario: Infraestructura. Retención: ACT. Identifica recursos físicos mantenibles sin duplicar personas, contratos o presencia.} \\* \hline
+\texttt{codigo} & varchar(80); Identificador del recinto & S / R & Clave alternativa única en su ámbito. \\ \hline
+\texttt{tipo} & varchar(60); Catálogo físico versionado & S / R & Amarra, boya, medidor, tren u otro recurso del alcance. \\ \hline
+\texttt{ubicacion\_\allowbreak{}id} & uuid; ref INF.Ubicación & S / R & Ubicación de referencia; movimientos versionados. \\ \hline
+\texttt{estado} & varchar(40); Estado físico/mantenimiento documentado & S / R & No equivale a ocupación marítima. \\ \hline
+\texttt{alta\_\allowbreak{}en} & timestamptz; UTC & S / R & Inicio de servicio. \\ \hline
+\texttt{baja\_\allowbreak{}en} & timestamptz; UTC posterior al alta & N / R & Baja conserva historial. \\ \hline
+\texttt{documentacion} & jsonb; Referencias AS.Versión documental & S / R & Ficha y evidencias disponibles. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Activo es supertipo; cada amarra, boya o medidor posee su identidad/subtipo. La baja no elimina inspecciones ni vínculos históricos.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:inf_ubicacion}\label{tab:dic_inf_ubicacion}\textbf{D-INF-02 Ubicación}. Propietario: Infraestructura. Retención: ACT. Define el lugar físico y sus restricciones de acceso o secuencia.} \\* \hline
+\texttt{codigo} & varchar(80); Código local único & S / R & Identificador legible. \\ \hline
+\texttt{nombre} & varchar(150); Lugar no vacío & S / R & Pantalán, puesto, cuna, patio u otro lugar identificado. \\ \hline
+\texttt{tipo} & varchar(40); Catálogo de ubicación & S / R & Clasificación funcional. \\ \hline
+\texttt{padre\_\allowbreak{}id} & uuid; ref INF.Ubicación & N / R & Jerarquía sin ciclos. \\ \hline
+\texttt{restricciones} & jsonb; Reglas físicas versionadas & S / R & Acceso, compatibilidad y secuencia de botadura. \\ \hline
+\texttt{georreferencia} & jsonb; Sistema de referencia y precisión documentados & N / R & No inventar coordenadas del caso. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Jerarquía 0..1 padre y 0..N hijos; restricciones verificadas por operación/varadero, no sustituyen confirmación efectiva de ubicación.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:inf_amarra}\label{tab:dic_inf_amarra}\textbf{D-INF-03 Amarra}. Propietario: Infraestructura. Retención: ACT. Especializa el activo con características de compatibilidad.} \\* \hline
+\texttt{activo\_\allowbreak{}id} & uuid; ref INF.Activo, único & S / R & Misma identidad física del activo. \\ \hline
+\texttt{numero} & varchar(40); Código de puesto & S / R & Único en el recinto. \\ \hline
+\texttt{eslora\_\allowbreak{}maxima} & numeric(10,3); Metros > 0 & C: asignación / R & Compatibilidad documentada. \\ \hline
+\texttt{manga\_\allowbreak{}maxima} & numeric(10,3); Metros > 0 & N / R & Límite si aplica. \\ \hline
+\texttt{calado\_\allowbreak{}maximo} & numeric(10,3); Metros >= 0 & N / R & Condición técnica si aplica. \\ \hline
+\texttt{restricciones} & jsonb; Condiciones de uso versionadas & S / R & Lista vacía explícita si no se declaran otras. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Activo 1:0..1 Amarra; disponibilidad operativa se decide en OM, contrato en CC y medición en AC mediante asociaciones de INF.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:inf_boya}\label{tab:dic_inf_boya}\textbf{D-INF-04 Boya}. Propietario: Infraestructura. Retención: FON. Identifica recurso de fondeo y su tren vigente.} \\* \hline
+\texttt{activo\_\allowbreak{}id} & uuid; ref INF.Activo, único & S / R & Activo físico. \\ \hline
+\texttt{codigo} & varchar(80); Código del recinto & S / R & Identificación de fondeo. \\ \hline
+\texttt{tren\_\allowbreak{}id} & uuid; ref INF.Tren de fondeo & C: habilitada / R & Configuración utilizada. \\ \hline
+\texttt{restricciones} & jsonb; Capacidad y condiciones acreditadas & S / R & No inferir habilitación solo de una lectura. \\ \hline
+\texttt{revision\_\allowbreak{}vigente\_\allowbreak{}id} & uuid; ref INF.Inspección & N / R & Último antecedente técnico aceptado. \\ \hline
+\texttt{posicion\_\allowbreak{}inventario} & jsonb; Coordenadas, sistema de referencia, precisión y origen & C: emplazamiento acreditado / R & Posición física del inventario; distinta de posición consentida de una nave. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Ocupación se obtiene de evidencias y confirmaciones de OM; inspección vigente condiciona uso, sin inventar sensor obligatorio de ocupación.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:inf_medidor}\label{tab:dic_inf_medidor}\textbf{D-INF-05 Medidor}. Propietario: Infraestructura. Retención: CONS. Identifica contador y características de interpretación.} \\* \hline
+\texttt{activo\_\allowbreak{}id} & uuid; ref INF.Activo, único & S / R & Activo medidor. \\ \hline
+\texttt{serie} & varchar(120); Código con fabricante/emisor & S / R & Identidad instrumental. \\ \hline
+\texttt{magnitud} & varchar(30); agua; energía & S / R & Magnitud del alcance. \\ \hline
+\texttt{unidad} & varchar(30); m3; kWh u otra escala documentada & S / R & Unidad de origen. \\ \hline
+\texttt{resolucion} & numeric(18,6); Paso > 0 con unidad & C: interpretación / R & Precisión declarada del instrumento. \\ \hline
+\texttt{epoca\_\allowbreak{}actual} & bigint; Entero >= 0 & S / R & Controla reinicios/sustituciones. \\ \hline
+\texttt{calidad\_\allowbreak{}configuracion} & varchar(40); verificada; provisional; observada & S / R & No afirmar instalación/certificación todavía inexistente. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Serie+emisor no se recicla para otro activo. La asociación temporal explica qué puesto/contrato consume; cambiar ocupante no cambia medidor.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:inf_tren_de_fondeo}\label{tab:dic_inf_tren_de_fondeo}\textbf{D-INF-06 Tren de fondeo}. Propietario: Infraestructura. Retención: FON. Conserva identidad y vida útil del conjunto de fondeo.} \\* \hline
+\texttt{activo\_\allowbreak{}id} & uuid; ref INF.Activo, único & S / R & Conjunto mantenible. \\ \hline
+\texttt{codigo} & varchar(80); Código del recinto & S / R & Identificador legible. \\ \hline
+\texttt{puesto\_\allowbreak{}servicio\_\allowbreak{}en} & timestamptz; UTC & S / R & Inicio de vida útil. \\ \hline
+\texttt{retirado\_\allowbreak{}en} & timestamptz; UTC & N / R & Fin documentado de servicio. \\ \hline
+\texttt{vida\_\allowbreak{}util\_\allowbreak{}criterio} & varchar(500); Criterio y antecedente técnico & S / R & No sustituir vida real por plazo genérico. \\ \hline
+\texttt{estado} & varchar(40); operativo; restringido; fuera de servicio; retirado & S / R & Catálogo propuesto sujeto a revisión técnica. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Conjunto conserva historial de componentes/inspecciones; retener vida útil más cinco años desde retiro, sin purga si no se acredita término.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:inf_componente_de_fondeo}\label{tab:dic_inf_componente_de_fondeo}\textbf{D-INF-07 Componente de fondeo}. Propietario: Infraestructura. Retención: FON. Identifica un elemento reemplazable del tren.} \\* \hline
+\texttt{codigo} & varchar(80); Identificador del elemento & S / R & No basta una descripción genérica. \\ \hline
+\texttt{tipo} & varchar(60); Catálogo de componentes & S / R & Elemento físico identificado. \\ \hline
+\texttt{caracteristicas} & jsonb; Dimensiones/material con unidad & S / R & Ficha técnica declarada. \\ \hline
+\texttt{documento\_\allowbreak{}id} & uuid; ref AS.Versión documental & N / R & Antecedente del componente. \\ \hline
+\texttt{estado} & varchar(40); Estado técnico documentado & S / R & Conserva cambios y evidencia. \\ \hline
+\texttt{activo\_\allowbreak{}id} & uuid; ref INF.Activo, único & S / R & Identidad de activo que enlaza inspecciones/actuaciones. \\ \hline
+\texttt{retiro\_\allowbreak{}definitivo\_\allowbreak{}en} & timestamptz; UTC & N / R & Inicio del adicional de cinco años solo si término de vida útil comprobado. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Un componente puede cambiar de instalación solo preservando intervalos y antecedentes; no borrar pieza retirada.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:inf_instalacion_de_componente}\label{tab:dic_inf_instalacion_de_componente}\textbf{D-INF-08 Instalación de componente}. Propietario: Infraestructura. Retención: FON. Relaciona componente y tren durante un intervalo.} \\* \hline
+\texttt{componente\_\allowbreak{}id} & uuid; ref INF.Componente de fondeo & S / R & Pieza instalada. \\ \hline
+\texttt{tren\_\allowbreak{}id} & uuid; ref INF.Tren de fondeo & S / R & Conjunto receptor. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Instalación efectiva. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & N / R & Retiro efectivo. \\ \hline
+\texttt{actuacion\_\allowbreak{}id} & uuid; ref INF.Actuación sobre activo & S / R & Evidencia de instalación/retiro. \\ \hline
+\texttt{boya\_\allowbreak{}id} & uuid; ref INF.Boya & S / R & Emplazamiento de la configuración; coherente con tren e intervalo. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Un componente no puede estar instalado simultáneamente en trenes distintos; relación temporal N:M con intervalos sin superposición incompatible.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:inf_asociacion_de_medidor}\label{tab:dic_inf_asociacion_de_medidor}\textbf{D-INF-09 Asociación de medidor}. Propietario: Infraestructura. Retención: CONS. Relaciona contador y sujeto de consumo en un intervalo.} \\* \hline
+\texttt{medidor\_\allowbreak{}id} & uuid; ref INF.Medidor & S / R & Contador asignado. \\ \hline
+\texttt{amarra\_\allowbreak{}id} & uuid; ref INF.Amarra & S / R & Puesto medido. \\ \hline
+\texttt{contrato\_\allowbreak{}id} & uuid; ref CC.Contrato & N / S & Contrato atribuible en ese período. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio incluido. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & N / R & Fin excluido. \\ \hline
+\texttt{motivo} & varchar(500); Instalación/cambio/asignación justificada & S / R & Permite explicar fronteras temporales. \\ \hline
+\texttt{servicio} & varchar(30); agua; energía según medidor & S / R & Magnitud del punto; debe coincidir con configuración. \\ \hline
+\texttt{funcion} & varchar(30); primaria; contraste & S / R & Medición de contraste no se suma como consumo adicional. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} No superponer asociaciones incompatibles por medidor; AC divide intervalos en la frontera. Ausencia contractual impide inventar deudor y abre observación.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:inf_inspeccion}\label{tab:dic_inf_inspeccion}\textbf{D-INF-10 Inspección}. Propietario: Infraestructura. Retención: ACT. Registra revisión física y evidencia, incluida captura sin cobertura.} \\* \hline
+\texttt{activo\_\allowbreak{}id} & uuid; ref INF.Activo & S / R & Activo inspeccionado. \\ \hline
+\texttt{realizada\_\allowbreak{}en} & timestamptz; UTC & S / R & Momento de la inspección. \\ \hline
+\texttt{inspector\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Responsable identificado. \\ \hline
+\texttt{criterio\_\allowbreak{}version} & varchar(120); Pauta técnica identificada & S / R & Versión de la lista/pauta aplicada. \\ \hline
+\texttt{resultado} & varchar(40); apto; restringido; observado; no apto & S / R & Catálogo propuesto, con evidencia. \\ \hline
+\texttt{evidencias} & jsonb; Referencias AS.Versión documental & S / R & Fotos/acta originales; faltante explícito. \\ \hline
+\texttt{sin\_\allowbreak{}cobertura} & boolean; verdadero; falso & S / R & Captura independiente de sincronización. \\ \hline
+\texttt{metodo} & varchar(120); Método técnico documentado & S / R & Procedimiento y versión aplicados. \\ \hline
+\texttt{recomendacion} & varchar(1500); Respuesta/restricción recomendada o ninguna justificada & S / R & Evaluación separada del hecho observado. \\ \hline
+\texttt{programa\_\allowbreak{}version} & varchar(120); Programa técnico vigente & S / R & Periodicidad/disparador aplicable, sin inventar frecuencia universal. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Boya admite ocho horas de inspección sin cobertura; hora de carga no reemplaza hora de inspección. Hallazgos y actuaciones enlazan al mismo activo.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:inf_hallazgo}\label{tab:dic_inf_hallazgo}\textbf{D-INF-11 Hallazgo}. Propietario: Infraestructura. Retención: ACT. Describe un defecto técnico y su seguimiento.} \\* \hline
+\texttt{inspeccion\_\allowbreak{}id} & uuid; ref INF.Inspección & S / R & Observación de origen. \\ \hline
+\texttt{componente\_\allowbreak{}id} & uuid; ref INF.Componente de fondeo & N / R & Pieza afectada si corresponde. \\ \hline
+\texttt{descripcion} & varchar(1500); Defecto observado & S / R & No confundir causa estimada con hecho. \\ \hline
+\texttt{severidad} & varchar(40); Escala técnica documentada & S / R & Criterio debe acompañar el código. \\ \hline
+\texttt{restriccion} & varchar(1000); Condición de uso o ninguna justificada & S / R & Efecto operacional. \\ \hline
+\texttt{estado} & varchar(40); abierto; tratado; verificado; cerrado & S / R & Cierre requiere comprobación. \\ \hline
+\texttt{actuacion\_\allowbreak{}id} & uuid; ref INF.Actuación sobre activo & N / R & Tratamiento asociado. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} No cerrar por simple asignación de tarea; preservar evidencia de verificación y propagar restricciones a la autoridad operativa.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:inf_actuacion_sobre_activo}\label{tab:dic_inf_actuacion_sobre_activo}\textbf{D-INF-12 Actuación sobre activo}. Propietario: Infraestructura. Retención: ACT. Conserva mantenimiento, sustitución o intervención efectiva.} \\* \hline
+\texttt{activo\_\allowbreak{}id} & uuid; ref INF.Activo & S / R & Recurso intervenido. \\ \hline
+\texttt{tipo} & varchar(80); Catálogo de intervención & S / R & Trabajo ejecutado. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Comienzo efectivo. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & N / R & Término efectivo. \\ \hline
+\texttt{responsable\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Ejecutor/validador según función. \\ \hline
+\texttt{resultado} & varchar(1500); Resultado comprobable & S / R & Estado posterior y restricciones. \\ \hline
+\texttt{evidencias} & jsonb; Referencias AS.Versión documental & S / R & Antecedentes del trabajo. \\ \hline
+\texttt{orden\_\allowbreak{}referencia} & varchar(120); Orden identificada & S / R & Orden de intervención técnica; no confundir con faena contractual. \\ \hline
+\texttt{hallazgo\_\allowbreak{}id} & uuid; ref INF.Hallazgo & N / R & Opcional para mantenimiento preventivo sin hallazgo previo. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Intervención no cambia retroactivamente asociación ni inspección; componentes/instalaciones conservan identidad y secuencia.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:inf_punto_de_suministro}\label{tab:dic_inf_punto_de_suministro}\textbf{D-INF-13 Punto de suministro}. Propietario: Infraestructura. Retención: COMB. Recurso físico descrito; atributos propuestos. Identifica el lugar físico de expendio descrito por Combustible.} \\* \hline
+\texttt{activo\_\allowbreak{}id} & uuid; ref INF.Activo, único & S / R & Recurso físico del suministro. \\ \hline
+\texttt{codigo} & varchar(80); Código local & S / R & Identificador visible. \\ \hline
+\texttt{ubicacion\_\allowbreak{}id} & uuid; ref INF.Ubicación & S / R & Lugar físico. \\ \hline
+\texttt{producto} & varchar(60); Producto documentado del alcance & S / R & No ampliar catálogo de productos sin decisión. \\ \hline
+\texttt{estado} & varchar(40); Estado técnico/operativo autorizado & S / R & Condiciona uso. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Especificación lógica del recurso ya descrito; selección/certificación física pertenece a SD4.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:inf_instrumento_de_suministro}\label{tab:dic_inf_instrumento_de_suministro}\textbf{D-INF-14 Instrumento de suministro}. Propietario: Infraestructura. Retención: COMB. Recurso físico descrito; atributos propuestos. Identifica el equipo que produce evidencia de despacho.} \\* \hline
+\texttt{activo\_\allowbreak{}id} & uuid; ref INF.Activo, único & S / R & Equipo físico. \\ \hline
+\texttt{punto\_\allowbreak{}id} & uuid; ref INF.Punto de suministro & S / R & Punto al que corresponde. \\ \hline
+\texttt{serie} & varchar(120); Código y emisor & S / R & Identidad instrumental. \\ \hline
+\texttt{unidad} & varchar(30); Unidad documentada & S / R & Escala de acumulados. \\ \hline
+\texttt{resolucion} & numeric(18,6); Paso > 0 con unidad & C: validación / R & Calidad de evidencia. \\ \hline
+\texttt{epoca\_\allowbreak{}actual} & bigint; Entero >= 0 & S / R & Reinicio/sustitución. \\ \hline
+\texttt{documento\_\allowbreak{}id} & uuid; ref AS.Versión documental & N / R & Ficha/certificación disponible, sin presumir aprobación. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Un tramo de CO utiliza una sola identidad y época; conservar configuración efectiva al ocurrir el despacho.} \\ \hline
+\end{longtable}
+\endgroup
+
+\subsection*{A5.1.10 Auditoría y seguridad}
+
+\label{dicdom:as}
+
+El detalle siguiente conserva las entidades, sus atributos y restricciones. La correspondencia funcional se indica en la Tabla~\ref{tab:a51_cobertura} y en el apartado 5.1.2.9 del SD5 \parencites[anexos A2.1, A2.3 y A2.5]{synaptix-sd2-anexos}{synaptix-sd4}.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}L{\dimexpr0.140\textwidth-4.5pt\relax}L{\dimexpr0.400\textwidth-4.5pt\relax}@{}}
+\caption{Diccionario de Auditoría y seguridad}\label{tab:a51_as} \\
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endhead
+\hline\endfoot
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:as_identidad_de_acceso}\label{tab:dic_as_identidad_de_acceso}\textbf{D-AS-01 Identidad de acceso}. Propietario: Auditoría y seguridad. Retención: SEG. Relaciona principal digital y persona sin crear un segundo padrón.} \\* \hline
+\texttt{persona\_\allowbreak{}id} & uuid; ref CC.Persona & C: identidad humana / S & Persona propietaria. \\ \hline
+\texttt{principal\_\allowbreak{}externo} & varchar(160); Identificador con emisor & S / S & Principal central reconocido. \\ \hline
+\texttt{emisor} & varchar(120); Servicio de identidad de SD4 & S / R & No sustituir Cognito por un proveedor nuevo. \\ \hline
+\texttt{tipo} & varchar(30); humana; servicio & S / R & Cuenta técnica no representa persona ficticia. \\ \hline
+\texttt{estado} & varchar(40); activa; suspendida; revocada & S / R & Catálogo propuesto. \\ \hline
+\texttt{vigente\_\allowbreak{}desde} & timestamptz; UTC & S / R & Validez efectiva. \\ \hline
+\texttt{vigente\_\allowbreak{}hasta} & timestamptz; UTC & N / R & Fin si aplica. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Único (emisor, principal); persona 1:0..N identidades por emisores/finalidades autorizadas. No guardar credenciales de proveedor en este diccionario.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:as_asignacion_de_rol}\label{tab:dic_as_asignacion_de_rol}\textbf{D-AS-02 Asignación de rol}. Propietario: Auditoría y seguridad. Retención: SEG. Versiona facultades de acceso por relación y alcance.} \\* \hline
+\texttt{identidad\_\allowbreak{}id} & uuid; ref AS.Identidad de acceso & S / S & Principal autorizado. \\ \hline
+\texttt{rol} & varchar(80); Catálogo de perfiles documentado & S / R & Función, no mera pertenencia laboral. \\ \hline
+\texttt{alcance} & jsonb; Dominio, relación, objeto y finalidad & S / S & Restricción por embarcación/alumno/empresa. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio incluido. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & N / R & Fin excluido. \\ \hline
+\texttt{aprobador\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Responsable funcional. \\ \hline
+\texttt{politica\_\allowbreak{}id} & uuid; ref AS.Política versionada & S / R & Regla aplicada. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Verificar rol+relación+finalidad+vigencia en cada acto; el rol de administrador técnico no otorga acceso funcional indiscriminado.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:as_politica_versionada}\label{tab:dic_as_politica_versionada}\textbf{D-AS-03 Política versionada}. Propietario: Auditoría y seguridad. Retención: AUD. Conserva reglas efectivas de acceso, control y aprobación.} \\* \hline
+\texttt{nombre} & varchar(120); Política identificada & S / R & Tipo y alcance. \\ \hline
+\texttt{numero\_\allowbreak{}version} & integer; Entero > 0 & S / R & Única por política. \\ \hline
+\texttt{reglas} & jsonb; Reglas declarativas y esquema documentado & S / R & Permisos, restricciones y decisiones de segundo perfil. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Validez de versión. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & N / R & Término. \\ \hline
+\texttt{aprobacion\_\allowbreak{}id} & uuid; ref AS.Decisión sensible & C: cambio sensible / S & Fundamento y autorización. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Una nueva versión no reescribe las decisiones históricas; impedir solapamiento de versiones incompatibles en el mismo alcance.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:as_permiso_operacional_offline}\label{tab:dic_as_permiso_operacional_offline}\textbf{D-AS-04 Permiso operacional offline}. Propietario: Auditoría y seguridad. Retención: SEG. Permite operar dentro del alcance autorizado sin acceso al servicio central.} \\* \hline
+\texttt{identidad\_\allowbreak{}id} & uuid; ref AS.Identidad de acceso & S / S & Titular. \\ \hline
+\texttt{dispositivo\_\allowbreak{}id} & varchar(120); Identidad de dispositivo registrada & S / R & No equivale a autoridad exclusiva del recinto. \\ \hline
+\texttt{alcance} & jsonb; Acciones, relaciones y límites permitidos & S / S & Permisos mínimos. \\ \hline
+\texttt{emitido\_\allowbreak{}en} & timestamptz; UTC & S / R & Emisión comprobada. \\ \hline
+\texttt{vence\_\allowbreak{}en} & timestamptz; UTC hasta 72 h después de emisión & S / R & Límite de vigencia de DA-16; renovación diaria prevista. \\ \hline
+\texttt{politica\_\allowbreak{}id} & uuid; ref AS.Política versionada & S / R & Versión aplicada. \\ \hline
+\texttt{evidencia\_\allowbreak{}firma} & text; Permiso firmado conforme a SD4 & S / R & Algoritmo/gestión de claves pendientes de especificación. \\ \hline
+\texttt{estado} & varchar(40); vigente; vencido; revocado conocido & S / R & Revocación central no es instantánea sin comunicación. \\ \hline
+\texttt{emisor} & varchar(120); Autoridad emisora identificada & S / R & Origen del permiso firmado, según DA-16. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Copia local cifrada; 72 h de permiso no sustituye autonomía de 24/12/8 h ni permite confirmar una entrega exclusiva desde un dispositivo aislado.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:as_consentimiento}\label{tab:dic_as_consentimiento}\textbf{D-AS-05 Consentimiento}. Propietario: Auditoría y seguridad. Retención: AUD. Identifica persona, finalidad, alcance y antecedente de autorización.} \\* \hline
+\texttt{persona\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Titular de datos. \\ \hline
+\texttt{representante\_\allowbreak{}id} & uuid; ref CC.Persona & C: consentimiento por representación / S & Facultad comprobada. \\ \hline
+\texttt{finalidad} & varchar(150); Finalidad informada específica & S / S & No consentimiento genérico para toda operación. \\ \hline
+\texttt{alcance} & jsonb; Datos, tratamiento, canales y límites & S / S & Incluye posición de nave cuando corresponda. \\ \hline
+\texttt{inicio} & timestamptz; UTC & S / R & Inicio de autorización. \\ \hline
+\texttt{fin} & timestamptz; UTC posterior a inicio & N / R & Fin de vigencia. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & S / S & Versión de texto y evidencia aceptada. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Consentimiento no sustituye obligación de retención; retiro restringe usos futuros sujetos a esa finalidad y conserva evidencia histórica necesaria.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:as_evento_de_consentimiento}\label{tab:dic_as_evento_de_consentimiento}\textbf{D-AS-06 Evento de consentimiento}. Propietario: Auditoría y seguridad. Retención: AUD. Conserva alta, cambio o retiro sin destruir el antecedente.} \\* \hline
+\texttt{consentimiento\_\allowbreak{}id} & uuid; ref AS.Consentimiento & S / S & Unidad de autorización. \\ \hline
+\texttt{tipo} & varchar(40); otorgado; modificado; retirado; vencido & S / R & Catálogo propuesto. \\ \hline
+\texttt{instante} & timestamptz; UTC & S / R & Momento efectivo. \\ \hline
+\texttt{actor\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Titular o representante. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & S / S & Soporte. \\ \hline
+\texttt{alcance\_\allowbreak{}anterior} & jsonb; Estado previo protegido & C: cambio/retiro / S & No sobrescribir historia. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Secuencia inmutable; revocación conocida se propaga a proyecciones, exportaciones y permisos según conectividad y política documentada.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:as_evento_de_auditoria}\label{tab:dic_as_evento_de_auditoria}\textbf{D-AS-07 Evento de auditoría}. Propietario: Auditoría y seguridad. Retención: AUD. Registra cambios y consultas sensibles con trazabilidad.} \\* \hline
+\texttt{accion} & varchar(80); Operación identificada & S / R & Consulta, alta, modificación, decisión u otra acción. \\ \hline
+\texttt{dominio\_\allowbreak{}objeto} & varchar(20); Dominio canónico & S / R & Propietario funcional. \\ \hline
+\texttt{objeto\_\allowbreak{}id} & uuid; Identificador estable & S / R & Objeto tratado. \\ \hline
+\texttt{actor\_\allowbreak{}id} & uuid; ref AS.Identidad de acceso & S / S & Quién realizó el acto. \\ \hline
+\texttt{dispositivo\_\allowbreak{}id} & varchar(120); Identidad de dispositivo/canal & S / R & Desde dónde. \\ \hline
+\texttt{ocurrido\_\allowbreak{}en} & timestamptz; UTC & S / R & Cuándo. \\ \hline
+\texttt{finalidad} & varchar(200); Propósito autorizado & S / S & Exigible para consulta sensible. \\ \hline
+\texttt{antes} & jsonb; Estado previo protegido o referencia & C: modificación / S & Minimizar reproducción de datos sensibles. \\ \hline
+\texttt{despues} & jsonb; Estado nuevo protegido o referencia & C: modificación / S & Evidencia de cambio. \\ \hline
+\texttt{correlacion\_\allowbreak{}id} & uuid; Identificador de operación & S / R & Traza de extremo a extremo. \\ \hline
+\texttt{informante\_\allowbreak{}id} & uuid; ref CC.Persona & C: distinto del actor registrador / S & Quién informó el hecho. \\ \hline
+\texttt{resultado} & varchar(100); Resultado del acto/acceso & S / R & Aceptar, denegar u otro resultado documentado. \\ \hline
+\texttt{politica\_\allowbreak{}version} & varchar(120); Regla de autorización vigente & S / R & Reconstruye permiso/finalidad al instante del acto. \\ \hline
+\texttt{motivo} & varchar(1000); Justificación protegida & C: decisión/cambio sensible / S & Conserva razón sin copiarla a logs generales. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Auditoría inmutable y acceso separado; salud, menores, posición y deuda auditan cada consulta. No duplicar auditoría básica al contar volumen adicional.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:as_decision_sensible}\label{tab:dic_as_decision_sensible}\textbf{D-AS-08 Decisión sensible}. Propietario: Auditoría y seguridad. Retención: AUD. Conserva motivo y doble autorización cuando corresponde.} \\* \hline
+\texttt{objeto\_\allowbreak{}id} & uuid; Identificador estable del objeto & S / R & Decisión aplicada. \\ \hline
+\texttt{dominio\_\allowbreak{}objeto} & varchar(20); Dominio canónico & S / R & Propietario. \\ \hline
+\texttt{accion} & varchar(100); Acción sensible de política & S / R & Cambio, excepción o parámetro operacional. \\ \hline
+\texttt{motivo} & varchar(1500); Justificación comprobable & S / S & Antecedente funcional. \\ \hline
+\texttt{solicitante\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Primer perfil. \\ \hline
+\texttt{aprobador\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Segundo perfil distinto. \\ \hline
+\texttt{decidida\_\allowbreak{}en} & timestamptz; UTC & S / R & Momento de decisión. \\ \hline
+\texttt{evidencia\_\allowbreak{}id} & uuid; ref AS.Versión documental & S / S & Respaldo de aprobación. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Solicitante distinto de aprobador y facultades vigentes. RT-16.03 exige segundo perfil y justificación para parámetros operacionales.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:as_documento}\label{tab:dic_as_documento}\textbf{D-AS-09 Documento}. Propietario: dominio del contenido; AS custodia técnica. Retención: HER. Identifica una pieza documental lógica y su clasificación heredada.} \\* \hline
+\texttt{dominio\_\allowbreak{}propietario} & varchar(20); Dominio canónico & S / R & AS custodia, sin reasignar propiedad funcional. \\ \hline
+\texttt{objeto\_\allowbreak{}id} & uuid; Identificador de expediente/hecho & S / R & Vínculo al contexto. \\ \hline
+\texttt{tipo} & varchar(80); Clase documental documentada & S / R & Determina retención y firma exigible. \\ \hline
+\texttt{sensibilidad} & varchar(20); I; R; S según contenido/contexto & S / R & Prevalece la clasificación más restrictiva. \\ \hline
+\texttt{version\_\allowbreak{}vigente\_\allowbreak{}id} & uuid; ref AS.Versión documental & N / R & Puntero derivado; conserva anteriores. \\ \hline
+\texttt{politica\_\allowbreak{}retencion} & varchar(30); Código de A5.2 & S / R & Hereda plazos y bloqueos del expediente. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Documento lógico 1:N versiones; no borrar versiones por apuntar a una nueva. Ubicación física en S3 no modifica titularidad ni sensibilidad.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:as_version_documental}\label{tab:dic_as_version_documental}\textbf{D-AS-10 Versión documental}. Propietario: dominio del contenido; AS custodia técnica. Retención: HER. Conserva contenido, integridad, origen y firma de cada pieza binaria.} \\* \hline
+\texttt{documento\_\allowbreak{}id} & uuid; ref AS.Documento & S / R & Documento lógico. \\ \hline
+\texttt{numero\_\allowbreak{}version} & integer; Entero > 0 & S / R & Única por documento. \\ \hline
+\texttt{objeto\_\allowbreak{}repositorio} & text; Clave opaca del objeto & S / R & No publicar enlace de acceso permanente. \\ \hline
+\texttt{tipo\_\allowbreak{}mime} & varchar(120); Tipo de medio documentado & S / R & Formato del archivo. \\ \hline
+\texttt{tamano\_\allowbreak{}bytes} & bigint; Entero >= 0 & S / R & Tamaño exacto; vacío requiere motivo. \\ \hline
+\texttt{huella} & varchar(200); Algoritmo+valor según SD4 & S / R & Integridad; algoritmo pendiente, no inventado. \\ \hline
+\texttt{origen} & varchar(150); Emisor/canal identificado & S / R & Procedencia. \\ \hline
+\texttt{firma\_\allowbreak{}evidencia} & jsonb; Método, firmante, validación y soporte & C: acto exige firma / S & No afirmar validez por existencia de una imagen. \\ \hline
+\texttt{estado\_\allowbreak{}integridad} & varchar(40); pendiente; comprobada; observada & S / R & Objeto recibido y validación distintos. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Único (documento, número de versión). Confirmar archivo solo al verificar recepción durable e integridad; aplicar plazo/bloqueo heredado a toda versión y copia.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:as_evento_tecnico_de_seguridad}\label{tab:dic_as_evento_tecnico_de_seguridad}\textbf{D-AS-11 Evento técnico de seguridad}. Propietario: Auditoría y seguridad. Retención: SEG. Registro técnico descrito en 5.2; atributos propuestos. Conserva eventos técnicos de detección, acceso y protección mencionados en 5.2.} \\* \hline
+\texttt{tipo} & varchar(120); Catálogo de eventos de seguridad & S / R & Identifica detección, fallo, intento o cambio técnico. \\ \hline
+\texttt{ocurrido\_\allowbreak{}en} & timestamptz; UTC & S / R & Instante del evento. \\ \hline
+\texttt{principal} & jsonb; Identidad técnica/humana disponible & S / S & Ausencia de identificación se documenta, no se inventa. \\ \hline
+\texttt{dispositivo\_\allowbreak{}id} & varchar(120); Equipo/canal identificado & S / R & Origen técnico. \\ \hline
+\texttt{resultado} & varchar(100); Resultado observado & S / R & No confundir detección con compromiso demostrado. \\ \hline
+\texttt{severidad} & varchar(40); Escala de política versionada & S / R & Clasificación para respuesta. \\ \hline
+\texttt{politica\_\allowbreak{}version} & varchar(120); Regla de detección/protección & S / R & Versión aplicada. \\ \hline
+\texttt{correlacion\_\allowbreak{}id} & uuid; Operación/evento correlacionado & N / R & Relación con evidencia funcional. \\ \hline
+\texttt{evidencia} & jsonb; Referencias o contenido técnico minimizado & S / S & Evitar datos de salud/deuda en logs generales. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Distinguir este conjunto técnico (12 meses en línea y 24 adicionales en archivo) de auditoría funcional, que conserva al menos cinco años o plazo mayor del expediente.} \\ \hline
+\end{longtable}
+\endgroup
+
+\subsection*{A5.1.11 Servicio compartido de notificaciones}
+
+\label{dicdom:not}
+
+El detalle siguiente conserva las entidades, sus atributos y restricciones. La correspondencia funcional se indica en la Tabla~\ref{tab:a51_cobertura} y en el apartado 5.1.2, servicios compartidos del SD5 \parencites[anexos A2.1, A2.3 y A2.5]{synaptix-sd2-anexos}{synaptix-sd4}.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}L{\dimexpr0.140\textwidth-4.5pt\relax}L{\dimexpr0.400\textwidth-4.5pt\relax}@{}}
+\caption{Diccionario de Servicio compartido de notificaciones}\label{tab:a51_not} \\
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endhead
+\hline\endfoot
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:not_aviso}\label{tab:dic_not_aviso}\textbf{D-NOT-01 Aviso}. Propietario: dominio de origen. Retención: NOT. Identifica notificación y hecho que la origina, incluido aviso de marejada.} \\* \hline
+\texttt{dominio\_\allowbreak{}origen} & varchar(20); Dominio canónico & S / R & Propietario del motivo. \\ \hline
+\texttt{origen\_\allowbreak{}id} & uuid; Hecho o evento identificado & S / R & No crea otra asistencia ni otra autoridad operacional. \\ \hline
+\texttt{tipo} & varchar(80); emergencia; regreso; escuela; cobranza; marejada; otro autorizado & S / R & Catálogo propuesto dentro de ALE. \\ \hline
+\texttt{contenido\_\allowbreak{}version} & jsonb; Texto, plantilla y versión emitidos & S / S & Conserva lo efectivamente comunicado. \\ \hline
+\texttt{emitido\_\allowbreak{}en} & timestamptz; UTC & S / R & Inicio de envío. \\ \hline
+\texttt{vigencia\_\allowbreak{}hasta} & timestamptz; UTC & N / R & Caducidad informativa si aplica. \\ \hline
+\texttt{antecedente\_\allowbreak{}oficial} & jsonb; Emisor, fecha, alcance y documento & C: aviso de marejada / R & Canal real por confirmar; no inventar API sectorial. \\ \hline
+\texttt{estado} & varchar(40); preparado; en envío; finalizado; observado & S / R & Finalizado no implica todos los destinatarios con acuse. \\ \hline
+\texttt{prioridad} & varchar(30); crítica; operacional; ordinaria & S / R & Catálogo propuesto para el atributo descrito por SD5. \\ \hline
+\texttt{autorizacion\_\allowbreak{}id} & uuid; ref AS.Decisión sensible & C: política del aviso exige aprobación / S & No enviar sin facultad; reglas del dominio determinan el acto. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Aviso pertenece al servicio compartido, sin décimo dominio de negocio. Información de nave/alumno se limita por vínculo y finalidad.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:not_destinatario_de_aviso}\label{tab:dic_not_destinatario_de_aviso}\textbf{D-NOT-02 Destinatario de aviso}. Propietario: dominio de origen. Retención: NOT. Vincula destinatario y canales habilitados al mismo aviso.} \\* \hline
+\texttt{aviso\_\allowbreak{}id} & uuid; ref NOT.Aviso & S / R & Comunicación única. \\ \hline
+\texttt{persona\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Destinatario. \\ \hline
+\texttt{relacion} & varchar(100); Armador; apoderado; contratista u otro vínculo vigente & S / S & Fundamento de acceso y envío. \\ \hline
+\texttt{canales} & jsonb; SMS; mensajería; correo; teléfono según política & S / S & Contactos protegidos y preferencia aplicable. \\ \hline
+\texttt{consentimiento\_\allowbreak{}id} & uuid; ref AS.Consentimiento & C: finalidad requiere consentimiento / S & No sustituye fundamento de emergencia. \\ \hline
+\texttt{resultado} & varchar(40); pendiente; con acuse; sin acuse; fallo & S / R & Estado agregado derivado de intentos y acuses. \\ \hline
+\texttt{contacto\_\allowbreak{}version} & jsonb; Contacto/canal y versión efectivamente utilizados & S / S & Permite reconstruir a qué destino se envió. \\ \hline
+\texttt{vinculo\_\allowbreak{}version} & jsonb; Representación/armador/apoderado y vigencia utilizadas & S / S & Evidencia de selección de destinatario. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Único (aviso, persona, relación/alcance); en emergencia enviar simultáneamente por los tres canales exigidos y conservar acuse por canal.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:not_intento_de_entrega}\label{tab:dic_not_intento_de_entrega}\textbf{D-NOT-03 Intento de entrega}. Propietario: dominio de origen. Retención: NOT. Registra cada transmisión y respuesta del canal.} \\* \hline
+\texttt{destinatario\_\allowbreak{}id} & uuid; ref NOT.Destinatario de aviso & S / S & Destinatario del aviso. \\ \hline
+\texttt{canal} & varchar(30); SMS; mensajería; correo; teléfono & S / R & Medio utilizado. \\ \hline
+\texttt{numero\_\allowbreak{}intento} & integer; Entero > 0 & S / R & Secuencia por canal. \\ \hline
+\texttt{enviado\_\allowbreak{}en} & timestamptz; UTC & S / R & Inicio efectivo. \\ \hline
+\texttt{identificador\_\allowbreak{}proveedor} & varchar(160); Código con emisor & N / R & Referencia externa si disponible. \\ \hline
+\texttt{resultado} & varchar(40); aceptado por canal; entregado; fallido; desconocido & S / R & Aceptación técnica no es lectura humana. \\ \hline
+\texttt{respuesta\_\allowbreak{}original} & jsonb; Constancia protegida del canal & N / S & Evidencia recibida. \\ \hline
+\texttt{proveedor} & varchar(120); Proveedor/canal autorizado & S / R & Emisor del identificador externo. \\ \hline
+\texttt{terminado\_\allowbreak{}en} & timestamptz; UTC posterior al envío & N / R & Término observado del intento. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Único (destinatario, canal, número de intento); reintento guarda clave estable de operación. Sin constancia no declarar entregado.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:not_acuse}\label{tab:dic_not_acuse}\textbf{D-NOT-04 Acuse}. Propietario: dominio de origen. Retención: NOT. Conserva confirmación individual con su canal y evidencia.} \\* \hline
+\texttt{intento\_\allowbreak{}id} & uuid; ref NOT.Intento de entrega & S / R & Transmisión confirmada. \\ \hline
+\texttt{tipo} & varchar(40); aceptación proveedor; entrega técnica; lectura; confirmación humana & S / R & Cuatro niveles descritos por el cuerpo; conservar evidencia individual del nivel real. \\ \hline
+\texttt{recibido\_\allowbreak{}en} & timestamptz; UTC & S / R & Instante del acuse. \\ \hline
+\texttt{emisor} & varchar(120); Proveedor/persona con identidad & S / S & Quién confirma. \\ \hline
+\texttt{evidencia} & jsonb; Constancia y esquema de origen & S / S & Permite justificar el estado. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Un intento admite distintos niveles de acuse; deduplicar identificador/emisor. Mantener acuse individual por canal conforme a RT-16.21.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:not_tarea_de_escalamiento}\label{tab:dic_not_tarea_de_escalamiento}\textbf{D-NOT-05 Tarea de escalamiento}. Propietario: dominio de origen. Retención: NOT. Registra llamada o atención manual ante falta de acuse.} \\* \hline
+\texttt{destinatario\_\allowbreak{}id} & uuid; ref NOT.Destinatario de aviso & S / S & Persona pendiente. \\ \hline
+\texttt{motivo} & varchar(500); Fallo/falta de acuse según política & S / R & No inventar plazo normativo de llamada. \\ \hline
+\texttt{asignado\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Responsable funcional. \\ \hline
+\texttt{abierta\_\allowbreak{}en} & timestamptz; UTC & S / R & Inicio de tarea. \\ \hline
+\texttt{atendida\_\allowbreak{}en} & timestamptz; UTC & N / R & Llamada efectiva. \\ \hline
+\texttt{resultado} & varchar(1000); Contacto y conformidad observados & C: atendida / S & Constancia individual. \\ \hline
+\texttt{estado} & varchar(40); pendiente; atendida; requiere seguimiento & S / R & No cerrar sin resultado. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Escalar sin acuse con registro de llamadas según RT-16.21; comunicación funcional no sustituye confirmación de regreso ni entrega escolar.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:not_campana_de_emergencia}\label{tab:dic_not_campana_de_emergencia}\textbf{D-NOT-06 Campaña de emergencia}. Propietario: dominio de origen. Retención: NOT. Controla el envío conjunto a los 296 armadores del escenario crítico.} \\* \hline
+\texttt{aviso\_\allowbreak{}id} & uuid; ref NOT.Aviso & S / R & Aviso común. \\ \hline
+\texttt{universo\_\allowbreak{}destinatarios} & jsonb; Lista versionada de destinatarios & S / S & Población efectiva, sin excluir fallos silenciosamente. \\ \hline
+\texttt{iniciada\_\allowbreak{}en} & timestamptz; UTC & S / R & Inicio de medición. \\ \hline
+\texttt{ultimo\_\allowbreak{}envio\_\allowbreak{}en} & timestamptz; UTC & N / R & Fin de despacho al último destinatario. \\ \hline
+\texttt{total\_\allowbreak{}previsto} & integer; Entero >= 0 & S / R & 296 en la prueba exigida, no padrón inmutable. \\ \hline
+\texttt{total\_\allowbreak{}intentado} & integer; Entero entre 0 y previsto & S / R & No equivale a total confirmado. \\ \hline
+\texttt{estado} & varchar(40); abierta; enviada; en escalamiento; cerrada & S / R & Cierre requiere control de pendientes. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Verificar último envío dentro de diez minutos en el escenario de 296; separar tiempo de despacho, entrega y acuse de cada canal.} \\ \hline
+\end{longtable}
+\endgroup
+
+\subsection*{A5.1.12 Estructuras comunes de intercambio y control}
+
+\label{dicdom:com}
+
+El detalle siguiente conserva las entidades, sus atributos y restricciones. La correspondencia funcional se indica en la Tabla~\ref{tab:a51_cobertura} y en el apartado 5.2 del SD5 \parencites[anexos A2.1, A2.3 y A2.5]{synaptix-sd2-anexos}{synaptix-sd4}.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}L{\dimexpr0.140\textwidth-4.5pt\relax}L{\dimexpr0.400\textwidth-4.5pt\relax}@{}}
+\caption{Diccionario de Estructuras comunes de intercambio y control}\label{tab:a51_com} \\
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Atributo técnico} & \EncabezadoTabla{Tipo / dominio de valores} & \EncabezadoTabla{Obligación / sensibilidad} & \EncabezadoTabla{Definición y condición} \\ \hline
+\endhead
+\hline\endfoot
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:com_sobre_de_evento}\label{tab:dic_com_sobre_de_evento}\textbf{D-COM-01 Sobre de evento}. Propietario: dominio de origen. Retención: HER. Contrato técnico vigente; no nuevo dominio. Conserva exactamente los metadatos del contrato de intercambio de SD4/SD5.} \\* \hline
+\texttt{eventId} & uuid; UUID v4 global estable & S / R & Identidad del evento; no cambia en reintentos. \\ \hline
+\texttt{eventType} & varchar(120); Nombre de evento de contrato versionado & S / R & Hecho publicado, no instrucción implícita. \\ \hline
+\texttt{schemaVersion} & varchar(40); Versión de esquema admitida & S / R & Rechazar o poner en cuarentena versión incompatible. \\ \hline
+\texttt{aggregateId} & uuid; Identidad del agregado productor & S / R & No equivale a secuencia global. \\ \hline
+\texttt{aggregateSequence} & bigint; Entero >= 0, por productor/agregado & S / R & Orden local y detección de huecos. \\ \hline
+\texttt{occurredAt} & timestamptz; UTC & S / R & Instante del hecho. \\ \hline
+\texttt{recordedAt} & timestamptz; UTC & S / R & Instante de registro. \\ \hline
+\texttt{source} & varchar(120); Productor identificado & S / R & Dominio/instancia de origen. \\ \hline
+\texttt{actor} & jsonb; Principal, función y dispositivo & S / S & Autor humano o técnico identificado. \\ \hline
+\texttt{correlationId} & uuid; Operación funcional estable & S / R & Relaciona pasos de la misma operación. \\ \hline
+\texttt{causationId} & uuid; Evento/orden causante & C: existe antecedente causal / R & Nulo solo si el evento inicia la cadena. \\ \hline
+\texttt{payload} & jsonb; Contenido conforme al esquema & S / S & Sensibilidad heredada del hecho; minimizar datos transmitidos. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Identidad estable; único (source, aggregateId, aggregateSequence). Mismo eventId y distinto contenido se conserva como discrepancia. Sobre no concede autoridad al receptor.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:com_bandeja_de_salida}\label{tab:dic_com_bandeja_de_salida}\textbf{D-COM-02 Bandeja de salida}. Propietario: dominio de origen. Retención: TEC. Registro técnico descrito en 5.2. Acopla dato, auditoría y publicación en la misma transacción local.} \\* \hline
+\texttt{evento\_\allowbreak{}id} & uuid; ref COM.Sobre de evento & S / R & Evento pendiente de transmisión. \\ \hline
+\texttt{destino} & varchar(120); Contrato de destino autorizado & S / R & Receptor/servicio. \\ \hline
+\texttt{estado} & varchar(40); pendiente; enviado; recibido durable; resuelto & S / R & Distingue acuses. \\ \hline
+\texttt{intentos} & integer; Entero >= 0 & S / R & Reintentos sin cambiar identidad. \\ \hline
+\texttt{proximo\_\allowbreak{}intento\_\allowbreak{}en} & timestamptz; UTC & N / R & Programación acotada. \\ \hline
+\texttt{acuse\_\allowbreak{}durable\_\allowbreak{}en} & timestamptz; UTC & N / R & Recepción durable, distinta de aplicación. \\ \hline
+\texttt{resultado\_\allowbreak{}negocio} & jsonb; Respuesta identificada & N / R & Aceptado/rechazado/pendiente. \\ \hline
+\texttt{archivos\_\allowbreak{}confirmados} & boolean; verdadero; falso & S / R & Confirmación independiente de los binarios. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Confirmar recepción no borra una evidencia pendiente; liberar copia local solo con resultado y confirmaciones requeridos, respetando retención.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:com_bandeja_de_entrada}\label{tab:dic_com_bandeja_de_entrada}\textbf{D-COM-03 Bandeja de entrada}. Propietario: dominio de origen. Retención: TEC. Registro técnico descrito en 5.2. Deduplica y conserva aplicación/resultado de un evento recibido.} \\* \hline
+\texttt{evento\_\allowbreak{}id} & uuid; ref COM.Sobre de evento, único por consumidor & S / R & Clave idempotente. \\ \hline
+\texttt{consumidor} & varchar(120); Dominio/instancia autorizada & S / R & Receptor que aplica el efecto. \\ \hline
+\texttt{recibido\_\allowbreak{}en} & timestamptz; UTC & S / R & Recepción durable. \\ \hline
+\texttt{estado} & varchar(40); recibido; pendiente dependencia; aplicado; rechazado; discrepancia & S / R & No aplicar con antecedentes inventados. \\ \hline
+\texttt{dependencias} & jsonb; Referencias faltantes o lista vacía & S / R & Permite solicitar antecedentes. \\ \hline
+\texttt{resultado} & jsonb; Respuesta funcional original & C: aplicado/rechazado / R & Un duplicado obtiene el mismo resultado. \\ \hline
+\texttt{aplicado\_\allowbreak{}en} & timestamptz; UTC & C: aplicado / R & Momento de efecto. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Registro de inbox y efecto local atómicos; único (consumidor, evento). Mensaje fuera de orden conserva evidencia y espera causalidad cuando corresponde.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:com_discrepancia}\label{tab:dic_com_discrepancia}\textbf{D-COM-04 Discrepancia}. Propietario: dominio de origen. Retención: HER. Registro técnico/funcional descrito en 5.2. Conserva versiones incompatibles y su resolución funcional.} \\* \hline
+\texttt{dominio\_\allowbreak{}propietario} & varchar(20); Dominio canónico & S / R & Quién resuelve el significado. \\ \hline
+\texttt{objeto\_\allowbreak{}id} & uuid; Objeto afectado & S / R & Referencia estable. \\ \hline
+\texttt{versiones} & jsonb; Contenido/referencias a ambas versiones protegidas & S / S & No perder evidencia del conflicto. \\ \hline
+\texttt{tipo} & varchar(80); Identidad; secuencia; contenido; autorización; otro motivado & S / R & Catálogo de defectos. \\ \hline
+\texttt{estado} & varchar(40); abierta; en revisión; resuelta & S / R & Resolución explícita. \\ \hline
+\texttt{responsable\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Validador funcional. \\ \hline
+\texttt{resolucion} & jsonb; Versión autorizada, motivo y evidencia & C: resuelta / S & No usar última escritura por defecto. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Conservar ambas versiones; resolución no borra el hecho físico. Restricción de uso mientras identidad/autoridad sea dudosa.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:com_proyeccion_autorizada}\label{tab:dic_com_proyeccion_autorizada}\textbf{D-COM-05 Proyección autorizada}. Propietario: dominio de origen. Retención: DER. Registro técnico descrito en 5.2. Identifica una vista derivada, su avance y límites de uso.} \\* \hline
+\texttt{dominio\_\allowbreak{}origen} & varchar(20); Dominio canónico & S / R & Propietario del dato maestro. \\ \hline
+\texttt{nombre} & varchar(120); Contrato de proyección & S / R & Vista de lectura identificada. \\ \hline
+\texttt{esquema\_\allowbreak{}version} & varchar(40); Versión admitida & S / R & Estructura documentada. \\ \hline
+\texttt{marca\_\allowbreak{}avance} & jsonb; Productor/agregado/secuencia o corte & S / R & No prometer instantánea global. \\ \hline
+\texttt{actualizada\_\allowbreak{}en} & timestamptz; UTC & S / R & Hora del avance aplicado. \\ \hline
+\texttt{limite\_\allowbreak{}desfase} & integer; Segundos >= 0 según flujo & S / R & No relaja RT-05.29. \\ \hline
+\texttt{finalidad} & varchar(150); Uso autorizado & S / R & Lectura; no confirma recursos exclusivos. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Es derivada y reconstruible; mostrar desfase. Escuela comparte participación con autoridad local y saldo actual depende de interfaz externa.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:com_correspondencia_de_identidad}\label{tab:dic_com_correspondencia_de_identidad}\textbf{D-COM-06 Correspondencia de identidad}. Propietario: dominio de origen. Retención: HER. Instrumento de migración e intercambio descrito. Relaciona claves externas con UUID sin alterar el original.} \\* \hline
+\texttt{dominio\_\allowbreak{}destino} & varchar(20); Dominio canónico & S / R & Propietario del maestro. \\ \hline
+\texttt{objeto\_\allowbreak{}id} & uuid; Identidad del destino & S / R & UUID preservado. \\ \hline
+\texttt{emisor} & varchar(120); Fuente/sistema identificado & S / R & Ámbito externo. \\ \hline
+\texttt{clave\_\allowbreak{}original} & varchar(250); Clave de origen sin transformación destructiva & S / S & Dato original protegido según contenido. \\ \hline
+\texttt{regla\_\allowbreak{}version} & varchar(80); Regla aprobada de correspondencia & S / R & Justifica vinculación/fusión. \\ \hline
+\texttt{verificacion} & varchar(40); pendiente; comprobada; discrepancia & S / R & No fusionar por nombre. \\ \hline
+\texttt{evidencia} & jsonb; Manifiesto/decisión de perfilado & S / S & Respaldo. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Único (emisor, clave original, dominio); fusión exige revisión y mantiene todos los códigos originales.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:com_exportacion}\label{tab:dic_com_exportacion}\textbf{D-COM-07 Exportación}. Propietario: AS para el control; propietario funcional valida el alcance de sus datos. Retención: EXP. Registro técnico descrito en 5.2. Controla cobertura y entrega autónoma de datos portables del cliente.} \\* \hline
+\texttt{solicitante\_\allowbreak{}id} & uuid; ref AS.Identidad de acceso & S / S & Perfil autorizado del cliente. \\ \hline
+\texttt{alcance} & jsonb; Completo o subconjunto solicitado & S / R & Completo incluye nueve dominios y servicios compartidos. \\ \hline
+\texttt{cortes} & jsonb; Corte/avance por dominio y pendientes & S / R & Expresa límites de consistencia. \\ \hline
+\texttt{formatos} & jsonb; CSV UTF-8; JSON/JSON Lines; Parquet; originales & S / R & Estructuras abiertas y documentadas. \\ \hline
+\texttt{manifiesto\_\allowbreak{}id} & uuid; ref AS.Versión documental & C: preparado / R & Cantidad, huellas, relaciones y cobertura. \\ \hline
+\texttt{estado} & varchar(40); solicitada; generando; disponible; entregada; vencida & S / R & Exportación asíncrona y trazable. \\ \hline
+\texttt{vence\_\allowbreak{}en} & timestamptz; UTC según política de entrega & C: paquete disponible / R & Plazo de copia temporal propuesto, no del maestro. \\ \hline
+\texttt{entregada\_\allowbreak{}en} & timestamptz; UTC & N / R & Entrega al cliente comprobada. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Sin intervención obligatoria ni cobro adicional de Synaptix; no exportar claves de infraestructura/credenciales. No excluir pendientes sin declararlos.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:com_regla_de_calidad}\label{tab:dic_com_regla_de_calidad}\textbf{D-COM-08 Regla de calidad}. Propietario: dominio de origen. Retención: AUD. Registro de control descrito en 5.2. Versiona validaciones y metas sin cambiar exigencias de las bases.} \\* \hline
+\texttt{dominio\_\allowbreak{}propietario} & varchar(20); Dominio canónico & S / R & Responsable funcional. \\ \hline
+\texttt{codigo} & varchar(80); Identificador único de regla & S / R & Referencia para incidencias/indicadores. \\ \hline
+\texttt{version\_\allowbreak{}regla} & integer; Entero > 0 & S / R & Versión efectiva. \\ \hline
+\texttt{universo} & text; Población y período explícitos & S / R & Incluye pendientes elegibles. \\ \hline
+\texttt{expresion} & text; Fórmula/validación documentada & S / R & Reproducible sin consulta manual ambigua. \\ \hline
+\texttt{meta} & text; Umbral y condición & S / R & Distinguir requisito de criterio propuesto. \\ \hline
+\texttt{vigencia} & jsonb; Inicio/fin y aprobación & S / R & Cambio sensible con segundo perfil. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Universo vacío se informa no aplica; no excluir defectos silenciosamente. Metas propuestas no sustituyen plazos obligatorios.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:com_incidencia_de_calidad}\label{tab:dic_com_incidencia_de_calidad}\textbf{D-COM-09 Incidencia de calidad}. Propietario: dominio de origen. Retención: HER. Registro de control descrito en 5.2. Controla un defecto conservando evidencia y decisión.} \\* \hline
+\texttt{regla\_\allowbreak{}id} & uuid; ref COM.Regla de calidad & S / R & Validación que detectó el defecto. \\ \hline
+\texttt{objeto\_\allowbreak{}id} & uuid; Objeto afectado & S / R & Registro o lote. \\ \hline
+\texttt{severidad} & varchar(40); bloqueante; advertencia; restringida & S / R & Consecuencia de uso definida. \\ \hline
+\texttt{detectada\_\allowbreak{}en} & timestamptz; UTC & S / R & Inicio. \\ \hline
+\texttt{evidencia} & jsonb; Valor original/referencias protegidos & S / S & Reproducibilidad. \\ \hline
+\texttt{responsable\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Dueño de resolución. \\ \hline
+\texttt{estado} & varchar(40); abierta; corregida; verificada; cerrada & S / R & Corrección no implica verificación. \\ \hline
+\texttt{resolucion} & jsonb; Motivo, rectificación y aprobación & C: corregida/cerrada / S & Historia de tratamiento. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Conservar hechos seguros aun con identificación provisional; impedir facturación o autorización cuando falla una condición crítica.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:com_politica_de_retencion}\label{tab:dic_com_politica_de_retencion}\textbf{D-COM-10 Política de retención}. Propietario: AS para el control; propietario funcional valida el alcance de sus datos. Retención: AUD. Registro de control descrito en 5.2. Materializa plazos, eventos de inicio y bloqueos por categoría.} \\* \hline
+\texttt{codigo} & varchar(30); Código único de A5.2 & S / R & Categoría vinculada al diccionario. \\ \hline
+\texttt{version\_\allowbreak{}politica} & integer; Entero > 0 & S / R & Regla efectiva. \\ \hline
+\texttt{fundamento} & text; RT/decisión o propuesta identificada & S / R & No presentar plazo propuesto como base. \\ \hline
+\texttt{evento\_\allowbreak{}inicio} & text; Evento comprobable de A5.2 & S / R & No siempre coincide con creación. \\ \hline
+\texttt{calculo\_\allowbreak{}vencimiento} & text; Fórmula documentada & S / R & Maximiza plazos aplicables. \\ \hline
+\texttt{bloqueos} & jsonb; Ámbito, motivo, responsable y revisión & S / S & Preservación acotada. \\ \hline
+\texttt{estado} & varchar(40); propuesta; aprobada; pendiente de definición & S / R & Pendiente impide purga automática. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Los mínimos de bases prevalecen; aplicar plazo más largo cuando un dato pertenece a varias categorías. Bloqueo no convierte toda la base en archivo perpetuo.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:com_orden_de_eliminacion}\label{tab:dic_com_orden_de_eliminacion}\textbf{D-COM-11 Orden de eliminación}. Propietario: AS para el control; propietario funcional valida el alcance de sus datos. Retención: AUD. Registro de control descrito en 5.2. Registra expiración, alcance y ejecución en todas las copias.} \\* \hline
+\texttt{politica\_\allowbreak{}id} & uuid; ref COM.Política de retención & S / R & Regla aprobada aplicable. \\ \hline
+\texttt{alcance} & jsonb; Identidades, versiones y repositorios & S / S & Incluye copias/dispositivos/derivados. \\ \hline
+\texttt{evaluada\_\allowbreak{}en} & timestamptz; UTC & S / R & Comprobación de vencimiento/bloqueos. \\ \hline
+\texttt{aprobador\_\allowbreak{}id} & uuid; ref CC.Persona & S / S & Responsable funcional autorizado. \\ \hline
+\texttt{estado} & varchar(40); evaluada; bloqueada; ejecutando; confinada; completa & S / R & Completa solo sin residuos recuperables. \\ \hline
+\texttt{evidencia} & jsonb; Resultados por repositorio y huellas de control & S / R & Manifiesto sin reproducir datos eliminados. \\ \hline
+\texttt{residuos\_\allowbreak{}hasta} & timestamptz; UTC & C: copias residuales / R & Fecha prevista de expiración; acceso confinado. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Reaplicar eliminaciones antes de exponer una restauración. No destruir una clave compartida si afecta datos que deben conservarse.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:com_lote_analitico}\label{tab:dic_com_lote_analitico}\textbf{D-COM-12 Lote analítico}. Propietario: dominio de origen. Retención: HER. Registro técnico descrito en 5.2. Conserva extracción, transformación y avance de un conjunto derivado.} \\* \hline
+\texttt{dominio\_\allowbreak{}origen} & varchar(20); Dominio canónico & S / R & Propietario del dato. \\ \hline
+\texttt{periodo} & jsonb; Inicio incluido/fin excluido & S / R & Cobertura temporal. \\ \hline
+\texttt{esquema\_\allowbreak{}version} & varchar(40); Versión de contrato & S / R & Estructura admitida. \\ \hline
+\texttt{marca\_\allowbreak{}avance} & jsonb; Secuencia/corte identificado & S / R & Progreso por fuente. \\ \hline
+\texttt{cantidades} & jsonb; Recuentos por familia y sumas de control & S / R & Conciliación del lote. \\ \hline
+\texttt{transformacion\_\allowbreak{}version} & varchar(80); Regla identificada & S / R & Linaje. \\ \hline
+\texttt{manifiesto\_\allowbreak{}id} & uuid; ref AS.Versión documental & S / R & Huella, origen y resultados. \\ \hline
+\texttt{estado} & varchar(40); recibido; validado; publicado; rectificado & S / R & No publicar observaciones como conciliadas. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Corregir período mediante versión nueva y mantener informe emitido; seudonimizar conjuntos analíticos sin darles autoridad operacional.} \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:com_indicador_versionado}\label{tab:dic_com_indicador_versionado}\textbf{D-COM-13 Indicador versionado}. Propietario: dominio de origen. Retención: DER. Registro de explotación descrito en 5.2. Identifica definición reproducible de una medida de autoservicio.} \\* \hline
+\texttt{codigo} & varchar(80); Identificador único & S / R & Indicador publicado. \\ \hline
+\texttt{numero\_\allowbreak{}version} & integer; Entero > 0 & S / R & Versión de fórmula. \\ \hline
+\texttt{formula} & text; Cálculo y unidad documentados & S / R & No sumar magnitudes incompatibles. \\ \hline
+\texttt{universo} & text; Población, filtros y período & S / R & Denominador explícito. \\ \hline
+\texttt{fuentes} & jsonb; Lotes, hechos y dimensiones autorizados & S / R & Linaje a origen. \\ \hline
+\texttt{finalidad} & varchar(200); Propósito autorizado & S / R & Controla datos sensibles. \\ \hline
+\texttt{vigencia} & jsonb; Inicio/fin y aprobación & S / R & Cambio conserva resultados previos. \\ \hline
+\multicolumn{4}{@{}p{\textwidth}@{}}{\textbf{Relaciones y control:} Separar informe gerencial de vista operativa; catálogo automatizado integral es deseable según BT RT-05.10, no evidencia de una implementación actual.} \\ \hline
+\end{longtable}
+\endgroup
+
+\subsection*{A5.1.13 Estados, transiciones y confirmaciones}
+
+Las secuencias siguientes sintetizan los flujos de 5.1 y 5.2; no constituyen un catálogo único para todo el puerto. Cada cambio conserva actor, instante, versión, motivo y evidencia. Los catálogos propuestos mantienen esa condición y las confirmaciones efectivas requieren la autoridad y los controles de A5.2.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.0pt\relax}L{\dimexpr0.300\textwidth-4.0pt\relax}L{\dimexpr0.510\textwidth-4.0pt\relax}@{}}
+\caption{Transiciones e invariantes de los flujos críticos}\label{tab:a51_transiciones} \\
+\hline
+\EncabezadoTabla{Unidad} & \EncabezadoTabla{Secuencia lógica} & \EncabezadoTabla{Condición de paso} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Unidad} & \EncabezadoTabla{Secuencia lógica} & \EncabezadoTabla{Condición de paso} \\ \hline
+\endhead
+\hline\endfoot
+Plan de navegación & borrador → declarado → vencido sin cierre o cierre declarado → cerrado conciliado; cancelado según actuación & Cerrar o modificar plan por armador no confirma regreso; confirmar observación por Operaciones; alertar dentro de 15 min desde vencimiento. \\ \hline
+Participación escolar & prevista → presente en tierra → en el agua → regreso confirmado → retirada; ausente si corresponde & Cambio observado en evento; autorización y persona receptora verificadas; retiro y entrega usan la misma participación. Dispositivo aislado no confirma entrega exclusiva. \\ \hline
+Invernada/custodia & programada → recepción confirmada → traslados efectivos → entrega confirmada & Reserva no prueba permanencia; registrar lugar, instante, responsable, conformidad y firma exigible de recepción/entrega. \\ \hline
+Combustible & preparado → en curso → pendiente de conciliación → validado; publicación posterior y rectificación autorizada; anulación con motivo & Duplicado exacto conserva respuesta; validación precede CombustibleDespachado y hecho facturable; estado de pago proviene del sistema externo. \\ \hline
+Consumo & recibido → observado o conciliado → rectificado & Medidor, época, unidad y asociación coherentes; cantidad ausente no es cero; no facturar intervalos observados. \\ \hline
+Notificación & preparada → intentada por canal → entregada/acuse/fallo → escalamiento & Cada canal mantiene evidencia; aceptación del proveedor no es acuse humano; falta de acuse activa tarea y registro de llamada. \\ \hline
+Intercambio & outbox pendiente → recepción durable → aplicación/rechazo → archivo confirmado & Dato/auditoría/outbox atómicos; inbox/efecto atómicos; separar los tres niveles de confirmación; no prometer transacción distribuida global. \\ \hline
+\end{longtable}
+\endgroup

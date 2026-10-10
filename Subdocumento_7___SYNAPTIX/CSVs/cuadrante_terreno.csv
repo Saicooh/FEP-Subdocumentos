@@ -1,0 +1,563 @@
+﻿Servicio,Paquete,Perfil,Recurso,Inicio,Fin,HH,Mes,Condicion
+Ola 1 E1,1.11.4.1.1.1.1,L,TER-W-01,2027-12-01T09:00:00,2027-12-01T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.1.2,L,TER-W-02,2027-12-01T09:00:00,2027-12-01T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.1.1,L,TER-W-03,2027-12-01T09:00:00,2027-12-01T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.1.2,L,TER-W-04,2027-12-01T09:00:00,2027-12-01T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.1.1,L,TER-W-05,2027-12-01T09:00:00,2027-12-01T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.1.2,L,TER-W-06,2027-12-01T09:00:00,2027-12-01T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.1.1,L,TER-W-07,2027-12-01T09:00:00,2027-12-01T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.1.2,L,TER-W-08,2027-12-01T09:00:00,2027-12-01T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.2.1,L,TER-W-09,2027-12-02T09:00:00,2027-12-02T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.2.2,L,TER-W-10,2027-12-02T09:00:00,2027-12-02T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.2.1,L,TER-W-11,2027-12-02T09:00:00,2027-12-02T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.2.2,L,TER-W-12,2027-12-02T09:00:00,2027-12-02T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.2.1,L,TER-W-13,2027-12-02T09:00:00,2027-12-02T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.2.2,L,TER-W-14,2027-12-02T09:00:00,2027-12-02T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.2.1,L,TER-W-01,2027-12-02T09:00:00,2027-12-02T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.2.2,L,TER-W-02,2027-12-02T09:00:00,2027-12-02T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.3.1,L,TER-W-03,2027-12-03T09:00:00,2027-12-03T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.3.2,L,TER-W-04,2027-12-03T09:00:00,2027-12-03T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.3.1,L,TER-W-05,2027-12-03T09:00:00,2027-12-03T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.3.2,L,TER-W-06,2027-12-03T09:00:00,2027-12-03T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.3.1,L,TER-W-07,2027-12-03T09:00:00,2027-12-03T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.3.2,L,TER-W-08,2027-12-03T09:00:00,2027-12-03T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.3.1,L,TER-W-09,2027-12-03T09:00:00,2027-12-03T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.3.2,L,TER-W-10,2027-12-03T09:00:00,2027-12-03T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.4.1,L,TER-W-11,2027-12-04T09:00:00,2027-12-04T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.4.2,L,TER-W-12,2027-12-04T09:00:00,2027-12-04T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.4.1,L,TER-W-13,2027-12-04T09:00:00,2027-12-04T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.4.2,L,TER-W-14,2027-12-04T09:00:00,2027-12-04T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.4.1,L,TER-W-01,2027-12-04T09:00:00,2027-12-04T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.4.2,L,TER-W-02,2027-12-04T09:00:00,2027-12-04T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.4.1,L,TER-W-03,2027-12-04T09:00:00,2027-12-04T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.4.2,L,TER-W-04,2027-12-04T09:00:00,2027-12-04T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.5.1,L,TER-W-05,2027-12-05T09:00:00,2027-12-05T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.5.2,L,TER-W-06,2027-12-05T09:00:00,2027-12-05T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.5.1,L,TER-W-07,2027-12-05T09:00:00,2027-12-05T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.5.2,L,TER-W-08,2027-12-05T09:00:00,2027-12-05T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.5.1,L,TER-W-09,2027-12-05T09:00:00,2027-12-05T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.5.2,L,TER-W-10,2027-12-05T09:00:00,2027-12-05T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.5.1,L,TER-W-11,2027-12-05T09:00:00,2027-12-05T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.5.2,L,TER-W-12,2027-12-05T09:00:00,2027-12-05T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.6.1,L,TER-W-13,2027-12-06T09:00:00,2027-12-06T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.6.2,L,TER-W-14,2027-12-06T09:00:00,2027-12-06T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.6.1,L,TER-W-01,2027-12-06T09:00:00,2027-12-06T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.6.2,L,TER-W-02,2027-12-06T09:00:00,2027-12-06T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.6.1,L,TER-W-03,2027-12-06T09:00:00,2027-12-06T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.6.2,L,TER-W-04,2027-12-06T09:00:00,2027-12-06T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.6.1,L,TER-W-05,2027-12-06T09:00:00,2027-12-06T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.6.2,L,TER-W-06,2027-12-06T09:00:00,2027-12-06T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.7.1,L,TER-W-07,2027-12-07T09:00:00,2027-12-07T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.7.2,L,TER-W-08,2027-12-07T09:00:00,2027-12-07T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.7.1,L,TER-W-09,2027-12-07T09:00:00,2027-12-07T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.7.2,L,TER-W-10,2027-12-07T09:00:00,2027-12-07T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.7.1,L,TER-W-11,2027-12-07T09:00:00,2027-12-07T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.7.2,L,TER-W-12,2027-12-07T09:00:00,2027-12-07T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.7.1,L,TER-W-13,2027-12-07T09:00:00,2027-12-07T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.7.2,L,TER-W-14,2027-12-07T09:00:00,2027-12-07T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.8.1,L,TER-W-01,2027-12-08T09:00:00,2027-12-08T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.8.2,L,TER-W-02,2027-12-08T09:00:00,2027-12-08T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.8.1,L,TER-W-03,2027-12-08T09:00:00,2027-12-08T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.8.2,L,TER-W-04,2027-12-08T09:00:00,2027-12-08T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.8.1,L,TER-W-05,2027-12-08T09:00:00,2027-12-08T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.8.2,L,TER-W-06,2027-12-08T09:00:00,2027-12-08T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.8.1,L,TER-W-07,2027-12-08T09:00:00,2027-12-08T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.8.2,L,TER-W-08,2027-12-08T09:00:00,2027-12-08T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.9.1,L,TER-W-09,2027-12-09T09:00:00,2027-12-09T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.9.2,L,TER-W-10,2027-12-09T09:00:00,2027-12-09T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.9.1,L,TER-W-11,2027-12-09T09:00:00,2027-12-09T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.9.2,L,TER-W-12,2027-12-09T09:00:00,2027-12-09T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.9.1,L,TER-W-13,2027-12-09T09:00:00,2027-12-09T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.9.2,L,TER-W-14,2027-12-09T09:00:00,2027-12-09T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.9.1,L,TER-W-01,2027-12-09T09:00:00,2027-12-09T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.9.2,L,TER-W-02,2027-12-09T09:00:00,2027-12-09T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.10.1,L,TER-W-03,2027-12-10T09:00:00,2027-12-10T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.10.2,L,TER-W-04,2027-12-10T09:00:00,2027-12-10T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.10.1,L,TER-W-05,2027-12-10T09:00:00,2027-12-10T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.10.2,L,TER-W-06,2027-12-10T09:00:00,2027-12-10T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.10.1,L,TER-W-07,2027-12-10T09:00:00,2027-12-10T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.10.2,L,TER-W-08,2027-12-10T09:00:00,2027-12-10T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.10.1,L,TER-W-09,2027-12-10T09:00:00,2027-12-10T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.10.2,L,TER-W-10,2027-12-10T09:00:00,2027-12-10T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.11.1,L,TER-W-11,2027-12-11T09:00:00,2027-12-11T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.11.2,L,TER-W-12,2027-12-11T09:00:00,2027-12-11T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.11.1,L,TER-W-13,2027-12-11T09:00:00,2027-12-11T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.11.2,L,TER-W-14,2027-12-11T09:00:00,2027-12-11T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.11.1,L,TER-W-01,2027-12-11T09:00:00,2027-12-11T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.11.2,L,TER-W-02,2027-12-11T09:00:00,2027-12-11T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.11.1,L,TER-W-03,2027-12-11T09:00:00,2027-12-11T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.11.2,L,TER-W-04,2027-12-11T09:00:00,2027-12-11T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.12.1,L,TER-W-05,2027-12-12T09:00:00,2027-12-12T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.12.2,L,TER-W-06,2027-12-12T09:00:00,2027-12-12T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.12.1,L,TER-W-07,2027-12-12T09:00:00,2027-12-12T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.12.2,L,TER-W-08,2027-12-12T09:00:00,2027-12-12T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.12.1,L,TER-W-09,2027-12-12T09:00:00,2027-12-12T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.12.2,L,TER-W-10,2027-12-12T09:00:00,2027-12-12T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.12.1,L,TER-W-11,2027-12-12T09:00:00,2027-12-12T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.12.2,L,TER-W-12,2027-12-12T09:00:00,2027-12-12T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.13.1,L,TER-W-13,2027-12-13T09:00:00,2027-12-13T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.13.2,L,TER-W-14,2027-12-13T09:00:00,2027-12-13T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.13.1,L,TER-W-01,2027-12-13T09:00:00,2027-12-13T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.13.2,L,TER-W-02,2027-12-13T09:00:00,2027-12-13T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.13.1,L,TER-W-03,2027-12-13T09:00:00,2027-12-13T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.13.2,L,TER-W-04,2027-12-13T09:00:00,2027-12-13T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.13.1,L,TER-W-05,2027-12-13T09:00:00,2027-12-13T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.13.2,L,TER-W-06,2027-12-13T09:00:00,2027-12-13T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.14.1,L,TER-W-07,2027-12-14T09:00:00,2027-12-14T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.14.2,L,TER-W-08,2027-12-14T09:00:00,2027-12-14T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.14.1,L,TER-W-09,2027-12-14T09:00:00,2027-12-14T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.14.2,L,TER-W-10,2027-12-14T09:00:00,2027-12-14T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.14.1,L,TER-W-11,2027-12-14T09:00:00,2027-12-14T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.14.2,L,TER-W-12,2027-12-14T09:00:00,2027-12-14T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.14.1,L,TER-W-13,2027-12-14T09:00:00,2027-12-14T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.14.2,L,TER-W-14,2027-12-14T09:00:00,2027-12-14T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.15.1,L,TER-W-01,2027-12-15T09:00:00,2027-12-15T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.15.2,L,TER-W-02,2027-12-15T09:00:00,2027-12-15T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.15.1,L,TER-W-03,2027-12-15T09:00:00,2027-12-15T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.15.2,L,TER-W-04,2027-12-15T09:00:00,2027-12-15T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.15.1,L,TER-W-05,2027-12-15T09:00:00,2027-12-15T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.15.2,L,TER-W-06,2027-12-15T09:00:00,2027-12-15T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.15.1,L,TER-W-07,2027-12-15T09:00:00,2027-12-15T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.15.2,L,TER-W-08,2027-12-15T09:00:00,2027-12-15T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.16.1,L,TER-W-09,2027-12-16T09:00:00,2027-12-16T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.16.2,L,TER-W-10,2027-12-16T09:00:00,2027-12-16T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.16.1,L,TER-W-11,2027-12-16T09:00:00,2027-12-16T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.16.2,L,TER-W-12,2027-12-16T09:00:00,2027-12-16T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.16.1,L,TER-W-13,2027-12-16T09:00:00,2027-12-16T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.16.2,L,TER-W-14,2027-12-16T09:00:00,2027-12-16T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.16.1,L,TER-W-01,2027-12-16T09:00:00,2027-12-16T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.16.2,L,TER-W-02,2027-12-16T09:00:00,2027-12-16T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.17.1,L,TER-W-03,2027-12-17T09:00:00,2027-12-17T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.17.2,L,TER-W-04,2027-12-17T09:00:00,2027-12-17T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.17.1,L,TER-W-05,2027-12-17T09:00:00,2027-12-17T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.17.2,L,TER-W-06,2027-12-17T09:00:00,2027-12-17T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.17.1,L,TER-W-07,2027-12-17T09:00:00,2027-12-17T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.17.2,L,TER-W-08,2027-12-17T09:00:00,2027-12-17T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.17.1,L,TER-W-09,2027-12-17T09:00:00,2027-12-17T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.17.2,L,TER-W-10,2027-12-17T09:00:00,2027-12-17T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.18.1,L,TER-W-11,2027-12-18T09:00:00,2027-12-18T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.18.2,L,TER-W-12,2027-12-18T09:00:00,2027-12-18T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.18.1,L,TER-W-13,2027-12-18T09:00:00,2027-12-18T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.18.2,L,TER-W-14,2027-12-18T09:00:00,2027-12-18T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.18.1,L,TER-W-01,2027-12-18T09:00:00,2027-12-18T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.18.2,L,TER-W-02,2027-12-18T09:00:00,2027-12-18T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.18.1,L,TER-W-03,2027-12-18T09:00:00,2027-12-18T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.18.2,L,TER-W-04,2027-12-18T09:00:00,2027-12-18T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.19.1,L,TER-W-05,2027-12-19T09:00:00,2027-12-19T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.19.2,L,TER-W-06,2027-12-19T09:00:00,2027-12-19T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.19.1,L,TER-W-07,2027-12-19T09:00:00,2027-12-19T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.19.2,L,TER-W-08,2027-12-19T09:00:00,2027-12-19T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.19.1,L,TER-W-09,2027-12-19T09:00:00,2027-12-19T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.19.2,L,TER-W-10,2027-12-19T09:00:00,2027-12-19T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.19.1,L,TER-W-11,2027-12-19T09:00:00,2027-12-19T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.19.2,L,TER-W-12,2027-12-19T09:00:00,2027-12-19T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.20.1,L,TER-W-13,2027-12-20T09:00:00,2027-12-20T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.20.2,L,TER-W-14,2027-12-20T09:00:00,2027-12-20T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.20.1,L,TER-W-01,2027-12-20T09:00:00,2027-12-20T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.20.2,L,TER-W-02,2027-12-20T09:00:00,2027-12-20T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.20.1,L,TER-W-03,2027-12-20T09:00:00,2027-12-20T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.20.2,L,TER-W-04,2027-12-20T09:00:00,2027-12-20T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.20.1,L,TER-W-05,2027-12-20T09:00:00,2027-12-20T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.20.2,L,TER-W-06,2027-12-20T09:00:00,2027-12-20T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.21.1,L,TER-W-07,2027-12-21T09:00:00,2027-12-21T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.21.2,L,TER-W-08,2027-12-21T09:00:00,2027-12-21T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.21.1,L,TER-W-09,2027-12-21T09:00:00,2027-12-21T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.21.2,L,TER-W-10,2027-12-21T09:00:00,2027-12-21T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.21.1,L,TER-W-11,2027-12-21T09:00:00,2027-12-21T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.21.2,L,TER-W-12,2027-12-21T09:00:00,2027-12-21T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.21.1,L,TER-W-13,2027-12-21T09:00:00,2027-12-21T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.21.2,L,TER-W-14,2027-12-21T09:00:00,2027-12-21T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.22.1,L,TER-W-01,2027-12-22T09:00:00,2027-12-22T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.22.2,L,TER-W-02,2027-12-22T09:00:00,2027-12-22T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.22.1,L,TER-W-03,2027-12-22T09:00:00,2027-12-22T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.22.2,L,TER-W-04,2027-12-22T09:00:00,2027-12-22T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.22.1,L,TER-W-05,2027-12-22T09:00:00,2027-12-22T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.22.2,L,TER-W-06,2027-12-22T09:00:00,2027-12-22T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.22.1,L,TER-W-07,2027-12-22T09:00:00,2027-12-22T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.22.2,L,TER-W-08,2027-12-22T09:00:00,2027-12-22T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.23.1,L,TER-W-09,2027-12-23T09:00:00,2027-12-23T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.23.2,L,TER-W-10,2027-12-23T09:00:00,2027-12-23T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.23.1,L,TER-W-11,2027-12-23T09:00:00,2027-12-23T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.23.2,L,TER-W-12,2027-12-23T09:00:00,2027-12-23T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.23.1,L,TER-W-13,2027-12-23T09:00:00,2027-12-23T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.23.2,L,TER-W-14,2027-12-23T09:00:00,2027-12-23T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.23.1,L,TER-W-01,2027-12-23T09:00:00,2027-12-23T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.23.2,L,TER-W-02,2027-12-23T09:00:00,2027-12-23T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.24.1,L,TER-W-03,2027-12-24T09:00:00,2027-12-24T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.24.2,L,TER-W-04,2027-12-24T09:00:00,2027-12-24T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.24.1,L,TER-W-05,2027-12-24T09:00:00,2027-12-24T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.24.2,L,TER-W-06,2027-12-24T09:00:00,2027-12-24T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.24.1,L,TER-W-07,2027-12-24T09:00:00,2027-12-24T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.24.2,L,TER-W-08,2027-12-24T09:00:00,2027-12-24T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.24.1,L,TER-W-09,2027-12-24T09:00:00,2027-12-24T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.24.2,L,TER-W-10,2027-12-24T09:00:00,2027-12-24T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.25.1,L,TER-W-11,2027-12-25T09:00:00,2027-12-25T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.25.2,L,TER-W-12,2027-12-25T09:00:00,2027-12-25T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.25.1,L,TER-W-13,2027-12-25T09:00:00,2027-12-25T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.25.2,L,TER-W-14,2027-12-25T09:00:00,2027-12-25T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.25.1,L,TER-W-01,2027-12-25T09:00:00,2027-12-25T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.25.2,L,TER-W-02,2027-12-25T09:00:00,2027-12-25T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.25.1,L,TER-W-03,2027-12-25T09:00:00,2027-12-25T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.25.2,L,TER-W-04,2027-12-25T09:00:00,2027-12-25T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.26.1,L,TER-W-05,2027-12-26T09:00:00,2027-12-26T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.26.2,L,TER-W-06,2027-12-26T09:00:00,2027-12-26T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.26.1,L,TER-W-07,2027-12-26T09:00:00,2027-12-26T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.26.2,L,TER-W-08,2027-12-26T09:00:00,2027-12-26T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.26.1,L,TER-W-09,2027-12-26T09:00:00,2027-12-26T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.26.2,L,TER-W-10,2027-12-26T09:00:00,2027-12-26T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.26.1,L,TER-W-11,2027-12-26T09:00:00,2027-12-26T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.26.2,L,TER-W-12,2027-12-26T09:00:00,2027-12-26T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.27.1,L,TER-W-13,2027-12-27T09:00:00,2027-12-27T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.27.2,L,TER-W-14,2027-12-27T09:00:00,2027-12-27T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.27.1,L,TER-W-01,2027-12-27T09:00:00,2027-12-27T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.27.2,L,TER-W-02,2027-12-27T09:00:00,2027-12-27T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.27.1,L,TER-W-03,2027-12-27T09:00:00,2027-12-27T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.27.2,L,TER-W-04,2027-12-27T09:00:00,2027-12-27T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.27.1,L,TER-W-05,2027-12-27T09:00:00,2027-12-27T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.27.2,L,TER-W-06,2027-12-27T09:00:00,2027-12-27T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.28.1,L,TER-W-07,2027-12-28T09:00:00,2027-12-28T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E1,1.11.4.1.1.28.2,L,TER-W-08,2027-12-28T09:00:00,2027-12-28T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.28.1,L,TER-W-09,2027-12-28T09:00:00,2027-12-28T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E1,1.11.4.1.2.28.2,L,TER-W-10,2027-12-28T09:00:00,2027-12-28T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.28.1,L,TER-W-11,2027-12-28T09:00:00,2027-12-28T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E1,1.11.4.1.3.28.2,L,TER-W-12,2027-12-28T09:00:00,2027-12-28T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.28.1,L,TER-W-13,2027-12-28T09:00:00,2027-12-28T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E1,1.11.4.1.4.28.2,L,TER-W-14,2027-12-28T09:00:00,2027-12-28T17:00:00,8.0,13,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.1.1,L,TER-W-01,2028-06-01T09:00:00,2028-06-01T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.1.2,L,TER-W-02,2028-06-01T09:00:00,2028-06-01T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.1.1,L,TER-W-03,2028-06-01T09:00:00,2028-06-01T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.1.2,L,TER-W-04,2028-06-01T09:00:00,2028-06-01T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.1.1,L,TER-W-05,2028-06-01T09:00:00,2028-06-01T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.1.2,L,TER-W-06,2028-06-01T09:00:00,2028-06-01T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.1.1,L,TER-W-07,2028-06-01T09:00:00,2028-06-01T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.1.2,L,TER-W-08,2028-06-01T09:00:00,2028-06-01T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.2.1,L,TER-W-09,2028-06-02T09:00:00,2028-06-02T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.2.2,L,TER-W-10,2028-06-02T09:00:00,2028-06-02T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.2.1,L,TER-W-11,2028-06-02T09:00:00,2028-06-02T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.2.2,L,TER-W-12,2028-06-02T09:00:00,2028-06-02T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.2.1,L,TER-W-13,2028-06-02T09:00:00,2028-06-02T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.2.2,L,TER-W-14,2028-06-02T09:00:00,2028-06-02T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.2.1,L,TER-W-01,2028-06-02T09:00:00,2028-06-02T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.2.2,L,TER-W-02,2028-06-02T09:00:00,2028-06-02T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.3.1,L,TER-W-03,2028-06-03T09:00:00,2028-06-03T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.3.2,L,TER-W-04,2028-06-03T09:00:00,2028-06-03T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.3.1,L,TER-W-05,2028-06-03T09:00:00,2028-06-03T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.3.2,L,TER-W-06,2028-06-03T09:00:00,2028-06-03T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.3.1,L,TER-W-07,2028-06-03T09:00:00,2028-06-03T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.3.2,L,TER-W-08,2028-06-03T09:00:00,2028-06-03T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.3.1,L,TER-W-09,2028-06-03T09:00:00,2028-06-03T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.3.2,L,TER-W-10,2028-06-03T09:00:00,2028-06-03T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.4.1,L,TER-W-11,2028-06-04T09:00:00,2028-06-04T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.4.2,L,TER-W-12,2028-06-04T09:00:00,2028-06-04T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.4.1,L,TER-W-13,2028-06-04T09:00:00,2028-06-04T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.4.2,L,TER-W-14,2028-06-04T09:00:00,2028-06-04T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.4.1,L,TER-W-01,2028-06-04T09:00:00,2028-06-04T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.4.2,L,TER-W-02,2028-06-04T09:00:00,2028-06-04T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.4.1,L,TER-W-03,2028-06-04T09:00:00,2028-06-04T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.4.2,L,TER-W-04,2028-06-04T09:00:00,2028-06-04T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.5.1,L,TER-W-05,2028-06-05T09:00:00,2028-06-05T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.5.2,L,TER-W-06,2028-06-05T09:00:00,2028-06-05T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.5.1,L,TER-W-07,2028-06-05T09:00:00,2028-06-05T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.5.2,L,TER-W-08,2028-06-05T09:00:00,2028-06-05T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.5.1,L,TER-W-09,2028-06-05T09:00:00,2028-06-05T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.5.2,L,TER-W-10,2028-06-05T09:00:00,2028-06-05T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.5.1,L,TER-W-11,2028-06-05T09:00:00,2028-06-05T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.5.2,L,TER-W-12,2028-06-05T09:00:00,2028-06-05T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.6.1,L,TER-W-13,2028-06-06T09:00:00,2028-06-06T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.6.2,L,TER-W-14,2028-06-06T09:00:00,2028-06-06T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.6.1,L,TER-W-01,2028-06-06T09:00:00,2028-06-06T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.6.2,L,TER-W-02,2028-06-06T09:00:00,2028-06-06T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.6.1,L,TER-W-03,2028-06-06T09:00:00,2028-06-06T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.6.2,L,TER-W-04,2028-06-06T09:00:00,2028-06-06T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.6.1,L,TER-W-05,2028-06-06T09:00:00,2028-06-06T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.6.2,L,TER-W-06,2028-06-06T09:00:00,2028-06-06T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.7.1,L,TER-W-07,2028-06-07T09:00:00,2028-06-07T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.7.2,L,TER-W-08,2028-06-07T09:00:00,2028-06-07T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.7.1,L,TER-W-09,2028-06-07T09:00:00,2028-06-07T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.7.2,L,TER-W-10,2028-06-07T09:00:00,2028-06-07T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.7.1,L,TER-W-11,2028-06-07T09:00:00,2028-06-07T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.7.2,L,TER-W-12,2028-06-07T09:00:00,2028-06-07T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.7.1,L,TER-W-13,2028-06-07T09:00:00,2028-06-07T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.7.2,L,TER-W-14,2028-06-07T09:00:00,2028-06-07T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.8.1,L,TER-W-01,2028-06-08T09:00:00,2028-06-08T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.8.2,L,TER-W-02,2028-06-08T09:00:00,2028-06-08T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.8.1,L,TER-W-03,2028-06-08T09:00:00,2028-06-08T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.8.2,L,TER-W-04,2028-06-08T09:00:00,2028-06-08T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.8.1,L,TER-W-05,2028-06-08T09:00:00,2028-06-08T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.8.2,L,TER-W-06,2028-06-08T09:00:00,2028-06-08T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.8.1,L,TER-W-07,2028-06-08T09:00:00,2028-06-08T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.8.2,L,TER-W-08,2028-06-08T09:00:00,2028-06-08T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.9.1,L,TER-W-09,2028-06-09T09:00:00,2028-06-09T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.9.2,L,TER-W-10,2028-06-09T09:00:00,2028-06-09T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.9.1,L,TER-W-11,2028-06-09T09:00:00,2028-06-09T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.9.2,L,TER-W-12,2028-06-09T09:00:00,2028-06-09T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.9.1,L,TER-W-13,2028-06-09T09:00:00,2028-06-09T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.9.2,L,TER-W-14,2028-06-09T09:00:00,2028-06-09T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.9.1,L,TER-W-01,2028-06-09T09:00:00,2028-06-09T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.9.2,L,TER-W-02,2028-06-09T09:00:00,2028-06-09T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.10.1,L,TER-W-03,2028-06-10T09:00:00,2028-06-10T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.10.2,L,TER-W-04,2028-06-10T09:00:00,2028-06-10T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.10.1,L,TER-W-05,2028-06-10T09:00:00,2028-06-10T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.10.2,L,TER-W-06,2028-06-10T09:00:00,2028-06-10T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.10.1,L,TER-W-07,2028-06-10T09:00:00,2028-06-10T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.10.2,L,TER-W-08,2028-06-10T09:00:00,2028-06-10T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.10.1,L,TER-W-09,2028-06-10T09:00:00,2028-06-10T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.10.2,L,TER-W-10,2028-06-10T09:00:00,2028-06-10T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.11.1,L,TER-W-11,2028-06-11T09:00:00,2028-06-11T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.11.2,L,TER-W-12,2028-06-11T09:00:00,2028-06-11T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.11.1,L,TER-W-13,2028-06-11T09:00:00,2028-06-11T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.11.2,L,TER-W-14,2028-06-11T09:00:00,2028-06-11T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.11.1,L,TER-W-01,2028-06-11T09:00:00,2028-06-11T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.11.2,L,TER-W-02,2028-06-11T09:00:00,2028-06-11T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.11.1,L,TER-W-03,2028-06-11T09:00:00,2028-06-11T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.11.2,L,TER-W-04,2028-06-11T09:00:00,2028-06-11T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.12.1,L,TER-W-05,2028-06-12T09:00:00,2028-06-12T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.12.2,L,TER-W-06,2028-06-12T09:00:00,2028-06-12T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.12.1,L,TER-W-07,2028-06-12T09:00:00,2028-06-12T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.12.2,L,TER-W-08,2028-06-12T09:00:00,2028-06-12T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.12.1,L,TER-W-09,2028-06-12T09:00:00,2028-06-12T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.12.2,L,TER-W-10,2028-06-12T09:00:00,2028-06-12T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.12.1,L,TER-W-11,2028-06-12T09:00:00,2028-06-12T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.12.2,L,TER-W-12,2028-06-12T09:00:00,2028-06-12T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.13.1,L,TER-W-13,2028-06-13T09:00:00,2028-06-13T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.13.2,L,TER-W-14,2028-06-13T09:00:00,2028-06-13T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.13.1,L,TER-W-01,2028-06-13T09:00:00,2028-06-13T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.13.2,L,TER-W-02,2028-06-13T09:00:00,2028-06-13T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.13.1,L,TER-W-03,2028-06-13T09:00:00,2028-06-13T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.13.2,L,TER-W-04,2028-06-13T09:00:00,2028-06-13T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.13.1,L,TER-W-05,2028-06-13T09:00:00,2028-06-13T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.13.2,L,TER-W-06,2028-06-13T09:00:00,2028-06-13T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.14.1,L,TER-W-07,2028-06-14T09:00:00,2028-06-14T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.14.2,L,TER-W-08,2028-06-14T09:00:00,2028-06-14T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.14.1,L,TER-W-09,2028-06-14T09:00:00,2028-06-14T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.14.2,L,TER-W-10,2028-06-14T09:00:00,2028-06-14T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.14.1,L,TER-W-11,2028-06-14T09:00:00,2028-06-14T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.14.2,L,TER-W-12,2028-06-14T09:00:00,2028-06-14T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.14.1,L,TER-W-13,2028-06-14T09:00:00,2028-06-14T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.14.2,L,TER-W-14,2028-06-14T09:00:00,2028-06-14T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.15.1,L,TER-W-01,2028-06-15T09:00:00,2028-06-15T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.15.2,L,TER-W-02,2028-06-15T09:00:00,2028-06-15T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.15.1,L,TER-W-03,2028-06-15T09:00:00,2028-06-15T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.15.2,L,TER-W-04,2028-06-15T09:00:00,2028-06-15T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.15.1,L,TER-W-05,2028-06-15T09:00:00,2028-06-15T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.15.2,L,TER-W-06,2028-06-15T09:00:00,2028-06-15T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.15.1,L,TER-W-07,2028-06-15T09:00:00,2028-06-15T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.15.2,L,TER-W-08,2028-06-15T09:00:00,2028-06-15T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.16.1,L,TER-W-09,2028-06-16T09:00:00,2028-06-16T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.16.2,L,TER-W-10,2028-06-16T09:00:00,2028-06-16T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.16.1,L,TER-W-11,2028-06-16T09:00:00,2028-06-16T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.16.2,L,TER-W-12,2028-06-16T09:00:00,2028-06-16T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.16.1,L,TER-W-13,2028-06-16T09:00:00,2028-06-16T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.16.2,L,TER-W-14,2028-06-16T09:00:00,2028-06-16T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.16.1,L,TER-W-01,2028-06-16T09:00:00,2028-06-16T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.16.2,L,TER-W-02,2028-06-16T09:00:00,2028-06-16T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.17.1,L,TER-W-03,2028-06-17T09:00:00,2028-06-17T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.17.2,L,TER-W-04,2028-06-17T09:00:00,2028-06-17T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.17.1,L,TER-W-05,2028-06-17T09:00:00,2028-06-17T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.17.2,L,TER-W-06,2028-06-17T09:00:00,2028-06-17T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.17.1,L,TER-W-07,2028-06-17T09:00:00,2028-06-17T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.17.2,L,TER-W-08,2028-06-17T09:00:00,2028-06-17T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.17.1,L,TER-W-09,2028-06-17T09:00:00,2028-06-17T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.17.2,L,TER-W-10,2028-06-17T09:00:00,2028-06-17T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.18.1,L,TER-W-11,2028-06-18T09:00:00,2028-06-18T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.18.2,L,TER-W-12,2028-06-18T09:00:00,2028-06-18T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.18.1,L,TER-W-13,2028-06-18T09:00:00,2028-06-18T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.18.2,L,TER-W-14,2028-06-18T09:00:00,2028-06-18T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.18.1,L,TER-W-01,2028-06-18T09:00:00,2028-06-18T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.18.2,L,TER-W-02,2028-06-18T09:00:00,2028-06-18T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.18.1,L,TER-W-03,2028-06-18T09:00:00,2028-06-18T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.18.2,L,TER-W-04,2028-06-18T09:00:00,2028-06-18T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.19.1,L,TER-W-05,2028-06-19T09:00:00,2028-06-19T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.19.2,L,TER-W-06,2028-06-19T09:00:00,2028-06-19T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.19.1,L,TER-W-07,2028-06-19T09:00:00,2028-06-19T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.19.2,L,TER-W-08,2028-06-19T09:00:00,2028-06-19T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.19.1,L,TER-W-09,2028-06-19T09:00:00,2028-06-19T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.19.2,L,TER-W-10,2028-06-19T09:00:00,2028-06-19T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.19.1,L,TER-W-11,2028-06-19T09:00:00,2028-06-19T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.19.2,L,TER-W-12,2028-06-19T09:00:00,2028-06-19T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.20.1,L,TER-W-13,2028-06-20T09:00:00,2028-06-20T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.20.2,L,TER-W-14,2028-06-20T09:00:00,2028-06-20T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.20.1,L,TER-W-01,2028-06-20T09:00:00,2028-06-20T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.20.2,L,TER-W-02,2028-06-20T09:00:00,2028-06-20T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.20.1,L,TER-W-03,2028-06-20T09:00:00,2028-06-20T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.20.2,L,TER-W-04,2028-06-20T09:00:00,2028-06-20T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.20.1,L,TER-W-05,2028-06-20T09:00:00,2028-06-20T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.20.2,L,TER-W-06,2028-06-20T09:00:00,2028-06-20T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.21.1,L,TER-W-07,2028-06-21T09:00:00,2028-06-21T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.21.2,L,TER-W-08,2028-06-21T09:00:00,2028-06-21T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.21.1,L,TER-W-09,2028-06-21T09:00:00,2028-06-21T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.21.2,L,TER-W-10,2028-06-21T09:00:00,2028-06-21T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.21.1,L,TER-W-11,2028-06-21T09:00:00,2028-06-21T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.21.2,L,TER-W-12,2028-06-21T09:00:00,2028-06-21T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.21.1,L,TER-W-13,2028-06-21T09:00:00,2028-06-21T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.21.2,L,TER-W-14,2028-06-21T09:00:00,2028-06-21T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.22.1,L,TER-W-01,2028-06-22T09:00:00,2028-06-22T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.22.2,L,TER-W-02,2028-06-22T09:00:00,2028-06-22T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.22.1,L,TER-W-03,2028-06-22T09:00:00,2028-06-22T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.22.2,L,TER-W-04,2028-06-22T09:00:00,2028-06-22T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.22.1,L,TER-W-05,2028-06-22T09:00:00,2028-06-22T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.22.2,L,TER-W-06,2028-06-22T09:00:00,2028-06-22T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.22.1,L,TER-W-07,2028-06-22T09:00:00,2028-06-22T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.22.2,L,TER-W-08,2028-06-22T09:00:00,2028-06-22T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.23.1,L,TER-W-09,2028-06-23T09:00:00,2028-06-23T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.23.2,L,TER-W-10,2028-06-23T09:00:00,2028-06-23T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.23.1,L,TER-W-11,2028-06-23T09:00:00,2028-06-23T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.23.2,L,TER-W-12,2028-06-23T09:00:00,2028-06-23T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.23.1,L,TER-W-13,2028-06-23T09:00:00,2028-06-23T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.23.2,L,TER-W-14,2028-06-23T09:00:00,2028-06-23T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.23.1,L,TER-W-01,2028-06-23T09:00:00,2028-06-23T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.23.2,L,TER-W-02,2028-06-23T09:00:00,2028-06-23T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.24.1,L,TER-W-03,2028-06-24T09:00:00,2028-06-24T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.24.2,L,TER-W-04,2028-06-24T09:00:00,2028-06-24T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.24.1,L,TER-W-05,2028-06-24T09:00:00,2028-06-24T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.24.2,L,TER-W-06,2028-06-24T09:00:00,2028-06-24T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.24.1,L,TER-W-07,2028-06-24T09:00:00,2028-06-24T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.24.2,L,TER-W-08,2028-06-24T09:00:00,2028-06-24T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.24.1,L,TER-W-09,2028-06-24T09:00:00,2028-06-24T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.24.2,L,TER-W-10,2028-06-24T09:00:00,2028-06-24T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.25.1,L,TER-W-11,2028-06-25T09:00:00,2028-06-25T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.25.2,L,TER-W-12,2028-06-25T09:00:00,2028-06-25T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.25.1,L,TER-W-13,2028-06-25T09:00:00,2028-06-25T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.25.2,L,TER-W-14,2028-06-25T09:00:00,2028-06-25T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.25.1,L,TER-W-01,2028-06-25T09:00:00,2028-06-25T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.25.2,L,TER-W-02,2028-06-25T09:00:00,2028-06-25T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.25.1,L,TER-W-03,2028-06-25T09:00:00,2028-06-25T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.25.2,L,TER-W-04,2028-06-25T09:00:00,2028-06-25T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.26.1,L,TER-W-05,2028-06-26T09:00:00,2028-06-26T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.26.2,L,TER-W-06,2028-06-26T09:00:00,2028-06-26T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.26.1,L,TER-W-07,2028-06-26T09:00:00,2028-06-26T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.26.2,L,TER-W-08,2028-06-26T09:00:00,2028-06-26T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.26.1,L,TER-W-09,2028-06-26T09:00:00,2028-06-26T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.26.2,L,TER-W-10,2028-06-26T09:00:00,2028-06-26T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.26.1,L,TER-W-11,2028-06-26T09:00:00,2028-06-26T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.26.2,L,TER-W-12,2028-06-26T09:00:00,2028-06-26T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.27.1,L,TER-W-13,2028-06-27T09:00:00,2028-06-27T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.27.2,L,TER-W-14,2028-06-27T09:00:00,2028-06-27T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.27.1,L,TER-W-01,2028-06-27T09:00:00,2028-06-27T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.27.2,L,TER-W-02,2028-06-27T09:00:00,2028-06-27T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.27.1,L,TER-W-03,2028-06-27T09:00:00,2028-06-27T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.27.2,L,TER-W-04,2028-06-27T09:00:00,2028-06-27T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.27.1,L,TER-W-05,2028-06-27T09:00:00,2028-06-27T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.27.2,L,TER-W-06,2028-06-27T09:00:00,2028-06-27T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.28.1,L,TER-W-07,2028-06-28T09:00:00,2028-06-28T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 1 E2,1.11.4.2.1.28.2,L,TER-W-08,2028-06-28T09:00:00,2028-06-28T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.28.1,L,TER-W-09,2028-06-28T09:00:00,2028-06-28T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 2 E2,1.11.4.2.2.28.2,L,TER-W-10,2028-06-28T09:00:00,2028-06-28T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.28.1,L,TER-W-11,2028-06-28T09:00:00,2028-06-28T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 3 E2,1.11.4.2.3.28.2,L,TER-W-12,2028-06-28T09:00:00,2028-06-28T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.28.1,L,TER-W-13,2028-06-28T09:00:00,2028-06-28T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Ola 4 E2,1.11.4.2.4.28.2,L,TER-W-14,2028-06-28T09:00:00,2028-06-28T17:00:00,8.0,19,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.1.1,O,TER-S-01,2028-04-01T09:00:00,2028-04-01T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.1.2,O,TER-S-02,2028-04-01T09:00:00,2028-04-01T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.2.1,O,TER-S-03,2028-04-02T09:00:00,2028-04-02T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.2.2,O,TER-S-04,2028-04-02T09:00:00,2028-04-02T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.3.1,O,TER-S-01,2028-04-03T09:00:00,2028-04-03T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.3.2,O,TER-S-02,2028-04-03T09:00:00,2028-04-03T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.4.1,O,TER-S-03,2028-04-04T09:00:00,2028-04-04T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.4.2,O,TER-S-04,2028-04-04T09:00:00,2028-04-04T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.5.1,O,TER-S-01,2028-04-05T09:00:00,2028-04-05T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.5.2,O,TER-S-02,2028-04-05T09:00:00,2028-04-05T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.6.1,O,TER-S-03,2028-04-06T09:00:00,2028-04-06T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.6.2,O,TER-S-04,2028-04-06T09:00:00,2028-04-06T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.7.1,O,TER-S-01,2028-04-07T09:00:00,2028-04-07T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.7.2,O,TER-S-02,2028-04-07T09:00:00,2028-04-07T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.8.1,O,TER-S-03,2028-04-08T09:00:00,2028-04-08T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.8.2,O,TER-S-04,2028-04-08T09:00:00,2028-04-08T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.9.1,O,TER-S-01,2028-04-09T09:00:00,2028-04-09T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.9.2,O,TER-S-02,2028-04-09T09:00:00,2028-04-09T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.10.1,O,TER-S-03,2028-04-10T09:00:00,2028-04-10T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.10.2,O,TER-S-04,2028-04-10T09:00:00,2028-04-10T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.11.1,O,TER-S-01,2028-04-11T09:00:00,2028-04-11T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.11.2,O,TER-S-02,2028-04-11T09:00:00,2028-04-11T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.12.1,O,TER-S-03,2028-04-12T09:00:00,2028-04-12T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.12.2,O,TER-S-04,2028-04-12T09:00:00,2028-04-12T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.13.1,O,TER-S-01,2028-04-13T09:00:00,2028-04-13T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.13.2,O,TER-S-02,2028-04-13T09:00:00,2028-04-13T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.14.1,O,TER-S-03,2028-04-14T09:00:00,2028-04-14T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.14.2,O,TER-S-04,2028-04-14T09:00:00,2028-04-14T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.15.1,O,TER-S-01,2028-04-15T09:00:00,2028-04-15T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.15.2,O,TER-S-02,2028-04-15T09:00:00,2028-04-15T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.16.1,O,TER-S-03,2028-04-16T09:00:00,2028-04-16T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.16.2,O,TER-S-04,2028-04-16T09:00:00,2028-04-16T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.17.1,O,TER-S-01,2028-04-17T09:00:00,2028-04-17T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.17.2,O,TER-S-02,2028-04-17T09:00:00,2028-04-17T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.18.1,O,TER-S-03,2028-04-18T09:00:00,2028-04-18T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.18.2,O,TER-S-04,2028-04-18T09:00:00,2028-04-18T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.19.1,O,TER-S-01,2028-04-19T09:00:00,2028-04-19T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.19.2,O,TER-S-02,2028-04-19T09:00:00,2028-04-19T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.20.1,O,TER-S-03,2028-04-20T09:00:00,2028-04-20T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.20.2,O,TER-S-04,2028-04-20T09:00:00,2028-04-20T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.21.1,O,TER-S-01,2028-04-21T09:00:00,2028-04-21T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.21.2,O,TER-S-02,2028-04-21T09:00:00,2028-04-21T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.22.1,O,TER-S-03,2028-04-22T09:00:00,2028-04-22T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.22.2,O,TER-S-04,2028-04-22T09:00:00,2028-04-22T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.23.1,O,TER-S-01,2028-04-23T09:00:00,2028-04-23T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.23.2,O,TER-S-02,2028-04-23T09:00:00,2028-04-23T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.24.1,O,TER-S-03,2028-04-24T09:00:00,2028-04-24T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.24.2,O,TER-S-04,2028-04-24T09:00:00,2028-04-24T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.25.1,O,TER-S-01,2028-04-25T09:00:00,2028-04-25T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.25.2,O,TER-S-02,2028-04-25T09:00:00,2028-04-25T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.26.1,O,TER-S-03,2028-04-26T09:00:00,2028-04-26T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.26.2,O,TER-S-04,2028-04-26T09:00:00,2028-04-26T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.27.1,O,TER-S-01,2028-04-27T09:00:00,2028-04-27T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.27.2,O,TER-S-02,2028-04-27T09:00:00,2028-04-27T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.28.1,O,TER-S-03,2028-04-28T09:00:00,2028-04-28T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E1,1.11.6.1.28.2,O,TER-S-04,2028-04-28T09:00:00,2028-04-28T17:00:00,8.0,17,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.1.1,O,TER-S-01,2028-08-01T09:00:00,2028-08-01T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.1.2,O,TER-S-02,2028-08-01T09:00:00,2028-08-01T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.2.1,O,TER-S-03,2028-08-02T09:00:00,2028-08-02T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.2.2,O,TER-S-04,2028-08-02T09:00:00,2028-08-02T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.3.1,O,TER-S-01,2028-08-03T09:00:00,2028-08-03T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.3.2,O,TER-S-02,2028-08-03T09:00:00,2028-08-03T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.4.1,O,TER-S-03,2028-08-04T09:00:00,2028-08-04T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.4.2,O,TER-S-04,2028-08-04T09:00:00,2028-08-04T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.5.1,O,TER-S-01,2028-08-05T09:00:00,2028-08-05T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.5.2,O,TER-S-02,2028-08-05T09:00:00,2028-08-05T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.6.1,O,TER-S-03,2028-08-06T09:00:00,2028-08-06T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.6.2,O,TER-S-04,2028-08-06T09:00:00,2028-08-06T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.7.1,O,TER-S-01,2028-08-07T09:00:00,2028-08-07T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.7.2,O,TER-S-02,2028-08-07T09:00:00,2028-08-07T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.8.1,O,TER-S-03,2028-08-08T09:00:00,2028-08-08T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.8.2,O,TER-S-04,2028-08-08T09:00:00,2028-08-08T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.9.1,O,TER-S-01,2028-08-09T09:00:00,2028-08-09T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.9.2,O,TER-S-02,2028-08-09T09:00:00,2028-08-09T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.10.1,O,TER-S-03,2028-08-10T09:00:00,2028-08-10T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.10.2,O,TER-S-04,2028-08-10T09:00:00,2028-08-10T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.11.1,O,TER-S-01,2028-08-11T09:00:00,2028-08-11T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.11.2,O,TER-S-02,2028-08-11T09:00:00,2028-08-11T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.12.1,O,TER-S-03,2028-08-12T09:00:00,2028-08-12T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.12.2,O,TER-S-04,2028-08-12T09:00:00,2028-08-12T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.13.1,O,TER-S-01,2028-08-13T09:00:00,2028-08-13T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.13.2,O,TER-S-02,2028-08-13T09:00:00,2028-08-13T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.14.1,O,TER-S-03,2028-08-14T09:00:00,2028-08-14T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.14.2,O,TER-S-04,2028-08-14T09:00:00,2028-08-14T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.15.1,O,TER-S-01,2028-08-15T09:00:00,2028-08-15T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.15.2,O,TER-S-02,2028-08-15T09:00:00,2028-08-15T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.16.1,O,TER-S-03,2028-08-16T09:00:00,2028-08-16T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.16.2,O,TER-S-04,2028-08-16T09:00:00,2028-08-16T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.17.1,O,TER-S-01,2028-08-17T09:00:00,2028-08-17T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.17.2,O,TER-S-02,2028-08-17T09:00:00,2028-08-17T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.18.1,O,TER-S-03,2028-08-18T09:00:00,2028-08-18T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.18.2,O,TER-S-04,2028-08-18T09:00:00,2028-08-18T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.19.1,O,TER-S-01,2028-08-19T09:00:00,2028-08-19T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.19.2,O,TER-S-02,2028-08-19T09:00:00,2028-08-19T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.20.1,O,TER-S-03,2028-08-20T09:00:00,2028-08-20T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.20.2,O,TER-S-04,2028-08-20T09:00:00,2028-08-20T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.21.1,O,TER-S-01,2028-08-21T09:00:00,2028-08-21T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.21.2,O,TER-S-02,2028-08-21T09:00:00,2028-08-21T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.22.1,O,TER-S-03,2028-08-22T09:00:00,2028-08-22T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.22.2,O,TER-S-04,2028-08-22T09:00:00,2028-08-22T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.23.1,O,TER-S-01,2028-08-23T09:00:00,2028-08-23T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.23.2,O,TER-S-02,2028-08-23T09:00:00,2028-08-23T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.24.1,O,TER-S-03,2028-08-24T09:00:00,2028-08-24T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.24.2,O,TER-S-04,2028-08-24T09:00:00,2028-08-24T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.25.1,O,TER-S-01,2028-08-25T09:00:00,2028-08-25T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.25.2,O,TER-S-02,2028-08-25T09:00:00,2028-08-25T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.26.1,O,TER-S-03,2028-08-26T09:00:00,2028-08-26T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.26.2,O,TER-S-04,2028-08-26T09:00:00,2028-08-26T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.27.1,O,TER-S-01,2028-08-27T09:00:00,2028-08-27T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.27.2,O,TER-S-02,2028-08-27T09:00:00,2028-08-27T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.28.1,O,TER-S-03,2028-08-28T09:00:00,2028-08-28T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Estabilización E2,1.11.6.2.28.2,O,TER-S-04,2028-08-28T09:00:00,2028-08-28T17:00:00,8.0,21,Cuadrante propuesto; suplencia antes de ausencia; sin personal contratado atribuido
+Control final natural E2,1.11.5.2.2,Q,CIERRE-E2-Q,2028-07-31T20:00:00,2028-08-01T00:00:00,4,20,Puesto propio reservado exclusivamente para el cierre natural; sin aceptación obtenida atribuida
+Control final natural E2,1.11.5.2.2,J,CIERRE-E2-J,2028-07-31T20:00:00,2028-08-01T00:00:00,4,20,Puesto propio reservado exclusivamente para el cierre natural; sin aceptación obtenida atribuida

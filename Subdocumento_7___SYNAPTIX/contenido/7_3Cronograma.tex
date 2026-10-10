@@ -1,0 +1,259 @@
+\section{Cronograma e implantación} %7.3
+La programación integra precedencias, holguras, ventanas operacionales y hitos E-25. Se distinguen la ruta crítica de implementación y la puerta de aceptación de marcha blanca E2. La implantación progresiva conserva autoridad de datos, pruebas y retorno; T-18 desarrolla las actuaciones por sitio y perfil.
+
+
+
+
+\subsection{Red global, ruta crítica y holguras} %7.3.1
+El CPM distingue secuencia de mayor duración y obligaciones intermedias; el seguimiento comprueba precedencias y consumo de holgura conforme a la sección 7.4 del manual de NASA.~\parencite[pp.~59--60]{nasa-cronograma} La red seleccionada contiene 2279 nodos y 5077 enlaces. Las asignaciones incluyen los lotes UCP, habilitaciones, ventanas, reservas y actos de recepción requeridos. Los cuadrantes conservan fechas naturales exactas; los índices hábiles son controles de precedencia y no convierten turnos nocturnos o fines de semana en ingeniería diurna.
+Con duración $d_i$ y liberación $r_i$, $IT_i=\max(r_i,\max FT_j)$ y $FT_i=IT_i+d_i$. En retroceso, $FL_i=\min IL_s$ y $IL_i=FL_i-d_i$; $HT_i=IL_i-IT_i$ y $HL_i=\min IT_s-FT_i$. El CPM de precedencias y la asignación con capacidad son cálculos distintos. Las holguras de \path{componentes/cpm_implementacion.csv} se refieren al cierre calculado de implementación, mientras la tabla muestra el margen hacia cada obligación contractual.
+El CPM hacia el cierre calculado de implementación contiene cuatro ramas críticas simultáneas: observación e informe de IN1, IN3, IN4 e IN5. Convergen en \texttt{PILOTOS-REV} y \texttt{PILOTOS-SUB}; el tramo común continúa por \texttt{1.9.1.6.1}, \texttt{1.9.4.4.1}, H12 y \texttt{FIN-IMPLEMENTACION}. La Tabla~\ref{tab:t15-ramas-cpm} identifica los nodos con holgura cero. Esas holguras se refieren al cierre calculado de esta red; no constituyen autorización para desplazar los hitos intermedios ni el acta/corte E2. El corte E2 tiene además una puerta rígida: cierre natural de observación, acta expresa de marcha blanca y habilitación lógica al inicio de 21, sin holgura. La aceptación final H12 conserva su ventana dentro del mes 21; el acta de marcha blanca es requisito previo del corte y no se sustituye por el acta posterior de cierre del proyecto.
+La Tabla~\ref{tab:sd7-hitos-globales} compara fechas calculadas y márgenes hacia las obligaciones contractuales.
+\begingroup\small\begin{longtable}{L{25mm}L{26mm}L{26mm}R{26mm}}
+\caption{Programación seleccionada y márgenes}\label{tab:sd7-hitos-globales}\\\hline
+ \EncabezadoTabla{Hito/puerta} & \EncabezadoTabla{Programado} & \EncabezadoTabla{Límite} & \EncabezadoTabla{Margen hábil}\\\hline\endfirsthead
+\hline \EncabezadoTabla{Hito/puerta} & \EncabezadoTabla{Programado} & \EncabezadoTabla{Límite} & \EncabezadoTabla{Margen hábil}\\\hline\endhead
+H1 & 2027-01-20 & 2027-01-29 & 7,67\\\hline
+H2 & 2027-03-01 & 2027-03-31 & 21,44\\\hline
+H3 & 2027-05-27 & 2027-05-31 & 2,33\\\hline
+H4 & 2027-09-23 & 2027-09-30 & 5,22\\\hline
+H5 & 2027-11-16 & 2027-11-30 & 11\\\hline
+H6 & 2027-12-01 & 2027-12-31 & 22\\\hline
+H7 & 2028-03-29 & 2028-03-31 & 2,44\\\hline
+H8 & 2028-01-17 & 2028-01-31 & 10,78\\\hline
+H9 & 2028-04-18 & 2028-04-28 & 8,22\\\hline
+H10 & 2028-05-11 & 2028-05-31 & 14,67\\\hline
+H11 & 2028-06-01 & 2028-06-30 & 20\\\hline
+ACTA-MB-E2 & 2028-08-01 & 2028-08-01 & 0\\\hline
+H12 & 2028-08-16 & 2028-08-31 & 11,67\\\hline
+CORTE-E1 & 2028-03-30 & 2028-03-31 & 1,44\\\hline
+CORTE-E2 & 2028-08-01 & 2028-08-01 & 0\\\hline
+\end{longtable}
+\FuenteTabla{Elaboración propia: red y calendario seleccionados; límites del artículo 17 y E-25 de las Bases Administrativas, pp. 12--13 y 74.}\endgroup
+La revisión continua es el procedimiento seleccionado para el acta de marcha blanca E2: el calendario demuestra capacidad propia y precedencias bajo el supuesto adoptado de participación de la Contraparte en la revisión continua y firma expresa al cierre de la evidencia. La selección de la línea base queda cerrada bajo ese supuesto; el acto futuro sigue siendo una puerta obligatoria y no se presume obtenido. Una revisión íntegra posterior al cierre natural produce atraso y se conserva como contraste, sin cambiar la fecha ofrecida. Las reservas de diez días marinos se imputan una sola vez antes de habilitar cada marcha blanca; no son holgura del corte ni presupuesto automático de retrabajo.~\parencite[arts.~17--18; pp.~12--13]{bases-admin}
+
+\input{tablas/rutas_criticas_t15.tex}
+
+La Figura~\ref{fig:sd7-red-critica} separa las cuatro ramas críticas del cierre de implementación de la puerta contractual de marcha blanca E2. Las flechas representan precedencias de la red; los paquetes completos y sus recursos se conservan en T-14/T-15.
+
+\input{figuras/red_critica_sintesis.tex}
+
+El tramo superior representa cuatro informes distintos que convergen en revisión y subsanación comunes antes de H12. El inferior conserva el orden evidencia--acta--habilitación: H12 posterior no sustituye el acta requerida para iniciar producción. Su holgura cero exige coordinar aceptación y ensayar el corte; aumentar recursos de elaboración de informes no elimina el pronunciamiento de la Contraparte.
+
+\paragraph{Secuencia de certificación E1.}
+UAT E1 se programará del 12 al 15 de octubre de 2027, después de la ventana completa del segundo ensayo. Su revisión ocupará del 18 al 29 de octubre y la subsanación del 2 al 15 de noviembre. H5 se programará el 16 de noviembre y exigirá tanto SUB-H5 como ENSAYOS-E1: el cierre del ensayo del 9 de noviembre deberá estar conforme antes de certificar. La reserva marina ocupará diez días hábiles, del 16 al 29 de noviembre, y la activación conservará el 1 de diciembre. Un cambio que invalide evidencia requerirá repetición; la programación no acredita recepción ya obtenida. UAT conserva 48 HH: Funcional 16, Proyecto 8 y Calidad 24 distribuida entre TIT-Q y REF-Q-001, con revisión posterior a la ejecución funcional. \parencite[arts.~17--18; Formulario E-25]{bases-admin}
+
+La programación integral y sus asignaciones fechadas prevalecen para ejecutar esta cadena. La secuencia fija de diez días por quincena conserva el modelo previo de esfuerzo: no se convierte su índice 222,22 en una fecha natural ni se suman sus 48 HH a las 48 HH integrales. La diferencia de duración corresponde a la distribución de Calidad en dos recursos seleccionada en la programación integral. La sensibilidad PERT de E1 requiere nueva nivelación con estas precedencias antes de utilizar sus márgenes.
+
+
+
+
+\subsection{Escenario PERT nuevamente nivelado} %7.3.2
+La sensibilidad de E1 queda pendiente de nueva nivelación tras corregir las precedencias de UAT y H5; los guiones identifican los resultados retirados. Los resultados restantes corresponden al escenario previo. Se recalcula la asignación con $t_E=1,1d$ para ingeniería y once días para ensayos de diez, manteniendo las HH seleccionadas y las capacidades. Los actos de revisión, observación natural, turnos y corte no se multiplican. Es una sensibilidad determinista, sin probabilidad de entrega ni presupuesto implícito de corrección.
+La Tabla~\ref{tab:sd7-pert-nivelado} compara fechas calculadas y márgenes hacia las obligaciones contractuales.
+\begin{longtable}{L{25mm}L{26mm}L{26mm}R{26mm}}
+\caption{PERT con recursos recalculados}\label{tab:sd7-pert-nivelado}\\\hline
+ \EncabezadoTabla{Hito/puerta} & \EncabezadoTabla{Directo} & \EncabezadoTabla{PERT recursos} & \EncabezadoTabla{Margen PERT}\\\hline\endfirsthead
+\hline \EncabezadoTabla{Hito/puerta} & \EncabezadoTabla{Directo} & \EncabezadoTabla{PERT recursos} & \EncabezadoTabla{Margen PERT}\\\hline\endhead
+H1 & 2027-01-20 & 2027-01-20 & 7,33\\\hline
+H2 & 2027-03-01 & 2027-03-02 & 20,89\\\hline
+H3 & 2027-05-27 & 2027-05-26 & 3,44\\\hline
+H4 & 2027-09-23 & 2027-09-24 & 4,47\\\hline
+H5 & 2027-11-16 & -- & --\\\hline
+H6 & 2027-12-01 & -- & --\\\hline
+H7 & 2028-03-29 & -- & --\\\hline
+H8 & 2028-01-17 & 2028-01-17 & 10,56\\\hline
+H9 & 2028-04-18 & 2028-04-19 & 7,94\\\hline
+H10 & 2028-05-11 & 2028-05-15 & 12,83\\\hline
+H11 & 2028-06-01 & 2028-06-01 & 20\\\hline
+ACTA-MB-E2 & 2028-08-01 & 2028-08-01 & 0\\\hline
+H12 & 2028-08-16 & 2028-08-17 & 10,33\\\hline
+CORTE-E1 & 2028-03-30 & -- & --\\\hline
+CORTE-E2 & 2028-08-01 & 2028-08-01 & 0\\\hline
+\end{longtable}
+\FuenteTabla{Elaboración propia: nivelación de sensibilidad PERT con los mismos esfuerzos y capacidades de T-15.}
+
+El margen cero del acta/corte E2 permanece bajo PERT y la línea base conserva el supuesto de recepción continua y firma expresa programada. PL-R04 controla su incumplimiento; más recursos propios no reemplazan el acto de aceptación. La capacidad máxima del escenario PERT se contrasta por persona en su registro independiente antes de adoptar un cambio de duración.
+
+
+
+
+\subsection{Fundamento y límites de los escenarios y reservas} %7.3.3
+La estimación conserva tres duraciones por actividad y contrasta sus efectos con red y recursos, siguiendo la separación entre duración, riesgo y calendario del manual de programación de NASA.~\parencite[secc.~6.3.1 y 7.4, pp.~38--40 y 59--60]{nasa-cronograma} Para la ponderación PERT se aplica $t_E=(t_O+4t_M+t_P)/6$ y $\sigma=(t_P-t_O)/6$ como sensibilidad de diseño. El escenario de tres valores conserva $t_O=t_M=d$ y $t_P=1,6d$ para ingeniería. La igualdad del optimista y probable representa el mínimo técnico del diseño inicial; el pesimista ensaya una recuperación adicional de hasta $0,6d$. Con ello $t_E=1,1d$, $\sigma=0,1d$ y $\sigma^2=0,01d^2$. Los ensayos conservan $(10,10,16)$, $t_E=11$ y $\sigma=1$ día. Revisiones contractuales, turnos y períodos de observación naturales no se ajustan con el mismo multiplicador.
+
+Estos extremos son hipótesis de sensibilidad, no mediciones, percentiles ni una distribución calibrada. El registro \path{componentes/riesgos_reservas_planificacion.csv} identifica evento, paquetes, responsable, disparador, respuesta y límite de cada reserva. La recuperación de ingeniería deberá respaldarse por corrección y comprobación identificadas; si demanda más HH, se actualizarán paquetes y capacidad. La nivelación previa de $1,1d$ con las mismas HH comprueba disponibilidad temporal a menor intensidad; no financia automáticamente un 10\,\% de retrabajo ni demuestra probabilidad de entrega.
+
+Los diez días hábiles marinos son una reserva de contingencia propuesta para una campaña con dos ventanas alternativas y cancelaciones acumuladas de hasta diez días en el escenario. No se atribuye esa duración a un pronóstico acreditado. Su uso requiere aviso o bloqueo registrado, decisión de Operación y autorización de la ventana alternativa. H3 incorpora su reserva en la cadena; H5 y H10 la preservan antes de habilitar su etapa. No se vuelve a contar como revisión, subsanación ni holgura libre de los cortes finales. Se registrarán duración disponible, consumida y restante; excederla exige escalar y recalcular dentro de los hitos contractuales.
+
+El registro PL-R01--PL-R05 conserva evento, paquete, responsable, disparador y límite; T-16 enlaza sus tratamientos con los riesgos de marejada, integridad, contraparte y capacidad. PL-R01/R-01 consume una sola reserva por campaña y PL-R04 conserva la puerta de recepción E2 sin holgura. La actualización de un tratamiento se propagará a red y asignaciones mediante el control de cambios de SD6. La reserva de gestión se mantiene fuera de la línea base y su utilización requiere decisión de dirección y control de cambios; ninguna reserva autoriza desplazar el plazo contractual. La estimación funcional se concilia mediante el esfuerzo seleccionado y los lotes adicionales. La sensibilidad del ambiente y la firma externa de recepción E2 requieren control propio; no se cubren mediante una reserva meteorológica. No se afirma una confianza normal de dos sigmas sin sustentar distribuciones, correlaciones y efecto de las rutas que cambian bajo recursos.
+
+
+
+
+\subsection{Recepción continua seleccionada de E2} %7.3.4
+Synaptix selecciona la recepción continua para cumplir producción E2 y Operación de ambos alcances desde el inicio del mes 21. Para inicio el 1 de diciembre de 2026, la fecha es el 1 de agosto de 2028. La línea base adopta como supuesto de planificación la participación de la Contraparte en la revisión continua y en la sesión final de aceptación, con firma expresa prevista al cierre de la evidencia. Synaptix propone este procedimiento para su ejecución contractual; no acredita un acuerdo ni un acta ya suscritos.~\parencite[arts.~17.2.4, 17.3 y 18; pp.~12--13]{bases-admin}
+
+El expediente parcial se prepara desde el 15 de junio, con índice, versión, conciliación, formación, fuentes y fórmulas SLA, incidentes y observaciones. La red reserva diez días hábiles de revisión parcial y diez de respuesta sobre evidencia ya producida. Calidad entregará registros diarios inmutables y resolverá observaciones tempranas; la revisión parcial no acepta mediciones futuras ni consume el derecho de revisar evidencia nueva.
+
+Las cuatro últimas semanas se observan íntegramente del 4 al 31 de julio, con volumen real, SLA y usuarios. El 31 de julio, de 20:00 a 24:00, se reservan dos ejecutores propios separados, uno de Calidad y otro de Proyecto, cuatro HH cada uno. El cuadrante conserva el intervalo natural, sin reutilizar un turno NOC/SOC/mesa o una jornada de ingeniería. Revisan el expediente vivo y la última evidencia; el cierre automático a las 00:00 conserva el registro final e impide habilitación ante diferencias, incidentes impeditivos o medición incompleta. Ninguna proyección sustituye los últimos datos.
+
+El acta expresa de cierre de marcha blanca es una puerta previa del corte. Synaptix preparará y ensayará en PREPROD la configuración, respaldo, retorno y cambio de autoridad antes de la ventana; el corte es una habilitación lógica preparada, cuya secuencia será cierre de evidencia, comprobación final, acta expresa y activación. El ensayo medirá los tiempos de consolidación y activación: una precedencia lógica no acredita duración física nula ni firma instantánea. Sólo se habilitará E2 como registro oficial si se dispone del acta y de las condiciones copulativas. NOC, SOC y mesa atienden ambos alcances desde el inicio de 21; la estabilización de 28 días comienza el 1 de agosto, con 448 HH y cuadrante propio.
+
+H12 corresponde a la aceptación final del proyecto de implementación dentro del mes 21 y agrega las entregas finales, incluido el cierre de pilotos de innovación y sus revisiones. Se distingue del acta de marcha blanca requerida para el corte del primer día. Esa distinción no autoriza producción sin acta ni aceptación anticipada de un producto.
+
+\paragraph{Preparación y autorización del cierre.} Antes de H10, Proyecto presentará a la Contraparte la agenda, referente y suplente, criterios, plantilla de acta, expediente diario y protocolo de cierre para coordinación expresa. La convocatoria y la respuesta se registrarán, sin presumir disponibilidad ni aceptación por silencio. Antes de H11, Calidad e Integración ensayarán en PREPROD la consolidación del último registro, verificación, presentación del acta, habilitación y retorno; conservarán duración medida de cada paso, versión y responsable. El ensayo no incluirá una firma simulada como evidencia de decisión del CLIENTE ni convertirá tiempo de elaboración en tiempo de aceptación externa.
+
+Durante los 28 días finales, el tablero diario contrastará mínimos de volumen, cobertura, SLA, conciliación, formación e incidentes; Proyecto escalará una previsión de incumplimiento tan pronto sea identificada, sin esperar al último día. A siete días del cierre comprobará agenda y suplentes, observaciones abiertas y preparación del corte. El acta sólo se someterá a firma cuando esté completa la última evidencia. Una duración positiva medida, una observación o un pronunciamiento tardío se reflejará en la programación de la transición: el margen cero no absorbe esa demora. Sin acta expresa y comprobación final no se habilita el registro oficial. Este protocolo se incorpora al expediente de aceptación de T-17; H12 posterior no reemplaza la autorización previa.\parencite[arts.~17--18, pp.~12--13]{bases-admin}
+
+\paragraph{Supuesto adoptado y contingencia.} Para la línea base ofrecida se supone que la Contraparte participará en la sesión final del 31 de julio de 2028, de 20:00 a 24:00, y emitirá su pronunciamiento expreso una vez cerrado el registro de las cuatro semanas. Proyecto coordinará la sesión y presentará el acta; Calidad comprobará la evidencia completa. La firma y activación se programan en la transición al 1 de agosto, conservando ese orden y todos los criterios. Proyecto presentará con la línea base la agenda de recepción continua y el protocolo de cierre; el CLIENTE resolverá su coordinación mediante un pronunciamiento expreso. La viabilidad del instante de corte depende de ese procedimiento y de los tiempos medidos en el ensayo; la reserva cero exige tratar cualquier demora como desviación, no como holgura disponible. La decisión de planificación queda cerrada bajo este supuesto, sin atribuir una aceptación ya obtenida. El CLIENTE conserva los diez días de revisión de evidencia nueva: el supuesto prevé un pronunciamiento anticipado válido, sin renuncia a ese derecho ni aceptación tácita. Si falta el acta, existen observaciones impeditivas o se usa íntegramente la revisión posterior, la puerta bloquea el cambio oficial, se registra el atraso y se extiende marcha blanca a costo de Synaptix, sin desplazar el calendario contractual. PL-R04 controla el incumplimiento del supuesto; el escenario máximo se conserva como sensibilidad de plazo.
+
+
+
+
+\subsection{Comprobación de la fecha objetivo de E2} %7.3.5
+La revisión distingue el cierre de evidencia, el pronunciamiento contractual y la ejecución del corte. Para inicio el 1 de diciembre de 2026, la evidencia de las cuatro últimas semanas de marcha blanca termina el 31 de julio de 2028 y la producción/Operación simultáneas tienen como objetivo el 1 de agosto. El artículo 18.3 reconoce hasta diez días hábiles de revisión y otros diez de subsanación; son ventanas máximas, no un mínimo obligatorio de espera. La preparación diaria puede reducir trabajo de revisión, pero no impone al CLIENTE un pronunciamiento inmediato sobre evidencia aún no producida.~\parencite[arts.~17.2.4, 17.3 y 18.3; pp.~12--13]{bases-admin}
+
+La Tabla~\ref{tab:sd7-recepcion-contraste} presenta contraste de los plazos máximos de recepción E2.
+\begin{table}[H]
+\centering
+\begin{tabularx}{\linewidth}{Y L{27mm} L{27mm}}\hline
+ \EncabezadoTabla{Escenario} & \EncabezadoTabla{Fin revisión} & \EncabezadoTabla{Fin subsanación}\\\hline
+Sin observaciones, revisión máxima & 14/08/2028 & No aplica\\\hline
+Con observaciones, ambas ventanas máximas & 14/08/2028 & 29/08/2028\\\hline
+\end{tabularx}
+\caption{Contraste de los plazos máximos de recepción E2}
+\label{tab:sd7-recepcion-contraste}
+\FuenteTabla{Elaboración propia: calendario hábil del escenario y artículo 18.3 de las Bases Administrativas, p. 13.}
+\end{table}\par\smallskip
+
+El cálculo usa lunes a viernes y feriados chilenos del escenario; sus datos se conservan en \path{componentes/recepcion_e2_contraste_contractual.csv}. No incluye una nueva revisión ni la duración efectiva del corte. Incluso sin observaciones, el uso completo del plazo de revisión termina después de la fecha objetivo. Agregar recursos a Synaptix, adelantar informes parciales o reducir una reserva no elimina esa dependencia externa.
+
+\paragraph{Resultado y responsabilidad.} El escenario conservador no satisface el objetivo del primer día de 21; el corte del 31 de agosto del contraste de revisión posterior es un escenario de atraso, no la fecha contractual ofrecida. La red seleccionada programa acta de marcha blanca y corte el 1 de agosto; H12 es la aceptación final de implementación dentro de 21. La línea base adopta el supuesto de participación de la Contraparte en la recepción continua, la sesión final del 31 de julio y la firma expresa al cierre de la evidencia, antes del corte. Así se cierra la selección del procedimiento y del calendario ofrecido; la firma y la aceptación son actuaciones futuras sujetas a los criterios de las bases. Proyecto coordinará la ejecución conforme al protocolo de preparación previo a H10/H11, con confirmación de agenda, suplentes, expediente diario y duraciones medidas de cierre/activación. PL-R04 controlará insuficiencia de volumen real, demora en consolidación o pronunciamiento y cualquier observación impeditiva. Si el tiempo efectivo impide el cambio al inicio de 21, se registra la desviación y se bloquea el corte; no se convierte un supuesto en una garantía de firma ni se elimina la dependencia externa. El contraste de ventanas máximas cuantifica el atraso si el supuesto no se cumple; no sustituye el escenario seleccionado ni reduce derechos de revisión. Los servicios de ambos alcances se dimensionan desde el primer día de 21; su dotación no acredita por sí sola que E2 haya sido recibido. No se sustituyen las últimas mediciones por proyecciones ni se desplazan los meses contractuales.~\parencite[arts.~17--18; pp.~12--13]{bases-admin}
+
+
+
+
+\subsection{Calendario de intervención y control de ventanas} %7.3.6
+El escenario utiliza inicio el 1 de diciembre de 2026. Las habilitaciones externas tienen fecha requerida y responsable: recinto, equipos, red y telemetría recibidos para el 16 de marzo de 2027; licencias e identidad antes de su configuración; contratos contables y de pagos para enero de 2028. No se afirma que el CLIENTE haya ejecutado las obras. La instalación que afecte al varadero se prepara por anticipado y se ejecuta en la ventana de marzo posterior al día 15; la integración central y recepción de puntos de pantalán continúa en abril, que está abierto para el resto del recinto. H3 incluye cinco ambientes y la recepción de medición, con su reserva marina, antes del cierre de mayo.
+
+Construcción E1 y componentes compartidos se concentran en agosto de 2027 con refuerzos dedicados; las vistas E1 ya no se dejan para septiembre. E2 aprueba modelos, contratos y esquemas en diciembre/enero, construye en enero--febrero y prueba desde el 16 de marzo de 2028. El trabajo remoto en DEV/QA no cambia producción ni habilita usuarios durante el congelamiento; toda intervención productiva, prueba destructiva o formación presencial respeta la ventana del sitio. Los ensayos usan manifiestos completos, dos ejecuciones por etapa y sus revisiones/subsanaciones. Una modificación que invalide evidencia obliga a repetirla sobre la versión recibida, a costo de Synaptix.
+
+Las bases de IN1/IN4/IN5 abarcan 1--28 de mayo y la evaluación 1--28 de junio de 2028; en IN1 las solicitudes entran en los primeros 21 días y se siguen siete. La formación posterior a base se realiza 29--31 de mayo, con dos formadores y Calidad reservados. Las acciones de IN5 se aplican entre ambas ventanas, con autorización y evidencia. Los informes, revisión y subsanación se preparan en julio y las innovaciones se materializan en 21. IN3 conserva 120 pólizas distintas, orden intercalado y control de errores. IN2 tiene fecha concreta de invernada en junio de 2029 y controles de botadura antes de sus maniobras; sus actividades documentales no autorizan una intervención en varadero durante las campañas.
+
+Los controles de DR se anticipan a noviembre, marzo después del día 15 y agosto, con nueve controles en 24/28/33/36/40/45/48/52/56, evitando exceder seis meses. Las pruebas ofensivas de operación se realizan en marzo después del día 15 de 2029, 2030 y 2031. Las jornadas de actualización y la incorporación estacional se preparan fuera del congelamiento; la autoformación no sustituye la evaluación. La salida se acompaña desde abril hasta julio de 2031, al menos noventa días reales, y la eliminación de origen depende de exportaciones, credenciales y acta de transferencia.
+
+Proyecto registrará los catorce eventos anuales y sus bloqueos de uno a tres días, con fechas conocidas un año antes, y las fechas efectivas de las campañas de seis semanas. El escenario no inventa esas fechas. Las actividades de campo sólo se liberan tras comprobar zona, maniobra, evento, viento/marejada, acceso y autorización; ante aviso se cancelan y se consume reserva identificada. Si la fecha real de inicio o un evento anula la ventana, se recalculará la programación completa antes de fijar la línea base, sin trasladar los meses contractuales. La serie de medición comienza en E1 y se conserva antes de la temporada 2029; los residuos y la capacitación ambiental tienen recepción propia y no quedan demostrados sólo por instalar medidores.
+
+
+
+
+\subsection{Estrategia progresiva y autoridad de registro} %7.3.7
+Synaptix desplegará por proceso y zona. E1 priorizará torre y zarpes, inventario y autorización de puestos; después incorporará Escuela náutica, combustible y medición. La primera ola responde a la custodia y al estado de embarcaciones utilizados por los demás procesos. Escuela dependerá de identidad, autorizaciones y retiros verificados \parencite[cap.~17, secc.~17.6, p.~43]{caso07}.
+
+Las olas E1 se prepararán antes del mes 13 y se habilitarán entre el 1 y el 14 de diciembre de 2027, dentro del mes 13 del escenario seleccionado; desde el 15 no habrá habilitaciones nuevas hasta terminar el congelamiento. El alcance completo permanecerá en observación durante las cuatro semanas finales. E2 incorporará progresivamente varadero, contratistas, administración y gestión ambiental completa durante el 19, para observar el conjunto durante las cuatro semanas finales del 20. Las innovaciones conservarán sus pilotos de SD13; invernada no se forzará a meses 19--20.
+
+Cada dato tendrá una autoridad de escritura por período. Antes del cambio administrativo el legado mantendrá su autoridad y las cargas controladas permitirán comprobar la nueva solución. Los hechos del recinto conservarán autoridad local según SD4/SD5. No se impondrá digitación ordinaria doble; se compararán extracciones y registros controlados. Cada ola tendrá autorizador, habilitación y procedimiento de suspensión y retorno.
+
+
+
+
+\subsection{Etapa 1: marcha blanca 13--15 y producción 16} %7.3.8
+La primera etapa habilitará seguridad y continuidad del recinto, escuela, inventario, combustible y medición individual, conforme a SD3. La preparación incluirá ensayos de migración, pruebas de continuidad y personas capacitadas. Durante marcha blanca se mantendrán los controles vigentes de la marina y se conciliará diariamente, sin sustituir una observación segura por una señal sensórica. La recepción verificará CA-01--CA-08, CA-10, CA-13 y CA-23 y la medición inicial de CA-18; CA-19 conserva su fecha ambiental externa. El paso oficial al mes 16 requerirá cierre aceptado y activará cuatro semanas de estabilización.
+
+
+
+
+\subsection{Etapa 2: marcha blanca 19--20 y producción 21} %7.3.9
+La segunda etapa completará varadero, contratistas, ambiente y administración, manteniendo E1 en producción. Sus ensayos comprobarán versiones e interfaces de E2 y protección de los datos compartidos. La recepción verificará CA-09, CA-11, CA-12, CA-14--CA-22 y CA-24 y conservará los resultados E1. El paso del mes 21 iniciará simultáneamente los 36 meses de Operación de ambos alcances; la estabilización inicial se imputará a ese servicio. El cambio administrativo respetará la consulta independiente y la autoridad definida en SD5.
+
+
+
+
+\subsection{Condiciones de avance y cierre de marcha blanca} %7.3.10
+El avance exigirá recepción del alcance previo, preparación de usuarios, pruebas aceptadas, integridad y retorno disponible. El cierre cumplirá conjuntamente: ningún incidente crítico ni alto abierto atribuible a la solución; volumen real comprometido durante las cuatro semanas finales; disponibilidad y tiempos sostenidos durante ese período; conciliación sin diferencias no explicadas; capacitación y certificación exigida; y acta suscrita por la Contraparte Técnica \parencite[art.~17.3, p.~13]{bases-admin}.
+
+Se compromete cobertura del 100\,\% de hechos reales exigibles de los procesos habilitados durante esas cuatro semanas, con recuentos diarios contrastados. La cobertura no equivale al peak: se registrarán cantidades absolutas, mezcla de operaciones y períodos sin actividad. Los mínimos absolutos de oferta y su derivación se fijan en la Tabla~\ref{tab:sd7-volumen-real}; la revisión estacional previa concretará la mezcla por proceso sin rebajar esos mínimos ni reducir el alcance. Operaciones inventadas y carga sintética no acreditarán volumen real.
+
+Los indicadores diarios incluirán disponibilidad, tiempos de flujos de SD3, operaciones conciliadas, diferencias por conjunto y moneda, duplicados, autorizaciones y usuarios preparados. Los umbrales conservarán los criterios CA de cada etapa y los compromisos de SD4/SD5. T-17 recogerá evidencia y observaciones resueltas conforme al artículo 18. Si falta una condición al cierre, Synaptix extenderá la marcha blanca a su costo, sin cargo adicional ni desplazamiento de fases siguientes y bajo las condiciones del artículo 80 \parencite[arts.~17.3 y 18, p.~13]{bases-admin}.
+
+
+
+
+\subsection{Volumen real comprometido para el cierre} %7.3.11
+Synaptix fija mínimos de oferta para los 28 días finales de cada marcha blanca. La Tabla~\ref{tab:sd7-volumen-real} los deriva de la volumetría actual del CLIENTE. Para zarpes, recaladas, escuela y combustible se adopta $N_{28}=\lceil V_a(28/365)f\rceil$, con $f=0,5$: es un supuesto conservador de actividad estacional, no un dato medido ni una estacionalidad acreditada. Se aplica a ambas ventanas del escenario, febrero de E1 y julio de E2, y no sustituye el dimensionamiento de peak ni sus pruebas a $1,5$ veces.\parencite[cap.~14, numeral~14.1, p.~31]{caso07}
+
+\begingroup\small
+\begin{longtable}{L{35mm}L{62mm}L{47mm}}
+\caption{Mínimos de operación real durante los 28 días finales}\label{tab:sd7-volumen-real}\\\hline
+\EncabezadoTabla{Proceso y etapa} & \EncabezadoTabla{Derivación y mínimo} & \EncabezadoTabla{Unidad y evidencia}\\\hline\endfirsthead
+\hline\EncabezadoTabla{Proceso y etapa} & \EncabezadoTabla{Derivación y mínimo} & \EncabezadoTabla{Unidad y evidencia}\\\hline\endhead
+Zarpes, E1/E2 & $\lceil4.800(28/365)(0,5)\rceil=185$ & Trámites reales distintos; folio de autoridad y registro de torre.\\\hline
+Recaladas, E1/E2 & $\lceil1.900(28/365)(0,5)\rceil=73$ & Arribos reales distintos; embarcación, fecha y recepción.\\\hline
+Escuela, E1/E2 & $\lceil1.100(28/365)(0,5)\rceil=43$ & Salidas de clase; nómina, autorización, salida y retorno.\\\hline
+Combustible, E1/E2 & $\lceil1.900.000(28/365)(0,5)\rceil=72.877$ & Litros reales conciliados; cada despacho conserva documento y totalizador.\\\hline
+Medición, E1/E2 & $640\times28=17.920$ & Punto-días de agua/energía; 640 puntos iniciales con serie íntegra a la frecuencia de SD4/SD5.\\\hline
+Varadero, E2 & $\lceil1.150(0,38)(28/281)\rceil=44$ & Movimientos reales de travelift; orden, maniobra y recepción.\\\hline
+Cobranza, E2 & $\lceil1.950(28/30)\rceil=1.820$ & Documentos reales del ciclo mensual; documento e intercambio contable conciliados.\\\hline
+\end{longtable}
+\FuenteTabla{Cálculo de oferta: Caso 07, numeral 14.1, p. 31; concentración del 62\,\% de movimientos en dos campañas de seis semanas, numeral 4.6, p. 11; hipótesis estacional $f=0,5$ y mes de cálculo de 30 días.}
+\endgroup
+
+Los 281 días de varadero resultan de $365-2(6\times7)$; el 38\,\% corresponde al resto del volumen anual fuera de campaña. Es una aproximación uniforme para la ventana de julio, sin autorizar intervenciones en períodos protegidos. En cobranza se observará un ciclo completo de emisión, intercambio y conciliación, aunque el prorrateo defina el mínimo. Se registrarán también las cantidades reales por subtipo, zona, moneda y turno; una suma global no sustituye la cobertura de cada proceso.
+
+La cobertura del 100\,\% se exigirá además para todos los hechos reales del alcance completo: salidas y regresos, permisos, asignaciones, inspecciones, contratistas, residuos, pagos y demás procesos aplicables. Los procesos sin volumen anual entregado conservarán un mínimo de un ciclo real completo por variante crítica aplicable en los 28 días finales, con evidencia de origen y trazabilidad; una variante sin hecho exigible se identificará separadamente, nunca como una operación ejecutada. Las pruebas de la variante se exigirán igualmente, pero no se sumarán al volumen real. Los ensayos de fallas y la certificación funcional no se sustituyen por estos mínimos.
+
+Antes de H5 y H10, Datos e Implantación contrastarán agenda, registros de origen, estacionalidad y ciclo de cobro; Proyecto presentará a la Contraparte el cuadro por proceso y la mezcla comprometida. La aprobación del plan podrá elevar cantidades y ajustar distribución, sin rebajar estos mínimos ni reducir alcance. La marina conserva su operación ordinaria: no se generan zarpes, clases, despachos o documentos para llenar una cuota. Si la actividad segura real no alcanza un mínimo, si no se completa un ciclo exigible o si falta cobertura, no se declara cierre; se activa PL-R04/R-04 y la extensión de marcha blanca a costo de Synaptix, sin aceptación tácita ni desplazamiento de las fases contractuales. Cada día sin actividad conserva justificación, origen y efecto en la suficiencia de evidencia.\parencite[arts.~17.3 y 18, p.~13]{bases-admin}
+
+
+
+
+\subsection{Calendario protegido, marejadas y retorno} %7.3.12
+No se intervendrán los sistemas entre el 15 de diciembre y el 15 de marzo ni durante las 14 fechas náuticas; se evitará la capacitación en el peak protegido. Las campañas de varada de abril--mayo y septiembre--noviembre bloquearán toda intervención que afecte al varadero. Se protegerán además maniobras y clases; el campo de boyas tiene acceso sólo por mar. Se reservan inicialmente dos ventanas alternativas por intervención marina y diez días hábiles por campaña de despliegue en terreno, antes de su hito. Son hipótesis por contrastar con calendario y cancelaciones, sin modificar meses 16/21 ni avisos de suspensión de 24--48 horas.
+
+El aviso de marejada suspenderá inmediatamente toda actividad programada del proyecto, incluida construcción aislada o remota; Proyecto registrará paquetes, personas y capacidad afectados. La reanudación exigirá cese de la condición, ventana admisible y coordinación segura. La reserva se distinguirá de holguras libre y total de CPM y del retorno, y su uso se vinculará a PL-R01/R-01 de SD7/SD8 una sola vez. La suspensión también afecta al trabajo fuera del terreno; los diez días por campaña no demuestran por sí solos absorción de toda cancelación del proyecto. Se recalcularán red y capacidad, incorporando refuerzo propio si fuera necesario, sin trasladar hitos contractuales. Las fechas efectivas de eventos, campañas y autorizaciones se comprobarán antes de ejecutar; el cálculo no acredita una instalación, una prueba ni un acta futura \parencite[cap.~10, restricción 12, p.~26; numeral 13.2, p.~29; cap.~15, RT-10.05, p.~34]{caso07}.
+
+El corte administrativo conserva 22:00--02:00, decisión antes de 00:30 y 90 minutos exclusivos de retorno previo. El retorno posterior conserva la estimación separada de 120 minutos, por comprobar con el mayor volumen previsto de cambios y respuestas pendientes. Si el legado no representa un hecho, se mantendrá el diario conciliado y la corrección controlada, sin eliminar operaciones ni repetir pagos.
+
+
+
+
+\subsection{Pruebas y preparación de cada etapa} %7.3.13
+La aceptación incluirá migración, usuario, integración, regresión, seguridad ofensiva, accesibilidad WCAG 2.2 AA, resiliencia y recuperación. Antes de cada paso a producción, incluidas liberaciones durante Operación, la carga y el estrés comprobarán los umbrales a 1,5 veces el peak declarado en PREPROD, y Calidad documentará conformidad WCAG 2.2 AA mediante verificación automática y manual. El estrés aumentará progresivamente la demanda hasta identificar el punto de quiebre, en un entorno aislado; el informe conservará curva de respuesta, saturación, recursos, degradación y recuperación durante y después del peak; componentes conservarán cobertura mínima de 70\,\% de lógica de negocio y ninguna prueba en falla. No se cerrará una etapa ni se promoverá una liberación con hallazgos críticos o altos abiertos. PRUEBAS-6 de T-10 fija procesos, documentación y técnicas ISO/IEC/IEEE 29119; las evidencias se vinculan al digest recibido \parencite[cap.~20, secc.~20.1, pp.~34--35]{bases-transversales}.
+
+La capacitación se organizará por perfil y turno, con ejercicios y evaluación antes de las ventanas protegidas. Incluirá personal estacional y monitores nuevos, sin suponer un área TI del cliente. La estabilización posterior tendrá presencia en pantalanes y varadero, incluidos fines de semana pertinentes; la dotación y los turnos seleccionados se detallan en el dimensionamiento y cuadrantes de T-15. El esfuerzo de seguimiento de datos no acredita esa cobertura física completa \parencite[cap.~22, RT-22.01--RT-22.07; p.~38]{bases-transversales}.
+
+
+
+
+\subsection{Hitos de recepción y pagos de implementación} %7.3.|4
+Los doce hitos E-25 conservan sus meses y condiciones de devengo. La Etapa 1 suma 60\,\% y la Etapa 2 40\,\% del valor de implementación. Una fecha programada no constituye aprobación ni autoriza pago sin su entregable recibido \parencite[Formulario~E-25; p.~74]{bases-admin}.
+La habilitación H3 comprende además DR conforme a RT-04.01 de las Bases Técnicas Transversales, aunque la descripción de E-25 enumere DEV, QA, PREPROD y PROD. La EDT incluye una ficha por cada uno de los cinco ambientes \parencite[RT-04.01; pp.~10--11]{bases-transversales}.
+La Tabla~\ref{tab:sd7-e25} relaciona los doce hitos con mes, porcentaje y condición de recepción.
+
+\begin{longtable}{L{12mm}R{12mm}R{14mm}L{110mm}}
+\caption{Correspondencia contractual con E-25}\label{tab:sd7-e25}\\\hline
+ \EncabezadoTabla{Hito} & \EncabezadoTabla{Mes} & \EncabezadoTabla{Pago} & \EncabezadoTabla{Condición de devengo}\\\hline\endfirsthead
+\hline \EncabezadoTabla{Hito} & \EncabezadoTabla{Mes} & \EncabezadoTabla{Pago} & \EncabezadoTabla{Condición de devengo}\\\hline\endhead
+H1 & 2 & 8\,\% & Alcance y matriz de trazabilidad aprobados \\\hline
+H2 & 4 & 7\,\% & Arquitectura, seguridad y modelo de datos aprobados\\\hline
+H3 & 6 & 10\,\% & Infraestructura híbrida y cuatro ambientes con observabilidad \\\hline
+H4 & 10 & 10\,\% & Software E1 con QA superado y evidencia de cobertura\\\hline
+H5 & 12 & 10\,\% & E1 certificada: UAT, carga, resiliencia y seguridad ofensiva \\\hline
+H6 & 13 & 5\,\% & Inicio de marcha blanca E1; retorno activo y usuarios capacitados\\\hline
+H7 & 16 & 10\,\% & Producción E1 y cierre conforme de marcha blanca \\\hline
+H8 & 14 & 5\,\% & Alcance E2 y diseño detallado aprobados\\\hline
+H9 & 17 & 10\,\% & Software E2 con QA superado \\\hline
+H10 & 18 & 10\,\% & Certificación E2 y cierre de desarrollo\\\hline
+H11 & 19 & 5\,\% & Inicio de marcha blanca E2 con E1 en producción \\\hline
+H12 & 21 & 10\,\% & Producción E2 y aceptación final de implementación\\\hline
+\end{longtable}\FuenteTabla{Bases Administrativas, Formulario E-25. Porcentajes sobre el valor total de implementación.}
+
+La operación comprende 36 períodos, meses 21--56, con pago al mes siguiente vencido sujeto a los descuentos de SLA aplicables. El último período de servicio es el 56 y su pago corresponde al mes siguiente; ese pago no agrega un mes de operación. No se anticiparán ni prorratearán estos importes dentro de implementación. Los porcentajes E-25 se convertirán en montos al consolidar la valoración económica, conservando la separación entre ambas fases.
+
+
+
+
+\subsection{Gantt contractual de 56 meses} %7.3.15
+La carta muestra los períodos de trabajo de las doce cuentas, marchas blancas, cobertura inicial y Operación, junto con los doce hitos E-25. IN2 conserva junio de 2029 como primera invernada; las demás innovaciones siguen SD13. Las barras agregadas no autorizan intervenciones durante congelamientos, eventos o marejadas ni sustituyen las precedencias de la red.~\parencite[art.~17, pp.~12--13; Formulario E-25, p.~74]{bases-admin}
+
+\input{figuras/gantt_56_meses.tex}

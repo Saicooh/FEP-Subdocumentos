@@ -1,0 +1,318 @@
+﻿Codigo,Nombre,Mes,Quincena,Fase,Total,Pred,Referencia,Responsable,A,D,S,Q,V,I,O,L,J
+1.1.1.1,"Acta de arranque, interlocutores y decisiones",1,1,Implementación,32,Inicio,BA gobierno; SD1/SD2,Ignacio Silva,8,0,0,0,0,8,0,0,16
+1.1.1.2,Línea base de alcance y trazabilidad,2,1,Implementación,40,1.1.1.1,E-25 H1; RT-19.01,Ignacio Silva,16,0,0,8,0,0,0,0,16
+1.1.1.3,Definición de terminado y recepción,2,2,Implementación,32,1.1.1.2,RT-20.07/08; BA18,Davor Serey,0,0,8,16,0,0,0,0,8
+1.1.2.1,Registro de riesgos y respuestas presupuestadas,2,2,Implementación,32,1.1.1.1,SD2; RT-19.06,Ignacio Silva,0,0,8,0,0,8,0,0,16
+1.1.2.2,"Línea base integrada de plazo, costo y recursos",4,1,Implementación,40,"H1,H2",T-14/T-15; E-25; RT-19.07,Ignacio Silva,0,0,0,8,0,8,0,0,24
+1.1.3.1,Plan inicial de reversibilidad,3,1,Implementación,48,1.1.1.1,BA77; SD4 reversibilidad,Ignacio Silva,0,8,8,0,0,16,0,0,16
+1.12.1.1,Modelo operativo y contrato de cobertura preparados,18,1,Implementación,48,H3,RT-21.01--06; BA78,José Lara Arce,0,0,8,0,0,8,16,0,16
+1.12.1.2,"Catálogo, runbooks y traspaso al servicio",20,1,Implementación,56,1.12.1.1,RT-21.04; BA77,José Lara Arce,0,8,8,8,0,8,24,0,0
+1.1.3.2,Expediente de custodia independiente de fuentes,6,1,Implementación,24,1.2.1.1,BA propiedad de fuentes; SD3 entregables,Ignacio Silva,0,0,8,0,0,8,0,0,8
+1.1.3.3.12,Actualización semestral de custodia de fuentes,12,1,Implementación,16,1.1.3.2,BA custodia independiente; actualización semestral,Ignacio Silva,0,0,4,0,0,8,0,0,4
+1.1.3.3.18,Actualización semestral de custodia de fuentes,18,1,Implementación,16,1.1.3.2,BA custodia independiente; actualización semestral,Ignacio Silva,0,0,4,0,0,8,0,0,4
+1.1.3.4,Plan de reversibilidad actualizado durante implementación,15,1,Implementación,32,1.1.3.1,BA77; SD4 reversibilidad,Ignacio Silva,0,8,8,0,0,8,0,0,8
+1.1.4.1.1,Expediente quincenal de control,1,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.1.2,Expediente quincenal de control,1,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.2.1,Expediente quincenal de control,2,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.2.2,Expediente quincenal de control,2,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.3.1,Expediente quincenal de control,3,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.3.2,Expediente quincenal de control,3,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.4.1,Expediente quincenal de control,4,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.4.2,Expediente quincenal de control,4,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.5.1,Expediente quincenal de control,5,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.5.2,Expediente quincenal de control,5,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.6.1,Expediente quincenal de control,6,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.6.2,Expediente quincenal de control,6,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.7.1,Expediente quincenal de control,7,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.7.2,Expediente quincenal de control,7,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.8.1,Expediente quincenal de control,8,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.8.2,Expediente quincenal de control,8,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.9.1,Expediente quincenal de control,9,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.9.2,Expediente quincenal de control,9,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.10.1,Expediente quincenal de control,10,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.10.2,Expediente quincenal de control,10,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.11.1,Expediente quincenal de control,11,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.11.2,Expediente quincenal de control,11,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.12.1,Expediente quincenal de control,12,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.12.2,Expediente quincenal de control,12,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.13.1,Expediente quincenal de control,13,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.13.2,Expediente quincenal de control,13,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.14.1,Expediente quincenal de control,14,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.14.2,Expediente quincenal de control,14,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.15.1,Expediente quincenal de control,15,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.15.2,Expediente quincenal de control,15,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.16.1,Expediente quincenal de control,16,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.16.2,Expediente quincenal de control,16,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.17.1,Expediente quincenal de control,17,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.17.2,Expediente quincenal de control,17,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.18.1,Expediente quincenal de control,18,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.18.2,Expediente quincenal de control,18,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.19.1,Expediente quincenal de control,19,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.19.2,Expediente quincenal de control,19,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.20.1,Expediente quincenal de control,20,1,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.1.4.20.2,Expediente quincenal de control,20,2,Implementación,16,1.1.1.1,RT-19.07--10,Ignacio Silva,4,0,0,4,0,0,0,0,8
+1.10.2.1.1,Protocolo integral y datos de prueba E1,9,1,Implementación,32,H2,BT20.1; SD3 CA; SD4/SD5,Davor Serey,8,0,0,16,0,8,0,0,0
+1.10.2.1.2,"Puerta de QA, cobertura y contratos E1",10,1,Implementación,40,VERSION-E1,BT20.1; SD3 CA; SD4/SD5,Davor Serey,0,0,0,24,8,8,0,0,0
+1.10.2.1.3,Regresión de sistema y convivencia E1,11,1,Implementación,40,VERSION-E1,BT20.1; SD3 CA; SD4/SD5,Davor Serey,8,0,0,24,8,0,0,0,0
+1.10.2.1.4,Carga y estrés con mezcla operacional E1,11,1,Implementación,48,VERSION-E1,BT20.1; SD3 CA; SD4/SD5,Davor Serey,0,8,0,24,0,8,8,0,0
+1.10.2.1.5,Continuidad local y terminales desconectados E1,11,1,Implementación,56,VERSION-E1,BT20.1; SD3 CA; SD4/SD5,Davor Serey,8,0,0,24,0,8,16,0,0
+1.10.2.1.6,Resiliencia de componentes y recuperación E1,11,1,Implementación,48,VERSION-E1,BT20.1; SD3 CA; SD4/SD5,José Lara Arce,0,8,0,16,0,8,16,0,0
+1.10.2.1.7,Conmutación real de desastre y retorno E1,11,1,Implementación,64,VERSION-E1,BT20.1; SD3 CA; SD4/SD5,José Lara Arce,0,8,8,8,0,16,24,0,0
+1.10.2.1.8,Prueba ofensiva y cierre de hallazgos E1,11,1,Implementación,56,VERSION-E1,BT20.1; SD3 CA; SD4/SD5,Bruno Toro,0,0,32,16,0,8,0,0,0
+1.10.2.1.9,Verificación de accesibilidad WCAG 2.2 AA E1,11,1,Implementación,40,VERSION-E1,BT20.1; SD3 CA; SD4/SD5,Davor Serey,8,0,0,24,8,0,0,0,0
+1.10.2.1.10,Aceptación de usuario y expediente T-17 E1,12,1,Implementación,48,"1.10.2.1.1,1.10.2.1.2,1.10.2.1.3,1.10.2.1.4,1.10.2.1.5,1.10.2.1.6,1.10.2.1.7,1.10.2.1.8,1.10.2.1.9,ENS-VENT-1-2",BT20.1; SD3 CA; SD4/SD5,Davor Serey,16,0,0,24,0,0,0,0,8
+1.11.2.1.1,Materiales y ejercicios perfil 1 E1,11,2,Implementación,32,VERSION-E1,RT-22.01--03,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.11.2.1.2,Materiales y ejercicios perfil 2 E1,11,2,Implementación,32,VERSION-E1,RT-22.01--03,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.11.2.1.3,Materiales y ejercicios perfil 3 E1,11,2,Implementación,32,VERSION-E1,RT-22.01--03,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.11.2.1.4,Materiales y ejercicios perfil 4 E1,11,2,Implementación,32,VERSION-E1,RT-22.01--03,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.11.2.1.5,Materiales y ejercicios perfil 5 E1,11,2,Implementación,32,VERSION-E1,RT-22.01--03,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.11.3.1.1,Plan de formación y turnos E1,11,2,Implementación,32,1.11.2.1.*,RT-22.04/05; caso07 capacitación,José Lara Arce,8,0,0,0,0,0,0,16,8
+1.11.3.1.2,Expediente de evaluación y certificación E1,15,1,Implementación,32,FORMACION-E1,RT-22.05; BA17.3,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.11.5.1.1,Expediente de cierre de marcha blanca E1,15,2,Implementación,40,"MARCHA-E1,1.11.3.1.2",BA17.3; RT-20.04,Ignacio Silva,8,0,0,16,0,0,8,0,8
+1.10.2.2.1,Protocolo integral y datos de prueba E2,15,1,Implementación,32,H8,BT20.1; SD3 CA; SD4/SD5,Davor Serey,8,0,0,16,0,8,0,0,0
+1.10.2.2.2,"Puerta de QA, cobertura y contratos E2",17,1,Implementación,40,VERSION-E2,BT20.1; SD3 CA; SD4/SD5,Davor Serey,0,0,0,24,8,8,0,0,0
+1.10.2.2.3,Regresión de sistema y convivencia E2,17,1,Implementación,40,VERSION-E2,BT20.1; SD3 CA; SD4/SD5,Davor Serey,8,0,0,24,8,0,0,0,0
+1.10.2.2.4,Carga y estrés con mezcla operacional E2,17,1,Implementación,48,VERSION-E2,BT20.1; SD3 CA; SD4/SD5,Davor Serey,0,8,0,24,0,8,8,0,0
+1.10.2.2.5,Continuidad local y terminales desconectados E2,17,1,Implementación,56,VERSION-E2,BT20.1; SD3 CA; SD4/SD5,Davor Serey,8,0,0,24,0,8,16,0,0
+1.10.2.2.6,Resiliencia de componentes y recuperación E2,17,1,Implementación,48,VERSION-E2,BT20.1; SD3 CA; SD4/SD5,José Lara Arce,0,8,0,16,0,8,16,0,0
+1.10.2.2.7,Conmutación real de desastre y retorno E2,17,1,Implementación,64,VERSION-E2,BT20.1; SD3 CA; SD4/SD5,José Lara Arce,0,8,8,8,0,16,24,0,0
+1.10.2.2.8,Prueba ofensiva y cierre de hallazgos E2,17,1,Implementación,56,VERSION-E2,BT20.1; SD3 CA; SD4/SD5,Bruno Toro,0,0,32,16,0,8,0,0,0
+1.10.2.2.9,Verificación de accesibilidad WCAG 2.2 AA E2,17,1,Implementación,40,VERSION-E2,BT20.1; SD3 CA; SD4/SD5,Davor Serey,8,0,0,24,8,0,0,0,0
+1.10.2.2.10,Aceptación de usuario y expediente T-17 E2,18,1,Implementación,48,"1.10.2.2.1,1.10.2.2.2,1.10.2.2.3,1.10.2.2.4,1.10.2.2.5,1.10.2.2.6,1.10.2.2.7,1.10.2.2.8,1.10.2.2.9,ENSAYOS-E2",BT20.1; SD3 CA; SD4/SD5,Davor Serey,16,0,0,24,0,0,0,0,8
+1.11.2.2.1,Materiales y ejercicios perfil 1 E2,17,2,Implementación,32,VERSION-E2,RT-22.01--03,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.11.2.2.2,Materiales y ejercicios perfil 2 E2,17,2,Implementación,32,VERSION-E2,RT-22.01--03,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.11.2.2.3,Materiales y ejercicios perfil 3 E2,17,2,Implementación,32,VERSION-E2,RT-22.01--03,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.11.2.2.4,Materiales y ejercicios perfil 4 E2,17,2,Implementación,32,VERSION-E2,RT-22.01--03,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.11.2.2.5,Materiales y ejercicios perfil 5 E2,17,2,Implementación,32,VERSION-E2,RT-22.01--03,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.11.3.2.1,Plan de formación y turnos E2,17,2,Implementación,32,1.11.2.2.*,RT-22.04/05; caso07 capacitación,José Lara Arce,8,0,0,0,0,0,0,16,8
+1.11.3.2.2,Expediente de evaluación y certificación E2,20,1,Implementación,32,FORMACION-E2,RT-22.05; BA17.3,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.11.5.2.1,Expediente de cierre de marcha blanca E2,20,2,Implementación,40,"MARCHA-E2,1.11.3.2.2",BA17.3; RT-20.04,Ignacio Silva,8,0,0,16,0,0,8,0,8
+1.12.3.1.21,Control mensual de servicio y SLA,21,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.21,Comprobación de respaldos y restauración,21,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.21,Revisión de seguridad y acceso,21,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.21,"Mantenimiento, deuda y liberación controlada",21,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.21,Proyección de capacidad e infraestructura,21,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.22,Control mensual de servicio y SLA,22,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.22,Comprobación de respaldos y restauración,22,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.22,Revisión de seguridad y acceso,22,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.22,"Mantenimiento, deuda y liberación controlada",22,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.22,Proyección de capacidad e infraestructura,22,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.23,Control mensual de servicio y SLA,23,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.23,Comprobación de respaldos y restauración,23,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.23,Revisión de seguridad y acceso,23,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.23,"Mantenimiento, deuda y liberación controlada",23,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.23,Proyección de capacidad e infraestructura,23,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.24,Control mensual de servicio y SLA,24,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.24,Comprobación de respaldos y restauración,24,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.24,Revisión de seguridad y acceso,24,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.24,"Mantenimiento, deuda y liberación controlada",24,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.24,Proyección de capacidad e infraestructura,24,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.25,Control mensual de servicio y SLA,25,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.25,Comprobación de respaldos y restauración,25,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.25,Revisión de seguridad y acceso,25,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.25,"Mantenimiento, deuda y liberación controlada",25,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.25,Proyección de capacidad e infraestructura,25,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.26,Control mensual de servicio y SLA,26,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.26,Comprobación de respaldos y restauración,26,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.26,Revisión de seguridad y acceso,26,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.26,"Mantenimiento, deuda y liberación controlada",26,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.26,Proyección de capacidad e infraestructura,26,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.27,Control mensual de servicio y SLA,27,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.27,Comprobación de respaldos y restauración,27,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.27,Revisión de seguridad y acceso,27,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.27,"Mantenimiento, deuda y liberación controlada",27,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.27,Proyección de capacidad e infraestructura,27,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.28,Control mensual de servicio y SLA,28,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.28,Comprobación de respaldos y restauración,28,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.28,Revisión de seguridad y acceso,28,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.28,"Mantenimiento, deuda y liberación controlada",28,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.28,Proyección de capacidad e infraestructura,28,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.29,Control mensual de servicio y SLA,29,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.29,Comprobación de respaldos y restauración,29,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.29,Revisión de seguridad y acceso,29,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.29,"Mantenimiento, deuda y liberación controlada",29,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.29,Proyección de capacidad e infraestructura,29,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.30,Control mensual de servicio y SLA,30,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.30,Comprobación de respaldos y restauración,30,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.30,Revisión de seguridad y acceso,30,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.30,"Mantenimiento, deuda y liberación controlada",30,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.30,Proyección de capacidad e infraestructura,30,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.31,Control mensual de servicio y SLA,31,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.31,Comprobación de respaldos y restauración,31,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.31,Revisión de seguridad y acceso,31,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.31,"Mantenimiento, deuda y liberación controlada",31,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.31,Proyección de capacidad e infraestructura,31,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.32,Control mensual de servicio y SLA,32,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.32,Comprobación de respaldos y restauración,32,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.32,Revisión de seguridad y acceso,32,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.32,"Mantenimiento, deuda y liberación controlada",32,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.32,Proyección de capacidad e infraestructura,32,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.33,Control mensual de servicio y SLA,33,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.33,Comprobación de respaldos y restauración,33,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.33,Revisión de seguridad y acceso,33,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.33,"Mantenimiento, deuda y liberación controlada",33,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.33,Proyección de capacidad e infraestructura,33,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.34,Control mensual de servicio y SLA,34,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.34,Comprobación de respaldos y restauración,34,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.34,Revisión de seguridad y acceso,34,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.34,"Mantenimiento, deuda y liberación controlada",34,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.34,Proyección de capacidad e infraestructura,34,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.35,Control mensual de servicio y SLA,35,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.35,Comprobación de respaldos y restauración,35,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.35,Revisión de seguridad y acceso,35,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.35,"Mantenimiento, deuda y liberación controlada",35,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.35,Proyección de capacidad e infraestructura,35,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.36,Control mensual de servicio y SLA,36,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.36,Comprobación de respaldos y restauración,36,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.36,Revisión de seguridad y acceso,36,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.36,"Mantenimiento, deuda y liberación controlada",36,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.36,Proyección de capacidad e infraestructura,36,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.37,Control mensual de servicio y SLA,37,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.37,Comprobación de respaldos y restauración,37,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.37,Revisión de seguridad y acceso,37,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.37,"Mantenimiento, deuda y liberación controlada",37,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.37,Proyección de capacidad e infraestructura,37,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.38,Control mensual de servicio y SLA,38,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.38,Comprobación de respaldos y restauración,38,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.38,Revisión de seguridad y acceso,38,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.38,"Mantenimiento, deuda y liberación controlada",38,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.38,Proyección de capacidad e infraestructura,38,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.39,Control mensual de servicio y SLA,39,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.39,Comprobación de respaldos y restauración,39,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.39,Revisión de seguridad y acceso,39,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.39,"Mantenimiento, deuda y liberación controlada",39,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.39,Proyección de capacidad e infraestructura,39,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.40,Control mensual de servicio y SLA,40,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.40,Comprobación de respaldos y restauración,40,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.40,Revisión de seguridad y acceso,40,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.40,"Mantenimiento, deuda y liberación controlada",40,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.40,Proyección de capacidad e infraestructura,40,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.41,Control mensual de servicio y SLA,41,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.41,Comprobación de respaldos y restauración,41,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.41,Revisión de seguridad y acceso,41,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.41,"Mantenimiento, deuda y liberación controlada",41,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.41,Proyección de capacidad e infraestructura,41,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.42,Control mensual de servicio y SLA,42,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.42,Comprobación de respaldos y restauración,42,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.42,Revisión de seguridad y acceso,42,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.42,"Mantenimiento, deuda y liberación controlada",42,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.42,Proyección de capacidad e infraestructura,42,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.43,Control mensual de servicio y SLA,43,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.43,Comprobación de respaldos y restauración,43,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.43,Revisión de seguridad y acceso,43,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.43,"Mantenimiento, deuda y liberación controlada",43,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.43,Proyección de capacidad e infraestructura,43,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.44,Control mensual de servicio y SLA,44,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.44,Comprobación de respaldos y restauración,44,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.44,Revisión de seguridad y acceso,44,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.44,"Mantenimiento, deuda y liberación controlada",44,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.44,Proyección de capacidad e infraestructura,44,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.45,Control mensual de servicio y SLA,45,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.45,Comprobación de respaldos y restauración,45,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.45,Revisión de seguridad y acceso,45,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.45,"Mantenimiento, deuda y liberación controlada",45,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.45,Proyección de capacidad e infraestructura,45,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.46,Control mensual de servicio y SLA,46,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.46,Comprobación de respaldos y restauración,46,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.46,Revisión de seguridad y acceso,46,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.46,"Mantenimiento, deuda y liberación controlada",46,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.46,Proyección de capacidad e infraestructura,46,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.47,Control mensual de servicio y SLA,47,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.47,Comprobación de respaldos y restauración,47,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.47,Revisión de seguridad y acceso,47,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.47,"Mantenimiento, deuda y liberación controlada",47,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.47,Proyección de capacidad e infraestructura,47,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.48,Control mensual de servicio y SLA,48,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.48,Comprobación de respaldos y restauración,48,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.48,Revisión de seguridad y acceso,48,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.48,"Mantenimiento, deuda y liberación controlada",48,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.48,Proyección de capacidad e infraestructura,48,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.49,Control mensual de servicio y SLA,49,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.49,Comprobación de respaldos y restauración,49,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.49,Revisión de seguridad y acceso,49,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.49,"Mantenimiento, deuda y liberación controlada",49,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.49,Proyección de capacidad e infraestructura,49,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.50,Control mensual de servicio y SLA,50,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.50,Comprobación de respaldos y restauración,50,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.50,Revisión de seguridad y acceso,50,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.50,"Mantenimiento, deuda y liberación controlada",50,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.50,Proyección de capacidad e infraestructura,50,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.51,Control mensual de servicio y SLA,51,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.51,Comprobación de respaldos y restauración,51,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.51,Revisión de seguridad y acceso,51,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.51,"Mantenimiento, deuda y liberación controlada",51,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.51,Proyección de capacidad e infraestructura,51,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.52,Control mensual de servicio y SLA,52,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.52,Comprobación de respaldos y restauración,52,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.52,Revisión de seguridad y acceso,52,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.52,"Mantenimiento, deuda y liberación controlada",52,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.52,Proyección de capacidad e infraestructura,52,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.53,Control mensual de servicio y SLA,53,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.53,Comprobación de respaldos y restauración,53,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.53,Revisión de seguridad y acceso,53,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.53,"Mantenimiento, deuda y liberación controlada",53,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.53,Proyección de capacidad e infraestructura,53,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.54,Control mensual de servicio y SLA,54,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.54,Comprobación de respaldos y restauración,54,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.54,Revisión de seguridad y acceso,54,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.54,"Mantenimiento, deuda y liberación controlada",54,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.54,Proyección de capacidad e infraestructura,54,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.55,Control mensual de servicio y SLA,55,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.55,Comprobación de respaldos y restauración,55,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.55,Revisión de seguridad y acceso,55,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.55,"Mantenimiento, deuda y liberación controlada",55,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.55,Proyección de capacidad e infraestructura,55,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.3.1.56,Control mensual de servicio y SLA,56,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,0,0,4,0,0,8,0,4
+1.12.3.2.56,Comprobación de respaldos y restauración,56,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,José Lara Arce,0,4,0,4,0,0,8,0,0
+1.12.3.3.56,Revisión de seguridad y acceso,56,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Bruno Toro,0,0,8,4,0,0,4,0,0
+1.12.3.4.56,"Mantenimiento, deuda y liberación controlada",56,2,Operación,24,SERVICIO-ACTIVO,BT21; BA78,Nikolai Navea,0,0,4,4,8,4,4,0,0
+1.12.3.5.56,Proyección de capacidad e infraestructura,56,2,Operación,16,SERVICIO-ACTIVO,BT21; BA78,Fernando Guerrero,0,4,0,4,0,4,4,0,0
+1.12.4.1.6,Resiliencia de componentes y recuperación: control semestral,26,1,Operación,48,SERVICIO-ACTIVO,BT20.1; BA continuidad,José Lara Arce,0,8,0,16,0,8,16,0,0
+1.12.4.1.7,Conmutación real de desastre y retorno: control semestral,26,1,Operación,64,SERVICIO-ACTIVO,BT20.1; BA continuidad,José Lara Arce,0,8,8,8,0,16,24,0,0
+1.12.4.2.6,Resiliencia de componentes y recuperación: control semestral,32,1,Operación,48,SERVICIO-ACTIVO,BT20.1; BA continuidad,José Lara Arce,0,8,0,16,0,8,16,0,0
+1.12.4.2.7,Conmutación real de desastre y retorno: control semestral,32,1,Operación,64,SERVICIO-ACTIVO,BT20.1; BA continuidad,José Lara Arce,0,8,8,8,0,16,24,0,0
+1.12.4.3.6,Resiliencia de componentes y recuperación: control semestral,38,1,Operación,48,SERVICIO-ACTIVO,BT20.1; BA continuidad,José Lara Arce,0,8,0,16,0,8,16,0,0
+1.12.4.3.7,Conmutación real de desastre y retorno: control semestral,38,1,Operación,64,SERVICIO-ACTIVO,BT20.1; BA continuidad,José Lara Arce,0,8,8,8,0,16,24,0,0
+1.12.4.4.6,Resiliencia de componentes y recuperación: control semestral,44,1,Operación,48,SERVICIO-ACTIVO,BT20.1; BA continuidad,José Lara Arce,0,8,0,16,0,8,16,0,0
+1.12.4.4.7,Conmutación real de desastre y retorno: control semestral,44,1,Operación,64,SERVICIO-ACTIVO,BT20.1; BA continuidad,José Lara Arce,0,8,8,8,0,16,24,0,0
+1.12.4.5.6,Resiliencia de componentes y recuperación: control semestral,50,1,Operación,48,SERVICIO-ACTIVO,BT20.1; BA continuidad,José Lara Arce,0,8,0,16,0,8,16,0,0
+1.12.4.5.7,Conmutación real de desastre y retorno: control semestral,50,1,Operación,64,SERVICIO-ACTIVO,BT20.1; BA continuidad,José Lara Arce,0,8,8,8,0,16,24,0,0
+1.12.4.6.6,Resiliencia de componentes y recuperación: control semestral,56,1,Operación,48,SERVICIO-ACTIVO,BT20.1; BA continuidad,José Lara Arce,0,8,0,16,0,8,16,0,0
+1.12.4.6.7,Conmutación real de desastre y retorno: control semestral,56,1,Operación,64,SERVICIO-ACTIVO,BT20.1; BA continuidad,José Lara Arce,0,8,8,8,0,16,24,0,0
+1.12.11.1,Actualización semestral de custodia de fuentes,24,1,Operación,16,1.1.3.2,BA custodia independiente; actualización semestral,Ignacio Silva,0,0,4,0,0,8,0,0,4
+1.12.11.2,Actualización semestral de custodia de fuentes,30,1,Operación,16,1.1.3.2,BA custodia independiente; actualización semestral,Ignacio Silva,0,0,4,0,0,8,0,0,4
+1.12.11.3,Actualización semestral de custodia de fuentes,36,1,Operación,16,1.1.3.2,BA custodia independiente; actualización semestral,Ignacio Silva,0,0,4,0,0,8,0,0,4
+1.12.11.4,Actualización semestral de custodia de fuentes,42,1,Operación,16,1.1.3.2,BA custodia independiente; actualización semestral,Ignacio Silva,0,0,4,0,0,8,0,0,4
+1.12.11.5,Actualización semestral de custodia de fuentes,48,1,Operación,16,1.1.3.2,BA custodia independiente; actualización semestral,Ignacio Silva,0,0,4,0,0,8,0,0,4
+1.12.11.6,Actualización semestral de custodia de fuentes,54,1,Operación,16,1.1.3.2,BA custodia independiente; actualización semestral,Ignacio Silva,0,0,4,0,0,8,0,0,4
+1.12.5.1,Prueba ofensiva y cierre de hallazgos: control anual,32,1,Operación,56,SERVICIO-ACTIVO,BT20.1,Bruno Toro,0,0,32,16,0,8,0,0,0
+1.12.5.2,Prueba ofensiva y cierre de hallazgos: control anual,44,1,Operación,56,SERVICIO-ACTIVO,BT20.1,Bruno Toro,0,0,32,16,0,8,0,0,0
+1.12.5.3,Prueba ofensiva y cierre de hallazgos: control anual,56,1,Operación,56,SERVICIO-ACTIVO,BT20.1,Bruno Toro,0,0,32,16,0,8,0,0,0
+1.12.6.1,Jornada de actualización y transferencia,24,1,Operación,32,SERVICIO-ACTIVO,RT-22.06/07,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.12.6.2,Jornada de actualización y transferencia,30,1,Operación,32,SERVICIO-ACTIVO,RT-22.06/07,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.12.6.3,Jornada de actualización y transferencia,36,1,Operación,32,SERVICIO-ACTIVO,RT-22.06/07,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.12.6.4,Jornada de actualización y transferencia,42,1,Operación,32,SERVICIO-ACTIVO,RT-22.06/07,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.12.6.5,Jornada de actualización y transferencia,48,1,Operación,32,SERVICIO-ACTIVO,RT-22.06/07,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.12.6.6,Jornada de actualización y transferencia,54,1,Operación,32,SERVICIO-ACTIVO,RT-22.06/07,José Lara Arce,8,0,0,8,0,0,0,16,0
+1.12.7.1,Plan de reversibilidad actualizado,24,1,Operación,32,1.1.3.1,BA77; SD4 RT-03.07,Ignacio Silva,0,8,8,0,0,8,0,0,8
+1.12.7.2,Plan de reversibilidad actualizado,36,1,Operación,32,1.1.3.1,BA77; SD4 RT-03.07,Ignacio Silva,0,8,8,0,0,8,0,0,8
+1.12.7.3,Plan de reversibilidad actualizado,48,1,Operación,32,1.1.3.1,BA77; SD4 RT-03.07,Ignacio Silva,0,8,8,0,0,8,0,0,8
+1.12.8.1,Inventario de salida y responsables,53,1,Operación,40,PLAN-SALIDA,BA77; SD4 reversibilidad,Ignacio Silva,0,8,8,0,0,16,0,0,8
+1.12.8.2,Exportación abierta y manifiestos de datos,53,1,Operación,56,PLAN-SALIDA,BA77; SD4 reversibilidad,Nicolás Torfan,0,32,8,8,0,8,0,0,0
+1.12.8.3,"Fuentes, IaC, artefactos y documentación transferidos",54,1,Operación,48,PLAN-SALIDA,BA77; SD4 reversibilidad,Fernando Guerrero,0,0,0,8,8,24,8,0,0
+1.12.8.4,"Custodia, credenciales y recifrado autorizado",54,1,Operación,56,PLAN-SALIDA,BA77; SD4 reversibilidad,Bruno Toro,0,8,24,8,0,8,8,0,0
+1.12.8.5,Aceptación de transferencia y eliminación autorizada,54,1,Operación,48,PLAN-SALIDA,BA77; SD4 reversibilidad,Ignacio Silva,0,8,8,8,0,0,16,0,8
+1.12.9.53.1,Acompañamiento quincenal de transición,53,1,Operación,24,PLAN-SALIDA,BA77,José Lara Arce,0,4,0,4,0,8,8,0,0
+1.12.9.53.2,Acompañamiento quincenal de transición,53,2,Operación,24,PLAN-SALIDA,BA77,José Lara Arce,0,4,0,4,0,8,8,0,0
+1.12.9.54.1,Acompañamiento quincenal de transición,54,1,Operación,24,PLAN-SALIDA,BA77,José Lara Arce,0,4,0,4,0,8,8,0,0
+1.12.9.54.2,Acompañamiento quincenal de transición,54,2,Operación,24,PLAN-SALIDA,BA77,José Lara Arce,0,4,0,4,0,8,8,0,0
+1.12.9.55.1,Acompañamiento quincenal de transición,55,1,Operación,24,PLAN-SALIDA,BA77,José Lara Arce,0,4,0,4,0,8,8,0,0
+1.12.9.55.2,Acompañamiento quincenal de transición,55,2,Operación,24,PLAN-SALIDA,BA77,José Lara Arce,0,4,0,4,0,8,8,0,0
+1.12.9.56.1,Acompañamiento quincenal de transición,56,1,Operación,24,PLAN-SALIDA,BA77,José Lara Arce,0,4,0,4,0,8,8,0,0
+1.12.9.56.2,Acompañamiento quincenal de transición,56,2,Operación,24,PLAN-SALIDA,BA77,José Lara Arce,0,4,0,4,0,8,8,0,0
+1.12.13.21,Referentes y protocolo técnico transferidos,21,1,Operación,24,CORTE-E2,RT-22.07/08; BA89/90,José Lara Arce,0,0,0,4,0,4,0,16,0
+1.12.13.22,Casos de recuperación y conciliación acompañados,22,1,Operación,24,1.12.13.21,RT-22.07/08; BA89/90,José Lara Arce,0,0,0,4,0,4,0,16,0
+1.12.13.23,Cambios e indicadores acompañados,23,1,Operación,24,1.12.13.22,RT-22.07/08; BA89/90,José Lara Arce,0,0,0,4,0,4,0,16,0
+1.12.13.24,Procedimientos estacionales transferidos,24,1,Operación,24,1.12.13.23,RT-22.07/08; BA89/90,José Lara Arce,0,0,0,4,0,4,0,16,0
+1.12.13.25,Casos y suplencia acompañados en congelamiento,25,1,Operación,24,1.12.13.24,RT-22.07/08; BA89/90,José Lara Arce,0,0,0,4,0,4,0,16,0
+1.12.13.26,Transferencia técnica y continuidad del conocimiento recibidas,26,1,Operación,24,1.12.13.25,RT-22.07/08; BA89/90,José Lara Arce,0,0,0,4,0,4,0,16,0

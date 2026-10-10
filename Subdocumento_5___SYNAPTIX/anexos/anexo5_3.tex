@@ -1,0 +1,243 @@
+\section*{A5.3 Especificación y control de migración}
+
+\label{anx:sd5_migracion}
+
+Este anexo reúne el inventario, las reglas de transformación, la cobertura de destino y los instrumentos de control que complementan 5.3. Los atributos se definen en A5.1 y su protección y conservación en A5.2. El esquema físico del legado de 2014 se obtendrá mediante perfilado sobre copia autorizada; las correspondencias siguientes son funcionales. Los tiempos y volúmenes conservan su condición de estimaciones de Synaptix y los registros se completarán al ejecutar \parencites[RT-05.11--RT-05.15]{pucv-bases-transversales}[RT-05.15]{pucv-caso07}[anexo A2.3, DEC-02]{synaptix-sd2-anexos}.
+
+\subsection*{A5.3.1 Inventario funcional de fuentes y cobertura}
+
+Se inventarían los doce años del origen para clasificar carga operacional, consulta histórica y evidencia vigente. Los períodos mínimos de migración de 5.3.1 no reducen la retención de A5.2; los manifiestos de origen determinan el universo de aceptación.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.220\textwidth-4.5pt\relax}L{\dimexpr0.260\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}L{\dimexpr0.250\textwidth-4.5pt\relax}@{}}
+\caption{Inventario funcional inicial de fuentes}\label{tab:a53_inventario} \\
+\hline
+\EncabezadoTabla{ID / conjunto} & \EncabezadoTabla{Origen a comprobar / custodio} & \EncabezadoTabla{Cobertura} & \EncabezadoTabla{Sensibilidad, extracción y volumen} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{ID / conjunto} & \EncabezadoTabla{Origen a comprobar / custodio} & \EncabezadoTabla{Cobertura} & \EncabezadoTabla{Sensibilidad, extracción y volumen} \\ \hline
+\endhead
+\hline\endfoot
+M-01 Socios/armadores & Sistema 2014, padrones; Administración & Totalidad del padrón; 1.240 socios solo referencia de escala & S: personas/contactos; extracción nativa o copia controlada; recuento/tamaño por medir \\ \hline
+M-02 Contratos/adjuntos & Sistema 2014, carpetas; Administración & Todos los vigentes y sus documentos; 296 permanentes no son total histórico & S/R: partes/firmas; indexar piezas y versiones; volumen por medir \\ \hline
+M-03 Pagos/saldos/documentos & Sistema 2014 y contabilidad; Administración financiera & Seis años de historia y cierres; proyección 2.300/mes no es recuento legado & S: cuentas/importe; conciliar por moneda/documento/pago; acceso autorizado, interfaz por verificar \\ \hline
+M-04 Naves/invernadas & Sistema 2014, inventarios/planillas; Operaciones/Varadero & Totalidad del registro e historia disponible de ubicaciones e invernada & R/S: identidad/custodia; contraste físico por 22 \% de amarras mal asignadas del caso \\ \hline
+M-05 Abandono/custodia & Carpetas/legado; responsable de custodia/Administración & 14 de 14 expedientes íntegros: cada documento, actuación e inventario & S: antecedente contractual/deuda; índice pieza por pieza, revisión funcional integral \\ \hline
+M-06 Escuela & Registros/planillas/documentos; Escuela & Matrículas de últimos tres años; antecedentes vinculados; otros sujetos a retención en archivo & S: menores/salud/apoderados/autorizaciones; permiso restringido y relaciones verificadas \\ \hline
+M-07 Navegación/ocupación & Registros de Operaciones y bitácoras disponibles; Operaciones & Historia existente que deba conservarse; no inventar regresos ni planes antiguos & R/S: tripulación/posición; preservar observador, registro y calidad temporal \\ \hline
+M-08 Faenas/acreditaciones & Planillas/carpetas de Varadero/contratistas; Varadero & Órdenes, habilitación, formación, evaluación y vigencia disponibles & S: trabajadores/documentos; versión histórica no se convierte en habilitación vigente \\ \hline
+M-09 Combustible/ambiente & Registros de suministro/residuos/incidentes; encargados & Historia existente con obligación de conservar; gestor/entregas/certificados & R/S: respaldo original; no crear lecturas individuales anteriores a instalación \\ \hline
+M-10 Infraestructura/calendario & Inventarios, inspecciones y calendario; Mantenimiento/Operaciones & Activos y vida útil de fondeo, inspecciones, asociaciones y restricciones disponibles & R/S: técnicos/inspectores; identidad de activo no deriva solo de ubicación \\ \hline
+M-11 Acceso/consentimiento/avisos & Registros autorizados del cliente; Seguridad/propietario del aviso & Evidencias existentes sujetas a conservación; no inventar acuses ni políticas históricas & S: autoridad y finalidad; permisos nuevos se emiten tras validar, no importar credenciales antiguas \\ \hline
+M-12 Archivos/video autorizado & Carpetas/sistema de cámaras; custodio de cada expediente & Originales/escaneos requeridos; extractos de evidencia; video continuo permanece en plataforma & Clasificación heredada; permiso de copia, legibilidad, huella y relación al expediente \\ \hline
+\end{longtable}
+\endgroup
+
+F-MIG-01 registra ubicación, propietario, custodio y suplente; acceso, esquema y formato reales; períodos; cantidades de registros y objetos; bytes; zona y precisión temporal; sensibilidad; extracción y restricciones. Las cifras actuales del caso son referencias de escala. La ausencia de una fuente o dato se registra como condición de origen y no como cantidad cero.
+
+\subsection*{A5.3.2 Perfilado y reglas de transformación}
+
+La extracción mantiene copia original restringida y manifiesto. Se utiliza exportación nativa completa, lectura controlada de copia o reportes supervisados, según la capacidad real del origen. El perfilado documenta los defectos antes de transformar, siguiendo 5.3.1.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.180\textwidth-4.0pt\relax}L{\dimexpr0.450\textwidth-4.0pt\relax}L{\dimexpr0.370\textwidth-4.0pt\relax}@{}}
+\caption{Perfilado y salidas exigidas}\label{tab:a53_perfilado} \\
+\hline
+\EncabezadoTabla{Control} & \EncabezadoTabla{Comprobación} & \EncabezadoTabla{Salida y condición} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Control} & \EncabezadoTabla{Comprobación} & \EncabezadoTabla{Salida y condición} \\ \hline
+\endhead
+\hline\endfoot
+P-01 Cobertura & N por fuente/período/categoría; claves faltantes y duplicadas; documentos sin índice & F-MIG-01/02 y manifiesto; universo cerrado con toda ausencia explicada \\ \hline
+P-02 Identidad & Emisor, códigos, nombres/contactos coincidentes, persona/organización/parte & Correspondencias y decisiones; ninguna fusión automática por nombre \\ \hline
+P-03 Formato/unidad/fecha & Nulos, inválidos, escala, moneda, precisión y zona desconocidas & Frecuencia por defecto; no imputar fecha/hora, cero o unidad sin evidencia \\ \hline
+P-04 Relación/estado & Claves huérfanas, solapamientos, vigencia/facultades y estados contradictorios & Reglas de A5.1; bloquear autorización/ocupación/custodia insegura \\ \hline
+P-05 Monetario & Documento, pago, titular, fecha e importe por moneda, totales y detalle & Comparación independiente de cierre; no compensar errores de signo contrario \\ \hline
+P-06 Documento & N piezas/versiones, tamaño/huella, legibilidad, expediente, firma y contenido & Índice integral de 14 expedientes; huella no acredita autenticidad/firma \\ \hline
+P-07 Historias/retención & Período del origen frente a carga mínima y vencimiento de A5.2 & Destino operacional/archivo/incidencia por registro; no pérdida por selección temporal \\ \hline
+\end{longtable}
+\endgroup
+
+Las transformaciones conservan el original, su correspondencia y la regla aplicada; una nueva versión exige reejecución identificable del lote.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.170\textwidth-4.0pt\relax}L{\dimexpr0.440\textwidth-4.0pt\relax}L{\dimexpr0.390\textwidth-4.0pt\relax}@{}}
+\caption{Reglas de transformación y aceptación}\label{tab:a53_transformaciones} \\
+\hline
+\EncabezadoTabla{Regla} & \EncabezadoTabla{Procedimiento} & \EncabezadoTabla{Control} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Regla} & \EncabezadoTabla{Procedimiento} & \EncabezadoTabla{Control} \\ \hline
+\endhead
+\hline\endfoot
+TR-01 Identidad & Generar UUID una vez por correspondencia comprobada; conservar emisor/clave original & Duplicado de extracción reutiliza UUID; ambigüedad requiere validador funcional \\ \hline
+TR-02 Texto/código & Normalizar presentación y catálogo con tabla explícita; preservar valor original & No transformar código desconocido en categoría válida por defecto \\ \hline
+TR-03 Fecha & Convertir solo instante con hora/zona acreditada; fecha administrativa conserva su precisión & Zona/hora desconocida se marca provisional en antecedente, sin UTC ficticio \\ \hline
+TR-04 Cantidad/moneda & Decimal exacto, unidad/moneda explícita, regla de redondeo y escala del origen & Ausente distinto de cero; comparar a precisión del origen, sin conversión cambiaria inventada \\ \hline
+TR-05 Intervalo & Inicio incluido/fin excluido; abierto solo si está acreditado & No inventar cierre; superposición incompatible se observa y no se habilita \\ \hline
+TR-06 Relación & Cargar maestro/correspondencia antes de dependiente; referenciar destino estable & Huérfano queda incidencia incluida en universo; no persona/contrato ficticios \\ \hline
+TR-07 Estado/facultad & Importar estado histórico como antecedente y vigencia según evidencia & Autorización/habilitación antigua no obtiene vigencia nueva automáticamente \\ \hline
+TR-08 Documento & Original o escaneo controlado con índice/huella/legibilidad; cada versión como objeto & OCR si se usa apoya búsqueda; humano verifica correspondencia, sin inventar firma \\ \hline
+TR-09 Rectificación & Añadir valor corregido, original, regla/versión, motivo, evidencia y aprobador & Cambios de parámetro operacional exigen segundo perfil; crítico no acepta tolerancia evasiva \\ \hline
+TR-10 Historia & Clasificar carga/archivo/incidencia por cobertura y retención; conservar vínculo & Archivo independiente consultable/exportable; no software legado como única vía permanente \\ \hline
+TR-11 Técnica derivada & Generar permisos/proyecciones/outbox/inbox/políticas desde reglas vigentes y hechos cargados & No importar credenciales antiguas ni fabricar eventos de acciones que no ocurrieron \\ \hline
+TR-12 Delta/retorno & Comparar claves y huellas de cortes autorizados; registrar alta/cambio/baja lógica & Sin CDC supuesto; distinguir baja de exportación incompleta; no borrar por simple ausencia \\ \hline
+\end{longtable}
+\endgroup
+
+F-MIG-03 conserva fuente, lote, clave, atributo, valor original protegido, severidad, regla, valor resultante, responsable, motivo, evidencia y estado. Un defecto bloqueante impide el acto crítico; los antecedentes observados permanecen restringidos e incluidos en el universo. El saneamiento modifica la copia transformada y nunca el original.
+
+\subsection*{A5.3.3 Correspondencia funcional agrupada}
+
+La tabla cubre todas las entidades de A5.1 sin repetir sus atributos. Los rangos de IDs son inclusivos; las entidades que se inicializan o reconstruyen se distinguen de la historia importada. F-MIG-04 completará, por atributo aplicable, fuente y campo reales, significado, tipo, unidad, transformación, obligatoriedad, cardinalidad y control, incluido el mapa inverso de retorno. Su validación precede al ensayo definitivo.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.300\textwidth-4.0pt\relax}L{\dimexpr0.450\textwidth-4.0pt\relax}L{\dimexpr0.250\textwidth-4.0pt\relax}@{}}
+\caption{Cobertura agrupada de las entidades de destino}\label{tab:a53_mapeo} \\
+\hline
+\EncabezadoTabla{Entidades A5.1} & \EncabezadoTabla{Origen funcional / condición} & \EncabezadoTabla{Reglas} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Entidades A5.1} & \EncabezadoTabla{Origen funcional / condición} & \EncabezadoTabla{Reglas} \\ \hline
+\endhead
+\hline\endfoot
+D-CC-01 a D-CC-13 & M-01/02/04: padrón, identidad, parte, contrato y vínculo & TR-01/02/03/06/08/10; TR-05/07/09 \\ \hline
+D-OM-01 a D-OM-14 & M-07/10: bitácora marítima, ubicación y calendario disponibles & TR-01/02/03/06/08/10; TR-05/07/09 \\ \hline
+D-EN-01 a D-EN-10 & M-06: matrícula, clase, alumno/apoderado y evidencia & TR-01/02/03/06/08/10; TR-05/07/09 \\ \hline
+D-EN-11 & M-06: matrícula, clase, alumno/apoderado y evidencia & TR-01/06/07/10/11; no fabricar historia \\ \hline
+D-VC-01 a D-VC-12 & M-04/05/08: invernada, custodia, faena y trabajador & TR-01/02/03/06/08/10; TR-05/07/09 \\ \hline
+D-CO-01 a D-CO-04 & M-09: antecedente de despacho/instrumento disponible & TR-01/02/03/06/08/10; TR-04/05 \\ \hline
+D-AC-01 a D-AC-11 & M-09/10: registro ambiental/consumo disponible; medición nueva comienza al instalar & TR-01/02/03/06/08/10; TR-04/05 \\ \hline
+D-FC-01 a D-FC-12 & M-02/03/05: cuenta, movimiento, saldo y expediente & TR-01/02/03/06/08/10; TR-04/05 \\ \hline
+D-INF-01 a D-INF-14 & M-10: inventario/vida útil/inspección/instalación disponibles & TR-01/02/03/06/08/10; TR-04/05 \\ \hline
+D-AS-01; D-AS-05 a D-AS-11 & M-11/12 y expediente propietario: evidencia; nuevas políticas/permisos se generan & TR-01/02/03/06/08/10; TR-05/07/09 \\ \hline
+D-AS-02 a D-AS-04 & M-11/12 y expediente propietario: evidencia; nuevas políticas/permisos se generan & TR-01/06/07/10/11; no fabricar historia \\ \hline
+D-NOT-01 a D-NOT-06 & M-11: avisos/constancias existentes; generar solo nuevos intentos reales & TR-01/06/07/10/11; no fabricar historia \\ \hline
+D-COM-01 a D-COM-13 & Control de carga/intercambio: correspondencia y evidencia se generan; derivados desde fuentes conciliadas & TR-01/06/07/10/11; no fabricar historia \\ \hline
+\end{longtable}
+\endgroup
+
+
+Los atributos transversales conservan identidad, versión, procedencia y motivo de carga, distinguiendo actor original y servicio importador. Si un valor falta, se aplica la obligatoriedad por estado de A5.1 y se registra incidencia. Los controles y derivados se generan desde fuentes conciliadas o hechos reales, sin fabricar autorizaciones, acuses ni eventos históricos.
+
+\subsection*{A5.3.4 Dependencias de carga y consulta histórica}
+
+La secuencia respeta la implantación por procesos de 5.3 y mantiene un único origen de escritura para cada período.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.220\textwidth-4.0pt\relax}L{\dimexpr0.430\textwidth-4.0pt\relax}L{\dimexpr0.350\textwidth-4.0pt\relax}@{}}
+\caption{Grupos y cambio de autoridad}\label{tab:a53_grupos} \\
+\hline
+\EncabezadoTabla{Grupo} & \EncabezadoTabla{Contenido y dependencia} & \EncabezadoTabla{Condición de autoridad} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Grupo} & \EncabezadoTabla{Contenido y dependencia} & \EncabezadoTabla{Condición de autoridad} \\ \hline
+\endhead
+\hline\endfoot
+G1 Maestros/inventario & Personas/organizaciones/correspondencias, embarcaciones, activos/ubicaciones; contratos como consulta; custodia desde inicio & Fuente permanece autoridad administrativa; destino consulta validada; cargar relaciones después de maestros \\ \hline
+G2 Procesos operacionales & Navegación, escuela, faenas, combustible/ambiente, inspección y habilitación por zona/proceso & Autoridad local cambia solo tras habilitación del proceso; mantener captura y diario de contingencia únicos \\ \hline
+G3 Administrativo & Versiones/partes contractuales, cuentas/movimientos/saldos, históricos y sustitución administrativa & Cambio explícito de escritura; interfaz contable preserva autoridad externa; no doble digitación ordinaria \\ \hline
+Documentos y archivo & Originales/índices/versiones y evidencia completa; histórico fuera de operación consultable & Carga provisional de binarios, verificación y vínculo; conservar relaciones/permisos y exportación autónoma \\ \hline
+\end{longtable}
+\endgroup
+
+La estimación inicial es 10 GB estructurados y 50 GB documentales; la sensibilidad es 120 GB, sin limitar el alcance. Con \(t=V_{\mathrm{GB}}\times8.000/(B_{\mathrm{Mb/s}}\times60)\), 60 y 120 GB a 50 Mb/s efectivos requieren 160 y 320 minutos solo de transferencia. La primera extracción reemplazará esas estimaciones por bytes y tiempos medidos por fase. La referencia de \(2.300\times12\times6=165.600\) documentos es una sensibilidad a la tasa proyectada del caso, distinta del recuento real del legado y de los 1.950 documentos/mes iniciales usados en A5.4.
+
+El archivo histórico conserva índice por identidad, fecha y categoría; originales, relaciones, integridad y permisos hasta vencimiento. Se comprueban consultas por socio, nave, contrato, alumno o representante y expediente, y exportación independiente del software obsoleto. Retirar la escritura del legado no autoriza destruir el archivo.
+
+\subsection*{A5.3.5 Ensayos y responsabilidades}
+
+Los dos ensayos completos y su programa relativo se rigen por 5.3.2. Cada uno recorre extracción, transformación, carga, documentos, archivo, conciliación y retorno. E2 utiliza volumen perfilado y versiones previstas para el corte; el retorno posterior se prueba por separado de la ventana de cuatro horas y su reserva previa de 90 minutos. Un cambio que invalide evidencia crítica exige repetir el ensayo afectado. Las copias de prueba se anonimizan o seudonimizan preservando relaciones; los custodios validan originales en entorno restringido \parencite[RT-05.13 y RT-11.25]{pucv-bases-transversales}.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.240\textwidth-4.0pt\relax}L{\dimexpr0.380\textwidth-4.0pt\relax}L{\dimexpr0.380\textwidth-4.0pt\relax}@{}}
+\caption{Responsabilidades y respaldo del conocimiento}\label{tab:a53_responsables} \\
+\hline
+\EncabezadoTabla{Función} & \EncabezadoTabla{Responsabilidad} & \EncabezadoTabla{Suplencia y evidencia} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Función} & \EncabezadoTabla{Responsabilidad} & \EncabezadoTabla{Suplencia y evidencia} \\ \hline
+\endhead
+\hline\endfoot
+Migración Synaptix & Extracción/mapeos/cargas/delta/retorno y herramientas & Técnico suplente ejecuta procedimiento completo en E2; designación nominal pendiente \\ \hline
+Calidad Synaptix & Universo, repetibilidad, conciliación y evidencias & Revisor técnico distinto del ejecutor; no autorrevisión como validación independiente \\ \hline
+Seguridad/custodia técnica & Permisos, cifrado, copias y acceso de prueba & Suplente de custodia; comprueba restauración y reaplicación de eliminaciones \\ \hline
+Administración del puerto & Titulares, contratos, movimientos, saldos y cierre & Suplente funcional ejecuta cierre asistido y E2; dos sesiones iniciales de 90 min con conocedor del legado \\ \hline
+Operaciones/Varadero/Infraestructura & Ubicación, invernada, custodia, recursos y vida útil & Guardia/encargado suplente contrasta físico y expediente; no corregir desde planilla aislada \\ \hline
+Escuela & Alumno, representación, autorización y participación & Suplente de coordinación valida muestra/total crítico; acceso mínimo a salud \\ \hline
+Jefatura de proyecto/gerencia cliente & Coordinar corte y autorizar cambio según conformidades & Responsable de decisión y suplente disponibles; ausencia/silencio no es conformidad \\ \hline
+\end{longtable}
+\endgroup
+
+El suplente funcional ejecuta el procedimiento y un cierre mensual asistido antes del cambio administrativo. La persona que conoce el legado aporta interpretación; no reemplaza la conciliación independiente. Falta de interpretación suficiente o de cobertura funcional implica reprogramación. F-MIG-07 conserva configuración, tiempos reales, participantes, conformidades y decisión de cada ensayo.
+
+\subsection*{A5.3.6 Conciliación y aceptación}
+
+Se aplican los universos y criterios de paso de 5.3.2. F-MIG-06 registra detalle y totales por clave y moneda, diferencias, evidencias, incidencias, decisiones y validador.
+
+El balance es \(N_o=N_a+N_i+N_h\), con origen \(N_o\) y conjuntos de salida disjuntos: aceptados \(N_a\), incidencias \(N_i\) y archivo justificado \(N_h\). Documentos y versiones forman un universo propio. Las transformaciones 1:N conservan su cardinalidad esperada; las N:1, todas las claves y la decisión de fusión. Reejecutar el lote no crea identidades ni efectos nuevos.
+
+Los controles críticos son integrales: manifiesto obligatorio, pagos y saldos a precisión del origen, vínculos y autorizaciones utilizadas, y las 14 de 14 embarcaciones abandonadas con cada pieza inventariada. No se compensan diferencias monetarias opuestas ni se convierten deudas discutidas en resueltas. Para atributos no críticos se revisan todos los anómalos y una muestra reproducible de los restantes por fuente y categoría: \(n=\min(N,\max(30,\lceil0{,}05N\rceil))\). Se conserva población, semilla o método, claves y resultados; un defecto amplía la revisión del grupo. Población vacía se informa no aplica. Las tolerancias de cero son criterios de diseño de Synaptix.
+
+\subsection*{A5.3.7 Corte y marcha blanca}
+
+El corte sigue 5.3.3 y su distribución propuesta de 22:00 a 02:00, hora de America/Santiago, con decisión hasta las 00:30 y 90 minutos exclusivos de retorno previo. Se habilita con dos ensayos aceptados, conciliación crítica completa, copia recuperable, retorno probado, responsables y suplentes, comunicación y continuidad. La fecha depende del calendario náutico, congelamientos, campañas y avisos de marejada \parencites[RT-20.02--RT-20.04]{pucv-bases-transversales}[cap.~13 y RT-10.05]{pucv-caso07}.
+
+El delta se obtiene de cortes comparables y diferencias de claves o huellas, sin presuponer captura automática de cambios. E2 comprueba altas, cambios y bajas relevantes y mide el volumen efectivo. Hasta la decisión se bloquean las nuevas escrituras administrativas; el recinto continúa sus hechos bajo autoridad local. F-MIG-08 es el diario único del proceso en contingencia y cada hecho se incorpora una vez. F-MIG-09 conserva la comparación diaria y el cierre mensual con suplente, sin doble digitación ordinaria.
+
+\subsection*{A5.3.8 Retorno y restablecimiento}
+
+Se aplica el procedimiento de 5.3.3 con copia final, aplicación, esquema, correspondencias y punto conciliado. El retorno previo restablece la autoridad anterior e incorpora el diario una vez, dentro de 90 minutos a demostrar. El posterior conserva la reserva propuesta de \(15+45+60+60=180\) minutos: delimitar, inventariar y contrastar efectos externos, incorporar hechos representables y verificar identificadores, saldos, consultas, accesos y conformidad funcional.
+
+El ensayo distingue ambos universos e incluye nuevos hechos y respuestas externas pendientes. No se descartan operaciones al restaurar ni se repiten pagos o cargos. Si el legado no representa un hecho, falta conciliación externa o se excede la reserva, el diario permanece como única autoridad del proceso afectado y se registra decisión, responsable y plazo de regularización. F-MIG-10 evidencia tiempo real, pérdida o duplicación, autoridad restablecida y conformidades; la estimación de 180 minutos no amplía la reserva previa.
+
+\subsection*{A5.3.9 Instrumentos de ejecución y cierre}
+
+Los instrumentos internos F-MIG vinculan fuente, transformación, carga y aceptación. Sus resultados, fechas reales, responsables nominales y conformidades se registran durante la ejecución; no constituyen un nuevo Formulario T.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.210\textwidth-4.0pt\relax}L{\dimexpr0.510\textwidth-4.0pt\relax}L{\dimexpr0.280\textwidth-4.0pt\relax}@{}}
+\caption{Campos y cierre de instrumentos de migración}\label{tab:a53_instrumentos} \\
+\hline
+\EncabezadoTabla{Instrumento} & \EncabezadoTabla{Campos a completar durante ejecución} & \EncabezadoTabla{Criterio de cierre} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Instrumento} & \EncabezadoTabla{Campos a completar durante ejecución} & \EncabezadoTabla{Criterio de cierre} \\ \hline
+\endhead
+\hline\endfoot
+F-MIG-01 Inventario & Fuente/ubicación/custodio/suplente; acceso; período; esquema real; sensibilidad; N filas/objetos/bytes; extracción; hash/copia & Custodio valida universo y autorización; versión y fecha real de inventario \\ \hline
+F-MIG-02 Perfilado & Fuente/lote/regla; población; vacíos/duplicados/huérfanos/unidad/fecha; distribución; defectos y cobertura & Informe reproducible sobre copia, con cantidades y todos los defectos críticos clasificados \\ \hline
+F-MIG-03 Defecto & ID/clave/atributo/valor original protegido; severidad; regla/valor resultante; motivo; responsable; evidencia; estado & Validador funcional revisa crítico; verificación de corrección antes de cerrar \\ \hline
+F-MIG-04 Mapeo & Fuente/campo real; significado/tipo/unidad; entidad/atributo A5.1; obligatoriedad; TR/versión; cardinalidad; control; aprobador & Todos los atributos aplicables y ausencias explicados; mapa inverso para retorno probado \\ \hline
+F-MIG-05 Manifiesto/carga & Ensayo/artefacto/configuración; fuente/corte/lote; IDs/rango; N/bytes/huellas; aceptación/incidencia/archivo; tiempos & Balance disjunto, integridad documental y trazabilidad de reejecución \\ \hline
+F-MIG-06 Conciliación & Control/universo/criterio; origen/destino/diferencia por clave/moneda; evidencia; defecto/decisión; validador & Todas las diferencias explicadas; cero críticos y cobertura completa del alcance \\ \hline
+F-MIG-07 Ensayo/habilitación & E1/E2; fecha/configuración; tiempos por fase; suplentes; controles; restauración/retornos; defectos; decisión & Dos ensayos aceptados antes de autoridad nueva; gerencia autoriza según conformidades reales \\ \hline
+F-MIG-08 Diario/delta & ID, ocurrencia/registro, origen/actor/objeto/hecho/unidad; evidencia; estado de incorporación; correlación externa & Una incorporación por ID; saldo/efecto reconciliado sin doble digitación \\ \hline
+F-MIG-09 Marcha blanca & Día/período/corte; recuentos/movimientos/saldos/hechos; diferencias; responsable/decisión; cierre mensual & Validación diaria y cierre con suplente; sin crítico pendiente al cerrar grupo \\ \hline
+F-MIG-10 Retorno/cierre & Antes/después; punto conciliado; IDs nuevos/efectos; pasos/horas; autoridad; pérdida/duplicado; pruebas; decisión & Tiempo y cero pérdida verificados; archivo/portabilidad disponibles antes de retirar dependencia \\ \hline
+\end{longtable}
+\endgroup
+
+El acta consolidada identifica versiones, ejecución, manifiestos, tiempos, conciliación, defectos, responsables y autorización. Entrega correspondencias, reglas, consulta histórica, portabilidad y evidencia de retorno. La retirada definitiva del legado exige comprobar acceso histórico, retención y exportación. Las evidencias se vinculan con RF-ADM-06/07, RNF-MIG-01 y DEC-02 en SD9/T-12 \parencite[anexos A2.1--A2.3]{synaptix-sd2-anexos}.

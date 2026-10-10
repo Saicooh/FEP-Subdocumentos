@@ -1,0 +1,154 @@
+\section{EDT}
+La EDT organiza el alcance completo en entregables con una sola imputación de esfuerzo. Esta sección presenta las ramas principales y un ejemplo de descomposición; el Formulario T-14 desarrolla resultados, aceptación y responsables por paquete. La trazabilidad enlaza requisitos, construcción, pruebas e incorporación al servicio.
+
+\subsection{Criterio de descomposición y código de cuentas}
+Synaptix adopta una descomposición por entregables. El código raíz \texttt{1} identifica el contrato; los códigos \texttt{1.n} agrupan entregables principales; y los niveles inferiores identifican componentes y paquetes. La etapa contractual será un atributo del trabajo, de modo que una capacidad desarrollada progresivamente conserve su relación con el mismo entregable. La EDT expresa pertenencia y cobertura; las fechas y dependencias se registran en la red de actividades.
+
+La descomposición se detendrá cuando el paquete tenga un resultado medible, una condición de aceptación, un responsable único y una estimación defendible. Las instancias actualmente estimadas tienen entre 8 y 80 horas-persona; este rango describe la estimación y no constituye una exigencia de las Bases ni un límite para definir nuevos paquetes. Se mantiene un período quincenal de control. La dedicación parcial y las esperas externas se declararán por separado; el esfuerzo del paquete no equivale automáticamente a su duración. Los servicios recurrentes se presentan mediante familias con resultado, responsable, frecuencia y aceptación comunes; cada período conserva su instancia estimada y asignada.
+
+Cada rama incluirá todo el trabajo de su componente superior y excluirá el trabajo imputado a otra rama. La verificación de cobertura cruzará requisitos, entregables y paquetes; la suma de porcentajes de un gráfico no sustituirá esa comprobación. Las pruebas integradas, los servicios compartidos y las innovaciones tendrán una imputación única; el uso de un componente por varios dominios se registrará como dependencia.
+
+\subsection{Inventario de entregables principales}
+El inventario organiza los productos y servicios de SD3, SD4, SD5 y SD13. La Figura~\ref{fig:sd7-edt-general} presenta las doce ramas y la Tabla~\ref{tab:sd7-inventario} relaciona cada cuenta con su fuente de alcance. Estos códigos agrupan entregables; los paquetes terminales se identifican en T-14.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont,
+ caja/.style={draw=SynLine,fill=SynSurface,text width=42mm,minimum height=12mm,align=center,inner sep=2mm}]
+\node[caja,fill=SynNavy,text=SynWhite,text width=132mm] (raiz) at (0,1.5) {\textbf{1 · Contrato de solución y servicio de la marina}};
+\node[caja] (c0) at (-5.0,0.0) {\textbf{1.1}\\Dirección y control};
+\node[caja] (c1) at (0,0.0) {\textbf{1.2}\\Plataforma híbrida};
+\node[caja] (c2) at (5.0,0.0) {\textbf{1.3}\\Auditoría y seguridad};
+\node[caja] (c3) at (-5.0,-1.6) {\textbf{1.4}\\Núcleo Operacional};
+\node[caja] (c4) at (0,-1.6) {\textbf{1.5}\\Núcleo de Servicios};
+\node[caja] (c5) at (5.0,-1.6) {\textbf{1.6}\\Núcleo Administrativo};
+\node[caja] (c6) at (-5.0,-3.2) {\textbf{1.7}\\Canales e integración};
+\node[caja] (c7) at (0,-3.2) {\textbf{1.8}\\Migración e historia};
+\node[caja] (c8) at (5.0,-3.2) {\textbf{1.9}\\Innovaciones};
+\node[caja] (c9) at (-5.0,-4.800000000000001) {\textbf{1.10}\\Verificación y aceptación};
+\node[caja] (c10) at (0,-4.800000000000001) {\textbf{1.11}\\Formación e implantación};
+\node[caja] (c11) at (5.0,-4.800000000000001) {\textbf{1.12}\\Servicio y salida};
+\draw[SynBlue] (raiz.south) -- (0,.8);
+\draw[SynBlue] (-7.5,.8) -- (2.5,.8);
+\draw[SynBlue] (-7.5,.8) -- (-7.5,-4.8);
+\draw[SynBlue] (-7.5,0.0) -- (c0.west);
+\draw[SynBlue] (-7.5,-1.6) -- (c3.west);
+\draw[SynBlue] (-7.5,-3.2) -- (c6.west);
+\draw[SynBlue] (-7.5,-4.8) -- (c9.west);
+\draw[SynBlue] (-2.5,.8) -- (-2.5,-4.8);
+\draw[SynBlue] (-2.5,0.0) -- (c1.west);
+\draw[SynBlue] (-2.5,-1.6) -- (c4.west);
+\draw[SynBlue] (-2.5,-3.2) -- (c7.west);
+\draw[SynBlue] (-2.5,-4.8) -- (c10.west);
+\draw[SynBlue] (2.5,.8) -- (2.5,-4.8);
+\draw[SynBlue] (2.5,0.0) -- (c2.west);
+\draw[SynBlue] (2.5,-1.6) -- (c5.west);
+\draw[SynBlue] (2.5,-3.2) -- (c8.west);
+\draw[SynBlue] (2.5,-4.8) -- (c11.west);
+\end{tikzpicture}
+\caption{Vista general de las doce cuentas de entregables de la EDT}
+\label{fig:sd7-edt-general}
+\FuenteFigura{Elaboración propia de Synaptix a partir del catálogo integrado de T-14.}
+\end{figure}
+
+Las doce cajas pertenecen directamente a la raíz 1; las líneas enlazan cada cuenta a esa raíz y su posición en columnas no establece precedencias entre cuentas. Cada rama se descompone hasta sus paquetes en T-14; 7.3 desarrolla la red temporal.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\linewidth}{L{12mm}Y L{31mm}}
+\hline
+ \EncabezadoTabla{Cuenta} & \EncabezadoTabla{Entregable} & \EncabezadoTabla{Origen del alcance}\\\hline
+1.1 & Expediente de dirección y control & SD6; T-9\\\hline
+1.2 & Plataforma híbrida habilitada & SD4; T-11\\\hline
+1.3 & Controles de auditoría y seguridad habilitados & SD4; SD5\\\hline
+1.4 & Capacidades del Núcleo Operacional & SD3; SD5\\\hline
+1.5 & Capacidades del Núcleo de Servicios & SD3; SD5\\\hline
+1.6 & Capacidades del Núcleo Administrativo & SD3; SD5\\\hline
+1.7 & Canales y servicios comunes integrados & SD3; SD4\\\hline
+1.8 & Datos migrados y archivo histórico consultable & SD5\\\hline
+1.9 & Cinco innovaciones incorporadas y evaluadas & SD13; T-19\\\hline
+1.10 & Expediente de verificación y aceptación & SD6; SD9; T-17\\\hline
+1.11 & Usuarios preparados y etapas implantadas & SD3; T-18\\\hline
+1.12 & Servicio gestionado y transferencia de salida & SD4; SD5; T-15\\\hline
+\end{tabularx}
+\caption{Correspondencia de cuentas y entregables con su alcance de origen}
+\label{tab:sd7-inventario}
+\FuenteTabla{Elaboración propia de Synaptix a partir de SD3--SD6, SD9, SD13 y los formularios indicados.}
+\end{table}
+
+La correspondencia permite localizar la autoridad de cada entregable y evita estimar dos veces una capacidad compartida. La cuenta 1.1 reúne línea base, trazabilidad, actas, cambios, riesgos, informes y control físico y financiero, incluido el plan de reversibilidad de los primeros 90 días. La plataforma 1.2 comprende DEV, QA, PREPROD, PROD y DR, nube, recinto, terminales, conectividad, continuidad y observabilidad; SD4/T-11 delimitan los activos. La cuenta 1.3 desarrolla identidades, permisos, consentimiento, cifrado, claves y auditoría; sus ensayos integrales se imputan a 1.10.
+
+El Núcleo Operacional integra Operación marítima, Escuela náutica e Infraestructura: salidas y regresos, amarras, participación y retiro, inventario físico e inspección de boyas sin conexión. El Núcleo de Servicios incorpora Varadero y contratistas, Combustible y Ambiente y consumos; la medición inicial corresponde a E1 y las capacidades completas a E2. El Núcleo Administrativo comprende Clientes y contratos y Finanzas y cobranza, preservando la autoridad tributaria del sistema contable externo.
+
+Los canales Android, portal y consola, interfaces externas, notificaciones, telemetría y sincronización se construyen una vez en 1.7; sus reglas por dominio permanecen en 1.4--1.6. La cuenta 1.8 comprende diagnóstico, herramientas, saneamiento, cargas, conciliación y consulta independiente del sistema de 2014, con carga inicial E1 y cobertura histórica E2 según SD5.
+
+Las cinco innovaciones se incorporan en 1.9 con su esfuerzo incremental: solicitudes de mantenimiento, mantenimiento preventivo en invernada, lectura asistida, servicio gestionado por resultados y Pasaporte Ambiental Náutico. La cuenta 1.10 reúne protocolos, ensayos entre componentes y evidencia para T-17, incluidos los dos ensayos completos de migración de SD5. Formación, olas, convivencia, conciliación diaria, marcha blanca, reversión y estabilización se imputan a 1.11. El servicio 1.12 conserva soporte, NOC/SOC, mantenimiento, respaldos, SLA y transferencia final durante 21--56.
+
+El inventario separa la construcción de capacidades de su comprobación integral. Cada paquete de construcción incluirá sus pruebas unitarias y documentación; 1.10 reunirá los ensayos entre componentes y la evidencia de recepción. Las pruebas internas específicas de una innovación permanecerán en 1.9 y sus resultados alimentarán el expediente general, sin volver a estimar la misma ejecución.
+
+Las compras y obras físicas atribuidas al cliente por el Subdocumento 2 se registrarán como habilitaciones externas con responsable, fecha requerida y condiciones de recepción. Synaptix mantendrá en sus paquetes las especificaciones, la coordinación y la verificación de integración que le corresponden. Estas dependencias no se tratarán como instalaciones ya ejecutadas ni como ampliaciones automáticas del plazo \parencite[cap.~11, p.~27; cap.~17, secc.~17.5, p.~42]{caso07}.
+
+Los códigos \texttt{IN1} a \texttt{IN5} del Subdocumento 13 conservarán su identidad como referencias de origen. El trabajo de diseño, construcción, pruebas y pilotos de las innovaciones se imputará a 1.9; el servicio recurrente, a 1.12. En particular, los informes \texttt{IN1.7.m.q} y la operación \texttt{IN2.7} y \texttt{IN3.7} conservarán su referencia a SD13 dentro de la rama de servicio. Cada paquete de ejecución tendrá una sola imputación de esfuerzo; si un componente de SD13 requiere subdivisión, la matriz de correspondencia identificará todos sus paquetes hijos sin contar también el esfuerzo del padre.
+
+El calendario de la innovación 2 conservará $M_{\mathrm{inv}}$ como el primer junio disponible con IN1 y sus interfaces aceptadas, no anterior al mes 21, y mantendrá la secuencia de invernada y botaduras definida en SD13. Los componentes \texttt{IN4.4} e \texttt{IN5.4} distinguirán sus resultados de puesta en servicio de sus trabajos recurrentes. T-14 conserva la correspondencia detallada de los códigos y T-15 sus cargas y asignaciones; los padres no reciben una segunda imputación.
+
+\subsection{Expediente de diagnóstico de las fuentes de migración}
+El componente \texttt{1.8.1} entregará un expediente que permita decidir cómo extraer, interpretar y conciliar los antecedentes antes de construir las cargas definitivas. Su cobertura comprende los seis conjuntos obligatorios de SD5, sección 5.3.1: socios y armadores; contratos vigentes y documentos; seis años de pagos y saldos; embarcaciones e invernadas; los 14 expedientes de abandono; y tres años de matrícula escolar. El inventario abarcará las fuentes de los doce años de historia para delimitar su tratamiento, sin extender automáticamente a todo ese período la carga operacional \parencite[cap.~15, RT-05.15, p.~34]{caso07}.
+
+La Figura~\ref{fig:sd7-rama-diagnostico} muestra la pertenencia de los cuatro paquetes al componente 1.8.1. La Tabla~\ref{tab:sd7-paquetes-diagnostico} resume sus resultados y esfuerzos. Las horas son una estimación ascendente inicial de la oferta, basada en las tareas enumeradas en el diccionario; no son mediciones de productividad ni duración comprometida.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+ paquete/.style={draw=SynLine,fill=SynSurface,rounded corners=1mm,
+ text width=82mm,minimum height=13mm,inner sep=3mm,align=left,
+ font=\fontsize{9}{12}\selectfont},
+ rama/.style={draw=SynNavy,fill=SynNavy,text=SynWhite,
+ text width=32mm,inner sep=3mm,align=left,font=\fontsize{9}{12}\selectfont}]
+\node[rama] (raiz) at (-5,0) {\textbf{1.8.1}\\Expediente de diagnóstico de las fuentes de migración};
+\node[paquete] (p1) at (2,2.7) {\textbf{1.8.1.1}\\Catálogo de fuentes y accesos};
+\node[paquete] (p2) at (2,.9) {\textbf{1.8.1.2}\\Procedimiento de extracción diagnóstica};
+\node[paquete] (p3) at (2,-.9) {\textbf{1.8.1.3}\\Informe reproducible de calidad del origen};
+\node[paquete] (p4) at (2,-2.7) {\textbf{1.8.1.4}\\Matriz de cobertura y decisiones de migración};
+\draw[SynBlue,line width=.8pt] (raiz.east) -- (-2.6,0);
+\draw[SynBlue,line width=.8pt] (-2.6,2.7) -- (-2.6,-2.7);
+\foreach \paquete/\altura in {p1/2.7,p2/.9,p3/-.9,p4/-2.7}{
+ \draw[SynBlue,line width=.8pt] (-2.6,\altura) -- (\paquete.west);
+}
+\end{tikzpicture}
+\caption{Descomposición del expediente de diagnóstico en paquetes}
+\label{fig:sd7-rama-diagnostico}
+\FuenteFigura{EDT propuesta por Synaptix para el diagnóstico previo a la migración.}
+\end{figure}
+
+
+La jerarquía asigna cada paquete a un único componente superior. Las líneas expresan esa pertenencia; las precedencias de ejecución se conservan en la red de actividades de T-14/T-15.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\linewidth}{L{25mm}YR{13mm}L{31mm}}
+\hline
+ \EncabezadoTabla{Código} & \EncabezadoTabla{Resultado} & \EncabezadoTabla{Horas} & \EncabezadoTabla{Responsable}\\\hline
+1.8.1.1 & Catálogo de fuentes y accesos & 24 & Líder de Datos\\\hline
+1.8.1.2 & Procedimiento de extracción diagnóstica & 40 & Líder de Datos\\\hline
+1.8.1.3 & Informe reproducible de calidad del origen & 32 & Líder de Datos\\\hline
+1.8.1.4 & Matriz de cobertura y decisiones de migración & 24 & Líder de Datos\\\hline
+\textbf{Total} & \textbf{Expediente de diagnóstico} & \textbf{120} & \\\hline
+\end{tabularx}
+\caption{Paquetes del expediente de diagnóstico de fuentes}
+\label{tab:sd7-paquetes-diagnostico}
+\FuenteTabla{Estimación ascendente propuesta por Synaptix; alcance definido en SD5, sección 5.3.}
+\end{table}
+
+Las 120 horas comprenden 24 de Análisis Funcional, 72 de Datos, 8 de Seguridad y 16 de Calidad. Incluyen documentación y comprobación de los productos de diagnóstico. No incluyen saneamiento masivo, carga definitiva, consulta histórica implementada, los dos ensayos completos de migración ni la operación del servicio; esos trabajos requieren otros componentes de 1.8, 1.10 y 1.12. La aceptación de este expediente no equivale a la aceptación de la migración.
+
+\ifdefined\EnFormularioTCatorce
+El diccionario detallado de los cuatro paquetes se presenta en el apartado siguiente de este formulario.
+\else
+El diccionario detallado de los cuatro paquetes se presenta en el archivo independiente \path{SYNAPTIX-Formulario-T-14.pdf}.
+\fi
+Sus fichas conservan estos códigos, esfuerzos, responsables y fronteras; el resumen no sustituye sus condiciones de aceptación.
+
+El catálogo consolidado contiene 2.181 paquetes terminales, cada uno con resultado, aceptación, responsable único y 8--80 HH. El diccionario integrado enlaza las fichas específicas y las instanciaciones periódicas. La trazabilidad incluye los 576 IDs de T-12, los 27 complementos C07 y las 29 exclusiones Deseables; ninguna obligación de base se reduce por prioridad funcional. Cada prueba recibe el enunciado completo, sus cláusulas y el componente ofrecido. La existencia del cruce no se presenta como prueba ya ejecutada ni modifica las declaraciones de T-12.
+
+Los padres no reciben horas, y los paquetes compartidos se imputan una vez. Los nueve dominios mantienen sus autoridades de SD3/SD4/SD5; las innovaciones aportan capacidades incrementales. Plataforma incluye DEV, QA, PREPROD, PROD y DR; la medición individual y su recepción se anticipan para disponer de serie previa a 2029. Las obligaciones corporativas de oferta se distinguen del alcance del contrato.

@@ -1,0 +1,83 @@
+﻿Caso,Transaccion,Entrada_actor,Respuesta_sistema,Base
+CU-01,1,Identifica embarcación y patrón,Presenta contexto de salida y formulario,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-01,2,Presenta nómina y consentimiento y solicita registrar salida,Valida condición de registro y devuelve salida y hora registradas,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-02,1,Identifica nave e informante,Presenta salida pendiente,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-02,2,Presenta evidencia de regreso,Contrasta reporte y presenta discrepancias,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-02,3,Resuelve discrepancia y confirma regreso,Registra estado y responsable,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-03,1,Identifica nave y responsable,Presenta formulario del plan,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-03,2,"Presenta destino, duración y consentimiento",Valida y devuelve plan registrado,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-04,1,Consulta vencimiento,Presenta plan vencido y evidencia,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-04,2,Registra contacto o intento fallido,Devuelve contacto registrado,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-04,3,Decide escalamiento según regla,Registra actuación y estado,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-05,1,Consulta nave y puesto,Presenta compatibilidad y ocupación,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-05,2,Solicita asignación,Comprueba exclusividad local y confirma o rechaza,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-05,3,Presenta evidencia de maniobra segura,Devuelve evidencia registrada,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-06,1,Selecciona clase y monitor,Presenta ficha de clase,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-06,2,Incorpora alumnos y habilitaciones,Comprueba consentimientos y restricciones y devuelve nómina revisable,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-06,3,Publica nómina,Devuelve nómina publicada,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-07,1,Consulta clase y nómina,Presenta participantes,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-07,2,"Registra alumno, bote, monitor e intervalo",Valida solapamientos y devuelve cambios registrados,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-08,1,Presenta solicitud y autorizado,Comprueba consentimiento e identidad y devuelve resultado,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-08,2,Coordina punto de entrega,Presenta coordinación registrada,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-08,3,Confirma entrega,Devuelve entrega única registrada,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-09,1,Identifica monitor y clase y consulta salud,Comprueba participación efectiva y devuelve datos mínimos autorizados,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-10,1,Presenta retorno por bote,Contrasta participantes y presenta diferencias,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-10,2,Resuelve diferencia o registra alerta,Devuelve conciliación o alerta registrada,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-10,3,Confirma retorno completo,Devuelve cierre de retorno,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-11,1,"Identifica puesto, boya o fondeo",Presenta estado vigente,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-11,2,Presenta condición y evidencia,Valida relaciones y vigencia y devuelve inventario actualizado,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-12,1,Identifica boya y orden,Presenta formulario de inspección,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-12,2,Registra hallazgos y evidencia sin enlace,Devuelve resultado guardado localmente,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-12,3,Solicita sincronización,Devuelve recepción o conflicto,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-12,4,Resuelve duplicado o conflicto,Devuelve conciliación registrada,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-13,1,Identifica medidor e instalación,Presenta asociaciones vigentes,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-13,2,Presenta intervalo de asociación,Valida exclusividad temporal y devuelve asociación trazable,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-14,1,Identifica faena o contratista y consulta habilitación,Comprueba vigencia y autorización y devuelve estado y bloqueos,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-15,1,"Presenta nave, trabajo y fechas",Presenta puestos compatibles y restricciones de campaña y maniobra,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-15,2,Selecciona puesto y solicita reserva,Devuelve reserva o alternativa,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-16,1,Identifica orden y nave,Presenta orden y requisitos de izaje,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-16,2,"Presenta plan, medios y responsables",Comprueba restricciones y devuelve estado de revisión,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-16,3,Autoriza o suspende con evidencia,Devuelve decisión registrada,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-17,1,Consulta orden,Presenta orden y habilitación,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-17,2,"Presenta avance, incidencias y evidencia y solicita cierre",Valida resultado y devuelve cierre o necesidad de reprogramación,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-18,1,Presenta identidad y orden,"Comprueba acreditación, inducción, vigencia y zona y devuelve autorización o denegación",Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-18,2,Registra entrada,Devuelve entrada registrada,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-18,3,Registra salida,Devuelve salida registrada,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-19,1,Identifica nave y operador,Presenta contexto del despacho,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-19,2,"Presenta producto, volumen y evidencia en momento seguro",Valida y devuelve hecho local único,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-20,1,Consulta despacho,Presenta registro y evidencia,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-20,2,Presenta rectificación motivada,Comprueba autoridad y presenta diferencias,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-20,3,Confirma rectificación,Devuelve nueva versión conservando origen,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-21,1,Selecciona medidor e intervalo,"Presenta lecturas, calidad y asociación temporal",Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-21,2,Resuelve faltantes y anomalías,Devuelve serie conciliada,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-21,3,Publica serie,Devuelve serie validada publicada,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-22,1,Solicita período y contrato,Valida identidad y pertenencia y devuelve serie común y cobertura,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-23,1,Identifica origen y categoría,Presenta datos de recepción,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-23,2,"Presenta cantidad, fecha y evidencia",Presenta discrepancias,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-23,3,Concilia discrepancias y confirma recepción,Devuelve recepción y retención registradas,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-24,1,Selecciona residuos y gestor,Presenta saldo y autorización del gestor,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-24,2,Presenta entrega parcial,Valida cantidades y devuelve entrega registrada,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-24,3,Vincula certificado sanitario,Devuelve certificado vinculado,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-24,4,Confirma cierre,Devuelve saldo y expediente cerrado,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-25,1,Selecciona serie validada,Comprueba contrato y permanencia y devuelve indicador y cargo propuesto,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-25,2,Revisa exclusiones y resuelve diferencias,Devuelve propuesta ajustada,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-25,3,Publica resultado,Devuelve resultado trazable publicado,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-26,1,"Identifica persona, organización o nave",Presenta maestro vigente,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-26,2,Presenta datos y documentos,Valida duplicados y relaciones y devuelve versión y autoridad,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-27,1,Identifica contrato y período y solicita consulta,Comprueba permisos y vigencia y devuelve documentos y límites,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-28,1,Presenta nave visitante y responsable,Presenta disponibilidad comercial,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-28,2,Solicita autorización operacional,Devuelve autorización o rechazo de la autoridad local,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-28,3,Confirma asignación transitoria,Devuelve asignación y condiciones,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-29,1,Presenta solicitud y prioridades,Valida elegibilidad y presenta posición o alternativa,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-29,2,Acepta alternativa o mantiene espera,Devuelve estado registrado,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-30,1,Identifica contrato y cambio,Presenta estado contractual,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-30,2,Presenta documentos y fechas y confirma cambio,Comprueba exclusividad operacional y devuelve versión contractual,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-31,1,Selecciona hechos conciliados,Aplica tarifa y comprueba duplicados y período y presenta lote,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-31,2,Presenta lote contable,Devuelve aceptación o rechazo registrado,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-32,1,"Presenta emisión, pagos y saldo recibidos",Valida referencia y origen y presenta diferencias por moneda,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-32,2,Resuelve diferencia o solicita reintento,Devuelve conciliación o resultado del reintento,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-32,3,Confirma conciliación,Devuelve estado importado actualizado,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-33,1,Consulta deuda,Presenta deuda y evidencia,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-33,2,Presenta fundamento y propuesta,Devuelve propuesta pendiente de decisión,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-33,3,Registra decisión competente,Devuelve actuación sin sanción automática,Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado
+CU-34,1,Selecciona expediente y alcance y solicita exportación,"Comprueba permisos y piezas, genera formatos y manifiesto, verifica integridad y PDF/A y devuelve exportación trazable",Modelo de interacción propuesto para el objetivo y fuentes del caso; no levantamiento validado

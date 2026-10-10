@@ -1,0 +1,472 @@
+\section*{A5.4 Memoria de capacidad y desempeño}
+
+\label{anx:sd5_capacidad_desempeno}
+
+Esta memoria hace reproducibles las cifras y condiciones de 5.4 y sus dependencias de migración/retención. Conserva los datos del caso y las hipótesis actuales del SD5; no contiene mediciones de una implementación. Los repartos por dominio, tamaños, generación, recursos y reservas son estimaciones de Synaptix. Se expresan GB decimales (\(10^9\) bytes), MB decimales (\(10^6\) bytes), Mb/s para bits/s y MB/s para bytes/s. Las copias, holgura y dato lógico se cuentan separadamente \parencites[sec.~14.1--14.2]{pucv-caso07}[RT-09.01--RT-09.09 y RT-07.13]{pucv-bases-transversales}[sec.~4.2]{synaptix-sd4}.
+
+\subsection*{A5.4.1 Parámetros y actuaciones de la mañana crítica}
+
+La base física es 320 amarras con 640 puntos propuestos de agua/energía a instalar. La ampliación en evaluación es 380 amarras/760 puntos. La condición de capacidad \(3\times\) usa 1.920 puntos equivalentes, sin afirmar una ampliación física acordada a 960 amarras. El caso indica ausencia actual de medición individual; la generación comienza al instalar, no al migrar.
+
+
+La composición por flujo se presenta en 5.4.1 del SD5. El peso de cada flujo es su número de actuaciones dividido por 473; las lecturas son \(90+40+6+8+30=174\) y las escrituras, \(180+40+3+16+60=299\).
+
+
+La suma es \(90\times3+20\times4+3\times3+8\times3+30\times3=473\), con 174 lecturas y 299 escrituras funcionales. Un acto funcional no equivale a sentencia SQL, HTTP, evento o muestra. Las tres actuaciones de clase incluyen una escritura grupal de hasta dieciocho botes, sin contar dieciocho actos independientes. Ocho maniobras y treinta despachos son hipótesis de guion. Regreso, retiro anticipado y discrepancia se prueban aparte, sin suponer cierre de las tres clases dentro de esa ventana.
+
+El guion concentra 45 zarpes y diez recaladas entre 08:00 y 08:15, con salidas de clase a las 08:00, 08:05 y 08:10; distribuye el resto en cuatro horas. Son horarios de prueba propuestos, no observaciones. Para zarpe se prueba consulta/preparación/confirmación; recalada incluye antecedentes/disponibilidad/asignación/recepción; faena y despacho incluyen consulta y dos registros. El promedio de 473/14.400=0,03285 actuaciones/s no dimensiona el peak ni transforma esta población en más movimientos reales.
+
+\subsection*{A5.4.2 Concurrencia, solicitudes y eventos}
+
+El escenario mantiene 50 sesiones internas y 150 externas. Los perfiles son actores de prueba, sin nueva dotación ni dispositivos adicionales. Se separan ensayo operacional (cantidades del caso) y prueba sintética (patrones repetidos sobre datos independientes válidos). La concentración del caso no se suma de nuevo a la tasa sintética de veinte actuaciones/s.
+
+
+Distribución propuesta: 10 sesiones de Operación, 12 de Infraestructura, 8 de Escuela, 8 de Varadero y 12 de Administración/Finanzas/Ambiente/Combustible; externas: 60 armadores, 45 apoderados, 30 visitantes y 15 contratistas. Suman 50 internas y 150 externas; no representan dotación ni uso observado.
+
+
+Las sesiones de apoderados no determinan alumnos por bote y las de visitantes no agregan recaladas. Las 3.400 personas/mes no equivalen a concurrencia.
+
+Con respuesta+pausa de 20 s internas y 60 s externas en normal, y 5/15 s en peak: \(\lambda_n=50/20+150/60=5\) y \(\lambda_p=50/5+150/15=20\) actuaciones/s. Son ciclos sintéticos, no duración del zarpe. Con cuatro HTTP/actuación como promedio propuesto y cinco/veinte consultas adicionales/s: \(H_n=5\times4+5=25\), \(H_p=20\times4+20=100\). Las trazas sustituyen el multiplicador por llamadas observadas; cien consultas ligeras no acreditan cien solicitudes representativas del flujo.
+
+Los resultados de escenarios de carga de 5.4.1 se obtienen aplicando esos ciclos y multiplicadores, como se detalla a continuación.
+
+
+En \(1{,}5\times\) también suben consultas adicionales a 30/s. Estrés portal duplica solo externas: \(50/5+300/15=30\), \(30\times4+20=140\). Crecimiento triplica ambas y consultas: \(150/5+450/15=60\), \(60\times4+60=300\). Ninguna tasa por sí sola demuestra cumplir tiempos/controles \parencite[RT-09.03 y RT-09.06]{pucv-bases-transversales}.
+
+La tasa de eventos de negocio se calcula en el ensayo como E=Σ(actuaciones de patrón×eventos observados de ese patrón), separando publicación, reintento y efecto. Como sensibilidad propuesta, si cada una de las 299 escrituras críticas publica un evento, el guion produce 299 eventos de cambio; no se fija ese número como contrato universal ni se suma un evento por cada fila de auditoría. La referencia central de telemetría es 25 eventos/s sostenidos y 100 en ráfaga; el escenario 1,5× la eleva a 37,5/150 y se prueba junto con el negocio. Un contador de mensajes no sustituye el conteo de efectos únicos. Para emergencia se generan 296×3=888 intentos iniciales de canal en paralelo; dentro de 600 s el promedio es 1,48 intentos/s y 0,4933 destinatarios/s, más reintentos/escalamiento; no equivale a todos con acuse.
+
+\subsection*{A5.4.3 Telemetría, tamaños y consolidación}
+
+La adquisición local es cada minuto y la consolidación central cada quince minutos, conforme a DA-09. Para \(P\) puntos: \(N_d=P\times1.440\), \(N_{c,d}=P\times96\), \(N_{c,a}=P\times96\times365\). Los 300 bytes efectivos del consolidado ya incluyen índices; aplicarlos a muestra local es hipótesis adicional. No se agrega nuevamente un factor dos a esa cifra \parencite[DA-09]{synaptix-sd4}.
+
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.430\textwidth-4.5pt\relax}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.190\textwidth-4.5pt\relax}@{}}
+\caption{Captura y consolidación reproducibles}\label{tab:a54_telemetria} \\
+\hline
+\EncabezadoTabla{Indicador} & \EncabezadoTabla{640 puntos} & \EncabezadoTabla{760 puntos} & \EncabezadoTabla{1.920 puntos} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Indicador} & \EncabezadoTabla{640 puntos} & \EncabezadoTabla{760 puntos} & \EncabezadoTabla{1.920 puntos} \\ \hline
+\endhead
+\hline\endfoot
+Muestras/día & 921.600 & 1.094.400 & 2.764.800 \\ \hline
+Captura media local, muestras/s & 10,67 & 12,67 & 32,00 \\ \hline
+Consolidados/día & 61.440 & 72.960 & 184.320 \\ \hline
+Consolidados/año & 22.425.600 & 26.630.400 & 67.276.800 \\ \hline
+Publicación media, registros/s & 0,71 & 0,84 & 2,13 \\ \hline
+Muestras 30 días, GB & 8,29 & 9,85 & 24,88 \\ \hline
+Consolidados año, GB & 6,73 & 7,99 & 20,18 \\ \hline
+Consolidados cinco años, GB & 33,64 & 39,95 & 100,92 \\ \hline
+\end{longtable}
+\endgroup
+
+
+El lote de 760 acumulados central distribuido en 60 s requiere 12,67 registros/s, aunque su promedio sea 0,84/s. La captura simultánea de 760 muestras locales es una ráfaga distinta: se prueba persistencia local/secuencia y se escalona entre concentradores. Para 1.920 acumulados en 60 s son 32/s; excede la referencia sostenida de 25 si se sostiene esa condición y se verifica con ráfaga/cola y recursos. Con los registros válidos se reconstruyen intervalos por medidor, época, unidad y asociación; cambios de ocupante/reinicio/contador/tardanza se prueban. Quince minutos de consolidación no demuestran por sí solos atribución correcta ni actualización horaria completa.
+
+El detalle inicial de 640 puntos equivale a 0,27648 GB/día a 300 bytes por muestra; la cifra orientativa de 0,33 GB/día del cuerpo puede representarse con 20 \% de margen como sensibilidad (0,331776 GB). Es parte de la envolvente local de 10 GB/día, sin suma adicional. La reserva central de 25 GB/año supera los 7,99 GB efectivos de 760 puntos y es un presupuesto con margen; en generación 3× se usan 75 GB/año como reserva, no como tamaño medido de 1.920 puntos.
+
+\subsection*{A5.4.4 Actuaciones persistentes y documentos anuales}
+
+La generación anual usa episodios del caso y multiplicadores propuestos; difiere del flujo corto de la mañana crítica. Se mantienen ocho actuaciones persistentes por episodio/expediente, dieciocho participantes por cada clase como supuesto exigente, cien litros medios por despacho y seis cambios/formularios por persona-mes del portal. No representan cantidades observadas de actuaciones o personas únicas.
+
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.380\textwidth-4.0pt\relax}L{\dimexpr0.380\textwidth-4.0pt\relax}L{\dimexpr0.240\textwidth-4.0pt\relax}@{}}
+\caption{Obtención de actuaciones anuales}\label{tab:a54_actuaciones} \\
+\hline
+\EncabezadoTabla{Familia} & \EncabezadoTabla{Cálculo} & \EncabezadoTabla{Actuaciones/año} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Familia} & \EncabezadoTabla{Cálculo} & \EncabezadoTabla{Actuaciones/año} \\ \hline
+\endhead
+\hline\endfoot
+Movimientos marítimos & (4.800+1.900)×8 & 53.600 \\ \hline
+Clases/participantes & 1.100×18×8 & 158.400 \\ \hline
+Varadero & 1.150×8 & 9.200 \\ \hline
+Combustible & (1.900.000/100)×8 & 152.000 \\ \hline
+Cobro/conciliación & 1.950×12×8 & 187.200 \\ \hline
+Portal & 3.400×12×6 & 244.800 \\ \hline
+Subtotal & Suma & 805.200 \\ \hline
+Otras/correcciones & Margen & 194.800 \\ \hline
+Envolvente & Total & 1.000.000 \\ \hline
+\end{longtable}
+\endgroup
+
+
+Con cuatro registros de 1.000 bytes por actuación y factor dos de índices/sobrecarga: \(V_b=10^6\times4\times1.000\times2/10^9=8\) GB/año. Incluye auditoría básica del cambio; la reserva total de negocio es 20 GB/año para maestros/versiones/rectificaciones/margen, sin otro factor dos. Las tasas peak no se multiplican por segundos de todo el año. Las consultas sensibles adicionales son \(10^6\times1.000\times2/10^9=2\) GB/año; seguridad \(500.000\times1.000\times2/10^9=1\) GB/año, sin duplicar modificaciones ya contadas.
+
+Los documentos se cuentan por pieza binaria o versión, no por contrato/expediente. En CO el 10 \% de despachos con objeto documental es hipótesis de tamaño y nunca permiso para omitir evidencia obligatoria; todos conservan registro estructurado. FC son copias autorizadas de documentos de cobro emitidos externamente. AC/INF y piezas adicionales son supuestos. Cada objeto incluye su formato original; índice/manifiesto pertenece al componente estructurado.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.120\textwidth-4.8pt\relax}L{\dimexpr0.330\textwidth-4.8pt\relax}L{\dimexpr0.180\textwidth-4.8pt\relax}L{\dimexpr0.180\textwidth-4.8pt\relax}L{\dimexpr0.190\textwidth-4.8pt\relax}@{}}
+\caption{Inventario anual de objetos y reservas}\label{tab:a54_documentos} \\
+\hline
+\EncabezadoTabla{Ámbito} & \EncabezadoTabla{Derivación} & \EncabezadoTabla{Objetos/año} & \EncabezadoTabla{Base GB/año} & \EncabezadoTabla{Reserva GB/año} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Ámbito} & \EncabezadoTabla{Derivación} & \EncabezadoTabla{Objetos/año} & \EncabezadoTabla{Base GB/año} & \EncabezadoTabla{Reserva GB/año} \\ \hline
+\endhead
+\hline\endfoot
+CC & 296×2+1.240×2 & 3.072 & 6,144 & 7,0 \\ \hline
+OM & 4.800+1.900 & 6.700 & 13,400 & 14,0 \\ \hline
+EN & 640×4 & 2.560 & 5,120 & 6,0 \\ \hline
+VC & 1.150×4 & 4.600 & 9,200 & 10,0 \\ \hline
+CO & (1.900.000/100)×0,10 & 1.900 & 3,800 & 4,0 \\ \hline
+AC & 2.000; supuesto & 2.000 & 4,000 & 4,0 \\ \hline
+FC & 1.950×12 & 23.400 & 46,800 & 48,0 \\ \hline
+INF & 3.000; supuesto & 3.000 & 6,000 & 6,0 \\ \hline
+AS & 62×4 & 248 & 0,496 & 1,0 \\ \hline
+Subtotal &  & 47.480 & 94,960 & 100,0 \\ \hline
+Versiones/adicionales & Margen & 2.520 & 5,040 & Incluidos \\ \hline
+Total & 50.000×2 MB & 50.000 & 100,000 & 100,0 \\ \hline
+\end{longtable}
+\endgroup
+
+
+El subtotal es 47.480 objetos y 94,96 GB; 2.520 piezas/versiones adicionales suman 5,04 GB y llevan a 100 GB/año. El reparto por dominio ya contiene ese margen: no volver a multiplicar por versiones. Con 4 MB por objeto, la sensibilidad documental es 200 GB/año y \(50+200\times6=1.250\) GB en año tres, manteniendo el histórico de 50 GB. El video continuo queda en las 38 cámaras/plataforma vigente de SD4; su capacidad no está incluida aquí. Para esa plataforma se verifica \(V=\sum_i b_i\,T_i/8\), con bitrate efectivo en bits/s y segundos de seis meses calendario; bitrate/códec/retención física no están aportados, por lo que no se inventa un volumen. Un extracto autorizado de video entra al documento de su expediente.
+
+\subsection*{A5.4.5 Retención, acumulación y reparto por dominio}
+
+La trayectoria de diseño conserva \(f_1=1,f_2=2,f_3=3\) veces la generación base; \(\sum f_y=6\). Para histórico \(h\) y generación anual base \(a\) sin vencimientos: \(V_3=h+6a\). Es una hipótesis de capacidad distinta de ampliación física y de multiplicar tres veces todos los históricos. La conservación efectiva se calcula por categoría/cohorte de A5.2 y no por una regla uniforme de tres o cinco años.
+
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.100\textwidth-4.5pt\relax}L{\dimexpr0.300\textwidth-4.5pt\relax}L{\dimexpr0.300\textwidth-4.5pt\relax}L{\dimexpr0.300\textwidth-4.5pt\relax}@{}}
+\caption{Históricos, generación y acumulados por dominio}\label{tab:a54_reparto} \\
+\hline
+\EncabezadoTabla{Dominio} & \EncabezadoTabla{Histórico estructurado / documental, GB} & \EncabezadoTabla{Negocio / documentos base, GB/año} & \EncabezadoTabla{Año tres estructurado / documental, GB} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Dominio} & \EncabezadoTabla{Histórico estructurado / documental, GB} & \EncabezadoTabla{Negocio / documentos base, GB/año} & \EncabezadoTabla{Año tres estructurado / documental, GB} \\ \hline
+\endhead
+\hline\endfoot
+CC & 2,0 / 10,0 & 3,0 / 7,0 & 20,0 / 52,0 \\ \hline
+OM & 0,8 / 4,0 & 4,0 / 14,0 & 24,8 / 88,0 \\ \hline
+EN & 1,2 / 10,0 & 4,0 / 6,0 & 25,2 / 46,0 \\ \hline
+VC & 0,8 / 8,0 & 1,5 / 10,0 & 9,8 / 68,0 \\ \hline
+CO & 0,3 / 2,0 & 2,0 / 4,0 & 12,3 / 26,0 \\ \hline
+AC & 0,7 / 4,0 & 1,0 / 4,0 & 156,7 / 28,0 \\ \hline
+FC & 2,5 / 8,0 & 3,0 / 48,0 & 20,5 / 296,0 \\ \hline
+INF & 0,7 / 3,0 & 1,0 / 6,0 & 6,7 / 39,0 \\ \hline
+AS & 1,0 / 1,0 & 0,5 / 1,0 & 19,0 / 7,0 \\ \hline
+Total & 10,0 / 50,0 & 20,0 / 100,0 & 295,0 / 650,0 \\ \hline
+\end{longtable}
+\endgroup
+
+
+AC añade \(25\times6=150\) GB de serie; AS añade \(2\times6=12\) GB de consultas auditadas y 3 GB de seguridad en línea del año tres. Así \(V_{\mathrm{RDS},3}=10+(20+25+2)\times6+3=295\) GB; los 3 GB de seguridad de años anteriores se mantienen en archivo segregado, completando 12 meses en línea+24 adicionales. Documento: \(50+100\times6=650\) GB. Analítica: histórico 10 GB+15 GB/año base×6+3 de archivo de seguridad=103 GB. El archivo de seguridad no se publica al autoservicio general.
+
+La derivación de proyecciones conserva 8,54 GB del cuerpo. Para hacerla reproducible, se propone la siguiente descomposición técnica compatible, sin atribuir esos tamaños/cantidades al caso: 1.000.000 actuaciones×4 registros resumidos×800 bytes=3,20 GB; 760 puntos×24×365×800 bytes efectivos por resumen horario=5,32608 GB; 20.000 filas maestras de vista×600 bytes efectivos=0,012 GB. Suma 8,53808 GB, redondeada 8,54. Los bytes efectivos incluyen el margen de índices en esta descomposición; se comprobarán con el esquema real. Reservas 15 GB iniciales/45 GB final son ventanas de trabajo derivadas, no acumulados completos de negocio. Para analítica, 3,20+7,98912+0,012=11,20112 GB se reserva en 15 GB/año sin asumir compresión; documentos binarios no se vuelven a sumar.
+
+El cierre anual siguiente reproduce los cortes usados para copias. El archivo incluye seguridad de años anteriores, con regla segregada; los conjuntos de negocio/documentos permanecen sujetos a sus categorías mayores de retención.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.090\textwidth-5.0pt\relax}L{\dimexpr0.160\textwidth-5.0pt\relax}L{\dimexpr0.180\textwidth-5.0pt\relax}L{\dimexpr0.170\textwidth-5.0pt\relax}L{\dimexpr0.180\textwidth-5.0pt\relax}L{\dimexpr0.220\textwidth-5.0pt\relax}@{}}
+\caption{Acumulación de escenarios anuales}\label{tab:a54_anios} \\
+\hline
+\EncabezadoTabla{Año} & \EncabezadoTabla{Factor anual} & \EncabezadoTabla{Factor acumulado} & \EncabezadoTabla{RDS GB} & \EncabezadoTabla{Documentos GB} & \EncabezadoTabla{Analítica+archivo GB} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Año} & \EncabezadoTabla{Factor anual} & \EncabezadoTabla{Factor acumulado} & \EncabezadoTabla{RDS GB} & \EncabezadoTabla{Documentos GB} & \EncabezadoTabla{Analítica+archivo GB} \\ \hline
+\endhead
+\hline\endfoot
+1 & 1 & 1 & 58,0 & 150,0 & 25,0 \\ \hline
+2 & 2 & 3 & 153,0 & 350,0 & 56,0 \\ \hline
+3 & 3 & 6 & 295,0 & 650,0 & 103,0 \\ \hline
+\end{longtable}
+\endgroup
+
+
+Para horizonte mayor se utiliza V(t)=histórico vigente+Σ(generación por familia/cohorte×fracción aún retenida); cada cohorte usa fecha de cierre y vencimiento de A5.2, con bloqueo prevalente. Menores: posterior entre cumpleaños 23 y cierre+10; adultos cinco años propuestos; fondeo vida útil+5 sin fecha final presunta. Falta distribución de edades/cierres/vida útil para calcular el máximo de largo plazo; se perfila y revisa trimestralmente. El tope RDS de 1 TB no autoriza truncar esas obligaciones.
+
+\subsection*{A5.4.6 Recursos, holgura y correspondencia con SD4/T-11}
+
+El recurso de escritura, el de proyecciones y el histórico permanecen separados. Las cifras siguientes son la propuesta vigente del SD5 para incorporar/verificar en el inventario físico de SD4/T-11; no constituyen un T-11 actualizado ni capacidad medida. No se incluyen precios ni montos económicos.
+
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.190\textwidth-4.5pt\relax}L{\dimexpr0.260\textwidth-4.5pt\relax}L{\dimexpr0.270\textwidth-4.5pt\relax}L{\dimexpr0.280\textwidth-4.5pt\relax}@{}}
+\caption{Recursos separados y condiciones de aceptación}\label{tab:a54_recursos} \\
+\hline
+\EncabezadoTabla{Recurso} & \EncabezadoTabla{Inicial} & \EncabezadoTabla{Año tres / sensibilidad} & \EncabezadoTabla{Correspondencia y condición} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Recurso} & \EncabezadoTabla{Inicial} & \EncabezadoTabla{Año tres / sensibilidad} & \EncabezadoTabla{Correspondencia y condición} \\ \hline
+\endhead
+\hline\endfoot
+RDS transaccional & 200 GB; uso inicial 10; 2 vCPU/8 GB RAM & 500 GB; uso 295; 8 vCPU/32 GB propuestos; tope ampliación 1 TB & Primario+HA+DR; medir IOPS/escrituras/conexiones; asignación física por confirmar \\ \hline
+PG de proyecciones & Disco 50 GB; reserva 15; 2 vCPU/8 GB independientes & Disco 100 GB; reserva 45; 8 vCPU/32 GB propuestos & Primario+HA; separado de RDS; reconstrucción DR por medir, sin réplica DR inventada \\ \hline
+S3 documental & 50 GB de histórico & 650 GB; sensibilidad 1.250 con objeto 4 MB & Original+regional; versiones ya contadas; cuota/alarma, no disco fijo \\ \hline
+S3 analítica/archivo & 10 GB de histórico & 103 GB, seguridad segregada & Original+regional; Parquet/Athena, sin binarios documentales añadidos \\ \hline
+Borde por nodo & 8 núcleos/64 GB; espejo 2×1,92 TB; uso 500 GB & Espejo 2×3,84 TB; uso 1.400 GB; cómputo sujeto a ensayo & Dos nodos activo/pasivo, fencing; capacidad útil de un disco, no suma del espejo \\ \hline
+Integración/eventos & 25 eventos/s sostenidos; 100 ráfaga, referencia & Escenario 1,5×: 37,5/150; crecimiento y negocio concurrentes & Medir recepción/aplicación/archivos y latencia; ampliar tareas no elimina cuello de BD \\ \hline
+Enlace efectivo & Principal 100 Mb/s; respaldo 50 Mb/s como hipótesis de cálculo & 30 GB no convergen en 30 min a esas tasas & SD4 debe resolver caudal/lote obligatorio y tráfico concurrente; no contratación acreditada \\ \hline
+\end{longtable}
+\endgroup
+
+
+Por nodo: 300 cola+50 operación+50 sistema+100 dos copias temporales=500 GB iniciales; 900+150+50+300=1.400 GB finales. Las treinta copias diarias retenidas están fuera del disco operativo; dentro se reservan solo dos temporales. Con RAID 1 son 1.920/3.840 GB útiles por nodo y usos 26,04 \%/36,46 \%. RDS 295/500=59 \%; proyecciones 45/100=45 \%. Los volúmenes en S3 se gestionan por inventario/cuota/alerta, no sumándolos a un disco local. El requisito local de 40 \% libre de cómputo se prueba en un solo nodo crítico; aumentar disco no lo demuestra. Nube alerta al superar 70 \% durante cinco minutos; ese umbral no se traslada al local como si conservara 40 \% libre.
+
+La matriz T-11 debe identificar recurso separado, cantidad/ubicación, capacidad útil, cómputo, memoria, IOPS/caudal, HA/DR, copias/medios y trazabilidad a estas filas; SD4 debe distinguir recurso ya definido de ampliación propuesta. La correspondencia física completa con SD4/T-11 requiere confirmación. Los costos asociados se tratan en su entregable económico, fuera de estos anexos.
+
+\subsection*{A5.4.7 Réplicas, copias y presupuesto de recuperación}
+
+Las réplicas sostienen continuidad y los respaldos recuperan un punto válido. Se contabilizan aparte del dato maestro, sin restaurar todas las copias como si fueran información diferente. El inventario propuesto debe verificarse contra 3-2-1-1-0, medios/sitios e inmutabilidad de SD4; no se declara ese requisito cumplido por contar réplicas \parencite[RT-07.09]{pucv-bases-transversales}.
+
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.180\textwidth-4.5pt\relax}L{\dimexpr0.150\textwidth-4.5pt\relax}L{\dimexpr0.310\textwidth-4.5pt\relax}L{\dimexpr0.360\textwidth-4.5pt\relax}@{}}
+\caption{Inventario propuesto de réplicas al año tres}\label{tab:a54_replicas} \\
+\hline
+\EncabezadoTabla{Conjunto} & \EncabezadoTabla{Cálculo} & \EncabezadoTabla{Reserva total} & \EncabezadoTabla{Límite de interpretación} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Conjunto} & \EncabezadoTabla{Cálculo} & \EncabezadoTabla{Reserva total} & \EncabezadoTabla{Límite de interpretación} \\ \hline
+\endhead
+\hline\endfoot
+RDS & 3×295 & 885 GB datos; 3×500=1.500 GB asignados & Primario, HA y DR; dato lógico sigue 295 \\ \hline
+Proyección & 2×45 & 90 GB datos; 2×100=200 GB asignados & Primario y HA; DR reconstruye, tiempo por medir \\ \hline
+Documentos & 2×650 & 1.300 GB & Original y regional; objetos/versiones no duplicados en lógico \\ \hline
+Analítica/archivo & 2×103 & 206 GB & Original y regional; permisos separados de seguridad \\ \hline
+Borde & 2×1.400 & 2.800 GB reservados; discos físicos 4×3,84 TB & Dos nodos con espejo; por nodo capacidad útil 3.840 GB \\ \hline
+\end{longtable}
+\endgroup
+
+
+Para doce copias completas mensuales sin compresión/deduplicación, la reserva es \(\sum_{m=25}^{36}V_m\), no doce veces el último volumen. Con \(f_j\) igual al factor anual 1, 2 o 3 del mes \(j\), para mes \(m\), \(F_m=\sum_{j=1}^{m}f_j/12\); seguridad en línea \(O_m=\sum_{j=\max(1,m-11)}^{m}f_j/12\), archivo \(F_m-O_m\). Entonces RDS \(=10+47F_m+O_m\), documento \(=50+100F_m\) e histórico \(=10+15F_m+F_m-O_m\). La hipótesis usa generación uniforme por mes, sustituible por tamaños medidos de los cortes.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.130\textwidth-4.5pt\relax}L{\dimexpr0.290\textwidth-4.5pt\relax}L{\dimexpr0.290\textwidth-4.5pt\relax}L{\dimexpr0.290\textwidth-4.5pt\relax}@{}}
+\caption{Doce cortes mensuales del tercer año}\label{tab:a54_cortes} \\
+\hline
+\EncabezadoTabla{Mes} & \EncabezadoTabla{RDS GB} & \EncabezadoTabla{Documentos GB} & \EncabezadoTabla{Histórico GB} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Mes} & \EncabezadoTabla{RDS GB} & \EncabezadoTabla{Documentos GB} & \EncabezadoTabla{Histórico GB} \\ \hline
+\endhead
+\hline\endfoot
+25 & 164,83 & 375,00 & 59,92 \\ \hline
+26 & 176,67 & 400,00 & 63,83 \\ \hline
+27 & 188,50 & 425,00 & 67,75 \\ \hline
+28 & 200,33 & 450,00 & 71,67 \\ \hline
+29 & 212,17 & 475,00 & 75,58 \\ \hline
+30 & 224,00 & 500,00 & 79,50 \\ \hline
+31 & 235,83 & 525,00 & 83,42 \\ \hline
+32 & 247,67 & 550,00 & 87,33 \\ \hline
+33 & 259,50 & 575,00 & 91,25 \\ \hline
+34 & 271,33 & 600,00 & 95,17 \\ \hline
+35 & 283,17 & 625,00 & 99,08 \\ \hline
+36 & 295,00 & 650,00 & 103,00 \\ \hline
+Suma & 2.759,0 & 6.150,0 & 977,5 \\ \hline
+\end{longtable}
+\endgroup
+
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.220\textwidth-4.5pt\relax}L{\dimexpr0.250\textwidth-4.5pt\relax}L{\dimexpr0.200\textwidth-4.5pt\relax}L{\dimexpr0.330\textwidth-4.5pt\relax}@{}}
+\caption{Presupuesto de respaldo al año tres}\label{tab:a54_respaldos} \\
+\hline
+\EncabezadoTabla{Conjunto} & \EncabezadoTabla{Obtención} & \EncabezadoTabla{Reserva} & \EncabezadoTabla{Condición} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Conjunto} & \EncabezadoTabla{Obtención} & \EncabezadoTabla{Reserva} & \EncabezadoTabla{Condición} \\ \hline
+\endhead
+\hline\endfoot
+RDS mensual & 12 cortes meses 25–36 & 2.759,0 GB & Copia completa por corte; fuera de sitio según SD4 \\ \hline
+Documentos mensual & 12 cortes meses 25–36 & 6.150,0 GB & Una copia de todas las versiones elegibles por corte \\ \hline
+Histórico mensual & 12 cortes meses 25–36 & 977,5 GB & Seguridad segregada dentro de presupuesto \\ \hline
+Local diario & 30×150 GB & 4.500,0 GB por conjunto & Destino de respaldo; no 30 copias dentro del nodo \\ \hline
+PITR cambios & 144/365×3×35 & 41,43 GB & 144 GB/año generación final; factor 3 de registros de cambio; redondeo superior \\ \hline
+PITR base & Una base recuperable & 295,0 GB & Agregar base a cambios; no 35 copias completas \\ \hline
+\end{longtable}
+\endgroup
+
+
+Las sumas mensuales son 9.886,5 GB por conjunto de cortes completo propuesto; si se mantiene otra copia independiente del mismo conjunto, se multiplica explícitamente por esa cantidad confirmada en SD4. La local requiere 4.500 GB por conjunto fuera del nodo y dos temporales (300 GB) dentro; desconexión prolongada puede aumentar pendientes de envío y se dimensiona sin sobrescribir el único punto válido. PITR cambios 41,43+base295=336,43 GB como reserva conservadora separada. No se deduce ahorro por compartir bloques hasta medirlo, ni se suman estas reservas de respaldo al lógico de cada dominio. La disponibilidad mensual no reemplaza archivo por diez años o vida útil+5.
+
+\subsection*{A5.4.8 Cola, reconexión y conjunto obligatorio}
+
+La cola durable preserva hechos y evidencia. Treinta días de almacenamiento no amplían la autonomía comprometida ni el objetivo de convergencia. Recinto se aísla 24 h, terreno 12 h y boyas 8 h con actividad completa, permiso/batería/persistencia; el cronómetro de reconexión parte al restituirse efectivamente el enlace y termina al conciliar el conjunto obligatorio con nuevas operaciones concurrentes \parencite[RT-03.10 y RT-03.13]{pucv-caso07}.
+
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.120\textwidth-4.8pt\relax}L{\dimexpr0.140\textwidth-4.8pt\relax}L{\dimexpr0.170\textwidth-4.8pt\relax}L{\dimexpr0.180\textwidth-4.8pt\relax}L{\dimexpr0.390\textwidth-4.8pt\relax}@{}}
+\caption{Sensibilidad de transferencia y margen de 20 \%}\label{tab:a54_enlace} \\
+\hline
+\EncabezadoTabla{Lote GB} & \EncabezadoTabla{Mb/s útiles} & \EncabezadoTabla{Ideal min} & \EncabezadoTabla{Con margen min} & \EncabezadoTabla{Evaluación} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Lote GB} & \EncabezadoTabla{Mb/s útiles} & \EncabezadoTabla{Ideal min} & \EncabezadoTabla{Con margen min} & \EncabezadoTabla{Evaluación} \\ \hline
+\endhead
+\hline\endfoot
+10 & 50 & 26,67 & 32,00 & Excede 30 min con margen \\ \hline
+10 & 100 & 13,33 & 16,00 & Cabe transferencia; aplicación/tráfico aún por medir \\ \hline
+30 & 50 & 80,00 & 96,00 & Excede 30 min con margen \\ \hline
+30 & 100 & 40,00 & 48,00 & Excede 30 min con margen \\ \hline
+\end{longtable}
+\endgroup
+
+
+\(t_{transferencia}=V_{\mathrm{GB}}\times8.000/(B_{\mathrm{Mb/s}}\times60)\); el margen de sensibilidad multiplica tiempo por 1,2, sin presentarse como eficiencia medida del protocolo. Para 10 GB y treinta minutos, el mínimo es 53,34 Mb/s útiles redondeado hacia arriba; para 30 GB, 160 Mb/s útiles. Ambos mínimos aún requieren presupuesto de validación/persistencia y tráfico nuevo. A 50/100 Mb/s el crecimiento 3× no demuestra convergencia ≤30 min; se conserva la brecha H-SD5-012. No se altera el tamaño para declarar cumplimiento.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.210\textwidth-4.0pt\relax}L{\dimexpr0.390\textwidth-4.0pt\relax}L{\dimexpr0.400\textwidth-4.0pt\relax}@{}}
+\caption{Familias del conjunto de sincronización obligatorio}\label{tab:a54_obligatorio} \\
+\hline
+\EncabezadoTabla{Familia} & \EncabezadoTabla{Registros} & \EncabezadoTabla{Completitud requerida} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Familia} & \EncabezadoTabla{Registros} & \EncabezadoTabla{Completitud requerida} \\ \hline
+\endhead
+\hline\endfoot
+Operación marítima & Recaladas/asignaciones/salidas/regresos, legajo y sustento de ocupación & IDs, secuencia, autor/observador, estado autorizado y evidencia necesaria \\ \hline
+Escuela & Participación compartida, cambios/retornos/retiros/entregas y autorizaciones utilizadas & Relación/facultad vigente, identidad del receptor y evidencia de confirmación \\ \hline
+Varadero/custodia & Maniobra, reserva prevista de recurso, recepción/traslado/entrega efectivos y acceso/habilitación & Intervalo/lugar/restricción, firma/conformidad exigible; no solo metadatos \\ \hline
+Combustible/consumo/ambiente & Despachos originales/rectificación, lecturas/base de intervalo, residuo/entrega/incidente & Época, unidad, asociación y evidencia/gestor/certificado necesario para integridad \\ \hline
+Infraestructura/seguridad & Inspecciones/restricciones, política/permiso/cambios de facultad y auditoría & Evidencia, versiones y orden de revocación/eliminación pendiente \\ \hline
+Administrativo/avisos & Hechos facturables, respuestas conocidas, avisos/intentos/acuses y pendientes & Efecto único, origen y confirmación durable/de negocio/de archivo separados \\ \hline
+\end{longtable}
+\endgroup
+
+
+El manifiesto del ensayo fija IDs/bytes por familia, referencias previas y archivos indispensables; cantidades exactas se miden, sin declarar que diez o treinta GB coinciden con ese conjunto. Priorización ordena transmisión pero no excluye documentos necesarios de la aceptación. El tiempo completo comprende detección/reconexión, transmisión, verificación, dependencias, persistencia, actualización y conciliación; se registra solapamiento real de fases para evitar sumar trabajos paralelos o esconder una fase. Se prueban reintentos, desorden, pérdida de acuse después de commit y reinicio. Cero pérdida y cero efectos repetidos son controles separados de porcentaje de recepción.
+
+\subsection*{A5.4.9 Comprobación de consultas, particiones y caché}
+
+Los patrones de acceso, índices y organización temporal se mantienen en 5.4.2 del SD5. A5.1 fija los atributos y A5.2 sus restricciones y retenciones; el ensayo verifica beneficio y costo de cada optimización sobre esos volúmenes \parencite{pg-multicolumn,pg-partial-indexes,pg-partitioning,pg-explain}.
+
+Se registran planes antes y después, filas leídas y devueltas, particiones recorridas, latencia, E/S y tamaño de índices. Se comprueban filtro temporal, límite y paginación, costo de escritura y mantenimiento; las escrituras analizadas con EXPLAIN ANALYZE requieren datos y controles apropiados. Un recorrido secuencial en una tabla pequeña no constituye por sí solo una falla.
+
+Las particiones se crean anticipadamente y conservan muestras tardías por tiempo de origen, con recepción separada. El retiro revisa aceptación central, retención y bloqueos; las incidencias protegidas no se descartan. Fecha e ID no acreditan unicidad global: el registro de recepción y efecto controla deduplicación. Los campos cifrados se consultan mediante UUID y referencias autorizadas, según el diseño de seguridad.
+
+Los lotes y reconstrucciones mantienen tamaño y tasa acotados y ceden ante escritura crítica. Las proyecciones y el histórico operan en recursos separados. La caché admite hasta cinco minutos solo para catálogos no críticos, con invalidación por versión; ocupación, escuela, saldo, permisos y disponibilidad conservan las reglas de oportunidad y autoridad del cuerpo.
+
+\subsection*{A5.4.10 Memoria de recuperación}
+
+Los volúmenes y tiempos por dominio se presentan en 5.4.3 del SD5 y sus repartos se derivan en A5.4.5. Se conservan 6,25 MB/s de transferencia, 20 MB/s de restauración estructurada incluidos índices, 15 minutos de preparación, 10 de reaplicación y 15 de verificación por dominio, como hipótesis \parencite[RT-07.12--RT-07.13]{pucv-bases-transversales}.
+
+Con GB decimales, \(t_i=15+(V_{s,i}+V_{d,i})\times1.000/(6{,}25\times60)+V_{s,i}\times1.000/(20\times60)+10+15\), redondeado hacia arriba al minuto. El integrado cuenta una preparación y cuarenta minutos de comprobación conjunta: \(t=15+V_{\mathrm{total}}\times1.000/(6{,}25\times60)+V_s\times1.000/(20\times60)+10+40\). No suma los nueve tiempos por dominio.
+
+Los escenarios siguientes aplican esa fórmula. El archivo analítico y de seguridad añade transferencia; las proyecciones se reconstruyen. Si la comprobación conjunta no cubre reconstrucción y validación, se añade el tiempo efectivo.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.230\textwidth-4.8pt\relax}L{\dimexpr0.150\textwidth-4.8pt\relax}L{\dimexpr0.170\textwidth-4.8pt\relax}L{\dimexpr0.170\textwidth-4.8pt\relax}L{\dimexpr0.280\textwidth-4.8pt\relax}@{}}
+\caption{Restauración integrada y límites}\label{tab:a54_integrada} \\
+\hline
+\EncabezadoTabla{Escenario} & \EncabezadoTabla{Transferir GB} & \EncabezadoTabla{Restaurar S GB} & \EncabezadoTabla{Minutos} & \EncabezadoTabla{Evaluación} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Escenario} & \EncabezadoTabla{Transferir GB} & \EncabezadoTabla{Restaurar S GB} & \EncabezadoTabla{Minutos} & \EncabezadoTabla{Evaluación} \\ \hline
+\endhead
+\hline\endfoot
+Inicial & 60 & 10 & 233,33 & 3 h 53 min 20 s; hipótesis \\ \hline
+Sensibilidad inicial & 120 & 20 & 401,67 & 6 h 41 min 40 s; excede 4 h \\ \hline
+Año tres dominios & 945 & 295 & 2.830,83 & ≈47 h11 min; excede 4 h \\ \hline
+Año tres+archivo & 1.048 & 295 & 3.105,50 & 3.105,50 min antes de reconstrucción adicional \\ \hline
+\end{longtable}
+\endgroup
+
+La restauración verifica datos, índices, documentos, claves, permisos, bloqueos y reaplicación de eliminaciones o revocaciones antes de acceso. Se prueba por separado la conmutación sobre réplica regional preparada, con atraso, promoción, objetos, identidad y vistas, contra el objetivo de servicio crítico utilizable de cuatro horas. Los caudales de restauración desde cero del año tres requieren su propia solución y ensayo. La muestra mensual y la recuperación integrada previa a producción conservan evidencia por dominio.
+
+\subsection*{A5.4.11 Complementos de los ensayos de desempeño}
+
+Los escenarios y límites de aceptación de 5.4.3 se aplican con artefactos, esquema, permisos, infraestructura y población representativa protegida. La tabla siguiente conserva los IDs de protocolo y sus reservas o comprobaciones adicionales; el detalle de tasas se deriva en A5.4.1--A5.4.3.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.250\textwidth-4.0pt\relax}L{\dimexpr0.300\textwidth-4.0pt\relax}L{\dimexpr0.450\textwidth-4.0pt\relax}@{}}
+\caption{Reservas y evidencia complementaria de ensayo}\label{tab:a54_complementos_pruebas} \\
+\hline
+\EncabezadoTabla{Protocolo} & \EncabezadoTabla{Reserva / alcance} & \EncabezadoTabla{Evidencia adicional} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Protocolo} & \EncabezadoTabla{Reserva / alcance} & \EncabezadoTabla{Evidencia adicional} \\ \hline
+\endhead
+\hline\endfoot
+P-DES-01 Normal/crítico & 1 h normal y 4 h de guion crítico, propuestas & Interacción y persistencia; concentración del viernes, regresos y retiros adicionales \\ \hline
+P-DES-02 Carga 1,5× & 2 h propuestas & Analítica y notificaciones concurrentes; referencia de telemetría 37,5 eventos/s y ráfaga 150 \\ \hline
+P-DES-03 Estrés & Escalones hasta saturación y posterior reducción & Curva ofrecida/procesada, latencia, error y recuperación de colas \\ \hline
+P-DES-04 Crecimiento 3× & 2 h propuestas con datos acumulados del año tres & Histórico, retención y cifrado; crecimiento de sesiones y puntos sin sustituir el modelo \\ \hline
+P-DES-05 Ráfaga & Repeticiones con 760 muestras locales y lotes de 1.920 puntos & Secuencias, persistencia y recepción durable/aplicación/archivo por separado \\ \hline
+P-DES-06 Autonomía & 24 h recinto, 12 h terreno y 8 h boya completas & Permiso, batería, captura, consulta, coordinación escolar y nodo único \\ \hline
+P-DES-07 Reconexión & Ciclo completo del manifiesto obligatorio & Bytes efectivos, nuevos hechos, faltantes/extra, pérdida, duplicación y tiempo por fase \\ \hline
+P-DES-08 Recuperación & Por dominio, integrada y conmutación DR separadas & Dato, documento, claves, permisos, servicio y reaplicación de restricciones \\ \hline
+P-DES-09 Aviso/escuela & Flujos completos de aviso y participación/retiro & 296 destinatarios en tres canales; acuses y llamadas; autoridad escolar compartida \\ \hline
+\end{longtable}
+\endgroup
+
+
+Se miden P50/P95/P99, máximos y violaciones, rechazos, colas, bloqueos, CPU, memoria, E/S y antigüedad del dato. El generador de carga es independiente y los relojes conservan correlación e incertidumbre. Las fronteras operacionales incluyen interacción humana cuando corresponde; escuela y saldo mantienen tiempo real sin una tolerancia nueva. Una latencia favorable no compensa pérdida, doble asignación ni entrega indebida.
+
+El nodo único se prueba con carga crítica completa y 40 \% de cómputo libre. Reintentos, desorden, pérdida de acuse después de commit y reinicio comprueban efecto único. La aceptación se vincula con C07 RT-09.01/RT-05.29/RT-03.13, BT sección 9.1, A2.2 RNF-DES-01--12/RNF-CONT-04 y SD9/T-12 \parencites[RT-09.01, RT-05.29 y RT-03.13]{pucv-caso07}[sec.~9.1]{pucv-bases-transversales}[anexo A2.2]{synaptix-sd2-anexos}.
+
+\subsection*{A5.4.12 Monitoreo y control de la memoria}
+
+Las advertencias, máximos y acciones de 5.4.3 constituyen una sola política de actualización y escalamiento. El monitoreo correlaciona solicitud, evento, lote, archivo y efecto, y mide tanto respuesta como antigüedad y versión del dato. La vigencia no comprobable de escuela o saldo activa consulta de autoridad y contingencia.
+
+Se conserva advertencia de ocupación a 45 s antes del límite de 60 s; de consumo a 45 min antes del máximo horario; y de plan al vencer, con alerta dentro de 15 min. El consolidado ambiental es diario. Nube escala al superar 70 \% durante 5 min; el nodo local se corrige al superar 60 \% bajo carga crítica para conservar 40 \% libre; almacenamiento proyectado superior a 70 \% exige ampliación anticipada. Son umbrales propuestos de operación que no rebajan los límites de aceptación.
+
+Para aplicación e integración se propone capacidad adicional utilizable en 60 s desde el umbral; el ensayo incluye detección, provisión, servicio y colas. La expansión de tareas no resuelve por sí sola una restricción de escritura. Durante saturación se limitan históricos y exportaciones no urgentes, se conservan solicitudes aceptadas y se muestra espera o rechazo explícito, manteniendo validaciones críticas.
+
+Cada resultado registra entorno, versiones, población, mezcla, tasas, tiempos, errores, recursos, saturación, recuperación y decisiones. Se revisa capacidad trimestralmente y tras cambios materiales, repitiendo las pruebas afectadas. Las correspondencias siguientes se integran con los registros de estimación y el inventario físico.
+
+\begingroup
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\fontsize{9}{11}\selectfont
+\begin{longtable}{@{}L{\dimexpr0.220\textwidth-4.0pt\relax}L{\dimexpr0.410\textwidth-4.0pt\relax}L{\dimexpr0.370\textwidth-4.0pt\relax}@{}}
+\caption{Correspondencia de estimaciones y verificación}\label{tab:a54_trazabilidad} \\
+\hline
+\EncabezadoTabla{Referencia} & \EncabezadoTabla{Contenido de memoria} & \EncabezadoTabla{Acción/evidencia} \\ \hline
+\endfirsthead
+\hline
+\EncabezadoTabla{Referencia} & \EncabezadoTabla{Contenido de memoria} & \EncabezadoTabla{Acción/evidencia} \\ \hline
+\endhead
+\hline\endfoot
+EST-01/02/05/06 & Flujos, sesiones/ciclos y tasas en A5.4.1–2 & A2.7 y protocolo SD9; convertir hipótesis en medición \\ \hline
+EST-07/08/09 & Actuaciones, telemetría y objetos en A5.4.3–5 & A2.7; inventario físico/tamaños y retención \\ \hline
+EST-10 & 10+50 GB provisionales y perfiladoA5.3 & No recuento del legado; reemplazar por manifiesto \\ \hline
+EST-14/15 & Cola, enlace y convergencia A5.4.8 & SD4 resuelve brecha; ensayar enlace principal/respaldo y tráfico \\ \hline
+SD4/T-11 & Recursos/copias/medios A5.4.6–7 & Inventario independiente y versión vigente pendiente \\ \hline
+SD9/T-12 & 1,5×,3×,crítico,nodo único,reconexión/recuperación & Resultados por protocolo; formulario separado de estos anexos \\ \hline
+\end{longtable}
+\endgroup

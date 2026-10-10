@@ -1,92 +1,35 @@
 \documentclass[11pt,letterpaper]{report}
 \input{config/metadatos.tex}
+\renewcommand{\VersionDocumento}{0.3}
 \usepackage{estilo/propuesta-tecnica}
 \input{componentes/portada.tex}
 \input{componentes/cierre.tex}
+\addbibresource{config/referencias_t14.bib}
 \graphicspath{{figuras/}}
+
 \newcommand{\EnFormularioTCatorce}{}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+\setcounter{tocdepth}{2}
+
+\newcommand{\Control}[1]{%
+  \begin{tcolorbox}[enhanced,breakable,colback=SynSurface,colframe=SynLine,
+    boxrule=0.7pt,arc=1.5mm]
+    #1
+  \end{tcolorbox}%
+}
 
 \begin{document}
 \pagenumbering{arabic}
 \PortadaFormulario{T-14}{Plan de trabajo, EDT y carta Gantt}
+\begingroup
+\setlength{\cftbeforechapskip}{8pt}
+\setlength{\cftbeforesecskip}{4pt}
+\setlength{\cftbeforesubsecskip}{0pt}
 \tableofcontents
+\endgroup
 \clearpage
-\setcounter{chapter}{6}
-\chapter{Plan de trabajo, EDT y carta Gantt}
-Synaptix presenta la estructura de entregables y el diccionario de trabajo asociado al Subdocumento 7. Los códigos de cuentas identifican los mismos componentes en este formulario, en el capítulo y en los registros de esfuerzo. La planificación cubre el contrato de 56 meses y conserva las ventanas de marcha blanca, los pasos a producción y el inicio de operación del artículo 17 \parencite[art.~17, pp.~12--13; Formulario~T-14]{bases-admin}.
-
-\section{Estructura de entregables y trazabilidad}
-La EDT organiza los resultados del contrato por entregables. El inventario distingue componentes superiores y paquetes de ejecución; el diccionario desarrolla cada resultado y presenta mediante familias los lotes y servicios repetidos, con sus instancias identificadas en los registros técnicos.
-\input{componentes/edt_inicial.tex}
-\section{Plataforma, seguridad y servicios comunes}
-Las cuentas 1.2, 1.3 y 1.7 reúnen la habilitación de plataforma, los controles de seguridad y los servicios compartidos. Las fichas siguientes identifican sus resultados y condiciones de recepción, conservando el inventario de equipos en T-11.
-\input{componentes/plataforma_control.tex}
-\input{componentes/diccionario_plataforma.tex}
-
-\section{Núcleos funcionales}
-Las cuentas 1.4--1.6 desarrollan las capacidades operacionales, de servicios y administrativas. Cada componente distingue especificación, construcción y vistas de tarea, con fronteras y aceptación propias.
-\input{componentes/nucleos_control.tex}
-\input{componentes/diccionario_nucleos.tex}
-\input{componentes/diccionario_conciliacion_ucp.tex}
-
-\section{Diccionario y ensayos de migración}
-La cuenta 1.8 comprende diagnóstico, transformación, saneamiento, carga y archivo histórico. Los ensayos integrales se registran en 1.10.1 para comprobar la migración sin duplicar su esfuerzo de construcción.
-\input{componentes/migracion_trazabilidad.tex}
-\input{componentes/diccionario_diagnostico.tex}
-\input{componentes/diccionario_ingenieria_migracion.tex}
-\input{componentes/ensayos_implantacion.tex}
-
-\section{Descomposición y control de las innovaciones}
-Las cinco innovaciones conservan su correspondencia con SD13. Sus fichas distinguen resultados incrementales, pilotos y seguimiento, con responsabilidades y aceptación específicas.
-La Figura~\ref{fig:sd7-edt-innovaciones} identifica los cinco entregables incrementales de la cuenta 1.9.
-\input{figuras/edt_innovaciones.tex}
-Cada rama mantiene el nombre de SD13 y su correspondencia con los paquetes propios; las líneas indican pertenencia, sin duplicar los esfuerzos de componentes comunes.
-
-\input{componentes/innovaciones_control.tex}
-\input{componentes/diccionario_innovaciones.tex}
-
-\section{Gobierno, formación, operación y salida}
-Estas cuentas reúnen dirección, verificación integral, formación, servicio y transferencia. Las fichas comunes definen las obligaciones y las instancias periódicas conservan su programación individual.
-\input{componentes/gobierno_servicio_control.tex}
-\input{componentes/diccionario_gobierno_servicio.tex}
-
-\section{Marco contractual de programación}
-La Tabla~\ref{tab:t14-hitos} fija los intervalos obligatorios para desarrollar la red de actividades y la carta Gantt. Estos intervalos son restricciones contractuales; sus duraciones no provienen de una estimación de paquetes ni constituyen por sí solas un cálculo de ruta crítica.
-
-\begin{table}[htbp]
-\centering
-\begin{tabularx}{\linewidth}{L{23mm}Y}
-\hline
- \EncabezadoTabla{Meses} & \EncabezadoTabla{Fase o hito contractual}\\\hline
-1--12 & Desarrollo de Etapa 1 y certificación de su alcance.\\\hline
-13--15 & Marcha blanca de Etapa 1 en convivencia con la operación vigente.\\\hline
-16 & Paso a producción de Etapa 1.\\\hline
-13--18 & Desarrollo de Etapa 2, sin degradar Etapa 1.\\\hline
-19--20 & Marcha blanca de Etapa 2 con Etapa 1 en producción.\\\hline
-21 & Paso a producción de Etapa 2 y aceptación final de implementación.\\\hline
-21--56 & Operación de ambos alcances durante 36 meses.\\\hline
-\end{tabularx}
-\caption{Restricciones contractuales de programación}
-\label{tab:t14-hitos}
-\FuenteTabla{Bases Administrativas, artículo 17.1.}
-\end{table}
-
-La ejecución de las actividades se contrastará con la asignación por recurso y quincena del T-15. Sus puestos de refuerzo permiten dimensionar capacidad; el reparto de HH entre ejecutores exige comprobar precedencias, duración, coordinación y calendario antes de incorporarlo a la línea base.
-
-\input{componentes/metodo_planificacion.tex}
-\input{componentes/estimacion_funcional.tex}
-\input{componentes/resumen_integral.tex}
-\input{componentes/mentoria_tecnica.tex}
-Las cantidades, cohortes, turnos, capacidades y asignaciones se desarrollan en el Formulario T-15. Las familias de este diccionario conservan sus cantidades y esfuerzo; la estrategia de despliegue y reversión se desarrolla en el Formulario T-18.
-\input{componentes/diccionario_complementario.tex}
-\input{componentes/trazabilidad_integral.tex}
-\input{componentes/red_global.tex}
-\input{componentes/pert_nivelado.tex}
-\input{componentes/fundamento_pert_reservas.tex}
-\input{componentes/recepcion_continua.tex}
-\input{componentes/recepcion_e2_contraste.tex}
-\input{componentes/calendario_integrado.tex}
-\input{componentes/programacion_economica.tex}
-
+\input{cuerpoT14.tex}
 \CierreSubdocumento
 \end{document}

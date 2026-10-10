@@ -1,0 +1,186 @@
+\subsection{Modelos conceptual, lógico y físico por dominio}
+El modelo conceptual representa identidades, actos y responsabilidades mediante la Figura~\ref{fig:entidades_responsabilidades}. Las vistas de 5.1.2 constituyen el modelo lógico: entidades, cardinalidades, vínculos y reglas de transición. Los doce códigos de 5.1.1 delimitan sus propietarios; una vista agrupada no constituye otro dominio. El modelo físico traduce cada entidad a la relación PostgreSQL identificada por su ID en A5.1.14, con los tipos y restricciones de A5.1. Las figuras siguientes recorren un vínculo principal por dominio; los atributos y relaciones complementarias se consultan en el diccionario completo del archivo \texttt{SYNAPTIX-Subdocumento5-Anexos.pdf}.
+
+En las figuras, PK designa clave primaria, FK una referencia interna y ref una referencia validada por contrato. Cada caja muestra el tipo de la clave y la relación principal; la regla común conserva versión, origen y auditoría. La flecha indica el vínculo lógico 1:N, cuya obligatoriedad y excepciones se definen por atributo en el diccionario. Para facilitar la lectura, el nombre funcional aparece sobre el ID estable; el esquema y tabla completos se consultan en A5.1.14.
+
+La Figura~\ref{fig:sd5_fisico_nav} muestra la relación física principal de NAV.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont, entidad/.style={draw=SynNavy,fill=SynSurface,align=left,text width=5.0cm,inner sep=7pt}, enlace/.style={-{Latex},draw=SynNavy}]
+\node[entidad] (a) {\textbf{Plan de navegación}\\D-OM-05 / NAV\\PK: id (uuid)\\version (bigint)};
+\node[entidad,right=1.1cm of a] (b) {\textbf{Versión de plan}\\D-OM-06 / NAV\\PK: id (uuid)\\plan\_id (uuid, FK)};
+\draw[enlace] (a) -- node[above]{1:N} (b);
+\end{tikzpicture}
+\caption{Modelo físico de NAV — Plan y versiones}\label{fig:sd5_fisico_nav}
+\FuenteFigura{Elaboración propia de Synaptix; entidades y tipos del diccionario A5.1.}
+\end{figure}
+
+La versión pertenece a un plan; la confirmación de regreso se conserva separada de su declaración.
+
+La Figura~\ref{fig:sd5_fisico_ama} muestra la relación física principal de AMA.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont, entidad/.style={draw=SynNavy,fill=SynSurface,align=left,text width=5.0cm,inner sep=7pt}, enlace/.style={-{Latex},draw=SynNavy}]
+\node[entidad] (a) {\textbf{Amarra}\\D-INF-03 / AMA\\PK: id (uuid)\\version (bigint)};
+\node[entidad,right=1.1cm of a] (b) {\textbf{Asignación}\\D-CC-10 / AMA\\PK: id (uuid)\\amarra\_id (uuid, FK)};
+\draw[enlace] (a) -- node[above]{1:N} (b);
+\end{tikzpicture}
+\caption{Modelo físico de AMA — Amarra y asignación}\label{fig:sd5_fisico_ama}
+\FuenteFigura{Elaboración propia de Synaptix; entidades y tipos del diccionario A5.1.}
+\end{figure}
+
+El recurso referencia su activo común; el control de intervalo impide asignaciones incompatibles bajo una autoridad única.
+
+La Figura~\ref{fig:sd5_fisico_esc} muestra la relación física principal de ESC.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont, entidad/.style={draw=SynNavy,fill=SynSurface,align=left,text width=5.0cm,inner sep=7pt}, enlace/.style={-{Latex},draw=SynNavy}]
+\node[entidad] (a) {\textbf{Participación}\\D-EN-03 / ESC\\PK: id (uuid)\\version (bigint)};
+\node[entidad,right=1.1cm of a] (b) {\textbf{Confirmación de entrega}\\D-EN-09 / ESC\\PK: id (uuid)\\participacion\_id (uuid, FK)};
+\draw[enlace] (a) -- node[above]{1:N} (b);
+\end{tikzpicture}
+\caption{Modelo físico de ESC — Participación y entrega}\label{fig:sd5_fisico_esc}
+\FuenteFigura{Elaboración propia de Synaptix; entidades y tipos del diccionario A5.1.}
+\end{figure}
+
+La entrega se vincula a la misma participación de la escuela; la unicidad y la transición autorizada impiden retiradas duplicadas.
+
+La Figura~\ref{fig:sd5_fisico_con} muestra la relación física principal de CON.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont, entidad/.style={draw=SynNavy,fill=SynSurface,align=left,text width=5.0cm,inner sep=7pt}, enlace/.style={-{Latex},draw=SynNavy}]
+\node[entidad] (a) {\textbf{Despacho}\\D-CO-01 / CON\\PK: id (uuid)\\version (bigint)};
+\node[entidad,right=1.1cm of a] (b) {\textbf{Tramo de medición}\\D-CO-02 / CON\\PK: id (uuid)\\despacho\_id (uuid, FK)};
+\draw[enlace] (a) -- node[above]{1:N} (b);
+\end{tikzpicture}
+\caption{Modelo físico de CON — Despacho y medición}\label{fig:sd5_fisico_con}
+\FuenteFigura{Elaboración propia de Synaptix; entidades y tipos del diccionario A5.1.}
+\end{figure}
+
+Los tramos y originales permiten contrastar litros y evidencia; un reintento conserva el despacho y su efecto único.
+
+La Figura~\ref{fig:sd5_fisico_boy} muestra la relación física principal de BOY.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont, entidad/.style={draw=SynNavy,fill=SynSurface,align=left,text width=5.0cm,inner sep=7pt}, enlace/.style={-{Latex},draw=SynNavy}]
+\node[entidad] (a) {\textbf{Tren de fondeo}\\D-INF-06 / BOY\\PK: id (uuid)\\version (bigint)};
+\node[entidad,right=1.1cm of a] (b) {\textbf{Instalación de componente}\\D-INF-08 / BOY\\PK: id (uuid)\\tren\_id (uuid, FK)};
+\draw[enlace] (a) -- node[above]{1:N} (b);
+\end{tikzpicture}
+\caption{Modelo físico de BOY — Fondeo e instalación}\label{fig:sd5_fisico_boy}
+\FuenteFigura{Elaboración propia de Synaptix; entidades y tipos del diccionario A5.1.}
+\end{figure}
+
+Las instalaciones conservan componentes e intervalos; el retiro definitivo determina el inicio del plazo adicional de archivo.
+
+La Figura~\ref{fig:sd5_fisico_var} muestra la relación física principal de VAR.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont, entidad/.style={draw=SynNavy,fill=SynSurface,align=left,text width=5.0cm,inner sep=7pt}, enlace/.style={-{Latex},draw=SynNavy}]
+\node[entidad] (a) {\textbf{Plan de izaje}\\D-VC-03 / VAR\\PK: id (uuid)\\version (bigint)};
+\node[entidad,right=1.1cm of a] (b) {\textbf{Versión de plan}\\D-VC-04 / VAR\\PK: id (uuid)\\plan\_id (uuid, FK)};
+\draw[enlace] (a) -- node[above]{1:N} (b);
+\end{tikzpicture}
+\caption{Modelo físico de VAR — Plan de izaje y versiones}\label{fig:sd5_fisico_var}
+\FuenteFigura{Elaboración propia de Synaptix; entidades y tipos del diccionario A5.1.}
+\end{figure}
+
+La maniobra referencia la versión aprobada que se utilizó; una revisión posterior conserva la evidencia de la ejecución anterior.
+
+La Figura~\ref{fig:sd5_fisico_ctr} muestra la relación física principal de CTR.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont, entidad/.style={draw=SynNavy,fill=SynSurface,align=left,text width=5.0cm,inner sep=7pt}, enlace/.style={-{Latex},draw=SynNavy}]
+\node[entidad] (a) {\textbf{Acreditación}\\D-VC-08 / CTR\\PK: id (uuid)\\version (bigint)};
+\node[entidad,right=1.1cm of a] (b) {\textbf{Habilitación de trabajador}\\D-VC-10 / CTR\\PK: id (uuid)\\acreditacion\_id (uuid, FK)};
+\draw[enlace] (a) -- node[above]{1:N} (b);
+\end{tikzpicture}
+\caption{Modelo físico de CTR — Acreditación y habilitación}\label{fig:sd5_fisico_ctr}
+\FuenteFigura{Elaboración propia de Synaptix; entidades y tipos del diccionario A5.1.}
+\end{figure}
+
+La habilitación sólo vale dentro de su facultad y vigencia; la ejecución de faena sigue siendo responsabilidad de VAR.
+
+La Figura~\ref{fig:sd5_fisico_amb} muestra la relación física principal de AMB.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont, entidad/.style={draw=SynNavy,fill=SynSurface,align=left,text width=5.0cm,inner sep=7pt}, enlace/.style={-{Latex},draw=SynNavy}]
+\node[entidad] (a) {\textbf{Entrega a gestor}\\D-AC-08 / AMB\\PK: id (uuid)\\version (bigint)};
+\node[entidad,right=1.1cm of a] (b) {\textbf{Detalle de entrega}\\D-AC-09 / AMB\\PK: id (uuid)\\entrega\_id (uuid, FK)};
+\draw[enlace] (a) -- node[above]{1:N} (b);
+\end{tikzpicture}
+\caption{Modelo físico de AMB — Entrega y detalle ambiental}\label{fig:sd5_fisico_amb}
+\FuenteFigura{Elaboración propia de Synaptix; entidades y tipos del diccionario A5.1.}
+\end{figure}
+
+El detalle mantiene origen y vínculo con residuos; la entrega no elimina los comprobantes ni los certificados.
+
+La Figura~\ref{fig:sd5_fisico_fac} muestra la relación física principal de FAC.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont, entidad/.style={draw=SynNavy,fill=SynSurface,align=left,text width=5.0cm,inner sep=7pt}, enlace/.style={-{Latex},draw=SynNavy}]
+\node[entidad] (a) {\textbf{Hecho facturable}\\D-FC-01 / FAC\\PK: id (uuid)\\version (bigint)};
+\node[entidad,right=1.1cm of a] (b) {\textbf{Detalle de hecho}\\D-FC-02 / FAC\\PK: id (uuid)\\hecho\_id (uuid, FK)};
+\draw[enlace] (a) -- node[above]{1:N} (b);
+\end{tikzpicture}
+\caption{Modelo físico de FAC — Hecho facturable y detalle}\label{fig:sd5_fisico_fac}
+\FuenteFigura{Elaboración propia de Synaptix; entidades y tipos del diccionario A5.1.}
+\end{figure}
+
+El detalle identifica la prestación; documento tributario, pago y saldo mantienen su autoridad en contabilidad externa.
+
+La Figura~\ref{fig:sd5_fisico_adm} muestra la relación física principal de ADM.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont, entidad/.style={draw=SynNavy,fill=SynSurface,align=left,text width=5.0cm,inner sep=7pt}, enlace/.style={-{Latex},draw=SynNavy}]
+\node[entidad] (a) {\textbf{Contrato}\\D-CC-08 / ADM\\PK: id (uuid)\\version (bigint)};
+\node[entidad,right=1.1cm of a] (b) {\textbf{Versión de contrato}\\D-CC-09 / ADM\\PK: id (uuid)\\contrato\_id (uuid, FK)};
+\draw[enlace] (a) -- node[above]{1:N} (b);
+\end{tikzpicture}
+\caption{Modelo físico de ADM — Contrato y versiones}\label{fig:sd5_fisico_adm}
+\FuenteFigura{Elaboración propia de Synaptix; entidades y tipos del diccionario A5.1.}
+\end{figure}
+
+Las versiones preservan partes, vigencia y firma; una ocupación física no modifica por sí sola el contrato.
+
+La Figura~\ref{fig:sd5_fisico_aut} muestra la relación física principal de AUT.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont, entidad/.style={draw=SynNavy,fill=SynSurface,align=left,text width=5.0cm,inner sep=7pt}, enlace/.style={-{Latex},draw=SynNavy}]
+\node[entidad] (a) {\textbf{Consentimiento}\\D-AS-05 / AUT\\PK: id (uuid)\\version (bigint)};
+\node[entidad,right=1.1cm of a] (b) {\textbf{Evento de consentimiento}\\D-AS-06 / AUT\\PK: id (uuid)\\consentimiento\_id (uuid, FK)};
+\draw[enlace] (a) -- node[above]{1:N} (b);
+\end{tikzpicture}
+\caption{Modelo físico de AUT — Consentimiento y eventos}\label{fig:sd5_fisico_aut}
+\FuenteFigura{Elaboración propia de Synaptix; entidades y tipos del diccionario A5.1.}
+\end{figure}
+
+La historia conserva finalidad y revocación; la facultad laboral vigente y el permiso local se comprueban además para cada acceso.
+
+La Figura~\ref{fig:sd5_fisico_ale} muestra la relación física principal de ALE.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont, entidad/.style={draw=SynNavy,fill=SynSurface,align=left,text width=5.0cm,inner sep=7pt}, enlace/.style={-{Latex},draw=SynNavy}]
+\node[entidad] (a) {\textbf{Aviso}\\D-NOT-01 / ALE\\PK: id (uuid)\\version (bigint)};
+\node[entidad,right=1.1cm of a] (b) {\textbf{Destinatario de aviso}\\D-NOT-02 / ALE\\PK: id (uuid)\\aviso\_id (uuid, FK)};
+\draw[enlace] (a) -- node[above]{1:N} (b);
+\end{tikzpicture}
+\caption{Modelo físico de ALE — Aviso y destinatarios}\label{fig:sd5_fisico_ale}
+\FuenteFigura{Elaboración propia de Synaptix; entidades y tipos del diccionario A5.1.}
+\end{figure}
+
+Los destinatarios conservan contacto utilizado, intentos y acuses; el silencio no equivale a entrega confirmada.
+
+La separación por propietario permite aplicar permisos, validaciones y conservación sin duplicar maestros. Cada relación anterior tiene una ubicación física definida en A5.1.14; las referencias a Persona, Embarcación y Activo de otros dominios se verifican por contrato. Esta traducción fija el diseño de persistencia de la propuesta, cuya implementación y ensayos se ejecutarán conforme a SD7 y SD9.

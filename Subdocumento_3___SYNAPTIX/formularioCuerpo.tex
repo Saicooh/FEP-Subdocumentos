@@ -28,7 +28,7 @@ RT & 374 & 344 & 30 \\ \hline
 Total & 576 & 546 & 30 \\ \hline
 \end{longtable}
 
-Los 576 identificadores permiten auditar la trazabilidad de estos requerimientos. De los treinta RT declarados No, veintinueve corresponden a alcances BT de carácter Deseable sin obligación C07 bajo el mismo código; RT-02.10 conserva una brecha obligatoria de valorización económica. RT-03.24, RT-05.10 y RT-16.14 conservan el compromiso obligatorio C07 y distinguen el tratamiento del alcance Deseable BT. Los 546 Sí son declaraciones de alcance; el conteo no acredita que todas sus cláusulas estén completamente desarrolladas.
+Los 576 identificadores permiten auditar la trazabilidad de estos requerimientos. La matriz contiene 546 declaraciones Sí y 30 declaraciones No. Estas últimas corresponden a requisitos RT clasificados como Deseables en las Bases Técnicas Transversales según las filas del formulario. RT-03.24, RT-05.10 y RT-16.14 conservan el compromiso obligatorio C07 y distinguen el tratamiento del alcance Deseable BT. 
 
 Las cinco columnas conservan el formato T-12. La descripción conserva el enunciado original y, cuando corresponde, el complemento obligatorio C07 bajo el mismo ID. La columna de componente identifica la solución ofrecida; la última columna localiza su desarrollo mediante referencias breves e identifica el entregable, prueba, informe o certificado previsto para verificarlo. Los cálculos y las explicaciones se desarrollan en los subdocumentos citados. Los folios de esas remisiones se cotejan con la versión compilada antes de emisión.
 
@@ -2109,7 +2109,7 @@ SD4, sec. 4.2 \newline\textit{Evidencia prevista:} Pruebas de red y sincronizaci
 RT-\allowbreak{}03.\allowbreak{}24 &
 El PROPONENTE declarará la calidad de servicio y la priorización de tráfico aplicada a las transacciones operacionales críticas frente al tráfico administrativo.\newline\textit{BT; Deseable.}\newline\textbf{Alcance obligatorio C07, cap.~15:} Exigible el despliegue de cobertura de datos en los cinco pantalanes y en el varadero, con verificación en estructura flotante, con marea en su rango completo y con el cableado sometido a flexión. Exigible la segregación efectiva de la red de socios, la red administrativa, la red de las cámaras y la red operacional, hoy inexistente: el recinto opera con un único segmento. Exigible la contratación y verificación de un respaldo del enlace principal, hoy inexistente. &
 Sí &
-No aplica / Descartado: Red de área local del recinto opera con switches administrados estándar sin modelado complejo de QoS por clases &
+No aplica / Descartado BT: Red de área local del recinto opera con switches administrados estándar sin modelado complejo de QoS por clases lo que cumple el C07 &
 SD4, sec. 4.2; SD3, sec. 3.2.2 \newline\textit{Evidencia prevista:} Pruebas de red y sincronización. \\ \hline
 
 \end{longtable}
@@ -2321,7 +2321,7 @@ SD5, sec. 5.1 \newline\textit{Evidencia prevista:} Pruebas de datos. \\ \hline
 RT-\allowbreak{}05.\allowbreak{}10 &
 Se valorará la implementación de un catálogo de datos con linaje automatizado, que permita rastrear el origen de cada indicador de negocio hasta su fuente.\newline\textit{BT; Deseable.}\newline\textbf{Alcance obligatorio C07, cap.~15:} Registros de la escuela de vela relativos a menores, incluidas autorizaciones y fichas de salud: hasta que el alumno cumpla 18 años y 5 años más, con un mínimo de 10 años. Registros de salida y regreso de embarcaciones y antecedentes de zarpe: 5 años. Contratos de amarra, custodia y estado de cuenta: 6 años. Trazabilidad de residuos peligrosos y actas de derrame: 6 años. Series de consumo por amarra: 5 años, por exigencia del esquema de certificación. Registros de inspección de trenes de fondeo: vida útil del elemento y 5 años más. Registros de despacho de combustible: 5 años. Videovigilancia: 6 meses. &
 Sí &
-No aplica / Descartado: Catálogo de datos manual y diccionario centralizado en PostgreSQL; linaje dinámico automatizado excede escala del caso &
+No aplica / Descartado BT: Catálogo de datos manual y diccionario centralizado en PostgreSQL; linaje dinámico automatizado excede escala del caso 07 &
 SD3, sec. 3.2.2; SD5, sec. 5.1 \newline\textit{Evidencia prevista:} Pruebas de datos; certificados exigidos. \\ \hline
 
 RT-\allowbreak{}05.\allowbreak{}11 &
@@ -2441,8 +2441,8 @@ SD5, sec. 5.2.3, pp. 56--57; SD5, secs. 5.2.2 y 5.4 \newline\textit{Evidencia pr
 RT-\allowbreak{}05.\allowbreak{}30 &
 Se valorará la incorporación de analítica predictiva pertinente al proceso del caso, con el modelo, sus variables, su métrica de desempeño y su plan de reentrenamiento documentados.\newline\textit{BT; Deseable.} &
 No &
-No aplica / Descartado: Analítica predictiva se centraliza en modelos del Módulo de Innovación sin plataforma MLOps dedicada separada &
-SD3, sec. 3.2.2; SD13, sec. 13.1 \\ \hline
+No se incorpora analítica predictiva. IN-03 realiza extracción documental asistida y revisión humana; las restantes innovaciones utilizan seguimiento, reglas deterministas y comparación de resultados &
+SD3, sec. 3.1; SD13, sec. 13.3; T-19, innovación 3 \\ \hline
 
 \end{longtable}
 
@@ -3841,7 +3841,7 @@ SD4, sec. 4.1 \newline\textit{Evidencia prevista:} Pruebas funcionales y documen
 RT-\allowbreak{}16.\allowbreak{}14 &
 El motor de reglas permitirá definir condiciones de negocio evaluables sin recompilación, con trazabilidad de qué regla se aplicó a cada transacción.\newline\textit{BT; Deseable.}\newline\textbf{Alcance obligatorio C07, cap.~15:} Exigible en el contrato de amarra y sus renovaciones, en la autorización del apoderado para que un menor navegue, en la conformidad de recepción y entrega de una embarcación en custodia, en las actas de maniobra de izaje y en la entrega de residuos peligrosos al gestor autorizado, en la modalidad que la normativa admita para cada caso. &
 Sí &
-No aplica / Descartado: Reglas de negocio gobernadas por motor paramétrico del Módulo ADM; no requiere motor Drools/DMN desacoplado externo &
+No aplica / Descartado BT: Reglas de negocio gobernadas por motor paramétrico del Módulo ADM; no requiere motor Drools/DMN desacoplado externo por lo que cumple el C07 &
 SD3, sec. 3.2.2; SD4, sec. 4.1 \newline\textit{Evidencia prevista:} Pruebas funcionales y documentales. \\ \hline
 
 RT-\allowbreak{}16.\allowbreak{}15 &
@@ -4083,56 +4083,57 @@ La Tabla~\ref{tab:t12-bt-cap-18} individualiza los requisitos técnicos de este 
 RT-\allowbreak{}18.\allowbreak{}01 &
 El PROPONENTE declarará cada componente de inteligencia artificial: propósito, modelo o servicio empleado, proveedor, versión y ubicación de procesamiento de los datos.\newline\textit{BT; Obligatorio.} &
 Sí &
-Motor Predictivo y Detección de Discrepancias &
-SD4, sec. 4.1.2; SD13, sec. 13.1 \newline\textit{Evidencia prevista:} Validación de IA y automatización. \\ \hline
+IN-03: Lectura inteligente de documentos para el ingreso asistido de antecedentes, mediante Amazon Textract, provisto por Amazon Web Services (AWS). Extrae campos de pólizas y los presenta para revisión, corrección y aprobación humana antes de incorporarlos al expediente &
+SD13, sec. 13.3; SD4, secs. 4.1.1 y 4.2
+\newline\textit{Evidencia prevista:} Identificación del servicio, proveedor, versión y ubicación de procesamiento; documento original, campos extraídos, correcciones y registro de aprobación humana. \\ \hline
 
 RT-\allowbreak{}18.\allowbreak{}02 &
 Se garantizará contractualmente que los datos del CLIENTE no serán utilizados para entrenar modelos de terceros, salvo autorización expresa y escrita.\newline\textit{BT; Obligatorio.} &
 Sí &
-Motor Predictivo y Detección de Discrepancias &
-SD4, sec. 4.1.2; SD13, sec. 13.1 \newline\textit{Evidencia prevista:} Validación de IA y automatización. \\ \hline
+IN-03: condiciones contractuales que impiden el uso de datos del cliente para entrenamiento de terceros sin autorización expresa y escrita &
+SD13, sec. 13.3; control IN3-C03 \newline\textit{Evidencia prevista:} Condiciones del proveedor y verificación de los controles contractuales y de configuración aplicados al tratamiento de datos. \\ \hline
 
 RT-\allowbreak{}18.\allowbreak{}03 &
 Se documentarán los límites de uso, los casos en que el resultado requiere validación humana previa y el procedimiento de supervisión.\newline\textit{BT; Obligatorio.} &
 Sí &
-Motor Predictivo y Detección de Discrepancias &
-SD4, sec. 4.1.2; SD13, sec. 13.1 \newline\textit{Evidencia prevista:} Validación de IA y automatización. \\ \hline
+IN-03: propuesta de campos extraídos con revisión y aprobación humana antes de su incorporación &
+SD13, sec. 13.3; control IN3-C01 \newline\textit{Evidencia prevista:} Prueba de rechazo de escrituras sin aprobación y registro de la persona revisora. \\ \hline
 
 RT-\allowbreak{}18.\allowbreak{}04 &
 Los riesgos de sesgo, alucinación, fuga de información y uso indebido se evaluarán y mitigarán conforme al NIST AI Risk Management Framework 1.0 y a la norma ISO/IEC 42001.\newline\textit{BT; Obligatorio.} &
 Sí &
-Motor Predictivo y Detección de Discrepancias &
-SD4, sec. 4.1.2; SD13, sec. 13.1 \newline\textit{Evidencia prevista:} Validación de IA y automatización. \\ \hline
+IN-03: evaluación de riesgos de extracción incorrecta, fuga de información y uso indebido, con revisión humana y controles de acceso &
+SD13, sec. 13.3 \newline\textit{Evidencia prevista:} Evaluación conforme a NIST AI RMF e ISO/IEC 42001, controles definidos y pruebas de sus mitigaciones. \\ \hline
 
 RT-\allowbreak{}18.\allowbreak{}05 &
 Toda interacción relevante con un componente de inteligencia artificial quedará registrada para efectos de auditoría y trazabilidad, incluyendo la entrada, la salida y la decisión humana posterior.\newline\textit{BT; Obligatorio.} &
 Sí &
-Motor Predictivo y Detección de Discrepancias &
-SD4, sec. 4.1.2; SD13, sec. 13.1 \newline\textit{Evidencia prevista:} Validación de IA y automatización. \\ \hline
+IN-03: trazabilidad del documento original, extracción, correcciones y aprobación humana &
+SD13, sec. 13.3; control IN3-C02 \newline\textit{Evidencia prevista:} Reconstrucción de un registro aprobado desde el documento original y la bitácora de actuaciones. \\ \hline
 
 RT-\allowbreak{}18.\allowbreak{}06 &
 El componente podrá desactivarse sin comprometer la operación del resto de la solución, y existirá un procedimiento manual de respaldo para la función que automatiza.\newline\textit{BT; Obligatorio.} &
 Sí &
-Motor Predictivo y Detección de Discrepancias &
-SD4, sec. 4.1.2; SD13, sec. 13.1 \newline\textit{Evidencia prevista:} Validación de IA y automatización. \\ \hline
+IN-03: desactivación del extractor y continuidad del ingreso manual de antecedentes &
+SD13, sec. 13.3; control IN3-C05 \newline\textit{Evidencia prevista:} Prueba de indisponibilidad y tratamiento de resultados tardíos sin sobrescribir datos aprobados. \\ \hline
 
 RT-\allowbreak{}18.\allowbreak{}07 &
 Cuando el resultado se presente a una persona usuaria, se indicará expresamente que fue generado o sugerido de forma automática, y su nivel de confianza cuando el modelo lo provea.\newline\textit{BT; Obligatorio.} &
 Sí &
-Motor Predictivo y Detección de Discrepancias &
-SD4, sec. 4.1.2; SD13, sec. 13.1 \newline\textit{Evidencia prevista:} Validación de IA y automatización. \\ \hline
+IN-03: identificación explícita de los campos sugeridos automáticamente y de su confianza cuando el servicio la proporcione &
+SD13, sec. 13.3; interfaz IN3-IF02 \newline\textit{Evidencia prevista:} Vista del documento original, valores sugeridos y confianza disponible, diferenciados de los valores aprobados. \\ \hline
 
 RT-\allowbreak{}18.\allowbreak{}08 &
 Los modelos predictivos declararán sus variables de entrada, su métrica de desempeño, su línea base y su plan de reentrenamiento y de detección de deriva.\newline\textit{BT; Obligatorio.} &
 Sí &
-Motor Predictivo y Detección de Discrepancias &
-SD4, sec. 4.1.2; SD13, sec. 13.1 \newline\textit{Evidencia prevista:} Validación de IA y automatización. \\ \hline
+Control de aplicabilidad: la solución no incorpora modelos predictivos de negocio. IN-03 utiliza extracción documental administrada, evaluada por campo y formato, sin entrenamiento ni reentrenamiento propios &
+SD13, sec. 13.3; control IN3-C04 \newline\textit{Evidencia prevista:} Inventario que delimite el extractor y su configuración, evaluación documental y pruebas de regresión. \\ \hline
 
 RT-\allowbreak{}18.\allowbreak{}09 &
 La responsabilidad por los resultados de los componentes de inteligencia artificial recae íntegramente en el ADJUDICATARIO, conforme al Artículo 86° de las Bases Administrativas.\newline\textit{BT; Obligatorio.} &
 Sí &
-Motor Predictivo y Detección de Discrepancias &
-SD4, sec. 4.1.2; SD13, sec. 13.1 \newline\textit{Evidencia prevista:} Validación de IA y automatización. \\ \hline
+IN-03: responsabilidad del adjudicatario por la integración, supervisión y resultados del componente de extracción documental &
+SD13, sec. 13.3; T-19, innovación 3 \newline\textit{Evidencia prevista:} Responsabilidades documentadas, procedimiento de incidentes y controles de aceptación del componente. \\ \hline
 
 RT-\allowbreak{}18.\allowbreak{}10 &
 Se valorará el uso de automatización robótica de procesos o de agentes para tareas repetitivas de back office, con el ahorro de horas cuantificado y reflejado en la Oferta Económica.\newline\textit{BT; Deseable.} &
@@ -4907,11 +4908,16 @@ SD13, sec. 13.1 a 13.5 \newline\textit{Evidencia prevista:} Expediente de innova
 RT-\allowbreak{}26.\allowbreak{}08 &
 Se valorará que al menos una innovación sea verificable durante la marcha blanca de la Etapa 1, es decir, que su beneficio pueda medirse antes del mes 16.\newline\textit{BT; Deseable.} &
 No &
-No aplica, La innovación 1 requiere la integración con varadero, contratistas
-y portales de la Etapa 2: su línea base se levanta en el mes 19,
-el piloto se ejecuta en el mes 20 y su despliegue operativo se
-programa para el mes 21. 28 &
-SD13, sec. 13.1; SD7, sec. 7.3 \newline\textit{Evidencia prevista:} Expediente de innovación \\ \hline
+Ninguna de las cinco innovaciones contempla la medición de
+su beneficio antes del mes 16. Sus pilotos y evaluaciones
+se programan posteriormente, conforme a las dependencias
+funcionales y ventanas de aplicación definidas en el
+Subdocumento 13. Las actividades previas de diseño,
+construcción y preparación no constituyen una comprobación
+del beneficio &
+SD13, secs. 13.1 a 13.5; SD7, sec. 7.3
+\newline\textit{Evidencia prevista:} Calendarios, dependencias y protocolos de evaluación de las cinco innovaciones.
+\\ \hline
 
 \end{longtable}
 

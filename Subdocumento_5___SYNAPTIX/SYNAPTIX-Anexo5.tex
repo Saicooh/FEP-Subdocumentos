@@ -1,0 +1,37 @@
+\documentclass[11pt,letterpaper]{report}
+\input{config/metadatos.tex}
+\usepackage{estilo/propuesta-tecnica}
+\input{componentes/portada.tex}
+\input{componentes/cierre.tex}
+\usepackage{amsmath}
+\setlength{\emergencystretch}{2em}
+\setcounter{tocdepth}{1}
+\setcounter{chapter}{5}
+\renewcommand{\thetable}{A5.\arabic{table}}
+\NewDocumentCommand{\IncluirAnexo}{m m m}{%
+  \clearpage\phantomsection\addcontentsline{toc}{chapter}{#1 #2}
+  \markboth{#1 #2}{#1 #2}
+  \begingroup
+  \let\SubseccionOriginal\subsection
+  \RenewDocumentCommand{\subsection}{s o m}{%
+    \IfBooleanTF{##1}{%
+      \SubseccionOriginal*{##3}\phantomsection\addcontentsline{toc}{section}{##3}%
+    }{\IfNoValueTF{##2}{\SubseccionOriginal{##3}}{\SubseccionOriginal[##2]{##3}}}%
+  }
+  \input{#3}
+  \endgroup
+}
+\begin{document}
+\PortadaPropuesta{5 — ANEXOS}{Modelo y gestión de datos}
+\pagenumbering{arabic}\setcounter{page}{1}
+\markboth{Índice general}{Índice general}\tableofcontents\clearpage
+\chapter*{Presentación}\addcontentsline{toc}{chapter}{Presentación}
+\markboth{Presentación}{Presentación}
+Este archivo reúne el diccionario y el detalle de gobierno, migración y capacidad que complementan el cuerpo del SD5.
+
+
+\IncluirAnexo{A5.1}{Diccionario de datos}{anexos/anexo5_1.tex}
+\IncluirAnexo{A5.2}{Gobierno y ciclo de vida de los datos}{anexos/anexo5_2.tex}
+\IncluirAnexo{A5.3}{Especificación y control de migración}{anexos/anexo5_3.tex}
+\IncluirAnexo{A5.4}{Memoria de capacidad y desempeño}{anexos/anexo5_4.tex}
+\end{document}
