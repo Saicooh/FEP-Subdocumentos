@@ -74,11 +74,11 @@ Las restricciones se cumplen desde el diseño. SD8 debe impedir que un tratamien
 
 Las fuentes contienen referencias que no deben trasladarse mecánicamente de una materia a otra.
 
-- [ ] [V] Mantener SD8 como capítulo 8 del índice de EX/T-21. El apartado 10 «Plan de gestión de riesgos» de T-7 es su contenido de origen, no una orden de renumerar el capítulo.
-- [ ] [V] En cap. 15 del CASO hay códigos que no coinciden literalmente con la materia del mismo código en BTT: por ejemplo, RT-03.13 se usa en el caso para sincronización y en BTT para funciones no disponibles; RT-05.10 se usa para retención en el caso y para catálogo de datos en BTT. Citar **documento + materia + capítulo/código**, conservar ambos requisitos sustantivos y evitar sustituir uno por otro.
-- [ ] [V] El caso endurece prestaciones aunque use un código distinto: operación 24/12/8 h, sincronización ≤30 min, red operacional, multiidioma y ventanas siguen siendo contenidos del caso que deben analizarse.
-- [ ] [V] RT-26.08 considera **deseable** una innovación verificable antes del mes 16; REV, SD13, la solicita para la corrección de la cartera. Tratarlo en SD13 como observación recibida; no inventar en SD8 un requisito nuevo de desplegar otra innovación.
-- [ ] [V] Distinguir obligaciones de deseos en BTT: conmutación totalmente automática, restauración granular y simulacro anual de seguridad con participación del CLIENTE son deseables, salvo compromiso expreso. El DRP, las pruebas reales, respaldo y respuesta son obligatorios.
+- [x] [V] Mantener SD8 como capítulo 8 del índice de EX/T-21. El apartado 10 «Plan de gestión de riesgos» de T-7 es su contenido de origen, no una orden de renumerar el capítulo.
+- [x] [V] En cap. 15 del CASO hay códigos que no coinciden literalmente con la materia del mismo código en BTT: por ejemplo, RT-03.13 se usa en el caso para sincronización y en BTT para funciones no disponibles; RT-05.10 se usa para retención en el caso y para catálogo de datos en BTT. Citar **documento + materia + capítulo/código**, conservar ambos requisitos sustantivos y evitar sustituir uno por otro.
+- [x] [V] El caso endurece prestaciones aunque use un código distinto: operación 24/12/8 h, sincronización ≤30 min, red operacional, multiidioma y ventanas siguen siendo contenidos del caso que deben analizarse.
+- [x] [V] RT-26.08 considera **deseable** una innovación verificable antes del mes 16; REV, SD13, la solicita para la corrección de la cartera. Tratarlo en SD13 como observación recibida; no inventar en SD8 un requisito nuevo de desplegar otra innovación.
+- [x] [V] Distinguir obligaciones de deseos en BTT: conmutación totalmente automática, restauración granular y simulacro anual de seguridad con participación del CLIENTE son deseables, salvo compromiso expreso. El DRP, las pruebas reales, respaldo y respuesta son obligatorios.
 
 ## 5. Contenido que no se añadió como exigencia
 
@@ -98,3 +98,7 @@ Este bloque registra límites usados al validar el checklist.
 ## 6. Resultado de la validación
 
 El checklist conserva las exigencias directas de las cinco fuentes y distingue de ellas las aplicaciones al caso y los controles de coherencia. La redacción final de SD8 requiere la solución corregida actual: este conjunto no elige por el proponente sensores, proveedores, probabilidades, reservas ni responsables cuya decisión no aparece en los adjuntos.
+
+## 7. Resultado comprobado, 11 octubre 2026
+
+Cinco controles de numeración, distinción de fuentes y naturaleza de requisitos verificados. Se contrastaron las 22 decisiones y las 15 restricciones con sus enunciados originales; sus mapas indican exposición considerada, no decisiones resueltas ni restricciones acreditadas. La validación de fuentes no cierra los PARCIAL ni los REQUIERE DECISIÓN de partes anteriores. No se agrega una sección8.4 al entregable. Evidencias y detalle en registros_cambios/SD8_parte09_2026-10-11.md.

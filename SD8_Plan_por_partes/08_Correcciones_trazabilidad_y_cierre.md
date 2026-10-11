@@ -8,8 +8,8 @@ La revisión adjunta evaluó SD1, SD2, SD3, SD4, SD5 y SD13. No existe en esa fu
 
 - [ ] [E] Incluir la resolución de observaciones previas en la tabla **observación — respuesta — sección modificada** del Informe 2. Fuente: BA, Art. 46 y T-22.
 - [ ] [A] Para cada observación que afecta a SD8, identificar el texto observado en REV, la respuesta concreta, la sección de SD8 y el documento dependiente corregido.
-- [ ] [V] No afirmar «corregido» por registrar el defecto como riesgo. Si es un requisito obligatorio o una decisión exigida, debe quedar una solución definida o una no aplicabilidad fundada, además del riesgo residual que corresponda.
-- [ ] [V] No usar la revisión como certificación de la tecnología, soporte vigente o disponibilidad actual del proveedor. Sus hallazgos sirven para identificar lo que debe verificarse y corregirse.
+- [x] [V] No afirmar «corregido» por registrar el defecto como riesgo. Si es un requisito obligatorio o una decisión exigida, debe quedar una solución definida o una no aplicabilidad fundada, además del riesgo residual que corresponda.
+- [x] [V] No usar la revisión como certificación de la tecnología, soporte vigente o disponibilidad actual del proveedor. Sus hallazgos sirven para identificar lo que debe verificarse y corregirse.
 
 ## 2. Correcciones que SD8 debe recoger o enlazar
 
@@ -33,8 +33,8 @@ La tabla organiza observaciones verificadas en REV y el contenido que deben prod
 | SD1: brecha sectorial y 400 h sin fundamento. | Riesgo de competencias con respuesta y esfuerzo derivado, sin copiar esa cifra. | 05, 06 |
 | General: tablas sin análisis, referencias rotas y falta de revisión humana. | Desarrollo explicativo, fuentes trazables y lectura integral por revisor distinto. | 01, 02, 08 |
 
-- [ ] [V] Localizar cada observación en la fuente REV antes de cerrar la respuesta; no convertir los ejemplos de solución sugeridos por el revisor en tecnologías obligatorias.
-- [ ] [V] No introducir costos unitarios en SD8 porque REV los pidió en relación con T-11: Art. 50.2 conserva el límite de la oferta técnica y la valorización corresponde al ámbito económico.
+- [x] [V] Localizar cada observación en la fuente REV antes de cerrar la respuesta; no convertir los ejemplos de solución sugeridos por el revisor en tecnologías obligatorias.
+- [x] [V] No introducir costos unitarios en SD8 porque REV los pidió en relación con T-11: Art. 50.2 conserva el límite de la oferta técnica y la valorización corresponde al ámbito económico.
 
 ## 3. Trazabilidad técnica
 
@@ -44,31 +44,31 @@ El contenido debe permitir comprobar que los riesgos pertenecen al mismo proyect
 - [ ] [A] Para cada riesgo relevante, enlazar origen, requisito/decisión/supuesto, componente o proceso, actividad/hito, control, acción, responsable y prueba o evidencia.
 - [ ] [V] Comprobar nombres y decisiones iguales entre SD3–SD9 y SD13: dispositivo de terreno, protocolo, autenticación, cifrado, regiones, proveedores, motor, autonomía y sincronización.
 - [ ] [V] Comprobar que las mitigaciones con trabajo aparecen en EDT y planificación; que tienen personal en T-15; y que la verificación aparece en SD9/T-13/T-17 cuando corresponda.
-- [ ] [V] Comprobar que los riesgos y contingencias de cada innovación coinciden con SD13/T-19 y que el componente sigue perteneciendo a la cartera actual.
+- [x] [V] Comprobar que los riesgos y contingencias de cada innovación coinciden con SD13/T-19 y que el componente sigue perteneciendo a la cartera actual.
 - [ ] [E] Proporcionar evidencia localizable para los requisitos de riesgo/continuidad que se acrediten en T-12, con sección y prueba prevista; mantener la matriz global en su ámbito correspondiente. Fuente: BTT, 1.5.
-- [ ] [V] No marcar «cumple» por una intención futura sin contenido de diseño. Distinguir el plan presentado de la evidencia que se producirá durante ejecución.
+- [x] [V] No marcar «cumple» por una intención futura sin contenido de diseño. Distinguir el plan presentado de la evidencia que se producirá durante ejecución.
 - [ ] [V] Verificar referencias cruzadas reales: título, subdocumento y sección deben existir; no conservar numeración antigua después de reorganizar el índice.
 
 ## 4. Referencias y fundamentación
 
 La sección final contiene las fuentes que efectivamente sustentan el contenido, y cada cita debe indicar qué dato o decisión respalda.
 
-- [ ] [E] Incluir **Referencias** sin numerar y citar fuentes donde se utilizan, en APA 7. Fuente: EX, sección 6.
-- [ ] [E] Asegurar correspondencia completa entre citas y entradas: sin cita huérfana ni fuente listada sin uso.
+- [x] [E] Incluir **Referencias** sin numerar y citar fuentes donde se utilizan, en APA 7. Fuente: EX, sección 6.
+- [x] [E] Asegurar correspondencia completa entre citas y entradas: sin cita huérfana ni fuente listada sin uso.
 - [ ] [E] Citar bases por documento, capítulo/artículo y página original cuando se documente la cita final conforme a EX. No inventar folios a partir de números de línea del Markdown.
-- [ ] [A] Para riesgo o cálculo, separar dato entregado por CASO, estimación de Synaptix y evidencia externa. Toda cifra debe seguirse hasta su fuente o cálculo.
-- [ ] [E] Explicar cómo los estándares invocados se concretan en control y evidencia; no presentarlos como certificaciones institucionales ya obtenidas. Fuente: BA, Art. 4.3.
-- [ ] [V] Usar fuentes de industria, documentación o normas para afirmaciones técnicas adicionales que se incorporen al SD8. No usar material de clases como soporte de la oferta profesional. Fuente: REV, General y SD2.
+- [x] [A] Para riesgo o cálculo, separar dato entregado por CASO, estimación de Synaptix y evidencia externa. Toda cifra debe seguirse hasta su fuente o cálculo.
+- [x] [E] Explicar cómo los estándares invocados se concretan en control y evidencia; no presentarlos como certificaciones institucionales ya obtenidas. Fuente: BA, Art. 4.3.
+- [x] [V] Usar fuentes de industria, documentación o normas para afirmaciones técnicas adicionales que se incorporen al SD8. No usar material de clases como soporte de la oferta profesional. Fuente: REV, General y SD2.
 
 ## 5. Declaración de uso de IA: contenido obligatorio
 
 La declaración exige datos reales del trabajo realizado. El agente no puede inventar quién hizo revisión humana ni afirmar que ésta ocurrió si no existe.
 
-- [ ] [E] Colocar **Declaración de uso de IA** sin numerar, después de Referencias, con texto introductorio. Fuente: EX, 7.2.
-- [ ] [E] Incluir una fila por sección del capítulo y por cada anexo o formulario asociado, incluido T-16.
-- [ ] [E] Incluir **Sección**, **Herramienta**, **Finalidad del uso**, **Nivel en texto**, **Nivel en diagramas** y **Revisión humana —quién y qué verificó—**.
-- [ ] [E] Usar niveles **Ninguno, Bajo, Medio o Alto** con el sentido definido en EX, 7.2; distinguir texto y diagramas.
-- [ ] [E] Si no hubo IA en una sección, declarar **Ninguno**; si hubo uso sustancial, declararlo sin rebajarlo artificialmente.
+- [x] [E] Colocar **Declaración de uso de IA** sin numerar, después de Referencias, con texto introductorio. Fuente: EX, 7.2.
+- [x] [E] Incluir una fila por sección del capítulo y por cada anexo o formulario asociado, incluido T-16.
+- [x] [E] Incluir **Sección**, **Herramienta**, **Finalidad del uso**, **Nivel en texto**, **Nivel en diagramas** y **Revisión humana —quién y qué verificó—**.
+- [x] [E] Usar niveles **Ninguno, Bajo, Medio o Alto** con el sentido definido en EX, 7.2; distinguir texto y diagramas.
+- [x] [E] Si no hubo IA en una sección, declarar **Ninguno**; si hubo uso sustancial, declararlo sin rebajarlo artificialmente.
 - [ ] [E] Consolidar la información con A-6. La declaración no sustituye la revisión humana ni permite entregar contenido íntegramente generado sin elaboración y verificación. Fuente: EX, 7.1–7.2.
 - [ ] [V] Retirar del contenido final marcadores, notas del asistente, promesas de insertar figuras, referencias inexistentes y comentarios sobre curso, docente, estudiantes o simulación. Conservar las denominaciones oficiales de las bases.
 
@@ -76,12 +76,12 @@ La declaración exige datos reales del trabajo realizado. El agente no puede inv
 
 Esta lista final comprueba el contenido integrado; no añade tareas de nomenclatura ni formato de entrega.
 
-- [ ] [V] Están desarrollados 8.1, 8.2 y 8.3 y su introducción, sin títulos vacíos.
-- [ ] [V] Se localizan análisis de solución, desarrollo e implantación; RBS con cinco categorías; y los cinco focos de EX.
-- [ ] [V] Se localizan los siete riesgos señalados por cap. 19 del caso.
-- [ ] [V] Hay análisis cualitativo y cuantitativo aplicado y reproducible, con técnica y supuestos declarados.
-- [ ] [V] T-16 tiene los ocho campos base y desarrollo trazable de contingencia, plazo y disparador.
-- [ ] [V] Las respuestas tienen fundamento costo-beneficio técnico y no contienen precios de la oferta.
+- [x] [V] Están desarrollados 8.1, 8.2 y 8.3 y su introducción, sin títulos vacíos.
+- [x] [V] Se localizan análisis de solución, desarrollo e implantación; RBS con cinco categorías; y los cinco focos de EX.
+- [x] [V] Se localizan los siete riesgos señalados por cap. 19 del caso.
+- [x] [V] Hay análisis cualitativo y cuantitativo aplicado y reproducible, con técnica y supuestos declarados.
+- [x] [V] T-16 tiene los ocho campos base y desarrollo trazable de contingencia, plazo y disparador.
+- [x] [V] Las respuestas tienen fundamento costo-beneficio técnico y no contienen precios de la oferta.
 - [ ] [V] Reservas de contingencia/gestión y holgura por marejadas están fundadas y reflejadas en SD7 sin alterar hitos.
 - [ ] [V] BCP/DRP distingue desconexión, falla local, desastre, respaldo, reconciliación y retorno, con recursos reales.
 - [ ] [V] Correcciones previas tienen respuesta y ubicación; se usan decisiones actuales coherentes.
