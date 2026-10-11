@@ -19,3 +19,30 @@
 \renewcommand{\DeclaracionesIA}{%
  \DeclaracionesAntesLoteSeis
  \FilaDeclaracionIA{Lote 6,\newline 8 oct.\newline 2026}{OpenAI\newline Codex\newline con sub-\newline agentes}{Consolidación de riesgos específicos de IN1--IN5, objetivos residuales, respuestas, responsables y trazabilidad SD8/T-16/SD13.}{Alto}{Ninguno}{José Lara: responsable del control humano previo a emisión; revisión técnica y visual pendiente de confirmación. Alcance: requisitos, contratos, riesgos, cantidades, remisiones y PDF.}}
+
+\ifdefined\FormularioRiesgos\else
+\let\DeclaracionesAntesParteUno\DeclaracionesIA
+\renewcommand{\DeclaracionesIA}{%
+ \DeclaracionesAntesParteUno
+ \FilaDeclaracionIA{Inicio y 8.1,\newline 10 oct.\newline 2026}{OpenAI Codex}{Revisión de contexto, horizonte, perspectivas/RBS, responsabilidades, suplencias, comités, escalamiento y registro; conexión estructural de continuidad en 8.2/8.3 y ajuste del antecedente de esfuerzo R-05.}{Alto}{Ninguno}{José Lara: responsable de esta intervención de IA y del control humano previo a emisión; revisión técnica y visual pendiente de confirmación.}}
+\fi
+
+\let\DeclaracionesAntesContinuacionParteUno\DeclaracionesIA
+\renewcommand{\DeclaracionesIA}{%
+ \DeclaracionesAntesContinuacionParteUno
+ \FilaDeclaracionIA{8.1/8.2 y T-16,\newline 10 oct.\newline 2026}{OpenAI Codex}{Continuación de parte 01: línea de referencia, asignación propuesta Implantación/SRE, relevo y contingencia del legado; coherencia del antecedente UCP R-05, detectabilidad y escalamiento grave.}{Alto}{Ninguno}{José Lara: responsable de esta intervención de IA y del control humano previo a emisión; revisión técnica y visual pendiente de confirmación.}}
+
+\let\DeclaracionesAntesPendientesParteUno\DeclaracionesIA
+\renewcommand{\DeclaracionesIA}{%
+ \DeclaracionesAntesPendientesParteUno
+ \FilaDeclaracionIA{8.2/8.3 y T-16,\newline 10 oct.\newline 2026}{OpenAI Codex}{Fundamentos y cálculos de riesgo, ejecutores/carga inicial, costo-beneficio, reservas y BCP/DRP; alineación regional SD5 y de recursos T-15.}{Alto}{Ninguno}{José Lara: responsable de esta intervención de IA y del control humano previo a emisión; revisión técnica y visual pendiente de confirmación.}}
+
+\let\DeclaracionesAntesParteDos\DeclaracionesIA
+\renewcommand{\DeclaracionesIA}{%
+ \DeclaracionesAntesParteDos
+ \FilaDeclaracionIA{Parte 02,\newline 10 oct.\newline 2026}{OpenAI Codex}{Cobertura de identificación, trazabilidad de 34 riesgos, matriz oficial de innovaciones, detalle FMEA y contraste de ventanas T-15/T-18.}{Alto}{Ninguno}{José Lara: responsable de esta intervención IA; revisión técnica y visual humana pendiente de confirmación.}}
+
+\let\DeclaracionesAntesParteTres\DeclaracionesIA
+\renewcommand{\DeclaracionesIA}{%
+ \DeclaracionesAntesParteTres
+ \FilaDeclaracionIA{Parte 03,\newline 10 oct.\newline 2026}{OpenAI Codex}{Escenarios técnicos/datos/seguridad e IA, enlace con controles actuales y respuestas con plazos contractuales.}{Alto}{Ninguno}{José Lara: responsable de esta intervención IA; revisión técnica y visual humana pendiente de confirmación.}}

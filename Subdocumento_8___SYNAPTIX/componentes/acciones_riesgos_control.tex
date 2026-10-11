@@ -1,0 +1,72 @@
+\subsection{Acciones, ejecutores y carga de preparación}
+La acción AC-ID mantiene el mismo riesgo ID de T-16 y hereda mitigación, contingencia, disparador, plazo, paquete y evidencia de su ficha; el registro \path{componentes/acciones_riesgos_control.csv} añade ejecutor y relevo por perfil. La Tabla~\ref{tab:sd8-ejecucion} concreta quién produce la respuesta y quién debe sustituirlo. Datos ejecuta corrección/carga de R-12 y Calidad verifica de forma independiente; propietario no significa ejecutor de todas las tareas. Una suplencia por perfil no acredita una persona disponible ni competencias certificadas.
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{.13\textwidth}L{.31\textwidth}L{.34\textwidth}L{.13\textwidth}}
+\caption{Asignación propuesta y carga inicial de control}\label{tab:sd8-ejecucion}\\\hline
+\EncabezadoTabla{Riesgo} & \EncabezadoTabla{Ejecutor propuesto} & \EncabezadoTabla{Suplencia requerida} & \EncabezadoTabla{Carga inicial}\\\hline\endfirsthead
+\hline\EncabezadoTabla{Riesgo} & \EncabezadoTabla{Ejecutor propuesto} & \EncabezadoTabla{Suplencia requerida} & \EncabezadoTabla{Carga inicial}\\\hline\endhead
+R-01 & José Lara Arce & refuerzo del perfil O/L T-15 & 12 HH\\\hline
+R-02 & José Lara Arce & refuerzo del perfil O/L T-15 & 12 HH\\\hline
+R-03 & Fernando Guerrero & refuerzo de Arquitectura/Integración T-15 & 12 HH\\\hline
+R-04 & Ignacio Silva & refuerzo del perfil J T-15 & 12 HH\\\hline
+R-05 & Ignacio Silva & refuerzo del perfil J T-15 & 8 HH\\\hline
+R-06 & Fernando Guerrero & refuerzo de Arquitectura/Integración T-15 & 8 HH\\\hline
+R-07 & Fernando Guerrero & refuerzo de Arquitectura/Integración T-15 & 8 HH\\\hline
+R-08 & Fernando Guerrero & refuerzo de Arquitectura/Integración T-15 & 8 HH\\\hline
+R-09 & Bruno Toro & refuerzo de Seguridad T-15 & 12 HH\\\hline
+R-10 & Bruno Toro & refuerzo de Seguridad T-15 & 12 HH\\\hline
+R-11 & Fernando Guerrero & refuerzo de Arquitectura/Integración T-15 & 12 HH\\\hline
+R-12 & Nicolás Torfan en corrección/carga; Davor Serey en verificación independiente & refuerzos D y Q de T-15, distintos para producir y verificar & 12 HH\\\hline
+R-13 & José Lara Arce & refuerzo del perfil O/L T-15 & 8 HH\\\hline
+R-14 & José Lara Arce & refuerzo del perfil O/L T-15 & 8 HH\\\hline
+R-15 & Ignacio Silva & refuerzo del perfil J T-15 & 8 HH\\\hline
+R-16 & Ignacio Silva & refuerzo del perfil J T-15 & 8 HH\\\hline
+R-IN1-01 & José Lara Arce & refuerzo del perfil O/L T-15 & 8 HH\\\hline
+R-IN1-02 & José Lara Arce & refuerzo del perfil O/L T-15 & 8 HH\\\hline
+R-IN1-03 & Fernando Guerrero & refuerzo de Arquitectura/Integración T-15 & 8 HH\\\hline
+R-IN1-04 & Bruno Toro & refuerzo de Seguridad T-15 & 12 HH\\\hline
+R-IN2-01 & José Lara Arce & refuerzo del perfil O/L T-15 & 8 HH\\\hline
+R-IN2-02 & José Lara Arce & refuerzo del perfil O/L T-15 & 8 HH\\\hline
+R-IN2-03 & Ignacio Silva & refuerzo del perfil J T-15 & 12 HH\\\hline
+R-IN2-04 & Fernando Guerrero & refuerzo de Arquitectura/Integración T-15 & 8 HH\\\hline
+R-IN3-01 & Fernando Guerrero & refuerzo de Arquitectura/Integración T-15 & 8 HH\\\hline
+R-IN3-02 & José Lara Arce & refuerzo del perfil O/L T-15 & 8 HH\\\hline
+R-IN3-03 & Bruno Toro & refuerzo de Seguridad T-15 & 12 HH\\\hline
+R-IN3-04 & José Lara Arce & refuerzo del perfil O/L T-15 & 8 HH\\\hline
+R-IN3-05 & Ignacio Silva & refuerzo del perfil J T-15 & 8 HH\\\hline
+R-IN4-01 & Ignacio Silva & refuerzo del perfil J T-15 & 12 HH\\\hline
+R-IN4-02 & Ignacio Silva & refuerzo del perfil J T-15 & 12 HH\\\hline
+R-IN5-01 & Ignacio Silva & refuerzo del perfil J T-15 & 8 HH\\\hline
+R-IN5-02 & José Lara Arce & refuerzo del perfil O/L T-15 & 8 HH\\\hline
+R-IN5-03 & Bruno Toro & refuerzo de Seguridad T-15 & 12 HH\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{Titulares y perfiles de T-16/T-15; asignaciones y estimaciones propuestas por Synaptix.}
+Cada preparación presupone cuatro HH para expediente y decisión, cuatro para revisión técnica y otras cuatro para guion de contingencia si $I=5$. El total es 328 HH de trabajo de control, a distribuir por perfil y antes del plazo de la ficha. No mide ensayos integrales, corrección de software, obras ni cobertura; se sustituye por la carga real de sus actividades antes de autorizar. Las 32 HH de registro de 1.1.2.1 se concilian con estos resultados: no se suman automáticamente si ya financian la misma tarea. El complemento identifica necesidad de recursos, no una segunda reserva de ejecución.
+
+Proyecto selecciona una acción sólo con ID de persona o puesto, perfil, competencia, permisos, dedicación, jornada, ausencias, suplente y agenda. Para cada período $C_p=J_p-A_p-G_p$ y $S_p=C_p-\sum H_{a,p}$; gobierno, guardia realmente utilizada y otros paquetes forman parte de la carga, no del saldo libre. Las funciones SRE/Implantación de José usan una sola identidad y dos actividades coincidentes requieren otro ejecutor. El control del T-15 vigente declara HH y agendas globales incompletas: no se considera demostrada capacidad de las 34 acciones mientras falten esas entradas. Proyecto mantiene el bloqueo y dimensiona refuerzo del perfil ya previsto, sin inventar una nómina contratada.
+
+\subsection{Comparación costo-beneficio y selección}
+El costo técnico comprende HH de preparación más trabajo EDT, capacidad mantenida, ventanas y complejidad de recuperación. El beneficio comprende obligaciones preservadas y carga o demora evitada. Se compara la alternativa real y no se monetiza $P I$; OE contiene precios, tarifas y provisiones. La Tabla~\ref{tab:sd8-beneficio} selecciona respuesta por mecanismo.
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{.13\textwidth}L{.29\textwidth}L{.30\textwidth}L{.19\textwidth}}
+\caption{Costo técnico, alternativa y beneficio esperado}\label{tab:sd8-beneficio}\\\hline
+\EncabezadoTabla{Riesgos} & \EncabezadoTabla{Carga de respuesta} & \EncabezadoTabla{Alternativa y efecto} & \EncabezadoTabla{Selección}\\\hline\endfirsthead
+\hline\EncabezadoTabla{Riesgos} & \EncabezadoTabla{Carga de respuesta} & \EncabezadoTabla{Alternativa y efecto} & \EncabezadoTabla{Selección}\\\hline\endhead
+R-02/R-08 & Pasivo preparado: 18 vCPU/72 GiB; ampliar al peak y probar antes de abrir. & Réplica permite conmutación; respaldo solamente requiere 233,33 min para 60 GB bajo hipótesis. & Elegir pasivo y restauración independiente; no sustituir RTO por disponibilidad de un archivo.\\\hline
+R-03/R-12 & Dos ensayos, conciliación y retorno; Datos produce y Calidad revisa. & Un ensayo único consume menos preparación pero no satisface la obligación; 6 días adicionales sólo modelan repetición parcial. & Elegir ambos ensayos y reservar corrección del defecto; no recortar evidencia para ahorrar.\\\hline
+R-04/R-14 y adopción & Preparación de referentes/suplentes y evaluación de tarea, más cohortes por perfil. & Formación genérica reduce trabajo aparente pero no acredita cierre, permisos ni uso correcto. & Elegir práctica por proceso, recuperación y habilitación individual; bloquear acceso no preparado.\\\hline
+R-06/R-11 & Recepción de variante, montaje y compatibilidad antes de habilitar. & Compra sin revisión puede ahorrar control inicial pero obliga a sustitución y pierde la ventana admisible. & Evitar intervención insegura; sustituto verificado y nueva recepción.\\\hline
+R-09/R-10 e IN3/IN5 sensibles & Revisión negativa, procedencia, permiso y minimización; intrusión independiente cuando corresponde. & Abrir permiso o usar datos reales para simplificar invalida protección y evidencia. & Reducir exposición con controles; no aceptar incumplimiento de privacidad.\\\hline
+R-01/R-15 y ventanas IN2 & Diez días de escenario por campaña y dos alternativas, recursos por ventana. & Mover hito o continuar trabajo durante aviso infringe restricciones; HH sin ventana no recuperan calendario. & Suspender, recalcular red y dimensionar refuerzo propio después del cese.\\\hline
+R-07/R-16 & Exportación, custodia y paquete reproducible en cada liberación. & No depositar reduce trabajo pero aumenta dependencia y hace imposible activar la salida. & Mantener titularidad y transferencia; soporte del proveedor no elimina responsabilidad Synaptix.\\\hline
+IN1--IN5, eficacia de beneficio & Revisión de grupo, serie y universo de casos; registro de beneficio adverso. & Ocultar casos difíciles o proyectar ahorro sin población comparable aparenta éxito sin evidencia. & Verificar universo, conservar servicio y reevaluar o suspender incentivo no sustentado.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{Decisiones de Synaptix con SD4/SD5/T-15, T-16 y restricciones del Caso 07. Beneficios previstos, no observados.}
+La estrategia es reducción para fallas de datos, seguridad, adopción y capacidad; evitar para maniobra insegura o promoción sin prueba; compartir provisión/custodia con el tercero competente sin transferir obligación del contrato; y aceptación sólo del residual evidenciado dentro de competencia. Ninguna respuesta permite cámaras sobre menores, interacción durante izaje o amarre, dispositivo prohibido o retención por mora sin decisión formal.
+
+\subsection{Reservas: dimensionamiento, activación y saldo}
+La reserva marina es un escenario de diez días hábiles por campaña, bajo una sola cuenta R-01/PL-R01. La contingencia PL-R03 es hasta seis días adicionales para repetición parcial; no equivale a las dos ejecuciones obligatorias. Se selecciona reserva de gestión de cero días adicionales sobre meses contractuales; su provisión económica y refuerzo propio requieren decisión del Ejecutivo y actividad/recursos definidos. No se adopta un porcentaje universal ni una bolsa de HH que no tenga agenda.
+
+Para una corrección con $n$ personas y $h$ HH efectivas por día, $d$ días de respuesta requieren $n h d$ HH antes de añadir traslados o revisión independiente. Como hipótesis localizada, dos ejecutores a cinco HH/día durante seis días requieren 60 HH; durante diez días, 100 HH. No demuestran que esas personas estén disponibles ni que un ensayo completo quepa en seis días. Si las dos respuestas comparten ejecutores o son consecutivas, sus demandas suman 160 HH y 16 jornadas de equipo, no diez; si coinciden en tiempo, se calcula carga diaria y se aporta otro equipo, sin reutilizar la misma agenda.
+
+El acta de activación contiene riesgo, causa, respuesta elegida, predecesoras, ventana válida, carga por ejecutor, recurso/suplente, reserva de origen y saldo. Proyecto propaga cada respuesta al cronograma antes del hito y verifica margen después de congelamientos y revisión del CLIENTE. La reserva sólo se consume tras aprobación competente; $S_f=S_i-C$ conserva unidad y no mezcla HH, días, capacidad de puesto o dinero. La falta de cabida se registra como brecha, no se corrige moviendo producción o reduciendo marcha blanca. La reserva de gestión no resta derechos de recepción. \parencites[arts.~17, 50.2 y 72]{sd8-ba}[RT-19.03/04]{sd8-bt}
