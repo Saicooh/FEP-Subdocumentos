@@ -13,7 +13,7 @@ El modelo de datos establece qué información necesita conservar la solución, 
 
 Las relaciones y reglas del modelo permiten distinguir situaciones con consecuencias diferentes para el negocio: una asignación contractual y una ocupación física, una solicitud de retiro y una entrega efectiva de un alumno, o una medición y un consumo validado. Estas diferencias orientan la representación de estados, vigencias y evidencias, y permiten identificar qué antecedentes respaldan una decisión y quién tiene autoridad para confirmarla.
 
-La sección 5.1.1 presenta los dominios y las entidades compartidas; la sección 5.1.2 desarrolla sus relaciones y reglas mediante figuras por dominio; y la sección 5.1.3 aborda la identificación, actualización y conciliación de datos maestros. El detalle por atributo deberá documentarse en el diccionario del Anexo A5.1 por producir, cuya especificación debe incluir nombre, tipo, dominio de valores, obligatoriedad, propietario y sensibilidad, conforme al requisito RT-05.01 de las Bases Técnicas Transversales (PUCV, 2026b). Esta definición proporciona la referencia común para la gestión, la migración y la optimización de datos desarrolladas en los apartados siguientes.
+La sección 5.1.1 presenta los dominios y las entidades compartidas; la sección 5.1.2 desarrolla sus relaciones y reglas mediante vistas funcionales agrupadas; y la sección 5.1.3 aborda la identificación, actualización y conciliación de datos maestros. El detalle por atributo deberá documentarse en el diccionario del Anexo A5.1 por producir, cuya especificación debe incluir nombre, tipo, dominio de valores, obligatoriedad, propietario y sensibilidad, conforme al requisito RT-05.01 de las Bases Técnicas Transversales (PUCV, 2026b). Esta definición proporciona la referencia común para la gestión, la migración y la optimización de datos desarrolladas en los apartados siguientes.
 
 \subsection{Dominios y entidades} %5.1.1
 El modelo de información de Synaptix organiza los antecedentes necesarios para gestionar embarcaciones, controlar la participación de alumnos, coordinar los servicios del puerto y respaldar sus efectos administrativos y ambientales.
@@ -95,7 +95,7 @@ El modelo lógico se organiza en entidades identificables, relaciones con cardin
 
 Cada recuadro identifica una entidad del modelo y cada conexión representa una asociación entre entidades. Las cardinalidades de los extremos indican cuántos registros pueden participar en esa asociación. Por ejemplo, una relación con \texttt{1} junto a Contrato y \texttt{0..N} junto a Asignación expresa que cada asignación pertenece a un contrato, mientras un contrato puede mantener ninguna o varias asignaciones a lo largo de su historia. Esa multiplicidad no autoriza usos simultáneos incompatibles: las restricciones de vigencia y concurrencia se establecen en las reglas del dominio.
 
-Las figuras presentan las asociaciones principales de cada dominio y sus referencias compartidas. Una entidad conserva el mismo significado, identificador y propietario en todas las vistas en que aparece; su repetición no crea otra entidad ni transfiere la autoridad del dato. Las reglas de exclusión, conciliación y cierre se explican junto a la figura porque una cardinalidad no representa todas las condiciones del negocio. El detalle por atributo y las asociaciones complementarias deben documentarse de manera consistente en A5.1.
+Las figuras presentan las asociaciones principales de cada vista funcional y sus referencias compartidas. Una entidad conserva el mismo significado, identificador y propietario en todas las vistas en que aparece; su repetición no crea otra entidad ni transfiere la autoridad del dato. Las reglas de exclusión, conciliación y cierre se explican junto a la figura porque una cardinalidad no representa todas las condiciones del negocio. El detalle por atributo y las asociaciones complementarias deben documentarse de manera consistente en A5.1.
 
 Todas las entidades poseen una clave primaria estable, denominada \texttt{id}. Para las identidades creadas por software, se propone utilizar UUID v4. El identificador se genera una sola vez por operación y se conserva durante sus reintentos. Esta propuesta concreta el uso de identificadores globales definido en SD4 y apoya la idempotencia establecida en SD3.
 
@@ -110,13 +110,12 @@ Los instantes de los eventos se almacenan en UTC y se muestran en la zona horari
 Cada evento utiliza el sobre de metadatos definido en SD4, compuesto por los campos \texttt{eventId}, \texttt{eventType}, \texttt{schemaVersion}, \texttt{aggregateId}, \texttt{aggregateSequence}, \texttt{occurredAt}, \texttt{recordedAt}, \texttt{source}, \texttt{actor}, \texttt{correlationId}, \texttt{causationId} y \texttt{payload}. La secuencia de eventos tiene validez dentro de la autoridad de su agregado; no se presupone un contador global fiable entre dispositivos desconectados.
 %(Synaptix, 2026b, §3.4.2, p. PDF 22; Synaptix, 2026c, §4.1, pp. PDF 8-9).
 
-El registro de negocio y su evento de salida se guardan en una misma transacción local al dominio. Al recibir un evento, la bandeja de entrada utiliza eventId para detectar duplicados y registra el efecto junto con su procesamiento.
 
 Si se recibe una clave ya registrada con un contenido distinto, se conserva como un conflicto. No se acepta silenciosamente como una nueva operación. Las discrepancias mantienen ambos antecedentes y el registro de su resolución: guardar y sincronizar la evidencia no autoriza, por sí solo, el cambio disputado.
 
 Estas reglas concretan DA-05 y DA-06 y distinguen la entrega de mensajes de la ejecución de sus efectos una sola vez.
 
-En los siguientes diagramas por dominio, el azul claro identifica las entidades propias del dominio; el gris claro, las referencias a entidades de otros dominios; el verde claro distingue las entidades del servicio compartido de notificaciones.
+En los siguientes diagramas por vista funcional, el azul claro identifica las entidades desarrolladas en la vista; el gris claro, sus referencias compartidas; y el verde claro, las entidades de alertas y comunicaciones de ALE. La propiedad de cada entidad se determina por la correspondencia de 5.1.1, aunque una vista reúna varios dominios.
 
 \subsubsection{Clientes y contratos}
 Esta vista reúne entidades de ADM y AMA: Persona, Organización, Parte contractual, Representación, Vínculo de armador, Embarcación, Contrato, Versión de contrato, Asignación, Reserva, Solicitud de espera y Tarifa versionada. Parte contractual referencia exactamente una Persona o una Organización. Los campos determinantes son la vigencia y función del vínculo; emisor e identificador de la nave; período, estado y partes del contrato; amarra y período de asignación; y regla de compatibilidad y tarifa aplicadas. Contactos, representaciones y condición de socio tienen vigencia y origen verificable.
@@ -349,14 +348,14 @@ Un componente no puede figurar instalado simultáneamente en dos trenes de fonde
 
 La inspección registra método, autor competente, fecha, condición, evidencia y recomendación. Una actuación conserva su activo de destino, orden y ejecución, aunque provenga de mantenimiento preventivo y no de un hallazgo previo. La periodicidad y los disparadores se vinculan con la versión del programa técnico aplicable. La vida útil del componente y los cinco años adicionales de conservación de sus inspecciones se interpretan conforme a C07 RT-05.10, manteniendo la historia tras su retiro.
 
-\paragraph{Inspección del fondeo y captura en Ilque.}
+\paragraph{Inspección del fondeo y captura en Ilque:}
 El inventario de cuarenta boyas, ampliable a setenta, conserva posición/datum, profundidad, restricciones y tren de fondeo: muerto, cadena, grilletes y cabo, con instalación, fabricante/referencia cuando exista y vida útil. La observación relaciona patrón, embarcación, inspector, instante original, identidad comprobada o incierta y antigüedad. El resumen diario conserva su corte; no se convierte una visita previa en ocupación actual.
 Programa de inspección conserva criterio técnico, periodicidad y disparadores extraordinarios por condición o evento, autor competente y versión. La inspección submarina registra método, umbrales aplicados, fotografías y hallazgos. Se separan recomendación, programación y sustitución ejecutada de cada componente; su historial permanece hasta fin de vida útil más cinco años.
 El perfil de Ilque verifica ocho horas continuas de mapa, formularios, fotografía, permisos, almacenamiento durable y energía. El ensayo considera seis millas náuticas, veintidós kilómetros de acceso por ripio y tramo final sólo por embarcación con buen tiempo, sin suponer electricidad, datos o personal permanente en destino. La copia segura y su transferencia al regreso forman parte de la aceptación. El piloto de sensores de amarra se trata separadamente y no sustituye inspección ni demuestra ese perfil.
 
 La vista Infraestructura relaciona la identidad común de Activo, mantenida por ADM, con los atributos especializados de AMA, BOY, CON y VAR. BOY conserva posición, tren de fondeo, inspección y condición de la boya; NAV utiliza la evidencia de presencia y la vincula al episodio de navegación. CON conserva la asociación metrológica e intervalos de medición; AMA conserva los límites y estado del puesto; VAR conserva los recursos y restricciones de faena. Cada actuación publica su evento desde el propietario competente, manteniendo origen y hora de captura. El perfil de inspección de boyas conserva ocho horas de operación local y sus evidencias, sin presentar una observación antigua como ocupación actual. La trazabilidad conserva BOY, AMA y CON y DEC-03/19/20/21 de SD2.
 
-\subsubsection{Auditoría y seguridad}
+\subsubsection{Autorizaciones y evidencia transversal:}
 Esta vista relaciona AUT con las capacidades transversales de auditoría y documentos para comprobar quién accedió a la información, con qué facultad y qué evidencia se conserva. Identidad de acceso relaciona el identificador del proveedor de identidad con Persona. Asignación de rol, Política versionada y Permiso operacional offline establecen funciones, alcance y vigencia. La autorización considera además la relación efectiva con el dato, como alumno a cargo, embarcación representada o expediente habilitado.
 
 Consentimiento y Evento de consentimiento conservan otorgamiento, cambios, revocación y vencimiento. Evento de auditoría y Decisión sensible registran actuaciones y fundamentos. Documento y Versión documental proporcionan los metadatos de custodia: ubicación, formato, versión, integridad, sensibilidad y conservación; el dominio que origina el contenido conserva su responsabilidad de negocio. La Figura~\ref{fig:auditoria} presenta las relaciones entre identidad, permisos y evidencia documental.
@@ -384,7 +383,7 @@ El Registro Laboral y de Habilitación (RLH), nuevo y local, incorpora Persona p
 Sesión de acceso conserva identificador, sujeto, dispositivo, emisor, autenticación, última actividad, expiración absoluta, versión y revocación. Familia de refresco conserva huella, secuencia, consumo, sucesor y causa de revocación; su rotación es transaccional y no prolonga la sesión o el permiso. Activación de emergencia relaciona operador, dos custodios, incidente, autorizaciones, depósito/precinto, entrega, comandos, cierre, rotación y revisión. La política de sesión propuesta en este SD5 fija ocho horas por sesión, inactividad de quince minutos en oficina/portal y diez en móvil, credencial firmada de cinco minutos y acceso de emergencia de sesenta minutos. Nube, Runtime y verificador móvil mantienen emisores propios identificados. La recepción de una baja o logout revoca antes del acuse en los módulos alcanzables; una partición conserva el límite firmado y su brecha de propagación.
 
 \medskip
-\noindent\textbf{Servicios compartidos, notificaciones y cierre del modelo}
+\noindent\textbf{Alertas (ALE) y cierre del modelo}
 
 El servicio de notificaciones relaciona un hecho de negocio con sus destinatarios y con el resultado de los contactos. Aviso conserva dominio, evento causal, contenido versionado, prioridad y autorización. Destinatario de aviso identifica persona, contacto y versión utilizados; Intento de entrega registra canal, proveedor, identificador externo, inicio y resultado. Acuse distingue aceptación del proveedor, entrega técnica, lectura y confirmación humana, mientras Tarea de escalamiento conserva las actuaciones requeridas cuando falta respuesta. La Figura~\ref{fig:notificaciones} muestra esta cadena como servicio compartido de los dominios.
 
@@ -537,6 +536,28 @@ La identificación incluye sistema contable vigente; control de acceso/lector; l
 Los enlaces propios utilizan mTLS conforme a SD4. Por cada último tramo externo se documenta y ensaya el mecanismo efectivamente admitido, los ámbitos, audiencias, credenciales y rotación. No se afirma conformidad de RT-05.18 a partir de un puente mTLS cuyo último tramo mantiene un método distinto de los exigidos. Claves estáticas en URL quedan prohibidas. Identificador/correlación externos, respuesta durable y estado se conservan antes del acuse; una caída de la contraparte se aísla sin duplicar cargos o perder evidencia.
 GEN-API produce OpenAPI 3.1 y AsyncAPI 3.0 desde código y bloquea desajustes; OBS-API mantiene preaviso mínimo de seis meses y coexistencia probada para cambios incompatibles. Se entregan los archivos de contratos e inventario de operaciones, además de describir su generación.
 
+\paragraph{Inventario de integración del modelo de datos.}
+El siguiente inventario reúne las contrapartes ya mencionadas en la propuesta. El contrato propio documenta mensajes y resultados; la ficha efectiva distingue lo declarado en los documentos de las características comprobadas de la contraparte. Los formatos CSV, JSON y eventos del modelo interno no se atribuyen automáticamente a una interfaz externa.
+
+\begingroup\small
+\begin{longtable}{@{}p{0.21\linewidth}p{0.22\linewidth}p{0.45\linewidth}@{}}
+\textbf{Intercambio} & \textbf{Responsable} & \textbf{Tratamiento definido} \\
+\hline
+Contabilidad y pagos & FAC / INT-ACL & FAC envía el hecho facturable y consulta; contabilidad devuelve resultado y cambios confirmados. Correlación, reintento idempotente y resultado desconocido visible. \\
+Antecedentes de zarpe y avisos & NAV / ALE & Conservar versión, formato oficial, envío y respuesta; trámite asistido por canal autorizado cuando no exista interfaz automática acreditada. \\
+Residuos peligrosos & AMB & Identificar origen, cantidades, transportista, gestor, manifiesto y certificado. SIDREP mediante trámite asistido conforme al canal autorizado. \\
+Lectores y control de acceso & CTR / AUT & Verificar identidad, habilitación y permiso; conservar decisión y evidencia. Una lectura del código no prueba por sí sola identidad. \\
+Medidores y surtidor & CON & Conservar instrumento, época, unidad, secuencia y asociación; aislar lectura inválida y deduplicar el despacho. \\
+Estación meteorológica & AMB / ALE & Conservar fuente, instante, calidad y versión; separar observación local de aviso oficial. \\
+CCTV existente & AUT / custodia documental & Referenciar plataforma y evidencia exportada; preservar huella, acceso y retención, sin añadir cámaras de alumnos. \\
+SMS, mensajería y correo & ALE & Twilio SMS, Meta WhatsApp y Amazon SES figuran en SD5; conservar intento, respuesta técnica, acuse humano y escalamiento por separado. \\
+Canal de baja capacidad & NAV / ALE & Conservar el plan y su versión; intento inmediato, reintentos a 1/3/5 minutos y escalamiento a 10. Proveedor y límites tratados como hipótesis del SD5. \\
+Lectura documental asistida & Custodia / adaptador & Conservar original, extracción, versión y validación humana. La extracción no confirma firma, identidad ni autorización. \\
+\end{longtable}
+\endgroup
+
+Cada fila tiene una ficha que registra producto y versión efectivos, operaciones, dirección, sincronía, esquema, autenticación del último tramo, volumen esperado, cuota, ventana de disponibilidad, timeout, reintento, idempotencia y contingencia. Se identifica la fuente de cada valor y se marca expresamente cuando no consta en la documentación disponible; no se sustituye por una cifra inventada. La aceptación verifica entrada, salida, correlación, permiso, respuesta perdida y recuperación sobre la contraparte efectiva.
+
 La construcción descubre las rutas registradas y las declaraciones de emisión/suscripción del ejecutable y compara ese inventario con los documentos generados. Una ruta o flujo sin contrato, una referencia sin resolver, un esquema inválido o un cambio sin versión bloquea la construcción. OpenAPI incluye solicitudes, respuestas, errores, parámetros y seguridad; AsyncAPI incluye canales, mensajes, productores, consumidores, correlación, esquemas y condiciones de entrega. El expediente conserva JSON/YAML, documentación legible, ejemplos sin datos personales ni secretos, inventario, versión del generador y huellas del código y del paquete. El pipeline de T-10 valida el formato, compara contra la última versión publicada y ejecuta pruebas de contrato; una discrepancia impide promoción. La publicación de documentación se ejecuta automáticamente junto con el artefacto aprobado y su reversión restaura el paquete correspondiente.
 
 El paquete completo de especificaciones constituye un entregable del Sobre N\textsuperscript{o}~2 exigido por el capítulo 27 de las Bases Técnicas Transversales. La presente definición de GEN-API establece el mecanismo; no sustituye los archivos OpenAPI/AsyncAPI de todas las operaciones ni acredita que ya hayan sido generados. Se deberá completar y conciliar ese paquete con el inventario antes de declarar íntegra la documentación de interfaces \parencite[cap.~27, ítem~7, p.~48]{bases-transversales}.
@@ -584,7 +605,8 @@ PostgreSQL permite restricciones de unicidad, referencia y exclusión, además d
 No se extiende esa atomicidad a la nube, recinto, dispositivos incomunicados y sistemas externos. Una operación que involucra varios dominios conserva pasos y resultados explícitos como: solicitada, aceptada, rechazada o pendiente de conciliación según el proceso. La reversión de un cobro propuesto o de una reserva se expresa mediante una corrección trazable, esto no borra el despacho o la presencia física que efectivamente ocurrieron. Para evidencias binarias se emplea carga provisional, verificación de integridad y vinculación confirmada. Un archivo aún no recibido no se marca como disponible ni se elimina del origen por un acuse de sus solos metadatos.
 
 \textbf{Consistencia y disponibilidad ante particiones:} CAP establece el límite entre consistencia fuerte de una copia lógica distribuida y respuesta a todas las solicitudes durante una partición de red. No clasifica de forma absoluta un producto ni elimina la integridad de una transacción local. En este diseño se restringen las escrituras exclusivas a la autoridad correspondiente y se mantiene la captura local de hechos, cuyas proyecciones remotas convergen al reconectar.
-La Tabla~\ref{tab:sd5_consistencia_dominios} precisa el compromiso por dominio, evitando prometer actualidad global mientras existe aislamiento.
+
+La Tabla~\ref{tab:sd5_consistencia_dominios} individualiza los doce dominios del SD4 y distingue la autoridad de escritura, la confirmación de negocio y la captura disponible durante una partición. La disponibilidad indicada está sujeta a permisos vigentes, energía y comunicación con la autoridad requerida; no equivale a actualidad global entre equipos incomunicados.
 
 \begingroup
 \setlength{\tabcolsep}{3pt}
@@ -596,22 +618,27 @@ La Tabla~\ref{tab:sd5_consistencia_dominios} precisa el compromiso por dominio, 
 \hline
 \EncabezadoTabla{Dominio} & \EncabezadoTabla{Autoridad de escritura} & \EncabezadoTabla{Confirmación exclusiva} & \EncabezadoTabla{Disponibilidad local} \\ \hline
 \endhead
-Clientes y contratos & Nube & Maestros y contratos & Consulta versionada \\ \addlinespace \hline
-Operación marítima & Recinto & Puesto y maniobra & Captura operacional \\ \addlinespace \hline
-Escuela náutica & Recinto & Participación y entrega & Captura y coordinación \\ \addlinespace \hline
-Varadero y contratistas & Según actuación & Plan y acreditación vigentes & Consulta y ejecución \\ \addlinespace \hline
-Combustible & Recinto & Despacho identificado & Captura de despachos \\ \addlinespace \hline
-Ambiente y consumos & Recinto & Consumo validado & Lecturas y residuos \\ \addlinespace \hline
-Finanzas y cobranza & Dominio / contabilidad & Documento, pago y saldo externos & Hechos pendientes \\ \addlinespace \hline
-Infraestructura & Según actuación & Maestro autorizado & Inventario e inspección \\ \addlinespace \hline
-Auditoría y seguridad & Central / local & Política y habilitación vigentes & Evidencia y ciclo local \\ \addlinespace \hline
+NAV -- Navegación & Recinto para hechos confirmados & Salida y regreso con evidencia; declaración del plan separada & Captura de hechos y consulta de legajos vigentes \\
+AMA -- Amarras & Recinto para autorización operacional; nube para relación comercial & Puesto e intervalo sin asignaciones incompatibles & Recepción y asignación operacional; reserva comercial según autoridad \\
+ESC -- Escuela & Autoridad escolar del recinto & Participación, cambio y entrega confirmados & Captura y consulta compartida contra la autoridad local \\
+CON -- Consumos & Recinto para lecturas y despachos & Despacho único y asociación metrológica vigente & Captura de lecturas y combustible; conciliación posterior \\
+BOY -- Boyas & Dispositivo para captura; recinto para consolidación & Inspección y evidencia del elemento identificado & Registro de inspecciones sin inferir ocupación actual \\
+VAR -- Varadero & Nube para planificación; recinto para ejecución autorizada & Plan aprobado, recurso y maniobra compatibles & Consulta del plan vigente y captura de ejecución \\
+CTR -- Contratistas & Nube para maestros y acreditación; verificación local & Identidad, habilitación y facultad vigentes & Verificación de paquetes autorizados y registro de acceso \\
+AMB -- Ambiente & Recinto para captura; nube para consolidación & Origen, cantidades y evidencia de residuos e incidentes & Captura local y conservación del original \\
+FAC -- Finanzas & Nube para hechos facturables; contabilidad para saldo, pago y tributo & Resultado contable externo e idempotencia del cargo & Conservación del hecho; efecto externo pendiente cuando no hay respuesta \\
+ADM -- Administración & Nube & Identidad, contrato, tarifa y catálogo aprobados & Consulta de versiones; referencia provisional sin alterar maestros \\
+AUT -- Autorizaciones & Central para políticas; local para verificación y bajas conocidas & Facultad, vigencia y denegación prevalente & Verificación del permiso previo; sin emisión ni renovación durante caída WAN \\
+ALE -- Alertas & Productor competente en nube o recinto & Campaña, destinatario y acuse identificados & Alerta crítica local, cola durable y reintento idempotente \\
 \end{longtable}
 % Fuente de referencia: SD4, tablas 4.2--4.3 y DA-05/DA-06/DA-16; BT RT-05.02; C07 RT-03.10.
 \endgroup
 
-La tabla distingue la disponibilidad de captura de la posibilidad de confirmar una decisión exclusiva. Clientes y contratos priorizan consistencia, es decir, sin acceso a la autoridad central, sus copias permiten consultar versiones, pero no aprobar nuevos cambios. La Operación marítima, Escuela náutica y Combustible mantienen la autoridad operacional del recinto y proyectan sus hechos hacia nube al reconectar. Un dispositivo aislado conserva hechos y solicitudes, no arbitra por sí solo un puesto o una entrega compartidos con otro equipo.
+ADM prioriza la consistencia de maestros, contratos y tarifas: una copia local permite consulta y captura de una referencia provisional, pero no aprueba una modificación central. FAC preserva los hechos facturables y mantiene en el sistema contable externo la autoridad sobre pagos, documentos tributarios y saldos. AUT verifica paquetes previamente autorizados y aplica bajas conocidas; no emite ni renueva privilegios durante la pérdida de WAN.
 
-En Varadero y contratistas, la ejecución puede registrarse localmente, pero una copia antigua no acredita una aprobación nueva. La Infraestructura conserva la separación entre cambios maestros autorizados e inspecciones capturadas en terreno. Ambiente y consumos recibe lecturas y registros de residuos. Una serie pendiente de validación no produce un consumo facturable confirmado. Finanzas y cobranza conserva sus hechos y difiere los efectos que dependen de contabilidad externa. Auditoría y seguridad conserva evidencia local con permisos acotados, mientras la actualización de políticas requiere su autoridad central.
+NAV, AMA, ESC y CON conservan en el recinto la autoridad de sus confirmaciones operacionales. BOY conserva la captura de inspecciones identificadas, sin presentar una observación antigua como ocupación actual. VAR y CTR permiten ejecución y verificación contra planes y habilitaciones vigentes, sin convertir una copia en una aprobación nueva. AMB preserva la captura y sus evidencias antes de consolidar indicadores. ALE conserva campañas, intentos y acuses, aplicando idempotencia para no repetir efectos.
+
+Un dispositivo aislado conserva hechos y solicitudes dentro de su autorización; la recepción durable no constituye por sí sola una confirmación exclusiva de amarra, entrega escolar o efecto contable. Las proyecciones convergen al recuperar comunicación y conservan origen, versión y estado de conciliación.
 
 Así, la consistencia de decisiones exclusivas se protege en la autoridad correspondiente y la disponibilidad de captura se mantiene dentro de su alcance. Las proyecciones entre sitios son de convergencia eventual, Durante una partición no se promete una versión global actualizada. Esta postura se aplica por operación y dominio, sin declarar consistencia fuerte y disponibilidad total simultáneas entre copias incomunicadas.
 
@@ -670,6 +697,25 @@ Antes de una salida programada de terreno se comprueba \(R(a)\geq H\), siendo \(
 La cobertura se demuestra durante veinticuatro horas en recinto, doce en terminales y ocho en boyas, desde un corte imprevisto y con permisos previamente emitidos. La vigencia se limita simultáneamente desde la emisión y desde la última comprobación fiable, considerando incertidumbre del reloj. Un permiso de veintitrés horas de antigüedad con caducidad a veinticuatro dispone de una hora restante; no se prorroga ni renueva contra una copia que ya no acredita el estado de la persona.
 La especificación pendiente debe identificar por función la autoridad y fuente vigentes, cobertura de altas/bajas externas y representación, ruta efectiva de comunicación, energía, reloj, persistencia, emisión y comprobación de permisos, y visibilidad en todos los terminales participantes. En escuela incluye portería, monitor y escuela; en saldo identifica consulta y cambios de la autoridad contable. La captura en cola, el estado indeterminado y la radio no se contabilizan como actualidad electrónica requerida.
 El ensayo incluye permisos de cero, doce, dieciséis y veintitrés horas, corte no anunciado, baja externa, reinicio y pérdida de un nodo, con operaciones nuevas durante todo el horizonte. Hasta seleccionar y documentar esa solución y sus dependencias, las brechas de continuidad y actualidad permanecen abiertas. No se modifica el requisito ni se registra cumplimiento por describir el procedimiento seguro de contingencia.
+\paragraph{Matriz funcional de continuidad.}
+La autonomía se verifica desde el inicio efectivo de la desconexión y por cada función. El recinto usa su PostgreSQL local, documentos cifrados, paquetes firmados y autoridad operacional; el terminal de terreno usa su copia mínima y cola durable. Un paquete permite exclusivamente las actuaciones previamente autorizadas dentro de su vida restante. La capacidad de disco, la captura de un hecho y una confirmación de negocio se comprueban por separado.
+
+\begingroup\small
+\begin{longtable}{@{}p{0.18\linewidth}p{0.23\linewidth}p{0.47\linewidth}@{}}
+\textbf{Función y horizonte} & \textbf{Datos locales} & \textbf{Actuación y evidencia} \\
+\hline
+Recepción, 24 h & Nave, persona y legajo disponible & Registrar recalada e informante; conservar referencia provisional cuando no exista maestro. \\
+Asignación, 24 h & Puesto, intervalos y autorización AMA & Confirmar sólo en la autoridad local y sin ocupaciones incompatibles; separar reserva comercial. \\
+Salida y regreso, 24 h & Episodio, plan y evidencia NAV & Registrar declaración y confirmación física como hechos distintos, con actor, dispositivo y secuencia. \\
+Preparación de zarpe, 24 h & Documentos vigentes y manifiesto & Conformar legajo y declarar faltantes; conservar el límite de 90 segundos sin atribuir autorización marítima a la marina. \\
+Combustible, 24 h & Medidor, época, asociación y habilitación & Capturar despacho único, extremos de lectura y evidencia; no duplicar ni facturar una lectura inválida. \\
+Escuela, 24 h & Participantes, autorizaciones y asignación & Confirmar salida, cambio, regreso y retiro contra la autoridad escolar compartida y permiso vigente. \\
+Pantalán, varadero y escuela, 12 h & Paquete de tarea, identidad y reglas & Conservar original y cola cifrada; diferenciar captura aislada de confirmación compartida. \\
+Inspección de boyas, 8 h & Activo, tarea y evidencia & Capturar inspección con autor, ubicación, instante y secuencia; sincronizar preservando el original. \\
+\end{longtable}
+\endgroup
+
+Cada ensayo cruza el horizonte con permisos de cero, doce, dieciséis y veintitrés horas de antigüedad. Al vencer un permiso se bloquean nuevas acciones del usuario y se conserva la cola existente. La transmisión posterior utiliza la identidad técnica del dispositivo y verifica la autorización que existía al registrar el hecho. No prolonga la autorización del usuario ni convierte la contingencia manual en autonomía electrónica cumplida. La ficha de ensayo registra función, versión, antigüedad, interrupción, causa y tiempo electrónico continuo; un escenario que no cubra su horizonte queda no conform
 
 \textbf{Contingencia y registro único:} mientras el permiso sea válido, el dispositivo continúa la captura durable de sus funciones y la Célula Operacional Local conserva las decisiones exclusivas. Si un dispositivo pierde contacto con el recinto, el personal de terreno comunica por radio la actuación a la función operacional responsable, que registra el hecho en la autoridad local cuando dispone de identidad vigente. Se distinguen informante, actor de la actuación y persona que registra, con el mismo identificador de operación; una segunda transmisión recupera ese identificador, sin generar otra salida, asignación, entrega o despacho. La comunicación permite coordinar una decisión; no concede permisos digitales al informante ni transforma una solicitud escolar en entrega confirmada.
 
@@ -864,6 +910,13 @@ DQ-AS / Auditoría & Permiso/consentimiento/evento: IDs, versión, finalidad y U
 
 Para cada ID se publica completitud sobre todos los pares registro--campo obligatorios aplicables de las capturas del período, incluidos borradores pendientes y rechazados; el numerador cuenta los presentes y válidos para esa regla. Se muestra aparte el subconjunto confirmado, que exige 100\,\%. La exactitud contrasta en cada cierre las decisiones críticas (entrega escolar, habilitación, cargo y autorización) mediante reconciliación automática con su evidencia independiente y autoritativa disponible: autorización firmada, plan aprobado, original de lectura o respuesta contable, según la regla. La comparación exige valores y versión de la fuente; una regla de formato, la copia del mismo formulario o una aprobación sin contraste no prueban exactitud. Para el resto se selecciona una muestra reproducible de hasta cien registros diarios por dominio, o todos si hay menos, con semilla, población, IDs y evidencia conservadas; ese máximo se refiere al procesamiento automático, no a cien revisiones humanas. Donde no haya fuente independiente comparable el registro queda no contrastable y la decisión crítica que requiera ese antecedente se mantiene pendiente. Informa porcentaje coincidente entre contrastados, cobertura contrastados/población y discrepancias críticas, sin extrapolar como exactitud de lo no comprobado. Sin evidencia independiente, el caso queda ``no contrastable'', visible en cantidad y antigüedad, y no integra el numerador de exactitud. El tablero separa exactitud observada y faltantes de contraste. La validación humana funcional se limita a excepciones y muestra programada por riesgo, con responsable/suplente y capacidad de trabajo explícita: el plan de pruebas y la asignación T-15 deben fijar tamaño, frecuencia y horas antes de habilitar la muestra humana. No se asigna a la marina revisión manual universal ni se presupone capacidad humana no dimensionada. Si crecen las excepciones se conserva su cola, cobertura y antigüedad y se ajustan recursos/proceso antes del cierre crítico, sin clasificar pendientes como exactos. El dimensionamiento de esa muestra humana permanece pendiente de conciliación con T-15; por ello se mantiene el desarrollo de RT-05.04 abierto aunque el catálogo y tablero estén definidos.
 
+\paragraph{Capacidad de revisión funcional.}
+La comprobación automática y la revisión humana se contabilizan por separado. El máximo de cien registros diarios por dominio corresponde al contraste automático y no se traslada como carga manual a la marina. La revisión humana atiende defectos críticos, excepciones y una muestra por riesgo; conserva responsable funcional, suplente, cantidad diaria y tiempo medio por caso. Si $N_e$ son excepciones, $N_m$ casos de muestra y $t_e$, $t_m$ sus minutos medios, la referencia de horas diarias es
+\[
+ H_{\mathrm{revision}} = \frac{N_e t_e+N_m t_m}{60}.
+\]
+Cada estimación conserva población, período y fuente, y se contrasta con las horas disponibles del plan de servicio. Una excepción sin resolver mantiene su estado y bloqueo de la decisión crítica; no se contabiliza como dato exacto. El tablero muestra cobertura, antigüedad, responsable y vencimiento, y el ensayo verifica que la cola pueda atenderse sin trasladar al cliente tareas técnicas de base de datos.
+
 La consistencia se evalúa sobre cada par registro--regla aplicable, con numerador conforme y denominador evaluado; muestra además evaluados/aplicables y pendientes. Incluye comparaciones cruzadas entre asignación y movimiento, asistencia y retiro, asociación y consumo, y hecho y respuesta contable. Las reglas críticas se ejecutan en captura/confirmación; el barrido completo se ejecuta diariamente y después de sincronización, migración y cambio de regla. No se reduce la población al estado conforme. Los cierres comerciales/ambientales bloquean defectos críticos, aunque el porcentaje agregado sea alto. La exactitud de un original disputado se declara sin resolver hasta decisión funcional respaldada.
 
 El tablero propio de calidad de la consola administrativa publica por dominio y regla corte, versión, fórmula, unidad, población, numerador/denominador, cobertura, pendientes y no contrastables, tendencia diaria de treinta días, defectos críticos, responsables y vencimientos. Permite filtrar período/estado, abrir la incidencia y exportar sus datos autorizados. Gerencia/Administración ven el consolidado; Operaciones, Escuela y Varadero su ámbito; Synaptix administra técnicamente, sin trasladar al cliente operación de base de datos. El drill-down aplica los mismos permisos de campo; un agregado no concede acceso a menores o deuda. La vista local muestra únicamente su cobertura y última consolidación central, con incidencias locales inmediatas. La publicación central consolida en la revisión diaria y conserva el histórico de fórmulas; una corrección genera versión, no sobrescribe el resultado emitido.
@@ -944,7 +997,6 @@ La evidencia reconstructiva y sus claves legibles se conservan hasta el mayor de
 Calidad ensayará creación, corrección, baja, importación, consulta/exportación sensible y efecto externo en nube/local, con desconexión, duplicación, reinicio y restauración. Reconstruirá valores antes/después en el límite de retención, con archivo y claves rotadas, y comprobará rechazo de alteración o eliminación anticipada. Toda brecha de cadena, referencia ilegible o confirmación sin evidencia bloquea la recepción. Es un protocolo de aceptación futura y no un resultado ejecutado (BT RT-05.03; C07 RT-11.10/RT-16.09).
 
 \textbf{Retención y archivado:} 
-La Tabla~5.11 sintetiza los plazos expresos de las bases y las reglas complementarias de conservación indicadas en su fuente.
 \paragraph{Lectura sensible y cobertura de integridad:}
 La lectura, búsqueda, previsualización, consulta móvil y exportación de salud, menores, posición consentida y deuda persisten su evento de acceso antes de entregar el resultado al usuario. El evento conserva actor, informante cuando exista, objeto/versión, dispositivo/proceso, origen, UTC y zona/offset pertinentes, finalidad, filtros/alcance, autorización/versiones, resultado y correlación. Un fallo de persistencia de esa evidencia bloquea la entrega; en operación offline se utiliza evidencia durable local dentro del permiso vigente. Los registros generales no reproducen valores sensibles.
 La matriz de cobertura diferencia captura del dispositivo, outbox/inbox, transacción PostgreSQL, exportador y archivo protegido. Para cada tramo identifica amenaza, custodio, permiso de escritura/borrado, control preventivo, detección, evidencia de secuencia y recuperación. Las claves y la administración del repositorio se separan de la función de consulta de negocio. Manifiestos, huellas y secuencias permiten detectar alteración, omisión o truncamiento; no se presentan como impedimento absoluto de borrado de un nodo aislado. Object Lock protege las versiones retenidas a las que se aplica y no reemplaza estos controles de origen.
@@ -954,6 +1006,8 @@ El visor autorizado filtra persona, período, entidad y operación, mantiene pag
 Documento y Versión documental conservan original, tipo/MIME validado, esquema de metadatos, dominio, acto, titular/firmante, representación, huella, claves/versiones, permisos, retención y relaciones. Cada carga permanece en cuarentena hasta comprobar formato, integridad y ausencia de contenido malicioso; se rechazan ejecutables o archivos incompatibles con la política. El visor protegido permite previsualizar sin descarga y aplica permisos por versión, revocación y auditoría antes de entregar contenido.
 La matriz de firma se individualiza por: contratos/renovaciones; autorizaciones de menores; recepción/entrega en custodia; actos de izaje; y entrega/gestión de residuos. Cada fila identifica fundamento normativo aplicable, acto exacto, modalidad admisible, identidad del firmante, facultad/representación, proveedor y servicio seleccionados, certificado/cadena cuando corresponda, sello de tiempo y conservación verificable. No se declara seleccionada una fila con proveedor o modalidad pendientes.
 Al firmar se conserva original y evidencia de validación temporal, estado del certificado y representación. La recuperación debe permitir verificación independiente tras vencimiento o rotación; se ensayan revocación, expiración, alteración y restauración. Aceptar una pantalla, firmar técnicamente un evento o guardar UTC no sustituye firma jurídica ni sello de tiempo. El cliente administra plantillas y variables autorizadas con versión, aprobación y salida abierta desde una transacción confirmada; estos documentos no emiten tributos propios.
+
+\paragraph{Retención y archivado.}
 
 la Tabla~\ref{tab:sd5_retencion} sintetiza los plazos expresos de las bases. Los criterios complementarios del diseño se explican a continuación. Cuando la fuente no precisa el inicio del cómputo, se propone un evento de referencia conservador y se registra como decisión de política. AUD-5 materializa el cómputo de cada evidencia reconstructiva; la matriz A5.2 debe extender estas reglas a todas las entidades y atributos y no puede reducirlas por razones de costo o capacidad.
 
@@ -1285,7 +1339,7 @@ Los intervalos son hipótesis del SD5 para construir una carga simultánea super
 
 La hipótesis de 402.120 mensajes externos por mes, peak conjunto de 201 por segundo y crecimiento a 603 pertenece al perfil previo del diseño y se conserva únicamente como sensibilidad del SD5 hasta contrastar las fichas efectivas de contraparte. No se atribuye a un A4.2 entregado con el SD4 0.9-R3. Los tamaños, destinos y reintentos se verifican por interfaz y se incorporan al cálculo conjunto de recursos.
 
-Como supuesto de prueba se consideran cuatro llamadas de servicio por actuación, con cinco consultas adicionales por segundo en régimen normal y veinte en carga máxima. Así, \(5 \times 4 + 5 = 25\) solicitudes/s para régimen normal y \(20 \times 4 + 20 = 100\) solicitudes/s para carga máxima reproducen la capacidad inicial de referencia de SD4. El número real de llamadas por flujo se obtendrá de las trazas de la aplicación y sustituirá ese coeficiente antes de aceptar la capacidad.
+Como supuesto de prueba se consideran cuatro llamadas de servicio por actuación, con cinco consultas adicionales por segundo en régimen normal y veinte en carga máxima. Así, \(5 \times 4 + 5 = 25\) solicitudes/s para régimen normal y \(20 \times 4 + 20 = 100\) solicitudes/s para carga máxima constituyen las hipótesis de carga del SD5 para sus ensayos de aceptación, distintas del perfil de ingeniería del SD4. El número real de llamadas por flujo se obtendrá de las trazas de la aplicación y sustituirá ese coeficiente antes de aceptar la capacidad.
 
 La Tabla~\ref{tab:sd5_escenarios_carga} separa los escenarios que deben verificarse.
 
@@ -1313,6 +1367,40 @@ La carga de \(1{,}5\times\) aumenta también las consultas adicionales, de veint
 El SD4 0.9-R3 propone dos tareas de 1 vCPU y 2 GiB por núcleo: seis tareas, seis vCPU y doce GiB iniciales. El techo inicial es cuatro tareas por núcleo: doce tareas, doce vCPU y veinticuatro GiB. RDS parte de dos vCPU, ocho GiB y cien GB por instancia, con Multi-AZ; cada nodo de borde propone cuatro núcleos, dieciséis GiB y dos SSD de 512 GB en RAID~1. La reserva de diseño es de treinta por ciento y la ampliación se activa al setenta por ciento. Son mínimos propuestos que requieren prueba y configuración, no mediciones.
 
 Estos recursos no acreditan por sí solos las cargas de 100/300 HTTP/s, carga masiva, analítica, mensajería, retención ni crecimiento del SD5. Los workers y almacenes adicionales se individualizan antes de aceptar la mezcla contractual y el escenario de falla. Ampliar tareas no elimina un cuello de escritura, almacenamiento, identidad o atención humana.
+
+\paragraph{Balance común de ejecución y almacenamiento.}
+Las cifras de SD4 son la base de aplicaciones; los consumos del SD5 se registran por carga sin sumar dos veces un recurso compartido. Cada unidad de ejecución relaciona ubicación, propietario, CPU, memoria, concurrencia, temporal, prioridad y comportamiento ante pérdida de zona o nodo.
+
+\begingroup\small
+\begin{longtable}{@{}p{0.25\linewidth}p{0.26\linewidth}p{0.37\linewidth}@{}}
+\textbf{Familia} & \textbf{Cifra disponible} & \textbf{Condición del balance} \\
+\hline
+Aplicaciones de tres núcleos & 6 tareas de 1 vCPU/2 GiB; techo inicial 12 tareas & 6/12 vCPU y 12/24 GiB totales de aplicaciones. No son una reserva dedicada a trabajos pesados. \\
+RDS transaccional & 2 vCPU, 8 GiB y 100 GB por instancia & Multi-AZ; no sumar standby como escritor ni atribuir todo el disco a una única familia. \\
+Nodo local & 4 núcleos, 16 GiB, 512 GB nominales en RAID 1 & Dos discos no duplican la capacidad útil. Reserva de 30\%; carga crítica del nodo superviviente. \\
+MASS-5 y coordinación común & 167 registros/s y piso calculado de 5,07 vCPU & Reservar validación, aplicación y coordinación una sola vez, además de operación crítica y sobrecarga. \\
+ANAL-5 y EXP-5 & Lectura separada; proyección propuesta de 15/45 GB & Recurso adicional propuesto por SD5, no instancia ya dimensionada por SD4. \\
+Informes e intercambio masivo & 170 GiB iniciales; 510 GiB con crecimiento & Objetos y temporales distintos del dato de negocio; incluir archivos pendientes y copias efectivas. \\
+Cola local y evidencia & 10 GB/día; 300 GB para 30 días & Hipótesis de SD5; incluye sus muestras. No añadir esas mismas muestras otra vez. \\
+Sincronización & Base: 100 Mb/s útiles, 20 nuevos y 80 de lote & 10 GB, sensibilidad 1,20 y 480 s de procesamiento: 28 minutos. \\
+Sincronización con crecimiento & 400 Mb/s útiles, 60 nuevos y 340 de lote & 30 GB, sensibilidad 1,20 y 480 s: 22,12 minutos; principal y respaldo. \\
+\end{longtable}
+\endgroup
+
+Para un techo de utilización del 70\%, la referencia de CPU total necesaria se expresa como
+\[
+ C_{\mathrm{total}} \geq
+ \frac{C_{\mathrm{operacion}}+C_{\mathrm{lote}}+
+ C_{\mathrm{analitica}}+C_{\mathrm{exportacion}}+
+ C_{\mathrm{sincronizacion}}}{0{,}70},
+\]
+contando una sola vez toda coordinación o trabajo ya incluido en otra carga. Con el piso de lote de 5,07 vCPU, su sola referencia requiere 5,07/0,70 = 7,24 vCPU totales, antes de otras cargas; una capacidad inicial total de seis vCPU no alcanza esa envolvente. El techo de doce vCPU deja 8,4 vCPU dentro del 70\%; después de reservar 5,07 restan 3,33 para las cargas no incluidas. Es aritmética de dimensionamiento y no rendimiento medido ni asignación ya ejecutada. Se verifica también la capacidad efectivamente disponible después de una falla y durante el escalamiento.
+
+Para cada repositorio, la capacidad necesaria integra dato, índices, sobrecarga, holgura y sus copias reales. En el nodo de 512 GB, limitar ocupación al 70\% deja 358,4 GB utilizables bajo esa política. La cola de 300 GB deja 58,4 GB para sistema, bases y los restantes componentes, antes de descontar sus consumos. Si se mantiene la hipótesis de treinta días y se triplica a 30 GB/día, la cola pasa a 900 GB y requiere por sí sola 900/0,70 = 1.285,71 GB nominales, antes de otras necesidades; ese escenario no cabe en 512 GB. El crecimiento se contabiliza como ampliación de capacidad, no como duplicación automática por RAID.
+
+AUD-5 se incorpora con su población de imágenes iniciales, cambios, diferencias, consultas, esquemas y claves, aplicando la retención de cada categoría. Documentos/versiones, proyecciones, informes, archivo, PITR y copias locales/regionales se suman por ubicación y sin doble conteo. Los 100 GB de RDS y los subtotales anuales no constituyen el total de la solución.
+
+La ficha de capacidad identifica escenario base, crecimiento y falla; recurso nominal y útil; carga cubierta; prioridad y criterio de aceptación. Se ensayan juntos negocio, telemetría, MASS-5, informes y reconexión, conservando los límites críticos. La capacidad ofrecida debe cubrir las reservas antes de habilitar la mezcla; los valores observados y decisiones de ampliación se registran durante esas pruebas.
 
 \textbf{Captura y consolidación de telemetría:} la adquisición local se realizará cada minuto y la publicación de acumulados centrales cada quince minutos, conforme a SD4 DA-09 y 5.2.5. Cada registro conservará punto, instante, secuencia, calidad, época del contador y asociación vigente. Las muestras por minuto y los acumulados de quince minutos son poblaciones distintas.
 

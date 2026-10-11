@@ -1,0 +1,1297 @@
+%T-15
+\section{Bases de planificación}\label{sec:t15-bases}
+Este formulario desarrolla las actividades, el esfuerzo y los recursos necesarios para producir y sostener los entregables del contrato del Puerto Deportivo Bahía Panitao. T-14 conserva la EDT, las fronteras, los responsables de integración, los criterios de aceptación y las ventanas de los resultados; T-12 conserva los requisitos y la declaración de alcance. T-15 convierte esas entradas en trabajo estimable y asignable, y posteriormente comprobará su cabida mediante dependencias, calendarios y nivelación.
+
+Este borrador de seis secciones distingue referencias documentadas, estimaciones propuestas y entradas por validar. Desarrolla actividades, estimación, dependencias, recursos y cobertura; incorpora subtotales sustentados y un escenario de provisión de servicio. La estimación ascendente completa, la nivelación y las fechas de recepción todavía no están cerradas. CPM/PERT, tabla oficial y curvas se desarrollarán desde el mismo registro cuantificado; una cifra calculada no acredita contratación, aprobación del cliente ni prestación ejecutada.
+
+\subsection{Objetivo y relación con otros documentos}
+El objetivo es conciliar requisito, entregable, actividad, perfil y esfuerzo, con una sola imputación por aporte. La descomposición operativa conserva los códigos terminales de T-14 y agrega identificadores de actividad; no transforma los grupos RF de T-12 en dominios nuevos. Las doce cuentas siguen siendo una organización de resultados de Synaptix.
+
+T-14 responde qué resultado se entrega y bajo qué condición se recibe. T-15 identifica el trabajo que lo produce, las HH por perfil y las condiciones que afectan su duración y disponibilidad. T-18 individualiza las olas, los cortes, la convivencia y la reversión. T-13 y T-17 desarrollan las pruebas integrales y la recepción formal. SD7 presenta la síntesis de esos instrumentos; la Oferta Económica valora los recursos y los servicios. La participación del cliente y los tiempos de decisión se registran separados del esfuerzo del proveedor.
+
+La recepción contractual sigue correspondiendo a la Contraparte Técnica autorizada. El responsable técnico de una ficha integra el resultado, pero no representa automáticamente al único ejecutor ni una persona disponible a jornada completa. Una actividad terminada aporta evidencia al paquete; por sí sola no recibe su etapa ni habilita el cambio de autoridad.
+
+\subsection{Fuentes y fases del contrato}
+Las entradas de esta versión son T-14 v0.8, con su programa actualizado al 10 de octubre de 2026, y T-12 v0.9, fechado el 7 de octubre de 2026. Las Bases Administrativas, artículos 17 y 18 y Formulario T-15, fijan fases, convivencia y recepción. La pauta disponible, capítulo 7.2--7.3, establece el desarrollo de secuenciamiento, estimación, frentes y CPM/PERT. El índice de este formulario es una propuesta de organización de Synaptix.
+
+Se contrastan además SD2, SD3, SD4, SD5, SD6, SD7 y T-9/T-10. SD7 y el T-18 disponible conservan una selección anterior al diccionario agrupado; sus cifras se concilian en la tabla~\ref{tab:t15-conciliacion-fuentes}. Las bases fijan las obligaciones; los documentos de Synaptix registran la solución propuesta y no pueden reducirlas. La identificación detallada de versiones y archivos queda en el registro de fuentes. Las referencias a SD10/SD12 no acreditan haber recibido sus versiones completas ni sus manifiestos.
+
+T-12 contiene 576 identificadores: 146 RF, 56 RNF y 374 RT. El conteo de su tabla de síntesis es 546 ofrecidos y 30 no ofrecidos; la declaración de alcance no es una prueba de cumplimiento. Los 27 complementos C07 se mantienen asociados a sus RT, sin aumentar el universo. RT-03.24, RT-05.10 y RT-16.14 conservan la obligación del caso aunque el alcance deseable transversal tenga un tratamiento distinto. RT-26.08 permanece deseable no ofrecido. RT-25.01--09 se identifica como evidencia académica del Informe 3, externa al catálogo contractual, conforme a la frontera que registra T-14.
+
+La programación conserva las fases de la tabla~\ref{tab:t15-fases-base}. Los meses contractuales prevalecen sobre fechas absolutas; el 1 de diciembre de 2026 es únicamente el inicio supuesto del escenario. Un cambio de inicio obliga a trasladar fechas y revisar estaciones, feriados y ventanas de faena.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr.30\textwidth-2\tabcolsep\relax}L{\dimexpr.12\textwidth-2\tabcolsep\relax}L{\dimexpr.58\textwidth-2\tabcolsep\relax}}
+\caption{Fases que gobiernan la planificación}\label{tab:t15-fases-base}\\\hline
+\EncabezadoTabla{Fase} & \EncabezadoTabla{Meses} & \EncabezadoTabla{Condición de planificación}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-fases-base}}}\\\hline
+\EncabezadoTabla{Fase} & \EncabezadoTabla{Meses} & \EncabezadoTabla{Condición de planificación}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Desarrollo E1 & 1--12 & Ingeniería, habilitación, integración, migración, pruebas y certificación.\\\hline
+Marcha blanca E1 & 13--15 & Datos y usuarios reales, convivencia, observación y reversión activa.\\\hline
+Producción E1 & 16 & Acta y cambio oficial antes de usar la solución como registro del alcance E1.\\\hline
+Desarrollo E2 & 13--18 & Trabajo concurrente con E1, sin degradarla; cierre en mes 18.\\\hline
+Marcha blanca E2 & 19--20 & Operación supervisada de E2 con E1 productiva e integridad compartida.\\\hline
+Producción E2 & 21 & Aceptación final de implementación y activación ordenada.\\\hline
+Operación & 21--56 & 36 meses continuos para ambos alcances, desde el primer día de 21.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{Bases Administrativas, art. 17; T-14.}
+
+Las barras de T-14 son ventanas de resultados; no son duraciones de actividad ni capacidad disponible. Los rombos H1--H12 son objetivos de recepción. La red deberá incluir presentación, revisión y subsanación cuando corresponda, sin suponer actas instantáneas. El cierre E2 conserva como dependencia abierta la cabida de evidencia completa de las cuatro últimas semanas, revisión, decisión y activación el primer día de 21. Se resolverá en el desarrollo temporal de T-15/T-18, sin reducir observación ni desplazar unilateralmente las fases.
+
+\subsection{Unidades y supuestos}
+La unidad de esfuerzo es la hora-persona, expresada como HH. Se distingue del tiempo transcurrido, de la hora de puesto cubierto, de la disponibilidad de guardia y de las horas de participación del cliente. Una espera de diez días hábiles de revisión no equivale a diez jornadas de trabajo productivo del proveedor.
+
+Para cada actividad se registra cantidad, unidad de producción, perfil, HH unitarias, fuente, condición de estimación y versión. Los recursos y duraciones se calcularán con disponibilidad efectiva. No se aplica una reducción de productividad adicional cuando la misma condición ya está incluida en la estimación unitaria. Los padres de la EDT agregan las HH de sus hijos y no reciben una partida adicional por tener código propio.
+
+Se utilizan tres estados de cifra: \textbf{referencia documentada}, para una cantidad, esfuerzo propuesto o capacidad localizada en T-14, SD7, T-9 u otra fuente identificada; \textbf{estimación propuesta}, para un valor calculado bajo supuestos explícitos; y \textbf{pendiente de validación}, cuando falta una entrada material. Pendiente no significa cero. Una referencia de capacidad tampoco acredita horas ejecutadas.
+
+La ingeniería usa jornadas hábiles; observación, cobertura y relevos se programan en tiempo natural cuando corresponde. Se conservan el congelamiento del 15 de diciembre al 15 de marzo y la suspensión de trabajo programado ante marejadas que registra T-14. Feriados futuros, demanda, ausencias y disponibilidad se incorporan como entradas del calendario; no se inventa una cantidad anual de interrupciones. Obras, adquisiciones y datos a cargo del cliente mantienen ese titular; Synaptix estima únicamente su especificación, coordinación, configuración o verificación propietaria.
+
+\section{Actividades de trabajo}\label{sec:t15-actividades}
+\subsection{Descomposición de entregables}
+La descomposición parte de las 349 fichas y los 1.449 códigos nominales de T-14. Una familia comparte la descripción, pero conserva instancias individuales por lote, cohorte, período o versión. El universo de referencia es $1.160+N_F+N_E$: $N_F$ representa cohortes iniciales activadas y $N_E$ cohortes estacionales activadas. Las 214 reservas iniciales y las 75 estacionales no se convierten automáticamente en ejecuciones. Las reservas de subsanación y los cambios de ingeniería requieren además sus disparadores u órdenes correspondientes.
+
+El identificador de actividad tiene la forma \texttt{A-<código terminal>-<secuencia>}. Por ejemplo, \texttt{A-1.4.1.1.1-03} identifica construcción dentro del entregable \texttt{1.4.1.1.1}. Una subdivisión posterior agrega un sufijo y conserva la relación con ese código. El identificador operativo no sustituye el resultado contractual ni el código histórico.
+
+Se definen dos plantillas iniciales. \texttt{FUN} organiza las treinta capacidades funcionales; \texttt{RES} organiza preparación, producción y verificación de los demás resultados. No sustituyen una descomposición específica. El catálogo de 4.407 IDs se conserva como referencia nominal previa a completar las fichas; al desagregar versiones, incrementos y controles se versionará su conteo, conservando los códigos terminales y la correspondencia con los IDs anteriores.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr.14\textwidth-2\tabcolsep\relax}L{\dimexpr.28\textwidth-2\tabcolsep\relax}L{\dimexpr.58\textwidth-2\tabcolsep\relax}}
+\caption{Modelos de actividades por resultado}\label{tab:t15-modelos}\\\hline
+\EncabezadoTabla{Modelo} & \EncabezadoTabla{Actividad} & \EncabezadoTabla{Resultado de término y frontera}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-modelos}}}\\\hline
+\EncabezadoTabla{Modelo} & \EncabezadoTabla{Actividad} & \EncabezadoTabla{Resultado de término y frontera}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+FUN-01 & Analizar requisitos y reglas & Requisitos, escenarios, restricciones y criterios del componente contrastados con T-12 y validadores autorizados.\\\hline
+FUN-02 & Diseñar el componente & Modelo propio, contratos y decisiones de interfaz; reutilización y dependencias recibibles.\\\hline
+FUN-03 & Construir el componente & Lógica, persistencia, contratos y vistas propios; parámetros, flujos y adaptación transversal exigibles al dominio.\\\hline
+FUN-04 & Verificar el componente & Pruebas unitarias y comprobaciones locales de permisos, datos y contratos; no repite las pruebas integrales de 1.10.\\\hline
+FUN-05 & Documentar y entregar & Fuentes, versión, documentación y evidencia del componente consolidadas para integración y recepción.\\\hline
+RES-01 & Preparar la instancia & Universo, versión, insumos, permisos, participantes y método de trabajo de la ficha identificados.\\\hline
+RES-02 & Producir el resultado & Ejecución específica de la ficha: configurar, transformar, ensayar, formar, prestar servicio o elaborar documento según corresponda.\\\hline
+RES-03 & Verificar y presentar & Comprobación del resultado propio, observaciones y expediente de la instancia; no reproduce un control agregado estimado en otra cuenta.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14.}
+
+La secuencia inicial preparación--producción--verificación no resuelve por sí sola la red. Las relaciones externas y las esperas de cada ficha deben localizarse en la actividad que realmente las consume. Análisis y diseño pueden producir insumos todavía no recibidos; construcción y ensayo requieren su habilitación correspondiente. No se exige disponer de H2 aprobado para elaborar el diseño que será presentado a H2.
+
+Para productores compartidos con entregas E1/E2, como \texttt{1.3.4.4} y \texttt{1.7.6.1--6}, se separan diseño común, incremento E1, verificación E1, delta E2 y regresión/entrega E2. Los sufijos \texttt{-E1} y \texttt{-E2} distinguen actividades bajo el mismo resultado; no crean dos motores ni duplican el diseño. Cada consumidor se conecta a la versión que necesita. En servicio mensual, la producción abarca todo el período y los controles diarios se solapan con ella; la consolidación final comienza al disponer de la evidencia completa. La plantilla RES no impone que toda verificación ocurra después del mes.
+
+\subsection{Catálogo de actividades}
+El registro nominal relaciona cada código terminal con sus actividades, la ficha de origen, la ventana, los requisitos vinculados mediante bloques y el estado de activación. En esta versión contiene 4.407 identificadores de actividad: 150 funcionales y 4.257 asociados al modelo RES. De estos últimos, 867 corresponden a los tres pasos de 289 cohortes reservadas. Es un catálogo nominal propuesto, no un conteo de actividades ejecutadas ni una red nivelada.
+
+Las HH, las cantidades efectivas y las duraciones se mantienen abiertas cuando no tienen fundamento recibido. La tabla~\ref{tab:t15-cuentas-actividades} muestra el tratamiento por cuenta; la tabla~\ref{tab:t15-funcionales} individualiza las treinta capacidades funcionales. El registro conserva las instancias de las demás familias para que su esfuerzo no desaparezca por agruparlas en la presentación.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr.11\textwidth-2\tabcolsep\relax}L{\dimexpr.24\textwidth-2\tabcolsep\relax}L{\dimexpr.65\textwidth-2\tabcolsep\relax}}
+\caption{Trabajo por cuenta de entregables}\label{tab:t15-cuentas-actividades}\\\hline
+\EncabezadoTabla{Cuenta} & \EncabezadoTabla{Resultado} & \EncabezadoTabla{Actividades y unidad de planificación}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-cuentas-actividades}}}\\\hline
+\EncabezadoTabla{Cuenta} & \EncabezadoTabla{Resultado} & \EncabezadoTabla{Actividades y unidad de planificación}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+1.1 & Dirección y control & Preparar y mantener líneas base, decisiones, riesgos, cambios, custodia y expedientes. Unidad: documento, revisión o período; no porcentaje adicional sobre toda la EDT.\\\hline
+1.2 & Plataforma híbrida & Especificar, configurar y comprobar recursos, cinco ambientes, borde, red y observabilidad. Unidad: componente o lote recibido; obras y compras del cliente se registran como dependencia.\\\hline
+1.3 & Auditoría y seguridad & Diseñar controles, configurar o construir su productor y verificar permisos, claves, autoridad local, privacidad y evidencia. Unidad: control o incremento de etapa; adaptaciones funcionales se imputan a sus propietarios.\\\hline
+1.4--1.6 & Núcleos funcionales & Modelo FUN por cada capacidad; contribución de Funcional, Desarrollo, Datos, Seguridad y Calidad según actividad. Unidad: resultado funcional y versión.\\\hline
+1.7 & Canales, integración y datos & Diseño UX/arquitectura; componentes reutilizables, contratos, adaptadores, telemetría, datos compartidos y firma/evidencia. Unidad: productor común o adaptación explícita de su ficha.\\\hline
+1.8 & Migración e historia & Inventariar, extraer, perfilar, transformar, sanear, cargar, verificar y conservar historia según paquete. Unidad: conjunto, lote, herramienta o período; no se reconstruyen herramientas en cada ensayo.\\\hline
+1.9 & Innovaciones & Diseñar y construir el aporte incremental, integrar, probar, preparar y ejecutar medición/piloto, evaluar y transferir. Unidad: componente o instancia de medición; seguimiento posterior corresponde a 1.12.2.\\\hline
+1.10 & Verificación y aceptación & Preparar y ejecutar protocolos integrales, ensayos, conciliación y retorno; corregir y reensayar ante hallazgos. Unidad: versión, ensayo y grupo; pruebas unitarias pertenecen al componente.\\\hline
+1.11 & Formación e implantación & Preparar materiales/manifiestos, formar, acompañar olas, observar convivencia, estabilizar y prestar soporte de implementación. Unidad: cohorte activada, ola, etapa o período.\\\hline
+1.12 & Servicio y salida & Preparar el servicio, prestar mesa/guardia, mantener, ejecutar ingeniería autorizada, controles, formación estacional, mentoría y transferencia. Unidad: período, orden, campaña o estado de salida.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14; T-12.}
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.27\textwidth-2\tabcolsep\relax}L{\dimexpr0.49\textwidth-2\tabcolsep\relax}L{\dimexpr0.1\textwidth-2\tabcolsep\relax}L{\dimexpr0.14\textwidth-2\tabcolsep\relax}}
+\caption{Capacidades con actividades FUN-01 a FUN-05}\label{tab:t15-funcionales}\\\hline
+\EncabezadoTabla{Código T-14} & \EncabezadoTabla{Resultado funcional} & \EncabezadoTabla{Etapa} & \EncabezadoTabla{Ventana}\\\hline\endfirsthead
+\multicolumn{4}{l}{\textit{Continuación de la tabla \ref{tab:t15-funcionales}}}\\\hline
+\EncabezadoTabla{Código T-14} & \EncabezadoTabla{Resultado funcional} & \EncabezadoTabla{Etapa} & \EncabezadoTabla{Ventana}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+\texttt{1.\allowbreak{}4.\allowbreak{}1.\allowbreak{}1.\allowbreak{}1} & Movimientos de salida y regreso identificados & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}4.\allowbreak{}1.\allowbreak{}2.\allowbreak{}1} & Planes voluntarios y discrepancias operacionales & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}4.\allowbreak{}1.\allowbreak{}3.\allowbreak{}1} & Atención y escalamiento de planes vencidos & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}4.\allowbreak{}1.\allowbreak{}4.\allowbreak{}1} & Autorización operacional de amarra y compatibilidad & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}4.\allowbreak{}2.\allowbreak{}1.\allowbreak{}1} & Clases, nóminas y participación por intervalo & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}4.\allowbreak{}2.\allowbreak{}2.\allowbreak{}1} & Retiros coordinados y entrega única de alumno & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}4.\allowbreak{}2.\allowbreak{}3.\allowbreak{}1} & Retorno de participantes y vista mínima de salud & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}4.\allowbreak{}3.\allowbreak{}1.\allowbreak{}1} & Inventario y condiciones de puestos y fondeos & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}4.\allowbreak{}3.\allowbreak{}2.\allowbreak{}1} & Inspecciones de boyas y evidencia desconectada & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}4.\allowbreak{}3.\allowbreak{}3.\allowbreak{}1} & Asociaciones temporales de medidores e instalaciones & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}5.\allowbreak{}1.\allowbreak{}1.\allowbreak{}1} & Maestros de faena y habilitaciones de consulta inicial & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}5.\allowbreak{}1.\allowbreak{}2.\allowbreak{}1} & Agenda de varadero y posiciones compatibles & E2 & 13--15\\\hline
+\texttt{1.\allowbreak{}5.\allowbreak{}1.\allowbreak{}3.\allowbreak{}1} & Plan de izaje, validación y suspensión de faena & E2 & 13--15\\\hline
+\texttt{1.\allowbreak{}5.\allowbreak{}1.\allowbreak{}4.\allowbreak{}1} & Órdenes, ejecución y reprogramación de trabajos & E2 & 13--15\\\hline
+\texttt{1.\allowbreak{}5.\allowbreak{}1.\allowbreak{}5.\allowbreak{}1} & Acreditación, inducción y acceso a intervención & E2 & 13--15\\\hline
+\texttt{1.\allowbreak{}5.\allowbreak{}2.\allowbreak{}1.\allowbreak{}1} & Despacho identificado y captura segura de combustible & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}5.\allowbreak{}2.\allowbreak{}2.\allowbreak{}1} & Conciliación de tramos y rectificación de despachos & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}5.\allowbreak{}3.\allowbreak{}1.\allowbreak{}1} & Intervalos y series conciliadas de agua y energía & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}5.\allowbreak{}3.\allowbreak{}2.\allowbreak{}1} & Consultas de consumo y evidencia ambiental inicial & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}5.\allowbreak{}3.\allowbreak{}3.\allowbreak{}1} & Recepción de residuos y discrepancias de origen & E2 & 13--15\\\hline
+\texttt{1.\allowbreak{}5.\allowbreak{}3.\allowbreak{}4.\allowbreak{}1} & Entregas RESPEL parciales y certificados vinculados & E2 & 13--15\\\hline
+\texttt{1.\allowbreak{}5.\allowbreak{}3.\allowbreak{}5.\allowbreak{}1} & Indicadores ambientales e imputación comercial de consumo & E2 & 13--15\\\hline
+\texttt{1.\allowbreak{}6.\allowbreak{}1.\allowbreak{}1.\allowbreak{}1} & Maestros de personas, organizaciones y embarcaciones & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}6.\allowbreak{}1.\allowbreak{}2.\allowbreak{}1} & Contratos y documentos vigentes de consulta E1 & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}6.\allowbreak{}1.\allowbreak{}3.\allowbreak{}1} & Atención a visitas y asignación transitoria inicial & E1 & 3,8\\\hline
+\texttt{1.\allowbreak{}6.\allowbreak{}1.\allowbreak{}4.\allowbreak{}1} & Espera y gestión contractual completa & E2 & 13--15\\\hline
+\texttt{1.\allowbreak{}6.\allowbreak{}2.\allowbreak{}1.\allowbreak{}1} & Hechos facturables, tarifas y lotes de envío & E2 & 13--15\\\hline
+\texttt{1.\allowbreak{}6.\allowbreak{}2.\allowbreak{}2.\allowbreak{}1} & Respuesta contable, pagos y saldos informados & E2 & 13--15\\\hline
+\texttt{1.\allowbreak{}6.\allowbreak{}2.\allowbreak{}3.\allowbreak{}1} & Cobranza y medidas con decisión competente & E2 & 13--15\\\hline
+\texttt{1.\allowbreak{}6.\allowbreak{}2.\allowbreak{}4.\allowbreak{}1} & Expedientes de custodia y exportación íntegra & E2 & 13--15\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14, fichas 1.4--1.6.}
+
+La ficha operativa que debe completarse contiene ID, código terminal, instancia/etapa/versión, alcance, resultado de término, requisito/localizador T-12, predecesora, relación, espera, calendario, perfil, cantidad, HH, duración, fundamento y estado. Se agregan revisor, insumo externo y recurso exclusivo cuando corresponde. En el apoyo inicial están vacíos los campos de HH, cantidad activa, duración y calendario de las 4.407 actividades; 4.257 registros RES carecen de etapa individualizada. Por tanto, el registro es preliminar y no una colección de fichas operativas terminadas. Un campo pendiente no se interpreta como cero ni se incorpora al cálculo de CPM.
+
+Por ejemplo, \texttt{A-1.4.1.3.1-03} construye la lógica propietaria de atención a planes vencidos: genera la solicitud de alerta y conserva contacto/escalamiento; \texttt{1.7.4.1} produce el motor común de mensajería y \texttt{1.3.3.1} conserva auditoría. RF-NAV-06, en T-12 p. 8, exige alerta visible dentro de quince minutos desde el vencimiento; no se importa la tolerancia de treinta minutos de un antecedente anterior. Las actividades propietarias y comunes son distintas, pero el caso integrado se verifica sin sumar nuevamente su construcción.
+
+\subsection{Trabajo compartido y cantidades variables}
+Los treinta resultados funcionales sustituyen como nivel terminal a los 306 registros funcionales anteriores. Las actividades de especificación, implementación y vistas y sus suplementos permanecen como trabajo asociado a un resultado único. Los 560 registros diarios históricos se relacionan con los cuatro paquetes agregados de acompañamiento/estabilización; no vuelven a contarse como entregables terminales. La agrupación no reduce automáticamente esfuerzo ni autoriza conservar una estimación anterior sin contraste.
+
+Identidad, auditoría, mensajería, canales, sincronización, intercambio de datos y firma/evidencia se construyen en su cuenta propietaria. Cada núcleo incorpora únicamente reglas, datos y adaptación particulares. Las pruebas integrales usan componentes recibidos y agregan su propio montaje, ejecución y análisis. La revisión de una evidencia no vuelve a contabilizar la ejecución que la originó. Una intervención mixta se separa en aportes disjuntos y mantiene una sola imputación por aporte.
+
+La formación inicial y estacional depende de manifiestos por perfil, turno, sitio y modalidad. Para población compatible $P_{p,e,g}$ y capacidad efectiva $K_{p,e,g}$, se conserva
+\[
+N_{p,e}=\sum_g\left\lceil\frac{P_{p,e,g}}{K_{p,e,g}}\right\rceil,
+\qquad 1\leq K_{p,e,g}\leq12.
+\]
+El máximo de doce asistentes y dos sesiones de dos horas son decisiones de diseño de Synaptix. No se activan todos los sufijos por existir en el catálogo ni se fija la población pendiente en cero. Una persona se cuenta una vez por perfil, etapa y objetivo; otra participación justificada mantiene registro distinto. Recuperaciones se identifican sin inflar cohortes. Materiales comunes y su actualización se estiman en sus paquetes, no una vez por asistente.
+
+Las olas requieren población, sitio, objetivo y fecha de activación definidos en T-18. Los tres grupos de datos y cuatro posiciones históricas no fijan su cantidad. Los ensayos se anclan al cambio de autoridad C de cada grupo, no necesariamente al paso oficial de 16/21. Activación supervisada en 13/19 y autoridad oficial son condiciones distintas; no se atribuye a esos meses un C ya acordado. F27/F28 se activan por hallazgo y deben corregir/reensayar antes de autorizar C.
+
+Para ingeniería mensual se conserva capacidad disponible y órdenes efectivamente autorizadas como magnitudes separadas. Un mes sin órdenes no permite inventar trabajo para consumir la bolsa. Las actividades del servicio por período acreditarán cobertura, mientras cada cambio tendrá su propio resultado y recepción. La atención de un ticket no se imputa dos veces por pasar de mesa a guardia, ni el informe agregado de SLA sustituye la prestación.
+
+\section{Estimación del esfuerzo}\label{sec:t15-estimacion}
+\subsection{Método de estimación}
+La estimación principal se construye ascendentemente por actividad y perfil. Se parte del resultado de término y de su universo efectivo: componentes, conjuntos de datos, lotes, sesiones, puestos o períodos. El estimador identifica preparación, ejecución, verificación y documentación aplicables a ese resultado, y registra la unidad, fuente y condición de cada valor. Los tiempos de herramientas sin intervención y las esperas externas afectan duración, pero no se cargan como trabajo humano continuo.
+
+Para actividad $a$, perfil $r$ y componente de trabajo $j$, se calcula
+\[
+HH_{a,r}=HH^{fijo}_{a,r}+\sum_j q_{a,j}\,h_{a,j,r},
+\qquad HH_a=\sum_r HH_{a,r}.
+\]
+Aquí $q$ es cantidad efectiva y $h$ es esfuerzo unitario por perfil. El término fijo reúne únicamente aportes que no están incluidos en el unitario. Si $h$ ya contiene las HH de dos especialistas, no se multiplica otra vez por dos. Una misma preparación común no se repite en cada lote. Una productividad documentada puede expresarse como cantidad/HH, siempre que conserve la misma unidad y frontera.
+
+Se prefiere evidencia del proyecto o una estimación de especialista con supuestos explícitos. Cuando no existe medición comparable, el valor queda como propuesta y se contrasta con ejecución temprana o un escenario; no se presenta como productividad histórica. Las revisiones y correcciones se presupuestan según su trabajo propio o disparador. No se añade un porcentaje general de gestión, pruebas o contingencia sobre actividades que ya contienen esos aportes.
+
+La suma por paquete es $HH_p=\sum_{a\in p}HH_a$. Las sumas por etapa y cuenta se obtienen del mismo registro con clasificación disjunta. La estimación de esfuerzo precede al cálculo de duración: dividir todas las HH por ocho presupone divisibilidad, disponibilidad y simultaneidad que no siempre existen. La fecha, la carga y la nivelación se desarrollan desde esas condiciones en las secciones siguientes.
+
+\subsection{Estimación funcional con UCP}
+Se mantiene UCP como contraste del trabajo funcional de 1.4--1.6, no como estimador universal del contrato. El modelo antecedente propone 34 objetivos asociados a las treinta capacidades: 21 E1 y 13 E2. Incluye doce roles humanos y no confunde un mismo rol con varios actores por usar web, consola y móvil. El conteo requiere validar alternativas, transacciones y actores externos en la frontera elegida antes de seleccionar HH.
+
+La tabla~\ref{tab:t15-ucp-casos} conserva los objetivos del antecedente y los relaciona con los códigos actuales. El modelo es una propuesta de interacción, no un levantamiento ya validado. La correspondencia con un paquete no demuestra que toda su administración, búsqueda, exportación, permisos y flujos exigidos en T-12 estén representados en esos objetivos; esa cobertura debe cotejarse expresamente.
+
+El cotejo se realiza por cláusula, no por asignación automática de todo un bloque: cada RF y cada adaptación RNF/RT aplicable identifica objetivo, flujo principal, alternativas con transacciones adicionales, actor y productor compartido o adaptación propietaria. Se comprueban también consultas sensibles, exportación, configuración, documentos y firma cuando corresponda. El registro distingue \textit{incluido en UCP}, \textit{estimado ascendentemente fuera de UCP}, \textit{no aplica} y \textit{pendiente}, con fundamento; ninguna cláusula pendiente desaparece del universo. Contabilidad, identidad, pagos y dispositivos se evalúan como actores de la frontera elegida, sin agregarlos si su interacción ya pertenece a un adaptador estimado fuera de ella. La clasificación de la tabla sigue siendo antecedente hasta completar esos flujos.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.12\textwidth-2\tabcolsep\relax}L{\dimexpr0.43\textwidth-2\tabcolsep\relax}L{\dimexpr0.29\textwidth-2\tabcolsep\relax}L{\dimexpr0.16\textwidth-2\tabcolsep\relax}}
+\caption{Objetivos del modelo antecedente para contraste UCP}\label{tab:t15-ucp-casos}\\\hline
+\EncabezadoTabla{Caso} & \EncabezadoTabla{Objetivo} & \EncabezadoTabla{Entregable actual} & \EncabezadoTabla{Trans. / peso}\\\hline\endfirsthead
+\multicolumn{4}{l}{\textit{Continuación de la tabla \ref{tab:t15-ucp-casos}}}\\\hline
+\EncabezadoTabla{Caso} & \EncabezadoTabla{Objetivo} & \EncabezadoTabla{Entregable actual} & \EncabezadoTabla{Trans. / peso}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+\texttt{CU-\allowbreak{}01} & Registrar salida & \texttt{1.\allowbreak{}4.\allowbreak{}1.\allowbreak{}1.\allowbreak{}1} & 2 / 5\\\hline
+\texttt{CU-\allowbreak{}02} & Confirmar regreso seguro & \texttt{1.\allowbreak{}4.\allowbreak{}1.\allowbreak{}1.\allowbreak{}1} & 3 / 5\\\hline
+\texttt{CU-\allowbreak{}03} & Declarar plan voluntario & \texttt{1.\allowbreak{}4.\allowbreak{}1.\allowbreak{}2.\allowbreak{}1} & 2 / 5\\\hline
+\texttt{CU-\allowbreak{}04} & Atender plan vencido & \texttt{1.\allowbreak{}4.\allowbreak{}1.\allowbreak{}3.\allowbreak{}1} & 3 / 5\\\hline
+\texttt{CU-\allowbreak{}05} & Autorizar amarra & \texttt{1.\allowbreak{}4.\allowbreak{}1.\allowbreak{}4.\allowbreak{}1} & 3 / 5\\\hline
+\texttt{CU-\allowbreak{}06} & Preparar clase y nómina & \texttt{1.\allowbreak{}4.\allowbreak{}2.\allowbreak{}1.\allowbreak{}1} & 3 / 5\\\hline
+\texttt{CU-\allowbreak{}07} & Registrar participación por intervalo & \texttt{1.\allowbreak{}4.\allowbreak{}2.\allowbreak{}1.\allowbreak{}1} & 2 / 5\\\hline
+\texttt{CU-\allowbreak{}08} & Confirmar retiro de alumno & \texttt{1.\allowbreak{}4.\allowbreak{}2.\allowbreak{}2.\allowbreak{}1} & 3 / 5\\\hline
+\texttt{CU-\allowbreak{}09} & Consultar salud mínima de participantes & \texttt{1.\allowbreak{}4.\allowbreak{}2.\allowbreak{}3.\allowbreak{}1} & 1 / 5\\\hline
+\texttt{CU-\allowbreak{}10} & Conciliar retorno de clase & \texttt{1.\allowbreak{}4.\allowbreak{}2.\allowbreak{}3.\allowbreak{}1} & 3 / 5\\\hline
+\texttt{CU-\allowbreak{}11} & Actualizar condición de infraestructura & \texttt{1.\allowbreak{}4.\allowbreak{}3.\allowbreak{}1.\allowbreak{}1} & 2 / 5\\\hline
+\texttt{CU-\allowbreak{}12} & Presentar inspección desconectada & \texttt{1.\allowbreak{}4.\allowbreak{}3.\allowbreak{}2.\allowbreak{}1} & 4 / 10\\\hline
+\texttt{CU-\allowbreak{}13} & Asociar medidor temporalmente & \texttt{1.\allowbreak{}4.\allowbreak{}3.\allowbreak{}3.\allowbreak{}1} & 2 / 5\\\hline
+\texttt{CU-\allowbreak{}14} & Consultar habilitación inicial de faena & \texttt{1.\allowbreak{}5.\allowbreak{}1.\allowbreak{}1.\allowbreak{}1} & 1 / 5\\\hline
+\texttt{CU-\allowbreak{}15} & Programar faena de varadero & \texttt{1.\allowbreak{}5.\allowbreak{}1.\allowbreak{}2.\allowbreak{}1} & 2 / 5\\\hline
+\texttt{CU-\allowbreak{}16} & Autorizar izaje & \texttt{1.\allowbreak{}5.\allowbreak{}1.\allowbreak{}3.\allowbreak{}1} & 3 / 5\\\hline
+\texttt{CU-\allowbreak{}17} & Cerrar orden de trabajo & \texttt{1.\allowbreak{}5.\allowbreak{}1.\allowbreak{}4.\allowbreak{}1} & 2 / 5\\\hline
+\texttt{CU-\allowbreak{}18} & Habilitar acceso a intervención & \texttt{1.\allowbreak{}5.\allowbreak{}1.\allowbreak{}5.\allowbreak{}1} & 3 / 5\\\hline
+\texttt{CU-\allowbreak{}19} & Registrar despacho de combustible & \texttt{1.\allowbreak{}5.\allowbreak{}2.\allowbreak{}1.\allowbreak{}1} & 2 / 5\\\hline
+\texttt{CU-\allowbreak{}20} & Rectificar despacho con conciliación & \texttt{1.\allowbreak{}5.\allowbreak{}2.\allowbreak{}2.\allowbreak{}1} & 3 / 5\\\hline
+\texttt{CU-\allowbreak{}21} & Conciliar serie de consumo & \texttt{1.\allowbreak{}5.\allowbreak{}3.\allowbreak{}1.\allowbreak{}1} & 3 / 5\\\hline
+\texttt{CU-\allowbreak{}22} & Consultar consumo e historia ambiental & \texttt{1.\allowbreak{}5.\allowbreak{}3.\allowbreak{}2.\allowbreak{}1} & 1 / 5\\\hline
+\texttt{CU-\allowbreak{}23} & Recibir residuo con trazabilidad & \texttt{1.\allowbreak{}5.\allowbreak{}3.\allowbreak{}3.\allowbreak{}1} & 3 / 5\\\hline
+\texttt{CU-\allowbreak{}24} & Cerrar entrega a gestor autorizado & \texttt{1.\allowbreak{}5.\allowbreak{}3.\allowbreak{}4.\allowbreak{}1} & 4 / 10\\\hline
+\texttt{CU-\allowbreak{}25} & Publicar indicador e imputación de consumo & \texttt{1.\allowbreak{}5.\allowbreak{}3.\allowbreak{}5.\allowbreak{}1} & 3 / 5\\\hline
+\texttt{CU-\allowbreak{}26} & Mantener maestro contractual & \texttt{1.\allowbreak{}6.\allowbreak{}1.\allowbreak{}1.\allowbreak{}1} & 2 / 5\\\hline
+\texttt{CU-\allowbreak{}27} & Consultar contrato vigente & \texttt{1.\allowbreak{}6.\allowbreak{}1.\allowbreak{}2.\allowbreak{}1} & 1 / 5\\\hline
+\texttt{CU-\allowbreak{}28} & Atender visita náutica & \texttt{1.\allowbreak{}6.\allowbreak{}1.\allowbreak{}3.\allowbreak{}1} & 3 / 5\\\hline
+\texttt{CU-\allowbreak{}29} & Gestionar lista de espera & \texttt{1.\allowbreak{}6.\allowbreak{}1.\allowbreak{}4.\allowbreak{}1} & 2 / 5\\\hline
+\texttt{CU-\allowbreak{}30} & Formalizar cambio contractual & \texttt{1.\allowbreak{}6.\allowbreak{}1.\allowbreak{}4.\allowbreak{}1} & 2 / 5\\\hline
+\texttt{CU-\allowbreak{}31} & Presentar lote de hechos facturables & \texttt{1.\allowbreak{}6.\allowbreak{}2.\allowbreak{}1.\allowbreak{}1} & 2 / 5\\\hline
+\texttt{CU-\allowbreak{}32} & Conciliar respuesta contable & \texttt{1.\allowbreak{}6.\allowbreak{}2.\allowbreak{}2.\allowbreak{}1} & 3 / 5\\\hline
+\texttt{CU-\allowbreak{}33} & Resolver medida de cobranza & \texttt{1.\allowbreak{}6.\allowbreak{}2.\allowbreak{}3.\allowbreak{}1} & 3 / 5\\\hline
+\texttt{CU-\allowbreak{}34} & Exportar expediente de custodia & \texttt{1.\allowbreak{}6.\allowbreak{}2.\allowbreak{}4.\allowbreak{}1} & 1 / 5\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{Modelo UCP antecedente; T-14.}
+
+La regla utilizada distingue casos de hasta tres transacciones, de cuatro a siete y de más de siete, con pesos 5/10/15; actores con pesos 1/2/3 según interacción. Sobre el conteo antecedente se obtiene $UUCW=180$, $UAW=36$ y $UUCP=216$. Esas cantidades permiten reproducir un escenario, no adoptar su alcance como completo.
+
+Las ponderaciones técnicas y ambientales se registran en la tabla~\ref{tab:t15-ucp-factores}. Las valoraciones son hipótesis de diseño/provisión del antecedente: no acreditan experiencia, motivación ni dedicación de personas. Se corrige el peso de T2 a 2 conforme a la referencia metodológica; el antecedente utilizaba 1. La justificación funcional se contrasta con T-12: rendimiento y eficiencia de terreno, concurrencia, continuidad, seguridad, interfaces y formación.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.23\textwidth-2\tabcolsep\relax}L{\dimexpr0.1\textwidth-2\tabcolsep\relax}L{\dimexpr0.1\textwidth-2\tabcolsep\relax}L{\dimexpr0.12\textwidth-2\tabcolsep\relax}L{\dimexpr0.45\textwidth-2\tabcolsep\relax}}
+\caption{Ponderaciones del escenario antecedente con T2 corregido}\label{tab:t15-ucp-factores}\\\hline
+\EncabezadoTabla{Factor} & \EncabezadoTabla{Peso} & \EncabezadoTabla{Valor} & \EncabezadoTabla{Producto} & \EncabezadoTabla{Hipótesis del proyecto}\\\hline\endfirsthead
+\multicolumn{5}{l}{\textit{Continuación de la tabla \ref{tab:t15-ucp-factores}}}\\\hline
+\EncabezadoTabla{Factor} & \EncabezadoTabla{Peso} & \EncabezadoTabla{Valor} & \EncabezadoTabla{Producto} & \EncabezadoTabla{Hipótesis del proyecto}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+\texttt{T1}\newline{}Distribución & 2 & 5 & 10 & Distribución cloud y autoridad local, con operación desconectada\\\hline
+\texttt{T2}\newline{}Rendimiento & 2 & 4 & 8 & Umbrales de registro y consulta y continuidad de operación\\\hline
+\texttt{T3}\newline{}Eficiencia de uso & 1 & 4 & 4 & Tareas breves en cubierta, sin interacción en maniobra\\\hline
+\texttt{T4}\newline{}Procesamiento & 1 & 4 & 4 & Autoridades, exclusividad temporal y conciliación por moneda\\\hline
+\texttt{T5}\newline{}Reutilización & 1 & 4 & 4 & Reutilización de identidad, contratos y canales de 1.3/1.7\\\hline
+\texttt{T6}\newline{}Instalación & 0,5 & 3 & 1,5 & Despliegue automatizado con recepción y retorno\\\hline
+\texttt{T7}\newline{}Facilidad de uso & 0,5 & 4 & 2 & Perfiles heterogéneos y accesibilidad\\\hline
+\texttt{T8}\newline{}Portabilidad & 2 & 3 & 6 & Android, web y ejecución local; portabilidad delimitada\\\hline
+\texttt{T9}\newline{}Modificación & 1 & 4 & 4 & Reglas versionadas y ampliación progresiva E2\\\hline
+\texttt{T10}\newline{}Concurrencia & 1 & 5 & 5 & Concurrencia sobre amarra e intervalos de participación\\\hline
+\texttt{T11}\newline{}Seguridad & 1 & 5 & 5 & Salud, consentimientos, permisos y evidencia probatoria\\\hline
+\texttt{T12}\newline{}Interacción con terceros & 1 & 4 & 4 & Intercambio con contabilidad y servicios externos por contratos\\\hline
+\texttt{T13}\newline{}Formación & 1 & 3 & 3 & Formación por perfil y comprobación de tarea\\\hline
+\texttt{E1}\newline{}Familiaridad con el proceso & 1,5 & 3 & 4,5 & Valor antecedente; familiaridad con el proceso de desarrollo por verificar\\\hline
+\texttt{E2}\newline{}Experiencia del dominio & 0,5 & 2 & 1 & Experiencia náutica no acreditada; valoración prudente\\\hline
+\texttt{E3}\newline{}Experiencia orientada a objetos & 1 & 3 & 3 & Valor antecedente; experiencia OO pendiente, no inferida de competencia técnica genérica\\\hline
+\texttt{E4}\newline{}Capacidad del analista líder & 0,5 & 3 & 1,5 & Valor antecedente; capacidad del analista líder por sustentar\\\hline
+\texttt{E5}\newline{}Motivación & 1 & 3 & 3 & Escenario neutral; no atribuye motivación medida a personas\\\hline
+\texttt{E6}\newline{}Estabilidad de requisitos & 2 & 3 & 6 & Valor antecedente; cambios de requisitos detallados por evaluar; alcance conocido no prueba estabilidad\\\hline
+\texttt{E7}\newline{}Personal a tiempo parcial & -1 & 3 & -3 & Valor antecedente; tiempo parcial en el proyecto por verificar; reparto E1/E2 no lo acredita\\\hline
+\texttt{E8}\newline{}Dificultad del lenguaje & -1 & 3 & -3 & Valor antecedente; evaluar dificultad del lenguaje de programación, no del conjunto de herramientas\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{Modelo UCP antecedente; Cohn, Estimating With Use Case Points.}
+
+Se corrigen las definiciones de los factores ambientales. Los valores numéricos de la tabla se conservan exclusivamente para reproducir el escenario antecedente: no son una nueva valoración sustentada del equipo. E7 mide dedicación parcial al proyecto y no reparto entre sus frentes. Antes de usar el contraste como estimación se valoran esos factores con evidencia de provisión y se recalculan EF y HH; no se asigna cero por defecto a un factor pendiente. La reproducción aritmética del antecedente es
+\[
+TCF=0{,}6+0{,}01(60{,}5)=1{,}205,\qquad
+EF=1{,}4-0{,}03(13)=1{,}01,
+\]
+\[
+UCP=(UAW+UUCW)\,TCF\,EF
+=216\times1{,}205\times1{,}01=262{,}8828.
+\]
+Para $CF=20$ y $CF=28$ HH/UCP, usados como escenarios no calibrados, resulta $HH^{UCP}=5.257{,}66$ y $7.360{,}72$ HH, respectivamente. La variación de CF no se acumula como dos partidas. La conversión se interpreta como esfuerzo del desarrollo funcional dentro de la frontera comparada; no exclusivamente programación. Por ello se elimina la expansión automática del antecedente mediante división por $0{,}40$.
+
+La referencia metodológica es Mike Cohn, \textit{Estimating With Use Case Points}, tablas 1, 3, 5 y 7 y apartado \textit{Deriving Duration}, consultado el 10 de octubre de 2026: \url{https://www.methodsandtools.com/archive/ucasepoints.html}. Sus parámetros no constituyen una obligación de las bases ni productividad medida de Synaptix. La elección de un CF definitivo requiere frontera y productividad sustentadas.
+
+\textbf{Resultado de esta versión.} Se reproduce el contraste antecedente con T2 corregido y se rectifica el significado de sus factores; las valoraciones ambientales actuales y las HH funcionales seleccionadas permanecen pendientes. No se adopta el extremo menor ni el mayor como línea base automática. Se debe completar el cotejo de los 146 RF y las adaptaciones RNF/RT aplicables, verificar actores/transacciones y comparar con la estimación ascendente del mismo trabajo. Las HH de pruebas unitarias, análisis y documentación incluidas en la conversión no se suman de nuevo. Infraestructura, migración, motores comunes, ensayos integrales, formación, pilotos, servicio y salida se estiman en sus resultados propios. Si se modifica esa frontera, se recalculan tanto UCP como la conciliación.
+
+\subsection{Estimación del resto del trabajo}
+Las cuentas distintas de los núcleos emplean unidades propias de producción. T-12 determina las condiciones y umbrales; no entrega una productividad laboral por unidad. Por ejemplo, disponer de cinco ambientes o comprobar una retención obligatoria no determina por sí solo las HH de configuración o ensayo. La tabla~\ref{tab:t15-unidades} establece qué cantidad se mide y qué trabajo se concilia para estimarla.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr.25\textwidth-2\tabcolsep\relax}L{\dimexpr.29\textwidth-2\tabcolsep\relax}L{\dimexpr.46\textwidth-2\tabcolsep\relax}}
+\caption{Unidades para estimar el trabajo restante}\label{tab:t15-unidades}\\\hline
+\EncabezadoTabla{Trabajo} & \EncabezadoTabla{Cantidad y unidad} & \EncabezadoTabla{Aportes y control de frontera}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-unidades}}}\\\hline
+\EncabezadoTabla{Trabajo} & \EncabezadoTabla{Cantidad y unidad} & \EncabezadoTabla{Aportes y control de frontera}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Gobierno y expedientes & Documento, sesión, revisión o período & Preparación, análisis, decisión y evidencia; registrar participantes del proveedor y separar contraparte.\\\hline
+Plataforma y seguridad & Recurso/configuración, control, ambiente o lote & Diseño propio, configuración, verificación y transferencia. Provisión externa no se estima como construcción de Synaptix.\\\hline
+Integración y canales & Contrato, adaptador, componente común o vista propietaria & Especificación, construcción, prueba local y documentación. La adaptación del dominio y el motor común mantienen productores distintos.\\\hline
+Datos y migración & Fuente, conjunto, lote y volumen efectivo & Perfilado, reglas, herramientas, saneamiento, carga y revisión. Volumen observado y complejidad de defectos sustentan esfuerzo; tiempo de proceso automático no equivale a HH atendidas.\\\hline
+Pruebas y ensayos & Versión, escenario, ensayo y grupo C & Montaje, ejecución, análisis, retorno y expediente. La cantidad de revisores y operadores debe multiplicarse por sus horas efectivas, sin repetir herramientas.\\\hline
+Innovaciones & Componente incremental, muestra y período & Desarrollo adicional, prueba, preparación, medición, evaluación y transferencia. No se estima nuevamente el núcleo reutilizado.\\\hline
+Formación & Material común, cohorte, recuperación y traslado & Separar elaboración de materiales de impartición; cinco perfiles, población compatible y calendario conforme a RT-22.01/04.\\\hline
+Implantación & Ola, sitio, puesto, día y etapa & Presencia, preparación, relevo y estabilización; cantidad de olas y frentes validada antes de totalizar.\\\hline
+Mesa y guardia & Puesto e intervalo cubierto; intervención & Diferenciar cobertura, guardia disponible y atención efectiva. Dotación se calcula con demanda y turnos; no con número de códigos mensuales.\\\hline
+Ingeniería y mantenimiento & Orden, intervención y capacidad por período & Preparación, ejecución, pruebas, documentación y aceptación del cambio; referencias de bolsas no acreditan consumo ni limitan obligaciones incluidas.\\\hline
+Salida & Estado de exportación, versión y período de acompañamiento & Entrega inicial más actualización hasta traspaso; no volver a construir cada cambio ya imputado a ingeniería.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14; T-12.}
+
+En formación, cada cohorte requiere cuatro horas de impartición por instructor bajo el diseño de dos sesiones de dos horas. Para una cohorte $c$ con $I_c$ instructores, $HH^{imp}_c=4I_c$. Se agregan preparación específica, evaluación, recuperación y desplazamiento que no estén ya imputados. Las horas de asistentes del cliente se registran aparte. El total de impartición inicial es $4\sum_{c\in F} I_c$ y el estacional $4\sum_{c\in E} I_c$; solo con un instructor por cohorte se reducen a $4N_F$ y $4N_E$.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr.26\textwidth-2\tabcolsep\relax}L{\dimexpr.25\textwidth-2\tabcolsep\relax}L{\dimexpr.25\textwidth-2\tabcolsep\relax}L{\dimexpr.24\textwidth-2\tabcolsep\relax}}
+\caption{Referencias de esfuerzo de gobierno}\label{tab:t15-gobierno-referencia}\\\hline
+\EncabezadoTabla{Resultado} & \EncabezadoTabla{Cantidad y HH unitarias} & \EncabezadoTabla{Distribución por instancia} & \EncabezadoTabla{Subtotal de referencia}\\\hline\endfirsthead
+\multicolumn{4}{l}{\textit{Continuación de la tabla \ref{tab:t15-gobierno-referencia}}}\\\hline
+\EncabezadoTabla{Resultado} & \EncabezadoTabla{Cantidad y HH unitarias} & \EncabezadoTabla{Distribución por instancia} & \EncabezadoTabla{Subtotal de referencia}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+\texttt{1.1.4.m.q} & 40 expedientes; 16 HH/quincena & Proyecto 8; Funcional 4; Calidad 4 HH & 640 HH; meses 1--20\\\hline
+\texttt{1.12.3.1.m} & 36 controles; 16 HH/mes & Gestión de servicio 4; Calidad 4; Operación 8 HH & 576 HH; meses 21--56\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-9, apartado 9.3; T-14, cuentas 1.1 y 1.12.}
+
+Las 16 HH por instancia son propuestas localizadas en T-9 que este borrador incorpora como referencias para la estimación; incluyen preparación, asistencia y seguimiento propios. No abarcan todo el gobierno ni eliminan otros participantes. La distribución por fase de los cuarenta expedientes sigue sus actividades: los meses 13--20 pueden contener aportes disjuntos a E1/E2, sin recibir dos veces las mismas 16 HH. El responsable de estimación registra ese reparto antes de emitir el resumen por fase.
+
+Formación estacional conserva capacidad ofrecida de 300 plazas anuales; en tres años de Operación son 900 plazas de capacidad de referencia, no asistentes confirmados ni HH. Las seis jornadas de actualización de \texttt{1.12.6}, en 24,30,36,42,48,54, mantienen dos por año y son distintas de las cohortes para nuevas altas. Las altas fuera de campañas, evaluación y recuperación se dimensionan sin excluirlas por agotar un sufijo reservado. Los valores de cohortes y las 300 HH del antecedente SD7 no sustituyen estas unidades.
+
+El acompañamiento de T-14 propone 28 días por ola: 14 con ocho horas presenciales y 14 con cuatro presenciales más cuatro de preparación/seguimiento. La referencia equivale a 224 HH por puesto que deba cubrir ese esquema completo: 168 de presencia y 56 de preparación/seguimiento. Si $J_w$ es la cantidad validada de puestos equivalentes de la ola $w$, la referencia es $224\sum_w J_w$, antes de trabajos adicionales disjuntos. Los dos frentes de referencia no se transforman automáticamente en dos puestos de cada ola. Relevos y restricciones se comprobarán en el calendario.
+
+Para estabilización, dos puestos de ocho horas por 28 días consecutivos equivalen a 448 HH por etapa y 896 HH para ambas. T-14 imputa \texttt{1.11.6.1}, E1 en 16, a implementación; \texttt{1.11.6.2}, E2 en 21, a Operación, una sola vez. El código 1.11 no cambia esa imputación por fase. Estas horas de puesto son una referencia de trabajo, todavía sujeta a recursos, descansos y suplencias; no se reducen porque exista soporte remoto. Acompañamiento, estabilización, soporte y estabilización de datos mantienen fronteras distintas.
+
+El volumen de atención del período $m$ se dimensiona desde demanda y duración media; la ventana mínima de mesa equivale a $18D_m^{alta}+12D_m^{resto}$ horas de cobertura por puesto, según RT-21.06/C07. La guardia de emergencia conserva $24D_m$ horas naturales de disponibilidad por cobertura exigida. Ninguna de esas fórmulas determina personas sin fijar puestos concurrentes, modalidad de guardia, productividad, descansos y suplencia. Una guardia localizada no equivale a 24 HH presenciales por persona. La sección de cobertura resolverá esos parámetros antes de totalizar el servicio.
+
+Las referencias de mantenimiento e ingeniería se conservan en la tabla~\ref{tab:t15-capacidades-base}. Sus productos por 36 meses son capacidad de referencia, no trabajo ejecutado ni una carga ya nivelada.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr.34\textwidth-2\tabcolsep\relax}L{\dimexpr.17\textwidth-2\tabcolsep\relax}L{\dimexpr.20\textwidth-2\tabcolsep\relax}L{\dimexpr.29\textwidth-2\tabcolsep\relax}}
+\caption{Capacidades de referencia de Operación}\label{tab:t15-capacidades-base}\\\hline
+\EncabezadoTabla{Componente} & \EncabezadoTabla{HH/mes} & \EncabezadoTabla{36 meses} & \EncabezadoTabla{Frontera}\\\hline\endfirsthead
+\multicolumn{4}{l}{\textit{Continuación de la tabla \ref{tab:t15-capacidades-base}}}\\\hline
+\EncabezadoTabla{Componente} & \EncabezadoTabla{HH/mes} & \EncabezadoTabla{36 meses} & \EncabezadoTabla{Frontera}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Ingeniería correctiva & 80 & 2.880 & No limita garantía/corrección incluida.\\\hline
+Ingeniería normativa & 48 & 1.728 & No excusa obligaciones aplicables.\\\hline
+Ingeniería evolutiva & 80 & 2.880 & 960 HH/año; autorización y saldo acumulable.\\\hline
+Ingeniería de deuda & 32 & 1.152 & Separada de deuda interna de mantenimiento.\\\hline
+Subtotal ingeniería & 240 & 8.640 & Capacidad de referencia; órdenes y ejecución aparte.\\\hline
+Mantenimiento preventivo & 24 & 864 & Incluye 4,8 HH/mes internas de deuda.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14, fichas 1.12.3.4 y 1.12.12.}
+
+Las 4,8 HH mensuales de deuda interna equivalen a 172,8 HH dentro de las 864 HH de mantenimiento; no se agregan otra vez. Mesa, NOC/SOC, controles, seguimiento, formación, mentoría y salida no quedan dimensionados por la suma de ingeniería y mantenimiento. La mentoría de seis períodos 21--26 conserva la referencia de 144 HH de la trazabilidad de T-14, que se distribuirá sin duplicar formación ni soporte ordinario.
+
+\subsection{Resumen y conciliación de HH}
+El resumen distingue tres magnitudes: HH propuestas de trabajo definido, capacidad disponible de servicio y contraste de tamaño funcional. No se suman como si fueran partidas equivalentes. El antecedente de 4.200 HH funcionales más 8.508 HH suplementarias suma 12.708 HH aritméticas, pero no constituye la estimación seleccionada del catálogo agrupado. Tampoco se incorpora ese antecedente junto con UCP para obtener un total mayor.
+
+Para cerrar la estimación principal se completa una fila por actividad, perfil y fase con cantidad, unidad, HH fijas/unitarias, fuente o juicio de especialista, revisor y estado. Se selecciona el escenario sustentado y se agrega desde esas mismas filas; hasta entonces no se publica un total contractual de HH. Las 640/576 HH de gobierno, 448 HH de estabilización por etapa y 144 HH de mentoría son referencias localizadas de trabajo; las bolsas de ingeniería/mantenimiento son capacidad y los turnos se miden en horas de puesto. No se obtiene un total de esfuerzo sumando indiscriminadamente esas unidades.
+
+La tabla~\ref{tab:t15-estado-hh} presenta el estado de cuantificación. Las expresiones abiertas permiten avanzar con el catálogo sin atribuir cantidades inexistentes. Se completarán con estimaciones unitarias, universos y capacidad recibidos antes de emitir la tabla oficial y las curvas.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr.25\textwidth-2\tabcolsep\relax}L{\dimexpr.34\textwidth-2\tabcolsep\relax}L{\dimexpr.41\textwidth-2\tabcolsep\relax}}
+\caption{Estado de cuantificación del esfuerzo}\label{tab:t15-estado-hh}\\\hline
+\EncabezadoTabla{Ámbito} & \EncabezadoTabla{Resultado disponible} & \EncabezadoTabla{Condición de cierre}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-estado-hh}}}\\\hline
+\EncabezadoTabla{Ámbito} & \EncabezadoTabla{Resultado disponible} & \EncabezadoTabla{Condición de cierre}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Núcleos 1.4--1.6 & Contraste: 262,8828 UCP; escenarios 5.257,66/7.360,72 HH. & Cobertura, transacciones, actores, factores y productividad; seleccionar desde contraste con estimación ascendente del mismo alcance.\\\hline
+Trabajo restante & Catálogo y unidades; $\sum qh+HH^{fijo}$ por actividad/perfil. & Estimaciones unitarias, volúmenes, revisores, cantidades y fundamento; no adoptar HH por contar códigos.\\\hline
+Formación & Impartición $4\sum I_c$; preparación/evaluación/recuperación aparte. & Manifiestos, instructores, modalidad y tiempos propios; $N_F/N_E$ pendientes no equivalen a cero.\\\hline
+Acompañamiento & 224 HH por puesto equivalente de cada ola completa. & Cantidad, puestos, sitios y calendario del manifiesto T-18; no presumir cuatro olas.\\\hline
+Estabilización & 448 HH E1 en implementación y 448 HH E2 en Operación. & Asignar recursos/relevos; mantener la imputación expresa de T-14, una sola vez.\\\hline
+Servicio & Horas de cobertura y capacidad de ingeniería/mantenimiento separadas. & Demanda, puestos, guardia, turnos, disponibilidad y simultaneidad; producción de cambios contra orden.\\\hline
+Salida & Actualización y acompañamiento 53--56; mínimo 90 días reales. & Plan recibido, esfuerzo de transferencia, participación del receptor y revisión final positiva.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14; modelo UCP antecedente y memoria de cálculo de T-15.}
+
+Cada actividad se asignará a una sola fase de imputación, aunque tenga atributos de alcance y naturaleza adicionales. El mes no identifica por sí solo la fase: entre 13--15 coexisten desarrollo E2 y marcha blanca E1; entre 19--20 coexisten E1 productiva y marcha blanca E2. La tabla oficial conservará estabilización E1 en implementación y E2 en Operación; clasificará soporte de implementación y campaña IN2 posterior por su actividad y fase, sin hacerlos desaparecer ni duplicarlos.
+
+Los controles de conciliación son actividad--paquete--cuenta--etapa--mes--perfil--total. El total funcional se compara con UCP sobre frontera homogénea; los padres solo agregan. Las reservas no activadas se muestran separadas de ejecución y las capacidades no usadas no se declaran consumidas. Cambiar un estimador, cantidad o frontera exige recalcular sus tablas dependientes antes de usar los valores en nivelación, curvas o costos.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr.25\textwidth-2\tabcolsep\relax}L{\dimexpr.30\textwidth-2\tabcolsep\relax}L{\dimexpr.45\textwidth-2\tabcolsep\relax}}
+\caption{Conciliación de referencias entre documentos}\label{tab:t15-conciliacion-fuentes}\\\hline
+\EncabezadoTabla{Ámbito} & \EncabezadoTabla{Antecedente disponible} & \EncabezadoTabla{Tratamiento en T-15}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-conciliacion-fuentes}}}\\\hline
+\EncabezadoTabla{Ámbito} & \EncabezadoTabla{Antecedente disponible} & \EncabezadoTabla{Tratamiento en T-15}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Esfuerzo y peak & SD7: 12.708 HH funcionales; 49.396 de entregables/ingeniería; 122.070 de turnos; peak 106. & Retener como antecedente. Reestimar el catálogo agrupado; no adoptar peak 106 ni sumar de nuevo UCP. Actualizar SD7 tras selección/nivelación.\\\hline
+Mesa, NOC y SOC & SD7: tres puestos de mesa; un NOC y un SOC continuos; rotación 12/6/6. & Conservar como escenario propuesto de provisión en sección~\ref{sec:t15-cobertura}; comprobar sensibilidad y cuadrantes. No sustituirlo por ejemplos sin decisión expresa.\\\hline
+Olas y cohortes & SD7/T-18 anterior: cuatro olas por etapa y cantidades formativas. & Mantener correspondencia histórica. T-14 agrupado requiere manifiestos; no activar reservas ni asumir cuatro olas por existir cuatro posiciones.\\\hline
+Gobierno y DR & T-9: 16 HH por expediente/control; T-10: prueba inicial de DR. & Incorporar referencias por perfil y prueba técnica antes de H3; distinguir posteriores ensayos integrales y semestrales.\\\hline
+Recepción y calendario & T-18 anterior: observación E2 hasta 31 de julio; SD3: temporada reducida. & Conservar objetivo BA17, registrar brecha de recepción y aplicar temporada del Caso 07. SD3/SD7/T-18 deben reflejar la misma solución al cerrar la integración.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{SD7; T-18, antecedente de implantación; T-9; T-10; T-14; Caso 07; Bases Administrativas, arts. 17--18.}
+
+Ignacio Silva controla esta conciliación con los responsables de estimación, servicio y documentos. Se registra dato anterior, fuente, estado, fundamento del cambio, valor de reemplazo y documentos afectados. Este borrador corrige su propio contenido; no atribuye acuerdo del equipo ni modificación ya aplicada a SD7, SD3 o T-18.
+
+Esta versión deja preparados el catálogo y el método, y verifica los productos numéricos sustentados. Quedan por cerrar las estimaciones unitarias del trabajo restante, el conteo funcional completo, la productividad, los manifiestos, la demanda de soporte, las dedicaciones y las fechas de habilitación. Se registran como entradas materiales, no como actividades omitidas ni cifras aprobadas. La comprobación de viabilidad corresponde al modelo integrado de las secciones siguientes y no se atribuye por haber completado una tabla.
+
+\section{Dependencias y calendarios}\label{sec:t15-dependencias}
+Las actividades de las secciones anteriores se ordenan por los insumos que realmente consumen, los recursos que requieren y las restricciones del lugar de ejecución. Una ventana mensual de T-14 delimita un resultado; su inicio no demuestra que todas las predecesoras estén recibidas ni que una persona pueda ejecutar trabajo continuo durante ese intervalo. La red conserva esas ventanas como restricciones y comprueba por separado la duración de producción, las esperas y la recepción.
+
+\subsection{Precedencias y habilitaciones}
+Cada vínculo registra actividad de origen y destino, tipo de relación, espera, calendario, evidencia de habilitación y responsable de control. Se utilizan fin--inicio (FI, equivalente a FS en el registro de apoyo), inicio--inicio (II/SS) y fin--fin (FF) cuando el trabajo permite esas relaciones. FI es la regla inicial para consumir un resultado recibido. II o FF requieren un producto intermedio identificable y una razón de solapamiento; no se usan para ocultar trabajo inconcluso. La corrección de una observación se representa como actividad con esfuerzo, mientras la revisión de la contraparte incorpora tiempo y participación del cliente por separado.
+
+Las referencias H1--H12 se materializan como puertas de recepción. La presentación de un expediente y el acta que lo recibe son nodos distintos. Un código padre, un comodín o una expresión como BASE-E1 no se incorpora al cálculo sin resolver sus resultados habilitantes. La tabla~\ref{tab:t15-alias} fija la lectura de las principales referencias; la versión y el universo específicos se registran en el modelo operativo.
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.17\textwidth-2\tabcolsep\relax}L{\dimexpr0.4\textwidth-2\tabcolsep\relax}L{\dimexpr0.43\textwidth-2\tabcolsep\relax}}
+\caption{Resolución de referencias de habilitación}\label{tab:t15-alias}\\\hline
+\EncabezadoTabla{Referencia} & \EncabezadoTabla{Resultado que habilita} & \EncabezadoTabla{Regla de conexión}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-alias}}}\\\hline
+\EncabezadoTabla{Referencia} & \EncabezadoTabla{Resultado que habilita} & \EncabezadoTabla{Regla de conexión}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Inicio & Arranque y accesos requeridos por la actividad. & No supone obras, equipos ni permisos externos ya recibidos.\\\hline
+H1 & Alcance y trazabilidad aprobados. & Habilita el diseño definitivo de su alcance; el levantamiento que lo produce precede al hito.\\\hline
+H2 & Arquitectura, seguridad y datos aprobados. & Consume los diseños presentados; su elaboración no exige la aprobación del propio H2.\\\hline
+H3 & Cinco ambientes recibidos, transferencia SRE y comprobación técnica inicial de DR. & Consume configuraciones 1.2.2, revisión y expediente 1.2.4.3. El ensayo inicial de conmutación/retorno de T-10 precede H3; no sustituye pruebas integrales funcionales posteriores.\\\hline
+BASE-E1 & Versiones recibidas de productores E1 efectivamente reutilizados. & Enumerar componentes y actividad de entrega E1 por consumidor; no exigir automáticamente CORTE-E1 ni toda la etapa para usar un componente.\\\hline
+H8 & Alcance y diseño detallado E2 aprobados. & Puerta distinta de BASE-E1; la construcción definitiva de su delta consume esta decisión.\\\hline
+$C_g$ & Cambio de autoridad del grupo $g$, individualizado en T-18. & Exige evidencia vigente, autorizador y ventana propios. No equivale automáticamente a un corte único en 16 o 21.\\\hline
+CORTE-E1 / CORTE-E2 & Acta y activación oficial del alcance de su etapa. & Se mantienen los objetivos de producción en 16 y 21 y la continuidad del alcance ya activo.\\\hline
+SERVICIO-ACTIVO & Inicio de Operación para ambos alcances. & Habilita prestación 21--56; la preparación anterior y el soporte de implementación no requieren recibir un servicio futuro.\\\hline
+VERSION-E1 / VERSION-E2 & Versión integrada identificada de componentes, canales, configuración y datos de prueba de la etapa. & Manifiesto de versión recibido antes de QA, ensayos y formación que lo consumen. H4/H9 reciben QA; no se usan como predecesores del QA que los produce.\\\hline
+BASE-VAR / BASE-AMB & Antecedentes autorizados de Varadero o Ambiente para análisis; versión funcional concreta para integración. & Distinguir requisito/modelo de componente ejecutable. La ficha IN4 de mes 2 consume antecedentes disponibles; no depende circularmente de todo Varadero E2 terminado. Individualizar el productor de cada consumo antes de CPM.\\\hline
+PLAN-SALIDA & Plan inicial 1.1.3.1 y actualización aplicable de 1.1.3.4 o 1.12.7. & Versión vigente recibida antes de inventario/exportación y acompañamiento 53--56; no esperar la entrega final de 1.12.8 para preparar su propio plan.\\\hline
+H6 / H11 & Inicio de marcha blanca E1/E2 con datos, usuarios, retorno y soporte preparados. & Certificación H5/H10, manifiestos 1.11.3, formación/versiones y habilitación de cada grupo; no identificar marcha blanca con acta de producción oficial.\\\hline
+H7 / H12 & Cierre conforme de marcha blanca y recepción para producción E1/E2. & Evidencia final, revisión y acta preceden CORTE-E1/E2; H12 conserva primer día de 21 sin suponer firma instantánea.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14; Bases Administrativas, arts. 17--18.}
+La tabla~\ref{tab:t15-precedencias} identifica enlaces que una escala mensual no muestra. Son condiciones que deben conservarse al fechar actividades; no duraciones calculadas ni una ruta crítica ya obtenida. La relación con un requisito se comprueba en T-12 y la aceptación en la ficha productora, sin recibir un componente por disponer únicamente de una prueba de otro.
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.24\textwidth-2\tabcolsep\relax}L{\dimexpr0.43\textwidth-2\tabcolsep\relax}L{\dimexpr0.33\textwidth-2\tabcolsep\relax}}
+\caption{Precedencias técnicas que debe conservar la red}\label{tab:t15-precedencias}\\\hline
+\EncabezadoTabla{Resultado o frente} & \EncabezadoTabla{Secuencia requerida} & \EncabezadoTabla{Efecto en la programación}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-precedencias}}}\\\hline
+\EncabezadoTabla{Resultado o frente} & \EncabezadoTabla{Secuencia requerida} & \EncabezadoTabla{Efecto en la programación}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Diseño y núcleos E1 & Análisis desde alcance autorizado; diseño recibido; construcción propia; verificación unitaria; integración y pruebas de 1.10. & El diseño UX E1 en 2--3 precede la construcción definitiva de sus vistas; la UAT posterior no lo sustituye.\\\hline
+Persistencia & Diseño 1.7.6.7/H2 antes de habilitación 1.2.1.3; luego consumidores autorizados. & Modelo funcional y cargas no se reciben por configurar la infraestructura.\\\hline
+Nodos locales & Configuración 1.2.3.2 en 5; transferencia/revisión SRE desde 6; expediente integrado antes de H3. & Arquitectura integra la entrega de 5. No se atribuyen HH SRE antes de su incorporación.\\\hline
+DR inicial & Configurar 1.2.2.5; probar conmutación/retorno con artefacto técnico y datos autorizados; revisar evidencia e integrarla a 1.2.4.3 antes de H3 en 6. & Actividades \texttt{A-1.2.2.5-02-DR} y \texttt{A-1.2.2.5-03-DR}: SRE ejecuta desde 6, Calidad revisa y Arquitectura integra. Registrar RTO/RPO de SD4, permisos, retorno y HH; ensayo integral de etapa y control semestral conservan evidencia propia.\\\hline
+Medición por lotes & Preparación de 1.7.2.5 en 5; comprobación tras broker/concentradores 1.2.3.5 y recepción en 6. & La preparación no anticipa la disponibilidad del equipo ni la prueba final.\\\hline
+Notificaciones & Preparación/construcción de 1.7.4.1 en 8--9; consentimiento 1.3.3.2 antes de recepción de las funciones que lo consumen. & No se recibe en 8 una función cuya condición habilitante se completa en 9.\\\hline
+Desarrollo E2 & Análisis/delta desde 13; UX y H8 antes de construcción definitiva; QA H9 y certificación H10. & Ventanas 13--15 del diccionario no demuestran admisibilidad durante congelamiento. Se evalúa alternativa conservadora de construcción desde 16 de marzo, sujeta a cabida H9/H10 y conciliación documental.\\\hline
+IN1 e IN4 & Diseño de flujo/estados/roles IN1 1.9.1.1.1; especificación IN4 1.9.4.2.1 en 14--15; captura en 16; cálculo y luego pruebas en 17. & Duraciones positivas y correcciones antes de la base IN4 de 18; compartir mes no elimina precedencia.\\\hline
+IN1: base y piloto & Pruebas 18; base 19 sin flujo adicional; formación después de base y antes de piloto 20; evaluación y aceptación antes de despliegue 21. & La formación no se mezcla con la medición de base para ampliar artificialmente el período comparable.\\\hline
+IN2 & Preparación/pruebas antes de piloto; inscripción/planes/formación 30; campaña 31--36; evaluación/transferencia 37. & El primer junio admisible del escenario es 31. No se traslada el piloto a marcha blanca E2 por haber completado el diseño.\\\hline
+Soporte & Modelo 1.12.1.1 en 11--12/18; runbooks 1.12.1.2 en 12/20; prestación 1.11.8 en 13--20 y 1.12.14 en 21--56. & Preparación, delta y prestación se reciben en momentos distintos y conservan imputación separada.\\\hline
+Salida & Inventario/exportación inicial 53; fuentes/configuración desde 54; actualización al estado final y traspaso en 56. & Mantener servicio y al menos 90 días reales de acompañamiento; recibir conciliación final antes de eliminar cuando corresponda.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14; T-12.}
+Las habilitaciones externas conservan los IDs EXT-RECINTO, EXT-EQUIPOS, EXT-LICENCIAS, EXT-RED, EXT-TELEMETRIA, EXT-IDENTIDAD, EXT-CONTABLE y EXT-PAGOS. Para cada una se registra titular de provisión, fecha requerida, fecha comprometida, especificación, permiso y evidencia recibida. Fernando Guerrero coordina las interfaces técnicas e Ignacio Silva controla compromisos y escalamiento. Una fecha ofrecida por un tercero es una entrada del escenario hasta que se comprueba; no se sustituye por HH del equipo ni autoriza ampliar una fase.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr.25\textwidth-2\tabcolsep\relax}L{\dimexpr.24\textwidth-2\tabcolsep\relax}L{\dimexpr.51\textwidth-2\tabcolsep\relax}}
+\caption{Fechas requeridas de habilitaciones externas}\label{tab:t15-externas}\\\hline
+\EncabezadoTabla{Entrada} & \EncabezadoTabla{Necesidad del escenario} & \EncabezadoTabla{Consumidor y control}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-externas}}}\\\hline
+\EncabezadoTabla{Entrada} & \EncabezadoTabla{Necesidad del escenario} & \EncabezadoTabla{Consumidor y control}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+\texttt{EXT-RECINTO} & Antes de configuración local de 5 & 1.2.3.1: evidencia de condiciones del recinto en 4; provisión a cargo del titular de T-11.\\\hline
+\texttt{EXT-EQUIPOS / EXT-RED} & Antes de configuración de nodos/red en 5 & 1.2.3.2/3: equipos y enlaces recibidos antes de configuración; recepción técnica antes de H3 en 6.\\\hline
+\texttt{EXT-LICENCIAS / EXT-TELEMETRIA} & Antes de habilitación y comprobaciones de 6 & 1.2.3.4/5/7: licencia efectiva, concentradores y terminales nominales; no presumir cobertura por selección de producto.\\\hline
+\texttt{EXT-IDENTIDAD} & Fuente/acceso antes de identidad central en 5; actualización antes de autoridad local en 8 & 1.3.1.2 y 1.3.2.2/1.7.4.2: responsables y datos laborales autorizados, baja y revocación comprobables.\\\hline
+\texttt{EXT-CONTABLE / EXT-PAGOS} & Contratos antes del diseño consumidor; acceso de prueba antes de integración E2 & Interfaces 1.7.4.3/4 y productores financieros; recibir antes de QA H9/certificación H10. Precisar fecha diaria tras resolver calendario E2.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14, diccionario y habilitaciones externas.}
+
+Estas son fechas requeridas por los consumidores del escenario, no compromisos ofrecidos por el cliente. El titular nominal y la fecha comprometida permanecen por recibir y se registran separados de la necesidad. El control semanal compara ambas fechas y evidencia; mientras falte provisión conforme, bloquea la actividad consumidora. La resolución de padres y alias conserva el código terminal, versión y actividad de entrega, no únicamente el nombre de una cuenta.
+
+\subsection{Calendarios y restricciones}
+El registro distingue calendario contractual, jornada de ingeniería, operación natural y ventana de sitio. Cada actividad tiene uno o una intersección explícita de calendarios. Los permisos y la disponibilidad del cliente se agregan cuando la tarea requiere usuarios, datos reales, validación o faena. No basta que dos especialistas estén libres si el sitio o la maniobra no permite ejecutar.
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.22\textwidth-2\tabcolsep\relax}L{\dimexpr0.34\textwidth-2\tabcolsep\relax}L{\dimexpr0.44\textwidth-2\tabcolsep\relax}}
+\caption{Calendarios y restricciones del trabajo}\label{tab:t15-calendarios}\\\hline
+\EncabezadoTabla{Calendario} & \EncabezadoTabla{Aplicación} & \EncabezadoTabla{Restricción que se conserva}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-calendarios}}}\\\hline
+\EncabezadoTabla{Calendario} & \EncabezadoTabla{Aplicación} & \EncabezadoTabla{Restricción que se conserva}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Contractual & Fases, hitos y horizonte de 56 meses. & Meses prevalecen; inicio del escenario 1 de diciembre de 2026. No convertir un escenario de atraso en nuevo plazo contractual.\\\hline
+Ingeniería y revisión & Análisis, construcción, preparación, verificación y decisiones en días hábiles cuando aplica. & Jornada y feriados se verifican antes de fechar. Los diez días hábiles contractuales de revisión no son diez jornadas productivas del proveedor.\\\hline
+Tiempo natural & Marcha blanca, mesa, guardia, observación, relevos y estabilización. & Cobertura incluye los días requeridos. El descanso de una persona no suspende el servicio; requiere relevo.\\\hline
+Temporada alta & 15 de noviembre a 31 de marzo. & Mesa bilingüe 06:00--24:00 todos los días; resto del año 08:00--20:00. No es el intervalo de congelamiento.\\\hline
+Congelamiento estival & 15 de diciembre a 15 de marzo. & Anticipar habilitaciones y sesiones nuevas E1; mantener acompañamiento/observación permitidos. Identificar admisibilidad de cada actividad E2 y su entorno; PREPROD no autoriza intervenir producción o usuarios de sitio.\\\hline
+Varadero y eventos & Protección abril--mayo y septiembre--noviembre; congelamientos locales de fechas náuticas. & Individualizar faenas y eventos antes de fijar jornadas; no ocupar una ventana protegida por disponibilidad de desarrollo.\\\hline
+Marejadas & Toda actividad programada del proyecto, incluida construcción aislada o remota. & Suspensión inmediata ante aviso; registrar exposición/capacidad/reserva y reprogramar al cesar la condición. Emergencia real se atiende por procedimiento de incidente.\\\hline
+Sitios y desplazamiento & Pantalanes, varadero y Bahía Ilque. & Permisos, embarcación, condiciones de mar y suplencia antes de salida; traslado y atención no se presumen simultáneos.\\\hline
+Mantenimiento programado & Aviso, autorización, ejecución, comprobación y retorno. & Aviso previo mínimo de diez días hábiles; coordinar restricciones y prueba de continuidad antes de intervenir.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{Caso 07, apartados 2.2 y 13.2; T-14; SD6; Bases Administrativas, arts. 18 y 20; T-12.}
+Se aplica temporada alta 15 de noviembre--31 de marzo, definida por Caso 07, separada del congelamiento 15 de diciembre--15 de marzo. SD3 usa este último intervalo para la atención; esa diferencia se registra para corregir su integración y no reduce la cobertura del presente T-15. Continúan pendientes las fechas individuales de eventos, los feriados aplicables y las ventanas de sitio; el calendario estacional no queda pendiente por falta de esos datos.
+
+H8 ocurre en enero de 2028 y la ventana 13--15 de construcción E2 termina en febrero: no existe en ese intervalo una fecha posterior a H8 y fuera del congelamiento. El presente borrador no declara admisible esa construcción por estar en PREPROD. Como alternativa conservadora se evalúa construcción desde el 16 de marzo de 2028, QA en 17 y certificación en 18; su cabida exige duración, recursos y revisión positivas y permanece por calcular. No es una nueva ventana aprobada de T-14. Antes de cerrar la línea base se debe documentar la interpretación de la restricción o conciliar la propuesta de ventanas internas con T-14/SD6/SD7/T-18, manteniendo BA17. Los análisis y diseños se clasifican por su interacción con producción, usuarios y faenas; no se les atribuye automáticamente el mismo permiso que a la construcción.
+
+\subsection{Duración y recepción}
+Para una actividad divisible y un perfil que pueda ejecutar su parte de manera concurrente, una cota de duración es $HH_{a,r}/c_{a,r}$, donde $c_{a,r}$ es capacidad asignada en HH por día admisible. Si todos los perfiles pueden trabajar en paralelo, la cota conjunta es $\max_r(HH_{a,r}/c_{a,r})$. Cuando el trabajo es serial, las fases se separan y sus duraciones se secuencian. Ninguna cota sustituye procesos automáticos, permisos, exclusividad de un recurso o esperas de revisión. Con capacidad variable, el fin es el primer intervalo cuya capacidad acumulada cubre el esfuerzo y satisface las demás condiciones.
+
+Las instancias mensuales de prestación tienen duración de calendario fija; aumentar dotación cambia la cobertura y la carga, no reduce un mes de servicio a una semana. Una prueba automática registra duración de ejecución y las HH atendidas para preparar, supervisar, analizar y corregir. Las esperas técnicas y contractuales conservan calendario y unidad explícitos, sin multiplicarlas por el equipo completo.
+
+Para cada cambio de autoridad $C_g$ se preparan las actividades relativas de la tabla~\ref{tab:t15-preparacion-corte}. Las reservas provienen del diseño registrado en T-14; se contrastarán con duración observada y disponibilidad. Dos ensayos completos aprobados preceden al primer cambio. F27/F28 se activan desde el hallazgo y su corrección/reensayo precede la autorización; no son una aprobación anticipada del corte.
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.24\textwidth-2\tabcolsep\relax}L{\dimexpr0.4\textwidth-2\tabcolsep\relax}L{\dimexpr0.36\textwidth-2\tabcolsep\relax}}
+\caption{Preparación de cada cambio de autoridad}\label{tab:t15-preparacion-corte}\\\hline
+\EncabezadoTabla{Ventana relativa} & \EncabezadoTabla{Trabajo y referencia temporal} & \EncabezadoTabla{Puerta de término}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-preparacion-corte}}}\\\hline
+\EncabezadoTabla{Ventana relativa} & \EncabezadoTabla{Trabajo y referencia temporal} & \EncabezadoTabla{Puerta de término}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+$C_g$ menos 6 a 4 semanas & Inventario, extracción y perfilado; referencia de tres semanas. & Manifiesto vigente y defectos clasificados.\\\hline
+$C_g$ menos 3 semanas & Ensayo completo 1; referencia de dos jornadas de ocho horas. & Carga conciliada, retorno probado y observaciones identificadas.\\\hline
+$C_g$ menos 2 semanas & Corrección y precarga; referencia de una semana. & Reglas/versiones estabilizadas; hallazgos resueltos según su condición.\\\hline
+$C_g$ menos 1 semana & Ensayo completo 2; ocho horas de precarga y cuatro de simulación como referencia. & Delta, duración, conciliación y ventana comprobados; actualizar reservas.\\\hline
+$C_g$ menos 2 días hábiles & Revisión operativa de habilitación; referencia de dos horas. & Autorizar o reprogramar. No sustituye revisión contractual ni autoriza firma instantánea.\\\hline
+Desde $C_g$ & Conciliación diaria y cierre mensual. & Diferencias y decisiones conservadas; no borrar evidencia de una autoridad anterior.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14; SD5.}
+La recepción formal reserva el derecho de diez días hábiles de revisión del cliente y, cuando existan observaciones, hasta diez días hábiles de subsanación del adjudicatario conforme al art. 18.3. El escenario base conserva esas ventanas, aunque un pronunciamiento efectivo pueda llegar antes. Una segunda presentación y su decisión se localizan expresamente; el plazo de subsanación no recibe por sí solo el entregable. La repetición de observaciones de la misma naturaleza mantiene el tratamiento contractual de atraso. Preparar un expediente en paralelo puede ahorrar elaboración, pero no recibe la evidencia final aún no producida.
+
+El escenario sin observaciones contiene evidencia final, consolidación residual, presentación, revisión, acta y corte. El escenario con observaciones agrega diagnóstico, corrección, reensayo, nueva presentación y decisión; la red identifica calendario y duración de cada paso. Los diez días hábiles de subsanación no se agregan automáticamente a toda entrega, ni se elimina el derecho de revisión para hacer caber el escenario base. El control de recepción corresponde a Ignacio Silva con Calidad y la contraparte; sus acuerdos se incorporan como evidencia, no como supuestos de firma instantánea.
+
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}[font=\fontsize{9}{11}\selectfont,
+caja/.style={draw=SynLine,fill=SynSurface,text width=70mm,align=center,inner sep=2mm,minimum height=12mm}]
+\node[caja] (a) at (0,0) {Resultado y evidencia completa\\incluida observación real exigible};
+\node[caja] (b) at (0,-1.65) {Expediente consolidado y presentado\\versión, universo y observaciones resueltas};
+\node[caja] (c) at (0,-3.3) {Revisión y pronunciamiento del cliente\\ventana contractual: diez días hábiles};
+\node[caja,fill=SynBlue!15] (d) at (0,-4.95) {Decisión expresa y acta suscrita\\condiciones copulativas comprobadas};
+\node[caja,fill=SynNavy,text=white] (e) at (0,-6.6) {Activación/cambio de autoridad autorizado\\continuidad y retorno preparados};
+\node[caja,text width=39mm] (o) at (5.9,-3.3) {Si hay observaciones:\\subsanación y nueva presentación\\hasta diez días hábiles para subsanar};
+\draw[->,SynBlue] (a)--(b);\draw[->,SynBlue] (b)--(c);
+\draw[->,SynBlue] (c)--(d);\draw[->,SynBlue] (d)--(e);
+\draw[->,SynBlue] (c.east)--(o.west);
+\draw[->,SynBlue] (o.north)|-(b.east);
+\end{tikzpicture}
+\caption{Orden de evidencia, recepción y activación}\label{fig:t15-recepcion}
+\FuenteTabla{Bases Administrativas, arts. 17--18; T-14.}
+\end{figure}
+
+Para E2 se define $W$ como la ventana real de las cuatro últimas semanas exigibles y $d_{con}$, $d_{rev}$, $d_{act}$ y $d_{corte}$ como duración residual de consolidación, revisión final, decisión/acta y activación. Su aplicación usa calendarios distintos cuando corresponde. La fecha de activación debe respetar el orden
+\[
+T_{E2}\ \geq\ \operatorname{fin}(W)+d_{con}+d_{rev}+d_{act}+d_{corte}.
+\]
+Esta expresión representa precedencia, no una suma indiscriminada de días naturales y hábiles. Si $W$ termina al cierre del mes 20 y quedan duraciones positivas posteriores, la cabida antes del primer día de 21 no está demostrada. Revisiones parciales anteriores no sustituyen el pronunciamiento sobre la evidencia completa. Se mantiene el objetivo contractual y se registra esta dependencia abierta para coordinarla expresamente en T-15/T-18; no se recortan cuatro semanas ni se atribuye una reducción acordada del plazo de revisión. La sección de CPM informará la cabida o la brecha sobre la red fechada.
+
+En el antecedente T-18, $W$ termina el 31 de julio de 2028 y el objetivo de activación es el 1 de agosto: no se adopta esa secuencia como factible. Adelantar un expediente preliminar no autoriza recibir anticipadamente condiciones que deben sostenerse hasta el cierre. La solución requiere un procedimiento formal compatible con las bases y una red fechada; hasta acreditarlos, H12 conserva estado de cabida no demostrada. Para E1 se conservan producción y estabilización en el mes 16, conforme a T-14. Los 28 días consecutivos de estabilización deben comenzar a más tardar el 4 de marzo de 2028 para concluir dentro de ese mes. El corte oficial debe preceder su inicio y contar con recepción y una ventana admisible durante el congelamiento; esa compatibilidad permanece por demostrar antes de cerrar la línea base.
+
+
+\section{Recursos y nivelación}\label{sec:t15-recursos}
+La nivelación confronta el esfuerzo de cada actividad con recursos disponibles en su calendario. El universo incluye ejecución, revisión, gobierno, formación, desplazamiento y servicio; ninguna de esas funciones desaparece por no construir software. Se trabaja por persona cuando exista asignación nominal y, mientras se define provisión, por puesto y perfil con estado explícito. Un puesto previsto no acredita una contratación ni una certificación.
+
+\subsection{Perfiles y disponibilidad}
+El registro de recursos contiene ID de persona/puesto, perfil, habilidades, incorporación y salida, jornada admisible, dedicación máxima, sitio, ausencias, suplente y restricciones de simultaneidad. La participación del cliente se registra aparte. SD6 mantiene dedicación exclusiva del Jefe de Proyecto durante implementación, 100\,\% de los líderes de Desarrollo y Funcional en esa fase, participación permanente de Datos, Integración, Seguridad y Calidad, incorporación SRE desde 6 e Implantación desde 8. Participación permanente y dedicación alta no se convierten en porcentajes inventados.
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.24\textwidth-2\tabcolsep\relax}L{\dimexpr0.32\textwidth-2\tabcolsep\relax}L{\dimexpr0.44\textwidth-2\tabcolsep\relax}}
+\caption{Perfiles y condiciones de incorporación}\label{tab:t15-perfiles}\\\hline
+\EncabezadoTabla{Perfil o función} & \EncabezadoTabla{Condición documentada} & \EncabezadoTabla{Trabajo que debe cubrir la asignación}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-perfiles}}}\\\hline
+\EncabezadoTabla{Perfil o función} & \EncabezadoTabla{Condición documentada} & \EncabezadoTabla{Trabajo que debe cubrir la asignación}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Jefatura de Proyecto & Exclusiva durante implementación; Ignacio Silva integra dirección/control en T-14. & Gobierno, decisiones, riesgos, cambios y recepción. Mantiene responsabilidades hasta transferencia; participación posterior declarada por función.\\\hline
+Desarrollo y Funcional & Líderes al 100 por ciento durante implementación; confirmar identidades y provisión en SD12. & Reglas, construcción, adaptación y correcciones; reservar las revisiones propias del alcance y las dos etapas concurrentes.\\\hline
+Arquitectura/Integración & Dedicación alta en diseño y participación permanente según SD6; Fernando Guerrero integra paquetes técnicos de T-14. & Arquitectura, ambientes, interfaces y transferencia. Si una persona cubre funciones distintas, su disponibilidad se reparte una sola vez.\\\hline
+Datos & Participación permanente; Nicolás Torfan integra resultados de datos en T-14. & Modelos, migración, conciliación, historia y revisión de cortes; no delegar la autoridad de los datos al equipo de desarrollo.\\\hline
+Seguridad & Participación permanente; Bruno Toro integra los controles de T-14. & Diseño, identidad, privacidad, auditoría, revisión de cambios y respuesta especializada; distinguir de un turno SOC prestado.\\\hline
+Calidad y Pruebas & Participación permanente; Davor Serey integra calidad/aceptación en T-14. & Planificación y verificación; recursos independientes cuando el protocolo lo exige. El responsable no reemplaza a todos los ejecutores.\\\hline
+Operación/SRE & Desde 6 y durante Operación; José Lara Arce integra preparación y resultados técnicos. & Transferencia, continuidad, monitoreo, servicio y apoyo formativo. No atribuirle ejecución en 5 ni disponibilidad simultánea ilimitada.\\\hline
+Implantación y Cambio & Incorporación desde 8; asignación nominal/dedicación a confirmar. & Manifiestos, materiales, formación, olas, convivencia y adopción; coordinar usuarios y turnos.\\\hline
+Gerencia de Servicio & Desde inicio de Operación en 21, según el relevo documentado. & Coordinar servicio, informes, incidentes, cambios y suplencias; conservar participantes obligatorios de gobierno.\\\hline
+Mesa, NOC/SOC y terreno & Dotación y especialistas por cobertura y demanda; personas/suplencias a dimensionar. & Turnos bilingües, emergencia, respuesta y traslado. Los líderes técnicos no equivalen por sí solos al cuadrante requerido.\\\hline
+Contraparte y usuarios del cliente & Autoridad y disponibilidad propias; no presumir un área TI del cliente. & Validación, recepción, formación y decisiones. Registrar HH de participación y esperas sin sumarlas a HH Synaptix.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{SD6; T-14; T-12.}
+Los nombres del diccionario identifican integración de resultados; la tabla no acredita contratos, credenciales ni nómina completa. Cuando una asignación propuesta reúna dos roles con dedicación exclusiva o requiera independencia entre productor y verificador, se resuelve antes de cargar sus agendas. La sustitución conserva competencia, permisos, continuidad y transferencia, con validación del procedimiento aplicable.
+
+\subsection{Carga y capacidad}
+Para persona $r$ e intervalo $k$, $H^{cal}_{r,k}$ representa horas de agenda admisible y $H^{aus}_{r,k}$ ausencias no disponibles. La capacidad de agenda es
+\[
+C_{r,k}=H^{cal}_{r,k}-H^{aus}_{r,k},\qquad
+L_{r,k}=\sum_a HH_{a,r,k},\qquad B_{r,k}=C_{r,k}-L_{r,k}.
+\]
+El sumatorio incluye toda actividad del proyecto asignada a la persona. Comités, documentación, preparación, traslados y formación se contabilizan en la carga cuando forman parte del catálogo; no se descuentan nuevamente como ausencia. Si la dedicación contractual permite solo una fracción de agenda, esa fracción limita la capacidad asignable y se registra su fundamento. En varios roles de una misma persona, la suma de sus asignaciones no excede su capacidad total.
+
+Una carga $L_{r,k}>C_{r,k}$ demuestra una sobrecarga del escenario, no esfuerzo adicional ya autorizado. Un saldo positivo mensual tampoco demuestra cabida diaria: se revisan intervalos de ejecución, habilidades, revisor independiente, sitio y exclusividad de tareas. La comparación usa la misma unidad; horas de guardia disponible no se incorporan como HH activas sin declarar la modalidad de prestación.
+
+Como ejemplo de la regla, una agenda admisible de 40 HH semanales con ocho HH de ausencia tiene 32 HH disponibles. Si se asignan 20 HH de construcción, ocho de revisión y cuatro de gobierno, el saldo es cero; no quedan ocho HH libres por excluir el gobierno. Los valores son un supuesto de cálculo para explicar el modelo, no jornada contractual ni disponibilidad acreditada de una persona. Una intervención de guardia que consume seis HH de esa misma agenda desplaza o exige reemplazar seis HH de la carga previamente comprometida.
+
+El ejemplo no aplica un segundo descuento de productividad al esfuerzo de la sección~\ref{sec:t15-estimacion}. La estimación unitaria describe cuánto trabajo exige un resultado; la capacidad describe cuándo y quién puede hacerlo. Las ausencias, pausas y relevos afectan la cobertura, mientras la complejidad ya incluida en $h$ no se vuelve a multiplicar como un castigo general de rendimiento.
+
+\subsection{Frentes simultáneos}
+Un frente es un conjunto de actividades concurrentes con recursos y resultados identificables. No se obtiene contando cuentas, líderes o cuatro posiciones históricas de olas. La tabla~\ref{tab:t15-frentes} define la separación mínima de cargas para comprobar los solapamientos; sus filas son categorías de planificación y no una cantidad de equipos dedicados ya disponible.
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.13\textwidth-2\tabcolsep\relax}L{\dimexpr0.39\textwidth-2\tabcolsep\relax}L{\dimexpr0.48\textwidth-2\tabcolsep\relax}}
+\caption{Frentes que deben conciliarse durante los solapamientos}\label{tab:t15-frentes}\\\hline
+\EncabezadoTabla{Período} & \EncabezadoTabla{Frente y resultado} & \EncabezadoTabla{Conflicto de recurso que debe resolverse}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-frentes}}}\\\hline
+\EncabezadoTabla{Período} & \EncabezadoTabla{Frente y resultado} & \EncabezadoTabla{Conflicto de recurso que debe resolverse}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+13--15 & Marcha blanca E1: acompañamiento, convivencia, conciliación y observación real. & Usuarios, Implantación, Funcional, Datos y Calidad disponibles en ventanas reales; reservar respuesta a incidentes y retorno.\\\hline
+13--15 & Desarrollo E2: alcance/diseño H8, UX, construcción y revisión del delta. & Desarrollo y especialistas no ocupan simultáneamente las HH reservadas a E1; construcción definitiva tras diseño recibido.\\\hline
+13--15 & Mesa y guardia de implementación: 1.11.8. & Cuadrante, especialistas y suplentes separados de las visitas/olas; atención se mantiene mientras otros recursos forman o construyen.\\\hline
+19--20 & E1 productiva: integridad, atención, guardia y cambios autorizados. & Proteger los recursos y la autoridad de E1 antes de asignar pruebas/pilotos E2.\\\hline
+19--20 & Marcha blanca E2: usuarios/datos reales, evidencia diaria y expediente final. & Datos, Calidad, Implantación y contraparte con agenda propia; revisión final no se reemplaza por monitoreo automático.\\\hline
+19--20 & Innovaciones: base, formación y pilotos según sus secuencias. & No mezclar medición con formación ni contar asistentes/especialistas simultáneamente en dos actividades incompatibles.\\\hline
+19--20 & Delta de servicio y preparación de activación 21. & Runbooks, transferencia y relevos terminan antes de su uso; reservar decisión, corte y estabilización sin desatender E1.\\\hline
+21 y siguientes & Operación de ambos alcances y estabilización E2 concurrente. & Estabilización E2 se imputa a Operación conforme a T-14, separada del soporte ordinario; una persona no cubre simultáneamente dos puestos presenciales.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{Bases Administrativas, art. 17; T-14; SD6.}
+Los recursos compartidos se programan con agenda de revisión y prioridades expresas. SD6 limita el trabajo en curso por ejecutor; una actividad en espera no habilita declarar trabajo productivo doble. El comité o líder que resuelve conflictos no crea capacidad: si no hay recursos suficientes, se registra déficit por perfil e intervalo y su efecto sobre la recepción.
+
+\subsection{Nivelación de recursos}
+La nivelación se aplica sobre duraciones, dependencias y capacidades sustentadas. Primero se protege cobertura obligatoria y recursos exclusivos; luego se asigna producción/verificación y se resuelven las sobrecargas. Se calcula nuevamente la red después de cada cambio que altere fechas, dedicaciones o simultaneidad. La ruta crítica anterior a nivelar no se conserva como resultado final si la disponibilidad modifica la secuencia.
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.23\textwidth-2\tabcolsep\relax}L{\dimexpr0.37\textwidth-2\tabcolsep\relax}L{\dimexpr0.4\textwidth-2\tabcolsep\relax}}
+\caption{Tratamiento de sobrecargas y conflictos}\label{tab:t15-nivelacion}\\\hline
+\EncabezadoTabla{Orden de tratamiento} & \EncabezadoTabla{Corrección admisible} & \EncabezadoTabla{Comprobación necesaria}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-nivelacion}}}\\\hline
+\EncabezadoTabla{Orden de tratamiento} & \EncabezadoTabla{Corrección admisible} & \EncabezadoTabla{Comprobación necesaria}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Revisar la imputación & Eliminar duplicaciones, diferenciar espera de esfuerzo y corregir cantidades/unidades. & No reducir un trabajo real para hacer caber una cifra; conservar evidencia y fronteras.\\\hline
+Secuenciar & Mover trabajo dentro de ventanas y holguras disponibles, manteniendo dependencias. & Recalcular recepción y calendario de sitio; una holgura mensual no se presume disponible antes de un corte.\\\hline
+Repartir o reasignar & Dividir trabajo divisible y asignar personas competentes con capacidad comprobada. & Conservar transferencia, revisión independiente y coordinación; mayor dotación no acelera automáticamente una tarea serial.\\\hline
+Programar revisión/relevo & Reservar verificadores y suplentes en intervalos propios. & Cubrir ausencias e intervención crítica; evitar que la persona revise su propio trabajo cuando corresponde independencia.\\\hline
+Proponer provisión adicional & Incorporar puestos/perfiles necesarios con anticipación. & Distinguir propuesta de dotación comprometida, documentar incorporación y conciliar SD12/Oferta Económica antes de adoptarla.\\\hline
+Registrar brecha & Identificar déficit y efecto en hito cuando los tratamientos anteriores no resuelven. & Escalar con alternativas; no mover fases contractuales ni afirmar una nivelación satisfactoria.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14; SD6; Bases Administrativas, Formulario T-15.}
+Las salidas serán carga y capacidad por persona/perfil/intervalo, agenda de recursos exclusivos y revisión, déficit antes y después de corregir, dotación simultánea y efecto sobre hitos. Las personas únicas de todo el contrato, los puestos cubiertos, el peak simultáneo y los equivalentes de dedicación se informan como magnitudes distintas. Los peaks de fases solapadas no se suman si una misma identidad participa en ambas; la carga sí se suma cuando corresponde a trabajo disjunto.
+
+El escenario de servicio de la sección~\ref{sec:t15-cobertura} conserva 24 personas de rotación de SD7, destinadas a mesa/NOC/SOC, separadas de líderes e ingeniería. No se adopta el peak total de 106 como resultado del catálogo agrupado. Los puestos exclusivos de Jefatura, Desarrollo y Funcional constituyen tres recursos distintos durante implementación; Datos, Integración, Seguridad, Calidad, SRE desde 6 e Implantación desde 8 reservan participación propia. El número total de personas y frentes efectivos se obtiene al asignar carga y revisión; no se iguala a tres, ocho o veinticuatro por contar estas referencias. El presente capítulo aún no acredita una nivelación final: faltan HH por actividad, capacidad diaria, asignaciones, ausencias y suplencias. Ningún frente recibe estado de capacidad demostrada mientras alguno de esos campos materiales permanezca vacío.
+
+
+\section{Cobertura operacional}\label{sec:t15-cobertura}
+La cobertura comprende atención bilingüe, monitoreo, emergencia, respuesta especializada y terreno, además de coordinación con mantenimiento e ingeniería. Se recibe como prestación efectiva por período. Preparar un modelo, diseñar un cuadrante o entregar un informe de SLA no sustituye las horas realmente cubiertas ni la atención prestada.
+
+\subsection{Horarios y demanda}
+La preparación del servicio ocurre antes de activar sus canales: modelo inicial y procedimientos en 11--12, ajustes de modelo en 18 y runbooks/delta en 20 según T-14. El soporte de implementación se recibe en 1.11.8 durante 13--20. Operación comienza en 21 para ambos alcances y continúa hasta 56 mediante 1.12.14. La organización anterior no adelanta el inicio contractual de Operación ni elimina soporte mientras E1 se observa o queda productiva.
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.23\textwidth-2\tabcolsep\relax}L{\dimexpr0.36\textwidth-2\tabcolsep\relax}L{\dimexpr0.41\textwidth-2\tabcolsep\relax}}
+\caption{Coberturas y criterios del servicio}\label{tab:t15-cobertura-obligatoria}\\\hline
+\EncabezadoTabla{Función} & \EncabezadoTabla{Horario o condición} & \EncabezadoTabla{Evidencia de prestación}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-cobertura-obligatoria}}}\\\hline
+\EncabezadoTabla{Función} & \EncabezadoTabla{Horario o condición} & \EncabezadoTabla{Evidencia de prestación}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Mesa bilingüe & Temporada alta: 06:00--24:00 todos los días; resto: 08:00--20:00. Español e inglés. & Canales disponibles, personal/relevos, contactos y tickets; cobertura íntegra del período y fallos registrados.\\\hline
+Atención & 80 por ciento antes de 20 segundos, resolución al primer contacto al menos 70 por ciento y abandono no superior a 5 por ciento. & Denominadores, clasificación y tiempos trazables. Ausencia de contactos no demuestra desempeño.\\\hline
+Emergencia y planes vencidos & Canal de emergencia y recepción de alertas de plan vencido 24x7x365 sin excepción. & Recepción, contacto, escalamiento y actuación registrados; la alerta técnica no confirma presencia física ni autoriza salvamento.\\\hline
+NOC/SOC y especialistas & Monitoreo proactivo, respuesta a incidentes críticos y escalamiento según severidad aplicable. & Guardias, competencias, disponibilidad/suplencia y diagnóstico/contención/recuperación; tiempos de BA78/T-12 por su clase.\\\hline
+Terreno & Desplazamiento cuando la resolución lo requiere, con continuidad del resto de los sitios. & Especialista, relevo, embarcación, permisos, ventana segura, traslado e intervención registrados.\\\hline
+Conocimiento & Base de conocimiento y autoformación desde primera versión y durante prestación. & Material editable/versionado de propiedad del cliente; cambios, uso, aprendizaje y utilidad percibida.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-12, RT-21.06/10/11/16; T-14; Bases Administrativas, art. 78.}
+La demanda se registra por temporada, día, intervalo, canal, idioma, severidad y perfil. Para cada intervalo se requiere volumen proyectado de contactos, tiempo medio de atención (TMA), distribución temporal y simultaneidad, además de pausas, formación, ausencias y tareas posteriores al contacto. El TMA incluye la atención y el trabajo asociado que ocupa al agente; lo imputado ahí no se agrega como otra actividad del mismo ticket.
+
+Se conserva el pronóstico de diseño de SD7: $88+170+350+590=1.198$ plazas de contacto, con una plaza adulta por menor; no son 1.198 personas únicas ni 590 apoderados confirmados. El supuesto de contactos diarios del 2\,\% concentrados en tres horas produce $\lambda=1.198\times0{,}02/3=7{,}9867$ contactos/h. TMA de seis minutos también es supuesto, no medición. Esta proyección específica se contrasta con demanda por canal/idioma y datos de marcha blanca; no se sustituye silenciosamente por los ejemplos 6/12/20. Se aplica temporada alta 15-11/31-03. Responsables autorizados del cliente aportan registros y población sin presumir un área TI.
+
+\subsection{Dimensionamiento de la mesa}
+RT-21.14 exige fundamento cuantitativo desde contactos proyectados. Se utiliza Erlang C como contraste de una cola con agentes equivalentes. Para tasa $\lambda$ en contactos/hora, TMA en minutos y $n$ agentes activos, la carga es $a=\lambda\,TMA/60$ y $\mu=60/TMA$ contactos por hora y agente. Para $n>a$,
+\[
+P_{espera}=\frac{a^n\,n/[n!(n-a)]}
+{\displaystyle\sum_{j=0}^{n-1}a^j/j!+a^n\,n/[n!(n-a)]},
+\qquad SL(t)=1-P_{espera}\,e^{-(n\mu-\lambda)t},
+\]
+con $t$ expresado en horas. El objetivo de 20 segundos usa $t=20/3600$. Se elige el menor entero $n>a$ con $SL(t)\geq0{,}80$; idioma y habilidades se comprueban aparte.
+
+El modelo supone llegadas Poisson, servicio exponencial, cola sin límite, orden de llegada y ausencia de abandono. No demuestra el límite de abandono ni la resolución al primer contacto; requieren evidencia propia. Colas por idioma, canales simultáneos y demanda variable exigen contrastar sus supuestos. El modelo de operadores se describe en Larson y Odoni, \textit{Urban Operations Research}, sección 4.6.2, \url{https://web.mit.edu/urban_or_book/www/book/chapter4/4.6.2.html}; los supuestos de Erlang C se detallan en \textit{Erlang for Excel}, \url{https://www.erlang.com/erlangforexcel-manual/the_erlang_c_traffic_model.htm}. Consulta: 10 de octubre de 2026. Son referencias metodológicas, no datos de demanda del caso.
+
+La tabla~\ref{tab:t15-erlang-sensibilidad} presenta tres supuestos de demanda con TMA de seis minutos. Se supone adicionalmente 20\,\% de indisponibilidad programada para el ejemplo; los agentes programados son $\lceil n/(1-0{,}20)\rceil$. Este porcentaje no procede de las bases y se sustituirá por pausas/ausencias efectivas. La distribución real del cuadrante debe garantizar $n$ activos en cada intervalo: la fracción promedio no autoriza que todos salgan simultáneamente. Los resultados corresponden a un intervalo homogéneo; no son personas únicas del mes ni dotación aprobada.
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.18\textwidth-2\tabcolsep\relax}L{\dimexpr0.2\textwidth-2\tabcolsep\relax}L{\dimexpr0.23\textwidth-2\tabcolsep\relax}L{\dimexpr0.19\textwidth-2\tabcolsep\relax}L{\dimexpr0.2\textwidth-2\tabcolsep\relax}}
+\caption{Sensibilidad de la mesa bajo supuestos de demanda}\label{tab:t15-erlang-sensibilidad}\\\hline
+\EncabezadoTabla{Contactos/h} & \EncabezadoTabla{Agentes activos} & \EncabezadoTabla{Atención en 20 s} & \EncabezadoTabla{Ocupación} & \EncabezadoTabla{Programados}\\\hline\endfirsthead
+\multicolumn{5}{l}{\textit{Continuación de la tabla \ref{tab:t15-erlang-sensibilidad}}}\\\hline
+\EncabezadoTabla{Contactos/h} & \EncabezadoTabla{Agentes activos} & \EncabezadoTabla{Atención en 20 s} & \EncabezadoTabla{Ocupación} & \EncabezadoTabla{Programados}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+6 & 2 & 87,19\,\% & 30,00\,\% & 3\\\hline
+12 & 3 & 87,23\,\% & 40,00\,\% & 4\\\hline
+20 & 4 & 84,44\,\% & 50,00\,\% & 5\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-12, RT-21.06/14; modelo Erlang C y supuestos de dimensionamiento de T-15.}
+El dato calculado es una predicción bajo esos supuestos. Si se utiliza una misma cola bilingüe, cada agente contado como disponible debe tener la competencia exigida para los contactos que puede recibir. Separar colas sin dimensionarlas o asignar agentes a dos contactos síncronos simultáneos altera el modelo. El objetivo contractual se comprueba con los registros del servicio y no se declara cumplido por el resultado de la tabla.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr.20\textwidth-2\tabcolsep\relax}L{\dimexpr.20\textwidth-2\tabcolsep\relax}L{\dimexpr.20\textwidth-2\tabcolsep\relax}L{\dimexpr.20\textwidth-2\tabcolsep\relax}L{\dimexpr.20\textwidth-2\tabcolsep\relax}}
+\caption{Pronóstico del caso y sensibilidad de demanda}\label{tab:t15-erlang-caso}\\\hline
+\EncabezadoTabla{Escenario} & \EncabezadoTabla{Contactos/h} & \EncabezadoTabla{Puestos activos} & \EncabezadoTabla{Atención en 20 s} & \EncabezadoTabla{Programados con 20 por ciento}\\\hline\endfirsthead
+\multicolumn{5}{l}{\textit{Continuación de la tabla \ref{tab:t15-erlang-caso}}}\\\hline
+\EncabezadoTabla{Escenario} & \EncabezadoTabla{Contactos/h} & \EncabezadoTabla{Puestos activos} & \EncabezadoTabla{Atención en 20 s} & \EncabezadoTabla{Programados con 20 por ciento}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+1 veces la base & 7,9867 & 3 & 95,42\,\% & 4\\\hline
+2 veces la base & 15,9733 & 4 & 92,10\,\% & 5\\\hline
+3 veces la base & 23,9600 & 5 & 90,23\,\% & 7\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{SD7, cobertura y pronóstico de atención; T-12, RT-21.06/14; modelo Erlang C.}
+
+El pronóstico base conserva tres puestos activos de mesa; las sensibilidades determinan ampliación cuando aumentan contactos o TMA. Los programados cubren indisponibilidad bajo el supuesto del 20\,\%; no se agregan como otra dotación a la rotación del servicio. Para abandono se requiere distribución de paciencia o validación empírica; para resolución inicial, habilidades, permisos, base de conocimiento y capacidad de resolución por categoría. En marcha blanca se comparan llegadas, TMA, espera, abandono y resolución, por intervalos homogéneos; se corrige el modelo antes de mantener una selección que no alcance los umbrales.
+
+\subsection{Turnos y guardias}
+Para día $d$, $h_d$ es la extensión del horario exigido y $n_{d,i}$ los puestos activos del intervalo $i$. Las horas de puesto son $H^{puesto}=\sum_{d,i}n_{d,i}\Delta t_i$. Si se analiza un único puesto constante, una semana de temporada alta requiere $18\times7=126$ horas y una de temporada regular $12\times7=84$ horas. La disponibilidad 24x7 equivale a 168 horas semanales por cobertura continua. Son horas de cobertura, no la jornada de una sola persona.
+
+La tabla~\ref{tab:t15-limite-relevo} utiliza como supuesto una agenda de 40 HH por persona/semana y disponibilidad neta de 80\,\%, equivalente a 32 HH. Los redondeos son límites agregados inferiores por un puesto continuo, no cuadrantes factibles: aún deben verificarse distribución diaria, descansos, idioma, concurrencia y reemplazo. No se aplican además los mismos ocho HH como otro descuento de capacidad.
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.39\textwidth-2\tabcolsep\relax}L{\dimexpr0.21\textwidth-2\tabcolsep\relax}L{\dimexpr0.4\textwidth-2\tabcolsep\relax}}
+\caption{Referencia semanal de relevo por un puesto constante}\label{tab:t15-limite-relevo}\\\hline
+\EncabezadoTabla{Cobertura hipotética} & \EncabezadoTabla{Horas/semana} & \EncabezadoTabla{Límite con 32 HH netas por persona}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-limite-relevo}}}\\\hline
+\EncabezadoTabla{Cobertura hipotética} & \EncabezadoTabla{Horas/semana} & \EncabezadoTabla{Límite con 32 HH netas por persona}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Mesa en temporada alta & 126 & $\lceil126/32\rceil=4$ personas como mínimo entero de capacidad; cociente 3,9375.\\\hline
+Mesa en temporada regular & 84 & $\lceil84/32\rceil=3$ personas como mínimo entero de capacidad; cociente 2,625.\\\hline
+Puesto activo dedicado 24x7 & 168 & $\lceil168/32\rceil=6$ personas como mínimo entero; cociente 5,25 para puesto activo continuo.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-12, RT-21.06; supuestos de cobertura de T-15.}
+Los límites no reemplazan el dimensionamiento de demanda de la tabla anterior: varios puestos simultáneos aumentan cobertura y relevos, pero un peak de agentes por intervalo no se mantiene automáticamente durante todo el horario. Tampoco se adopta la fila 24x7 como seis personas de guardia localizada. El escenario de provisión conserva un puesto NOC y un puesto SOC activos continuamente, con especialistas N2/N3 localizados para escalamiento, según SD7. La guardia especializada no reemplaza esos dos puestos. Cambiar esta modalidad exige demostrar cobertura, respuesta y suplencia y conciliar SD7/T-18 antes de adoptarlo.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr.24\textwidth-2\tabcolsep\relax}L{\dimexpr.20\textwidth-2\tabcolsep\relax}L{\dimexpr.20\textwidth-2\tabcolsep\relax}L{\dimexpr.36\textwidth-2\tabcolsep\relax}}
+\caption{Escenario de provisión de servicio}\label{tab:t15-provision-servicio}\\\hline
+\EncabezadoTabla{Función} & \EncabezadoTabla{Puestos activos} & \EncabezadoTabla{Personas de rotación} & \EncabezadoTabla{Condición del escenario}\\\hline\endfirsthead
+\multicolumn{4}{l}{\textit{Continuación de la tabla \ref{tab:t15-provision-servicio}}}\\\hline
+\EncabezadoTabla{Función} & \EncabezadoTabla{Puestos activos} & \EncabezadoTabla{Personas de rotación} & \EncabezadoTabla{Condición del escenario}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Mesa bilingüe & 3 durante horario del caso & 12 & Conservar base SD7; ajustar puestos y relevo según pronóstico, idiomas y sensibilidad.\\\hline
+NOC & 1 continuo 24x7 & 6 & Recepción de emergencia/alertas y diagnóstico; relevo protege todos los intervalos.\\\hline
+SOC & 1 continuo 24x7 & 6 & Monitoreo y respuesta de seguridad; escalar a especialista competente con suplencia.\\\hline
+Total de rotación & 5 cuando coinciden mesa/NOC/SOC & 24 & Personas de referencia separadas de titulares e ingeniería; no total ni peak del contrato.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{SD7, cobertura propia y dimensionamiento; T-14, prestación de soporte; T-12, RT-21.}
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr.24\textwidth-2\tabcolsep\relax}L{\dimexpr.16\textwidth-2\tabcolsep\relax}L{\dimexpr.20\textwidth-2\tabcolsep\relax}L{\dimexpr.20\textwidth-2\tabcolsep\relax}L{\dimexpr.20\textwidth-2\tabcolsep\relax}}
+\caption{Cobertura del escenario de servicio por fase}\label{tab:t15-horas-puesto}\\\hline
+\EncabezadoTabla{Fase} & \EncabezadoTabla{Días alta/resto} & \EncabezadoTabla{Mesa: 3 puestos} & \EncabezadoTabla{NOC y SOC: 1 cada uno} & \EncabezadoTabla{Total horas de puesto}\\\hline\endfirsthead
+\multicolumn{5}{l}{\textit{Continuación de la tabla \ref{tab:t15-horas-puesto}}}\\\hline
+\EncabezadoTabla{Fase} & \EncabezadoTabla{Días alta/resto} & \EncabezadoTabla{Mesa: 3 puestos} & \EncabezadoTabla{NOC y SOC: 1 cada uno} & \EncabezadoTabla{Total horas de puesto}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Soporte 13--20 & 122/122 & 10.980 & 5.856 cada uno & 22.692\\\hline
+Operación 21--56 & 411/684 & 46.818 & 26.280 cada uno & 99.378\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{Caso 07, temporada y horarios; SD7, puestos de servicio; T-14, ventanas de prestación.}
+
+La suma de cobertura 13--56 es 122.070 horas de puesto, consistente con el antecedente SD7; no es la estimación ascendente completa ni incluye trabajo fuera de turno. En Operación hay 1.095 días: 411 de alta y 684 del resto. Por un puesto de mesa, $18\times411+12\times684=15.606$ horas; tres puestos requieren 46.818 y NOC/SOC 26.280 cada uno. Copiar la temporada reducida de SD3 daría 14.778 horas por puesto, 828 menos; este escenario conserva la cobertura del Caso 07.
+
+Con 32 HH netas semanales por persona como supuesto, la semana alta exige 378 horas de mesa frente a 384 de doce personas; cada puesto continuo requiere 168 frente a 192 de seis. Es solo cabida agregada: seis HH libres de mesa no demuestran descansos, idioma ni todos los relevos. Los puestos/personas de ambas tablas describen la misma dotación y no se suman dos veces. Antes de activar cobertura se comprueba el cuadrante diario y se refuerza la provisión si las restricciones no caben; las sensibilidades de mayor demanda no quedan cubiertas por mantener doce personas sin revisión.
+
+Cada cuadrante conserva persona/puesto, función, idioma, inicio/fin, descansos, disponibilidad, especialista de escalamiento, suplente y contacto. La cobertura se verifica en todos los intervalos del mes, con zona horaria y cambios de calendario identificados. Una propuesta de rotación no prueba su prestación; la bitácora registra reemplazos, ausencias y intervalos sin cobertura.
+
+Se distinguen HH de puesto activo, disponibilidad de guardia localizada y HH efectivas de intervención. En un puesto activo, las intervenciones ejecutadas dentro de su turno no vuelven a sumarse a las HH del turno para inflar esfuerzo. En guardia localizada, la intervención y el descanso/reemplazo que requiera afectan la agenda de ingeniería o servicio asignada a esa persona. La valoración económica de disponibilidad se trata en la Oferta Económica; aquí se conserva su unidad sin convertir toda disponibilidad en trabajo presencial.
+
+La guardia crítica no se asigna a alguien que simultáneamente realiza una faena sin comunicación o un traslado que impide responder. El escalamiento activa un especialista y relevo disponibles; no supone que el líder de cada cuenta permanece atendiendo 24 horas al día. Las alertas de planes vencidos conservan solicitud oportuna y recepción por guardia según el productor de T-14 y T-12, sin atribuirse facultades de zarpe, búsqueda o salvamento.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr.15\textwidth-2\tabcolsep\relax}L{\dimexpr.24\textwidth-2\tabcolsep\relax}L{\dimexpr.17\textwidth-2\tabcolsep\relax}L{\dimexpr.18\textwidth-2\tabcolsep\relax}L{\dimexpr.26\textwidth-2\tabcolsep\relax}}
+\caption{Plazos de incidentes durante Operación}\label{tab:t15-sla-severidad}\\\hline
+\EncabezadoTabla{Severidad} & \EncabezadoTabla{Cobertura exigida} & \EncabezadoTabla{Respuesta máxima} & \EncabezadoTabla{Resolución máxima} & \EncabezadoTabla{Canal y recurso}\\\hline\endfirsthead
+\multicolumn{5}{l}{\textit{Continuación de la tabla \ref{tab:t15-sla-severidad}}}\\\hline
+\EncabezadoTabla{Severidad} & \EncabezadoTabla{Cobertura exigida} & \EncabezadoTabla{Respuesta máxima} & \EncabezadoTabla{Resolución máxima} & \EncabezadoTabla{Canal y recurso}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Crítica & 24x7x365 & 15 minutos & 4 horas & NOC/SOC activo y especialista/suplente según causa.\\\hline
+Alta & 24x7x365 & 1 hora & 8 horas & NOC/SOC activo y especialista; no diferir al horario ordinario.\\\hline
+Media & Horario hábil extendido & 4 horas & 24 horas & Mesa y especialista por clasificación; conservar reloj contractual aplicable.\\\hline
+Baja & Horario hábil & 8 horas & 48 horas & Mesa y responsable; categoría no reduce el horario de mesa C07.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{Bases Administrativas, art. 78.1--2; T-12, RT-21.06/16.}
+
+Estos plazos BA78.2 corresponden a Operación; el soporte 13--20 mantiene sus obligaciones propias de T-12 y marcha blanca sin adelantar esa fase. El procedimiento registra instante inicial, severidad, responsable y calendario del reloj conforme a T-17. No se interpreta silencio de la mesa como suspensión de la atención crítica/alta, ni se reinicia el plazo al escalar.
+
+Como supuesto de diseño se reserva para un crítico hasta cinco minutos de detección/recepción y cinco de clasificación/asignación, dejando cinco para iniciar respuesta especializada dentro de quince; cada tramo conserva registro. La resolución exige que diagnóstico, contención, intervención/traslado admisible y comprobación quepan dentro de cuatro horas desde el inicio contractual, sin sumar las respuestas como un nuevo plazo. Para altos se presupuestan los mismos componentes dentro de una y ocho horas. El presupuesto se valida con protocolos y disponibilidad reales: no afirma resolución garantizada por existir guardia.
+
+La matriz de concurrencia contempla incidente de plataforma y seguridad simultáneos, varios sitios y especialista en terreno. NOC/SOC conservan sus puestos; cada incidente activo identifica especialista y suplente competentes distintos cuando las actuaciones son incompatibles. Si no hay cobertura para esa combinación, se registra déficit de provisión antes de activar el servicio; no se imputa al mismo líder dos agendas completas.
+
+\subsection{Terreno y continuidad}
+RT-21.16/C07 conserva Bahía Ilque como sitio accesible con embarcación y condiciones de mar favorables: las alternativas terrestres no autorizan prescindir de esa restricción. Antes de intervenir se identifica especialista, embarcación disponible, permisos, equipo, ventana segura y suplente que mantiene los otros sitios. El traslado de ida/vuelta, preparación, faena y evidencia tienen duración y HH propias cuando no están incluidos en otra unidad estimada.
+
+El cuadrante protege recepción remota y escalamiento mientras el especialista está embarcado o sin comunicación. No se presupone energía, conectividad ni personal local. Una ventana marítima cerrada se registra como bloqueo de acceso con contención remota admisible, comunicaciones y reprogramación; no se declara atendida una intervención física pendiente. Se mantiene la suspensión de trabajo programado ante marejadas y el procedimiento de emergencia real, sin proponer maniobras inseguras para hacer caber un tiempo.
+
+Para Bahía Ilque se registra por escenario tiempo de preparación, disponibilidad de embarcación, ida, intervención, comprobación y retorno. Se contrasta el camino de resolución con la tabla~\ref{tab:t15-sla-severidad}; el retorno posterior se programa sin abandonar los demás sitios. Mar cerrado, pérdida de comunicación y dos incidentes simultáneos son escenarios obligatorios del modelo de cobertura. Si la resolución depende de acceso físico que no cabe en el plazo, se registra la brecha y la medida compatible con las bases; el clima no se declara por sí solo una excepción contractual ni una atención concluida.
+
+Formación, acompañamiento y estabilización reservan instructores/puestos y turnos propios. El esfuerzo referencial de las secciones anteriores no se reduce porque exista mesa remota ni porque un especialista asista a una sesión. Si una persona de mesa participa en formación o mentoría, su reemplazo preserva el mínimo activo dimensionado. La capacidad anual de formación y las cohortes por manifiesto permanecen separadas del número de agentes del servicio.
+
+\subsection{Imputación y control}
+Cada ticket conserva un identificador único y cada intervención una actividad, ejecutor, período, unidad y cuenta de imputación. Mesa registra y deriva; guardia diagnostica/responde; ingeniería produce un cambio autorizado cuando corresponde. Las actividades distintas se concilian, pero una misma intervención no se vuelve a cargar por cambiar de nivel o al incluirla en el informe mensual.
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.24\textwidth-2\tabcolsep\relax}L{\dimexpr0.35\textwidth-2\tabcolsep\relax}L{\dimexpr0.41\textwidth-2\tabcolsep\relax}}
+\caption{Fronteras de carga y recepción del servicio}\label{tab:t15-imputacion-servicio}\\\hline
+\EncabezadoTabla{Trabajo} & \EncabezadoTabla{Imputación} & \EncabezadoTabla{Control para evitar duplicación}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-imputacion-servicio}}}\\\hline
+\EncabezadoTabla{Trabajo} & \EncabezadoTabla{Imputación} & \EncabezadoTabla{Control para evitar duplicación}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Mesa y conocimiento & 1.11.8.1 en 13--20; 1.12.14.1 en 21--56. & Turno activo y tickets dentro de él no son dos consumos de las mismas HH; materiales iniciales conservan su productor.\\\hline
+Guardia y monitoreo & 1.11.8.2 en 13--20; 1.12.14.2 en 21--56. & Disponibilidad, puesto activo e intervención se identifican por modalidad y se concilian con la agenda del especialista.\\\hline
+Acompañamiento/estabilización & Paquetes agregados 1.11.4 y 1.11.6 según etapa/manifiesto. & Puestos, olas y evidencia diaria sin reactivar los 560 códigos históricos como entregables adicionales.\\\hline
+Mantenimiento & 1.12.3.4: referencia de 24 HH mensuales. & Incluye 4,8 HH internas de deuda; no duplicar esas acciones en ingeniería de deuda.\\\hline
+Ingeniería autorizada & 1.12.12: correctiva 80, normativa 48, evolutiva 80 y deuda 32 HH/mes como referencias. & 240 HH/mes de capacidad no equivalen a consumo. Separar componentes de un trabajo mixto; no limitar obligaciones incluidas por la bolsa.\\\hline
+Control de SLA y continuidad & 1.12.3 y controles propios de la instancia aplicable. & Analizan evidencia; no sustituyen la prestación ni reconstruyen la misma prueba ya recibida.\\\hline
+Formación y mentoría & Cohortes activadas y 1.12.13 en 21--26. & Instructores, preparación y recuperación separados de asistentes; suplencia de mesa si sus agentes participan.\\\hline
+Transición y salida & 1.12.8/9 durante 53--56, con servicio concurrente. & Transferencia y mínimo de 90 días reales se estiman aparte de cobertura ordinaria; conservar actualización al estado final.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14; T-12; SD6.}
+Al cierre de cada período se concilian cobertura exigida/prestada, puestos activos, disponibilidad localizada, intervenciones, consumo/saldo de ingeniería y fallos. Las 240 HH mensuales de ingeniería y 24 HH de mantenimiento no cubren automáticamente mesa, NOC/SOC, terreno, controles o formación. Los objetivos de respuesta, primer contacto y abandono usan sus universos y exclusiones definidos en el protocolo; cero contactos no se presenta como desempeño probado.
+
+El resultado disponible contiene calendario estacional definido, pronóstico específico del caso, sensibilidad, escenario de provisión 12/6/6, horas de puesto por fase y plazos de incidentes. Su validación requiere demanda/TMA por intervalo, idiomas, cuadrantes, especialistas, suplencias y cargas de las otras actividades. La temporada ya no es un dato pendiente; sí lo son los feriados/eventos y las disponibilidades individuales. La tabla oficial y las curvas utilizarán la estimación seleccionada, nivelación y red; no sumarán escenarios, límites semanales y peak histórico como tres dotaciones distintas.
+
+\section{Resumen y curvas}\label{sec:t15-resumen}
+\subsection{Resumen por fase}
+El resumen se obtiene de las actividades, estimaciones y asignaciones de las secciones~\ref{sec:t15-actividades} a~\ref{sec:t15-cobertura}. Cada fila conserva el código terminal T-14, instancia activa, etapa, perfil, mes y unidad de imputación. El formulario distingue esfuerzo de ejecución, capacidad ofrecida y horas de puesto; estas magnitudes se concilian por separado. Las referencias parciales disponibles permiten calcular la cobertura del escenario de servicio, pero todavía no permiten publicar las HH totales ni el máximo de personas del contrato.
+
+La tabla~\ref{tab:t15-resumen-fases} conserva las cinco filas del Formulario T-15. ``Pendiente'' identifica una entrada aún no cerrada; no representa cero ni un compromiso de dotación. Las fases solapadas mantienen sus fechas contractuales. La existencia de varios frentes exige actividades y recursos concurrentes; enumerarlos no demuestra su cabida.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.24\textwidth-2\tabcolsep\relax}L{\dimexpr0.16\textwidth-2\tabcolsep\relax}L{\dimexpr0.18\textwidth-2\tabcolsep\relax}L{\dimexpr0.33\textwidth-2\tabcolsep\relax}L{\dimexpr0.09\textwidth-2\tabcolsep\relax}}
+\caption{Resumen del Formulario T-15}\label{tab:t15-resumen-fases}\\\hline
+\EncabezadoTabla{Etapa} & \EncabezadoTabla{HH totales} & \EncabezadoTabla{Personas simultáneas máximas} & \EncabezadoTabla{Frentes de trabajo} & \EncabezadoTabla{Meses}\\\hline\endfirsthead
+\multicolumn{5}{l}{\textit{Continuación de la tabla \ref{tab:t15-resumen-fases}}}\\\hline
+\EncabezadoTabla{Etapa} & \EncabezadoTabla{HH totales} & \EncabezadoTabla{Personas simultáneas máximas} & \EncabezadoTabla{Frentes de trabajo} & \EncabezadoTabla{Meses}\\\hline\endhead
+\hline\endfoot
+\hline\endlastfoot
+E1: Desarrollo & Pendiente & Pendiente & Dirección, arquitectura, plataforma, dominios, integración, datos, verificación y preparación. & 1--12\\\hline
+E1: Marcha blanca & Pendiente & Pendiente & Olas activadas, convivencia, acompañamiento y observación E1; carga diferenciada de E2 y disponibilidad concurrente comprobable. & 13--15\\\hline
+E2: Desarrollo & Pendiente & Pendiente & Delta de alcance, diseño, construcción, integración y certificación; protección de E1. & 13--18\\\hline
+E2: Marcha blanca & Pendiente & Pendiente & Olas E2, convivencia, acompañamiento y observación; E1 productiva y soporte continuo. & 19--20\\\hline
+Operación & Pendiente & Pendiente & Mesa y guardia, ingeniería, mantenimiento, controles, formación, mentoría, innovaciones posteriores y salida. & 21--56\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{Bases Administrativas, Formulario T-15 y art. 17; T-14; registros de actividades y recursos de T-15.}
+
+\subsection{Conciliación del trabajo}
+La clasificación para sumar HH es disjunta: desarrollo E1, marcha blanca E1, desarrollo E2, marcha blanca E2, trabajo complementario de implementación y Operación. El atributo de alcance E1/E2 se conserva adicionalmente, aunque una actividad compartida se impute una sola vez. Soporte continuo y control transversal no se reparten completos a cada frente; se asignan al bloque complementario o se descomponen en intervenciones efectivamente distintas, dejando constancia del criterio utilizado.
+
+Para las cuatro fases de implementación de la tabla oficial, con esfuerzos $H_{D1}$, $H_{M1}$, $H_{D2}$ y $H_{M2}$, y un bloque complementario $H_C$, la conciliación es:
+\[
+H_{\mathrm{impl}}=H_{D1}+H_{M1}+H_{D2}+H_{M2}+H_C,
+\qquad H_{\mathrm{contrato}}=H_{\mathrm{impl}}+H_{\mathrm{op}}.
+\]
+$H_C$ conserva, entre otros trabajos no asignados a las cuatro filas anteriores, estabilización E1 en el mes 16, recepción y cierre, control compartido y soporte de implementación de 13--20. No es una reserva porcentual ni una cuenta nueva de la EDT. El código del entregable se mantiene; una preparación de servicio de 1.12 realizada antes del mes 21 se imputa temporalmente a implementación. La clasificación final se verifica actividad por actividad antes de sumar.
+
+Al completar el resumen, se publica junto a las cinco filas oficiales el subtotal complementario $H_C$, el total de implementación y el total contractual. Sumar únicamente las cinco filas oficiales omitiría $H_C$ bajo esta clasificación. Cada actividad pertenece a un solo bloque de suma; su atributo E1/E2 puede usarse para consulta, pero no origina una segunda imputación. Los totales permanecen pendientes hasta seleccionar las HH de las actividades; las referencias de capacidad y horas de puesto se concilian en registros separados antes de su conversión a carga personal.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.27\textwidth-2\tabcolsep\relax}L{\dimexpr0.17\textwidth-2\tabcolsep\relax}L{\dimexpr0.56\textwidth-2\tabcolsep\relax}}
+\caption{Tratamiento de trabajos que cruzan las fases}\label{tab:t15-conciliacion-temporal}\\\hline
+\EncabezadoTabla{Resultado o servicio} & \EncabezadoTabla{Imputación temporal} & \EncabezadoTabla{Regla de conciliación}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-conciliacion-temporal}}}\\\hline
+\EncabezadoTabla{Resultado o servicio} & \EncabezadoTabla{Imputación temporal} & \EncabezadoTabla{Regla de conciliación}\\\hline\endhead
+\hline\endfoot
+\hline\endlastfoot
+Estabilización E1: \texttt{1.11.6.1} & Implementación; 16 & Conservar 28 días consecutivos y 448 HH de referencia. Su carga se incluye una vez en el bloque complementario.\\\hline
+Soporte: \texttt{1.11.8} & Implementación; 13--20 & Prestación transversal de atención/guardia. No copiar el turno completo en marcha blanca E1, desarrollo E2 y marcha blanca E2.\\\hline
+Preparación: \texttt{1.12.1.1/2} & Según actividad & Preparación inicial en 11--12 y actualizaciones en 18/20: implementación. Prestación posterior: Operación. El prefijo no define por sí solo la fase.\\\hline
+Estabilización E2: \texttt{1.11.6.2} & Operación; 21 & Conservar 448 HH de referencia como trabajo de estabilización concurrente con el servicio. No volver a sumarlo en implementación.\\\hline
+Mentoría: \texttt{1.12.13} & Operación; 21--26 & Conservar seis períodos y 144 HH de referencia; separar soporte ordinario, formación y mentoría.\\\hline
+IN2: campaña y transferencia & Operación; 30--37 & Preparación 30, piloto/resultados 31--36 y evaluación/transferencia 37. El atributo innovación no convierte este trabajo posterior en desarrollo E2 de 13--18.\\\hline
+Salida: \texttt{1.12.8/9} & Operación; 53--56 & Servicio continúa durante la transferencia. Acompañamiento mínimo de 90 días reales y entrega final actualizada; no contar otra vez fuentes o exportaciones ya producidas.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14, diccionario y programa; T-15, estimación e imputación del servicio.}
+
+Las referencias de gobierno de 640 HH en 1--20 y 576 HH en 21--56, y las de estabilización y mentoría, se mantienen en sus actividades propietarias. Las 8.640 HH de ingeniería y 864 HH de mantenimiento de Operación son capacidad de referencia; las 172,8 HH de deuda interna ya pertenecen al mantenimiento. El resumen debe identificar capacidad disponible, trabajo programado y consumo efectivo, sin dar por ejecutado todo el saldo ofrecido. La bolsa evolutiva conserva 960 HH anuales y saldo acumulable conforme al alcance registrado en T-12/T-14.
+
+La formación se calcula con $N_F$ y $N_E$ recibidos en los manifiestos, no con los 214 y 75 códigos reservados. Las olas se dimensionan con el manifiesto de implantación; los códigos diarios históricos no fijan cuatro olas. Toda ampliación del universo activo se propaga al catálogo y sus actividades sin duplicar participantes, preparación común o evidencia. Las 300 plazas anuales son capacidad formativa, no 300 HH ni una distribución automática por perfil. Una intervención se imputa una sola vez. Esta regla no sustituye ni reduce los dos puestos presenciales de estabilización ni su cobertura de referencia de 448 horas de puesto por etapa. Mesa, NOC/SOC y estabilización mantienen las capacidades y relevos necesarios para sus prestaciones distintas. Compartir información de un incidente no permite contabilizar a una persona simultáneamente en un puesto presencial y en otro puesto incompatible.
+
+\subsection{Curvas de esfuerzo y personas}
+Para una actividad $a$, perfil $p$ y mes $m$, $h_{a,p,m}$ representa HH programadas de trabajo disjunto. Se suman por su bloque de imputación $b$:
+\[
+H_{b,m}=\sum_{a\in b}\sum_p h_{a,p,m},\qquad
+A_{b,m}=\sum_{k\leq m} H_{b,k}.
+\]
+La curva de implementación presenta por separado E1, E2 y trabajo compartido/complementario, además de su total. Si una actividad de alcance E1 forma parte del bloque complementario, su atributo permite mostrarla en la curva E1 sin añadirla otra vez al total. La continuidad operacional dispone de una curva mensual y acumulada independiente desde 21 hasta 56, que incorpora servicio y trabajos concurrentes efectivamente programados. Las bolsas sin órdenes identificadas se muestran como capacidad, separadas de las HH de producción estimadas.
+
+Las curvas completas de HH quedan pendientes de seleccionar el esfuerzo, distribuir actividades por mes y nivelar los recursos. Dibujar líneas con las horas de puesto de la sección~\ref{sec:t15-cobertura} como si fueran el esfuerzo total ocultaría preparación, revisiones, terreno, formación, ingeniería y otras cargas. Tampoco se asignan ceros a las actividades no estimadas. La curva financiera del proyecto pertenece a su desarrollo económico; una acumulación de HH no sustituye costos ni flujo de caja.
+
+\textbf{Registro de esfuerzo.} Cada estimación se materializa en una fila por actividad y perfil con ID, código terminal, instancia activa, bloque de imputación, cantidad/unidad, HH fijas y unitarias, fundamento, revisor y estado. Se calcula $HH_{a,p}=HH^{fija}_{a,p}+q_a h_{a,p}$ solo cuando sus componentes están sustentados. Si la cantidad no está validada, se conserva la expresión paramétrica. La distribución mensual satisface $\sum_m h_{a,p,m}=HH_{a,p}$; una actividad sin esfuerzo seleccionado permanece fuera del total calculado y se registra como brecha, no como cero.
+
+La tabla~\ref{tab:t15-esfuerzo-registro} individualiza las referencias ya disponibles. No es el total seleccionado del contrato. Las restantes actividades de las doce cuentas, incluidas las treinta capacidades funcionales, requieren completar sus propias filas antes de cerrar las cinco fases de la tabla oficial. Ignacio Silva integra la conciliación; cada responsable técnico sustenta el trabajo de su paquete y Calidad revisa consistencia y fronteras. Esta asignación organiza el cierre del cálculo y no acredita dedicación ni contratación.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.22\textwidth-2\tabcolsep\relax}L{\dimexpr0.28\textwidth-2\tabcolsep\relax}L{\dimexpr0.27\textwidth-2\tabcolsep\relax}L{\dimexpr0.23\textwidth-2\tabcolsep\relax}}
+\caption{Registro parcial de esfuerzo y capacidad}\label{tab:t15-esfuerzo-registro}\\\hline
+\EncabezadoTabla{Productor o trabajo} & \EncabezadoTabla{Referencia y unidad} & \EncabezadoTabla{Perfil y período} & \EncabezadoTabla{Estado de integración}\\\hline\endfirsthead
+\multicolumn{4}{l}{\textit{Continuación de la tabla \ref{tab:t15-esfuerzo-registro}}}\\\hline
+\EncabezadoTabla{Productor o trabajo} & \EncabezadoTabla{Referencia y unidad} & \EncabezadoTabla{Perfil y período} & \EncabezadoTabla{Estado de integración}\\\hline\endhead
+\hline\endfoot
+\hline\endlastfoot
+\texttt{1.1.4.m.q} & $40\times16=640$ HH & Proyecto 8, Funcional 4 y Calidad 4 HH por expediente; dos por mes en 1--20. & 32 HH/mes de referencia. Resolver reparto por fase sin duplicar control transversal.\\\hline
+\texttt{1.12.3.1.m} & $36\times16=576$ HH & Gestión de servicio 4, Calidad 4 y Operación 8 HH por control; 21--56. & 16 HH/mes de referencia; no sustituye prestación de servicio.\\\hline
+\texttt{1.11.6.1/2} & $2\times8\times28=448$ horas de puesto por etapa & Dos puestos presenciales con relevo: E1 en 16, E2 en 21. & Cobertura protegida; convertir a asignaciones personales y añadir solo trabajo disjunto.\\\hline
+\texttt{1.12.13} & 144 HH de referencia en seis períodos & Operación/SRE y referentes; 21--26. & Distribución mensual/perfil pendiente. No imponer 24 HH/mes por división aritmética.\\\hline
+\texttt{1.12.12} & $240\times36=8.640$ HH de capacidad & Correctiva 80, normativa 48, evolutiva 80 y deuda 32 HH/mes; 21--56. & Órdenes, perfiles y disponibilidad pendiente; capacidad no equivale a consumo.\\\hline
+\texttt{1.12.3.4} & $24\times36=864$ HH de capacidad & Mantenimiento; 21--56. Incluye 4,8 HH/mes de deuda interna. & 172,8 HH internas ya incluidas; no agregarlas al total de mantenimiento.\\\hline
+Formación inicial/estacional & $4\sum_c I_c$ HH de impartición & Instructores según manifiesto; preparación, evaluación, recuperación y traslado propios. & Cantidad activa y esfuerzo adicional pendientes; materiales comunes se imputan aparte una vez.\\\hline
+\texttt{1.11.4.1/2} & $224\sum_w J_w$ HH de referencia & Puestos equivalentes de olas recibidas: 168 de presencia y 56 de preparación por puesto/ola. & Manifiesto y recursos pendientes; no asumir cuatro olas ni dos puestos por toda ola.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14; T-15, estimación del esfuerzo; T-9, referencias de gobierno; T-12, formación y servicio.}
+
+La dotación se obtiene de personas identificadas y su agenda. Para una fase $f$, $R_f(t)$ es el conjunto de personas requeridas en el instante $t$; el máximo es $\max_t |R_f(t)|$. El máximo conjunto de frentes solapados usa la unión de sus conjuntos en cada instante, no la suma de máximos ocurridos en fechas distintas. Una persona que trabaja en dos frentes cuenta una vez en la dotación y conserva ambas cargas en su agenda; si las tareas son simultáneas e incompatibles, la asignación se corrige.
+
+Los puestos activos de servicio, las personas de rotación, las personas únicas del contrato y los equivalentes de dedicación se informan como magnitudes diferentes. Los equivalentes se calculan dividiendo HH por una agenda de referencia expresamente declarada; no se utilizan para acreditar una dotación nominativa. Los 24 integrantes del escenario de mesa/NOC/SOC no constituyen el máximo contractual, pues faltan integrar especialistas, dirección, ingeniería y demás frentes, con sus coincidencias y restricciones.
+
+\textbf{Registro de frentes y personas.} La tabla~\ref{tab:t15-frentes-registro} organiza registros propuestos para asignación; sus IDs son localizadores internos de planificación y no nuevos entregables T-14 ni equipos ya contratados. Cada registro se expande con actividades, personas o puestos, calendario, dedicación, suplente, carga y capacidad. La cantidad final se obtiene de frentes con recursos efectivamente identificados y concurrentes; no se obtiene contando las filas de la tabla.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.17\textwidth-2\tabcolsep\relax}L{\dimexpr0.13\textwidth-2\tabcolsep\relax}L{\dimexpr0.36\textwidth-2\tabcolsep\relax}L{\dimexpr0.34\textwidth-2\tabcolsep\relax}}
+\caption{Registros para asignar los frentes concurrentes}\label{tab:t15-frentes-registro}\\\hline
+\EncabezadoTabla{Registro} & \EncabezadoTabla{Meses} & \EncabezadoTabla{Actividades y perfiles} & \EncabezadoTabla{Entrada por cerrar}\\\hline\endfirsthead
+\multicolumn{4}{l}{\textit{Continuación de la tabla \ref{tab:t15-frentes-registro}}}\\\hline
+\EncabezadoTabla{Registro} & \EncabezadoTabla{Meses} & \EncabezadoTabla{Actividades y perfiles} & \EncabezadoTabla{Entrada por cerrar}\\\hline\endhead
+\hline\endfoot
+\hline\endlastfoot
+F-MB-E1 & 13--15 & Olas, convivencia, conciliación y observación E1; Implantación, Funcional, Datos y Calidad. & Manifiesto de olas, agenda de usuarios, carga por persona, relevos y ventanas.\\\hline
+F-DES-E2 & 13--18 & Delta E2, diseño, construcción y verificación; Desarrollo y especialistas. & Esfuerzo seleccionado, precedencias H8, disponibilidad y revisión independiente.\\\hline
+F-SOP & 13--20 & Mesa, NOC/SOC y escalamiento para alcances activos. & Rotación 12/6/6 como referencia; cuadrantes, idiomas, suplencias y especialistas.\\\hline
+F-INN & 13--21 & Aportes incrementales según las secuencias particulares de IN1--IN5. & Actividades por innovación y recursos; dividir en frentes reales solo si la asignación lo sustenta.\\\hline
+F-MB-E2 & 19--20 & Olas y observación E2, expediente final y conciliación con E1 protegida. & Manifiesto, atención presencial, revisión, usuarios y recursos disjuntos del soporte.\\\hline
+F-PREP-OP & 18/20 & Delta del modelo/runbooks, transferencia y preparación de activación. & Revisores y recursos antes del uso; no duplicar su carga en F-SOP.\\\hline
+F-OP & 21--56 & Servicio, ingeniería, mantenimiento y controles; frentes propios de formación, IN2 y salida cuando se activen. & Dotación completa y carga mensual/diaria; separar capacidad ofrecida y trabajo autorizado.\\\hline
+F-EST-E2 & 21 & Estabilización presencial E2 en pantalanes y varadero. & Dos puestos de ocho horas durante 28 días; identidad, relevo y capacidad separados de puestos incompatibles.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14, diccionario y ventanas; T-15, recursos, nivelación y cobertura.}
+
+La dotación asignada por período y el máximo de personas activas por instante se informan por separado: la rotación completa puede incluir personas fuera de turno. Para cada intervalo se calcula carga menos capacidad por identidad y perfil conforme a la sección~\ref{sec:t15-recursos}; no basta un saldo mensual positivo. La tabla oficial recibe el máximo y la cantidad de frentes después de resolver estas asignaciones. Mientras falten HH, identidades o cuadrantes, esos campos mantienen estado pendiente.
+
+\subsection{Curvas de cobertura}
+El escenario calculable conserva tres puestos activos de mesa durante su horario y un puesto continuo de NOC más uno de SOC. Los meses son naturales completos desde el inicio de referencia del 1 de diciembre de 2026. La temporada alta del Caso 07 abarca del 15 de noviembre al 31 de marzo; el congelamiento del 15 de diciembre al 15 de marzo conserva su función distinta como restricción del proyecto. No se reduce el horario de mesa utilizando el intervalo de congelamiento.
+
+Si $D_m^A$ y $D_m^R$ son días de alta y del resto del año, las horas de puesto mensuales son:
+\[
+P_m^{\mathrm{mesa}}=3(18D_m^A+12D_m^R),\qquad
+P_m^{\mathrm{NOC}}=P_m^{\mathrm{SOC}}=24(D_m^A+D_m^R),
+\]
+\[
+P_m=P_m^{\mathrm{mesa}}+P_m^{\mathrm{NOC}}+P_m^{\mathrm{SOC}}.
+\]
+La tabla~\ref{tab:t15-curva-puestos} desarrolla el mismo escenario de la tabla~\ref{tab:t15-horas-puesto}. La acumulación comienza en cero al inicio de 13 para soporte de implementación y se reinicia al inicio de 21 para Operación. El reinicio separa fases; no elimina cobertura. Las figuras presentan acumulaciones de horas de puesto y no sustituyen las curvas completas de HH aún pendientes.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.08\textwidth-2\tabcolsep\relax}L{\dimexpr0.22\textwidth-2\tabcolsep\relax}L{\dimexpr0.2\textwidth-2\tabcolsep\relax}L{\dimexpr0.24\textwidth-2\tabcolsep\relax}L{\dimexpr0.26\textwidth-2\tabcolsep\relax}}
+\caption{Cobertura mensual y acumulada del escenario de servicio}\label{tab:t15-curva-puestos}\\\hline
+\EncabezadoTabla{Mes} & \EncabezadoTabla{Referencia natural} & \EncabezadoTabla{Días alta/resto} & \EncabezadoTabla{Horas de puesto del mes} & \EncabezadoTabla{Acumulado de la fase}\\\hline\endfirsthead
+\multicolumn{5}{l}{\textit{Continuación de la tabla \ref{tab:t15-curva-puestos}}}\\\hline
+\EncabezadoTabla{Mes} & \EncabezadoTabla{Referencia natural} & \EncabezadoTabla{Días alta/resto} & \EncabezadoTabla{Horas de puesto del mes} & \EncabezadoTabla{Acumulado de la fase}\\\hline\endhead
+\hline\endfoot
+\hline\endlastfoot
+13 & dic. 2027 & 31/0 & 3.162 & 3.162\\\hline
+14 & ene. 2028 & 31/0 & 3.162 & 6.324\\\hline
+15 & feb. 2028 & 29/0 & 2.958 & 9.282\\\hline
+16 & mar. 2028 & 31/0 & 3.162 & 12.444\\\hline
+17 & abr. 2028 & 0/30 & 2.520 & 14.964\\\hline
+18 & may. 2028 & 0/31 & 2.604 & 17.568\\\hline
+19 & jun. 2028 & 0/30 & 2.520 & 20.088\\\hline
+20 & jul. 2028 & 0/31 & 2.604 & 22.692\\\hline
+21 & ago. 2028 & 0/31 & 2.604 & 2.604\\\hline
+22 & sep. 2028 & 0/30 & 2.520 & 5.124\\\hline
+23 & oct. 2028 & 0/31 & 2.604 & 7.728\\\hline
+24 & nov. 2028 & 16/14 & 2.808 & 10.536\\\hline
+25 & dic. 2028 & 31/0 & 3.162 & 13.698\\\hline
+26 & ene. 2029 & 31/0 & 3.162 & 16.860\\\hline
+27 & feb. 2029 & 28/0 & 2.856 & 19.716\\\hline
+28 & mar. 2029 & 31/0 & 3.162 & 22.878\\\hline
+29 & abr. 2029 & 0/30 & 2.520 & 25.398\\\hline
+30 & may. 2029 & 0/31 & 2.604 & 28.002\\\hline
+31 & jun. 2029 & 0/30 & 2.520 & 30.522\\\hline
+32 & jul. 2029 & 0/31 & 2.604 & 33.126\\\hline
+33 & ago. 2029 & 0/31 & 2.604 & 35.730\\\hline
+34 & sep. 2029 & 0/30 & 2.520 & 38.250\\\hline
+35 & oct. 2029 & 0/31 & 2.604 & 40.854\\\hline
+36 & nov. 2029 & 16/14 & 2.808 & 43.662\\\hline
+37 & dic. 2029 & 31/0 & 3.162 & 46.824\\\hline
+38 & ene. 2030 & 31/0 & 3.162 & 49.986\\\hline
+39 & feb. 2030 & 28/0 & 2.856 & 52.842\\\hline
+40 & mar. 2030 & 31/0 & 3.162 & 56.004\\\hline
+41 & abr. 2030 & 0/30 & 2.520 & 58.524\\\hline
+42 & may. 2030 & 0/31 & 2.604 & 61.128\\\hline
+43 & jun. 2030 & 0/30 & 2.520 & 63.648\\\hline
+44 & jul. 2030 & 0/31 & 2.604 & 66.252\\\hline
+45 & ago. 2030 & 0/31 & 2.604 & 68.856\\\hline
+46 & sep. 2030 & 0/30 & 2.520 & 71.376\\\hline
+47 & oct. 2030 & 0/31 & 2.604 & 73.980\\\hline
+48 & nov. 2030 & 16/14 & 2.808 & 76.788\\\hline
+49 & dic. 2030 & 31/0 & 3.162 & 79.950\\\hline
+50 & ene. 2031 & 31/0 & 3.162 & 83.112\\\hline
+51 & feb. 2031 & 28/0 & 2.856 & 85.968\\\hline
+52 & mar. 2031 & 31/0 & 3.162 & 89.130\\\hline
+53 & abr. 2031 & 0/30 & 2.520 & 91.650\\\hline
+54 & may. 2031 & 0/31 & 2.604 & 94.254\\\hline
+55 & jun. 2031 & 0/30 & 2.520 & 96.774\\\hline
+56 & jul. 2031 & 0/31 & 2.604 & 99.378\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{Caso 07, temporada alta; T-12, RT-21.06; T-14, ventanas de soporte y Operación; escenario de cobertura de T-15.}
+
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}[x=1.35cm,y=.16cm,font=\fontsize{9}{11}\selectfont]
+\draw[->,SynLine] (0,0)--(8.7,0);
+\draw[->,SynLine] (0,0)--(0,32);
+\draw[SynLine!40] (0,0)--(8,0);
+\node[anchor=east] at (-.12,0) {0};
+\draw[SynLine!40] (0,5)--(8,5);
+\node[anchor=east] at (-.12,5) {5};
+\draw[SynLine!40] (0,10)--(8,10);
+\node[anchor=east] at (-.12,10) {10};
+\draw[SynLine!40] (0,15)--(8,15);
+\node[anchor=east] at (-.12,15) {15};
+\draw[SynLine!40] (0,20)--(8,20);
+\node[anchor=east] at (-.12,20) {20};
+\draw[SynLine!40] (0,25)--(8,25);
+\node[anchor=east] at (-.12,25) {25};
+\draw[SynLine] (1,0)--(1,-1);
+\node[anchor=north] at (1,-1.8) {13};
+\draw[SynLine] (2,0)--(2,-1);
+\node[anchor=north] at (2,-1.8) {14};
+\draw[SynLine] (3,0)--(3,-1);
+\node[anchor=north] at (3,-1.8) {15};
+\draw[SynLine] (4,0)--(4,-1);
+\node[anchor=north] at (4,-1.8) {16};
+\draw[SynLine] (5,0)--(5,-1);
+\node[anchor=north] at (5,-1.8) {17};
+\draw[SynLine] (6,0)--(6,-1);
+\node[anchor=north] at (6,-1.8) {18};
+\draw[SynLine] (7,0)--(7,-1);
+\node[anchor=north] at (7,-1.8) {19};
+\draw[SynLine] (8,0)--(8,-1);
+\node[anchor=north] at (8,-1.8) {20};
+\draw[SynBlue,line width=1pt] plot coordinates {(0,0) (1,3.162) (2,6.324) (3,9.282) (4,12.444) (5,14.964) (6,17.568) (7,20.088) (8,22.692)};
+\node[anchor=west] at (0,31) {Miles de horas de puesto: soporte de implementación};
+\node[anchor=north] at (4.0,-8) {Mes contractual; acumulado al cierre de cada mes};
+\end{tikzpicture}
+\caption{Cobertura acumulada de soporte de implementación, meses 13--20}\label{fig:t15-curva-soporte}
+\FuenteTabla{Caso 07; T-12, RT-21.06; T-14; escenario de cobertura de T-15.}
+\end{figure}
+
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}[x=0.3cm,y=.052cm,font=\fontsize{9}{11}\selectfont]
+\draw[->,SynLine] (0,0)--(36.7,0);
+\draw[->,SynLine] (0,0)--(0,107);
+\draw[SynLine!40] (0,0)--(36,0);
+\node[anchor=east] at (-.12,0) {0};
+\draw[SynLine!40] (0,20)--(36,20);
+\node[anchor=east] at (-.12,20) {20};
+\draw[SynLine!40] (0,40)--(36,40);
+\node[anchor=east] at (-.12,40) {40};
+\draw[SynLine!40] (0,60)--(36,60);
+\node[anchor=east] at (-.12,60) {60};
+\draw[SynLine!40] (0,80)--(36,80);
+\node[anchor=east] at (-.12,80) {80};
+\draw[SynLine!40] (0,100)--(36,100);
+\node[anchor=east] at (-.12,100) {100};
+\draw[SynLine] (1,0)--(1,-1);
+\node[anchor=north] at (1,-1.8) {21};
+\draw[SynLine] (4,0)--(4,-1);
+\node[anchor=north] at (4,-1.8) {24};
+\draw[SynLine] (8,0)--(8,-1);
+\node[anchor=north] at (8,-1.8) {28};
+\draw[SynLine] (12,0)--(12,-1);
+\node[anchor=north] at (12,-1.8) {32};
+\draw[SynLine] (16,0)--(16,-1);
+\node[anchor=north] at (16,-1.8) {36};
+\draw[SynLine] (20,0)--(20,-1);
+\node[anchor=north] at (20,-1.8) {40};
+\draw[SynLine] (24,0)--(24,-1);
+\node[anchor=north] at (24,-1.8) {44};
+\draw[SynLine] (28,0)--(28,-1);
+\node[anchor=north] at (28,-1.8) {48};
+\draw[SynLine] (32,0)--(32,-1);
+\node[anchor=north] at (32,-1.8) {52};
+\draw[SynLine] (36,0)--(36,-1);
+\node[anchor=north] at (36,-1.8) {56};
+\draw[SynBlue,line width=1pt] plot coordinates {(0,0) (1,2.604) (2,5.124) (3,7.728) (4,10.536) (5,13.698) (6,16.860) (7,19.716) (8,22.878) (9,25.398) (10,28.002) (11,30.522) (12,33.126) (13,35.730) (14,38.250) (15,40.854) (16,43.662) (17,46.824) (18,49.986) (19,52.842) (20,56.004) (21,58.524) (22,61.128) (23,63.648) (24,66.252) (25,68.856) (26,71.376) (27,73.980) (28,76.788) (29,79.950) (30,83.112) (31,85.968) (32,89.130) (33,91.650) (34,94.254) (35,96.774) (36,99.378)};
+\node[anchor=west] at (0,106) {Miles de horas de puesto: Operación};
+\node[anchor=north] at (18.0,-8) {Mes contractual; acumulado al cierre de cada mes};
+\end{tikzpicture}
+\caption{Cobertura acumulada de Operación, meses 21--56}\label{fig:t15-curva-operacion}
+\FuenteTabla{Caso 07; T-12, RT-21.06; T-14; escenario de cobertura de T-15.}
+\end{figure}
+
+La conciliación resulta en 22.692 horas de puesto de soporte de implementación y 99.378 de Operación, equivalentes a 122.070 para 13--56. Operación reúne 1.095 días, con 411 de alta y 684 del resto; mesa suma 46.818 horas y cada puesto continuo 26.280. Las cantidades son resultados aritméticos del escenario, sujetos a la dotación y cuadrantes de la sección~\ref{sec:t15-cobertura}. La verificación no acredita disponibilidad nominativa ni desempeño del servicio.
+
+El escenario base de demanda requiere tres agentes activos en el intervalo analizado. Sus sensibilidades de dos y tres veces la demanda requieren cuatro y cinco, respectivamente, bajo los supuestos de Erlang C ya expuestos. Esos refuerzos no están incluidos automáticamente en las curvas anteriores. Se debe fijar su intervalo y recalcular cobertura, dotación y carga antes de incorporarlos; los factores de ausencia se aplican una sola vez. Resolución al primer contacto y abandono se verifican con sus registros, separados del tiempo de atención estimado por el modelo.
+
+\section{Ruta crítica y PERT}\label{sec:t15-cpm}
+\subsection{Red de implementación}
+La red utiliza actividades terminales, hitos y habilitaciones externas, con precedencias y calendarios de la sección~\ref{sec:t15-dependencias}. Las cuentas padre y las barras de T-14 orientan cobertura temporal; no son actividades a las que se añada duración o esfuerzo. Antes de calcular, cada alias, rango o comodín se resuelve en instancias concretas. Un entregable que conserva diseño temprano y construcción posterior se representa mediante sus actividades y enlaces internos, sin imponer continuidad durante el espacio entre ventanas.
+
+La implementación se evalúa hacia H1--H12 y los cierres de sus ramas, incluida estabilización E1 en 16. H12 conserva la activación de E2 y el inicio de Operación desde el primer día de 21. Las actividades posteriores de servicio, estabilización E2, IN2 y salida tienen su propia red y fechas límite dentro de 21--56. El horizonte de 56 meses no se utiliza para conceder holgura artificial a una actividad requerida antes de H12.
+
+Las cadenas de la tabla~\ref{tab:t15-ramas-red} son relaciones que debe conservar el modelo; no se presentan como una ruta crítica calculada. Cada cadena se expande con tiempos de producción, corrección, revisión y decisión antes de obtener fechas y holguras.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.19\textwidth-2\tabcolsep\relax}L{\dimexpr0.49\textwidth-2\tabcolsep\relax}L{\dimexpr0.32\textwidth-2\tabcolsep\relax}}
+\caption{Ramas y puertas de la red}\label{tab:t15-ramas-red}\\\hline
+\EncabezadoTabla{Rama} & \EncabezadoTabla{Secuencia que se debe conservar} & \EncabezadoTabla{Condición del cálculo}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-ramas-red}}}\\\hline
+\EncabezadoTabla{Rama} & \EncabezadoTabla{Secuencia que se debe conservar} & \EncabezadoTabla{Condición del cálculo}\\\hline\endhead
+\hline\endfoot
+\hline\endlastfoot
+Diseño y habilitación & Preparación, repositorio e infraestructura como código desde H1; diseños recibidos en H2 antes de las configuraciones que los consumen; provisión externa, comprobaciones, transferencia y expediente integrado antes de H3. & Conservar 1.2.1.1 en 3 con predecesora H1; no imponerle H2 en 4. DEV, QA, PREPROD, PROD y DR comprobados; conmutación/retorno técnico inicial antes de H3. SRE desde 6, sin atribuir ejecución en 5.\\\hline
+E1 & Versión E1 y QA; H4; certificación, observaciones y H5; usuarios/datos/cobertura; H6; marcha blanca; expediente final y revisión; acta de recepción para H7; CORTE-E1 autorizado en 16. & El acta habilita el corte y lo precede; la habilitación de marcha blanca no recibe sus resultados. El hito integrado conserva recepción y producción conforme a T-14.\\\hline
+Estabilización E1 & Recepción y corte oficial E1; inicio de 28 días consecutivos; recepción de estabilización en 16. & Inicio no posterior al 4 de marzo de 2028; admisibilidad durante congelamiento pendiente de demostrar.\\\hline
+E2 & Base E1 y diseño/delta H8; construcción; QA y H9; certificación y H10; preparación y H11; marcha blanca; evidencia final y revisión; acta de recepción para H12; CORTE-E2 e inicio de Operación desde el primer día de 21. & E1 permanece protegida. Evidencia completa y acta preceden al corte; la red demuestra sus duraciones positivas y la activación desde el primer día de 21, sin adelantarla al mes 20.\\\hline
+Corte por grupo & Inventario y perfilado; ensayo 1; corrección/precarga; ensayo 2; revisión y autorización; cambio de autoridad C; conciliación. & Dos ensayos completos aprobados antes del primer cambio; actualizar evidencia ante cambios y hallazgos.\\\hline
+IN1 e IN4 & Diseño IN1 recibido antes de interfaces IN4 en 14--15; captura IN4 en 16; cálculo y luego pruebas en 17; base 18; evaluación 19; habilitación 21. & Compartir mes no elimina la precedencia. Base IN1 en 19; formación posterior y previa al piloto 20.\\\hline
+Soporte y servicio & Modelo y procedimientos recibidos; disponibilidad y cobertura; prestación 13--20; delta de Operación; prestación 21--56. & La cobertura efectiva precede el uso y continúa durante marcha blanca, cortes y salida.\\\hline
+IN2 y salida & IN2: preparación 30, campaña 31--36, transferencia 37. Salida: inventario/exportación 53; fuentes y actualizaciones 54--56; cierre final. & Red posterior con estacionalidad y acompañamiento de al menos 90 días reales; no extender por ella el desarrollo E2.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14, diccionario y programa; T-12; T-15, dependencias, calendarios y cobertura; Bases Administrativas, arts. 17--18.}
+
+\subsection{Fechas y holguras}
+Para una red sin ciclos, expresada en una misma escala de tiempo, con relaciones fin--inicio y esperas $\ell_{ij}$ compatibles con esa escala, el recorrido hacia adelante determina inicio temprano $IT_i$ y fin temprano $FT_i$. Para toda actividad, $r_i$ es su fecha mínima de inicio por habilitación, permiso, incorporación de recursos o ventana aplicable; esta restricción también se conserva cuando existen predecesoras. El recorrido hacia atrás determina inicio tardío $IL_i$ y fin tardío $FL_i$, respecto de una fecha límite explícita. Para actividades con predecesoras:
+\[
+IT_i=\max\left\{r_i,\max_{j\in\mathrm{Pred}(i)}(FT_j+\ell_{ji})\right\},\qquad
+FT_i=IT_i+d_i,
+\]
+\[
+FL_i=\min_{k\in\mathrm{Suc}(i)}(IL_k-\ell_{ik}),\qquad
+IL_i=FL_i-d_i.
+\]
+La holgura total es $HT_i=IL_i-IT_i$. Para actividades con sucesoras, la holgura libre bajo esas mismas condiciones es:
+\[
+HL_i=\min_{k\in\mathrm{Suc}(i)}(IT_k-\ell_{ik})-FT_i.
+\]
+En una actividad sin predecesoras, $IT_i=r_i$ en la escala común; los nodos finales utilizan la fecha límite del hito o cierre correspondiente. Las relaciones inicio--inicio y fin--fin se calculan con su propia restricción, sin introducirlas en estas fórmulas como si fueran fin--inicio. Una espera hábil y una duración natural no se suman como números de días intercambiables: el cálculo fechado utiliza las operaciones y calendarios definidos para cada actividad. Si el inicio obtenido cae fuera de un intervalo permitido, se traslada al siguiente inicio admisible; la duración se consume solo en los intervalos autorizados y el recorrido hacia atrás aplica esas mismas restricciones. Una fecha mínima no sustituye la revisión de cierres de ventana, ausencias o disponibilidad efectiva.
+
+Por ejemplo, si las predecesoras terminan en el día 5, la espera es cero y $r_i=10$, el inicio temprano es 10, no 5. Es un ejemplo de la regla, sin atribuir fechas o disponibilidad al contrato. Si la liberación se representa mediante un nodo explícito, se conserva su vínculo con la actividad y se comprueba la equivalencia con la restricción $r_i$.
+
+Primero se obtiene el término temprano con las restricciones vigentes y se compara con la fecha requerida. Si el recorrido hacia atrás se ancla en esa fecha requerida y produce $HT_i<0$, existe una brecha de plazo; no se redondea a cero ni se oculta mediante una extensión contractual. Si se ancla en el término temprano calculado, las ramas de holgura cero identifican la ruta crítica de esa red, y la comparación con el hito conserva por separado su margen. El informe declara el criterio utilizado para no confundir crítica con atraso.
+
+Una rama crítica exige una secuencia de actividades enlazadas cuyo término condiciona el objetivo analizado. Una tarea con fecha fijada no se declara crítica solo por tener una barra junto a un hito. Puede haber varias ramas críticas o restricciones de recursos que limiten el programa. Tras nivelar personas, equipos y revisores se recalculan fechas y márgenes, conservando el resultado anterior para explicar el efecto de la nivelación.
+
+\subsection{Recepciones y restricciones}
+El recorrido de recepción incluye presentación, revisión de la contraparte, eventuales observaciones y subsanación, nueva comprobación, acta y activación. Los diez días hábiles de revisión y los diez de subsanación del art. 18.3 se consideran en los escenarios que correspondan, sin asumir observaciones inevitables en todos los entregables ni una aprobación instantánea. Las HH internas de preparar un expediente no representan la espera contractual. La revisión operativa de dos horas antes de C tampoco sustituye ese derecho de revisión.
+
+La evidencia de marcha blanca debe completar conjuntamente las condiciones del art. 17.3, incluidas las cuatro últimas semanas de operación real. Un expediente preliminar puede adelantar trabajo documental, pero no acreditar anticipadamente el desempeño aún no observado. El cálculo debe demostrar la secuencia evidencia completa, decisión y activación, manteniendo las ventanas contractuales de T-14.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.2\textwidth-2\tabcolsep\relax}L{\dimexpr0.43\textwidth-2\tabcolsep\relax}L{\dimexpr0.37\textwidth-2\tabcolsep\relax}}
+\caption{Restricciones que impiden cerrar el cálculo de plazo}\label{tab:t15-margenes-pendientes}\\\hline
+\EncabezadoTabla{Objetivo} & \EncabezadoTabla{Situación de la base actual} & \EncabezadoTabla{Resultado que debe acreditar la red}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-margenes-pendientes}}}\\\hline
+\EncabezadoTabla{Objetivo} & \EncabezadoTabla{Situación de la base actual} & \EncabezadoTabla{Resultado que debe acreditar la red}\\\hline\endhead
+\hline\endfoot
+\hline\endlastfoot
+E1: H7 y estabilización & Producción y estabilización se conservan en 16. Para completar 28 días dentro de marzo de 2028, estabilización debe comenzar a más tardar el día 4. & Corte previo recibido y ventana admisible durante congelamiento. No desplazar estabilización a 17 para cerrar la tabla.\\\hline
+E2: H8 y construcción & H8 se ubica en 14; las ventanas de construcción del diccionario y el congelamiento requieren conciliación con las restricciones de actividad. & Diseño recibido antes de construir el delta; calendario admisible y capacidad que permita QA 17 y certificación 18.\\\hline
+E2: H12 & Si se propone cerrar la medición al término del 31 de julio de 2028, quedan revisión, acta y corte posteriores con duración positiva; no se adopta esa secuencia como viable. & Fijar término de evidencia completa, presentación, revisión, acta y activación; calcular margen contra el inicio del 1 de agosto. Procedimiento compatible con arts. 17--18, sin recortar observación ni asumir firma instantánea.\\\hline
+C por grupo & Las fechas y olas no se determinan por los sufijos históricos ni por el mes de producción de toda la etapa. & Manifiesto T-18, ensayos vigentes, correcciones y autorización antes del C particular, incluidos grupos activados en 13/19.\\\hline
+Recursos concurrentes & HH seleccionadas, disponibilidades y cuadrantes completos no están cerrados. & Red recalculada con la misma asignación de ingeniería, revisores, soporte y terreno; ningún recurso ocupado dos veces.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14; T-15, duración, recepción y nivelación; Bases Administrativas, arts. 17--18.}
+
+La comprobación temporal se realiza por objetivo y actividad, con fecha requerida, liberación, inicio y fin calculados, evidencia final, revisión, acta, corte y margen. Para E1, el fin de estabilización no supera el cierre de marzo de 2028: sus 28 días naturales consecutivos deben empezar a más tardar el 4 de marzo, con corte previo recibido y admisibilidad documentada. Para E2, cada construcción consumidora comienza después de recibir su diseño y dentro de una ventana permitida; su término y revisión deben permitir QA en 17 y certificación en 18. No se presume permiso por usar PREPROD.
+
+Para H12, el margen se obtiene comparando el inicio requerido de Operación con la activación resultante de evidencia completa, revisión, acta y corte en sus calendarios. Si la evidencia termina al cierre de 20 y quedan intervalos positivos posteriores, ese escenario presenta una brecha; no se corrige con un expediente preliminar ni trasladando la activación a 20. Mientras no exista una secuencia sustentada y compatible con las bases, la cabida permanece abierta. Estos controles conservan las fases de T-14; no constituyen un cambio de ventana aprobado.
+
+La salida de cálculo por actividad contendrá ID, entregable/instancia, duración y calendario, predecesoras resueltas, recurso, fechas tempranas y tardías, holguras total/libre, hito condicionado y efecto de nivelación. El resumen de hitos mostrará fecha contractual, presentación, término de revisión, decisión, activación y margen. En esta versión, la ruta crítica y las holguras completas permanecen \textbf{no determinadas}: las restricciones identificadas son entradas del cálculo, no su resultado.
+
+\textbf{Registro de resultados.} La tabla~\ref{tab:t15-cpm-registro} fija las entradas y salidas de la red. Cada registro corresponde a una actividad concreta; una fila agregada de esta tabla no se usa como actividad del cálculo. Las fechas se obtienen con sus calendarios y límites de hito, y se conserva el cálculo antes y después de nivelar recursos. Ignacio Silva coordina el cierre con Arquitectura, Datos, Seguridad, Calidad y Operación según los productores afectados.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.23\textwidth-2\tabcolsep\relax}L{\dimexpr0.37\textwidth-2\tabcolsep\relax}L{\dimexpr0.4\textwidth-2\tabcolsep\relax}}
+\caption{Registro para calcular plazo y holguras}\label{tab:t15-cpm-registro}\\\hline
+\EncabezadoTabla{Registro} & \EncabezadoTabla{Campos y fuente} & \EncabezadoTabla{Estado o resultado disponible}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-cpm-registro}}}\\\hline
+\EncabezadoTabla{Registro} & \EncabezadoTabla{Campos y fuente} & \EncabezadoTabla{Estado o resultado disponible}\\\hline\endhead
+\hline\endfoot
+\hline\endlastfoot
+Actividad terminal & ID y código T-14, instancia, versión, HH seleccionadas, recurso, duración/calendario, liberación $r_i$, predecesoras y esperas. & Descomposición definida en las secciones anteriores; faltan las entradas operativas completas. Aplicar liberación incluso con predecesoras; no calcular CPM sobre el código padre.\\\hline
+Recepción y corte & Presentación, revisión, subsanación cuando corresponda, acta y activación; evidencia final y duración positiva. & H7/H12: acta previa al corte; activación E1 en 16 y E2 desde el primer día de 21. Cabida pendiente de demostrar.\\\hline
+Estabilización E1/E2 & 28 días consecutivos posteriores al corte; dos puestos y disponibilidad nominal. & E1: inicio no posterior al 4 de marzo de 2028 para concluir en 16. E2: ventana 21. Estas restricciones no son duraciones PERT estimadas.\\\hline
+Salida CPM & IT, FT, IL, FL, holgura total/libre, hito condicionado y margen contra fecha requerida. & Pendiente de red fechada y entradas completas. Publicar ramas determinantes, no solo una cadena contractual.\\\hline
+Nivelación y sensibilidad & Recursos exclusivos, revisión, disponibilidad y sobrecarga; cambios de fecha frente al cálculo inicial. & Registrar déficit y ajuste por persona/intervalo; recalcular y verificar hitos antes de emitir las curvas finales.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14; T-15, actividades, duración, recepción y recursos; Bases Administrativas, arts. 17--18.}
+
+\subsection{Estimación PERT}
+PERT se aplica a actividades de duración incierta para las cuales se puedan justificar duración optimista $a_i$, más probable $m_i$ y pesimista $b_i$, con $a_i\leq m_i\leq b_i$. Los valores conservan unidad, calendario, fuente, supuestos de recursos y revisión. Bajo la aproximación clásica:
+\[
+t_{e,i}=\frac{a_i+4m_i+b_i}{6},\qquad
+\sigma_i^2=\left(\frac{b_i-a_i}{6}\right)^2.
+\]
+Si la unidad es días, la varianza se expresa en días cuadrados. Un intervalo de entrega de T-14 no equivale a los tres valores de duración. La recepción por período y la cobertura continua no se acortan mediante un tiempo esperado: conservan su plazo natural. Tampoco se transforma automáticamente un rango de HH UCP en duración PERT sin la asignación y productividad que lo relacionan con el calendario.
+
+Para una ruta previamente identificada, la suma de tiempos esperados permite un contraste condicionado a esa ruta. La suma de varianzas solo procede bajo independencia justificada; causas compartidas, como provisión externa, un mismo revisor o suspensión por marejadas, generan dependencia y pueden cambiar la rama determinante. Sin calibración y sin red nivelada no se publica una probabilidad de cumplir H12. Se informan escenarios de plazo y sensibilidad, con sus supuestos, hasta disponer de entradas suficientes.
+
+El registro PERT distinguirá incertidumbre de producción, corrección prevista y espera de revisión. La reserva asociada a una misma causa se concilia con esos valores; no se añade de nuevo un colchón completo por la variabilidad ya incorporada. La extensión de marcha blanca por falta de condiciones y las correcciones necesarias conservan su tratamiento contractual y su costo, sin desplazar automáticamente las fases siguientes.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.24\textwidth-2\tabcolsep\relax}L{\dimexpr0.36\textwidth-2\tabcolsep\relax}L{\dimexpr0.4\textwidth-2\tabcolsep\relax}}
+\caption{Entradas para estimar duraciones inciertas}\label{tab:t15-pert-registro}\\\hline
+\EncabezadoTabla{Trabajo} & \EncabezadoTabla{Sustento de a, m y b} & \EncabezadoTabla{Condición y estado}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-pert-registro}}}\\\hline
+\EncabezadoTabla{Trabajo} & \EncabezadoTabla{Sustento de a, m y b} & \EncabezadoTabla{Condición y estado}\\\hline\endhead
+\hline\endfoot
+\hline\endlastfoot
+Construcción/configuración & Tamaño, productividad y recursos del mismo componente o activo; experiencia comparable y revisión técnica. & Tres duraciones por actividad todavía pendientes. No usar los factores UCP 20/28 como días ni como extremos PERT automáticos.\\\hline
+Carga y ensayo por C & Volumen, herramientas, concurrencia, tiempos observados de carga/retorno y defectos. & Estimación por grupo/versión; no convertir tiempo automático completo en HH de atención.\\\hline
+Corrección y reensayo & Hallazgo clasificado, componente propietario, esfuerzo y comprobación necesaria. & Separar corrección prevista y contingente; vincular reserva de la misma causa sin duplicar variabilidad.\\\hline
+Esperas y períodos fijos & Derecho de revisión contractual, disponibilidad externa y duración natural de prestación. & Conservar calendarios/ventanas. Los 28 días de estabilización y el período mensual recibido no se comprimen mediante PERT.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-15, estimación y calendarios; T-14, entregables y cortes; Bases Administrativas, arts. 17--18.}
+
+\section{Reservas y control}\label{sec:t15-reservas}
+\subsection{Criterio de reserva}
+Una reserva conserva causa, riesgo asociado, trabajo o período expuesto, disparador, responsable, cuantificación, recurso y regla de consumo. Se enlaza con T-16 cuando su registro esté disponible; este formulario no inventa identificadores ni probabilidades del plan de riesgos. Las respuestas ya incluidas en las actividades se estiman en esas actividades. Solo su componente adicional y disjunto puede originar una reserva adicional.
+
+Se distinguen reserva de esfuerzo para trabajo contingente, reserva de calendario para una exposición temporal y capacidad de reemplazo para sostener cobertura. La holgura CPM es un resultado del programa; el saldo de una bolsa es capacidad ofrecida; los sufijos reservados identifican posibles instancias. Ninguno constituye por sí solo una reserva de riesgo calculada. Los valores pendientes no se sustituyen por un porcentaje uniforme de HH ni por todas las cohortes nominales.
+
+La cuantificación usa la exposición y la respuesta previstas: actividades afectadas, calendario admisible, HH por perfil y capacidad de recuperar la secuencia. Una suspensión por marejadas afecta toda actividad programada, incluida construcción remota o aislada, según la regla registrada en T-14/SD6; la emergencia real se atiende por el procedimiento de incidente. No se supone que añadir personas recupera una espera externa, una recepción contractual o un período mínimo de observación.
+
+\subsection{Escenarios de trabajo}
+Los escenarios se calculan sobre una misma base de actividades, dotación y calendarios. Cada uno modifica entradas identificadas, explica sus consecuencias y conserva las obligaciones contractuales. Los resultados de cobertura y sensibilidad de demanda ya calculados son parciales; no equivalen a una simulación completa de plazo o costo.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.2\textwidth-2\tabcolsep\relax}L{\dimexpr0.37\textwidth-2\tabcolsep\relax}L{\dimexpr0.43\textwidth-2\tabcolsep\relax}}
+\caption{Escenarios que debe conciliar la línea base}\label{tab:t15-escenarios-cierre}\\\hline
+\EncabezadoTabla{Entrada o exposición} & \EncabezadoTabla{Contraste disponible} & \EncabezadoTabla{Efecto y control requerido}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-escenarios-cierre}}}\\\hline
+\EncabezadoTabla{Entrada o exposición} & \EncabezadoTabla{Contraste disponible} & \EncabezadoTabla{Efecto y control requerido}\\\hline\endhead
+\hline\endfoot
+\hline\endlastfoot
+Esfuerzo funcional & Antecedente UCP: 5.257,66 HH con factor 20 y 7.360,72 con factor 28; diferencia relativa de 40 por ciento. & Sensibilidad de esfuerzo, no selección vigente ni reserva automática. Revisar actores/casos/adaptaciones; recalcular actividades y carga con el factor sustentado.\\\hline
+Formación y olas & $N_F$, $N_E$ y olas según manifiestos; cantidades activas todavía pendientes. & Cambiar población compatible o cantidad de olas modifica impartición, acompañamiento, preparación y evaluación. Reutilizar componentes comunes y verificar calendario antes de activar.\\\hline
+Mesa y demanda & Base: tres agentes activos. Dos veces demanda: cuatro. Tres veces: cinco, bajo el modelo de atención declarado. & Definir duración del refuerzo y cuadrantes; recalcular personas y horas de puesto. La provisión base no demuestra que las sensibilidades estén cubiertas.\\\hline
+Frentes 13--15 y 19--20 & Marcha blanca, desarrollo/certificación, protección de E1, innovaciones y soporte comparten ventanas. & Separar recursos o demostrar agendas compatibles; prioridad y relevo por perfil. Corregir sobrecarga antes de recalcular márgenes.\\\hline
+Provisión externa & Fecha requerida y fecha ofrecida de recinto, equipos, red, licencias e interfaces. & Propagar atraso a consumidores y hito; conservar titular externo y decisiones registradas. La dependencia no acredita provisión ni concede una ampliación automática.\\\hline
+Marejadas y faena & Exposición por actividad y fecha; restricciones de maniobra y acceso al sitio. & Suspensión y reprogramación en ventana admisible; cuantificar trabajo/capacidad afectados una vez. Mantener respuesta a emergencias y registrar relevos.\\\hline
+Ensayos y hallazgos & F27/F28 se activan desde el hallazgo; corrección y reensayo preceden autorización de C. & Estimar componentes incrementales por defecto/versión. No utilizar ensayos tempranos sin actualizar evidencia ni sumar nuevamente ejecución ya realizada.\\\hline
+Recepción E1/E2 & E1: corte compatible con estabilización en 16. E2: evidencia completa y acta previas al corte; corte e inicio de Operación desde el primer día de 21. & Demostrar cabida con revisión/subsanación aplicables. Si el margen es negativo, registrar brecha y corrección; conservar objetivos y fases de T-14.\\\hline
+Ilque y continuidad & Traslado requerido, embarcación y ventana marítima segura; especialista y suplente. & Incluir viaje y permanencia en la agenda; reemplazo en otros sitios y servicio. No contar un especialista en desplazamiento como simultáneamente disponible para otra intervención.\\\hline
+Servicio y salida & Mantenimiento, ingeniería, mentoría, campaña IN2 y transferencia coinciden con prestación continua. & Sostener mesa/guardia y capacidad comprometida; asignar cambios, seguimiento y salida sin duplicar turnos ni consumir dos bolsas por una misma intervención.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-15, estimación y cobertura; T-14; T-12; Caso 07; SD6, restricciones y servicio.}
+
+Por cada escenario se registra variación de HH, horas de puesto cuando cambien, personas requeridas por período, término de actividades/hitos y margen contractual. Un escenario todavía sin HH, recursos o fechas suficientes permanece sin cuantificar en esas dimensiones. La referencia UCP antecedente no reemplaza el presupuesto de toda la EDT ni modifica por sí sola el programa de T-14.
+
+La reserva de esfuerzo se programa contra una respuesta concreta, con perfiles y disponibilidad. Una asignación probabilística puede apoyar el análisis económico si dispone de datos, pero no sustituye la capacidad necesaria para una respuesta esencial. En calendario se registran intervalos de exposición y alternativas de recuperación; no se reparte un mismo intervalo de suspensión a cada rama para sumarlo otra vez al plazo total. Riesgos correlacionados se analizan conjuntamente.
+
+Al activarse una respuesta, el registro relaciona reserva autorizada, actividad generada, esfuerzo utilizado, saldo y efecto de plazo. El trabajo ejecutado consume la reserva correspondiente; no se suma a la vez como reserva íntegra y como carga nueva. Los cambios de población o alcance autorizados se distinguen de contingencias del alcance vigente. Los saldos de ingeniería conservan sus condiciones contractuales, incluida acumulación evolutiva, aunque cierre un período mensual.
+
+\textbf{Registro de reservas.} Los localizadores RV de la tabla~\ref{tab:t15-reservas-registro} son una propuesta de registro interno de T-15; no se presentan como IDs recibidos de T-16. Los responsables indicados coordinan el dimensionamiento dentro de los roles ya definidos. Una reserva se selecciona solo después de registrar actividad expuesta, recurso, cantidad, unidad, fuente y decisión; la fórmula paramétrica no acredita que exista dotación disponible.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.08\textwidth-2\tabcolsep\relax}L{\dimexpr0.23\textwidth-2\tabcolsep\relax}L{\dimexpr0.25\textwidth-2\tabcolsep\relax}L{\dimexpr0.18\textwidth-2\tabcolsep\relax}L{\dimexpr0.26\textwidth-2\tabcolsep\relax}}
+\caption{Registro provisional de exposición y respuesta}\label{tab:t15-reservas-registro}\\\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Causa y disparador} & \EncabezadoTabla{Respuesta y productor} & \EncabezadoTabla{Coordinación} & \EncabezadoTabla{Cuantificación y estado}\\\hline\endfirsthead
+\multicolumn{5}{l}{\textit{Continuación de la tabla \ref{tab:t15-reservas-registro}}}\\\hline
+\EncabezadoTabla{ID} & \EncabezadoTabla{Causa y disparador} & \EncabezadoTabla{Respuesta y productor} & \EncabezadoTabla{Coordinación} & \EncabezadoTabla{Cuantificación y estado}\\\hline\endhead
+\hline\endfoot
+\hline\endlastfoot
+RV-01 & Marejadas: aviso oficial y actividades programadas expuestas. & Suspender, registrar afectación y reprogramar en ventana admisible; mantener procedimiento de emergencia. & Ignacio Silva en implementación; Gerencia de Servicio en Operación. & HH adicionales de reprogramación/movilización y días de afectación: pendientes por actividad/calendario. No sumar una misma suspensión por cada rama.\\\hline
+RV-02 & Provisión externa: insumo no recibido en su fecha requerida. & Escalar, ajustar secuencia admisible y comprobar consumidor/hito; EXT correspondiente. & Fernando Guerrero; Ignacio Silva controla compromisos. & Diferencia entre fecha recibida/ofrecida y requerida, aplicada en la red; días y HH de respuesta pendientes por insumo.\\\hline
+RV-03 & Ensayo: hallazgo que activa F27/F28 antes de C. & Corregir componente propietario, reensayar y revisar evidencia antes de autorizar C. & Calidad coordina; productor técnico estima su corrección. & HH por defecto/versión y duración de corrección/reensayo: pendientes. Excluir trabajo previsto ya incluido en la estimación o PERT.\\\hline
+RV-04 & Manifiesto: población/olas confirmadas difieren de la cantidad usada. & Actualizar formación, acompañamiento, materiales incrementales y agenda; 1.11/1.12.10. & José Lara Arce, con Implantación y validadores del cliente. & Impartición adicional: $4\sum I_c$ de cohortes añadidas; acompañamiento: $224\sum J_w$ de puestos/olas adicionales; sumar solo preparación disjunta. Cantidades pendientes.\\\hline
+RV-05 & Mesa: demanda validada supera el escenario base en un intervalo. & Reforzar puestos activos y rotación, comprobar idiomas y recalcular cobertura; 1.11.8/1.12.14. & Operación/SRE y coordinación de servicio del período. & Por $T$ horas del intervalo: pasar de tres a cuatro puestos añade $T$ horas de puesto; de tres a cinco añade $2T$. $T$, relevos y HH personales pendientes.\\\hline
+RV-06 & Incidente de terreno: resolución requiere traslado a Ilque u otro sitio. & Disponer embarcación/ventana segura, especialista y suplente; conservar cobertura de otros sitios. & Operación/SRE y coordinación de servicio del período. & HH de viaje, permanencia y relevo adicionales según intervención. No contar dos veces atención ya incluida en un turno; agenda y tiempo de traslado pendientes.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14, servicio, formación, ensayos y restricciones; T-15, cobertura y escenarios; T-12; SD6.}
+
+Las brechas de recepción H7/H12 se controlan en la red y el registro de escenarios; no se cubren con una reserva ficticia que desplace las fases contractuales. El registro RV recibe su vínculo T-16, cuantificación seleccionada, evidencia de capacidad y saldo antes del cierre. Cuando falte una entrada, el coordinador identifica fuente, fecha requerida y documento consumidor; no se declara reserva igual a cero. Las fórmulas de RV-04/RV-05 muestran efectos unitarios sustentados y no una ampliación de alcance ni provisión ya aprobada.
+
+\subsection{Seguimiento y cambios}
+Durante implementación, los expedientes quincenales de 1.1.4 consolidan resultados recibidos, carga, restricciones, decisiones y desvíos. Durante Operación, el control mensual de 1.12.3.1 utiliza los registros de prestación y los trabajos de sus cuentas propietarias. Estos controles agregados no sustituyen mesa, guardia, mantenimiento, ingeniería ni la aceptación particular de una cohorte, cambio o período.
+
+El avance físico se mide con resultados y evidencia según el criterio de recepción aplicable. HH consumidas indican uso de recursos; no demuestran aceptación. Para cada actividad se conserva esfuerzo programado y utilizado, término previsto/observado, pendiente, bloqueo y responsable. El reporte compara demanda, capacidad y servicio disponible, registrando también intervalos sin cobertura; cero contactos no acredita desempeño.
+
+Cuando se utilice valor ganado, $PV$, $EV$ y $AC$ representan valor planificado, valor ganado y costo real en unidades monetarias homogéneas, bajo una misma línea base y fecha de corte. Los índices son:
+\[
+SPI=\frac{EV}{PV},\qquad CPI=\frac{EV}{AC}.
+\]
+Si un denominador es cero o no está disponible, el índice se informa no calculable; no se asigna uno por defecto. Un costo presupuestado no es costo real y las HH no sustituyen indistintamente estos valores cuando existen tarifas distintas. Un SPI favorable tampoco acredita recepción ni recuperación de un hito bloqueado; el reporte incluye margen de calendario y evidencia por resultado.
+
+Se conserva el control de T-12: actas dentro de dos días hábiles y desviación mayor a 10\,\% comunicada dentro de cinco días con medidas de recuperación, conforme a la cláusula aplicable. La decisión de cambio precede su ejecución cuando altera alcance. La solicitud identifica causa, requisito y resultado afectados, efecto en HH, recursos, fechas, costo y recepción, además de responsable y decisión. No se normaliza un atraso desplazando silenciosamente el hito contractual.
+
+Un cambio aceptado actualiza las actividades de T-15, la correspondencia con T-14, la asignación de T-12 y, cuando corresponda, olas/cortes de T-18, pruebas T-13/T-17, RACI, riesgos y resumen SD7. Los IDs y exclusiones se conservan salvo decisión expresa. Las cantidades de cobertura y su curva se recalculan al modificar fecha de inicio, temporada, puestos o refuerzos; trasladar fechas exige revisar calendarios y ventanas, además de renombrar meses.
+
+\subsection{Cierre de la línea base}
+El cierre requiere que tablas, curvas, red y recursos procedan del mismo registro de actividades. Los 349 grupos de fichas y 1.449 códigos nominales de T-14 se concilian con el universo activo $1.160+N_F+N_E$; las 289 reservas de formación no son ejecución confirmada. Los 560 códigos diarios históricos se mantienen como evidencia de cuatro paquetes agregados. Los 576 requisitos de T-12 conservan su universo y condición: 546 ofrecidos y 30 no ofrecidos, con los complementos C07 asociados. La asignación de trabajo no demuestra cumplimiento por pruebas realizadas.
+
+La tabla~\ref{tab:t15-cierre-base} evalúa el estado documental de las comprobaciones de planificación, no la recepción contractual ni el cumplimiento ejecutado. Se utiliza ``cumple'' cuando la comprobación tiene evidencia suficiente, ``parcial'' cuando está desarrollada en parte, ``no cumple'' ante una contradicción demostrada, ``no aplica'' fuera de su alcance y ``no verificable'' si faltan datos para decidir. No se retiran silenciosamente entradas pendientes del universo de revisión.
+
+\begingroup\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{\dimexpr0.24\textwidth-2\tabcolsep\relax}L{\dimexpr0.15\textwidth-2\tabcolsep\relax}L{\dimexpr0.61\textwidth-2\tabcolsep\relax}}
+\caption{Comprobaciones para cerrar la línea base de T-15}\label{tab:t15-cierre-base}\\\hline
+\EncabezadoTabla{Comprobación} & \EncabezadoTabla{Estado actual} & \EncabezadoTabla{Evidencia y condición de cierre}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t15-cierre-base}}}\\\hline
+\EncabezadoTabla{Comprobación} & \EncabezadoTabla{Estado actual} & \EncabezadoTabla{Evidencia y condición de cierre}\\\hline\endhead
+\hline\endfoot
+\hline\endlastfoot
+Cobertura del catálogo & Parcial & Universos y modelos de actividad definidos. Completar instancias activas, productores, fases y predecesoras terminales; resolver reservas contra manifiestos.\\\hline
+HH por actividad y fase & No verificable & Registro parcial por productor/perfil/período y regla de agregación incorporados. Falta seleccionar HH de todas las actividades y distribuirlas por mes; el total permanece pendiente.\\\hline
+Aritmética de cobertura & Cumple & Escenario declarado: 22.692 horas de puesto de implementación y 99.378 de Operación; total 122.070. Este estado se limita a su cálculo, no a dotación ni SLA.\\\hline
+Dotación y nivelación & Parcial & Registros de frentes concurrentes y cobertura diferenciados. Faltan asignación completa, disponibilidad nominativa, relevos y cantidad de frentes demostrada; no contar categorías como equipos.\\\hline
+Curvas completas de HH/personas & No verificable & Curvas de horas de puesto disponibles. Completar curvas exigidas de HH de implementación por etapa/total y continuidad operacional, más dotación nivelada.\\\hline
+CPM y PERT & No verificable & Ramas corregidas y registros CPM/PERT incorporados. Faltan duraciones sustentadas, red resuelta y cálculo antes/después de nivelar; ruta crítica y holguras siguen no determinadas.\\\hline
+Calendarios y recepciones & Parcial & Fases y restricciones conservadas. Cabida de E1 durante congelamiento, construcción E2, cortes por grupo y recepción H12 permanece por demostrar.\\\hline
+Reservas y escenarios & Parcial & Registro RV con disparadores, responsables de dimensionamiento y efectos unitarios incorporado. Vincular T-16 y seleccionar cantidades, recursos disponibles, saldo y efecto en hitos antes del cierre.\\\hline
+Integración documental & Parcial & T-14/T-12 se conservan como fuentes; producción y estabilización E1 permanecen en 16. Propagar solo los resultados seleccionados y comprobados a SD7/T-18 y registros afectados.\\\hline
+\end{longtable}\endgroup
+\FuenteTabla{T-14; T-12; T-15, actividades, estimación, calendarios, recursos y cobertura; Bases Administrativas, Formulario T-15.}
+
+Las exigencias de HH, dotación, curvas completas y ruta crítica corresponden al alcance del Formulario T-15 de esta entrega; su estado pendiente es una brecha de desarrollo y no se difiere automáticamente al Informe 3. La incertidumbre actual impide declarar viable o cerrada la línea base, pero no demuestra por sí sola incumplimiento de un servicio todavía no ejecutado. Las recepciones futuras y las evidencias académicas externas conservan su etapa y tratamiento en T-12.
+
+Para cerrar los faltantes de esta entrega se seleccionan las HH por actividad, perfil y unidad; se distribuyen por mes y bloque de suma; se asignan personas o puestos con calendario, capacidad y suplencia; se calculan los máximos y frentes concurrentes; y se resuelve la red con fechas tempranas/tardías, holguras y márgenes de recepción. Las duraciones inciertas reciben valores PERT sustentados. Las reservas identifican cantidad, unidad, actividad expuesta, respuesta, recurso disponible y vínculo de riesgo. Registrar campos o explicar el método no sustituye esas salidas numéricas.
+
+El cierre es iterativo: seleccionar esfuerzo y cantidades; resolver recursos, calendarios y recepciones; calcular y nivelar la red; cuantificar escenarios y respuestas; incorporar sus cargas e intervalos y recalcular cuando alteren capacidad o plazo; finalmente generar resúmenes y curvas desde ese mismo registro. Toda carga complementaria se concilia con el total y ninguna entrada material pendiente se convierte en cero. Las HH seleccionadas, dotación completa, CPM/PERT, reservas cuantificadas y cabida E1/E2 continúan pendientes hasta disponer de sus entradas y resultados; esta precisión no los declara resueltos.
+
+SD7 se redactará nuevamente desde los formularios conciliados. Sus cifras anteriores se conservan solo como antecedentes y no fijan una distribución que todavía no haya sido seleccionada en los formularios actuales. La mentoría mantiene los seis períodos y 144 HH de referencia de T-14; su reparto mensual y por perfil permanece pendiente, sin imponer el reparto antiguo de SD7. Los resultados seleccionados se propagan a SD7, T-18 y los registros relacionados. La revisión aritmética y documental de este formulario no constituye validación independiente, contratación de recursos ni recepción de la contraparte.
