@@ -13,7 +13,7 @@ La programación pasa por cinco controles: cobertura requisito--entregable--paqu
 
 El calendario usa un escenario de inicio el 1 de diciembre de 2026 y feriados chilenos. La fecha contractual, los decretos de feriados, los catorce eventos náuticos y las campañas efectivas se incorporarán al control de cambios antes de aprobar la línea base. SD6, procedimientos ITEM-6 y de programación de T-9, aplica la misma selección por paquete, control quincenal, contraste UCP y cálculo reproducible de red y recursos. T-10 conserva las puertas de pruebas y liberación que preceden a cada recepción. Las decisiones contractuales se registrarán en las actas de línea base y de cambios correspondientes.
 
-El esfuerzo de los núcleos se selecciona mediante UCP y se distribuye entre paquetes identificados, conservando una sola imputación del trabajo original. Las asignaciones y curvas corresponden a este alcance conciliado. La fecha de inicio sigue siendo una hipótesis explícita de calendario; la aprobación contractual de la línea base y la revisión humana técnica son controles futuros separados de estos cálculos.
+El esfuerzo de los núcleos se selecciona mediante UCP y se distribuye entre paquetes identificados, conservando una sola imputación del trabajo. Las asignaciones y curvas corresponden a este alcance conciliado. La fecha de inicio sigue siendo una hipótesis explícita de calendario; la aprobación contractual de la línea base es una condición futura separada de estos cálculos.
 
 
 
@@ -58,7 +58,7 @@ La Tabla~\ref{tab:t15-ucp-transacciones} documenta las entradas y respuestas que
 El peso se asigna por intercambios independientes, sin sumar validaciones internas; los registros preservan la correspondencia con componentes y paquetes del mismo alcance.
 \fi
 
-\paragraph{Esfuerzo seleccionado y conciliación.} Synaptix adopta la referencia UCP sin reducir el factor de conversión por reutilización no medida: 7.766 HH en E1 y 4.942 HH en E2, 12.708 HH en total. El redondeo por etapa deja la programación en 3.107 y 1.977 HH, respectivamente, por encima de los 3.106,36 y 1.976,77 HH de referencia. Las 4.200 HH originales se acreditan una sola vez y se añaden 8.508 HH en 216 paquetes de 8--80 HH. Cada lote tiene resultado, responsable y aceptación; sus precedencias completan especificación/diseño, construcción, verificación y documentación antes del manifiesto de versión.
+\paragraph{Esfuerzo seleccionado y conciliación.} Synaptix adopta la referencia UCP sin reducir el factor de conversión por reutilización no medida: 7.766 HH en E1 y 4.942 HH en E2, 12.708 HH en total. El redondeo por etapa deja la programación en 3.107 y 1.977 HH, respectivamente, por encima de los 3.106,36 y 1.976,77 HH de referencia. Las 12.708 HH comprenden 4.200 HH de paquetes base y 8.508 HH en 216 paquetes de 8--80 HH, con una sola imputación por aporte. Cada lote tiene resultado, responsable y aceptación; sus precedencias completan especificación/diseño, construcción, verificación y documentación antes del manifiesto de versión.
 
 La imputación por componente es proporcional a su peso funcional; el peso de los actores conserva el reparto E1/E2 del modelo. Análisis acredita las HH Funcional existentes; diseño acredita Datos, Integración y Seguridad propios del núcleo; programación acredita Desarrollo; pruebas acredita Calidad; sobrecarga cubre coordinación y documentación propias del componente. La matriz \path{componentes/conciliacion_ucp_actividades.csv} concilia exactamente el esfuerzo seleccionado. La seguridad compartida, los canales, adaptadores, migración, UAT integral, formación y operación permanecen fuera de esta frontera; las comprobaciones del núcleo no se presupuestan otra vez como UAT integral.
 
@@ -84,7 +84,7 @@ La decisión fija el esfuerzo de diseño de la oferta y sus recursos recalculado
 
 
 \subsection{Resumen integrado de esfuerzo y capacidad} %7.2.3
-Synaptix selecciona 49.396 HH en 2181 paquetes y 122.070 HH de cobertura propia: 171.466 HH profesionales. Los 1.959 paquetes de origen y sus 40.744 HH se conservan; 216 paquetes de conciliación funcional añaden 8.508 HH. Se añaden seis paquetes mensuales de mentoría, 144 HH, con dos puestos parciales propios e independientes de cobertura. Los padres no reciben horas. Los códigos enlazan resultado, responsable, perfiles, actividades, red y recepción; las reservas representan capacidad futura y no trabajos ejecutados.
+Synaptix selecciona 49.396 HH en 2181 paquetes y 122.070 HH de cobertura propia: 171.466 HH profesionales. El alcance comprende 1.959 paquetes base con 40.744 HH, 216 paquetes de conciliación funcional con 8.508 HH y seis paquetes mensuales de mentoría con 144 HH, con dos puestos parciales propios e independientes de cobertura. Los padres no reciben horas. Los códigos enlazan resultado, responsable, perfiles, actividades, red y recepción; las reservas representan capacidad futura y no trabajos ejecutados.
 La Tabla~\ref{tab:sd7-esfuerzo-integral} presenta esfuerzo de entregables y cobertura por fase.
 
 \begin{table}[H]

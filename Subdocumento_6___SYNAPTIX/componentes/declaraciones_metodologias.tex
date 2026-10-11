@@ -1,5 +1,5 @@
-% Registro específico; conserva el historial de SD6 en su archivo principal.
-\newcommand{\ControlHumanoMetodologias}{José Lara: responsable del control humano técnico y editorial previo a emisión; revisión pendiente. Alcance: fuentes, requisitos, cálculos, concordancia y PDF.}
+% Declaración consolidada por sección y formulario.
+\newcommand{\ControlHumanoMetodologias}{José Lara, responsable del uso de IA. Verificación humana de fuentes, requisitos, cálculos, concordancia y PDF: no confirmada.}
 \ifdefined\FormularioMetodologico
   \ifdefstring{\FormularioMetodologico}{T-9}{%
     \renewcommand{\DeclaracionesIA}{%
@@ -23,20 +23,11 @@
     }%
   }
 \else
-  \let\DeclaracionesIAAnterioresSDSeis\DeclaracionesIA
   \renewcommand{\DeclaracionesIA}{%
-    \DeclaracionesIAAnterioresSDSeis
-    \FilaDeclaracionIA{6 (intro.)}{OpenAI Codex}{Corrección del alcance metodológico y remisiones a la oferta.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
+    \FilaDeclaracionIA{6 (intro.)}{OpenAI Codex}{Síntesis del alcance metodológico y vínculos con la oferta; formato LaTeX.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
     \FilaDeclaracionIA{6.1}{OpenAI Codex}{Gestión híbrida, gobierno, cambios, valor ganado y figura aplicada.}{Alto}{Alto}{\ControlHumanoMetodologias}
     \FilaDeclaracionIA{6.2}{OpenAI Codex}{Desarrollo Kanban, SSDF, DevSecOps, liberación, métricas y figura aplicada.}{Alto}{Alto}{\ControlHumanoMetodologias}
     \FilaDeclaracionIA{T-9}{OpenAI Codex}{Procedimientos de gestión en formulario separado.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
     \FilaDeclaracionIA{T-10}{OpenAI Codex}{Procedimientos de desarrollo en formulario separado.}{Alto}{Ninguno}{\ControlHumanoMetodologias}
   }
 \fi
-
-\let\DeclaracionesAntesCorreccionNormativa\DeclaracionesIA
-\renewcommand{\DeclaracionesIA}{%
-      \FilaDeclaracionIA{Gobierno y calendario, 9 oct. 2026}{OpenAI Codex}{Distinción del Comité de Operación y cobertura inicial del mes 13 respecto de la Operación contractual 21--56.}{Bajo}{Ninguno}{José Lara: responsable de esta intervención y del control humano previo a emisión; esta corrección no acredita revisión humana técnica realizada.}
- \DeclaracionesAntesCorreccionNormativa
- \FilaDeclaracionIA{Correcciones normativas, 2026-10-08}{OpenAI Codex}{Reconciliación con las tres bases: marejadas, repositorio/custodia, preaviso, pruebas ISO 29119, riesgos ISO 31000, herramientas y citas a páginas originales.}{Alto}{Bajo}{\ControlHumanoMetodologias}
-}

@@ -1,16 +1,13 @@
-\newcommand{\ControlHumanoRiesgos}{José Lara: responsable de las intervenciones de IA y del control humano previo a emisión; revisión técnica y visual humana pendiente de confirmación.}
+\newcommand{\ControlHumanoRiesgos}{José Lara: responsable de IA; revisión humana técnica y visual no confirmada.}
 \ifdefined\FormularioRiesgos
  \renewcommand{\DeclaracionesIA}{%
-  \FilaDeclaracionIA{T-16}{OpenAI Codex}{Formulación de los 34 riesgos, matriz, fichas, respuestas, objetivos residuales y vínculos con planificación e innovaciones.}{Alto}{Ninguno}{\ControlHumanoRiesgos}
+  \FilaDeclaracionIA{T-16}{OpenAI Codex}{Matriz y fichas de los 34 riesgos, respuestas y objetivos residuales.}{Alto}{Ninguno}{\ControlHumanoRiesgos}
  }
 \else
- \let\DeclaracionesAnterioresRiesgos\DeclaracionesIA
  \renewcommand{\DeclaracionesIA}{%
-  \DeclaracionesAnterioresRiesgos
-  \FilaDeclaracionIA{8.1}{OpenAI Codex}{Plan de gestión, responsabilidades, escalas, registro, seguimiento y figura del proceso.}{Alto}{Alto}{\ControlHumanoRiesgos}
-  \FilaDeclaracionIA{8.2}{OpenAI Codex; asistencia de subagentes en riesgos de innovaciones}{Identificación y evaluación de riesgos, escenarios técnicos y operacionales, desarrollo e implantación, modos de falla y cálculos con supuestos.}{Alto}{Ninguno}{\ControlHumanoRiesgos}
-  \FilaDeclaracionIA{8.3}{OpenAI Codex}{Tratamientos, acciones, responsabilidades, costo-beneficio técnico, reservas, continuidad y recuperación ante desastre.}{Alto}{Ninguno}{\ControlHumanoRiesgos}
-  \FilaDeclaracionIA{T-16}{OpenAI Codex}{Registro de 34 riesgos, fichas de respuesta y distinción entre objetivos residuales y resultados observados.}{Alto}{Ninguno}{\ControlHumanoRiesgos}
-  \FilaDeclaracionIA{Inicio y fuentes}{OpenAI Codex}{Síntesis de contexto, localización de fuentes y referencias bibliográficas.}{Alto}{Ninguno}{\ControlHumanoRiesgos}
+  \FilaDeclaracionIA{8.1}{OpenAI Codex}{Síntesis del plan, roles, escalas y figura del proceso.}{Alto}{Alto}{\ControlHumanoRiesgos}
+  \FilaDeclaracionIA{8.2}{OpenAI Codex (subagentes en riesgos de innovaciones)}{Identificación, escenarios, modos de falla y cálculos de riesgo con supuestos.}{Alto}{Ninguno}{\ControlHumanoRiesgos}
+  \FilaDeclaracionIA{8.3}{OpenAI Codex}{Acciones, costo-beneficio, reservas, continuidad, recuperación y fuentes.}{Alto}{Ninguno}{\ControlHumanoRiesgos}
+  \FilaDeclaracionIA{T-16}{OpenAI Codex}{Matriz y fichas de los 34 riesgos, respuestas y objetivos residuales.}{Alto}{Ninguno}{\ControlHumanoRiesgos}
  }
 \fi
