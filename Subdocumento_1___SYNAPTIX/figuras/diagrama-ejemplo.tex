@@ -1,0 +1,13 @@
+\begin{tikzpicture}[
+  node distance=12mm,
+  bloque/.style={rounded corners=2mm,minimum width=34mm,minimum height=14mm,align=center,draw=SynLine,fill=SynSurface,text=SynNavy,font=\bfseries},
+  flujo/.style={-{Stealth[length=2.5mm]},line width=1.2pt,draw=SynCyan}
+]
+  \node[bloque] (operacion) {Operaciones};
+  \node[bloque,right=of operacion] (datos) {Datos gobernados};
+  \node[bloque,right=of datos] (decision) {Decisiones};
+  \draw[flujo] (operacion) -- node[above,font=\fontsize{9}{11}\selectfont,text=SynMuted]{captura} (datos);
+  \draw[flujo] (datos) -- node[above,font=\fontsize{9}{11}\selectfont,text=SynMuted]{contexto} (decision);
+  \draw[SynTeal,line width=1pt,dashed,-{Stealth[length=2.3mm]}]
+    (decision.south) to[bend left=32] node[below,font=\fontsize{9}{11}\selectfont,text=SynMuted]{retroalimentación} (operacion.south);
+\end{tikzpicture}
