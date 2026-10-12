@@ -48,12 +48,6 @@
   \FilaDeclaracionIA{A4.6}{OpenAI Codex}{Desarrollo previo de capacidad y equivalencia de ambientes; traslado de fórmulas y tablas; concordancia de las tres unidades con SD3 el 9 de octubre de 2026}{Alto}{Ninguno}{José Lara: responsable del control humano previo a emisión. Esta intervención no acredita revisión técnica ni visual humana.}%
 }
 
-\makeatletter
-\g@addto@macro\DeclaracionesIA{%
-  \FilaDeclaracionIA{SD4}{OpenAI Codex}{Arquitectura, regiones, identidad, inventario y referencias documentales.}{Medio}{Ninguno}{José Lara: responsable de esta intervención de IA. Revisión técnica humana no confirmada; las pruebas de aceptación previstas no se declaran ejecutadas.}
-}
-\makeatother
-
 \begin{document}
 \pagenumbering{arabic}
 \PortadaPropuesta{4}{Anexos de arquitectura}
@@ -235,13 +229,13 @@ Este registro desarrolla las decisiones DA-01 a DA-20 de SD4, sección 4.1.1, co
 
 \textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda regiones disponibles, separación geográfica y catálogo requerido. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
 
-\textbf{Elección actualizada a SD4.} La línea base SD4 utiliza AWS Chile/Santiago como principal, condicionada a G-REG, y AWS São Paulo (\texttt{sa-east-1}) como DR warm standby. Si G-REG no se satisface, la alternativa GCP Santiago (\texttt{southamerica-west1})/São Paulo (\texttt{southamerica-east1}) requiere aprobación técnica y contractual. Se habilita una sola pareja del proveedor aprobado, sin réplica ni conmutación operacional entre AWS y GCP. Código AWS Chile, servicios, cuotas, dos zonas y autorizaciones se acreditan antes de habilitar.
+\textbf{Elección.} Región AWS Chile como principal, condicionada a G-REG, y AWS São Paulo (\texttt{sa-east-1}) como recuperación regional \emph{warm standby}.
 
-\textbf{Alternativas examinadas.} Depender de AWS Chile; Estados Unidos como DR.
+\textbf{Alternativas examinadas.} GCP Santiago/São Paulo como pareja temporal aprobada; São Paulo como primario; Estados Unidos como DR.
 
 \textbf{Fundamento.} Regiones disponibles, separación geográfica y catálogo requerido.
 
-\textbf{Consecuencias y comprobación.} La residencia se comprueba por servicio y subencargado; una región distinta no implica disponibilidad automática de todo el catálogo. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+\textbf{Consecuencias y comprobación.} G-REG acredita disponibilidad general, código de región, dos AZ físicas, catálogo, cuotas y contratación antes de habilitar AWS Chile. São Paulo mantiene la capacidad mínima de recuperación. La residencia se comprueba por servicio y subencargado; una región distinta no implica disponibilidad automática de todo el catálogo.
 
 \textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
 
@@ -295,13 +289,13 @@ Este registro desarrolla las decisiones DA-01 a DA-20 de SD4, sección 4.1.1, co
 
 \textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda identidad individual y fuente laboral actual. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
 
-\textbf{Elección actualizada a SD4.} Keycloak 26.8.0 con dos réplicas y PostgreSQL dedicado; autoridad local con paquetes firmados limitados a dispositivo/turno. Solo el sitio promovido emite sesiones; se recuperan realm, usuarios, credenciales y secretos cifrados. Compatibilidad y restauración pendientes de ensayo.
+\textbf{Elección.} Cognito central y Autoridad local de acceso.
 
 \textbf{Alternativas examinadas.} Directorio local completo; cuenta compartida.
 
 \textbf{Fundamento.} Identidad individual y fuente laboral actual.
 
-\textbf{Consecuencias y comprobación.} Keycloak proporciona autenticación con enlace, sujeta a prueba de la versión y configuración seleccionadas; el RLH y la Autoridad local gobiernan habilitación operacional. No se renueva desde una copia laboral vencida. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+\textbf{Consecuencias y comprobación.} Cognito acredita autenticación con enlace; el RLH y la Autoridad local gobiernan habilitación operacional. No se renueva desde una copia laboral vencida. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
 
 \textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
 
@@ -325,13 +319,13 @@ Este registro desarrolla las decisiones DA-01 a DA-20 de SD4, sección 4.1.1, co
 
 \textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda diversidad física y conmutación exigidas por las Bases. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
 
-\textbf{Elección actualizada a SD4.} Fibra GTD/Telsur de referencia 100/100 Mbit/s y respaldo Starlink Fixed Site/Priority con subida útil $\ge10$ Mbit/s bajo ensayo. Se verifica disponibilidad, contratación, entrada diversa y conmutación objetivo $\le30$ s; no se presuponen rutas ni CIR de la alternativa anterior.
+\textbf{Elección.} Fibra empresarial GTD/Telsur como enlace principal y Starlink Fixed Site/Priority como respaldo LEO.
 
-\textbf{Alternativas examinadas.} Dos fibras sin ruta comprobada; un solo enlace.
+\textbf{Alternativas examinadas.} Dos fibras sin ruta comprobada; fibra más radioenlace terrestre; un solo enlace.
 
 \textbf{Fundamento.} Diversidad física y conmutación exigidas por las Bases.
 
-\textbf{Consecuencias y comprobación.} La contratación exige caminos independientes de acceso y transporte, no solo dos marcas. Los planos y pruebas de cada ruta forman parte de la recepción. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+\textbf{Consecuencias y comprobación.} La contratación acredita disponibilidad de la fibra, emplazamiento y cielo del terminal LEO, alimentación, rutas independientes y caudal útil cifrado. Los planos y pruebas de conmutación de cada camino forman parte de la recepción.
 
 \textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
 
@@ -355,13 +349,13 @@ Este registro desarrolla las decisiones DA-01 a DA-20 de SD4, sección 4.1.1, co
 
 \textbf{Fecha y contexto.} 6 de octubre de 2026. La decisión aborda validar ambiente marino y precisión antes de comprometer 380 unidades. La localización y las restricciones se desarrollan en SD4 y conservan la frontera de SD3 y la autoridad de datos de SD5.
 
-\textbf{Elección.} Piloto de 40 sensores de ocupación.
+\textbf{Elección.} Piloto opcional de 20 sensores de ocupación, cuatro por pantalán.
 
 \textbf{Alternativas examinadas.} Despliegue total; ausencia de piloto.
 
-\textbf{Fundamento.} Validar ambiente marino y precisión antes de comprometer 380 unidades.
+\textbf{Fundamento.} Validar ambiente marino y precisión sin condicionar la función obligatoria de ocupación ni comprometer un despliegue masivo.
 
-\textbf{Consecuencias y comprobación.} La función obligatoria de estado de amarra continúa sin el piloto. Sus resultados deben justificar una eventual ampliación y sus activos se inventarían por separado. La revisión de la línea base verifica esta decisión frente a sus modelos, inventario y protocolos antes de habilitación.
+\textbf{Consecuencias y comprobación.} La función obligatoria de estado de amarra se sustenta en bitácora operacional y ronda física registrada. El piloto se inventaría por separado y sólo una decisión posterior, respaldada por sus resultados, autoriza una ampliación.
 
 \textbf{Gobierno.} Arquitectura de Synaptix mantiene el registro; Seguridad y Operación revisan los impactos de su competencia. Un cambio registra autor responsable, fecha, motivo, alternativa sucesora, documentos y pruebas afectados, y autorización contractual cuando corresponda. Se entrega con la línea base y el informe mensual.
 
