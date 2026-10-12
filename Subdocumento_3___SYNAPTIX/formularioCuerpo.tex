@@ -30,11 +30,11 @@ Total & 576 & 546 & 30 \\ \hline
 
 Los 576 identificadores permiten auditar la trazabilidad de estos requerimientos. La matriz contiene 546 declaraciones Sí y 30 declaraciones No. Estas últimas corresponden a requisitos RT clasificados como Deseables en las Bases Técnicas Transversales según las filas del formulario. RT-03.24, RT-05.10 y RT-16.14 conservan el compromiso obligatorio C07 y distinguen el tratamiento del alcance Deseable BT. 
 
-Las cinco columnas conservan el formato T-12. La descripción conserva el enunciado original y, cuando corresponde, el complemento obligatorio C07 bajo el mismo ID. La columna de componente identifica la solución ofrecida; la última columna localiza su desarrollo mediante referencias breves e identifica el entregable, prueba, informe o certificado previsto para verificarlo. Los cálculos y las explicaciones se desarrollan en los subdocumentos citados.
+Las cinco columnas conservan el formato T-12. SD4 define la arquitectura de los componentes ofrecidos. Se mantienen los compromisos obligatorios y los 576 enunciados; la identificación del componente no acredita por sí sola cumplimiento completo. En RT-12 se debe verificar la versión Keycloak seleccionada, sesiones, factores, permisos y recuperación antes de aceptación; la evidencia previamente atribuida a Cognito no se reutiliza como prueba de Keycloak. Los controles afectados permanecen abiertos en la matriz de revisión hasta comprobar su cobertura completa. La descripción conserva el enunciado original y, cuando corresponde, el complemento obligatorio C07 bajo el mismo ID. La columna de componente identifica la solución ofrecida; la última columna localiza su desarrollo mediante referencias breves e identifica el entregable, prueba, informe o certificado previsto para verificarlo. Los cálculos y las explicaciones se desarrollan en los subdocumentos citados.
 
 \section*{Identificación de componentes y versiones}
 \addcontentsline{toc}{section}{Identificación de componentes y versiones}
-Los componentes conservan las denominaciones de SD4 y del T-11 independiente. La App Terreno Android utiliza como referencia Samsung Galaxy XCover7 Pro, con 14 terminales operacionales y 2 reservas compatibles, conforme a SD4, sección 4.2, y T-11, ítems 61--62. La operación continua fuera de cobertura de 12 horas en pantalán, escuela y varadero y de 8 horas en boyas, así como la interacción con guantes, pantalla mojada y luz solar directa, requieren los ensayos por perfil previstos; la selección del terminal no acredita esos resultados.
+Los componentes conservan las denominaciones de SD4 y del T-11 independiente. La App Terreno Android utiliza como referencia Samsung Galaxy XCover7 Pro, con 33 terminales operacionales y 4 reservas compatibles, conforme a SD4, sección 4.2, y T-11, ítems 61--62. La operación continua fuera de cobertura de 12 horas en pantalán, escuela y varadero y de 8 horas en boyas, así como la interacción con guantes, pantalla mojada y luz solar directa, requieren los ensayos por perfil previstos; la selección del terminal no acredita esos resultados.
 Los tres núcleos utilizan Amazon Corretto 21 LTS, Spring Boot 4.1.1 y
 Spring Modulith 2.1.1; el Runtime Operacional de Borde utiliza Ubuntu
 Server 24.04 LTS con Pro y Podman 4.9.3 de Noble con revisiones de distribución.
@@ -46,11 +46,11 @@ REST API Regional con VPC Link V2 hacia ALB interno, cuya disponibilidad y
 configuración conjunta se verifican en ambas regiones. Estas referencias
 se aplican a las menciones en las filas, conforme a SD4, 4.1.1 y T-11.
 
-ECS/Fargate, EventBridge, SQS, SNS, S3, Cognito, KMS, Secrets Manager,
+ECS/Fargate, EventBridge, SQS, SNS, S3, KMS, Secrets Manager,
 CloudWatch, RDS y Athena son servicios administrados AWS; no se les
 atribuye una versión de producto que el proveedor no exponga. Los SDK,
 API y configuraciones efectivas deben inventariarse. Sophos Mobile
-MDM + MTD para las 16 unidades, Sophos Protection for Linux con XDR - Server
+MDM + MTD para las 37 unidades, Sophos Protection for Linux con XDR - Server
 para los dos nodos y GuardDuty Runtime Monitoring para Fargate son
 selecciones propuestas sujetas a las licencias y configuraciones de la oferta.
 Las estaciones se referencian en Windows 11 Pro 26H2, Intune Plan 1 for Devices y Sophos Endpoint con XDR/Device Encryption, con 18 PC CLIENTE y tres del servicio remoto incluidos repuestos.
@@ -2267,13 +2267,13 @@ La Tabla~\ref{tab:t12-bt-cap-5} individualiza los requisitos técnicos de este �
 RT-\allowbreak{}05.\allowbreak{}01 &
 El PROPONENTE entregará el modelo de datos documentado y un diccionario de datos con el nombre, el tipo, el dominio de valores, la obligatoriedad, el propietario y la sensibilidad de cada atributo.\newline\textit{BT; Obligatorio.} &
 Sí &
-PostgreSQL 18; OpenAPI 3.1; AsyncAPI 2.6 &
+PostgreSQL 18; OpenAPI 3.1; AsyncAPI 3.0 &
 SD5, sec. 5.1 \newline\textit{Evidencia prevista:} Pruebas de datos. \\ \hline
 
 RT-\allowbreak{}05.\allowbreak{}02 &
 El PROPONENTE justificará la selección del paradigma y del motor de persistencia: relacional o no relacional, garantías transaccionales, y la posición escogida entre consistencia y disponibilidad conforme al teorema CAP, para cada dominio de datos.\newline\textit{BT; Obligatorio.} &
 Sí &
-PostgreSQL 18; OpenAPI 3.1; AsyncAPI 2.6 &
+PostgreSQL 18; OpenAPI 3.1; AsyncAPI 3.0 &
 SD5, sec. 5.1 \newline\textit{Evidencia prevista:} Pruebas de datos. \\ \hline
 
 RT-\allowbreak{}05.\allowbreak{}03 &
@@ -2291,7 +2291,7 @@ SD5, sec. 5.2.4, pp. 59--65 \newline\textit{Evidencia prevista:} Diccionario de 
 RT-\allowbreak{}05.\allowbreak{}05 &
 El almacenamiento transaccional y el analítico estarán separados. Ninguna consulta analítica podrá degradar el desempeño de la operación.\newline\textit{BT; Obligatorio.} &
 Sí &
-PostgreSQL 18; OpenAPI 3.1; AsyncAPI 2.6 &
+PostgreSQL 18; OpenAPI 3.1; AsyncAPI 3.0 &
 SD5, sec. 5.1 \newline\textit{Evidencia prevista:} Pruebas de datos. \\ \hline
 
 RT-\allowbreak{}05.\allowbreak{}06 &
@@ -2303,7 +2303,7 @@ SD5, sec. 5.2.3, pp. 57--59; SD4 \newline\textit{Evidencia prevista:} Paquete de
 RT-\allowbreak{}05.\allowbreak{}07 &
 El PROPONENTE declarará la política de retención, archivado y eliminación por cada dominio de datos, coherente con la normativa aplicable al caso, e implementará un procedimiento verificable de eliminación segura.\newline\textit{BT; Obligatorio.} &
 Sí &
-PostgreSQL 18; OpenAPI 3.1; AsyncAPI 2.6 &
+PostgreSQL 18; OpenAPI 3.1; AsyncAPI 3.0 &
 SD5, sec. 5.1 \newline\textit{Evidencia prevista:} Pruebas de datos. \\ \hline
 
 RT-\allowbreak{}05.\allowbreak{}08 &
@@ -2315,7 +2315,7 @@ SD5, sec. 5.2.5, pp. 65--67 \newline\textit{Evidencia prevista:} Acuerdo de trat
 RT-\allowbreak{}05.\allowbreak{}09 &
 El PROPONENTE presentará una estrategia de gestión de datos maestros que evite la duplicación de entidades compartidas entre módulos y con sistemas externos.\newline\textit{BT; Obligatorio.} &
 Sí &
-PostgreSQL 18; OpenAPI 3.1; AsyncAPI 2.6 &
+PostgreSQL 18; OpenAPI 3.1; AsyncAPI 3.0 &
 SD5, sec. 5.1 \newline\textit{Evidencia prevista:} Pruebas de datos. \\ \hline
 
 RT-\allowbreak{}05.\allowbreak{}10 &
@@ -2327,37 +2327,37 @@ SD3, sec. 3.2.2; SD5, sec. 5.1 \newline\textit{Evidencia prevista:} Pruebas de d
 RT-\allowbreak{}05.\allowbreak{}11 &
 El PROPONENTE presentará un plan de migración con alcance, origen, volumen, reglas de transformación, criterios de calidad, estrategia de ejecución y plan de reversión.\newline\textit{BT; Obligatorio.} &
 Sí &
-PostgreSQL 18; OpenAPI 3.1; AsyncAPI 2.6 &
+PostgreSQL 18; OpenAPI 3.1; AsyncAPI 3.0 &
 SD5, sec. 5.1 \newline\textit{Evidencia prevista:} Pruebas de datos. \\ \hline
 
 RT-\allowbreak{}05.\allowbreak{}12 &
 La migración incluirá una etapa de perfilado y saneamiento previo, con informe de los defectos detectados en los datos de origen y la decisión adoptada sobre cada uno.\newline\textit{BT; Obligatorio.} &
 Sí &
-PostgreSQL 18; OpenAPI 3.1; AsyncAPI 2.6 &
+PostgreSQL 18; OpenAPI 3.1; AsyncAPI 3.0 &
 SD5, sec. 5.1 \newline\textit{Evidencia prevista:} Pruebas de datos. \\ \hline
 
 RT-\allowbreak{}05.\allowbreak{}13 &
 Se ejecutarán al menos dos ensayos completos de migración sobre Preproducción antes de la migración definitiva, con medición del tiempo total y del resultado de la conciliación.\newline\textit{BT; Obligatorio.} &
 Sí &
-PostgreSQL 18; OpenAPI 3.1; AsyncAPI 2.6 &
+PostgreSQL 18; OpenAPI 3.1; AsyncAPI 3.0 &
 SD5, sec. 5.1 \newline\textit{Evidencia prevista:} Pruebas de datos. \\ \hline
 
 RT-\allowbreak{}05.\allowbreak{}14 &
 La conciliación posterior a la migración será cuantitativa y verificable: recuentos, sumas de control y muestreo dirigido. Toda diferencia deberá quedar explicada.\newline\textit{BT; Obligatorio.} &
 Sí &
-PostgreSQL 18; OpenAPI 3.1; AsyncAPI 2.6 &
+PostgreSQL 18; OpenAPI 3.1; AsyncAPI 3.0 &
 SD5, sec. 5.1 \newline\textit{Evidencia prevista:} Pruebas de datos. \\ \hline
 
 RT-\allowbreak{}05.\allowbreak{}15 &
 Los datos históricos que no se migren quedarán accesibles en un repositorio de consulta durante el período de retención que fije el caso.\newline\textit{BT; Según caso.}\newline\textbf{Alcance obligatorio C07, cap.~15:} Padrón de socios y de armadores: la totalidad. Contratos de amarra vigentes con su documentación asociada: la totalidad. Historia de pagos y saldos: 6 años. Antecedentes completos de las 14 embarcaciones abandonadas: la totalidad, sin excepción, por su valor probatorio. Registro de embarcaciones e invernadas: la totalidad. Matrícula de la escuela de vela de los últimos 3 años. El sistema de origen no tiene proveedor desde 2021 ni documentación de su modelo de datos, y sólo una persona sabe operarlo. &
 Sí &
-PostgreSQL 18; OpenAPI 3.1; AsyncAPI 2.6 &
+PostgreSQL 18; OpenAPI 3.1; AsyncAPI 3.0 &
 SD5, sec. 5.1 \newline\textit{Evidencia prevista:} Pruebas de datos. \\ \hline
 
 RT-\allowbreak{}05.\allowbreak{}16 &
 Los servicios síncronos se documentarán en OpenAPI 3.1 y los flujos dirigidos por eventos en AsyncAPI 2.6 o superior. La documentación se generará desde el código y se mantendrá actualizada automáticamente.\newline\textit{BT; Obligatorio.} &
 Sí &
-GEN-API 1.0 propio; CodeBuild; OpenAPI 3.1/AsyncAPI 2.6; DEP-6; paquete completo pendiente &
+GEN-API 1.0 propio; CodeBuild; OpenAPI 3.1/AsyncAPI 3.0; DEP-6; paquete completo pendiente &
 SD5, sec. 5.1.3.1, pp. 30--31; SD4, sec. A4.2; T-10 \newline\textit{Evidencia prevista:} Especificaciones OpenAPI/AsyncAPI generadas y versionadas; informe de cobertura del pipeline. \\ \hline
 
 RT-\allowbreak{}05.\allowbreak{}17 &
@@ -2399,7 +2399,7 @@ SD5, sec. 5.2.3, pp. 52--54 \newline\textit{Evidencia prevista:} Informe de carg
 RT-\allowbreak{}05.\allowbreak{}23 &
 Se emplearán los estándares sectoriales de intercambio que las Bases Técnicas del caso identifiquen.\newline\textit{BT; Según caso.}\newline\textbf{Alcance obligatorio C07, cap.~15:} Formatos y canales que la autoridad marítima disponga para los antecedentes del zarpe y para la recepción de avisos meteorológicos y de marejadas. Estándares de declaración y trazabilidad de residuos peligrosos ante la autoridad sanitaria. Marco de indicadores del esquema de certificación ambiental de marinas. Estándares de mensajería de baja capacidad para comunicación con embarcaciones en navegación. El PROPONENTE deberá identificar y justificar cada uno, y verificar su disponibilidad efectiva. &
 Sí &
-PostgreSQL 18; OpenAPI 3.1; AsyncAPI 2.6 &
+PostgreSQL 18; OpenAPI 3.1; AsyncAPI 3.0 &
 SD5, sec. 5.1 \newline\textit{Evidencia prevista:} Pruebas de datos; certificados exigidos. \\ \hline
 
 RT-\allowbreak{}05.\allowbreak{}24 &
@@ -3174,13 +3174,13 @@ RT-\allowbreak{}11.\allowbreak{}02 &
 El PROPONENTE entregará un modelado de amenazas documentado por cada componente y por cada integración externa, con metodología declarada (STRIDE u otra), y lo actualizará ante cada cambio arquitectónico relevante.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}03 &
 La información del CLIENTE se clasificará por nivel de sensibilidad, con controles diferenciados por nivel documentados en una matriz.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}04 &
 Existirá un programa de gestión de vulnerabilidades con escaneo continuo y plazos máximos de remediación de 7 días corridos para vulnerabilidades críticas, 15 días para altas y 30 días para medias, contados desde su publicación o detección.\newline\textit{BT; Obligatorio.} &
@@ -3192,25 +3192,25 @@ RT-\allowbreak{}11.\allowbreak{}05 &
 El PROPONENTE mantendrá una matriz de controles de seguridad trazable a ISO/IEC 27001 e ISO/IEC 27002, indicando el control, su implementación concreta en la solución y la evidencia que lo acredita.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}06 &
 Se aplicarán los controles de ISO/IEC 27017 para los servicios en nube y de ISO/IEC 27018 para el tratamiento de datos personales en nube.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}07 &
 La publicación de servicios se realizará exclusivamente a través de la capa de borde, con red de distribución de contenidos, cortafuegos de aplicaciones web con reglas gestionadas y personalizadas, y protección contra denegación de servicio distribuida en capas 3, 4 y 7.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}08 &
 El cifrado en tránsito empleará TLS 1.3, con prohibición expresa de TLS 1.0 y 1.1, conjuntos de cifrado modernos, HSTS con precarga y gestión automatizada de certificados con rotación y alerta anticipada de vencimiento.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad; certificados exigidos. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad; certificados exigidos. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}09 &
 La totalidad de los datos en reposo estará cifrada, con claves gestionadas en un servicio de gestión de claves o en un módulo de seguridad de hardware, política de rotación declarada y separación de funciones en la custodia de claves.\newline\textit{BT; Obligatorio.} &
@@ -3234,25 +3234,25 @@ RT-\allowbreak{}11.\allowbreak{}12 &
 Los puntos de entrada públicos contarán con protección contra bots y abuso automatizado, con reto progresivo que no degrade la accesibilidad ni bloquee a personas usuarias legítimas.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}13 &
 El PROPONENTE declarará la superficie de exposición completa de la solución: cada nombre de dominio, puerto y servicio alcanzable desde fuera de la red del CLIENTE.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}14 &
 Los eventos de seguridad se registrarán de forma centralizada e inalterable, con retención mínima de doce meses en línea y veinticuatro meses adicionales en archivo recuperable.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}15 &
 Los eventos se correlacionarán en una plataforma SIEM, con casos de uso de detección definidos específicamente para el proceso de negocio del caso, y no sólo genéricos de infraestructura.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}16 &
 Se implementará detección y respuesta en puntos finales y en cargas de trabajo, tanto en nube como on-premise.\newline\textit{BT; Obligatorio.} &
@@ -3264,25 +3264,25 @@ RT-\allowbreak{}11.\allowbreak{}17 &
 El PROPONENTE dispondrá de un centro de operaciones de seguridad con cobertura 24×7, propio o subcontratado, y declarará su ubicación, dotación y procedimientos.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}18 &
 El plan de respuesta a incidentes de seguridad definirá clasificación, cadena de escalamiento, plazos, responsables y protocolo de comunicación al CLIENTE dentro de las dos horas de detectado un incidente de severidad crítica.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}19 &
 Toda brecha de seguridad o de datos personales se notificará al CLIENTE dentro de las 24 horas de su detección, con informe preliminar, y el análisis de causa raíz se entregará dentro de los cinco días hábiles siguientes.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}20 &
 Se ejecutarán pruebas de intrusión por un tercero independiente del ADJUDICATARIO, anualmente y antes de cada paso a producción, con entrega íntegra del informe al CLIENTE y plan de remediación con plazos.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}21 &
 Se realizarán ejercicios de simulación de incidente con participación del CLIENTE al menos una vez al año durante la Operación.\newline\textit{BT; Deseable.} &
@@ -3294,19 +3294,19 @@ RT-\allowbreak{}11.\allowbreak{}22 &
 El flujo de integración continua incorporará análisis estático de código, análisis de composición de software, análisis dinámico y escaneo de imágenes de contenedor, con criterios de bloqueo automático del despliegue ante hallazgos críticos.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}23 &
 Cada versión liberada se acompañará de su inventario de componentes de software en formato CycloneDX o SPDX, entregado al CLIENTE.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}24 &
 Los artefactos se firmarán y su procedencia se verificará conforme a SLSA nivel 3 o superior.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}25 &
 Queda prohibido el uso de datos productivos reales en ambientes no productivos sin anonimización o seudonimización verificable.\newline\textit{BT; Obligatorio.} &
@@ -3318,13 +3318,13 @@ RT-\allowbreak{}11.\allowbreak{}26 &
 El PROPONENTE declarará el proceso de aprobación de nuevas dependencias de terceros, incluyendo criterios de licencia, mantención activa y ausencia de vulnerabilidades conocidas.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}27 &
 Las personas desarrolladoras no tendrán acceso interactivo directo al ambiente de producción. Todo acceso excepcional será temporal, aprobado, registrado y con sesión grabada.\newline\textit{BT; Obligatorio.} &
 Sí &
 Zero Trust; AWS KMS AES-GCM-256; AWS WAF v2 &
-SD4, sec. 4.1.3; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
+SD4, sec. 4.1, Seguridad, privacidad e identidad; SD6, sec. 6.1 \newline\textit{Evidencia prevista:} Verificación de seguridad. \\ \hline
 
 RT-\allowbreak{}11.\allowbreak{}28 &
 Se aplicará el marco OWASP SAMM o equivalente para medir y mejorar la madurez del proceso de desarrollo seguro, con evaluación inicial y reevaluación anual.\newline\textit{BT; Deseable.} &
@@ -3369,79 +3369,79 @@ La Tabla~\ref{tab:t12-bt-cap-12} individualiza los requisitos técnicos de este 
 RT-\allowbreak{}12.\allowbreak{}01 &
 La gestión de identidad será centralizada, con federación mediante OpenID Connect y OAuth 2.1, o SAML 2.0 cuando la integración con el CLIENTE lo requiera, e integración con el directorio corporativo del CLIENTE por LDAP o su equivalente en la nube.\newline\textit{BT; Obligatorio.} &
 Sí &
-AWS Cognito; OIDC; OAuth 2.1 con PKCE; RBAC &
-SD4, sec. 4.1.3 \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
+Keycloak 26.8.0; OIDC/PKCE; RBAC/ABAC; base dedicada y recuperación de identidad de SD4 &
+SD4, sec. 4.1, Seguridad, privacidad e identidad \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
 
 RT-\allowbreak{}12.\allowbreak{}02 &
 Existirá inicio de sesión único para todos los módulos de la solución, con cierre de sesión propagado a todos ellos.\newline\textit{BT; Obligatorio.} &
 Sí &
-AWS Cognito; OIDC; OAuth 2.1 con PKCE; RBAC &
-SD4, sec. 4.1.3 \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
+Keycloak 26.8.0; OIDC/PKCE; RBAC/ABAC; base dedicada y recuperación de identidad de SD4 &
+SD4, sec. 4.1, Seguridad, privacidad e identidad \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
 
 RT-\allowbreak{}12.\allowbreak{}03 &
 La autenticación multifactor será obligatoria para personas usuarias administradoras, para todo acceso privilegiado y para todo acceso originado fuera de la red corporativa.\newline\textit{BT; Obligatorio.} &
 Sí &
-AWS Cognito; OIDC; OAuth 2.1 con PKCE; RBAC &
+Keycloak 26.8.0; OIDC/PKCE; RBAC/ABAC; base dedicada y recuperación de identidad de SD4 &
 SD4, sec. 4.1 \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
 
 RT-\allowbreak{}12.\allowbreak{}04 &
 Se soportarán factores resistentes a la suplantación de identidad, tipo FIDO2 o claves de acceso, al menos para los perfiles administradores.\newline\textit{BT; Deseable.} &
 Sí &
-Soporte nativo de Passkeys (WebAuthn/FIDO2) en AWS Cognito para perfiles de administración y torre &
-SD4, sec. 4.1.3 \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
+Keycloak 26.8.0; FIDO2/WebAuthn para administración y accesos externos; factores y recuperación sujetos a ensayo compatible &
+SD4, sec. 4.1, Seguridad, privacidad e identidad \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
 
 RT-\allowbreak{}12.\allowbreak{}05 &
 El control de acceso será basado en roles, complementado con control basado en atributos donde el proceso lo exija, con matriz de segregación de funciones documentada y verificable.\newline\textit{BT; Obligatorio.} &
 Sí &
-AWS Cognito; OIDC; OAuth 2.1 con PKCE; RBAC &
-SD4, sec. 4.1.3 \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
+Keycloak 26.8.0; OIDC/PKCE; RBAC/ABAC; base dedicada y recuperación de identidad de SD4 &
+SD4, sec. 4.1, Seguridad, privacidad e identidad \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
 
 RT-\allowbreak{}12.\allowbreak{}06 &
 Los accesos privilegiados se gestionarán con elevación temporal a demanda, aprobación previa y grabación de sesión para las operaciones de mayor riesgo.\newline\textit{BT; Obligatorio.} &
 Sí &
-AWS Cognito; OIDC; OAuth 2.1 con PKCE; RBAC &
-SD4, sec. 4.1.3 \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
+Keycloak 26.8.0; OIDC/PKCE; RBAC/ABAC; base dedicada y recuperación de identidad de SD4 &
+SD4, sec. 4.1, Seguridad, privacidad e identidad \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
 
 RT-\allowbreak{}12.\allowbreak{}07 &
 La política de sesión declarará duración máxima, caducidad por inactividad, renovación de la credencial de sesión tras la autenticación, revocación inmediata y control de sesiones concurrentes.\newline\textit{BT; Obligatorio.} &
 Sí &
-AWS Cognito; OIDC; OAuth 2.1 con PKCE; RBAC &
-SD4, sec. 4.1.3 \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
+Keycloak 26.8.0; OIDC/PKCE; RBAC/ABAC; base dedicada y recuperación de identidad de SD4 &
+SD4, sec. 4.1, Seguridad, privacidad e identidad \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
 
 RT-\allowbreak{}12.\allowbreak{}08 &
 Las credenciales de sesión serán firmadas y de vida breve, con credencial de refresco rotatoria. Queda prohibido transportar identificadores de sesión en la ruta de la dirección web.\newline\textit{BT; Obligatorio.} &
 Sí &
-AWS Cognito; OIDC; OAuth 2.1 con PKCE; RBAC &
+Keycloak 26.8.0; OIDC/PKCE; RBAC/ABAC; base dedicada y recuperación de identidad de SD4 &
 SD4, sec. 4.1 \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
 
 RT-\allowbreak{}12.\allowbreak{}09 &
 Se registrará auditoría completa del ciclo de vida de la identidad: creación, modificación, elevación, bloqueo y baja de cuentas, con no repudio y retención declarada.\newline\textit{BT; Obligatorio.} &
 Sí &
-AWS Cognito; OIDC; OAuth 2.1 con PKCE; RBAC &
-SD4, sec. 4.1.3 \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
+Keycloak 26.8.0; OIDC/PKCE; RBAC/ABAC; base dedicada y recuperación de identidad de SD4 &
+SD4, sec. 4.1, Seguridad, privacidad e identidad \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
 
 RT-\allowbreak{}12.\allowbreak{}10 &
 El aprovisionamiento y el desaprovisionamiento estarán automatizados y ligados al ciclo de vida laboral, con baja efectiva en un plazo no superior a 24 horas desde la desvinculación.\newline\textit{BT; Obligatorio.} &
 Sí &
-AWS Cognito; OIDC; OAuth 2.1 con PKCE; RBAC &
-SD4, sec. 4.1.3 \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
+Keycloak 26.8.0; OIDC/PKCE; RBAC/ABAC; base dedicada y recuperación de identidad de SD4 &
+SD4, sec. 4.1, Seguridad, privacidad e identidad \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
 
 RT-\allowbreak{}12.\allowbreak{}11 &
 El mecanismo de autenticación se adecuará al perfil operacional real descrito en el caso: entornos de terreno, uso con guantes, baja alfabetización digital, dispositivos compartidos por turno y ausencia de correo electrónico personal.\newline\textit{BT; Según caso.}\newline\textbf{Alcance obligatorio C07, cap.~15:} Personal de pantalán con las manos mojadas, con guantes y frecuentemente con lluvia, sobre estructura en movimiento. Operador de travelift que no puede interactuar durante la maniobra. Monitores de la escuela de vela a bordo de un semirrígido, mojados. Más de la mitad del personal de temporada es nuevo cada año y los monitores se renuevan cada temporada. No existe en el CLIENTE ninguna persona que administre identidades y accesos. &
 Sí &
-AWS Cognito; OIDC; OAuth 2.1 con PKCE; RBAC &
-SD4, sec. 4.1.3 \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
+Keycloak 26.8.0; OIDC/PKCE; RBAC/ABAC; base dedicada y recuperación de identidad de SD4 &
+SD4, sec. 4.1, Seguridad, privacidad e identidad \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
 
 RT-\allowbreak{}12.\allowbreak{}12 &
 Las personas usuarias externas del CLIENTE —clientes, proveedores, pacientes, productores, según el caso— dispondrán de un mecanismo de registro, verificación de identidad y recuperación de acceso autoservido y seguro.\newline\textit{BT; Según caso.}\newline\textbf{Alcance obligatorio C07, cap.~15:} Armadores y socios; apoderados de los alumnos de la escuela de vela; tripulaciones de embarcaciones visitantes, nacionales y extranjeras; empresas contratistas del varadero y sus trabajadores; la operadora internacional de charter; proveedores y gestores autorizados de residuos; y la autoridad marítima y la autoridad sanitaria, en lo que corresponda. &
 Sí &
-AWS Cognito; OIDC; OAuth 2.1 con PKCE; RBAC &
-SD4, sec. 4.1.3 \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
+Keycloak 26.8.0; OIDC/PKCE; RBAC/ABAC; base dedicada y recuperación de identidad de SD4 &
+SD4, sec. 4.1, Seguridad, privacidad e identidad \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
 
 RT-\allowbreak{}12.\allowbreak{}13 &
 El PROPONENTE declarará el procedimiento de acceso de emergencia (cuenta de último recurso), su custodia, su control y su auditoría.\newline\textit{BT; Obligatorio.} &
 Sí &
-AWS Cognito; OIDC; OAuth 2.1 con PKCE; RBAC &
+Keycloak 26.8.0; OIDC/PKCE; RBAC/ABAC; base dedicada y recuperación de identidad de SD4 &
 SD4, sec. 4.1 \newline\textit{Evidencia prevista:} Pruebas de identidad y sesiones. \\ \hline
 
 \end{longtable}
@@ -3699,7 +3699,7 @@ SD3, sec. 3.1.2; SD10, sec. 10.1 \newline\textit{Evidencia prevista:} Informe de
 RT-\allowbreak{}15.\allowbreak{}05 &
 Se valorará la elección de regiones de nube con menor intensidad de carbono cuando la latencia y la regulación lo permitan, con el análisis comparativo correspondiente.\newline\textit{BT; Deseable.} &
 No &
-No aplica / Descartado: Cómputo primario alojado obligatoriamente en AWS Santiago (Región Chile) por exigencia de soberanía y baja latencia &
+No ofrecido en el alcance Deseable BT: comparación de intensidad de carbono entre regiones. La región principal se selecciona conforme a G-REG de SD4; BT RT-03.01 admite Chile o Sudamérica y no impone AWS Santiago &
 SD3, sec. 3.2.2; SD4, sec. 4.2 \\ \hline
 
 RT-\allowbreak{}15.\allowbreak{}06 &

@@ -1109,7 +1109,7 @@ El detalle siguiente conserva las entidades, sus atributos y restricciones. La c
 \multicolumn{4}{@{}p{\textwidth}@{}}{\phantomsection\label{dic:as_identidad_de_acceso}\label{tab:dic_as_identidad_de_acceso}\textbf{D-AS-01 Identidad de acceso}. Propietario: Auditoría y seguridad. Retención: SEG. Relaciona principal digital y persona sin crear un segundo padrón.} \\* \hline
 \texttt{persona\_\allowbreak{}id} & uuid; ref CC.Persona & C: identidad humana / S & Persona propietaria. \\ \hline
 \texttt{principal\_\allowbreak{}externo} & varchar(160); Identificador con emisor & S / S & Principal central reconocido. \\ \hline
-\texttt{emisor} & varchar(120); Servicio de identidad de SD4 & S / R & No sustituir Cognito por un proveedor nuevo. \\ \hline
+\texttt{emisor} & varchar(120); Servicio de identidad de SD4 & S / R & Emisor Keycloak de SD4; conservar UUID, issuer y recuperación; cambios sujetos a migración y ensayo. \\ \hline
 \texttt{tipo} & varchar(30); humana; servicio & S / R & Cuenta técnica no representa persona ficticia. \\ \hline
 \texttt{estado} & varchar(40); activa; suspendida; revocada & S / R & Catálogo propuesto. \\ \hline
 \texttt{vigente\_\allowbreak{}desde} & timestamptz; UTC & S / R & Validez efectiva. \\ \hline

@@ -1321,9 +1321,9 @@ El modelo comercial se encuentra en \textbf{diseño conceptual}. Para esta incor
 
 En la capa de Servicios de negocio, se propone incorporar \texttt{IN4-MET} al módulo Varadero y contratistas del Núcleo de Servicios y \texttt{IN4-CON} a Finanzas y cobranza del Núcleo Administrativo. Esta ubicación sigue las agrupaciones del avance del SD4, sección 4.1 y decisión DA-04; los códigos IN4 son extensiones del SD13 cuya ubicación ya se recoge en SD4. Su especificación detallada sigue pendiente. \texttt{IN4-MET} relacionará la solicitud adicional con Orden de trabajo y, cuando corresponda, Reprogramación del SD5, sección 5.1.2, y recogerá los intervalos de tiempo activo. \texttt{IN4-CON} conservará ficha, solicitudes, versión del cálculo y acta. AUT ofrecerá el canal y ADM la gestión de permisos bajo las políticas de Auditoría y seguridad, separando preparación y aprobación. La salida será un expediente para la administración contractual, sin cobro automático.
 
-La integración reutilizará HTTPS y REST/JSON documentados con OpenAPI 3.1, conforme a DA-06. Las escrituras admitirán \texttt{Idempotency-Key} y las llamadas propagarán \texttt{Correlation-Id}. Los eventos usarán el sobre versionado del SD4; su consumo controlará \texttt{eventId} y la secuencia del agregado para evitar efectos duplicados. Los eventos de faena descritos en la tabla 4-2 aportan antecedentes, pero no registran por sí solos el esfuerzo administrativo: los tiempos requieren captura propia. Se consultará la autoridad mediante sus contratos, sin acceso directo a tablas ajenas. Los registros estructurados usarán PostgreSQL por dominio y las actas, el repositorio S3 de evidencia, conforme a DA-08; las correcciones conservarán el cálculo y acta anteriores.
+La integración reutilizará HTTPS y REST/JSON documentados con OpenAPI 3.1, conforme a DA-06. Las escrituras admitirán \texttt{Idempotency-Key} y las llamadas propagarán \texttt{Correlation-Id}. Los eventos usarán el sobre versionado del SD4; su consumo controlará \texttt{eventId} y la secuencia del agregado para evitar efectos duplicados. Los eventos de faena descritos en SD4, Integración, contratos y eventos aportan antecedentes, pero no registran por sí solos el esfuerzo administrativo: los tiempos requieren captura propia. Se consultará la autoridad mediante sus contratos, sin acceso directo a tablas ajenas. Los registros estructurados usarán PostgreSQL por dominio y las actas, el repositorio S3 de evidencia, conforme a DA-08; las correcciones conservarán el cálculo y acta anteriores.
 
-Los dos componentes se proponen dentro de los contenedores cloud de sus núcleos en ECS/Fargate, según el emplazamiento de la tabla 4-10. Durante una desconexión continuará la captura obligatoria de faena en la Célula Operacional Local; la conciliación del incentivo esperará la sincronización y validación de su evidencia. El tiempo activo deberá conservarse con el método aprobado, incluso si la captura se realiza en un registro controlado; si queda incompleto, el período no habilitará reconocimiento variable. La instrumentación OpenTelemetry del SD4 no sustituye esa medición de trabajo humano. El enlace de solicitudes, los tiempos y el expediente aún requieren atributos, estados, responsables, retención y contratos detallados en A5.1/A5.2 y SD4. La propuesta debe contrastarse también con DEC-22 y VAC-12 del SD2: la aprobación de negocio corresponde al cliente y la cobertura técnica a Synaptix, con dedicaciones y suplencias todavía por consolidar.
+Los dos componentes se proponen dentro de los contenedores cloud de sus núcleos en ECS/Fargate si se aprueba AWS, o en Cloud Run si se aprueba GCP, según SD4, Arquitectura física y Data center, dentro del proveedor aprobado por G-REG. Durante una desconexión continuará la captura obligatoria de faena en la Célula Operacional Local; la conciliación del incentivo esperará la sincronización y validación de su evidencia. El tiempo activo deberá conservarse con el método aprobado, incluso si la captura se realiza en un registro controlado; si queda incompleto, el período no habilitará reconocimiento variable. La instrumentación OpenTelemetry del SD4 no sustituye esa medición de trabajo humano. El enlace de solicitudes, los tiempos y el expediente aún requieren atributos, estados, responsables, retención y contratos detallados en A5.1/A5.2 y SD4. La propuesta debe contrastarse también con DEC-22 y VAC-12 del SD2: la aprobación de negocio corresponde al cliente y la cobertura técnica a Synaptix, con dedicaciones y suplencias todavía por consolidar.
 
 La siguiente tabla presenta los entregables asociados a los paquetes
 de la innovación, manteniendo el calendario propuesto. Los responsables
@@ -1579,8 +1579,8 @@ según SD4, sección 4.1 y DA-04. Administrará adhesiones, planes,
 acciones y evaluaciones, con registros estructurados en PostgreSQL
 de su dominio. \texttt{IN5-HIS} será la proyección histórica en la
 capa de Datos, manteniendo referencias y versiones de los períodos
-comparados mediante la ruta Parquet/S3/Athena prevista en SD4,
-tabla 4-5, y SD5, sección 5.2.3. El modelo de SD5, sección 5.1.2,
+comparados mediante la ruta de archivos abiertos Parquet/objetos y analítica separada de SD4,
+Arquitectura lógica, Datos, capacidades transversales y operación desconectada, y SD5, sección 5.2.3. El modelo de SD5, sección 5.1.2,
 precisa sus fuentes: Intervalo de consumo y Serie conciliada de
 Ambiente y consumos, con Soporte de consumo para reconstruir el
 cálculo. Sólo los resultados validados que ese dominio publique
@@ -1597,11 +1597,11 @@ y las inducciones de contratistas desde Varadero y contratistas,
 sin atribuirles una reducción de agua no medida.
 
 AUT presentará la vista en el portal React previsto en SD4,
-tabla 4-4; las operaciones utilizarán los contratos REST/OpenAPI
+tabla 4.4; las operaciones utilizarán los contratos REST/OpenAPI
 y la autorización del dominio propietario definidos en DA-06
 y DA-16. El historial recibirá \texttt{MediciónConsolidada},
 \texttt{MedidorAsociado}, \texttt{OcupaciónActualizada} y
-\texttt{AsignaciónModificada} del catálogo de la tabla 4-2,
+\texttt{AsignaciónModificada} descritos en SD4, Arquitectura lógica, Integración y seguridad,
 y consultará sus fuentes autorizadas para reconstruir asociaciones
 históricas. La deduplicación por \texttt{eventId}, la secuencia
 del agregado y las versiones de corrección impedirán sumar dos
@@ -1612,7 +1612,7 @@ y seguridad; Finanzas y cobranza conservará los hechos facturables,
 sin cambios de lecturas ni cobros desde el pasaporte.
 
 \texttt{IN5-PLAN} se propone en el Núcleo de Servicios cloud sobre
-ECS/Fargate, con el emplazamiento de la tabla 4-10. El pasaporte
+ECS/Fargate en AWS o Cloud Run en la alternativa GCP aprobada, con el emplazamiento de SD4, Arquitectura física y Data center, dentro del proveedor aprobado por G-REG. El pasaporte
 reutilizará la captura obligatoria de medidores, concentradores,
 telemetría local y sincronización descrita en SD4, sección 4.2
 y DA-09, sin consumir directamente el broker MQTT. Ante pérdida
