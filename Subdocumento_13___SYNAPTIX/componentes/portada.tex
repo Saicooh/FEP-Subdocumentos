@@ -3,6 +3,7 @@
   % La portada consume un folio sin reiniciar el contador de páginas.
   \clearpage
   \begingroup
+    \FirmaSobreFondoOscurotrue
     \thispagestyle{empty}
     \begin{tikzpicture}[remember picture,overlay]
       \fill[SynNavy] (current page.south west) rectangle (current page.north east);
@@ -78,11 +79,10 @@
           \FirmaCompletaRepresentante
         };
 
-      % Media firma y folio propios de la portada sobre el fondo oscuro.
+      % La portada conserva una sola firma completa y su folio independiente.
       \node[anchor=south east,text=SynWhite!78]
         at ($(current page.south east)+(-1.45cm,0.72cm)$) {%
           \fontsize{8}{10}\selectfont
-          \MediaFirmaRepresentante\hspace{5mm}%
           Página\enspace\textbf{\textcolor{SynCyan}{\thepage}}
         };
     \end{tikzpicture}

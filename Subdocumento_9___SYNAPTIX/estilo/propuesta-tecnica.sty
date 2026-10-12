@@ -12,7 +12,7 @@
 \RequirePackage{setspace}
 \RequirePackage{graphicx}
 \RequirePackage{tikz}
-\usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
+\usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric,fadings}
 \RequirePackage{booktabs}
 \RequirePackage{array}
 \RequirePackage{tabularx}
@@ -65,11 +65,37 @@
 \setcounter{tocdepth}{3}
 \setlist{topsep=0.35em,itemsep=0.2em,parsep=0pt,leftmargin=1.7em}
 
-% Espacios de firma del representante identificado en los metadatos.
-% Las líneas son campos por completar; no constituyen firmas incorporadas.
+% Firma PNG aportada por el usuario para la prueba de presentación de SD1/T-6.
+% En portada, una máscara PDF muestra los mismos trazos en blanco sin fondo.
+% El PNG original y sus proporciones se conservan.
+\newif\ifFirmaSobreFondoOscuro
+\newsavebox{\CajaFirmaRepresentante}
+\newcommand{\DefinirMascaraFirmaRepresentante}[2]{%
+  \begin{tikzfadingfrompicture}[name=#1]
+    \node[inner sep=1mm,fill=white] (imagen)
+      {\includegraphics[height=#2]{Firma.png}};
+    \begin{scope}[blend mode=difference]
+      \fill[white] (imagen.south west) rectangle (imagen.north east);
+    \end{scope}
+  \end{tikzfadingfrompicture}%
+}
+\DefinirMascaraFirmaRepresentante{firma-completa}{18mm}
+\newcommand{\ImagenFirmaRepresentante}[2]{%
+  \ifFirmaSobreFondoOscuro
+    \sbox{\CajaFirmaRepresentante}{\includegraphics[height=#1]{Firma.png}}%
+    \begin{tikzpicture}
+      % Sin ajuste automático: evita deformar la proporción de la máscara.
+      \fill[SynWhite,path fading=#2,fit fading=false]
+        (-.5\wd\CajaFirmaRepresentante,-.5\ht\CajaFirmaRepresentante)
+        rectangle (.5\wd\CajaFirmaRepresentante,.5\ht\CajaFirmaRepresentante);
+    \end{tikzpicture}%
+  \else
+    \includegraphics[height=#1]{Firma.png}%
+  \fi
+}
 \newcommand{\MediaFirmaRepresentante}{%
-  {\fontsize{8}{10}\selectfont
-    \shortstack[r]{\rule{32mm}{0.3pt}\\Media firma: \RepresentanteLegal}}%
+  % Mayor tamaño, sin rótulo redundante y dentro del margen inferior.
+  \raisebox{-4mm}{\includegraphics[height=14mm]{Firma.png}}%
 }
 \newcommand{\FirmaCompletaRepresentante}{%
   \begin{minipage}{60mm}
@@ -78,7 +104,7 @@
     \setlength{\parskip}{2pt}%
     \fontsize{11}{14}\selectfont
     Firma completa\par
-    \vspace{10mm}%
+    \ImagenFirmaRepresentante{18mm}{firma-completa}\par
     \rule{60mm}{0.4pt}\par
     \textbf{\RepresentanteLegal}\par
     Representante legal de \Empresa
