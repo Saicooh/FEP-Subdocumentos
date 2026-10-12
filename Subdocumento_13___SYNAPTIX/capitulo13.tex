@@ -13,11 +13,11 @@ La escala de nueve niveles de madurez tecnológica (\textit{Technology Readiness
 
 
 
-La innovación propuesta corresponde a un producto o servicio de base tecnológica denominado \textit{Servicio de Solicitud y Seguimiento de Mantenimiento de Embarcaciones}. Su objetivo es facilitar que el armador solicite trabajos de mantenimiento, que el contratista registre su respuesta y avance, y que la marina y el armador pueda consultar el estado de cada solicitud.
+La innovación propuesta corresponde a un producto o servicio de base tecnológica denominado \textit{Servicio de Solicitud y Seguimiento de Mantenimiento de Embarcaciones}. Su objetivo es facilitar que el armador solicite trabajos de mantenimiento, que el contratista registre su respuesta y avance, y que la marina y el armador puedan consultar el estado de cada solicitud.
 
 \subsection{ Problema u oportunidad concreta}
 
-Las Bases Técnicas describen un modelo en que los trabajos de mantenimiento de las embarcaciones son realizados por contratistas independientes. Además, identifican un ecosistema de 62 contratistas y aproximadamente 140 personas vinculadas a su operación \parencite{caso07}. Estas cifras dimensionan la cantidad de actores externos que pueden intervenir en la prestación de servicios, aunque no permiten afirmar que todos ellos realicen trabajos de mantenimiento. La solución base de esta propuesta toma en consideración el requisito RF-CTR-04 (Véase formulario T-12) y asignar un acceso a una orden de trabajo en la marina a un contratista específico, pero no existe trazabilidad de la marina ni del armador del estado de la orden de trabajo del contratista para ver el progreso.
+Las Bases Técnicas describen un modelo en que los trabajos de mantenimiento de las embarcaciones son realizados por contratistas independientes. Además, identifican un ecosistema de 62 contratistas y aproximadamente 140 personas vinculadas a su operación \parencite{caso07}. Estas cifras dimensionan la cantidad de actores externos que pueden intervenir en la prestación de servicios, aunque no permiten afirmar que todos ellos realicen trabajos de mantenimiento. La solución base contempla el requisito RF-CTR-04 (véase el Formulario T-12), que vincula la autorización de acceso de un contratista con una orden de trabajo. La innovación añade seguimiento del avance de la solicitud para la marina y el armador.
 
 La oportunidad consiste en dar trazabilidad al ciclo de una solicitud de mantenimiento entre el armador, la marina y el contratista: desde su envío y aceptación o rechazo hasta la actualización de su avance y cierre. Las bases no entregan una línea base cuantitativa sobre solicitudes sin respuesta, tiempos de coordinación o atrasos atribuibles a falta de seguimiento; estos datos deberán levantarse para estimar el problema actual y comprobar el beneficio.
 
@@ -29,7 +29,6 @@ La figura 13.1  representa el flujo de estados de la innovación: \textit{Enviad
 
 
 
-% En el documento
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{figuras/fig innov1 .png}
@@ -38,7 +37,7 @@ La figura 13.1  representa el flujo de estados de la innovación: \textit{Enviad
   \FuenteFigura{Flujo elaborado y revisado por el equipo Synaptix a partir de los estados de mantenimiento descritos por IBM.}
 \end{figure}
 
-el diagrama presenta el flujo de una solicitud de mantenimiento y las responsabilidades del armador, la marina y el contratista. El proceso comienza cuando el armador envía una solicitud, que pasa al estado \textit{Enviada}. Luego, el responsable de la marina la revisa y la deriva a un contratista, quedando \textit{Pendiente de respuesta}.
+El diagrama presenta el flujo de una solicitud de mantenimiento y las responsabilidades del armador, la marina y el contratista. El proceso comienza cuando el armador envía una solicitud, que pasa al estado \textit{Enviada}. Luego, el responsable de la marina la revisa y la deriva a un contratista, quedando \textit{Pendiente de respuesta}.
 
 El contratista evalúa si puede realizar el trabajo. Si lo rechaza, la solicitud vuelve a la marina para que esta pueda derivarla a otro contratista. Si la acepta, queda \textit{Aceptada} y la marina coordina con el contratista una fecha de atención, registrándola como \textit{Programada}. Al comenzar los trabajos, el contratista actualiza la solicitud a \textit{En ejecución}. Si debe interrumpirlos, informa el motivo y la solicitud pasa a \textit{En espera}; una vez resuelta la causa, el trabajo retoma el estado \textit{En ejecución}.
 
@@ -51,7 +50,7 @@ Para el Servicio de Solicitud y Seguimiento de Mantenimiento, se cataloga como T
 
 \subsection{Diseño de la incorporación}
 
-El servicio se incorporará mediante el componente \texttt{IN1-SOL}, responsable de las solicitudes de mantenimiento y su historial, dentro del dominio de Varadero y contratistas. AUT ofrecerá las vistas del armador, la marina y el contratista; ADM ofrecerá la administración de permisos bajo las políticas de Auditoría y seguridad y la autenticación de la capa de Seguridad transversal del SD4; CTR mantendrá la información y habilitación del contratista; y ALE tramitará los avisos del flujo. Clientes y contratos conservará la autoridad sobre los maestros de armador y embarcación y su vínculo vigente. La marina designará al responsable operacional que revisa y deriva solicitudes. El contratista registrará aceptación o rechazo, avance y finalización; la marina verificará la integridad del expediente para cerrar administrativamente la solicitud. Ese cierre NO certifica la calidad técnica de la reparación.
+El servicio se incorporará mediante el componente \texttt{IN1-SOL}, responsable de las solicitudes de mantenimiento y su historial, dentro del dominio de Varadero y contratistas. AUT ofrecerá las vistas del armador, la marina y el contratista; ADM ofrecerá la administración de permisos bajo las políticas de Auditoría y seguridad y la autenticación de la capa de Seguridad transversal del SD4; CTR mantendrá la información y habilitación del contratista; y ALE tramitará los avisos del flujo. Clientes y contratos conservará la autoridad sobre los maestros de armador y embarcación y su vínculo vigente. La marina designará al responsable operacional que revisa y deriva solicitudes. El contratista registrará aceptación o rechazo, avance y finalización; la marina verificará la integridad del expediente para cerrar administrativamente la solicitud. Ese cierre no certifica la calidad técnica de la reparación.
 
 La solicitud adicional conservará su propio identificador y se vinculará con la orden de trabajo autorizada de la solución base. Aceptar una solicitud no autoriza acceso a faena: esa autorización seguirá las reglas de CTR. El servicio no duplicará la gestión de estadías, la programación de recursos de varadero ni el registro general de contratistas.
 
@@ -75,7 +74,6 @@ La extensión funcionará en los servicios centrales. Si no se encuentra disponi
 \subsubsection{EDT de la innovación.}
 La tabla \ref{tab:edt-innovacion-1}, indica el EDT con los entregables y paquetes de trabajo. Los identificadores siguientes son el código interno de esta extensión y deberán conservar una correspondencia unívoca con el código de cuentas de SD7/T-15. Los niveles \texttt{IN1.1} a \texttt{IN1.7} agrupan entregables; los códigos terminales identifican paquetes de trabajo. Las fechas se muestran como asociación al cronograma, no como parte de la estructura de la EDT.
 
-%Las horas-hombre (HH) son estimaciones iniciales de planificación para una extensión que reutiliza portales, identidad, órdenes y notificaciones existentes; no son mediciones ni precios. Cada paquete terminal se programa dentro de una quincena y tiene entre 8 y 80 HP. Q1 y Q2 identifican la primera y segunda quincena del mes contractual.
 
 \begin{longtable}{
   L{\dimexpr0.18\linewidth-2\tabcolsep\relax}
@@ -194,8 +192,9 @@ La tabla \ref{tab:edt-innovacion-1}, indica el EDT con los entregables y paquete
 21--56 & Operación/SRE \\
   \hline
 \end{longtable}
+\FuenteTabla{Elaboración propia; programación propuesta para conciliación con SD7.}
 
-La rama \texttt{IN1.7} comprende la operación incremental desde el mes 21 hasta el 56. Se utilizará un paquete por quincena: \texttt{IN1.7.m.q}, donde $m$ toma cada valor entero de 21 a 56 y $q$ vale 1 o 2. Por ejemplo, \texttt{IN1.7.21.1} identifica el primer informe quincenal de operación.  a cargo de Operación/SRE, con registro de incidencias, notificaciones fallidas, cambios y continuidad del seguimiento.
+La rama \texttt{IN1.7} comprende la operación incremental desde el mes 21 hasta el 56. Se utilizará un paquete por quincena: \texttt{IN1.7.m.q}, donde $m$ toma cada valor entero de 21 a 56 y $q$ vale 1 o 2. Por ejemplo, \texttt{IN1.7.21.1} identifica el primer informe quincenal de operación, a cargo de Operación/SRE, con registro de incidencias, notificaciones fallidas, cambios y continuidad del seguimiento.
 
 Como criterio de recepción, los entregables de diseño requerirán revisión de la contraparte; los de software, pruebas satisfactorias de sus contratos y permisos; los de prueba, evidencias reproducibles sin defectos críticos abiertos; y los de piloto, registros trazables e informe que conserve resultados favorables, nulos y adversos. La aceptación técnica del flujo y la comprobación de su beneficio se documentarán por separado.
 
@@ -206,7 +205,7 @@ Este calendario permite compartir la medición del esfuerzo administrativo con l
 
 El calendario consolidado de SD7/T-14/T-15 adelanta la preparación técnica a 13--17, levanta base de IN1/IN4/IN5 durante 1--28 de mayo de 2028 (mes 18) y evalúa 1--28 de junio (19); la formación IN1 posterior a base ocupa 29--31 de mayo, con dos formadores. IN3 conserva 120 pólizas distintas, ejecución manual/asistida intercalada en mayo--junio y controles humanos. La revisión y subsanación de pilotos se completan en julio; la materialización contractual permanece en 21 y el seguimiento hasta 56. Son fechas de escenario con inicio 1 de diciembre de 2026, sujetas al calendario contractual, sus restricciones y recepción; no se atribuyen evaluaciones ya ejecutadas.
 
-IN2 selecciona veinte embarcaciones, inscripción y planes en mayo de 2029 (30), invernada desde junio de 2029 (31), botaduras septiembre--noviembre y cinco lotes de revisión de cuatro embarcaciones al menos tres semanas antes. La evaluación/transferencia se prepara en diciembre antes del congelamiento y el seguimiento incremental mantiene 31--56. Los 47 códigos terminales de IN1--IN3 y sus atribuciones se conservan; el período es un atributo y no se deduce del identificador. El beneficio estacional no se exige como prueba ya realizada en H12: la capacidad técnica queda recibida con la etapa y su evaluación comprometida tiene ventana propia. La aceptación final y el inicio de Operación conservan la simultaneidad del artículo 17 y requieren la puerta de recepción continua de SD7, sin aceptación tácita.
+IN2 selecciona veinte embarcaciones, inscripción y planes en mayo de 2029 (30), invernada desde junio de 2029 (31), botaduras septiembre--noviembre y cinco lotes de revisión de cuatro embarcaciones al menos tres semanas antes. La evaluación/transferencia se prepara en diciembre antes del congelamiento y el seguimiento incremental mantiene 31--56. Los 47 códigos terminales de IN1--IN3 identifican paquetes con responsables y períodos definidos en SD7/T-14/T-15; el período no se deduce del identificador. El beneficio estacional no se exige como prueba ya realizada en H12: la capacidad técnica queda recibida con la etapa y su evaluación comprometida tiene ventana propia. La aceptación final y el inicio de Operación conservan la simultaneidad del artículo 17 y requieren la puerta de recepción continua de SD7, sin aceptación tácita.
 
 \subsection{Impacto económico estimado}
 
@@ -305,6 +304,7 @@ en SD8/T-16, complemento R-IN1-01--04; SD6 conserva la metodología de gestión.
   Baja & Muy alto \\
   \hline
 \end{longtable}
+\FuenteTabla{Elaboración propia; valoración inicial para planificación.}
 
 
 El riesgo \textbf{R-IN1-01} corresponde a que los contratistas mantengan
@@ -354,7 +354,7 @@ preventivo y distribuirlos a lo largo del invierno, de modo que cada embarcació
 
 \subsection{Problema u oportunidad concreta}
 
-Las Bases Técnicas describen una explanada de invernada con 180 puestos en seco,de los cuales 152 estuvieron ocupados en el invierno de 2026. Las embarcaciones salen del agua entre abril y mayo y vuelven a entrar entre septiembre y noviembre, el 62~\% de los 1.150 movimientos anuales del travelift se concentraen esas dos campañas de seis semanas. Mientras la embarcación está en tierra, su armador contrata por su cuenta trabajos de casco, pintura, motor, velas o electrónica, que ejecutan empresas contratistas externas en los 14 puestos de trabajo del varadero \parencite[caps.~2 y 7; anexo~B.2]{caso07}.
+Las Bases Técnicas describen una explanada de invernada con 180 puestos en seco, de los cuales 152 estuvieron ocupados en el invierno de 2026. Las embarcaciones salen del agua entre abril y mayo y vuelven a entrar entre septiembre y noviembre, el 62~\% de los 1.150 movimientos anuales del travelift se concentra en esas dos campañas de seis semanas. Mientras la embarcación está en tierra, su armador contrata por su cuenta trabajos de casco, pintura, motor, velas o electrónica, que ejecutan empresas contratistas externas en los 14 puestos de trabajo del varadero \parencite[caps.~2 y 7; anexo~B.2]{caso07}.
 
 Cada armador decide qué trabajos contratar y cuándo, sin un calendario común y sin relación con el orden en que su embarcación saldrá de la explanada, que es el que determina la  secuencia de botadura, una embarcación ubicada al fondo no puede botarse antes que las que tiene delante. A esto se suma que la operadora de charter, con 14 embarcaciones basadas en la marina, necesita que cada una esté lista, con el chequeo hecho, cuando llegan sus tripulaciones.
 
@@ -470,7 +470,7 @@ innovación.
     \draw[flecha] (C3.east) -- (10.2,-8.0) |- (M4.west);
     \draw[flecha] (M4) -- node[nota, right=2pt, pos=0.3, align=left] {con\\ pendientes} (A4);
     \draw[flecha] (A4.east) -| (M5.north);
-    \draw[flecha] (M4.east) -- node[nota, above=1pt, align=center] {sin\\ pendientes} (M5.west);
+    \draw[flecha] (M4.south) -- (11.75,-6.1) -- node[nota, below=1pt, align=center] {sin\\ pendientes} (14.85,-6.1) -- (M5.south);
 
 
     \node[paso, text width=0.5cm, minimum height=0.35cm, inner sep=1pt] (L1) at (1.4,-10.3) {};
@@ -480,6 +480,7 @@ innovación.
   \end{tikzpicture}%
   \caption{Ciclo del Programa de Mantenimiento Preventivo en Invernada}
   \label{fig:inn2-ciclo}
+  \FuenteFigura{Diseño de Synaptix para el programa de invernada, con terminología de mantenimiento de \textcite{une13306}.}
 \end{figure}
 
 El diagrama presenta el ciclo de la invernada y las responsabilidades del
@@ -518,7 +519,7 @@ HTTPS, REST/JSON y OpenAPI previstos en la arquitectura. Antes del
 piloto se comprobarán los permisos, la vinculación con IN1 y el
 tratamiento de reintentos y avisos fallidos.
 
-La siguiente EDT agrupa los entregables y sus paquetes de trabajo.
+La Tabla~\ref{tab:in2-edt} agrupa los entregables y sus paquetes de trabajo.
 La conciliación con SD4 deberá confirmar las interfaces y sus
 responsables; SD7 deberá incorporar los plazos y verificar la
 disponibilidad de los perfiles compartidos. Se considerará únicamente
@@ -650,6 +651,7 @@ y registros periódicos de seguimiento} &
 \hline
 
 \end{longtable}
+\FuenteTabla{Elaboración propia; programación propuesta para conciliación con SD7.}
 
 Se define $M_{\mathrm{inv}}$ como el mes contractual correspondiente
 al primer junio disponible con IN1 y las interfaces aceptadas,
@@ -740,7 +742,7 @@ no se declarará demostrada la reducción relativa.
 Los riesgos se valoran inicialmente mediante probabilidad e impacto
 cualitativos. Su seguimiento quedará incorporado al plan de riesgos,
 con responsables, medidas preventivas y contingencias en SD8/T-16,
-complemento R-IN2-01--04. Las valoraciones se revisarán con evidencia
+complemento R-IN2-01--04. La Tabla~\ref{tab:in2-riesgos} resume las valoraciones iniciales. Las valoraciones se revisarán con evidencia
 del piloto; los residuales objetivo no son resultados observados.
 
 \begin{longtable}{
@@ -824,7 +826,7 @@ No se dispone de una línea base verificada sobre el volumen mensual de pólizas
 
 \subsection{Tecnología, práctica o modelo que la sustenta}
 
-La implementación utilizará la tecnología reconocimiento óptico de caracteres, conocido como OCR por su denominación en inglés (\textit{Optical Character Recognition}), con la extracción de campos y reglas de comprobación. El OCR reconocerá el texto de documentos escaneados o fotografías; la extracción asociará ese contenido con los campos requeridos; y las reglas identificarán datos incompletos o inconsistentes. Los resultados tendrán carácter de propuesta hasta su aprobación por el funcionario.
+La implementación utilizará la tecnología de reconocimiento óptico de caracteres, conocido como OCR por su denominación en inglés (\textit{Optical Character Recognition}), con la extracción de campos y reglas de comprobación. El OCR reconocerá el texto de documentos escaneados o fotografías; la extracción asociará ese contenido con los campos requeridos; y las reglas identificarán datos incompletos o inconsistentes. Los resultados tendrán carácter de propuesta hasta su aprobación por el funcionario.
 
 Se propone emplear Amazon Textract como componente de lectura y análisis documental, integrado mediante un adaptador con la plataforma. Su documentación describe la extracción de texto y formularios, las relaciones entre claves y valores, y la identificación de la página y ubicación de los elementos encontrados. Estas capacidades permiten presentar cada campo junto con el fragmento documental que lo respalda \parencite{in3-aws-analisis}.
 
@@ -908,7 +910,7 @@ no reemplazarán automáticamente los datos ingresados.
 
 La habilitación requerirá una matriz de correspondencia entre
 los controles aplicables del capítulo 18, su implementación
-en SD4 y sus requisitos verificables en T-12. Los siguientes
+en SD4 y sus requisitos verificables en T-12. La Tabla~\ref{tab:in3-controles} define controles y evidencias de aceptación. Los siguientes
 identificadores son internos de esta innovación y deberán
 vincularse con los códigos definitivos de esos documentos.
 
@@ -981,7 +983,7 @@ correspondientes y respaldados por pruebas satisfactorias.
 
 La planificación propuesta comprende diseño en los meses 13--14,
 implementación en 14--15, pruebas y preparación en 16 y piloto en
-18--19, con transferencia en 21. SD7 deberá confirmar la disponibilidad
+18--19, con transferencia en 21. La Tabla~\ref{tab:in3-edt} presenta los paquetes correspondientes. SD7 deberá confirmar la disponibilidad
 de los perfiles compartidos y las dependencias de AUT, ADM, NAV,
 repositorio y auditoría.
 
@@ -1183,7 +1185,7 @@ aceptación técnica y beneficio observado.
 Los riesgos se evaluarán por evento, con probabilidad e impacto
 cualitativos iniciales. Cada evento tendrá un responsable,
 medidas preventivas y una contingencia, cuya aplicación
-quedará registrada durante el piloto y la operación. SD8/T-16 consolida
+quedará registrada durante el piloto y la operación. La Tabla~\ref{tab:in3-riesgos} resume las valoraciones iniciales. SD8/T-16 consolida
 R-IN3-01--05, con escala, objetivo residual, titular, disparador, hito y
 evidencia; la revisión humana de cada póliza permanece obligatoria.
 
@@ -1319,13 +1321,13 @@ El modelo comercial se encuentra en \textbf{diseño conceptual}. Para esta incor
 
 \subsection{Diseño de la incorporación}
 
-En la capa de Servicios de negocio, se propone incorporar \texttt{IN4-MET} al módulo Varadero y contratistas del Núcleo de Servicios y \texttt{IN4-CON} a Finanzas y cobranza del Núcleo Administrativo. Esta ubicación sigue las agrupaciones del avance del SD4, sección 4.1 y decisión DA-04; los códigos IN4 son extensiones del SD13 cuya ubicación ya se recoge en SD4. Su especificación detallada sigue pendiente. \texttt{IN4-MET} relacionará la solicitud adicional con Orden de trabajo y, cuando corresponda, Reprogramación del SD5, sección 5.1.2, y recogerá los intervalos de tiempo activo. \texttt{IN4-CON} conservará ficha, solicitudes, versión del cálculo y acta. AUT ofrecerá el canal y ADM la gestión de permisos bajo las políticas de Auditoría y seguridad, separando preparación y aprobación. La salida será un expediente para la administración contractual, sin cobro automático.
+En la capa de Servicios de negocio, se propone incorporar \texttt{IN4-MET} al módulo Varadero y contratistas del Núcleo de Servicios y \texttt{IN4-CON} a Finanzas y cobranza del Núcleo Administrativo. Esta ubicación corresponde a las agrupaciones del SD4, sección 4.1 y decisión DA-04; los códigos IN4 son extensiones del SD13 cuya ubicación ya se recoge en SD4. Su especificación detallada sigue pendiente. \texttt{IN4-MET} relacionará la solicitud adicional con Orden de trabajo y, cuando corresponda, Reprogramación del SD5, sección 5.1.2, y recogerá los intervalos de tiempo activo. \texttt{IN4-CON} conservará ficha, solicitudes, versión del cálculo y acta. AUT ofrecerá el canal y ADM la gestión de permisos bajo las políticas de Auditoría y seguridad, separando preparación y aprobación. La salida será un expediente para la administración contractual, sin cobro automático.
 
 La integración reutilizará HTTPS y REST/JSON documentados con OpenAPI 3.1, conforme a DA-06. Las escrituras admitirán \texttt{Idempotency-Key} y las llamadas propagarán \texttt{Correlation-Id}. Los eventos usarán el sobre versionado del SD4; su consumo controlará \texttt{eventId} y la secuencia del agregado para evitar efectos duplicados. Los eventos de faena descritos en SD4, Integración, contratos y eventos aportan antecedentes, pero no registran por sí solos el esfuerzo administrativo: los tiempos requieren captura propia. Se consultará la autoridad mediante sus contratos, sin acceso directo a tablas ajenas. Los registros estructurados usarán PostgreSQL por dominio y las actas, el repositorio S3 de evidencia, conforme a DA-08; las correcciones conservarán el cálculo y acta anteriores.
 
 Los dos componentes se proponen dentro de los contenedores cloud de sus núcleos en ECS/Fargate si se aprueba AWS, o en Cloud Run si se aprueba GCP, según SD4, Arquitectura física y Data center, dentro del proveedor aprobado por G-REG. Durante una desconexión continuará la captura obligatoria de faena en la Célula Operacional Local; la conciliación del incentivo esperará la sincronización y validación de su evidencia. El tiempo activo deberá conservarse con el método aprobado, incluso si la captura se realiza en un registro controlado; si queda incompleto, el período no habilitará reconocimiento variable. La instrumentación OpenTelemetry del SD4 no sustituye esa medición de trabajo humano. El enlace de solicitudes, los tiempos y el expediente aún requieren atributos, estados, responsables, retención y contratos detallados en A5.1/A5.2 y SD4. La propuesta debe contrastarse también con DEC-22 y VAC-12 del SD2: la aprobación de negocio corresponde al cliente y la cobertura técnica a Synaptix, con dedicaciones y suplencias todavía por consolidar.
 
-La siguiente tabla presenta los entregables asociados a los paquetes
+La Tabla~\ref{tab:edt-in4} presenta los entregables asociados a los paquetes
 de la innovación, manteniendo el calendario propuesto. Los responsables
 indicados corresponden a la preparación y coordinación de cada
 entregable; la aceptación de la evidencia y del reconocimiento económico
@@ -1463,7 +1465,7 @@ Los riesgos se valoran inicialmente mediante probabilidad e impacto
 cualitativos. SD8/T-16 consolida R-IN4-01 y R-IN4-02, con titulares,
 disparadores, hitos y evidencias de seguimiento. Las valoraciones
 se revisarán con los resultados del piloto; los niveles residuales
-objetivo permanecen pendientes de comprobación.
+objetivo permanecen pendientes de comprobación. La Tabla~\ref{tab:riesgos-in4} resume las valoraciones iniciales.
 
 \begin{longtable}{
 L{\dimexpr0.14\linewidth-2\tabcolsep\relax}
@@ -1499,6 +1501,7 @@ y habilitar el incentivo. &
 Media & Alto \\
 \hline
 \end{longtable}
+\FuenteTabla{Elaboración propia; valoración inicial para planificación.}
 
 \medskip
 \noindent\textbf{R-IN4-01.}
@@ -1627,7 +1630,7 @@ Queda por detallar en SD4/SD5 y A5.1/A5.2 las entidades de
 adhesión, plan, acción y evaluación, sus contratos, estados
 y reglas de conservación.
 
-La siguiente tabla presenta los entregables y paquetes de trabajo
+La Tabla~\ref{tab:edt-in5} presenta los entregables y paquetes de trabajo
 de la innovación. Los meses corresponden a la programación
 contractual propuesta y deberán conciliarse con SD7/T-15.
 Los responsables indicados prepararán y coordinarán los
@@ -1724,7 +1727,7 @@ y evaluación previa a la temporada 2029 &
 21--56 & Operación / Líder de Datos \\
 \hline
 \end{longtable}
-\FuenteFigura{Fuente: elaboración propia; programación propuesta para conciliación con SD7.}
+\FuenteTabla{Elaboración propia; programación propuesta para conciliación con SD7.}
 
 
 El piloto depende de la medición individual validada, la asociación
@@ -1793,13 +1796,11 @@ Como indicador complementario se propone que al menos el 50\,\% de las embarcaci
 
 \subsection{Riesgo de adopción}
 
-\subsection{Riesgo de adopción}
-
 Los riesgos se valoran inicialmente mediante probabilidad e impacto
 cualitativos. SD8/T-16 consolida R-IN5-01, R-IN5-02 y R-IN5-03,
 con titulares, hitos y evidencias de seguimiento. Las valoraciones
 se revisarán durante el piloto y la operación; las puntuaciones
-residuales son objetivos pendientes de comprobación.
+residuales son objetivos pendientes de comprobación. La Tabla~\ref{tab:riesgos-in5} resume las valoraciones iniciales.
 
 \begin{longtable}{
 L{\dimexpr0.14\linewidth-2\tabcolsep\relax}
@@ -1843,7 +1844,7 @@ Baja & Alto \\
 \hline
 \end{longtable}
 
-\FuenteFigura{ Fuente: elaboración propia; valoración inicial
+\FuenteTabla{Elaboración propia; valoración inicial
 para planificación.}
 
 \medskip

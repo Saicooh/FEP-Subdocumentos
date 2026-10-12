@@ -213,7 +213,7 @@ El recurso de escritura, el de proyecciones y el histórico permanecen separados
 \EncabezadoTabla{Recurso} & \EncabezadoTabla{Inicial} & \EncabezadoTabla{Año tres / sensibilidad} & \EncabezadoTabla{Correspondencia y condición} \\ \hline
 \endhead
 \hline\endfoot
-RDS transaccional & 200 GB; uso inicial 10; 2 vCPU/8 GB RAM & 500 GB; uso 295; 8 vCPU/32 GB propuestos; tope ampliación 1 TB & Primario+HA+DR; medir IOPS/escrituras/conexiones; asignación física por confirmar \\ \hline
+RDS transaccional & 200 GB; uso inicial 10 GB; 2 vCPU/8 GB RAM & 500 GB; uso 295 GB; 8 vCPU/32 GB propuestos; tope ampliación 1 TB & Primario Multi-AZ en AWS Chile y réplica DR en AWS São Paulo (\texttt{sa-east-1}); medir IOPS, escrituras y conexiones concurrentes; asignación física sujeta a validación en gate \texttt{G-REG}. \\\hline
 PG de proyecciones & Disco 50 GB; reserva 15; 2 vCPU/8 GB independientes & Disco 100 GB; reserva 45; 8 vCPU/32 GB propuestos & Primario+HA; separado de RDS; reconstrucción DR por medir, sin réplica DR inventada \\ \hline
 S3 documental & 50 GB de histórico & 650 GB; sensibilidad 1.250 con objeto 4 MB & Original+regional; versiones ya contadas; cuota/alarma, no disco fijo \\ \hline
 S3 analítica/archivo & 10 GB de histórico & 103 GB, seguridad segregada & Original+regional; Parquet/Athena, sin binarios documentales añadidos \\ \hline
