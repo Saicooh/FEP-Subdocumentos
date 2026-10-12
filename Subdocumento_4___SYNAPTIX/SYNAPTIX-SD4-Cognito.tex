@@ -20,6 +20,7 @@
   BoldItalicFont=texgyreheros-bolditalic
 ]{texgyreheros}
 \input{componentes/portada.tex}
+\input{componentes/cierre.tex}
 \renewcommand{\VersionDocumento}{0.9}
 \renewcommand{\FechaDocumento}{11 de octubre de 2026}
 \begin{document}
@@ -507,25 +508,11 @@ Las bases se citan por documento/año/numeral; el plan suministrado orienta la r
 \noindent\textbullet\ Rose, S., Borchert, O., Mitchell, S., \& Connelly, S. (2020). Zero trust architecture (NIST SP 800-207). \url{https://doi.org/10.6028/NIST.SP.800-207}\par
 \section*{Declaración de uso de IA}
 \addcontentsline{toc}{section}{Declaración de uso de IA}
-OpenAI Codex se utilizó como herramienta de apoyo para estructurar contenidos, contrastar documentación técnica y asistir en la redacción. Las decisiones de arquitectura, cantidades, cálculos, fuentes y condiciones de aceptación deben ser verificadas y aprobadas por el responsable humano antes de la emisión. Este uso es independiente de IN3, funcionalidad de IA propuesta para el sistema.
+Synaptix declara el uso de IA por sección, anexo y formulario asociado. La tabla identifica las herramientas, su finalidad, los niveles de intervención y quién realizó la revisión manual del contenido y de su coherencia documental. Se conservan los aportes previos de cada integrante. Synaptix asume la responsabilidad sobre el contenido; esta declaración se consolidará en el Formulario A-6.
 
-\begin{table}[H]
-\centering
-\small
-\begin{tabularx}{\linewidth}{|p{.12\linewidth}|p{.21\linewidth}|p{.10\linewidth}|p{.16\linewidth}|X|}
-\hline
-\EncabezadoTabla{Sección / soporte} & \EncabezadoTabla{Herramienta / finalidad} & \EncabezadoTabla{Texto} & \EncabezadoTabla{Diagramas} & \EncabezadoTabla{Revisión humana} \\ \hline
-Capítulo 4/4.1 & Codex; arquitectura, controles y procesos & Alto & Nueve láminas incorporadas & Verificación técnica requerida antes de emisión. \\ \hline
-4.1.1 & Codex; selección, soporte y contraste documental & Alto & Ninguno & Verificación documental requerida antes de emisión. \\ \hline
-4.2/4.2.1 & Codex; despliegue, fórmulas e inventario & Alto & Nueve láminas incorporadas & Verificación de cantidades, cálculos y condiciones del sitio requerida antes de emisión. \\ \hline
-4.3 y subapartados & Codex; condiciones de habilitación y recuperación regional & Alto & Nueve láminas incorporadas & Aprobación técnica y ensayo requeridos conforme al plan de aceptación. \\ \hline
-Anexo A4 & Codex; contratos, amenazas, ADR y trazabilidad & Alto & Ninguno & Verificación de coherencia documental requerida antes de emisión. \\ \hline
-\end{tabularx}
-\caption{Uso de IA y revisión humana}
-\label{tab:uso-ia}
-\FuenteTabla{registro de elaboración del subdocumento}
-\end{table}
-El Formulario A-6 debe reflejar el uso efectivo de herramientas y la verificación humana realizada. Antes de la entrega, el responsable designado debe validar arquitectura, supuestos, cálculos, privacidad, fuentes y coherencia. Las pruebas y resultados de ejecución se acreditarán en los hitos correspondientes.
-
-
+La Tabla~\ref{tab:declaracion-ia} presenta el detalle del uso declarado.
+\begin{declaracionia}
+\DeclaracionesIA
+\end{declaracionia}
+\FuenteTabla{Registro de uso de IA de este subdocumento.}
 \end{document}
