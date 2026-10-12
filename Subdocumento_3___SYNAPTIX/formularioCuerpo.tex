@@ -2719,13 +2719,13 @@ La Tabla~\ref{tab:t12-bt-cap-7} individualiza los requisitos técnicos de este �
 RT-\allowbreak{}07.\allowbreak{}01 &
 El PROPONENTE declarará la modalidad escogida —activo-activo o activo-pasivo— y la justificará frente al costo, al RTO comprometido y a la complejidad operacional que introduce.\newline\textit{BT; Obligatorio.} &
 Sí &
-DR-4: activo-pasivo warm standby; São Paulo primario y México Central secundario; RTO máximo 4 h y RPO máximo 15 min &
+DR-4: activo-pasivo warm standby; Santiago primario y São Paulo secundario; RTO máximo 4 h y RPO máximo 15 min &
 SD4, sec. 4.3.2; T-11 \newline\textit{Evidencia prevista:} Memoria comparativa de modalidad y capacidad; informe de conmutación y recuperación regional. \\ \hline
 
 RT-\allowbreak{}07.\allowbreak{}02 &
 El sitio secundario estará emplazado a una distancia suficiente del principal para no verse afectado por el mismo evento de fuerza mayor. El PROPONENTE declarará la distancia y el análisis de amenazas comunes considerado.\newline\textit{BT; Obligatorio.} &
 Sí &
-DR-4: separación geográfica São Paulo/\allowbreak{}México Central; distancia urbana orientativa 7.614 km y amenazas compartidas &
+DR-4: separación geográfica Santiago/\allowbreak{}São Paulo; distancia urbana aproximada de 2.584 km y amenazas compartidas &
 SD4, sec. 4.3.2 \newline\textit{Evidencia prevista:} Memoria de distancia con fuentes geográficas; análisis de amenazas comunes y mitigaciones. \\ \hline
 
 RT-\allowbreak{}07.\allowbreak{}03 &
@@ -2737,25 +2737,25 @@ SD4, sec. 4.3.2; SD5 \newline\textit{Evidencia prevista:} Registro de datos repl
 RT-\allowbreak{}07.\allowbreak{}04 &
 El objetivo de tiempo de recuperación (RTO) no superará 4 horas y el objetivo de punto de recuperación (RPO) no superará 15 minutos para los servicios críticos, salvo exigencia superior del caso.\newline\textit{BT; Obligatorio.} &
 Sí &
-DR-4: São Paulo primario; México Central activo-pasivo; RTO máximo 4 h y RPO máximo 15 min &
+DR-4: Santiago primario y São Paulo como secundario, en modalidad activo-pasivo warm standby; RTO máximo 4 h y RPO máximo 15 min &
 SD4, sec. 4.2 \newline\textit{Evidencia prevista:} Ensayos de recuperación. \\ \hline
 
 RT-\allowbreak{}07.\allowbreak{}05 &
 El procedimiento de conmutación estará documentado, automatizado en la mayor medida posible y ejecutable por el personal del CLIENTE tras la transferencia de conocimiento.\newline\textit{BT; Obligatorio.} &
 Sí &
-DR-4: São Paulo primario; México Central activo-pasivo; RTO máximo 4 h y RPO máximo 15 min &
+DR-4: Santiago primario y São Paulo como secundario, en modalidad activo-pasivo warm standby; RTO máximo 4 h y RPO máximo 15 min &
 SD4, sec. 4.3 \newline\textit{Evidencia prevista:} Ensayos de recuperación. \\ \hline
 
 RT-\allowbreak{}07.\allowbreak{}06 &
 Existirá un procedimiento de retorno al sitio principal igualmente documentado y probado, con reconciliación de los datos generados durante la contingencia.\newline\textit{BT; Obligatorio.} &
 Sí &
-DR-4: São Paulo primario; México Central activo-pasivo; RTO máximo 4 h y RPO máximo 15 min &
+DR-4: Santiago primario y São Paulo como secundario, en modalidad activo-pasivo warm standby; RTO máximo 4 h y RPO máximo 15 min &
 SD4, sec. 4.3.2 \newline\textit{Evidencia prevista:} Ensayos de recuperación. \\ \hline
 
 RT-\allowbreak{}07.\allowbreak{}07 &
 El plan de recuperación ante desastres se probará al menos dos veces al año mediante conmutación real, con informe de resultados, medición del RTO y del RPO efectivamente alcanzados y plan de corrección de las brechas detectadas.\newline\textit{BT; Obligatorio.} &
 Sí &
-DR-4: São Paulo primario; México Central activo-pasivo; RTO máximo 4 h y RPO máximo 15 min &
+DR-4: Santiago primario y São Paulo como secundario, en modalidad activo-pasivo warm standby; RTO máximo 4 h y RPO máximo 15 min &
 SD4, sec. 4.3.2 \newline\textit{Evidencia prevista:} Ensayos de recuperación. \\ \hline
 
 RT-\allowbreak{}07.\allowbreak{}08 &
@@ -2767,31 +2767,31 @@ SD4, sec. 4.3.2 \newline\textit{Evidencia prevista:} Ensayos de recuperación. \
 RT-\allowbreak{}07.\allowbreak{}09 &
 La política de respaldo seguirá el esquema 3-2-1-1-0: tres copias, en dos medios distintos, una fuera de sitio, una inmutable o fuera de línea y cero errores de verificación de restauración.\newline\textit{BT; Obligatorio.} &
 Sí &
-DR-4: São Paulo primario; México Central activo-pasivo; RTO máximo 4 h y RPO máximo 15 min &
+DR-4: Santiago primario y São Paulo como secundario, en modalidad activo-pasivo warm standby; RTO máximo 4 h y RPO máximo 15 min &
 SD4, sec. 4.3 \newline\textit{Evidencia prevista:} Ensayos de recuperación. \\ \hline
 
 RT-\allowbreak{}07.\allowbreak{}10 &
 Los respaldos estarán cifrados en reposo y en tránsito, con clave gestionada de forma independiente de la infraestructura respaldada.\newline\textit{BT; Obligatorio.} &
 Sí &
-DR-4: São Paulo primario; México Central activo-pasivo; RTO máximo 4 h y RPO máximo 15 min &
+DR-4: Santiago primario y São Paulo como secundario, en modalidad activo-pasivo warm standby; RTO máximo 4 h y RPO máximo 15 min &
 SD4, sec. 4.3 \newline\textit{Evidencia prevista:} Ensayos de recuperación. \\ \hline
 
 RT-\allowbreak{}07.\allowbreak{}11 &
 Las copias inmutables estarán protegidas contra borrado y contra modificación durante su período de retención, incluso frente a credenciales administrativas comprometidas.\newline\textit{BT; Obligatorio.} &
 Sí &
-DR-4: São Paulo primario; México Central activo-pasivo; RTO máximo 4 h y RPO máximo 15 min &
+DR-4: Santiago primario y São Paulo como secundario, en modalidad activo-pasivo warm standby; RTO máximo 4 h y RPO máximo 15 min &
 SD4, sec. 4.3 \newline\textit{Evidencia prevista:} Ensayos de recuperación. \\ \hline
 
 RT-\allowbreak{}07.\allowbreak{}12 &
 Se ejecutará y documentará una prueba de restauración al menos mensual, sobre una muestra representativa, con medición del tiempo efectivo de restauración.\newline\textit{BT; Obligatorio.} &
 Sí &
-DR-4: São Paulo primario; México Central activo-pasivo; RTO máximo 4 h y RPO máximo 15 min &
+DR-4: Santiago primario y São Paulo como secundario, en modalidad activo-pasivo warm standby; RTO máximo 4 h y RPO máximo 15 min &
 SD4, sec. 4.2 \newline\textit{Evidencia prevista:} Ensayos de recuperación. \\ \hline
 
 RT-\allowbreak{}07.\allowbreak{}13 &
 El PROPONENTE declarará, por cada dominio de datos, la frecuencia de respaldo, el período de retención y el tiempo estimado de restauración completa.\newline\textit{BT; Obligatorio.} &
 Sí &
-DR-4: São Paulo primario; México Central activo-pasivo; RTO máximo 4 h y RPO máximo 15 min &
+DR-4: Santiago primario y São Paulo como secundario, en modalidad activo-pasivo warm standby; RTO máximo 4 h y RPO máximo 15 min &
 SD4, sec. 4.3 \newline\textit{Evidencia prevista:} Ensayos de recuperación. \\ \hline
 
 RT-\allowbreak{}07.\allowbreak{}14 &

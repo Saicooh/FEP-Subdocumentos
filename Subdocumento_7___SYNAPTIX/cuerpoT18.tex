@@ -1,0 +1,717 @@
+% T-18 · solo cuerpo · v1.0 · 11-10-2026 · Informe Preparatorio 2
+\section{Bases, alcance y gobierno de la implantación}\label{sec:t18-bases}
+Synaptix propone una implantación gradual y reversible por proceso, sitio y perfil para el Caso 07, Puerto Deportivo. El objetivo es incorporar los dos alcances sin interrumpir maniobras, perder trazabilidad ni degradar la Etapa 1 al implantar la Etapa 2. La propuesta conserva los entregables y códigos de T-14 y los recursos y fechas del programa P de T-15, ambos con versión interna v1.1. Las actuaciones, mediciones y actas se producirán al ejecutar; este formulario presenta procedimientos y compromisos de oferta, sin atribuir instalaciones, pruebas o recepción ya realizadas.
+
+\subsection{Objetivo, alcance y documentos relacionados}
+T-14 define qué se entrega y cuándo; T-15 sustenta esfuerzo, capacidad y dependencias; T-18 establece cómo se habilita, observa, acepta operativamente y activa cada alcance, y cómo se contiene una falla o se retorna. T-17 conserva el protocolo contractual de aceptación por hito y del producto final. SD3 y T-12 fijan alcance y requisitos; SD4/T-11, infraestructura; SD5, datos y migración; SD9/T-13, comprobaciones; T-16, riesgos; SD10, soporte; SD13/T-19, innovaciones. Una referencia a esos documentos no acredita su aceptación ni permite omitir la evidencia exigible al paso a producción.
+
+El formulario aplica las Bases Administrativas, arts. 17--18 y formulario T-18; las Bases Técnicas Transversales, capítulo 20 y RT-20.01--08; y las condiciones del Caso 07, numerales 13.2--13.3. Para Informe Preparatorio 2 se desarrolla el plan y sus formatos de evidencia. La aceptación, resultados medidos, permisos y nóminas efectivas se registrarán en ejecución. Los supuestos nuevos de esta propuesta se identifican expresamente y se contrastan antes de autorizar su uso.
+
+\subsection{Calendario y restricciones obligatorias}
+El calendario académico conserva enero de 2027 como mes 1, conforme a T-14/T-15. Las fechas siguientes son resultados del programa, no acuerdos obtenidos con el CLIENTE. La marcha blanca no se acorta por aumentar recursos ni por revisar anticipadamente sus antecedentes.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.320000\linewidth-2\tabcolsep\relax}p{\dimexpr0.450000\linewidth-2\tabcolsep\relax}p{\dimexpr0.230000\linewidth-2\tabcolsep\relax}}
+\caption{Calendario de implantación y puertas de producción}\label{tab:t18-fases}\\\hline
+\textbf{Fase} & \textbf{Período} & \textbf{Hito}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-fases}}}\\\hline
+\textbf{Fase} & \textbf{Período} & \textbf{Hito}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+E1: preparación & Meses 1--12 & H5: 19-11-2027\\\hline
+E1: marcha blanca & 01-12-2027 a 29-02-2028 & H6\\\hline
+E1: producción & Mes 16 & H7: 20-03-2028\\\hline
+E2: preparación & Meses 13--18 & H9/H10\\\hline
+E2: marcha blanca & 01-06 a 31-07-2028 & H11\\\hline
+E2: producción P & Mes 21 & H12: 01-08-2028\\\hline
+E2: contraste B & 18 días de retraso & H12: 19-08-2028\\\hline
+Operación & Meses 21--56 & 36 meses\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: Bases Administrativas, art. 17; red y calendario P/B de T-15, sec. 4 y 7; T-14, sec. 4.}
+
+E1 requiere versión integrada, certificación, usuarios y retorno preparados antes de H6. La marcha blanca ocupa los meses 13--15 y comienza la convivencia real; sus cuatro semanas finales son 02--29-02-2028. H7 requiere acta de cierre previa, ventana admisible y cambio oficial.
+
+E2 conserva preparación aislada durante el congelamiento; su construcción es admisible desde el 16-03-2028. H9 se calcula el 20-04 y H10 el 22-05-2028. H11 inicia observación en los meses 19--20, mientras E1 continúa oficial; las cuatro semanas finales son 04--31-07-2028.
+
+P prevé cero días por fecha, condicionado a decisión y firma tempranas, ausencia de observaciones y corte válido. B utiliza revisión final completa y calcula 18 días frente al objetivo operativo del 01-08. Operación cubre ambos alcances durante 36 meses; el soporte de implementación permanece en los meses 13--20.
+
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.270000\linewidth-2\tabcolsep\relax}p{\dimexpr0.360000\linewidth-2\tabcolsep\relax}p{\dimexpr0.370000\linewidth-2\tabcolsep\relax}}
+\caption{Restricciones del puerto y actuación del proyecto}\label{tab:t18-restricciones}\\\hline
+\textbf{Restricción} & \textbf{Ventana o condición} & \textbf{Actuación}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-restricciones}}}\\\hline
+\textbf{Restricción} & \textbf{Ventana o condición} & \textbf{Actuación}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Temporada alta & 15-11 a 31-03 & Mantener cobertura\\\hline
+Congelamiento & 15-12 a 15-03 & Sin nuevos despliegues\\\hline
+Varadero & Abril--mayo; septiembre--noviembre & Sin intervención\\\hline
+Eventos náuticos & 14 fechas protegidas & Respetar agenda\\\hline
+Marejadas & Aviso de autoridad & Suspender y reprogramar\\\hline
+Maniobras y escuela & Actividad operacional & Evitar interferencias\\\hline
+Bahía Ilque & Acceso marítimo & Coordinar visita segura\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: Caso 07, sec. 13.2--13.3 y condiciones de Bahía Ilque; T-15, sec. 4.}
+
+La temporada alta protege demanda y operación y requiere calendario del CLIENTE y cuadrante de cobertura; no se retira personal de atención sin relevo. Es distinta del congelamiento. Durante este último no se autorizan nuevos pasos a producción: se anticipan habilitaciones y formación y se conservan las versiones habilitadas. Continúan observación y soporte previstos; PREPROD no constituye permiso para intervenir producción.
+
+En campañas de varadero, la autoridad de faena valida las ventanas y la observación/soporte no autoriza cambiar equipos ni interferir izajes. Administración incorpora las 14 fechas náuticas y congelamientos locales a la agenda autorizada; si esa agenda falta, no se permite una intervención cuya admisibilidad dependa de ella.
+
+El aviso de marejada suspende actividades programadas del proyecto. Se registran tareas afectadas y se reprograman, manteniendo únicamente respuesta operacional de emergencia segura, sin presentar trabajo programado como incidente. No se interfiere amarre, izaje, expendio de combustible ni salida de clases; el responsable del sitio confirma la ventana y puede detener la actividad.
+
+Ilque tiene acceso sólo por mar y no aporta energía, datos ni personal permanente. Se requieren embarcación, permiso, ventana segura y procedimiento desconectado; no se supone acceso terrestre.
+
+
+\subsection{Responsabilidades, autorizaciones y comunicaciones}
+Ignacio Silva integra el programa y presenta expedientes; José Lara Arce dirige Operación/SRE e implantación; Davor Serey controla pruebas y evidencia; Nicolás Torfan coordina conciliación y datos; Fernando Guerrero controla interfaces y configuración; los referentes funcionales verifican reglas del proceso. La dotación de ejecución utiliza los perfiles e identidades de T-15: el titular de una función no se considera disponible simultáneamente para todos sus puestos. La Contraparte Técnica acepta contractualmente; la autoridad operativa del puerto decide admisibilidad y seguridad de maniobras. Las designaciones y facultades efectivas del CLIENTE se identificarán por escrito en la lista de habilitación.
+
+La matriz siguiente utiliza R: ejecuta; A: responde por la decisión indicada; C: consultado; I: informado. Una decisión contractual no se transfiere a una aprobación interna. El aviso de suspensión es inmediato; el informe diario consolida estado, volumen, incidentes, diferencias, permisos y decisiones. Antes de cada corte, Proyecto confirma convocatoria, canales de contacto, receptor autorizado, suplentes y procedimiento si no se obtiene pronunciamiento.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.320000\linewidth-2\tabcolsep\relax}p{\dimexpr0.320000\linewidth-2\tabcolsep\relax}p{\dimexpr0.360000\linewidth-2\tabcolsep\relax}}
+\caption{Responsabilidad por decisión operativa y contractual}\label{tab:t18-raci}\\\hline
+\textbf{Decisión} & \textbf{Ejecutor (R)} & \textbf{Autoridad (A)}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-raci}}}\\\hline
+\textbf{Decisión} & \textbf{Ejecutor (R)} & \textbf{Autoridad (A)}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Presentar expediente & Proyecto/Datos/Calidad & Ignacio Silva\\\hline
+Autorizar faena & Implantación & Autoridad del puerto\\\hline
+Verificar puerta técnica & Calidad/Datos/SRE & Responsable técnico\\\hline
+Aceptar hito & Proyecto & Contraparte autorizada\\\hline
+Cambiar autoridad & SRE/Datos/Integración/Implantación & José Lara Arce\\\hline
+Detener actividad & Ejecutor & Puerto/José Lara\\\hline
+Autorizar retorno & SRE/Datos & Autoridad designada\\\hline
+Cerrar refuerzo & Implantación/Operación & José Lara Arce\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: T-14/T-15 vigentes; procedimiento propuesto por Synaptix.}
+
+R identifica quién ejecuta o prepara la actuación; A, quién tiene autoridad sobre la decisión. C corresponde a consultados e I a informados. Para presentar el expediente se consulta a referentes funcionales y SRE y se informa a Contraparte. En autorización de faena se consulta a Proyecto y responsable de proceso y se informa a Calidad. En la puerta técnica se consulta a Integración/Funcional y se informa a Proyecto/Contraparte.
+
+Proyecto presenta el hito y la Contraparte Técnica autorizada acepta; se consulta a Calidad y responsables del CLIENTE y se informa a Operación. El cambio de autoridad se ejecuta sólo después de la aceptación requerida: se consulta a Calidad y autoridad del sitio y se informa a Proyecto/Contraparte.
+
+Ante peligro o umbral incumplido, el ejecutor detecta y contiene. La autoridad del sitio decide por seguridad y José Lara por contención técnica; se consulta a Calidad/Proyecto y se informa a Contraparte. El ejecutor no espera un comité para detener una faena insegura.
+
+El retorno lo autoriza quien esté designado en el procedimiento recibido, con consulta a José Lara, Calidad, proceso y Contraparte e información a usuarios afectados. En cierre del refuerzo se consulta a Calidad y referente del CLIENTE y se informa a Gerencia de Servicio/Proyecto.
+
+
+\section{Estrategia gradual por proceso, sitio y perfil}\label{sec:t18-estrategia}
+\subsection{Unidad de despliegue y manifiestos}
+Se propone conservar el dimensionamiento de T-15: tres olas E1 y dos E2, con dos puestos equivalentes de Implantación por ola y 28 días de acompañamiento. Son olas lógicas por proceso, con equipos separados y puertas de autorización propias, no cinco versiones distintas ni una modificación del alcance. El arranque de sus frentes se sitúa en H6/H11, conforme a las actividades agregadas de la red vigente. Las autorizaciones por proceso se secuencian dentro del primer día; su orden se comprueba en habilitación. Si la secuencia real requiere desplazar una ola, se recalculan sus 28 días, relevos y efecto sobre T-15 antes de aprobar el cambio.
+
+El manifiesto identifica ID de ola, etapa, sitio/zona, población, perfiles, procesos y códigos EDT, versión/configuración, fecha y ventana local, grupo de datos, autoridad de escritura, habilitaciones, personas y suplentes, evidencias, condición de avance y retorno. Los tres grupos de 1.11.1 no determinan por sí solos cantidad de olas. Los ID de ola siguientes pertenecen a T-18; referencian paquetes existentes y no crean entregables terminales adicionales.
+
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.200000\linewidth-2\tabcolsep\relax}p{\dimexpr0.240000\linewidth-2\tabcolsep\relax}p{\dimexpr0.430000\linewidth-2\tabcolsep\relax}p{\dimexpr0.130000\linewidth-2\tabcolsep\relax}}
+\caption{Olas propuestas y cobertura del alcance funcional}\label{tab:t18-olas}\\\hline
+\textbf{Ola} & \textbf{Arranque} & \textbf{Frente} & \textbf{Puestos}\\\hline\endfirsthead
+\multicolumn{4}{l}{\textit{Continuación de la tabla \ref{tab:t18-olas}}}\\\hline
+\textbf{Ola} & \textbf{Arranque} & \textbf{Frente} & \textbf{Puestos}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+E1-O01 & 01-12-2027 & Maestros, amarras y torre & 2\\\hline
+E1-O02 & 01-12-2027 & Escuela y apoderados & 2\\\hline
+E1-O03 & 01-12-2027 & Combustible, medición y consulta & 2\\\hline
+E2-O01 & 01-06-2028 & Varadero, contratistas y ambiente & 2\\\hline
+E2-O02 & 01-06-2028 & Contratos, finanzas y custodia & 2\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: T-14/T-15 vigentes; procedimiento propuesto por Synaptix.}
+
+\textbf{E1-O01.} Comprende maestros, inventario, amarras, torre/zarpes y planes en pantalanes, torre, portería e inspecciones Ilque; paquetes 1.4.1, 1.4.3 y 1.6.1.1.1--1.6.1.3.1. Los puestos corresponden a referente de operación/torre y acompañamiento de terreno. Participan perfiles 1--2 y Administración/Soporte según tarea; identidad, accesos, inventario y retorno se habilitan primero.
+
+\textbf{E1-O02.} Comprende nóminas, participación, retiros y retornos de escuela y canal de apoderados; paquete 1.4.2. Los puestos cubren práctica en escuela y asistencia funcional/canal, con perfiles 1--2 y 5. Antes de la salida deben recibirse autorizaciones y responsables; una alerta no acredita seguridad física.
+
+\textbf{E1-O03.} Comprende combustible, agua/energía, evidencia ambiental inicial y consulta inicial de faena en surtidor, pantalanes y administración/varadero en consulta; paquetes 1.5.2, 1.5.3.1.1--1.5.3.2.1 y 1.5.1.1.1. Los puestos cubren medición técnica y operador/consulta, con perfiles 1--5 según intervención. No se anticipan operación completa de varadero ni cobranza E2.
+
+\textbf{E2-O01.} Comprende varadero/contratistas y ambiente completo; paquetes 1.5.1.2.1--1.5.1.5.1 y 1.5.3.3.1--1.5.3.5.1, en varadero, control de acceso y recepción de residuos. Los puestos cubren varadero y referente móvil ambiental/contratistas; participan perfiles 1--3 y Soporte. El arranque ocurre en junio, después de campaña protegida, y E1 conserva autoridad sobre sus hechos.
+
+\textbf{E2-O02.} Comprende contratos completos, facturación, respuestas contables, cobranza y custodia en administración, portal e interfaces financieras; paquetes 1.6.1.4.1 y 1.6.2. Los puestos cubren administración e interfaces/canal, con perfiles 1--5 según función. Requiere accesos externos, ensayo de cierre y consulta independiente recibidos.
+
+\subsection{Secuencia y dependencias de las olas}
+Las capacidades de maestros y autorización habilitan los procesos consumidores. Cada ola requiere versión identificada y usuarios preparados antes de utilizar datos reales; el expediente recibido de habilitación precede la primera activación supervisada. La cobertura de todo el alcance en marcha blanca se mantiene durante las cuatro semanas finales; una activación local posterior no reduce ese período. La fecha H6/H11 inicia la marcha de etapa y no equivale a producción oficial H7/H12.
+
+Los pilotos de las cinco innovaciones utilizan los paquetes 1.9 de T-14 y sus propias ventanas. Cada manifiesto enlaza el ID IN vigente, componente, participantes, responsable, versión, indicador, soporte y mecanismo de desactivación. Se habilita sólo el piloto recibido y técnicamente disponible; no se traslada una innovación estacional a julio para completar un acta. El cierre de un piloto no reemplaza las condiciones copulativas de la marcha blanca y la falla de una innovación no autoriza omitir una obligación del alcance base.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.250000\linewidth-2\tabcolsep\relax}p{\dimexpr0.250000\linewidth-2\tabcolsep\relax}p{\dimexpr0.500000\linewidth-2\tabcolsep\relax}}
+\caption{Habilitación de innovaciones conservando su calendario}\label{tab:t18-innovaciones}\\\hline
+\textbf{Innovación} & \textbf{Cuenta EDT} & \textbf{Habilitación principal}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-innovaciones}}}\\\hline
+\textbf{Innovación} & \textbf{Cuenta EDT} & \textbf{Habilitación principal}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+IN1 & 1.9.1 & Despliegue: mes 21\\\hline
+IN2 & 1.9.2 & Piloto: meses 31--36\\\hline
+IN3 & 1.9.3 & Transferencia: mes 21\\\hline
+IN4 & 1.9.4 & Habilitación contractual: mes 21\\\hline
+IN5 & 1.9.5 & Transferencia: mes 21\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: T-14 v1.1, sec. 4, secuencia de innovaciones del diccionario vigente.}
+
+\textbf{IN1.} Diseño en 14--15, construcción/integración en 16--17 y pruebas en 18; base sin flujo adicional en 19, capacitación posterior a esa base y previa al piloto/evaluación de 20, y despliegue en 21. Se preservan universo comparable, estados y primera respuesta; no se capacita en el flujo adicional durante la base. Los informes de cada quincena se reciben después de finalizarla; sus HH de elaboración no representan duración de observación.
+
+\textbf{IN2.} Diseño en 14--15, construcción en 16--17, integración en 17--18 y pruebas en 19--20; inscripción, planes y formación en 30, piloto en 31--36 y transferencia en 37. Se utiliza el primer junio admisible con IN1 e interfaces recibidas y se respetan revisiones de botadura 33--35. No se acepta el piloto durante marcha E2 ni se adelanta la campaña por cierre H12.
+
+\textbf{IN3.} Inventario en 13, interfaces/construcción en 14, integración en 15 y pruebas/preparación en 16; registros en 18--19, evaluación en 19 y transferencia en 21. La extracción asistida conserva origen, permisos y revisión humana. Una sugerencia no sustituye documentos ni autorizaciones inexistentes; el componente puede desactivarse sin perder consulta.
+
+\textbf{IN4.} Interfaces en 14--15 después de flujo/roles IN1, captura en 16, cálculo y pruebas en orden en 17, base en 18, evaluación en 19 y habilitación contractual en 21. No aplica efectos de pago durante evaluación; base/incentivo conserva método, universo y versión y la recepción contractual precede el efecto económico.
+
+\textbf{IN5.} Plan en 13, diseño/cálculo en 14, portal/integración en 15 y pruebas/preparación en 16; base en 18, evaluación en 19 y transferencia en 21. El pasaporte ambiental conserva documentos de origen y serie histórica y protege la temporada ambiental 2029. Un reporte automático no acredita certificación del puerto. Todas las cifras de secuencia de este apartado identifican meses del programa.
+
+Para IN1, el cierre de la base del mes 19 libera la capacitación específica del mes 20; ésta libera el uso del piloto. Se mantiene esa precedencia aunque una actividad documental esté estimada en pocas HH. La red de entrada programa tempranamente la guía/capacitación y algunos registros quincenales: esas fechas no habilitan aceptar datos todavía futuros. Antes de integrar la línea base operativa se deben separar la preparación de plantillas de la observación y recepción posteriores al período y conciliar sus liberaciones y receptores con T-15. Este formulario no afirma que tal ajuste haya sido recalculado ni que elimine las condiciones externas de H12.
+
+\subsection{Convivencia y autoridad de datos}
+Se adopta una autoridad de escritura por entidad y período. El legado conserva sus documentos y saldos contables oficiales mientras no se reciba la sustitución administrativa; E1 aporta datos operacionales según su etapa y E2 los consume sin apropiarse de su autoridad. Los hechos de terreno se registran una sola vez por el operador autorizado; una transferencia automatizada o copia de comprobación se identifica como réplica, no como un segundo original. Las cargas iniciales, deltas, consulta histórica y efectos en sistemas externos mantienen versiones y bitácoras.
+
+Durante convivencia, el registro nuevo en evaluación conserva condición supervisada y su enlace al registro vigente que corresponda. El manifiesto precisa cuál constituye la autoridad antes de cada cambio; los casos sin autoridad definida no se habilitan. Una conciliación no permite sobrescribir el origen para que coincida con la copia. Rectificaciones, pagos y decisiones de custodia conservan responsable competente y documentos originales.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.320000\linewidth-2\tabcolsep\relax}p{\dimexpr0.340000\linewidth-2\tabcolsep\relax}p{\dimexpr0.340000\linewidth-2\tabcolsep\relax}}
+\caption{Autoridad y protección durante la convivencia}\label{tab:t18-autoridad}\\\hline
+\textbf{Dominio} & \textbf{Marcha blanca} & \textbf{Producción/control}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-autoridad}}}\\\hline
+\textbf{Dominio} & \textbf{Marcha blanca} & \textbf{Producción/control}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Maestros y contratos & Origen recibido & Autoridad por entidad\\\hline
+Torre, escuela y seguridad & Captura única supervisada & E1 oficial tras H7\\\hline
+Medición y combustible & Lectura y despacho conciliados & E1 técnico; E2 comercial\\\hline
+Contabilidad y pagos & Autoridad contable externa & Acuse e idempotencia\\\hline
+Residuos y custodia & Documentos y actos firmados & Entregas y certificados E2\\\hline
+Ilque/desconectado & Captura local identificada & Delta conciliado por ID\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: Fronteras de las cuentas 1.4--1.8 de T-14; reglas de convivencia BA17.2; aplicación operativa propuesta, a conciliar con SD5.}
+
+Maestros y contratos conservan origen y documentos recibidos identificados y réplica nueva controlada. E1 consulta el contrato vigente sin sustituir gestión completa E2. Después se utiliza la fuente recibida por entidad, con cambios trazados; los contratos completos pasan a la solución sólo mediante corte administrativo autorizado.
+
+Torre, escuela y seguridad operacional conservan respaldo del procedimiento actual y captura supervisada única, conciliada con folios, autorizaciones y responsables. E1 se convierte en registro oficial tras H7; E2 consume sus hechos sin duplicar escritura. Un evento sensórico no sustituye la decisión del puerto o monitor.
+
+Medición y combustible preservan lectura original, dispositivo, unidad, época y asociación temporal; el despacho validado se concilia con totalizador/documento. E1 conserva hechos técnicos y E2 deriva imputación comercial. No se suman totalizadores como consumo ni se imputa una lectura inválida.
+
+El sistema contable externo conserva autoridad de saldo y documento; E2 prepara hechos facturables y guarda cada acuse. La respuesta externa determina el estado confirmado y el reintento usa ID idempotente; no se crea un pago/cobro nuevo para resolver una espera.
+
+Residuos y custodia parten de acto, cantidades, origen y documentos firmados; evidencia incompleta permanece pendiente. E2 relaciona entregas/certificados sin inventar destino, consentimiento ni cierre legal. En Ilque se separan fecha de hecho y de recepción, se sincroniza al recuperar comunicación y se concilian duplicados y secuencia por ID antes de aceptar delta. Una visita no acredita cobertura permanente.
+
+\subsection{Criterios de avance entre olas}
+Se avanza cuando están recibidos versión, permisos, interfaces y usuarios del alcance; no hay incidente crítico/alto abierto atribuible; la primera conciliación no tiene diferencias no explicadas; el procedimiento de retorno está probado; y el siguiente proceso tiene sus dependencias disponibles. Calidad registra la recomendación y el responsable autorizado decide. Una observación menor sólo puede quedar pendiente si no afecta requisito exigible, seguridad o integridad y su aceptación está documentada; no se autoriza una excepción por conveniencia del cronograma. Ante falla, se detiene el paso afectado y se conserva el estado seguro del resto de las olas.
+
+\section{Preparación, ensayos y habilitación}\label{sec:t18-preparacion}
+\subsection{Preparación técnica y funcional}
+Antes de H6/H11, Proyecto reúne lista de habilitación con evidencia por requisito: ambiente y versión, cuentas nominativas, configuración protegida, acceso del CLIENTE, terminales, conectividad admisible, interfaces, autorización local, personas certificadas, monitoreo, soporte y retorno. El responsable del paquete presenta evidencia identificada y Calidad comprueba su correspondencia con la versión a usar. No se recibe por una captura de pantalla sin identificación del ambiente ni por una promesa de permiso futuro.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.300000\linewidth-2\tabcolsep\relax}p{\dimexpr0.380000\linewidth-2\tabcolsep\relax}p{\dimexpr0.320000\linewidth-2\tabcolsep\relax}}
+\caption{Lista de habilitación obligatoria por ola}\label{tab:t18-habilitacion}\\\hline
+\textbf{Control} & \textbf{Evidencia} & \textbf{Responsable}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-habilitacion}}}\\\hline
+\textbf{Control} & \textbf{Evidencia} & \textbf{Responsable}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Versión y alcance & Manifiesto y pruebas & Integración/Calidad\\\hline
+Ambientes y accesos & Habilitaciones y permisos & SRE/Integración\\\hline
+Datos y autoridad & Cargas, ensayos y diario & Datos\\\hline
+Personas preparadas & Materiales y evaluación & Implantación/Funcional\\\hline
+Ventana y logística & Agenda y acceso seguro & Puerto/Proyecto\\\hline
+Continuidad y soporte & Procedimientos y relevos & Operación\\\hline
+Decisión de iniciar & Expediente y acta & Proyecto/Contraparte\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: T-14/T-15 vigentes; procedimiento propuesto por Synaptix.}
+
+Versión y alcance requieren manifiesto integrado que vincule código/configuración, requisitos y pruebas. Sólo se utiliza la versión recibida; un delta posterior identifica pruebas afectadas. Ambientes y accesos comprenden habilitaciones 1.2, infraestructura 1.3 y contratos/interfaces 1.7, con permisos y registro de acceso. Ambiente habilitado no equivale a recepción de producción.
+
+Datos y autoridad incluyen inventario 1.8, cargas conciliadas, dos ensayos, copia/diario y regla de escritura; no se admite diferencia no explicada ni autoridad ambigua. Personas preparadas incluyen planes 1.11.3, materiales 1.11.2 y cohortes 1.11.7, con evaluación y suplentes. La población habilitada corresponde al manifiesto; la asistencia sola no basta.
+
+Ventana y logística requieren agenda del sitio, embarcación/acceso cuando corresponda, ruta segura y comunicaciones, con autorización vigente y sin interferir actividades protegidas. Continuidad y soporte incluyen procedimientos ejecutables, canal único, escalamiento, alternativas manuales y relevo; mesa/guardia permanece disponible durante corte, visita y formación.
+
+La decisión de iniciar requiere expediente técnico y acta que habilite marcha blanca, H5/H10 y puertas H6/H11. Proyecto/Contraparte registra pronunciamiento y no avanza si falta la recepción exigida.
+
+
+\subsection{Migración, ensayos completos y retorno}
+Datos inventaría el universo por entidad y corte, reproduce la extracción, aplica reglas recibidas de saneamiento y separa errores de origen, transformaciones y cambios autorizados. Cada carga registra conteo, claves, unidad/moneda, total de control, versión, fecha y evidencia de conciliación. Socios, contratos, pagos/saldos, embarcaciones/invernadas, expedientes de abandono y matrícula escolar conservan fronteras de 1.8; los archivos originales quedan disponibles para consulta independiente.
+
+Se ejecutan dos ensayos completos previos a cada primera autoridad de la etapa, con carga, delta, comprobación y restitución. T-15 sec. 4 anticipa los ensayos a seis y cuatro semanas del corte nominal para reservar recepción, frente a las referencias originales a tres y una semana. Este plan utiliza el orden anticipado para programar evidencia y mantiene revisión operativa dos días hábiles antes; las fechas de cada grupo se obtienen del corte autorizado y de las ventanas recibidas. El corte supervisado de inicio y el cambio oficial son actos diferentes. Si cambia versión, reglas, interfaz o universo después del ensayo, Datos/Calidad identifica y repite el alcance afectado antes de decidir; la referencia temporal no valida un ensayo obsoleto.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.120000\linewidth-2\tabcolsep\relax}p{\dimexpr0.400000\linewidth-2\tabcolsep\relax}p{\dimexpr0.480000\linewidth-2\tabcolsep\relax}}
+\caption{Secuencia verificable de migración y ensayo}\label{tab:t18-ensayos}\\\hline
+\textbf{Paso} & \textbf{Acción} & \textbf{Salida}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-ensayos}}}\\\hline
+\textbf{Paso} & \textbf{Acción} & \textbf{Salida}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+1 & Inventariar & Manifiesto y copia\\\hline
+2 & Preparar reglas & Saneamiento autorizado\\\hline
+3 & Ensayo completo 1 & Resultados y correcciones\\\hline
+4 & Corregir y actualizar delta & Hallazgos resueltos\\\hline
+5 & Ensayo completo 2 & Datos y duración comprobados\\\hline
+6 & Recibir y habilitar & Pronunciamiento y retorno disponible\\\hline
+7 & Actualizar convivencia & Conciliación diaria y mensual\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: RT capítulo 20: dos ensayos de migración; T-14 cuenta 1.8 y ensayos 1.10; T-15 sec. 4.}
+
+El inventario recibe accesos y universo e identifica registros oficiales, archivos y responsable del legado. Requiere manifiesto y copia comprobados y operador de origen y suplente operativo identificados. La preparación separa dato válido, defecto y decisión de saneamiento, con precarga sin efectos oficiales; cada modificación conserva autorización, reversión y evidencia, sin fabricar documentos faltantes.
+
+El ensayo 1 extrae, transforma, carga, concilia y simula retorno con la versión candidata. Registra duración, recursos, pérdidas/duplicados, observaciones y plan de corrección. Después se corrigen hallazgos, comprueban claves idempotentes y actualiza origen; críticos/altos deben estar resueltos y reensayados y las diferencias explicadas conservan autorización.
+
+El ensayo 2 repite el ciclo final, simula nuevas transacciones y restitución posterior y comprueba datos correctos y duración compatible. Dos ensayos completos no equivalen a repetir sólo la extracción. La recepción presenta resultados, lista final de versión/universo y decisión, con revisión operativa previa, pronunciamiento según T-17, retorno activo y personal disponible.
+
+En convivencia se concilia a diario y mensualmente y se repite delta/revisión ante cambios materiales. El corte final utiliza registros producidos y versión vigente; no acepta antecedentes futuros.
+
+\subsection{Comprobaciones antes de habilitar}
+Los resultados de pruebas se producen en los paquetes 1.10 y en la frontera funcional, conforme a T-13/SD9. Se reutilizan evidencias de la misma versión y requisito, sin repetir HH o confundir preparación con prueba aprobada. E2 incluye regresión de E1 y contratos compartidos. La carga artificial verifica capacidad y fallo; no acredita operación real de la marcha blanca.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.320000\linewidth-2\tabcolsep\relax}p{\dimexpr0.340000\linewidth-2\tabcolsep\relax}p{\dimexpr0.340000\linewidth-2\tabcolsep\relax}}
+\caption{Comprobaciones y puertas de salida}\label{tab:t18-pruebas}\\\hline
+\textbf{Prueba} & \textbf{Criterio} & \textbf{Evidencia}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-pruebas}}}\\\hline
+\textbf{Prueba} & \textbf{Criterio} & \textbf{Evidencia}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Unitarias/integración & $\geq 70\%$; sin fallos & Informe por versión\\\hline
+Sistema/regresión/UAT & Casos aprobados y firmados & Resultados y firma\\\hline
+Carga/estrés & 1,5 veces peak & Curvas y saturación\\\hline
+Resiliencia/DR & RTO/RPO comprometidos & Conmutación y conciliación\\\hline
+Seguridad/accesibilidad & Sin críticos/altos; WCAG 2.2 AA & Informes de comprobación\\\hline
+Migración/retorno & Dos ensayos completos & Resultados y retorno\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: Bases Técnicas Transversales, sec. 20.1; T-14, 1.10; T-15, fronteras de estimación.}
+
+Unitarias/integración exige cobertura mínima de 70\% en lógica de negocio, ninguna prueba fallida y todos los flujos de integración del caso sin error. El informe identifica versión, casos y resultados y conserva la frontera funcional/T-13. Sistema/regresión/UAT exige regresión completa sin regresiones y casos de aceptación aprobados y firmados por Contraparte; E2 verifica E1 compartida.
+
+Carga/estrés verifica umbrales a 1,5 veces el peak declarado e identifica saturación, con curvas de carga, respuesta y recursos, escenario y cálculo de peak de arquitectura. Resiliencia/DR exige degradación controlada y recuperación/conmutación real que cumpla RTO/RPO: documenta último dato confirmado, tiempos y conciliación, no sólo existencia de réplica.
+
+Seguridad no admite hallazgos críticos ni altos abiertos y accesibilidad exige WCAG 2.2 AA verificada y documentada por versión/canales aplicables. Migración/retorno exige dos ensayos completos, conciliación sin diferencias no explicadas y resultados de retorno antes y después de nuevas transacciones. 
+
+\subsection{Formación y certificación por sitio y perfil}
+Los perfiles de T-14 se mantienen: 1, personas usuarias finales; 2, avanzadas/referentes; 3, Administración; 4, equipo técnico que recibe transferencia; 5, soporte niveles 1 y 2. La formación usa grupos compatibles de hasta doce personas, dos sesiones de dos horas y evaluación práctica; son decisiones de Synaptix. La certificación propuesta exige resolver todos los pasos críticos del rol sin omitir control de seguridad, autorización o conciliación; quien no apruebe recibe recuperación y nueva evaluación antes de habilitarse. Esta regla no modifica una habilitación profesional que el caso exige por separado.
+
+El manifiesto nominal calcula cohortes por perfil, turno, sitio y modalidad; los 194 grupos iniciales y 69 estacionales del escenario de T-15 son supuestos de presupuesto, no personas confirmadas ni límites de atención. Cada alta, temporero o sustituto se recibe antes de operar. Los materiales editables en español se vinculan a versión; no se presume que una persona técnica del CLIENTE existe porque se reserve un código de formación.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.280000\linewidth-2\tabcolsep\relax}p{\dimexpr0.390000\linewidth-2\tabcolsep\relax}p{\dimexpr0.330000\linewidth-2\tabcolsep\relax}}
+\caption{Aplicación de perfiles de formación}\label{tab:t18-formacion}\\\hline
+\textbf{Perfil} & \textbf{Práctica} & \textbf{Validación}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-formacion}}}\\\hline
+\textbf{Perfil} & \textbf{Práctica} & \textbf{Validación}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+1. Finales & Operación y portal & Rol y contingencia\\\hline
+2. Avanzadas & Excepciones y supervisión & Evidencia y escalamiento\\\hline
+3. Administración & Maestros y gestión E2 & Documentos y acuses\\\hline
+4. Equipo técnico & Accesos y recuperación & Procedimiento supervisado\\\hline
+5. Soporte N1/N2 & Recepción y tickets & Caso y derivación\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: T-14/T-15 vigentes; procedimiento propuesto por Synaptix.}
+
+Perfil 1 practica salida/regreso y amarra en torre/pantalán; nómina, retorno y retiro en escuela; despacho en surtidor; varadero/administración según etapa y portal remoto asistido. La certificación comprueba rol, autorización y contingencia, con sesiones fuera de maniobras y sin mezclar permisos de roles.
+
+Perfil 2 prepara referentes para discrepancias, verificación, excepciones y supervisión; revisa evidencia y escala sin alterar origen y conserva suplente por turno. Perfil 3 cubre maestros/consulta E1 y contratos, lotes de cobro, respuesta contable y custodia E2, verificando documentos, moneda/unidad, acuse y decisión competente, sin simular saldo oficial.
+
+Perfil 4 comprende SRE, Integración, Implantación y referentes designados en monitorización, accesos, restauración y sincronización. Ejecuta procedimientos supervisados y explica límites sin suponer un departamento TI del CLIENTE. Perfil 5 practica recepción, ticket, orientación, clasificación, escalamiento y confirmación de resolución; atiende y deriva un caso realista y mantiene el puesto activo mediante suplente durante la sesión.
+
+
+La formación E1 y la práctica Ilque se completan antes de H6 y del congelamiento. E2 utiliza versión recibida después de H9/H10 y antes de H11, con materiales preparados durante construcción cuando sus insumos existen. Se agrupan tres visitas iniciales por etapa, con referencia de dos días por visita; la logística inicial mantiene 48 HH separadas de impartición, y la estacional 24 HH de T-15. La reserva no acredita embarcación ni tiempo de travesía: Proyecto coordina operador autorizado, meteorología, comunicaciones, relevo de otros sitios y traslado seguro. Si no se realiza una visita necesaria, no se certifica una práctica presencial mediante asistencia remota. Las campañas posteriores conservan 300 plazas anuales ofrecidas y mentoría de meses 21--26 en sus paquetes propios.
+
+\section{Implantación de Etapa 1}\label{sec:t18-e1}
+\subsection{Alcance y preparación específica}
+E1 comprende seguridad y operación de torre/pantalanes, planes y amarras; escuela, inventario e inspección ilque; combustible, medición y consulta ambiental inicial; maestros de faena, personas, contratos en consulta y atención inicial a visitas. La matriz de olas conserva los treinta resultados funcionales y su reparto en T-14: las capacidades E2 no se anticipan por utilizar maestros E1. Identidad, canales, infraestructura, observabilidad y seguridad habilitan a todos los procesos.
+
+H5, calculado el 19-11-2027, recibe certificación y pruebas antes del primer uso real. Proyecto verifica disponibilidad del operador del legado, documentos, usuarios, acceso marítimo y ventanas locales; los dos ensayos y formación aplicables preceden H6. El manifiesto de cada frente conserva recepción, autoridad y alternativa de retorno.
+
+\subsection{Olas y marcha blanca E1}
+H6 inicia el 01-12-2027. Las tres olas operan como frentes de convivencia supervisada dentro del mismo alcance recibido. Se mantienen registros vigentes del puerto y captura única conciliada, sin sustituir controles de seguridad por automatismos. Del 15-12 al 15-03 no se autorizan nuevos pasos a producción ni sesiones nuevas en el peak protegido; acompañamiento, observación y atención segura ya previstos continúan.
+
+Durante diciembre--febrero, E2 puede preparar análisis, diseño, guiones y documentación en entornos aislados conforme a T-15; ello no autoriza modificar E1 ni utilizar sus usuarios como recursos simultáneos. La asignación de Desarrollo/Calidad queda separada de Implantación y turnos de mesa/NOC/SOC. Los cambios imprescindibles por incidente siguen autorización, prueba, trazabilidad y restricción del sitio, sin convertir una corrección en despliegue programado encubierto.
+
+\subsection{Cierre, activación y continuidad del intervalo}
+Las cuatro últimas semanas son 29-02-2028. Calidad integra volumen real, disponibilidad/respuesta, incidentes, conciliación y certificación del alcance completo; Proyecto presenta el expediente completo después del último día. H7 se calcula el 20-03-2028, dentro del mes 16 y fuera del congelamiento. No se declara producción oficial desde el 01-03.
+
+Desde el cierre de febrero hasta el corte de marzo continúa el servicio supervisado, el registro vigente, la conciliación y el soporte de implementación. El término de la ventana de evidencia no elimina supervisión ni autoriza pérdida de datos durante la revisión. Toda modificación o incidente relevante posterior se incorpora como delta al expediente y puede bloquear la decisión. La aceptación y el cambio oficial siguen el orden de la sección \ref{sec:t18-corte}; después se ejecuta estabilización 21-03--17-04.
+
+\section{Implantación de Etapa 2 y protección de E1}\label{sec:t18-e2}
+\subsection{Preparación y liberación del segundo alcance}
+E2 completa agenda y faenas de varadero, izaje, contratistas, residuos/RESPEL e indicadores ambientales comerciales; espera/contratos completos, hechos facturables, respuestas contables, pagos, cobranza y expedientes de custodia. Consume hechos e identidad E1 sin rehacerlos. Construcción admisible desde 16-03-2028, H9 el 20-04 y H10 el 22-05; esas fechas no permiten intervenir físicamente el varadero durante abril--mayo. Ensayos en ambientes aislados no sustituyen verificación del sitio en su ventana segura.
+
+La agenda de recepción se prepara el 24-05, después de H10. Integración comprueba accesos contables/pagos, contratos de interfaz y acuses; Datos conserva consulta independiente del legado. Los dos frentes E2 inician acompañamiento en H11, con población y permisos recibidos y pruebas de regresión sobre E1.
+
+\subsection{Marcha blanca E2 y continuidad de E1}
+H11 inicia el 01-06-2028. Se mantiene junio y julio completos, 61 días naturales, con convivencia de E2 supervisada y E1 oficial. Los cambios E2 se promueven por proceso con reversión y verificación de datos compartidos; no reinician un servicio E1 indiscriminadamente ni trasladan a E2 la autoridad de sus eventos. Un deterioro atribuible a E2 suspende el frente afectado y activa contención/retorno sin abandonar E1.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.280000\linewidth-2\tabcolsep\relax}p{\dimexpr0.350000\linewidth-2\tabcolsep\relax}p{\dimexpr0.370000\linewidth-2\tabcolsep\relax}}
+\caption{Controles de protección de E1 durante E2}\label{tab:t18-proteccion-e1}\\\hline
+\textbf{Control} & \textbf{Verificación} & \textbf{Suspensión}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-proteccion-e1}}}\\\hline
+\textbf{Control} & \textbf{Verificación} & \textbf{Suspensión}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Datos compartidos & Autoridad, ID y delta & Pérdida o duplicación\\\hline
+Desempeño & Comparación antes/después & Umbral o E1 degradada\\\hline
+Seguridad & Permisos, firma y roles & Hallazgo crítico/alto\\\hline
+Continuidad & Canales y relevos & Canal o cobertura ausente\\\hline
+Contabilidad externa & Acuse e idempotencia & Duplicación o estado incierto\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: T-14/T-15 vigentes; procedimiento propuesto por Synaptix.}
+
+En las tablas se utilizan las abreviaturas de perfil: JP, Proyecto; FUN, Funcional; DAT, Datos; QA, Calidad; IMP, Implantación; INT, Integración; GS, Gerencia de Servicio. SRE identifica al equipo técnico de continuidad y confiabilidad. Mesa y Operación conservan sus denominaciones de servicio.
+
+En datos compartidos se verifican contrato y versión, acceso por dueño, ID único de evento y conciliación de deltas. La pérdida, escritura duplicada, modificación de autoridad no aprobada o diferencia no explicada suspende el frente afectado. El desempeño se compara antes y después por flujo, sitio y recurso, respetando los límites de arquitectura; el incumplimiento del umbral comprometido o deterioro de E1 atribuible al despliegue bloquea la promoción.
+
+La regresión de seguridad cubre permisos, secretos, firma y segregación de roles. La exposición de datos, un acto sin autoridad o un hallazgo crítico/alto abierto activa suspensión. Torre, escuela, medidores y recepción crítica se comprueban antes y después de cada promoción; un canal crítico indisponible, información de escuela desactualizada o guardia sin relevo impide continuar.
+
+Los efectos contables conservan acuse, correlación e idempotencia. Antes de reintentar se consulta su estado; un cobro/pago duplicado o una respuesta incierta sin procedimiento de verificación suspende el cambio correspondiente.
+
+
+\subsection{Activación conjunta y contingencias}
+Las cuatro semanas finales de E2 son 04--31-07. La revisión progresiva prevista en la sección \ref{sec:t18-control} reduce antecedentes pendientes de revisar; no elimina el último registro ni acepta el período futuro. P calcula activación el 01-08 y comienzo de Operación de ambos alcances; B, con revisión final completa, calcula H12 el 19-08 y 18 días frente al objetivo. Si el cliente no decide temprano o una condición falla, se conserva el estado seguro y se extiende observación a costo de Synaptix según BA17.3, sin modificar contractualmente las fases siguientes ni declarar cero por mover la fecha objetivo.
+
+La activación calculada a las 11:54 del 01-08 no demuestra disponibilidad desde las 00:00 exigible al interpretar primer día de servicio. Proyecto debe conciliar expresamente ese criterio con la contraparte sin presentarlo como acuerdo obtenido. H12 de pago, aceptación final, cierre de marcha blanca y disponibilidad se registran por separado aunque coincidan en P.
+
+\section{Control diario, cierre y revisión progresiva}\label{sec:t18-control}
+\subsection{Indicadores y volumen de operación real}
+Cada día se registra proceso, sitio, versión y población habilitada, ventana, hechos reales, estados, medidas de disponibilidad/respuesta, diferencias, incidentes y personas certificadas. La fuente primaria es el hecho trazable del puerto y sus documentos; un evento de prueba tiene marca distinta. Calidad consolida sin borrar mediciones fallidas y Datos concilia con el registro vigente o autoridad externa. Una tasa no se informa como cumplida si su denominador es cero.
+
+La disponibilidad se calcula como $100(T_{exigible}-T_{no\ disponible})/T_{exigible}$ sobre la transacción de negocio de extremo a extremo, con exclusiones sólo si las bases y el protocolo las admiten. Se informa por servicio/sitio y período; no se compensa la caída de torre con disponibilidad del portal. El tablero diario conserva incidentes y tiempos originales; la comprobación de cierre incluye cada ventana semanal y las cuatro semanas completas, además del SLA mensual correspondiente.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.320000\linewidth-2\tabcolsep\relax}p{\dimexpr0.450000\linewidth-2\tabcolsep\relax}p{\dimexpr0.230000\linewidth-2\tabcolsep\relax}}
+\caption{Calendario de implantación y puertas de producción}\label{tab:t18-fases}\\\hline
+\textbf{Fase} & \textbf{Período} & \textbf{Hito}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-fases}}}\\\hline
+\textbf{Fase} & \textbf{Período} & \textbf{Hito}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+E1: preparación & Meses 1--12 & H5: 19-11-2027\\\hline
+E1: marcha blanca & 01-12-2027 a 29-02-2028 & H6\\\hline
+E1: producción & Mes 16 & H7: 20-03-2028\\\hline
+E2: preparación & Meses 13--18 & H9/H10\\\hline
+E2: marcha blanca & 01-06 a 31-07-2028 & H11\\\hline
+E2: producción P & Mes 21 & H12: 01-08-2028\\\hline
+E2: contraste B & 18 días de retraso & H12: 19-08-2028\\\hline
+Operación & Meses 21--56 & 36 meses\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: Bases Administrativas, art. 17; red y calendario P/B de T-15, sec. 4 y 7; T-14, sec. 4.}
+
+E1 requiere versión integrada, certificación, usuarios y retorno preparados antes de H6. La marcha blanca ocupa los meses 13--15 y comienza la convivencia real; sus cuatro semanas finales son 02--29-02-2028. H7 requiere acta de cierre previa, ventana admisible y cambio oficial.
+
+E2 conserva preparación aislada durante el congelamiento; su construcción es admisible desde el 16-03-2028. H9 se calcula el 20-04 y H10 el 22-05-2028. H11 inicia observación en los meses 19--20, mientras E1 continúa oficial; las cuatro semanas finales son 04--31-07-2028.
+
+P prevé cero días por fecha, condicionado a decisión y firma tempranas, ausencia de observaciones y corte válido. B utiliza revisión final completa y calcula 18 días frente al objetivo operativo del 01-08. Operación cubre ambos alcances durante 36 meses; el soporte de implementación permanece en los meses 13--20.
+
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.420000\linewidth-2\tabcolsep\relax}p{\dimexpr0.300000\linewidth-2\tabcolsep\relax}p{\dimexpr0.280000\linewidth-2\tabcolsep\relax}}
+\caption{Umbrales de respuesta que se verifican en el plan}\label{tab:t18-respuesta}\\\hline
+\textbf{Flujo} & \textbf{Umbral} & \textbf{Criterio}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-respuesta}}}\\\hline
+\textbf{Flujo} & \textbf{Umbral} & \textbf{Criterio}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Portal: carga inicial & $\leq 2$ s & P95\\\hline
+Portal: navegación & $\leq 1$ s & P95\\\hline
+API: consulta simple & $\leq 500$ ms & P95 por interfaz\\\hline
+API: escritura & $\leq 800$ ms & P95 por interfaz\\\hline
+Amarra visitante & $\leq 45$ s & Máximo por operación\\\hline
+Salida/regreso & $\leq 10$ s; 2 interacciones & Máximo por operación\\\hline
+Legajo de zarpe & $\leq 90$ s & Máximo por trámite\\\hline
+Clase de escuela & $\leq 60$ s; hasta 18 embarcaciones & Máximo por salida\\\hline
+Emergencia & $\leq 10$ min; 296 armadores & Último envío\\\hline
+Plan vencido & $\leq 15$ min & Desde vencimiento\\\hline
+Búsqueda compuesta & $\leq 3$ s & P95 por variante\\\hline
+Informe estándar & $\leq 30$ s & P95 por variante\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: Bases Técnicas Transversales, sec. 9.1; Caso 07, capítulo 15, adecuaciones RT-09.01 y RT-05.29.}
+
+Portal se verifica con experiencia real y P95; carga/estrés se prueba en PREPROD al peak declarado. Los tiempos API se miden por interfaz y no sustituyen el tiempo del proceso humano completo. Consulta compuesta e informe estándar conservan P95 por variante y cualquier límite más estricto de T-12/SD4.
+
+En amarra visitante, el reloj va desde la consulta por radio hasta la confirmación conforme al protocolo. Salida/regreso comprende el trabajo del operador de pantalán, con un máximo de dos interacciones; la captura desconectada y su sincronización conservan evidencia. El legajo de zarpe incluye nómina y antecedentes completos del trámite.
+
+La salida de escuela comprende hasta 18 embarcaciones, con trazabilidad de alumno, bote y monitor y situación actual en tiempo real. La distribución de emergencia se mide hasta el último envío a los 296 armadores; la alerta de plan vencido se mide desde su vencimiento. Se conservan distribución y acuses disponibles; una alerta no acredita salvamento ni presencia física.
+
+
+Como compromiso propuesto de volumen se utilizan los mínimos de la tabla \ref{tab:t18-volumen}, derivados del Caso 07. Son supuestos de oferta por aprobar en el plan de implantación, no actividad medida ni umbrales impuestos literalmente por las bases. Para procesos anuales, $N_{28}=\lceil V_a(28/365)f\rceil$, con $f=0{,}5$ como hipótesis estacional conservadora. Se aplica a febrero y julio para esta propuesta; la presencia efectiva de clases en invierno y la mezcla de subtipos se contrastan con el CLIENTE antes de H5/H10. El cálculo no autoriza fabricar actividad ni reduce el peak de dimensionamiento.
+
+Se exige además registrar el 100\% de hechos reales exigibles de cada proceso habilitado durante las cuatro semanas. Para variantes críticas sin volumen anual conocido se compromete observar al menos un ciclo real completo cuando exista hecho exigible; la ausencia se registra y se evalúa como suficiencia pendiente, sin convertir una prueba sintética en actividad real. La recepción final depende de volumen y cobertura del alcance, no de una suma global favorable.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.230000\linewidth-2\tabcolsep\relax}p{\dimexpr0.380000\linewidth-2\tabcolsep\relax}p{\dimexpr0.390000\linewidth-2\tabcolsep\relax}}
+\caption{Mínimos propuestos de operación real en los 28 días finales}\label{tab:t18-volumen}\\\hline
+\textbf{Proceso / etapa} & \textbf{Derivación y mínimo} & \textbf{Evidencia y límites}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-volumen}}}\\\hline
+\textbf{Proceso / etapa} & \textbf{Derivación y mínimo} & \textbf{Evidencia y límites}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Zarpes / E1-E2 & $\lceil4.800(28/365)(0{,}5)\rceil=185$ trámites & Folio y hecho distinto; no contar reintentos del mismo zarpe.\\\hline
+Recaladas / E1-E2 & $\lceil1.900(28/365)(0{,}5)\rceil=73$ arribos & Embarcación, momento, asignación y recepción conciliados.\\\hline
+Escuela / E1-E2 & $\lceil1.100(28/365)(0{,}5)\rceil=43$ salidas de clase & Nómina/autorización, salida y retorno; no alumnos ni botes contados como clases. Riesgo estacional explícito.\\\hline
+Combustible / E1-E2 & $\lceil1.900.000(28/365)(0{,}5)\rceil=72.877$ litros & Despachos reales con unidad, documento y lectura verificable; no sumas de totalizadores.\\\hline
+Medición / E1-E2 & $320\times2\times28=17.920$ punto-días & 640 puntos iniciales con serie completa a la frecuencia vigente; huecos no se rellenan como lecturas reales.\\\hline
+Varadero / E2 & $\lceil1.150(0{,}38)(28/281)\rceil=44$ movimientos & 281 días = 365 menos dos campañas de seis semanas; aproximación fuera de campañas. Orden, maniobra y recepción.\\\hline
+Cobranza / E2 & $\lceil1.950(28/30)\rceil=1.820$ documentos & Además del mínimo, ciclo completo de emisión/acuse/conciliación; 30 días es mes de cálculo, no cambio del calendario.\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: Caso 07, sec. 14.1 y concentración de movimientos del varadero; cálculo de Synaptix con estacionalidad supuesta.}
+
+
+Si la actividad segura real no alcanza un mínimo, si una variante crítica no tiene evidencia suficiente o si falta un requisito copulativo, no se declara cierre. Proyecto registra la brecha y activa respuesta/observación adicional a costo de Synaptix sin mover fases contractuales. La mezcla por sitio, turno, moneda y subtipo se aprueba antes de la observación; modificarla después para excluir resultados desfavorables requiere control de cambios y no produce cumplimiento retroactivo.
+
+\subsection{Condiciones conjuntas de cierre}
+La puerta de cierre verifica simultáneamente las seis condiciones de BA17.3: ningún incidente crítico/alto abierto atribuible; volumen real comprometido en las últimas cuatro semanas; disponibilidad y respuesta sostenidas durante ese período; conciliación sin diferencias no explicadas; personal capacitado/certificado; y acta suscrita. La matriz identifica requisito, universo, evidencia, versión, responsable, observación y decisión. Un resultado pendiente se marca no verificable o parcial según evidencia, nunca cumplido por estar planificado. Ninguna aceptación parcial del expediente sustituye el acta del período completo.
+
+\subsection{Agenda de revisión progresiva E2}
+Se incorpora el solapamiento de T-15: agenda posterior a H10, entregas fechadas de antecedentes disponibles y acompañamiento diario a la revisión del cliente mientras continúa la marcha blanca. Los registros hasta el cierre del día anterior son la entrada de cada control. La evidencia del 31-07 se incorpora después de su cierre; no se acepta el último día por anticipado.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.170000\linewidth-2\tabcolsep\relax}p{\dimexpr0.310000\linewidth-2\tabcolsep\relax}p{\dimexpr0.320000\linewidth-2\tabcolsep\relax}p{\dimexpr0.200000\linewidth-2\tabcolsep\relax}}
+\caption{Agenda E2 de 2028 y aportes disjuntos}\label{tab:t18-agenda}\\\hline
+\textbf{Fecha} & \textbf{Actividad} & \textbf{Concepto} & \textbf{HH proveedor}\\\hline\endfirsthead
+\multicolumn{4}{l}{\textit{Continuación de la tabla \ref{tab:t18-agenda}}}\\\hline
+\textbf{Fecha} & \textbf{Actividad} & \textbf{Concepto} & \textbf{HH proveedor}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+24-05 & REC.E2.PLAN & Plan de revisión & 6\\\hline
+03-07 & REC.E2.SNAP.JUN & Evidencia de junio & 4\\\hline
+17-07 & REC.E2.SNAP.JUL & Evidencia al 16-07 & 4\\\hline
+18--31-07 & REC.E2.CLIENTE & Revisión del cliente & 0\\\hline
+18--31-07 & REC.E2.D01--D10 & Diez controles diarios & 16\\\hline
+Cierre 31-07 & W2 completo & Evidencia final & Ya incluidas\\\hline
+01-08 & H12.CIERRE & Consolidación final & 2,4 incluidas\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: T-14/T-15 vigentes; procedimiento propuesto por Synaptix.}
+
+Todas las fechas de la tabla corresponden a 2028. REC.E2.PLAN se prepara después de H10 y define agenda, responsables, criterios y versiones: JP 2 + FUN 2 + QA 2 = 6 HH. La versión de junio conserva referencias a registros originales; la de julio incorpora datos hasta el cierre del 16-07, observaciones y pruebas. Cada versión requiere JP 1 + FUN 1 + DAT 1 + QA 1 = 4 HH.
+
+REC.E2.CLIENTE comprende diez jornadas hábiles de revisión progresiva en el calendario supuesto. Las 0 HH corresponden exclusivamente al proveedor: no eliminan el tiempo externo ni el derecho del CLIENTE a revisar la entrega final.
+
+Los diez controles se identifican como REC.E2.D01 (18-07), REC.E2.D02 (19-07), REC.E2.D03 (20-07), REC.E2.D04 (21-07), REC.E2.D05 (24-07), REC.E2.D06 (25-07), REC.E2.D07 (26-07), REC.E2.D08 (27-07), REC.E2.D09 (28-07) y REC.E2.D10 (31-07). Cada uno utiliza datos hasta el cierre del día anterior, comprueba el delta y registra respuesta y pendientes, con JP 0,2 + FUN 0,2 + DAT 0,2 + QA 1 = 1,6 HH. Los diez controles suman 16 HH.
+
+W2 termina al cierre del 31-07 e incorpora la evidencia completa de las cuatro semanas 04--31-07 mediante registros y monitoreo existentes, sin nueva suma. H12.CIERRE consolida el expediente después de W2 y sus controles, con DAT 0,8 + QA 1,6 = 2,4 HH ya incluidas. No se incorpora evidencia futura como si hubiera sido producida.
+
+
+Las 30 HH adicionales se imputan a 1.11.5.2.1 y ya están incluidas en T-15: plan 6, dos versiones 8, diez controles 16; por perfil, JP 6, FUN 6, DAT 4 y QA 14. No descuentan otra vez H12.PREP ni sustituyen la producción de registros/observación. El expediente parcial identifica corte de datos, versión, requisitos cubiertos, evidencias y pendientes; el cliente puede revisar ese producto técnico sin aceptar marcha blanca futura.
+
+\subsection{Observaciones, evidencia final y aceptación}
+Cada observación recibe ID propio, versión, requisito, severidad, fecha, dueño, plazo, respuesta, evidencia de corrección, reensayo y decisión del receptor. Las correcciones de datos conservan el valor original y aprobación; las de software actualizan versión y regresión. Las observaciones abiertas que afectan una condición de cierre bloquean acta y corte. Una corrección sustantiva tardía puede volver insuficiente la evidencia sostenida: Calidad identifica qué período debe repetirse según el criterio del requisito y su protocolo; no conserva automáticamente una muestra de la versión anterior como si perteneciera a la corregida.
+
+El CLIENTE conserva diez días hábiles para revisar la entrega final; ante observaciones Synaptix dispone de diez hábiles para subsanar conforme a BA18.3. La agenda de julio no consume ese derecho ni implica aceptación por silencio. P supone pronunciamiento, decisión y firma tempranos una vez completo el expediente; B conserva revisión final completa. Proyecto documenta convocatoria y decisión efectiva antes de ejecutar, sin describir una hipótesis como convenio firmado.
+
+\section{Procedimiento de corte y reversión}\label{sec:t18-corte}
+\subsection{Condiciones y secuencia del cambio oficial}
+El corte requiere evidencia completa recibible, observaciones resueltas, certificación de usuarios, ventana segura, recursos disponibles, copia/diario, procedimiento de retorno probado y acta suscrita por receptor autorizado. Proyecto confirma con el puerto que no hay maniobra protegida ni bloqueo local; Calidad verifica versión y universo. SRE cambia autoridad únicamente después de la recepción requerida y registra los pasos. El cambio conserva consulta independiente del legado y pruebas finales de E1 y E2.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.120000\linewidth-2\tabcolsep\relax}p{\dimexpr0.490000\linewidth-2\tabcolsep\relax}p{\dimexpr0.390000\linewidth-2\tabcolsep\relax}}
+\caption{Secuencia operativa del corte oficial}\label{tab:t18-corte}\\\hline
+\textbf{Paso} & \textbf{Acción} & \textbf{Responsable}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-corte}}}\\\hline
+\textbf{Paso} & \textbf{Acción} & \textbf{Responsable}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+1 & Comprobar habilitación & JP/QA\\\hline
+2 & Preparar retorno & SRE/DAT\\\hline
+3 & Sincronizar delta & DAT/INT\\\hline
+4 & Cambiar autoridad & SRE/IMP\\\hline
+5 & Comprobar servicio & QA/FUN\\\hline
+6 & Decidir resultado & José Lara/autoridad designada\\\hline
+7 & Abrir estabilización & IMP/Operación\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: T-14/T-15 vigentes; procedimiento propuesto por Synaptix.}
+
+En el paso 1, Proyecto reúne acta, lista de habilitación y autorización del sitio; Calidad verifica. Si falta firma, una condición conjunta o ventana válida, se mantiene convivencia y no se ejecuta el cambio oficial. En el paso 2 se verifican versión previa, copia/diario, límite de delta y transacciones pendientes; se identifican el último dato confirmado y la autoridad, sin congelar maniobras ni capturas críticas.
+
+El paso 3 reconcilia eventos y consulta acuses externos: exige cero diferencias no explicadas e ID y estado para cada efecto contable u operacional. El paso 4 aplica configuración, versiones y permisos aprobados por proceso; conserva una sola escritura oficial, registra la hora y desactiva escrituras incompatibles sin eliminar consulta.
+
+El paso 5 comprueba transacciones de negocio, permisos, métricas, alertas y E1 compartida, sin pérdida, duplicación ni degradación inadmisible. Las pruebas no alteran documentos oficiales sin autorización. En el paso 6, José Lara coordina con la autoridad designada la decisión de continuar, suspender o retornar, y Proyecto la comunica; se conservan evidencia e incidentes en el expediente.
+
+En el paso 7, Implantación recibe pendientes y turnos y Operación mantiene canales. La cobertura reforzada y la transferencia quedan identificadas; corte operativo e hito de pago tienen registros separados.
+
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.260000\linewidth-2\tabcolsep\relax}p{\dimexpr0.390000\linewidth-2\tabcolsep\relax}p{\dimexpr0.350000\linewidth-2\tabcolsep\relax}}
+\caption{Cola final prevista de E2 en P, 01-08-2028}\label{tab:t18-cierre-horario}\\\hline
+\textbf{Hora} & \textbf{Actividad} & \textbf{Condición}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-cierre-horario}}}\\\hline
+\textbf{Hora} & \textbf{Actividad} & \textbf{Condición}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+08:00--08:24 & Evidencia final & Expediente completo\\\hline
+08:24--10:24 & Revisión y firma & Decisión temprana\\\hline
+10:24 & Acta suscrita & Recepción expresa\\\hline
+10:24--11:54 & Corte y comprobación & Acta y retorno preparado\\\hline
+11:54 & Disponibilidad prevista & Escenario P condicionado\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: T-15 v1.1, sec. 7, tabla de cierre horario P. HH incluidas en presupuesto vigente.}
+
+La secuencia corresponde exclusivamente al 01-08-2028 en P. La evidencia final requiere W2, H12.PREP, expediente y controles diarios terminados. De 08:00 a 08:24 trabajan dos DAT y cuatro QA, con DAT 0,8 + QA 1,6 = 2,4 HH.
+
+La ventana 08:24--10:24 supone revisión, decisión y firma tempranas del CLIENTE, con apoyo de JP 0,5 + QA 0,5 HH durante los últimos 30 minutos. Ese apoyo ya se realiza dentro de la revisión; no se agrega una espera de firma ni se elimina su trabajo. Sólo un acta suscrita habilita avanzar; un borrador no constituye recepción.
+
+El corte dura 90 minutos con dos ejecutores por perfil y SRE 3 + IMP 3 + QA 3 = 9 HH. Se ejecuta después del acta, con retorno preparado y validación de E1. Todas estas HH están incluidas en T-15.
+
+Las 11:54 son disponibilidad calculada por fecha bajo las condiciones de P, no una activación ya obtenida ni servicio desde las 00:00. Si falla la firma, un control o la ventana, se conserva el estado seguro y se recalcula el resultado.
+
+
+
+E1 utiliza el mismo procedimiento con la versión y grupos correspondientes; H7 se calcula el 20-03 y no se traslada la cola de dos horas de P a su recepción. Los tiempos efectivos del corte E1 y cada cambio de grupo se contrastan con la red y los ensayos; las horas del 01-08 son específicas del escenario E2. Si la firma no ocurre en la ventana P, no se opera sin recepción para mantener la fecha en la tabla.
+
+\subsection{Disparadores para suspender o retornar}
+Se suspende ante incidente crítico/alto abierto atribuible, permiso ausente, diferencia no explicada, pérdida/duplicación, falla de integridad o autorización, deterioro de E1, versión distinta de la ensayada o imposibilidad de mantener cobertura segura. El ejecutor contiene, comunica y conserva evidencia; la autoridad recibida decide retorno. Una marejada o actividad protegida suspende faena física; no se busca completar una cuota académica ejecutando una maniobra insegura.
+
+\subsection{Retorno previo y posterior a nuevas transacciones}
+Antes de nuevas transacciones, SRE restituye configuración y acceso a la autoridad anterior; Datos confirma que el estado previo y la copia coinciden. Después de nuevas transacciones, no basta restaurar una copia antigua: se exporta y protege el diario del intervalo, se distinguen operaciones confirmadas/pedientes/rechazadas, se consulta el estado externo y se aplica el delta a la autoridad que corresponda. Un acuse desconocido se verifica antes de reintentar; se bloquea exclusivamente el efecto incierto, sin duplicar un cobro o dar por retirada a una persona dos veces.
+
+Los hechos de torre/escuela y mediciones confirmadas se conservan incluso si se retorna una interfaz E2. Las rectificaciones financieras siguen el procedimiento competente del CLIENTE y de su sistema contable; un retorno técnico no borra un documento emitido ni inventa una anulación. La restitución termina sólo cuando el servicio seguro, la autoridad y el delta están conciliados. Si no puede garantizarse retorno íntegro, se activa contención y procedimiento manual autorizado, se informa el incidente y se evita una restauración destructiva.
+
+\subsection{Tiempo objetivo y ensayo de la reversión}
+Como objetivo de diseño de Synaptix se fija retorno lógico de hasta 60 minutos desde la decisión de revertir, con secuencia de la tabla \ref{tab:t18-retorno}. No es una duración medida ni se confunde con los 90 minutos del corte. Debe demostrarse en ambos ensayos con volumen/delta representativos y recursos disponibles; un resultado superior bloquea la habilitación hasta corregir procedimiento o aprobar/recalcular una alternativa admisible. El reloj de un incidente empieza en el instante contractual aplicable, no al decidir retorno.
+
+La recuperación crítica conserva RTO máximo de 4 horas y RPO máximo de 15 minutos de RT-07.04, o el compromiso más estricto vigente. La reversión funcional procura pérdida cero de hechos confirmados mediante diario/delta; eso no convierte toda copia de DR en RPO cero. Integración, SRE, Datos, Calidad y Funcional usan ejecutores distintos según tareas; sus aportes se imputan a ensayos, migración/retorno e intervención existentes, sin crear una partida de cero costo ni asumir recursos ilimitados.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.230000\linewidth-2\tabcolsep\relax}p{\dimexpr0.400000\linewidth-2\tabcolsep\relax}p{\dimexpr0.370000\linewidth-2\tabcolsep\relax}}
+\caption{Objetivo de retorno propuesto y condiciones de verificación}\label{tab:t18-retorno}\\\hline
+\textbf{Tramo desde decisión} & \textbf{Acción} & \textbf{Responsable y evidencia}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-retorno}}}\\\hline
+\textbf{Tramo desde decisión} & \textbf{Acción} & \textbf{Responsable y evidencia}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+0--5 min & Detener paso afectado, comunicar y fijar decisión/versión & SRE/Implantación; preservar captura crítica y bitácora.\\\hline
+5--15 min & Proteger diario, consultar pendientes/acuse externo y delimitar delta & Datos/Integración; no reintentar un efecto incierto.\\\hline
+15--30 min & Restituir configuración y autoridad previa segura & SRE; conservar consulta y segregación.\\\hline
+30--50 min & Aplicar/conciliar delta y comprobar integridad & Datos/Integración; diferencias y decisión funcional registradas.\\\hline
+50--60 min & Verificar servicio, E1 compartida y comunicar resultado & Calidad/Funcional/SRE; pasar a soporte o mantener contención.\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: Objetivo propuesto por Synaptix; RT-20.02 y RT-07.04. Duración pendiente de ensayo; no equivale a ejecución acreditada.}
+
+
+Cada ensayo informa inicio/fin por paso, número/volumen de operaciones, último dato confirmado, pérdida y duplicados, recursos e indisponibilidad total. El objetivo de 60 minutos no autoriza suponer que consultas externas o traslado físico caben en él; si el incidente requiere esas acciones, se registra la contención y el plazo completo de restauración. Cambios materiales de recursos o duración se propagan a T-15 y a los hitos antes de declarar viabilidad.
+
+\section{Acompañamiento, estabilización y transferencia}\label{sec:t18-estabilizacion}
+\subsection{Acompañamiento presencial por ola}
+La presencia inicial se mantiene durante 28 días por ola conforme a T-14/T-15: dos puestos, ocho horas presenciales por día en los primeros catorce; luego cuatro presenciales y cuatro de preparación/seguimiento por puesto. La reducción de presencia no reduce el esfuerzo diario ni la atención remota/guardia. Pantalanes y varadero son frentes de referencia: cada ola ubica sus puestos en los sitios de la matriz y desplaza el referente móvil sólo cuando mantiene continuidad del otro frente. Ilque requiere visita coordinada; no se declara presencia diaria en las boyas con un puesto ubicado en tierra.
+
+En el arranque se mantienen las fechas de los paquetes agregados de la red P: E1 01--28-12-2027 y E2 01--28-06-2028. La reducción se acepta si no hay críticos/altos abiertos atribuibles, las tareas del rol se ejecutan con certificación y las diferencias diarias están resueltas; de lo contrario se mantiene refuerzo y se evalúa capacidad/costo antes de modificar la agenda. Desde 15-12 E1 conserva acompañamiento de procedimientos ya activos y preparación permitida; no imparte nuevas sesiones en el período protegido.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.340000\linewidth-2\tabcolsep\relax}p{\dimexpr0.130000\linewidth-2\tabcolsep\relax}p{\dimexpr0.180000\linewidth-2\tabcolsep\relax}p{\dimexpr0.190000\linewidth-2\tabcolsep\relax}p{\dimexpr0.160000\linewidth-2\tabcolsep\relax}}
+\caption{Dotación y esfuerzo del acompañamiento existente}\label{tab:t18-presencia}\\\hline
+\textbf{Etapa/período} & \textbf{Puestos} & \textbf{HH presencia} & \textbf{HH preparación} & \textbf{HH total}\\\hline\endfirsthead
+\multicolumn{5}{l}{\textit{Continuación de la tabla \ref{tab:t18-presencia}}}\\\hline
+\textbf{Etapa/período} & \textbf{Puestos} & \textbf{HH presencia} & \textbf{HH preparación} & \textbf{HH total}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+E1: 01--14-12-2027 & 6 & 672 & 0 & 672\\\hline
+E1: 15--28-12-2027 & 6 & 336 & 336 & 672\\\hline
+E2: 01--14-06-2028 & 4 & 448 & 0 & 448\\\hline
+E2: 15--28-06-2028 & 4 & 224 & 224 & 448\\\hline
+Total & 6 E1; 4 E2 & 1.680 & 560 & 2.240\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: T-14/T-15 vigentes; procedimiento propuesto por Synaptix.}
+
+E1 comprende tres olas y dos puestos por ola: seis puestos. E2 comprende dos olas y dos puestos por ola: cuatro puestos. Durante los primeros 14 días cada puesto tiene ocho horas presenciales diarias; durante los siguientes 14 días tiene cuatro horas presenciales y cuatro de preparación/seguimiento. Cada puesto-ola aporta 224 HH en los 28 días.
+
+E1 suma 1.344 HH y E2, 896 HH, imputadas una sola vez a 1.11.4.1/2. El total de 2.240 HH incluye 1.680 de presencia y 560 de preparación; no se agrega nuevamente al presupuesto. Los seis y cuatro puestos corresponden a etapas distintas y no representan diez puestos simultáneos.
+
+Los puestos E1 cubren terreno, escuela, torre y surtidor conforme al manifiesto; los E2, varadero/ambiente y administración. La segunda quincena E1 mantiene la restricción de nuevos despliegues durante el congelamiento.
+
+Implantación dispone de hasta 16 identidades durante implementación y cuatro desde el mes 21, según T-15. Seis puestos E1 requieren 336 HH por semana; once personas aportan 352 HH netas de 32 cada una. Cuatro puestos E2 requieren 224 HH, cubiertos numéricamente por siete personas de 32. Son cotas del acompañamiento, no una contratación adicional ni un cuadrante nominativo aprobado; los relevos, descansos, otros trabajos y sitio se comprueban en la asignación diaria. Los titulares técnicos no se añaden como una segunda jornada. Alojamiento, embarcación, permanencia, permisos y traslados se coordinan por desplazamiento real y se valoran en la oferta, sin cobrar dos veces un viaje compartido.
+
+\subsection{Estabilización reforzada posterior al paso oficial}
+Se conservan 28 días consecutivos y dos puestos de ocho horas, uno en pantalanes y otro en varadero, incluidos fines de semana y relevos: 448 HH por etapa. E1: 21-03--17-04-2028, meses 16--17; E2: 02--29-08-2028, mes 21. Se utiliza la red y calendario actualizado de T-15, sec. 4/7, frente al párrafo antiguo de sec. 3 que conserva fechas descartadas. En abril no se interviene una faena de varadero protegida: el puesto acompaña operación y soporte seguro sin instalar ni modificar equipos durante maniobras.
+
+Dos puestos continuos de ocho horas requieren 112 HH semanales; cuatro identidades de 32 aportan 128 para rotación. El saldo no se presume disponible para otro servicio: cada intervención, reunión o traslado se concilia por identidad con T-15. Mesa y guardias conservan personal distinto. La dotación de estabilización de dos puestos no disminuye durante sus 28 días; la curva decreciente anterior corresponde a acompañamiento de olas. E1 se imputa a implementación y E2 a Operación, una sola vez, sin cargo adicional al CLIENTE por estabilización conforme a RT-20.06.
+
+\subsection{Transferencia a soporte y Operación}
+El servicio de implementación 1.11.8 se presta durante meses 13--20; 1.12.14 recibe la prestación de ambos alcances desde 21--56. La recepción del refuerzo no elimina mesa, NOC/SOC, guardias, formación o mentoría. T-15 conserva rotación de 14 Mesa, seis NOC y seis SOC; puestos activos y personas de rotación no se suman. Mesa opera 06--24 todos los días de temporada alta y 08--20 el resto; emergencia y alertas críticas conservan recepción/escalamiento 24x7x365 según sus productores.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.300000\linewidth-2\tabcolsep\relax}p{\dimexpr0.350000\linewidth-2\tabcolsep\relax}p{\dimexpr0.350000\linewidth-2\tabcolsep\relax}}
+\caption{Paquete de transferencia a soporte y Operación}\label{tab:t18-transferencia}\\\hline
+\textbf{Elemento} & \textbf{Entrega} & \textbf{Responsable}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-transferencia}}}\\\hline
+\textbf{Elemento} & \textbf{Entrega} & \textbf{Responsable}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+Versión y configuración & Fuentes, inventario y accesos & INT/SRE\\\hline
+Continuidad & Procedimientos y práctica & Operación\\\hline
+Tickets & Historial y pendientes & QA/Mesa/JP\\\hline
+Conocimiento & Manuales y certificaciones & IMP/FUN\\\hline
+Cobertura & Turnos y escalamiento & GS\\\hline
+Cierre del refuerzo & 28 días y validación & José Lara/QA/CLIENTE\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: T-14/T-15 vigentes; procedimiento propuesto por Synaptix.}
+
+Versión y configuración incluyen fuentes y documentación editables, activos, dependencias y permisos. Los secretos se transfieren mediante canal seguro y el receptor técnico autorizado comprueba acceso. Continuidad incluye procedimientos ejecutables de detección, recuperación, retorno, sincronización y atención manual, con práctica supervisada sin presuponer un área TI del CLIENTE.
+
+Los tickets conservan historial, causa, acciones, evidencia, propietario y plazo, incluidos acuses externos inciertos. Ninguna incidencia se borra al cambiar de fase. El conocimiento comprende manuales editables, FAQ, guiones, evaluaciones, nóminas certificadas y altas de temporeros; Implantación/Funcional confirma capacidad del receptor.
+
+La cobertura identifica turnos, suplentes, idiomas, sitios, autoridad del puerto y soporte N1--N4. Los relevos conservan la atención de los demás sitios. El cierre del refuerzo requiere los 28 días y puestos completos, desempeño y conciliación comprobados y tratamiento autorizado de pendientes no bloqueantes. José Lara, Calidad y el referente del CLIENTE registran esa decisión separadamente del acta contractual de producción.
+
+
+\subsection{Salida del refuerzo}
+Al finalizar el período, Calidad verifica todos los días/sitios y pendientes, Operación demuestra capacidad para continuar y Proyecto registra decisión. No se declara estabilización por agotamiento de HH ni por falta de tickets. Si persiste una falla atribuible, se mantiene la atención/corrección incluida y se registra la extensión y recursos; no se deja sin soporte a los procesos por haber cumplido 28 días de calendario. La mentoría técnica meses 21--26 y la salida contractual meses 53--56 conservan paquetes propios: no se sustituyen por esta transferencia inicial.
+
+\section{Trazabilidad, contingencias y control del plan}\label{sec:t18-control-plan}
+\subsection{Matriz requisito--procedimiento--evidencia}
+El universo de la matriz siguiente comprende RT-20.01--08 y las reglas contractuales/caso necesarias para la transición; no pretende reproducir ni contar todo T-12. Todos los RT de esa serie son obligatorios. El plan y el diseño de procedimientos son exigibles en la propuesta; mediciones, actas y cobertura efectiva se verifican al ejecutar. La matriz identifica evidencia esperada, no un resultado logrado.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.280000\linewidth-2\tabcolsep\relax}p{\dimexpr0.440000\linewidth-2\tabcolsep\relax}p{\dimexpr0.280000\linewidth-2\tabcolsep\relax}}
+\caption{Trazabilidad de exigencias del plan de implantación}\label{tab:t18-trazabilidad}\\\hline
+\textbf{Requisito} & \textbf{Concepto} & \textbf{Secciones T-18}\\\hline\endfirsthead
+\multicolumn{3}{l}{\textit{Continuación de la tabla \ref{tab:t18-trazabilidad}}}\\\hline
+\textbf{Requisito} & \textbf{Concepto} & \textbf{Secciones T-18}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+RT-20.01 & Estrategia y olas & 1--5\\\hline
+RT-20.02 & Avance y reversión & 2 y 7\\\hline
+RT-20.03 & Convivencia & 2, 4, 5 y 6\\\hline
+RT-20.04 & Indicadores y volumen & 6\\\hline
+RT-20.05 & Presencia decreciente & 8\\\hline
+RT-20.06 & Estabilización & 8\\\hline
+RT-20.07 & Definición de terminado & 3, 6 y 7\\\hline
+RT-20.08 & Aceptación objetiva & 1, 6 y 7\\\hline
+BA17.1--17.3 & Fases y cierre & 1, 4, 5 y 6\\\hline
+BA18 & Revisión y subsanación & 6 y 7\\\hline
+Caso 07, sec. 13.3 & Transición segura & 1--8\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: Bases Administrativas, arts. 17--18; Bases Técnicas Transversales RT-20.01--08; Caso 07 sec. 13.3.}
+
+RT-20.01 es exigible en la propuesta: 1.11.1/4 sustenta olas, versiones, población y ventanas, con H6/H11. RT-20.02 cubre propuesta y ejecución: 1.8.6/1.10 aporta pruebas, bitácora de corte/retorno y decisión. RT-20.03 se verifica en ejecución mediante 1.11.1.MB y 1.8: autoridad de escritura, registro y conciliación diaria sin doble digitación.
+
+RT-20.04 cubre propuesta y ejecución: 1.11.5 produce tablero y evidencia de las últimas cuatro semanas para H7/H12. RT-20.05 cubre propuesta y ejecución: 1.11.4.1/2 conserva manifiesto, puestos, relevos y registros diarios. RT-20.06 cubre propuesta y ejecución: 1.11.6.1/2 acredita asignación diaria, 28 días, atención incluida y transferencia.
+
+RT-20.07 requiere propuesta y acuerdo previo: código/versiones, pruebas, documentación, seguridad y despliegue, con protocolo a formalizar con el CLIENTE. RT-20.08 cubre propuesta y recepción: T-17 relaciona expediente, observaciones y acta de cada hito. Estas evidencias se presentan como productos esperados, no como resultados obtenidos.
+
+BA17.1--17.3 cubre propuesta y ejecución: T-14, sec. 4, y T-15, sec. 4/7, relacionan fases, solapamientos y cierre conjunto con W1/W2 y H6/H7/H11/H12. BA18 corresponde a recepción: REC.E2, cierre final y T-17 conservan evidencia trazada, revisión, subsanación y firma posterior al período completo.
+
+Caso 07, sec. 13.3, cubre propuesta y ejecución: no interferencia de maniobras, retorno probado, despliegue por zona, medición temprana, formación, estabilización y recepción sin presuponer TI del CLIENTE. La evidencia comprende olas, autorizaciones de sitio, visitas Ilque, comprobación física y puesto de estabilización.
+
+
+La definición de terminado de cada entregable exige código/versión y población, pruebas aprobadas del requisito, documentación editable, controles de seguridad, configuración/despliegue reproducibles y evidencia de recepción correspondiente. El paquete no termina por consumir sus HH. Una puerta de ola es además una decisión de operación segura: no se confunde con una aceptación documental parcial ni con el acta final. Esta definición se presenta para acuerdo con el CLIENTE antes de usarla; el formulario no afirma acuerdo ya suscrito.
+
+\subsection{Contingencias y respuestas de implantación}
+Los ID CI siguientes identifican escenarios de este procedimiento, no se presentan como códigos ya existentes de T-16. Proyecto vinculará el ID de riesgo vigente antes de aprobar el plan y usará las reservas de T-15 una sola vez; una reserva de HH no entrega automáticamente ventana ni decisión externa.
+
+\begingroup\small\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{\dimexpr0.120000\linewidth-2\tabcolsep\relax}p{\dimexpr0.310000\linewidth-2\tabcolsep\relax}p{\dimexpr0.350000\linewidth-2\tabcolsep\relax}p{\dimexpr0.220000\linewidth-2\tabcolsep\relax}}
+\caption{Causa, evento, impacto y respuesta del plan}\label{tab:t18-contingencias}\\\hline
+\textbf{ID} & \textbf{Causa} & \textbf{Respuesta} & \textbf{Responsable}\\\hline\endfirsthead
+\multicolumn{4}{l}{\textit{Continuación de la tabla \ref{tab:t18-contingencias}}}\\\hline
+\textbf{ID} & \textbf{Causa} & \textbf{Respuesta} & \textbf{Responsable}\\\hline\endhead
+\hline\endfoot\hline\endlastfoot
+CI-01 & Marejada/evento protegido & Suspender y reprogramar & Puerto/JP\\\hline
+CI-02 & Acceso/acuse ausente & Coordinar y verificar & JP/INT\\\hline
+CI-03 & Operador legado ausente & Extracción y consulta independiente & DAT/Administración\\\hline
+CI-04 & Volumen/adopción insuficiente & Reforzar y observar & FUN/JP\\\hline
+CI-05 & Integridad/seguridad/rendimiento & Contener, retornar y reensayar & DAT/SRE/QA\\\hline
+CI-06 & Revisión/corrección pendiente & Mantener convivencia y soporte & JP/Contraparte\\\hline
+CI-07 & Relevo/traslado incompatible & Reasignar cobertura competente & IMP/GS\\\hline
+\end{longtable}\endgroup
+\noindent\textit{Fuente: Escenarios de procedimiento propuestos; riesgos/reservas existentes se concilian con T-16 y T-15 sec. 9.}
+
+CI-01 se activa por aviso de autoridad o calendario bloqueado que impida acceso/intervención. Se detienen las actividades según 7.2, se protegen personas y equipos, se registran tareas y se reprograma una ventana segura; RV-01 se aplica cuando corresponde. CI-02 se activa por fecha de habilitación incumplida o estado externo incierto: no se avanza sin insumo, se coordina, se consulta el estado y se conserva la autoridad vigente; RV-02 corresponde a provisión cuando resulta aplicable.
+
+CI-03 impide verificar extracción/consulta cuando no hay suplencia práctica del operador único. Datos/Administración prepara extracción reproducible y consulta independiente antes de convivencia, sin inventar conocimiento del origen. CI-04 se activa si no se alcanza mínimo, cobertura o competencia, incluida escuela en julio: se contrasta agenda antes de marcha y se refuerza práctica segura. Si falta evidencia no se cierra; RV-08 cubre sólo seguimiento incremental.
+
+CI-05 se activa por diferencia no explicada, incidente crítico/alto o degradación de E1. Se contiene, suspende o retorna, corrige, reensaya y revisa la suficiencia del período; F27/F28 y la reserva aplicable se usan sin duplicación. CI-06 se activa si falta acta dentro de la ventana P o se requiere corrección: el cero condicionado deja de sostenerse. Se mantiene convivencia y soporte, con BA18 y extensión BA17.3, informando B o nuevo cálculo sin mover el objetivo para ocultar atraso.
+
+CI-07 se activa por ausencia de sustituto, visita Ilque inadmisible o choque con turno. Se reasigna identidad competente y ventana segura; no se abandona una guardia ni se acredita práctica que no se realizó. Los ID CI son escenarios propuestos y se vinculan al riesgo vigente de T-16 antes de aprobar el plan.
+```
+
+
+Si se activan respuestas, la red registra trabajo, revisión, reensayo, calendario y receptor; el saldo de reserva no se cuenta como avance. Ante incumplimiento copulativo se extiende marcha blanca a costo del adjudicatario, sin cargo adicional ni desplazamiento contractual de fases. Las multas se tratan según las bases y su procedimiento: el contraste de 18 días representa 9\% del valor del hito afectado a razón de 0,5\% por día si corresponde su aplicación; H12 pesa 10\% de implementación, por lo que no equivale a 9\% de todo el contrato. El objetivo operativo 01-08 no sustituye por sí solo una fecha diaria formal del hito de pago.
+
+\subsection{Versiones, registros y control de cambios}
+Cada registro conserva ID, etapa/ola/sitio, fecha y zona horaria, versión/configuración, fuente, requisito, responsable, resultado, observación, decisión y enlace a evidencia. Los registros de hechos diferencian fecha de ocurrencia de recepción/sincronización. Accesos y datos personales se restringen según rol; las copias de comprobación no se convierten en repositorios abiertos. El índice de evidencia del expediente permite reproducir el universo y verificar que no faltan días o sitios.
+
+Los cambios de ola, población, autoridad, versión, ventana, recurso, umbral o duración requieren analizar impacto sobre T-14/T-15, arquitectura/datos, T-17, riesgos y oferta económica, registrar autorizador y reprogramar antes de ejecutar. Si exceden capacidad o desplazan hito, la propuesta conserva la brecha: no fuerza HH menores para encubrir una espera técnica o externa. T-18 no reestima CF20 ni añade sus tablas a las HH globales. P conserva 179.554,16 HH y B 179.544,16, con 2.080,50 de reservas separadas; máximo disponible 124, distinto de puestos activos en terreno.
+
+\subsection{Condiciones pendientes antes de ejecutar}
+El plan completa el procedimiento y sus supuestos para la propuesta. Se requiere recibir calendario náutico/ventanas y permisos, manifiestos nominales de población, objetivos por entidad de SD5, mezcla estacional/volumen real, proveedor y acceso marítimo, resultados de ensayos con tiempos de retorno, cuadrantes nominativos y disponibilidad/facultades de la Contraparte. Son evidencias de habilitación futura, no omisiones convertidas en cumplimiento. La integración con T-17, SD1/SD7/SD10/SD12 y oferta económica debe conservar las mismas cifras y responsabilidades.
+
+Se registra una inconsistencia editorial de entrada: T-15 sec. 3 mantiene en un párrafo fechas antiguas de estabilización que contradicen sec. 4/7 y la red P. Este formulario adopta las fechas actualizadas expresas de su sección \ref{sec:t18-estabilizacion}; la corrección del párrafo fuente debe conservar esa misma red, sin modificar duración ni HH. El contraste no altera por sí solo T-15.
+
+La programación P obtiene cero días previstos por fecha, condicionado a decisión/firma tempranas y cierre conforme; no se presenta como garantía de aceptación ni disponibilidad desde medianoche. B conserva 18 días con revisión final completa. La revisión de este formulario comprueba coherencia documental y aritmética; no constituye validación independiente, evidencia de ejecución o certificación de cumplimiento.
+
